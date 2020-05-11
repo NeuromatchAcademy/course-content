@@ -28,6 +28,7 @@ July 13-31, 2020
 
 **Professional development** (5:30 - 6:00): Being a good NMA participant
 
+----
 
 ### Tue, July 14: What do models buy us?
 
