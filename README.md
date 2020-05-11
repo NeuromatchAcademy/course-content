@@ -2,22 +2,17 @@
 Summer course content for Neuromatch Academy (NMA)
 July 13-31, 2020
 
-#### Objectives
-Introduce traditional and emerging computational neuroscience tools, their complementarity, and what they can tell us about the brain. A main focus is on modeling choices, model creation, model evaluation and understanding how they relate to biological questions.
+**Objectives**: Introduce traditional and emerging computational neuroscience tools, their complementarity, and what they can tell us about the brain. A main focus is on modeling choices, model creation, model evaluation and understanding how they relate to biological questions.
 
-#### Tutorial microstructure	
-~10min talk, ~20min tutorial (repeated)
+**Tutorial microstructure**: ~10min talk, ~20min tutorial (repeated)
 
-#### Day structure	
-4h methods, 1h interpretation (what did we learn today, what does it mean, underlying philosophy, 1h professional development/ meta-science, evening group projects for interactive track). There will also be many networking activities!
+**Day structure**: 4h methods, 1h interpretation (what did we learn today, what does it mean, underlying philosophy, 1h professional development/ meta-science, evening group projects for interactive track). There will also be many networking activities!
 
-#### Prerequisites	
-[See here](https://github.com/NeuromatchAcademy/precourse)
+**Prerequisites**: [See here](https://github.com/NeuromatchAcademy/precourse)
 
 ## Week 1
 ### July 13: Introduction to Computational Neuroscience and NMA
 
-#### Goal
-We introduce the datasets (spikes, EEG, fMRI + behavior), and ask questions about them. These questions will foreshadow the whole summer school
+**Goal**: We introduce the datasets (spikes, EEG, fMRI + behavior), and ask questions about them. These questions will foreshadow the whole summer school
 
 
