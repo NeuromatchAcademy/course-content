@@ -12,10 +12,7 @@ July 13-31, 2020
 
 ## Week 1
 ### Mon, July 13: Introduction to Computational Neuroscience and NMA
-
-**Goal**: Introduction of datasets (spikes, EEG, fMRI + behavior), and questions about them. These questions will foreshadow the whole summer school.
-
-*Lecturers*: TBA
+Introduction of datasets (spikes, EEG, fMRI + behavior), and questions about them. These questions will foreshadow the whole summer school.
 
 **Intro / keynote & tutorial setup** (0:00 - 0:50): NMA organization, expectations, code of conduct, modeling vs. data
 
@@ -31,10 +28,7 @@ July 13-31, 2020
 ----
 
 ### Tue, July 14: What do models buy us?
-
-**Goal**: Introduce different example model types (Marr 1-3, what/how/why) and the kinds of questions they can answer. MRealize how different models map onto different datasets.
-
-*Lecturers*: TBD
+Introduce different example model types (Marr 1-3, what/how/why) and the kinds of questions they can answer. MRealize how different models map onto different datasets.
 
 **Intro / keynote & tutorial setup** (0:00 - 0:50): Model classifications 
 
@@ -46,3 +40,37 @@ July 13-31, 2020
 **Recap, Q&A** (4:35 - 5:30): The role of models in discovery
 
 **Professional development** (5:30 - 6:00): How-to-model guide 1
+
+----
+
+### Wed, July 15: Model fitting
+Fit models to data, quantify uncertainty, compare models
+
+**Intro / keynote & tutorial setup** (0:00 - 0:50): Why and how to fit models
+
+| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
+| --- | --- | --- | --- |
+| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
+| Fit a model 1 (linear regression) | Get error bars | Compare models, cross-validation, hyperparameters | Fit a model 2 (nonlinear models) |
+
+**Recap, Q&A** (4:35 - 5:30): Critical evaluation of model fitting
+
+**Professional development** (5:30 - 6:00): How-to-model guide 2
+
+----
+
+### Thu, July 16: Machine learning (ML) - decoding
+ML allows us to dig into data and extract information
+
+**Intro / keynote & tutorial setup** (0:00 - 0:50): 
+
+| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
+| --- | --- | --- | --- |
+| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
+|  |  |  |
+
+**Recap, Q&A** (4:35 - 5:30): 
+
+**Professional development** (5:30 - 6:00): How-to-model guide 3
+
+---- 
