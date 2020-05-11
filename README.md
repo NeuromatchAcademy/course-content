@@ -10,6 +10,9 @@
 
 **Prerequisites**: [See here](https://github.com/NeuromatchAcademy/precourse)
 
+----
+----
+
 ## Week 1
 ### Mon, July 13: Introduction to Computational Neuroscience and NMA
 Introduction of datasets (spikes, EEG, fMRI + behavior), and questions about them. These questions will foreshadow the whole summer school.
@@ -89,6 +92,7 @@ Concept of dimensionality reduction, ways of doing it, what it means
 
 **Professional development** (5:30 - 6:00): Efficient collaborations
 
+----
 ----
 
 ## Week 2
@@ -172,6 +176,7 @@ The setting of reinforcement learning and how it approximates the real world, be
 **Professional development** (5:30 - 6:00): Writing Papers & Grants
 
 ----
+----
 
 ## Week 3
 
@@ -254,6 +259,7 @@ Deep learning in more advanced settings. Autoencoders for structure discovery, R
 **Professional development** (5:30 - 6:00): NMA wrap-up
 
 ----
+----
 
 ## Networking (throughout) - interactive track only
 * Meet a prof about your group's project
@@ -263,6 +269,7 @@ Deep learning in more advanced settings. Autoencoders for structure discovery, R
 * Meet a group of likeminded people
 * Meet people that are local to you (same city, country)
 
+----
 ----
 
 ## Group projects (throughout) - interactive track only
