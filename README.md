@@ -74,3 +74,181 @@ Introduction to machine learning. The commonly used approaches, how to avoid fal
 **Professional development** (5:30 - 6:00): How-to-model guide 3
 
 ---- 
+
+### Fri, July 17: Dimensionality reduction / manifolds
+Concept of dimensionality reduction, ways of doing it, what it means
+
+**Intro / keynote & tutorial setup** (0:00 - 0:50): Manifolds to understand
+
+| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
+| :---: | :---: | :---: | :---: |
+| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
+| PCA 1 | PCA 2 (+CCA/clustering) | Signal vs. noise manifolds | Visualizing high-D nonlinear manifolds (e.g. tSNE) |
+
+**Recap, Q&A** (4:35 - 5:30): The link between high-dimensional brain signals and low-dimensional behavior 
+
+**Professional development** (5:30 - 6:00): Efficient collaborations
+
+
+
+## Week 2
+
+### Mon, July 20: The Bayesian brain
+Bayesian statistics, modeling of behavior, modeling of neural data, quantifying information
+
+**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+
+| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
+| :---: | :---: | :---: | :---: |
+| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
+|  |  |  |  |
+
+**Recap, Q&A** (4:35 - 5:30): 
+
+**Professional development** (5:30 - 6:00):
+
+---- 
+
+### Tue, July 21: 
+
+
+**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+
+| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
+| :---: | :---: | :---: | :---: |
+| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
+|  |  |  |  |
+
+**Recap, Q&A** (4:35 - 5:30): 
+
+**Professional development** (5:30 - 6:00):
+
+---- 
+
+### Wed, July 22: 
+
+
+**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+
+| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
+| :---: | :---: | :---: | :---: |
+| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
+|  |  |  |  |
+
+**Recap, Q&A** (4:35 - 5:30): 
+
+**Professional development** (5:30 - 6:00):
+
+---- 
+
+### Thu, July 23: 
+
+
+**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+
+| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
+| :---: | :---: | :---: | :---: |
+| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
+|  |  |  |  |
+
+**Recap, Q&A** (4:35 - 5:30): 
+
+**Professional development** (5:30 - 6:00):
+
+---- 
+
+### Fri, July 24:
+
+
+**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+
+| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
+| :---: | :---: | :---: | :---: |
+| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
+|  |  |  |  |
+
+**Recap, Q&A** (4:35 - 5:30): 
+
+**Professional development** (5:30 - 6:00):
+
+
+
+## Week 3
+
+### Mon, July 27: 
+
+
+**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+
+| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
+| :---: | :---: | :---: | :---: |
+| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
+|  |  |  |  |
+
+**Recap, Q&A** (4:35 - 5:30): 
+
+**Professional development** (5:30 - 6:00):
+
+---- 
+
+### Tue, July 28: 
+
+
+**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+
+| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
+| :---: | :---: | :---: | :---: |
+| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
+|  |  |  |  |
+
+**Recap, Q&A** (4:35 - 5:30): 
+
+**Professional development** (5:30 - 6:00):
+
+---- 
+
+### Wed, July 29: 
+
+
+**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+
+| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
+| :---: | :---: | :---: | :---: |
+| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
+|  |  |  |  |
+
+**Recap, Q&A** (4:35 - 5:30): 
+
+**Professional development** (5:30 - 6:00):
+
+---- 
+
+### Thu, July 30: 
+
+
+**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+
+| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
+| :---: | :---: | :---: | :---: |
+| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
+|  |  |  |  |
+
+**Recap, Q&A** (4:35 - 5:30): 
+
+**Professional development** (5:30 - 6:00):
+
+---- 
+
+### Fri, July 31:
+
+
+**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+
+| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
+| :---: | :---: | :---: | :---: |
+| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
+|  |  |  |  |
+
+**Recap, Q&A** (4:35 - 5:30): 
+
+**Professional development** (5:30 - 6:00):
