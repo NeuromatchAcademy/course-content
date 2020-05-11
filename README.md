@@ -42,9 +42,10 @@
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
 | 0:00 - 0:50 | Intro / keynote & tutorial setup | NMA organization, expectations, code of conduct, modeling vs. data |
-| 1:30 - 2:05 | Lecture & Tutorial 1             | Data intro, preprocessing                                          |
-| 2:10 - 2:45 | Lecture & Tutorial 2             | Link of neural data to behavior                                    |
-| 3:30 - 4:05 | Lecture & Tutorial 3             | Tuning (RFs, motor, STA)                                           |
+| 0:50 - 1:25 | Lecture & Tutorial 1             | Data intro, preprocessing                                          |
+| 1:30 - 2:05 | Lecture & Tutorial 2             | Link of neural data to behavior                                    |
+| 2:10 - 2:45 | Lecture & Tutorial 3             | Tuning (RFs, motor, STA)	                                        |
+| 3:30 - 4:05 | Lecture & Tutorial 4             | What it means to "understand" (signal detection)                   |
 | 4:35 - 5:30 | Recap, Q&A                       | Outlook on school                                                  |
 | 5:30 - 6:00 | Professional development         | Being a good NMA participant                                       |
 
