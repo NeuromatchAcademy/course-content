@@ -13,7 +13,7 @@ July 13-31, 2020
 ## Week 1
 ### Mon, July 13: Introduction to Computational Neuroscience and NMA
 
-**Goal**: We introduce the datasets (spikes, EEG, fMRI + behavior), and ask questions about them. These questions will foreshadow the whole summer school
+**Goal**: Introduction of datasets (spikes, EEG, fMRI + behavior), and questions about them. These questions will foreshadow the whole summer school.
 
 *Lecturers*: TBA
 
@@ -29,3 +29,19 @@ July 13-31, 2020
 **Professional development** (5:30 - 6:00): Being a good NMA participant
 
 
+### Tue, July 14: What do models buy us?
+
+**Goal**: Introduce different example model types (Marr 1-3, what/how/why) and the kinds of questions they can answer. MRealize how different models map onto different datasets.
+
+*Lecturers*: TBD
+
+**Intro / keynote & tutorial setup** (0:00 - 0:50): Model classifications 
+
+| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
+| --- | --- | --- | --- |
+| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
+| Marr 1 | Marr 2-3 | "What" | "How"/"Why" |
+
+**Recap, Q&A** (4:35 - 5:30): The role of models in discovery
+
+**Professional development** (5:30 - 6:00): How-to-model guide 1
