@@ -20,8 +20,8 @@ July 13-31, 2020
 **Intro / keynote & tutorial setup** (0:00 - 0:50): NMA organization, expectations, code of conduct, modeling vs. data
 
 | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Break | Lecture & tutorial 4 | Break & catch-up time |
-| --- | --- | --- | --- | --- | --- | --- | 
-| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 2:45 - 3:30 | 3:30 - 4:05 | 4:05 - 4:35 |  | 
+| --- | --- | --- | --- | --- | --- |
+| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 2:45 - 3:30 | 3:30 - 4:05 | 4:05 - 4:35 | 
 | Data intro, preprocessing | Link of neural data to behavior | Tuning (RFs, motor, STA) |  | What it means to "understand" (signal detection) |  |
 
 **Recap, Q&A** (4:35 - 5:30): Outlook on school
