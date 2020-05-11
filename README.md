@@ -1,6 +1,6 @@
 # Penultimate syllabus
-Summer course content for Neuromatch Academy (NMA)
-July 13-31, 2020
+### Summer course content for Neuromatch Academy (NMA)
+*July 13-31, 2020*
 
 **Objectives**: Introduce traditional and emerging computational neuroscience tools, their complementarity, and what they can tell us about the brain. A main focus is on modeling choices, model creation, model evaluation and understanding how they relate to biological questions.
 
@@ -175,80 +175,95 @@ The setting of reinforcement learning and how it approximates the real world, be
 
 ## Week 3
 
-### Mon, July 27: 
+### Mon, July 27: Real neurons
+The things neurons are made of, channels, morphologies, neuromodulators, and plasticity
 
-
-**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+**Intro / keynote & tutorial setup** (0:00 - 0:50): Real neurons ftw
 
 | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
 | :---: | :---: | :---: | :---: |
 | 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-|  |  |  |  |
+| Channels, HH | LIF neuron | LNP (loses fine timing info) | Hebbian plasticity & STDP |
 
-**Recap, Q&A** (4:35 - 5:30): 
+**Recap, Q&A** (4:35 - 5:30): A variety of neuron models
 
-**Professional development** (5:30 - 6:00):
+**Professional development** (5:30 - 6:00): How to find a postdoc
 
 ---- 
 
-### Tue, July 28: 
+### Tue, July 28: What happens in dynamic networks?
+How single neurons create population dynamics
 
-
-**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+**Intro / keynote & tutorial setup** (0:00 - 0:50): Mechanistic models of different types of brain actvivity
 
 | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
 | :---: | :---: | :---: | :---: |
 | 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-|  |  |  |  |
+| Spikes to rates | Wilson-Cowen model (coarse-grained), oscillations & synchrony | Attractors & local linearization around fixed points | Chaos in rate networks (stimulus dependent chaotic attractor) |
 
-**Recap, Q&A** (4:35 - 5:30): 
+**Recap, Q&A** (4:35 - 5:30): A theory of the whole brain
 
-**Professional development** (5:30 - 6:00):
+**Professional development** (5:30 - 6:00): Early career panel - academia (how to advance through career steps)
 
 ---- 
 
-### Wed, July 29: 
+### Wed, July 29: Causality & networks
+Ways of discovering causal relations, ways of estimating networks, what we can do with networks
 
-
-**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+**Intro / keynote & tutorial setup** (0:00 - 0:50): Causality - different views
 
 | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
 | :---: | :---: | :---: | :---: |
 | 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-|  |  |  |  |
+| Pitfalls of Granger | Centrality | Instrumental variables | Interventions |
 
-**Recap, Q&A** (4:35 - 5:30): 
+**Recap, Q&A** (4:35 - 5:30): Latters of causality
 
-**Professional development** (5:30 - 6:00):
+**Professional development** (5:30 - 6:00): Computational neuroscience in industry - career panel
 
 ---- 
 
-### Thu, July 30: 
+### Thu, July 30: Deep learning (DL) 1
+The concept of ANNs, how to train them,what they are made out of, convnets, and how to fit them to brains
 
-
-**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+**Intro / keynote & tutorial setup** (0:00 - 0:50): DL = crucial tool
 
 | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
 | :---: | :---: | :---: | :---: |
 | 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-|  |  |  |  |
+| Pytorch intro & model components | Training it & inductive bias | ConvNets | Fit to brain (RSA - represenatational similarity analysis) |
 
-**Recap, Q&A** (4:35 - 5:30): 
+**Recap, Q&A** (4:35 - 5:30): Digging deep
 
-**Professional development** (5:30 - 6:00):
+**Professional development** (5:30 - 6:00): Job fair (FRL)
 
 ---- 
 
-### Fri, July 31:
+### Fri, July 31: Deep learning (DL) 2
+Deep learning in more advanced settings. Autoencoders for structure discovery, RNNs, and fitting them to brains
 
-
-**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+**Intro / keynote & tutorial setup** (0:00 - 0:50): DL for structure
 
 | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
 | :---: | :---: | :---: | :---: |
 | 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-|  |  |  |  |
+| Autoencoders | RNN | Transfer learning / generalization | Causality |
 
-**Recap, Q&A** (4:35 - 5:30): 
+**Recap, Q&A** (4:35 - 5:30): Digging deeper
 
-**Professional development** (5:30 - 6:00):
+**Professional development** (5:30 - 6:00): NMA wrap-up
+
+----
+
+## Networking (throughout) - interactive track only
+* Meet a prof about your group's project
+* Meet a prof about your career
+* Meet a prof about your own project
+* Meet other participants interested in similar topics
+* Meet a group of likeminded people
+* Meet people that are local to you (same city, country)
+
+----
+
+## Group projects (throughout) - interactive track only
+TBA
