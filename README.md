@@ -19,7 +19,7 @@
     * [Thu, July 16: Machine learning (ML) - decoding](#thu-july-16-machine-learning-ml---decoding)
     * [Fri, July 17: Dimensionality reduction / manifolds](#fri-july-17-dimensionality-reduction--manifolds)
 * [Week 2](#week-2)
-    * [Mon, July 20: Bayes](#mon-july-20-the-bayesian-brain)
+    * [Mon, July 20: Bayes](#mon-july-20-bayes)
     * [Tue, July 21: Time series 1 (linear systems)](#tue-july-21-time-series-1-linear-systems)
     * [Wed, July 22: Time series 2 (decision making)](#wed-july-22-time-series-2-decision-making)
     * [Thu, July 23: Optimal control](#thu-july-23-optimal-control)
