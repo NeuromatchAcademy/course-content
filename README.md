@@ -34,83 +34,85 @@
 ----
 
 ## Week 1
+
 ### Mon, July 13: Introduction to Computational Neuroscience and NMA
-Introduction of datasets (spikes, EEG, fMRI + behavior), and questions about them. These questions will foreshadow the whole summer school.
 
-**Intro / keynote & tutorial setup** (0:00 - 0:50): NMA organization, expectations, code of conduct, modeling vs. data
+**Description** Introduction of datasets (spikes, EEG, fMRI + behavior), and questions about them. These questions will foreshadow the whole summer school.
 
-| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
-| :---: | :---: | :---: | :---: |
-| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-| Data intro, preprocessing | Link of neural data to behavior | Tuning (RFs, motor, STA) | What it means to "understand" (signal detection) |
+| Time (Hour) | Lecture                          | Details                                                            |
+|-------------|----------------------------------|--------------------------------------------------------------------|
+| 0:00 - 0:50 | Intro / keynote & tutorial setup | NMA organization, expectations, code of conduct, modeling vs. data |
+| 0:50 - 1:25 | Lecture & Tutorial 1             | Data intro, preprocessing                                          |
+| 1:30 - 2:05 | Lecture & Tutorial 2             | Link of neural data to behavior                                    |
+| 2:10 - 2:45 | Lecture & Tutorial 3             | Tuning (RFs, motor, STA)	                                        |
+| 3:30 - 4:05 | Lecture & Tutorial 4             | What it means to "understand" (signal detection)                   |
+| 4:35 - 5:30 | Recap, Q&A                       | Outlook on school                                                  |
+| 5:30 - 6:00 | Professional development         | Being a good NMA participant                                       |
 
-**Recap, Q&A** (4:35 - 5:30): Outlook on school
-
-**Professional development** (5:30 - 6:00): Being a good NMA participant
 
 ----
 
 ### Tue, July 14: What do models buy us?
-Introduce different example model types (Marr 1-3, what/how/why) and the kinds of questions they can answer. MRealize how different models map onto different datasets.
 
-**Intro / keynote & tutorial setup** (0:00 - 0:50): Model classifications 
+**Description** Introduce different example model types (Marr 1-3, what/how/why) and the kinds of questions they can answer. MRealize how different models map onto different datasets.
 
-| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
-| :---: | :---: | :---: | :---: |
-| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-| Marr 1 | Marr 2-3 | "What" | "How"/"Why" |
-
-**Recap, Q&A** (4:35 - 5:30): The role of models in discovery
-
-**Professional development** (5:30 - 6:00): How-to-model guide 1
+| Time (Hour) | Lecture                          | Details                                                            |
+|-------------|----------------------------------|--------------------------------------------------------------------|
+| 0:00 - 0:50 | Intro / keynote & tutorial setup | Model classifications                                              |
+| 0:50 - 1:25 | Lecture & Tutorial 1             | Marr 1                                                             |
+| 1:30 - 2:05 | Lecture & Tutorial 2             | Marr 2-3                                                           |
+| 2:10 - 2:45 | Lecture & Tutorial 3             | "What"                                                             |
+| 3:30 - 4:05 | Lecture & Tutorial 4             | "How"/"Why"                                                        |
+| 4:35 - 5:30 | Recap, Q & A                     | The role of models in discovery                                    |
+| 5:30 - 6:00 | Professional development         | How-to-model guide 1                                               |
 
 ----
 
 ### Wed, July 15: Model fitting
-Fit models to data, quantify uncertainty, compare models
 
-**Intro / keynote & tutorial setup** (0:00 - 0:50): Why and how to fit models
+**Description** Fit models to data, quantify uncertainty, compare models
 
-| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
-| :---: | :---: | :---: | :---: |
-| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-| Fit a model 1 (linear regression) | Get error bars | Compare models, cross-validation, hyperparameters | Fit a model 2 (nonlinear models) |
-
-**Recap, Q&A** (4:35 - 5:30): Critical evaluation of model fitting
-
-**Professional development** (5:30 - 6:00): How-to-model guide 2
+| Time (Hour) | Lecture                          | Details                                                            |
+|-------------|----------------------------------|--------------------------------------------------------------------|
+| 0:00 - 0:50 | Intro / keynote & tutorial setup | Why and how to fit models                                          |
+| 0:50 - 1:25 | Lecture & Tutorial 1             | Fit a model 1 (linear regression)                                  |
+| 1:30 - 2:05 | Lecture & Tutorial 2             | Get error bars                                                     |
+| 2:10 - 2:45 | Lecture & Tutorial 3             | Compare models, cross-validation, hyperparameters                  |
+| 3:30 - 4:05 | Lecture & Tutorial 4             | Fit a model 2 (nonlinear models)                                   |
+| 4:35 - 5:30 | Recap, Q & A                     | Critical evaluation of model fitting                               |
+| 5:30 - 6:00 | Professional development         | How-to-model guide 2                                               |
 
 ----
 
 ### Thu, July 16: Machine learning (ML) - decoding
-Introduction to machine learning. The commonly used approaches, how to avoid false positives, how to do it well
 
-**Intro / keynote & tutorial setup** (0:00 - 0:50): We want to predict (scikitlearn)...
+**Description** Introduction to machine learning. The commonly used approaches, how to avoid false positives, how to do it well
 
-| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
-| :---: | :---: | :---: | :---: |
-| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-| GLMs (temporal filtering models) | Linear classifier (SVM) | Regularization (L1, L2) | Shallow nonlinear classifier (SVM with RBF kernel) |
-
-**Recap, Q&A** (4:35 - 5:30): Promises and pitfalls of ML
-
-**Professional development** (5:30 - 6:00): How-to-model guide 3
+| Time (Hour) | Lecture                          | Details                                                            |
+|-------------|----------------------------------|--------------------------------------------------------------------|
+| 0:00 - 0:50 | Intro / keynote & tutorial setup | We want to predict ([scikit learn](https://scikit-learn.org/))     |
+| 0:50 - 1:25 | Lecture & Tutorial 1             | GLMs (temporal filtering models)                                   |
+| 1:30 - 2:05 | Lecture & Tutorial 2             | Linear classifier (SVM)                                            |
+| 2:10 - 2:45 | Lecture & Tutorial 3             | Regularization (L1, L2)                                            |
+| 3:30 - 4:05 | Lecture & Tutorial 4             | Shallow nonlinear classifier (SVM with RBF kernel)                 |
+| 4:35 - 5:30 | Recap, Q & A                     | Promises and pitfalls of ML                                        |
+| 5:30 - 6:00 | Professional development         | How-to-model guide 3                                               |
 
 ---- 
 
 ### Fri, July 17: Dimensionality reduction / manifolds
-Concept of dimensionality reduction, ways of doing it, what it means
 
-**Intro / keynote & tutorial setup** (0:00 - 0:50): Manifolds to understand
+**Description** Concept of dimensionality reduction, ways of doing it, what it means
 
-| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
-| :---: | :---: | :---: | :---: |
-| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-| PCA 1 | PCA 2 (+CCA/clustering) | Signal vs. noise manifolds | Visualizing high-D nonlinear manifolds (e.g. tSNE) |
-
-**Recap, Q&A** (4:35 - 5:30): The link between high-dimensional brain signals and low-dimensional behavior 
-
-**Professional development** (5:30 - 6:00): Efficient collaborations
+| Time (Hour) | Lecture                          | Details                                                            |
+|-------------|----------------------------------|--------------------------------------------------------------------|
+| 0:00 - 0:50 | Intro / keynote & tutorial setup | Manifolds to understand                                            |
+| 0:50 - 1:25 | Lecture & Tutorial 1             | PCA 1                                                              |
+| 1:30 - 2:05 | Lecture & Tutorial 2             | PCA 2 (+CCA/clustering)                                            |
+| 2:10 - 2:45 | Lecture & Tutorial 3             | Signal vs. Noise Manifolds                                         |
+| 3:30 - 4:05 | Lecture & Tutorial 4             | Visualizing high-D nonlinear manifolds (e.g. t-SNE)                |
+| 4:35 - 5:30 | Recap, Q & A                     | The link between high-dimensional brain signals and low-dimensional behavior |
+| 5:30 - 6:00 | Professional development         | Efficient collaborations                                           |
 
 ----
 ----
@@ -118,82 +120,83 @@ Concept of dimensionality reduction, ways of doing it, what it means
 ## Week 2
 
 ### Mon, July 20: Bayes
-Bayesian statistics, modeling of behavior, modeling of neural data, quantifying information
 
-**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+**Description** Bayesian statistics, modeling of behavior, modeling of neural data, quantifying information
 
-| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
-| :---: | :---: | :---: | :---: |
-| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-| Bayes rule I (product rule: cue combination) | Bayes rule II (Marginalization and nuisance variables) | Causal inference & structural models (use as example for marginalization) | Bayesian decision theory |
-
-**Recap, Q&A** (4:35 - 5:30): Advanced Bayesian methods
-
-**Professional development** (5:30 - 6:00): Productivity tools for science
+| Time (Hour) | Lecture                          | Details                                                            |
+|-------------|----------------------------------|--------------------------------------------------------------------|
+| 0:00 - 0:50 | Intro / keynote & tutorial setup | Uncertainty                                                        |
+| 0:50 - 1:25 | Lecture & Tutorial 1             | Bayes rule I (product rule: cue combination)                       |
+| 1:30 - 2:05 | Lecture & Tutorial 2             | Bayes rule II (Marginalization and nuisance variables)             |
+| 2:10 - 2:45 | Lecture & Tutorial 3             | Causal inference & structural models (use as example for marginalization) |
+| 3:30 - 4:05 | Lecture & Tutorial 4             | Bayesian decision theory                                           |
+| 4:35 - 5:30 | Recap, Q & A                     | Advanced Bayesian methods                                          |
+| 5:30 - 6:00 | Professional development         | Productivity tools for science                                     |
 
 ---- 
 
 ### Tue, July 21: Time series 1 (linear systems)
-How to make estimates over time, how the brain does it
 
-**Intro / keynote & tutorial setup** (0:00 - 0:50): World has time
+**Description** How to make estimates over time, how the brain does it
 
-| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
-| :---: | :---: | :---: | :---: |
-| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-| Linear systems theory I (ND deterministic) | Linear systems theory II (1D stochastic = OU process; ND stocastic = AR(1)) | Markov process | State space model |
+| Time (Hour) | Lecture                          | Details                                                            |
+|-------------|----------------------------------|--------------------------------------------------------------------|
+| 0:00 - 0:50 | Intro / keynote & tutorial setup | World has time                                                     |
+| 0:50 - 1:25 | Lecture & Tutorial 1             | Linear systems theory I (ND deterministic)                         |
+| 1:30 - 2:05 | Lecture & Tutorial 2             | Linear systems theory II (1D stochastic = OU process; ND stocastic = AR(1)) |
+| 2:10 - 2:45 | Lecture & Tutorial 3             | Markov process                                                     |
+| 3:30 - 4:05 | Lecture & Tutorial 4             | State space model                                                  |
+| 4:35 - 5:30 | Recap, Q & A                     | Linear systems rule the world                                      |
+| 5:30 - 6:00 | Professional development         | Open source ecosystem, data management & sharing                   |
 
-**Recap, Q&A** (4:35 - 5:30): Linear systems rule the world
-
-**Professional development** (5:30 - 6:00): Open source ecosystem, data management & sharing
 
 ---- 
 
 ### Wed, July 22: Time series 2 (decision making)
-How we can make decisions when information comes in over time
 
-**Intro / keynote & tutorial setup** (0:00 - 0:50): We need to decide stuff
+**Description** How we can make decisions when information comes in over time
 
-| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
-| :---: | :---: | :---: | :---: |
-| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-| Information theory | Sequential Probability Ratio Test (SPRT) | Hidden Markov Model inference (DDM) | Kalman filter |
-
-**Recap, Q&A** (4:35 - 5:30): Decisions, decisions, decisions...
-
-**Professional development** (5:30 - 6:00): Open science (general), replicability & reproducibility
+| Time (Hour) | Lecture                          | Details                                                            |
+|-------------|----------------------------------|--------------------------------------------------------------------|
+| 0:00 - 0:50 | Intro / keynote & tutorial setup | We need to decide stuff                                            |
+| 0:50 - 1:25 | Lecture & Tutorial 1             | Information theory                                                 |
+| 1:30 - 2:05 | Lecture & Tutorial 2             | Sequential Probability Ratio Test (SPRT)                           |
+| 2:10 - 2:45 | Lecture & Tutorial 3             | Hidden Markov Model inference (DDM)                                |
+| 3:30 - 4:05 | Lecture & Tutorial 4             | Kalman filter                                                      |
+| 4:35 - 5:30 | Recap, Q & A                     | Decisions, decisions, decisions ...                                |
+| 5:30 - 6:00 | Professional development         | Open science (general), replicability & reproducibility            |
 
 ---- 
 
 ### Thu, July 23: Optimal control
-We need to move gain info and reach goals
 
-**Intro / keynote & tutorial setup** (0:00 - 0:50): We want to control our actions... 
+**Description** We need to move gain info and reach goals
 
-| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
-| :---: | :---: | :---: | :---: |
-| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-| Expected utility / cost | Markov decision process (MDP) | LQG control (MDP for linear systems) | Motor control (signal-dependent noise, time cost, ...) |
-
-**Recap, Q&A** (4:35 - 5:30): Advanced motor control
-
-**Professional development** (5:30 - 6:00): Networking at Conferences
+| Time (Hour) | Lecture                          | Details                                                            |
+|-------------|----------------------------------|--------------------------------------------------------------------|
+| 0:00 - 0:50 | Intro / keynote & tutorial setup | We want to control our actions...                                  |
+| 0:50 - 1:25 | Lecture & Tutorial 1             | Expected utility / Cost                                            |
+| 1:30 - 2:05 | Lecture & Tutorial 2             | Markov decision process (MDP)                                      |
+| 2:10 - 2:45 | Lecture & Tutorial 3             | LQG control (MDP for linear systems)                               |
+| 3:30 - 4:05 | Lecture & Tutorial 4             | Motor control (signal-dependent noise, time cost, ...)             |
+| 4:35 - 5:30 | Recap, Q & A                     | Advanced motor control                                             |
+| 5:30 - 6:00 | Professional development         | Networking at Conferences                                          |
 
 ---- 
 
 ### Fri, July 24: Reinforcement learning (RL)
-The setting of reinforcement learning and how it approximates the real world, behavior, and potential brain implementations
 
-**Intro / keynote & tutorial setup** (0:00 - 0:50): Problem formulations: actor-critic
+**Description** The setting of reinforcement learning and how it approximates the real world, behavior, and potential brain implementations
 
-| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
-| :---: | :---: | :---: | :---: |
-| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-| Critic: reward prediction error | Exploration (POMDP) vs exploitation | Model-based vs model-free RL | Multi-arm bandits: foraging |
-
-**Recap, Q&A** (4:35 - 5:30): RL and the brain
-
-**Professional development** (5:30 - 6:00): Writing Papers & Grants
+| Time (Hour) | Lecture                          | Details                                                            |
+|-------------|----------------------------------|--------------------------------------------------------------------|
+| 0:00 - 0:50 | Intro / keynote & tutorial setup | Problem formulations: actor-critic                                 |
+| 0:50 - 1:25 | Lecture & Tutorial 1             | Critic: reward prediction error                                    |
+| 1:30 - 2:05 | Lecture & Tutorial 2             | Exploration (POMDP) vs Exploitation                                |
+| 2:10 - 2:45 | Lecture & Tutorial 3             | Model-based vs model-free RL                                       |
+| 3:30 - 4:05 | Lecture & Tutorial 4             | Multi-arm bandits: foraging                                        |
+| 4:35 - 5:30 | Recap, Q & A                     | RL and the brain                                                   |
+| 5:30 - 6:00 | Professional development         | Writing Papers & Grants                                            |
 
 ----
 ----
@@ -201,87 +204,88 @@ The setting of reinforcement learning and how it approximates the real world, be
 ## Week 3
 
 ### Mon, July 27: Real neurons
-The things neurons are made of, channels, morphologies, neuromodulators, and plasticity
 
-**Intro / keynote & tutorial setup** (0:00 - 0:50): Real neurons ftw
+**Description** The things neurons are made of, channels, morphologies, neuromodulators, and plasticity
 
-| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
-| :---: | :---: | :---: | :---: |
-| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-| Channels, HH | LIF neuron | LNP (loses fine timing info) | Hebbian plasticity & STDP |
-
-**Recap, Q&A** (4:35 - 5:30): A variety of neuron models
-
-**Professional development** (5:30 - 6:00): How to find a postdoc
+| Time (Hour) | Lecture                          | Details                                                            |
+|-------------|----------------------------------|--------------------------------------------------------------------|
+| 0:00 - 0:50 | Intro / keynote & tutorial setup | Real neurons ftw                                                   |
+| 0:50 - 1:25 | Lecture & Tutorial 1             | Channels, HH                                                       |
+| 1:30 - 2:05 | Lecture & Tutorial 2             | LIF neuron                                                         |
+| 2:10 - 2:45 | Lecture & Tutorial 3             | LNP (loses fine timing info)                                       |
+| 3:30 - 4:05 | Lecture & Tutorial 4             | Hebbian plasticity & STDP                                          |
+| 4:35 - 5:30 | Recap, Q & A                     | A variety of neuron models                                         |
+| 5:30 - 6:00 | Professional development         | How to find a postdoc                                              |
 
 ---- 
 
 ### Tue, July 28: What happens in dynamic networks?
-How single neurons create population dynamics
 
-**Intro / keynote & tutorial setup** (0:00 - 0:50): Mechanistic models of different types of brain actvivity
+**Description** How single neurons create population dynamics
 
-| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
-| :---: | :---: | :---: | :---: |
-| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-| Spikes to rates | Wilson-Cowen model (coarse-grained), oscillations & synchrony | Attractors & local linearization around fixed points | Chaos in rate networks (stimulus dependent chaotic attractor) |
-
-**Recap, Q&A** (4:35 - 5:30): A theory of the whole brain
-
-**Professional development** (5:30 - 6:00): Early career panel - academia (how to advance through career steps)
+| Time (Hour) | Lecture                          | Details                                                            |
+|-------------|----------------------------------|--------------------------------------------------------------------|
+| 0:00 - 0:50 | Intro / keynote & tutorial setup | Mechanistic models of different types of brain actvivity.          |
+| 0:50 - 1:25 | Lecture & Tutorial 1             | Spikes to rates.                                                   |
+| 1:30 - 2:05 | Lecture & Tutorial 2             | Wilson-Cowen model (coarse-grained), oscillations & synchrony      |
+| 2:10 - 2:45 | Lecture & Tutorial 3             | Attractors & local linearization around fixed points               |
+| 3:30 - 4:05 | Lecture & Tutorial 4             | Chaos in rate networks (stimulus dependent chaotic attractor)      |
+| 4:35 - 5:30 | Recap, Q & A                     | A theory of the whole brain                                        |
+| 5:30 - 6:00 | Professional development         | Early career panel - academia (how to advance through career steps)|
 
 ---- 
 
 ### Wed, July 29: Causality & networks
-Ways of discovering causal relations, ways of estimating networks, what we can do with networks
 
-**Intro / keynote & tutorial setup** (0:00 - 0:50): Causality - different views
+**Description** Ways of discovering causal relations, ways of estimating networks, what we can do with networks
 
-| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
-| :---: | :---: | :---: | :---: |
-| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-| Pitfalls of Granger | Centrality | Instrumental variables | Interventions |
-
-**Recap, Q&A** (4:35 - 5:30): Latters of causality
-
-**Professional development** (5:30 - 6:00): Computational neuroscience in industry - career panel
+| Time (Hour) | Lecture                          | Details                                                            |
+|-------------|----------------------------------|--------------------------------------------------------------------|
+| 0:00 - 0:50 | Intro / keynote & tutorial setup | Causality - different views                                        |
+| 0:50 - 1:25 | Lecture & Tutorial 1             | Pitfalls of Granger Caausality                                     |
+| 1:30 - 2:05 | Lecture & Tutorial 2             | Centrality                                                         |
+| 2:10 - 2:45 | Lecture & Tutorial 3             | Instrumental variables                                             |
+| 3:30 - 4:05 | Lecture & Tutorial 4             | Interventions                                                      |
+| 4:35 - 5:30 | Recap, Q & A                     | Latters of causality                                               |
+| 5:30 - 6:00 | Professional development         | Computational neuroscience in industry - career panel              |
 
 ---- 
 
 ### Thu, July 30: Deep learning (DL) 1
-The concept of ANNs, how to train them,what they are made out of, convnets, and how to fit them to brains
 
-**Intro / keynote & tutorial setup** (0:00 - 0:50): DL = crucial tool
+**Description** The concept of ANNs, how to train them,what they are made out of, convnets, and how to fit them to brains
 
-| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
-| :---: | :---: | :---: | :---: |
-| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-| Pytorch intro & model components | Training it & inductive bias | ConvNets | Fit to brain (RSA - represenatational similarity analysis) |
-
-**Recap, Q&A** (4:35 - 5:30): Digging deep
-
-**Professional development** (5:30 - 6:00): Job fair (FRL)
+| Time (Hour) | Lecture                          | Details                                                            |
+|-------------|----------------------------------|--------------------------------------------------------------------|
+| 0:00 - 0:50 | Intro / keynote & tutorial setup | DL = crucial tool                                                  |
+| 0:50 - 1:25 | Lecture & Tutorial 1             | Pytorch intro & model components                                   |
+| 1:30 - 2:05 | Lecture & Tutorial 2             | Training it & inductive bias                                       |
+| 2:10 - 2:45 | Lecture & Tutorial 3             | Convolutional Neural Network                                       |
+| 3:30 - 4:05 | Lecture & Tutorial 4             | Fit to brain (RSA - represenatational similarity analysis)         |
+| 4:35 - 5:30 | Recap, Q & A                     | Digging deep                                                       |
+| 5:30 - 6:00 | Professional development         | Job fair (FRL)                                                     |
 
 ---- 
 
 ### Fri, July 31: Deep learning (DL) 2
-Deep learning in more advanced settings. Autoencoders for structure discovery, RNNs, and fitting them to brains
 
-**Intro / keynote & tutorial setup** (0:00 - 0:50): DL for structure
+**Description** Deep learning in more advanced settings. Autoencoders for structure discovery, RNNs, and fitting them to brains
 
-| Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
-| :---: | :---: | :---: | :---: |
-| 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-| Autoencoders | RNN | Transfer learning / generalization | Causality |
-
-**Recap, Q&A** (4:35 - 5:30): Digging deeper
-
-**Professional development** (5:30 - 6:00): NMA wrap-up
+| Time (Hour) | Lecture                          | Details                                                            |
+|-------------|----------------------------------|--------------------------------------------------------------------|
+| 0:00 - 0:50 | Intro / keynote & tutorial setup | DL for structure                                                   |
+| 0:50 - 1:25 | Lecture & Tutorial 1             | Autoencoders                                                       |
+| 1:30 - 2:05 | Lecture & Tutorial 2             | Recurrent Neural Network                                           |
+| 2:10 - 2:45 | Lecture & Tutorial 3             | Transfer learning / generalization                                 |
+| 3:30 - 4:05 | Lecture & Tutorial 4             | Causality                                                          |
+| 4:35 - 5:30 | Recap, Q & A                     | Digging deeper                                                     |
+| 5:30 - 6:00 | Professional development         | NMA wrap-up                                                        |
 
 ----
 
 
 ## Networking (throughout) - interactive track only
+
 * Meet a prof about your group's project
 * Meet a prof about your career
 * Meet a prof about your own project
@@ -293,4 +297,5 @@ Deep learning in more advanced settings. Autoencoders for structure discovery, R
 
 
 ## Group projects (throughout) - interactive track only
+
 TBA
