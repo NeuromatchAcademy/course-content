@@ -17,7 +17,8 @@ July 13-31, 2020
 
 *Lecturers*: TBA
 
-| Intro / keynote & tutorial setup | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Break | Lecture & tutorial 4 | Break & catch-up time | Recap, Q&A | Professional development |
+| **Intro / keynote & tutorial setup | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Break | Lecture & tutorial 4 | Break & catch-up time | Recap, Q&A | Professional development** |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 0:00 - 0:50 | 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 2:45 - 3:30 | 3:30 - 4:05 | 4:05 - 4:35 | 4:35 - 5:30 | 5:30 - 6:00 |
 
 
