@@ -189,7 +189,7 @@ The setting of reinforcement learning and how it approximates the real world, be
 | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
 | :---: | :---: | :---: | :---: |
 | 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-| Critic: reward prediction error | Exploration (POMDP) vs exploitation | Model-based vs model-free RL | Multi-arm bandits: foreaging |
+| Critic: reward prediction error | Exploration (POMDP) vs exploitation | Model-based vs model-free RL | Multi-arm bandits: foraging |
 
 **Recap, Q&A** (4:35 - 5:30): RL and the brain
 
