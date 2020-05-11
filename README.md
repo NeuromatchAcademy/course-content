@@ -89,7 +89,7 @@ Concept of dimensionality reduction, ways of doing it, what it means
 
 **Professional development** (5:30 - 6:00): Efficient collaborations
 
-
+----
 
 ## Week 2
 
@@ -101,77 +101,77 @@ Bayesian statistics, modeling of behavior, modeling of neural data, quantifying 
 | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
 | :---: | :---: | :---: | :---: |
 | 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-|  |  |  |  |
+| Bayes rule I (product rule: cue combination) | Bayes rule II (Marginalization and nuisance variables) | Causal inference & structural models (use as example for marginalization) | Bayesian decision theory |
 
-**Recap, Q&A** (4:35 - 5:30): 
+**Recap, Q&A** (4:35 - 5:30): Advanced Bayesian methods
 
-**Professional development** (5:30 - 6:00):
+**Professional development** (5:30 - 6:00): Productivity tools for science
 
 ---- 
 
-### Tue, July 21: 
+### Tue, July 21: Time series 1 (linear systems)
+How to make estimates over time, how the brain does it
 
-
-**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+**Intro / keynote & tutorial setup** (0:00 - 0:50): World has time
 
 | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
 | :---: | :---: | :---: | :---: |
 | 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-|  |  |  |  |
+| Linear systems theory I (ND deterministic) | Linear systems theory II (1D stochastic = OU process; ND stocastic = AR(1)) | Markov process | State space model |
 
-**Recap, Q&A** (4:35 - 5:30): 
+**Recap, Q&A** (4:35 - 5:30): Linear systems rule the world
 
-**Professional development** (5:30 - 6:00):
+**Professional development** (5:30 - 6:00): Open source ecosystem, data management & sharing
 
 ---- 
 
-### Wed, July 22: 
+### Wed, July 22: Time series 2 (decision making)
+How we can make decisions when information comes in over time
 
-
-**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+**Intro / keynote & tutorial setup** (0:00 - 0:50): We need to decide stuff
 
 | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
 | :---: | :---: | :---: | :---: |
 | 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-|  |  |  |  |
+| Information theory | Sequential Probability Ratio Test (SPRT) | Hidden Markov Model inference (DDM) | Kalman filter |
 
-**Recap, Q&A** (4:35 - 5:30): 
+**Recap, Q&A** (4:35 - 5:30): Decisions, decisions, decisions...
 
-**Professional development** (5:30 - 6:00):
+**Professional development** (5:30 - 6:00): Open science (general), replicability & reproducibility
 
 ---- 
 
-### Thu, July 23: 
+### Thu, July 23: Optimal control
+We need to move gain info and reach goals
 
-
-**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+**Intro / keynote & tutorial setup** (0:00 - 0:50): We want to control our actions... 
 
 | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
 | :---: | :---: | :---: | :---: |
 | 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-|  |  |  |  |
+| Expected utility / cost | Markov decision process (MDP) | LQG control (MDP for linear systems) | Motor control (signal-dependent noise, time cost, ...) |
 
-**Recap, Q&A** (4:35 - 5:30): 
+**Recap, Q&A** (4:35 - 5:30): Advanced motor control
 
-**Professional development** (5:30 - 6:00):
+**Professional development** (5:30 - 6:00): Networking at Conferences
 
 ---- 
 
-### Fri, July 24:
+### Fri, July 24: Reinforcement learning (RL)
+The setting of reinforcement learning and how it approximates the real world, behavior, and potential brain implementations
 
-
-**Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
+**Intro / keynote & tutorial setup** (0:00 - 0:50): Problem formulations: actor-critic
 
 | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
 | :---: | :---: | :---: | :---: |
 | 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-|  |  |  |  |
+| Critic: reward prediction error | Exploration (POMDP) vs exploitation | Model-based vs model-free RL | Multi-arm bandits: foreaging |
 
-**Recap, Q&A** (4:35 - 5:30): 
+**Recap, Q&A** (4:35 - 5:30): RL and the brain
 
-**Professional development** (5:30 - 6:00):
+**Professional development** (5:30 - 6:00): Writing Papers & Grants
 
-
+----
 
 ## Week 3
 
