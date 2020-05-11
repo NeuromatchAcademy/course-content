@@ -1,5 +1,5 @@
-# Penultimate syllabus
-### Summer course content for Neuromatch Academy (NMA)
+# NeuroMatch Academy (NMA) penultimate syllabus
+
 *July 13-31, 2020*
 
 **Objectives**: Introduce traditional and emerging computational neuroscience tools, their complementarity, and what they can tell us about the brain. A main focus is on modeling choices, model creation, model evaluation and understanding how they relate to biological questions.
@@ -10,7 +10,27 @@
 
 **Prerequisites**: [See here](https://github.com/NeuromatchAcademy/precourse)
 
-----
+# Course outline
+
+* [Week 1](#week-1)
+    * [Mon, July 13: Introduction to Computational Neuroscience and NMA](#mon-july-13-introduction-to-computational-neuroscience-and-nma)
+    * [Tue, July 14: What do models buy us?](#tue-july-14-what-do-models-buy-us)
+    * [Wed, July 15: Model fitting](#wed-july-15-model-fitting)
+    * [Thu, July 16: Machine learning (ML) - decoding](#thu-july-16-machine-learning-ml---decoding)
+    * [Fri, July 17: Dimensionality reduction / manifolds](#fri-july-17-dimensionality-reduction--manifolds)
+* [Week 2](#week-2)
+    * [Mon, July 20: The Bayesian brain](#mon-july-20-the-bayesian-brain)
+    * [Tue, July 21: Time series 1 (linear systems)](#tue-july-21-time-series-1-linear-systems)
+    * [Wed, July 22: Time series 2 (decision making)](#wed-july-22-time-series-2-decision-making)
+    * [Thu, July 23: Optimal control](#thu-july-23-optimal-control)
+    * [Fri, July 24: Reinforcement learning (RL)](#fri-july-24-reinforcement-learning-rl)
+* [Week 3](#week-3)
+    * [Mon, July 27: Real neurons](#mon-july-27-real-neurons)
+    * [Tue, July 28: What happens in dynamic networks?](#tue-july-28-what-happens-in-dynamic-networks)
+    * [Wed, July 29: Causality &amp; networks](#wed-july-29-causality--networks)
+    * [Thu, July 30: Deep learning (DL) 1](#thu-july-30-deep-learning-dl-1)
+    * [Fri, July 31: Deep learning (DL) 2](#fri-july-31-deep-learning-dl-2)
+
 ----
 
 ## Week 1
@@ -259,7 +279,7 @@ Deep learning in more advanced settings. Autoencoders for structure discovery, R
 **Professional development** (5:30 - 6:00): NMA wrap-up
 
 ----
-----
+
 
 ## Networking (throughout) - interactive track only
 * Meet a prof about your group's project
@@ -270,7 +290,7 @@ Deep learning in more advanced settings. Autoencoders for structure discovery, R
 * Meet people that are local to you (same city, country)
 
 ----
-----
+
 
 ## Group projects (throughout) - interactive track only
 TBA
