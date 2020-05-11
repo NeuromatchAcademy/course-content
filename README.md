@@ -60,16 +60,16 @@ Fit models to data, quantify uncertainty, compare models
 ----
 
 ### Thu, July 16: Machine learning (ML) - decoding
-ML allows us to dig into data and extract information
+Introduction to machine learning. The commonly used approaches, how to avoid false positives, how to do it well
 
-**Intro / keynote & tutorial setup** (0:00 - 0:50): 
+**Intro / keynote & tutorial setup** (0:00 - 0:50): We want to predict (scikitlearn)...
 
 | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
 | :---: | :---: | :---: | :---: |
 | 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
-|  |  |  |
+| GLMs (temporal filtering models) | Linear classifier (SVM) | Regularization (L1, L2) | Shallow nonlinear classifier (SVM with RBF kernel) |
 
-**Recap, Q&A** (4:35 - 5:30): 
+**Recap, Q&A** (4:35 - 5:30): Promises and pitfalls of ML
 
 **Professional development** (5:30 - 6:00): How-to-model guide 3
 
