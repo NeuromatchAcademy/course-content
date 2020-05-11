@@ -1,4 +1,4 @@
-# NeuroMatch Academy (NMA) penultimate syllabus
+# NeuroMatch Academy (NMA) syllabus
 
 *July 13-31, 2020*
 
@@ -19,7 +19,7 @@
     * [Thu, July 16: Machine learning (ML) - decoding](#thu-july-16-machine-learning-ml---decoding)
     * [Fri, July 17: Dimensionality reduction / manifolds](#fri-july-17-dimensionality-reduction--manifolds)
 * [Week 2](#week-2)
-    * [Mon, July 20: The Bayesian brain](#mon-july-20-the-bayesian-brain)
+    * [Mon, July 20: Bayes](#mon-july-20-the-bayesian-brain)
     * [Tue, July 21: Time series 1 (linear systems)](#tue-july-21-time-series-1-linear-systems)
     * [Wed, July 22: Time series 2 (decision making)](#wed-july-22-time-series-2-decision-making)
     * [Thu, July 23: Optimal control](#thu-july-23-optimal-control)
@@ -117,7 +117,7 @@ Concept of dimensionality reduction, ways of doing it, what it means
 
 ## Week 2
 
-### Mon, July 20: The Bayesian brain
+### Mon, July 20: Bayes
 Bayesian statistics, modeling of behavior, modeling of neural data, quantifying information
 
 **Intro / keynote & tutorial setup** (0:00 - 0:50): Uncertainty
