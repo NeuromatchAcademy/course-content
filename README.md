@@ -11,8 +11,11 @@ July 13-31, 2020
 **Prerequisites**: [See here](https://github.com/NeuromatchAcademy/precourse)
 
 ## Week 1
-### July 13: Introduction to Computational Neuroscience and NMA
+### Mon, July 13: Introduction to Computational Neuroscience and NMA
 
 **Goal**: We introduce the datasets (spikes, EEG, fMRI + behavior), and ask questions about them. These questions will foreshadow the whole summer school
 
+*Lecturers*: TBA
+
+| Intro / keynote & tutorial setup | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Break | Lecture & tutorial 4 | Break & catch-up time | Recap, Q&A | Professional development |
 
