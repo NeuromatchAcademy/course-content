@@ -1,9 +1,9 @@
 # Penultimate syllabus
-Summer course content for Neuromatch Academy
+Summer course content for Neuromatch Academy (NMA)
 July 13-31, 2020
 
 #### Objectives
-Introduce traditional and emerging comp neuro tools, their complementarity, and what they can tell us about the brain. A main focus is on modeling choices, model creation, model evaluation and  understanding how they relate to biological questions.
+Introduce traditional and emerging computational neuroscience tools, their complementarity, and what they can tell us about the brain. A main focus is on modeling choices, model creation, model evaluation and understanding how they relate to biological questions.
 
 #### Tutorial microstructure	
 ~10min talk, ~20min tutorial (repeated)
@@ -13,5 +13,11 @@ Introduce traditional and emerging comp neuro tools, their complementarity, and 
 
 #### Prerequisites	
 [See here](https://github.com/NeuromatchAcademy/precourse)
+
+## Week 1
+### July 13: Introduction to Computational Neuroscience and NMA
+
+#### Goal
+We introduce the datasets (spikes, EEG, fMRI + behavior), and ask questions about them. These questions will foreshadow the whole summer school
 
 
