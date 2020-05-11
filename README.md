@@ -17,7 +17,7 @@ Introduction of datasets (spikes, EEG, fMRI + behavior), and questions about the
 **Intro / keynote & tutorial setup** (0:00 - 0:50): NMA organization, expectations, code of conduct, modeling vs. data
 
 | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
-| --- | --- | --- | --- |
+| :---: | :---: | :---: | :---: |
 | 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
 | Data intro, preprocessing | Link of neural data to behavior | Tuning (RFs, motor, STA) | What it means to "understand" (signal detection) |
 
@@ -33,7 +33,7 @@ Introduce different example model types (Marr 1-3, what/how/why) and the kinds o
 **Intro / keynote & tutorial setup** (0:00 - 0:50): Model classifications 
 
 | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
-| --- | --- | --- | --- |
+| :---: | :---: | :---: | :---: |
 | 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
 | Marr 1 | Marr 2-3 | "What" | "How"/"Why" |
 
@@ -49,7 +49,7 @@ Fit models to data, quantify uncertainty, compare models
 **Intro / keynote & tutorial setup** (0:00 - 0:50): Why and how to fit models
 
 | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
-| --- | --- | --- | --- |
+| :---: | :---: | :---: | :---: |
 | 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
 | Fit a model 1 (linear regression) | Get error bars | Compare models, cross-validation, hyperparameters | Fit a model 2 (nonlinear models) |
 
@@ -65,7 +65,7 @@ ML allows us to dig into data and extract information
 **Intro / keynote & tutorial setup** (0:00 - 0:50): 
 
 | Lecture & tutorial 1 | Lecture & tutorial 2 | Lecture & tutorial 3 | Lecture & tutorial 4 |
-| --- | --- | --- | --- |
+| :---: | :---: | :---: | :---: |
 | 0:50 - 1:25 | 1:30 - 2:05 | 2:10 - 2:45 | 3:30 - 4:05 |
 |  |  |  |
 
