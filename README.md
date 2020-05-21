@@ -45,8 +45,8 @@
 | 0:50 - 1:25 | Lecture & Tutorial 1             | Data intro, preprocessing                                          |
 | 1:30 - 2:05 | Lecture & Tutorial 2             | Link of neural data to behavior                                    |
 | 2:10 - 2:45 | Lecture & Tutorial 3             | Tuning (RFs, motor, STA)	                                        |
+| 2:45 - 3:30 | Break                            | 45 minutes break                                                   |
 | 3:30 - 4:05 | Lecture & Tutorial 4             | What it means to "understand" (signal detection)                   |
-| 4:05 - 4:35 | Break                            | 45 minutes break                                                   |
 | 4:35 - 5:30 | Recap, Q&A                       | Outlook on school                                                  |
 | 5:30 - 6:00 | Professional development         | Being a good NMA participant                                       |
 
@@ -63,8 +63,8 @@
 | 0:50 - 1:25 | Lecture & Tutorial 1             | Marr 1                                                             |
 | 1:30 - 2:05 | Lecture & Tutorial 2             | Marr 2-3                                                           |
 | 2:10 - 2:45 | Lecture & Tutorial 3             | "What"                                                             |
+| 2:45 - 3:30 | Break                            | 45 minutes break                                                   |
 | 3:30 - 4:05 | Lecture & Tutorial 4             | "How"/"Why"                                                        |
-| 4:05 - 4:35 | Break                            | 45 minutes break                                                   |
 | 4:35 - 5:30 | Recap, Q & A                     | The role of models in discovery                                    |
 | 5:30 - 6:00 | Professional development         | How-to-model guide 1                                               |
 
@@ -80,8 +80,8 @@
 | 0:50 - 1:25 | Lecture & Tutorial 1             | Fit a model 1 (linear regression)                                  |
 | 1:30 - 2:05 | Lecture & Tutorial 2             | Get error bars                                                     |
 | 2:10 - 2:45 | Lecture & Tutorial 3             | Compare models, cross-validation, hyperparameters                  |
+| 2:45 - 3:30 | Break                            | 45 minutes break                                                   |
 | 3:30 - 4:05 | Lecture & Tutorial 4             | Fit a model 2 (nonlinear models)                                   |
-| 4:05 - 4:35 | Break                            | 45 minutes break                                                   |
 | 4:35 - 5:30 | Recap, Q & A                     | Critical evaluation of model fitting                               |
 | 5:30 - 6:00 | Professional development         | How-to-model guide 2                                               |
 
@@ -97,8 +97,8 @@
 | 0:50 - 1:25 | Lecture & Tutorial 1             | GLMs (temporal filtering models)                                   |
 | 1:30 - 2:05 | Lecture & Tutorial 2             | Linear classifier (SVM)                                            |
 | 2:10 - 2:45 | Lecture & Tutorial 3             | Regularization (L1, L2)                                            |
+| 2:45 - 3:30 | Break                            | 45 minutes break                                                   |
 | 3:30 - 4:05 | Lecture & Tutorial 4             | Shallow nonlinear classifier (SVM with RBF kernel)                 |
-| 4:05 - 4:35 | Break                            | 45 minutes break                                                   |
 | 4:35 - 5:30 | Recap, Q & A                     | Promises and pitfalls of ML                                        |
 | 5:30 - 6:00 | Professional development         | How-to-model guide 3                                               |
 
@@ -114,8 +114,8 @@
 | 0:50 - 1:25 | Lecture & Tutorial 1             | PCA 1                                                              |
 | 1:30 - 2:05 | Lecture & Tutorial 2             | PCA 2 (+CCA/clustering)                                            |
 | 2:10 - 2:45 | Lecture & Tutorial 3             | Signal vs. Noise Manifolds                                         |
+| 2:45 - 3:30 | Break                            | 45 minutes break                                                   |
 | 3:30 - 4:05 | Lecture & Tutorial 4             | Visualizing high-D nonlinear manifolds (e.g. t-SNE)                |
-| 4:05 - 4:35 | Break                            | 45 minutes break                                                   |
 | 4:35 - 5:30 | Recap, Q & A                     | The link between high-dimensional brain signals and low-dimensional behavior |
 | 5:30 - 6:00 | Professional development         | Efficient collaborations                                           |
 
@@ -134,8 +134,8 @@
 | 0:50 - 1:25 | Lecture & Tutorial 1             | Bayes rule I (product rule: cue combination)                       |
 | 1:30 - 2:05 | Lecture & Tutorial 2             | Bayes rule II (Marginalization and nuisance variables)             |
 | 2:10 - 2:45 | Lecture & Tutorial 3             | Causal inference & structural models (use as example for marginalization) |
+| 2:45 - 3:30 | Break                            | 45 minutes break                                                   |
 | 3:30 - 4:05 | Lecture & Tutorial 4             | Bayesian decision theory                                           |
-| 4:05 - 4:35 | Break                            | 45 minutes break                                                   |
 | 4:35 - 5:30 | Recap, Q & A                     | Advanced Bayesian methods                                          |
 | 5:30 - 6:00 | Professional development         | Productivity tools for science                                     |
 
@@ -151,8 +151,8 @@
 | 0:50 - 1:25 | Lecture & Tutorial 1             | Linear systems theory I (ND deterministic)                         |
 | 1:30 - 2:05 | Lecture & Tutorial 2             | Linear systems theory II (1D stochastic = OU process; ND stocastic = AR(1)) |
 | 2:10 - 2:45 | Lecture & Tutorial 3             | Markov process                                                     |
+| 2:45 - 3:30 | Break                            | 45 minutes break                                                   |
 | 3:30 - 4:05 | Lecture & Tutorial 4             | State space model                                                  |
-| 4:05 - 4:35 | Break                            | 45 minutes break                                                   |
 | 4:35 - 5:30 | Recap, Q & A                     | Linear systems rule the world                                      |
 | 5:30 - 6:00 | Professional development         | Open source ecosystem, data management & sharing                   |
 
@@ -169,8 +169,8 @@
 | 0:50 - 1:25 | Lecture & Tutorial 1             | Information theory                                                 |
 | 1:30 - 2:05 | Lecture & Tutorial 2             | Sequential Probability Ratio Test (SPRT)                           |
 | 2:10 - 2:45 | Lecture & Tutorial 3             | Hidden Markov Model inference (DDM)                                |
+| 2:45 - 3:30 | Break                            | 45 minutes break                                                   |
 | 3:30 - 4:05 | Lecture & Tutorial 4             | Kalman filter                                                      |
-| 4:05 - 4:35 | Break                            | 45 minutes break                                                   |
 | 4:35 - 5:30 | Recap, Q & A                     | Decisions, decisions, decisions ...                                |
 | 5:30 - 6:00 | Professional development         | Open science (general), replicability & reproducibility            |
 
@@ -186,8 +186,8 @@
 | 0:50 - 1:25 | Lecture & Tutorial 1             | Expected utility / Cost                                            |
 | 1:30 - 2:05 | Lecture & Tutorial 2             | Markov decision process (MDP)                                      |
 | 2:10 - 2:45 | Lecture & Tutorial 3             | LQG control (MDP for linear systems)                               |
+| 2:45 - 3:30 | Break                            | 45 minutes break                                                   |
 | 3:30 - 4:05 | Lecture & Tutorial 4             | Motor control (signal-dependent noise, time cost, ...)             |
-| 4:05 - 4:35 | Break                            | 45 minutes break                                                   |
 | 4:35 - 5:30 | Recap, Q & A                     | Advanced motor control                                             |
 | 5:30 - 6:00 | Professional development         | Networking at Conferences                                          |
 
@@ -203,8 +203,8 @@
 | 0:50 - 1:25 | Lecture & Tutorial 1             | Critic: reward prediction error                                    |
 | 1:30 - 2:05 | Lecture & Tutorial 2             | Exploration (POMDP) vs Exploitation                                |
 | 2:10 - 2:45 | Lecture & Tutorial 3             | Model-based vs model-free RL                                       |
+| 2:45 - 3:30 | Break                            | 45 minutes break                                                   |
 | 3:30 - 4:05 | Lecture & Tutorial 4             | Multi-arm bandits: foraging                                        |
-| 4:05 - 4:35 | Break                            | 45 minutes break                                                   |
 | 4:35 - 5:30 | Recap, Q & A                     | RL and the brain                                                   |
 | 5:30 - 6:00 | Professional development         | Writing Papers & Grants                                            |
 
@@ -223,8 +223,8 @@
 | 0:50 - 1:25 | Lecture & Tutorial 1             | Channels, HH                                                       |
 | 1:30 - 2:05 | Lecture & Tutorial 2             | LIF neuron                                                         |
 | 2:10 - 2:45 | Lecture & Tutorial 3             | LNP (loses fine timing info)                                       |
+| 2:45 - 3:30 | Break                            | 45 minutes break                                                   |
 | 3:30 - 4:05 | Lecture & Tutorial 4             | Hebbian plasticity & STDP                                          |
-| 4:05 - 4:35 | Break                            | 45 minutes break                                                   |
 | 4:35 - 5:30 | Recap, Q & A                     | A variety of neuron models                                         |
 | 5:30 - 6:00 | Professional development         | How to find a postdoc                                              |
 
@@ -240,8 +240,8 @@
 | 0:50 - 1:25 | Lecture & Tutorial 1             | Spikes to rates.                                                   |
 | 1:30 - 2:05 | Lecture & Tutorial 2             | Wilson-Cowen model (coarse-grained), oscillations & synchrony      |
 | 2:10 - 2:45 | Lecture & Tutorial 3             | Attractors & local linearization around fixed points               |
+| 2:45 - 3:30 | Break                            | 45 minutes break                                                   |
 | 3:30 - 4:05 | Lecture & Tutorial 4             | Chaos in rate networks (stimulus dependent chaotic attractor)      |
-| 4:05 - 4:35 | Break                            | 45 minutes break                                                   |
 | 4:35 - 5:30 | Recap, Q & A                     | A theory of the whole brain                                        |
 | 5:30 - 6:00 | Professional development         | Early career panel - academia (how to advance through career steps)|
 
@@ -257,8 +257,8 @@
 | 0:50 - 1:25 | Lecture & Tutorial 1             | Pitfalls of Granger Caausality                                     |
 | 1:30 - 2:05 | Lecture & Tutorial 2             | Centrality                                                         |
 | 2:10 - 2:45 | Lecture & Tutorial 3             | Instrumental variables                                             |
+| 2:45 - 3:30 | Break                            | 45 minutes break                                                   |
 | 3:30 - 4:05 | Lecture & Tutorial 4             | Interventions                                                      |
-| 4:05 - 4:35 | Break                            | 45 minutes break                                                   |
 | 4:35 - 5:30 | Recap, Q & A                     | Latters of causality                                               |
 | 5:30 - 6:00 | Professional development         | Computational neuroscience in industry - career panel              |
 
@@ -274,8 +274,8 @@
 | 0:50 - 1:25 | Lecture & Tutorial 1             | Pytorch intro & model components                                   |
 | 1:30 - 2:05 | Lecture & Tutorial 2             | Training it & inductive bias                                       |
 | 2:10 - 2:45 | Lecture & Tutorial 3             | Convolutional Neural Network                                       |
+| 2:45 - 3:30 | Break                            | 45 minutes break                                                   |
 | 3:30 - 4:05 | Lecture & Tutorial 4             | Fit to brain (RSA - represenatational similarity analysis)         |
-| 4:05 - 4:35 | Break                            | 45 minutes break                                                   |
 | 4:35 - 5:30 | Recap, Q & A                     | Digging deep                                                       |
 | 5:30 - 6:00 | Professional development         | Job fair (FRL)                                                     |
 
@@ -291,8 +291,8 @@
 | 0:50 - 1:25 | Lecture & Tutorial 1             | Autoencoders                                                       |
 | 1:30 - 2:05 | Lecture & Tutorial 2             | Recurrent Neural Network                                           |
 | 2:10 - 2:45 | Lecture & Tutorial 3             | Transfer learning / generalization                                 |
+| 2:45 - 3:30 | Break                            | 45 minutes break                                                   |
 | 3:30 - 4:05 | Lecture & Tutorial 4             | Causality                                                          |
-| 4:05 - 4:35 | Break                            | 45 minutes break                                                   |
 | 4:35 - 5:30 | Recap, Q & A                     | Digging deeper                                                     |
 | 5:30 - 6:00 | Professional development         | NMA wrap-up                                                        |
 
