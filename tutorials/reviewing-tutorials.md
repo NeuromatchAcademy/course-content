@@ -11,3 +11,8 @@ Reviewing ipython notebook/colab tutorials is also a little different than norma
 * When a function needs to be filled in by the student, raise a `NotImplementedError` to indicate to the student they have to implement the function.
 * Long notebooks can be hard to read. Using headings (Markdown #, ##, ###, etc.) can be used to automatically create headings. 
 * Heavy notebooks can be slow to load in developing countries. Use developer tools (`Ctrl+Shift+I`) and go to Network > Throttle, and choose 3G to test things out.
+
+Guidelines for file and folder names:
+* Lower case for folder names
+* Snake case for markdown and python files
+* First letter in caps for ipython notebooks (with spaces in the filename)
