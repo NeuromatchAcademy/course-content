@@ -1,11 +1,13 @@
 # Writing tutorials for Neurmatch Academy (NMA)
 
+Thank you for agreeing to write tutorials for NMA! We're so glad you're here. We try to smooth out writing tutorials so you can concentrate on doing what you do best. 
+
 ## Environment
 
-Tutorials need to be writen in python using jupyter notebooks, so that they can then be easily integrated into Google Colab.
+Tutorials need to be writen in python in the Google Colab environment.
 Students will use Google Colab to run the tutorials (unless Colab is unavailable in their country) to reduce setup req./library dependencies issues and provide enough compute power for resource intensive tutorials (e.g. deep learning tutorials).
 
-## Structure
+## Tutorial structure
 
 There will be 4 tutorials per day. Each tutorial aims to be short and concise (15-20 minutes max.), it is therefore essential to limit the amount of text and code present on-screen to the bare minimum required for understanding. We want students to focus on understanding the core concepts of the course, rather than focusing on data manipulation, plotting, etc. The rule of thumb is that students will need to write *3 lines of code per tutorial*.
 
@@ -43,5 +45,7 @@ For each tutorial:
 
 ## Reviewing
 
-* Tutorials need to be approved by day organizer before submitting them to the [NMA course-content repo](https://github.com/NeuromatchAcademy/course-content/)
+* Tutorials need to be approved by day organizer before submitting them to the [NMA course-content github repo](https://github.com/NeuromatchAcademy/course-content/)
 * Once approved, submit all tutorials to [NMA github tutorials](https://github.com/NeuromatchAcademy/course-content/tree/master/tutorials) by June 5th so that the technical team can test the tutorials and check for standardization across all NMA tutorials.
+* This is [the tutorial reviewing guide](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/reviewing-tutorials.md). We try to minimize the burden on the tutorial authors. You're the stars! 
+* [We use a branch-pull-request workflow for content](https://guides.github.com/introduction/flow/). You stage everything on your own branch - you can mess up this branch as much as you want, it's 100% yours. Then when you're ready, you create a pull request to ask to merge your branch with the master branch (the stuff everybody sees). Add Marco and Patrick as reviewers. They'll review your notebooks, make comments, and after a couple of iterations they will merge onto master.
