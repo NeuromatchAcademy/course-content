@@ -1,4 +1,4 @@
-# Writing tutorials for Neurmatch Academy (NMA)
+# Writing tutorials for Neuromatch Academy (NMA)
 
 Thank you for agreeing to write tutorials for NMA! We're so glad you're here. We try to smooth out writing tutorials so you can concentrate on doing what you do best. 
 
