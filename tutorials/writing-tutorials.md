@@ -57,5 +57,9 @@ For each tutorial:
 We recommend creating everything in colab, and when you're ready to pull the notebook in, do it via this workflow: 
 
 * Use `File > Save a copy in GitHub` in colab
-* Save into your daily branch (for example, `day03`). We've made 15 branches just for you. 
-* Once saved, go to https://github.com/NeuromatchAcademy/course-content. Github will invite you to start a pull request. Add Patrick and Marco as reviewers.
+* Save into your daily branch (for example, `day06`). We've pre-made 15 branches just for you, but feel free to make a new one if you want.
+* Once saved, go to https://github.com/NeuromatchAcademy/course-content. Github will invite you to start a pull request from your branch to `master`. Add Patrick and Marco as reviewers.
+
+![Pull request](https://github.com/NeuromatchAcademy/course-content/raw/colab-github-workflow/tutorials/static/pull-request.PNG)
+
+* Once you've started a pull request, you can keep committing on top of the same branch. The pull request will be updated. To address reviewer comments, modify your colab, hit `File > Save a copy in GitHub` again, and save onto the same branch while you have your pull request open.
