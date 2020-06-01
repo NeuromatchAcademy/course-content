@@ -4,12 +4,14 @@ Thank you for agreeing to write tutorials for NMA! We're so glad you're here. We
 
 ## Environment
 
-Tutorials need to be writen in python in the Google Colab environment.
-Students will use Google Colab to run the tutorials (unless Colab is unavailable in their country) to reduce setup req./library dependencies issues and provide enough compute power for resource intensive tutorials (e.g. deep learning tutorials).
+Tutorials are writen in Python for the Google Colab environment.
+Students will use Google Colab to run the tutorials to reduce setup requirements  and provide enough compute power for resource intensive tutorials (e.g. deep learning tutorials). 
+
+We also have a pre-baked environment in *environment.yml* for students for whom Colab is unavailable in their country; it allows the tutorials to be run locally or via binderhub [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/NeuromatchAcademy/course-content/master?urlpath=lab).
 
 ## Tutorial structure
 
-There will be 4 tutorials per day. Each tutorial aims to be short and concise (15-20 minutes max.), it is therefore essential to limit the amount of text and code present on-screen to the bare minimum required for understanding. We want students to focus on understanding the core concepts of the course, rather than focusing on data manipulation, plotting, etc. The rule of thumb is that students will need to write *3 lines of code per tutorial*.
+There will be 4 tutorials per day. Each tutorial aims to be short and concise (15-20 minutes max.). We limit the amount of text and code present on-screen to the bare minimum required for understanding. We want students to focus on understanding the core concepts of the course, rather than focusing on data manipulation, plotting, etc. The rule of thumb is that students will need to write *3 lines of code per tutorial*.
 
 ## Organization & Communication
 
@@ -26,7 +28,7 @@ Tutorials can take anywhere between 1-2 weeks to prepare, so start as early as p
 
 ## Structure of tutorials
 
-Using markdown headings (#, ##, ###, etc.) can be used to automatically create headings for tutorials, objectives, and exercises, respectively. Use `---` in markdown to separate different exercises/sections.
+Markdown headings (#, ##, ###, etc.) can be used to automatically create headings for tutorials, objectives, and exercises, respectively. Use `---` in markdown to separate different exercises/sections.
 
 Example tutorials are available at [NMA github course-content/tutorials](https://github.com/NeuromatchAcademy/course-content/tree/master/tutorials).
 
@@ -45,7 +47,19 @@ For each tutorial:
 
 ## Reviewing
 
-* Tutorials need to be approved by day organizer before submitting them to the [NMA course-content github repo](https://github.com/NeuromatchAcademy/course-content/)
-* Once approved, submit all tutorials to [NMA github tutorials](https://github.com/NeuromatchAcademy/course-content/tree/master/tutorials) by June 5th so that the technical team can test the tutorials and check for standardization across all NMA tutorials.
-* This is [the tutorial reviewing guide](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/reviewing-tutorials.md). We try to minimize the burden on the tutorial authors. You're the stars! 
+* Talk to your day organizer before submitting tutorials to the [NMA course-content github repo](https://github.com/NeuromatchAcademy/course-content/)
+* Once approved, submit all tutorials to [the NMA github](https://github.com/NeuromatchAcademy/course-content/tree/master/tutorials) so that the technical team can test the tutorials and check for standardization across all NMA tutorials.
+* This is [the guide we use to review tutorials](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/reviewing-tutorials.md). We try to enforce a consistent style across notebooks so it's easy for students to jump in. We try to minimize the burden on the tutorial authors. You're the stars! 
 * [We use a branch-pull-request workflow for content](https://guides.github.com/introduction/flow/). You stage everything on your own branch - you can mess up this branch as much as you want, it's 100% yours. Then when you're ready, you create a pull request to ask to merge your branch with the master branch (the stuff everybody sees). Add Marco and Patrick as reviewers. They'll review your notebooks, make comments, and after a couple of iterations they will merge onto master.
+
+## Colab & Github workflow
+
+We recommend creating everything in colab, and when you're ready to pull the notebook in, do it via this workflow: 
+
+* Use `File > Save a copy in GitHub` in colab
+* Save into your daily branch (for example, `day06`). We've pre-made 15 branches just for you, but feel free to make a new one if you want.
+* Once saved, go to https://github.com/NeuromatchAcademy/course-content. Github will invite you to start a pull request from your branch to `master`. Add Patrick and Marco as reviewers.
+
+![Pull request](https://github.com/NeuromatchAcademy/course-content/raw/colab-github-workflow/tutorials/static/pull-request.PNG)
+
+* Once you've started a pull request, you can keep committing on top of the same branch. The pull request will be updated. To address reviewer comments, modify your colab, hit `File > Save a copy in GitHub` again, and save onto the same branch while you have your pull request open.
