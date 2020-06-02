@@ -35,6 +35,7 @@ Example tutorials are available at [NMA github course-content/tutorials](https:/
 For each tutorial:
 1. Import all necessary libraries, plotting settings and plotting functions in the top code cell of the tutorial
         - write `# @title` at the top of the cell, and click `...`>`Form`>`Hide code` to hide the code cell (special colab trickery)
+        - check the notebook [`Installing Python libraries.ipynb`](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/utils/Installing%20Python%20libraries.ipynb) on how to install additional libraries or your own custom library
 2. Describe the tutorial objectives using 2-3 sentences + bullet points
 3. Split the tutorial into 2-4 exercises. Each exercise should have:
    - A short description of what we want the student to do in this exercise
