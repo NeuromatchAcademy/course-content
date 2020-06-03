@@ -4,8 +4,9 @@ Tutorials are Python code. Therefore, they need to follow the conventions of Pyt
 
 * Use [PEP8 style](https://www.python.org/dev/peps/pep-0008/)
 * Use [Google commenting style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html)
+* Use colab spacing standard: 2 spaces
 
-Reviewing ipython notebook/colab tutorials is also a little different than normal Python code review. Things to watch out for:
+Reviewing colab/jupyter notebook tutorials is also a little different than normal Python code review. Things to watch out for:
 
 * Run the notebook from top to bottom (Runtime > Run all). Very frequently, notebooks cells have dependencies on later cells - when they are run in order, they fail. Correct these and make sure to Run All after all changes to verify that dependencies run top to bottom.
 * When a function needs to be filled in by the student, raise a `NotImplementedError` to indicate to the student they have to implement the function.
