@@ -24,7 +24,7 @@ Tutorials can take anywhere between 1-2 weeks to prepare, so start as early as p
 3. You familiarize yourself with existing tutorial templates to understand the format of [NMA tutorials](https://github.com/NeuromatchAcademy/course-content/tree/master/tutorials)
 4. Start with the coding of the tutorials (Only when you have finalised step 2! otherwise you'll have to redo a bunch of tutorials!)
    - This is important to minimise the amount of adjustment and doing/redoing required at a later stage. Iterating over step 2 in much detail is much more efficient than: creating code, then deleting whole exercises/tutorials and recoding new ones from scratch) if there is a mismatch.
-5 - Reiterate and refine 4 for small adjustments.
+5. Reiterate and refine step 4 for small adjustments.
 
 ## Structure of tutorials
 
@@ -45,6 +45,21 @@ For each tutorial:
    - (optional) Include hints in the code skeletton to highlight where the students should complete the code and what python functions they could use to complete it (e.g.: '#Hint: use the function `np.exp()` to exponentiate' )
    - (optional) A sample output of what the correct output of the exercise should look like. In order to prevent students from focussing on reproducing exactly the plots/expected-outputs rather than understanding the core concepts, we provide them with the plotting functions, and use XKCD style for the expected sample outputs.
 4. Create sample answers for each tutorial, and so that the technical team can check the tutorials, and to facillitate training for the TAs prior to the summer school.
+5. Generate student versions that exclude sample answers and other auxiliary cells. Follows the instructions below to execute this step automatically.
+
+## Generating student versions
+Student versions exclude sample answers and other auxiliary cells that are identified with the tag `to_remove`. This step is performed on jupyter notebook (not colab!).
+First, activate viewing of cell tags by clicking `View`>`Cell Toolbar`>`Tags` from the notebook menu:
+
+![View tags](https://github.com/NeuromatchAcademy/course-content/raw/colab-github-workflow/tutorials/static/view-tags.png)
+
+Add a tag `to_remove` to each cell to be excluded in student versions:
+
+![Adding tags](https://github.com/NeuromatchAcademy/course-content/raw/colab-github-workflow/tutorials/static/add-tag.png)
+
+![Tag added](https://github.com/NeuromatchAcademy/course-content/raw/colab-github-workflow/tutorials/static/tag-added.png)
+
+Open the notebook [`Generate student versions.ipynb`](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/utils/Generate%20student%20versions.ipynb), adjust the path variables `path_source` and `path_student` as needed and execute the notebook.
 
 ## Reviewing
 
@@ -62,6 +77,6 @@ We recommend creating everything in colab, and when you're ready to pull the not
 * Save into your daily branch (for example, `day06`). We've pre-made 15 branches just for you, but feel free to make a new one if you want.
 * Once saved, go to https://github.com/NeuromatchAcademy/course-content. Github will invite you to start a pull request from your branch to `master`. Add Patrick and Marco as reviewers.
 
-![Pull request](https://github.com/NeuromatchAcademy/course-content/raw/colab-github-workflow/tutorials/static/pull-request.PNG)
+![Pull request](https://github.com/NeuromatchAcademy/course-content/raw/colab-github-workflow/tutorials/static/pull-request.png)
 
 * Once you've started a pull request, you can keep committing on top of the same branch. The pull request will be updated. To address reviewer comments, modify your colab, hit `File > Save a copy in GitHub` again, and save onto the same branch while you have your pull request open.
