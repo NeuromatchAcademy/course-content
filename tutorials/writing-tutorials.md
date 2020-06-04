@@ -15,11 +15,11 @@ There will be 4 tutorials per day. Each tutorial aims to be short and concise (1
 
 ## Organization & Communication
 
-As a content creator, you create the python tutorials. You will need to coordinate with the day organizer so the tutorials meet the objectives of the day (see shared google drive: NMA > curriculum & content > Content creator role.doc) (https://docs.google.com/document/d/1EqDdBy3KPnK0B9ronMhPwa_WnJDjnKIK_fPs9jrDiUY)
+As a content creator, you create the python tutorials. You will need to coordinate with the day organizer so the tutorials meet the objectives of the day (see shared google drive: NMA > curriculum & content > [Content creator role.doc](https://docs.google.com/document/d/1EqDdBy3KPnK0B9ronMhPwa_WnJDjnKIK_fPs9jrDiUY))
 
 Tutorials can take anywhere between 1-2 weeks to prepare, so start as early as possible! Here is how to proceed:
 
-1. Read the 1-pagers for the tutorials you are in charge of: (shared google drive: NMA > curriculum & content > One-pare Topic/ Lecture summaries/)
+1. Read the 1-pagers for the tutorials you are in charge of: (shared google drive: NMA > curriculum & content > [One-pare Topic/ Lecture summaries/](https://drive.google.com/drive/folders/1mrXdVGgPqb-NVVLZj3E0FWETp9z-L9I-))
 2. Meet with the day organizer to discuss the tutorial lecture content and what students will be asked to do in tutorials. At this stage it will be essential to decide what you want each exercise of each tutorial to do.
 3. You familiarize yourself with existing tutorial templates to understand the format of [NMA tutorials](https://github.com/NeuromatchAcademy/course-content/tree/master/tutorials)
 4. Start with the coding of the tutorials (Only when you have finalised step 2! otherwise you'll have to redo a bunch of tutorials!)
@@ -28,14 +28,14 @@ Tutorials can take anywhere between 1-2 weeks to prepare, so start as early as p
 
 ## Structure of tutorials
 
-Markdown headings (#, ##, ###, etc.) can be used to automatically create headings for tutorials, objectives, and exercises, respectively. Use `---` in markdown to separate different exercises/sections.
+Markdown headings (`#`, `##`, `###`, etc.) can be used to automatically create headings for tutorials, objectives, and exercises, respectively. Use `---` in markdown to separate different exercises/sections.
 
 Example tutorials are available at [NMA github course-content/tutorials](https://github.com/NeuromatchAcademy/course-content/tree/master/tutorials).
 
 For each tutorial:
 1. Import all necessary libraries, plotting settings and plotting functions in the top code cell of the tutorial
-        - write `# @title` at the top of the cell, and click `...`>`Form`>`Hide code` to hide the code cell (special colab trickery)
-        - check the notebook [`Installing Python libraries.ipynb`](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/utils/Installing%20Python%20libraries.ipynb) on how to install additional libraries or your own custom library
+   - write `# @title` at the top of the cell, and click `...`>`Form`>`Hide code` to hide the code cell (special colab trickery)
+   - check the notebook [`Installing Python libraries.ipynb`](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/utils/Installing%20Python%20libraries.ipynb) on how to install additional libraries or your own custom library
 2. Describe the tutorial objectives using 2-3 sentences + bullet points
 3. Split the tutorial into 2-4 exercises. Each exercise should have:
    - A short description of what we want the student to do in this exercise
