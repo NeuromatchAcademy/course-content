@@ -7,7 +7,7 @@ Thank you for agreeing to write tutorials for NMA! We're so glad you're here. We
 Tutorials are writen in Python for the Google Colab environment.
 Students will use Google Colab to run the tutorials to reduce setup requirements  and provide enough compute power for resource intensive tutorials (e.g. deep learning tutorials). 
 
-We also have a pre-baked environment in *environment.yml* for students for whom Colab is unavailable in their country; it allows the tutorials to be run locally or via binderhub [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/NeuromatchAcademy/course-content/master?urlpath=lab).
+We also have a pre-baked environment in *environment.yml* for students for whom Colab is unavailable in their country; it allows the tutorials to be run locally or via binderhub [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/NeuromatchAcademy/course-content/master).
 
 ## Tutorial structure
 
