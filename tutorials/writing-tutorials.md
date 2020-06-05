@@ -15,27 +15,27 @@ There will be 4 tutorials per day. Each tutorial aims to be short and concise (1
 
 ## Organization & Communication
 
-As a content creator, you create the python tutorials. You will need to coordinate with the day organizer so the tutorials meet the objectives of the day (see shared google drive: NMA > curriculum & content > Content creator role.doc) (https://docs.google.com/document/d/1EqDdBy3KPnK0B9ronMhPwa_WnJDjnKIK_fPs9jrDiUY)
+As a content creator, you create the python tutorials. You will need to coordinate with the day organizer so the tutorials meet the objectives of the day (see shared google drive: NMA > curriculum & content > [Content creator role.doc](https://docs.google.com/document/d/1EqDdBy3KPnK0B9ronMhPwa_WnJDjnKIK_fPs9jrDiUY))
 
 Tutorials can take anywhere between 1-2 weeks to prepare, so start as early as possible! Here is how to proceed:
 
-1. Read the 1-pagers for the tutorials you are in charge of: (shared google drive: NMA > curriculum & content > One-pare Topic/ Lecture summaries/)
+1. Read the 1-pagers for the tutorials you are in charge of: (shared google drive: NMA > curriculum & content > [One-pare Topic/ Lecture summaries/](https://drive.google.com/drive/folders/1mrXdVGgPqb-NVVLZj3E0FWETp9z-L9I-))
 2. Meet with the day organizer to discuss the tutorial lecture content and what students will be asked to do in tutorials. At this stage it will be essential to decide what you want each exercise of each tutorial to do.
 3. You familiarize yourself with existing tutorial templates to understand the format of [NMA tutorials](https://github.com/NeuromatchAcademy/course-content/tree/master/tutorials)
 4. Start with the coding of the tutorials (Only when you have finalised step 2! otherwise you'll have to redo a bunch of tutorials!)
    - This is important to minimise the amount of adjustment and doing/redoing required at a later stage. Iterating over step 2 in much detail is much more efficient than: creating code, then deleting whole exercises/tutorials and recoding new ones from scratch) if there is a mismatch.
-5 - Reiterate and refine 4 for small adjustments.
+5. Reiterate and refine step 4 for small adjustments.
 
 ## Structure of tutorials
 
-Markdown headings (#, ##, ###, etc.) can be used to automatically create headings for tutorials, objectives, and exercises, respectively. Use `---` in markdown to separate different exercises/sections.
+Markdown headings (`#`, `##`, `###`, etc.) can be used to automatically create headings for tutorials, objectives, and exercises, respectively. Use `---` in markdown to separate different exercises/sections.
 
 Example tutorials are available at [NMA github course-content/tutorials](https://github.com/NeuromatchAcademy/course-content/tree/master/tutorials).
 
 For each tutorial:
 1. Import all necessary libraries, plotting settings and plotting functions in the top code cell of the tutorial
-        - write `# @title` at the top of the cell, and click `...`>`Form`>`Hide code` to hide the code cell (special colab trickery)
-        - check the notebook [`Installing Python libraries.ipynb`](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/utils/Installing%20Python%20libraries.ipynb) on how to install additional libraries or your own custom library
+   - write `# @title` at the top of the cell, and click `...`>`Form`>`Hide code` to hide the code cell (special colab trickery)
+   - check the notebook [`Installing Python libraries.ipynb`](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/utils/Installing%20Python%20libraries.ipynb) on how to install additional libraries or your own custom library
 2. Describe the tutorial objectives using 2-3 sentences + bullet points
 3. Split the tutorial into 2-4 exercises. Each exercise should have:
    - A short description of what we want the student to do in this exercise
@@ -45,6 +45,21 @@ For each tutorial:
    - (optional) Include hints in the code skeletton to highlight where the students should complete the code and what python functions they could use to complete it (e.g.: '#Hint: use the function `np.exp()` to exponentiate' )
    - (optional) A sample output of what the correct output of the exercise should look like. In order to prevent students from focussing on reproducing exactly the plots/expected-outputs rather than understanding the core concepts, we provide them with the plotting functions, and use XKCD style for the expected sample outputs.
 4. Create sample answers for each tutorial, and so that the technical team can check the tutorials, and to facillitate training for the TAs prior to the summer school.
+5. Generate student versions that exclude sample answers and other auxiliary cells. Follows the instructions below to execute this step automatically.
+
+## Generating student versions
+Student versions exclude sample answers and other auxiliary cells that are identified with the tag `to_remove`. This step is performed on jupyter notebook (not colab!).
+First, activate viewing of cell tags by clicking `View`>`Cell Toolbar`>`Tags` from the notebook menu:
+
+![View tags](https://github.com/NeuromatchAcademy/course-content/raw/colab-github-workflow/tutorials/static/view-tags.png)
+
+Add a tag `to_remove` to each cell to be excluded in student versions:
+
+![Adding tags](https://github.com/NeuromatchAcademy/course-content/raw/colab-github-workflow/tutorials/static/add-tag.png)
+
+![Tag added](https://github.com/NeuromatchAcademy/course-content/raw/colab-github-workflow/tutorials/static/tag-added.png)
+
+Open the notebook [`Generate student versions.ipynb`](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/utils/Generate%20student%20versions.ipynb), adjust the path variables `path_source` and `path_student` as needed and execute the notebook.
 
 ## Reviewing
 
@@ -62,6 +77,6 @@ We recommend creating everything in colab, and when you're ready to pull the not
 * Save into your daily branch (for example, `day06`). We've pre-made 15 branches just for you, but feel free to make a new one if you want.
 * Once saved, go to https://github.com/NeuromatchAcademy/course-content. Github will invite you to start a pull request from your branch to `master`. Add Patrick and Marco as reviewers.
 
-![Pull request](https://github.com/NeuromatchAcademy/course-content/raw/colab-github-workflow/tutorials/static/pull-request.PNG)
+![Pull request](https://github.com/NeuromatchAcademy/course-content/raw/colab-github-workflow/tutorials/static/pull-request.png)
 
 * Once you've started a pull request, you can keep committing on top of the same branch. The pull request will be updated. To address reviewer comments, modify your colab, hit `File > Save a copy in GitHub` again, and save onto the same branch while you have your pull request open.
