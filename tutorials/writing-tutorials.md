@@ -45,21 +45,6 @@ For each tutorial:
    - (optional) Include hints in the code skeletton to highlight where the students should complete the code and what python functions they could use to complete it (e.g.: '#Hint: use the function `np.exp()` to exponentiate' )
    - (optional) A sample output of what the correct output of the exercise should look like. In order to prevent students from focussing on reproducing exactly the plots/expected-outputs rather than understanding the core concepts, we provide them with the plotting functions, and use XKCD style for the expected sample outputs.
 4. Create sample answers for each tutorial, and so that the technical team can check the tutorials, and to facillitate training for the TAs prior to the summer school.
-5. Generate student versions that exclude sample answers and other auxiliary cells. Follows the instructions below to execute this step automatically.
-
-## Generating student versions
-Student versions exclude sample answers and other auxiliary cells that are identified with the tag `to_remove`. This step is performed on jupyter notebook (not colab!).
-First, activate viewing of cell tags by clicking `View`>`Cell Toolbar`>`Tags` from the notebook menu:
-
-![View tags](https://github.com/NeuromatchAcademy/course-content/raw/colab-github-workflow/tutorials/static/view-tags.png)
-
-Add a tag `to_remove` to each cell to be excluded in student versions:
-
-![Adding tags](https://github.com/NeuromatchAcademy/course-content/raw/colab-github-workflow/tutorials/static/add-tag.png)
-
-![Tag added](https://github.com/NeuromatchAcademy/course-content/raw/colab-github-workflow/tutorials/static/tag-added.png)
-
-Open the notebook [`Generate student versions.ipynb`](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/utils/Generate%20student%20versions.ipynb), adjust the path variables `path_source` and `path_student` as needed and execute the notebook.
 
 ## Reviewing
 
@@ -73,10 +58,25 @@ Open the notebook [`Generate student versions.ipynb`](https://github.com/Neuroma
 We recommend creating everything in colab, and when you're ready to pull the notebook in, do it via this workflow: 
 
 * Use colab spacing standard: 2 spaces
-* Use `File > Save a copy in GitHub` in colab
+* Use `File` > `Save a copy in GitHub` in colab
 * Save into your daily branch (for example, `day06`). We've pre-made 15 branches just for you, but feel free to make a new one if you want.
 * Once saved, go to https://github.com/NeuromatchAcademy/course-content. Github will invite you to start a pull request from your branch to `master`. Add Patrick and Marco as reviewers.
 
-![Pull request](https://github.com/NeuromatchAcademy/course-content/raw/colab-github-workflow/tutorials/static/pull-request.png)
+![Pull request](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/static/pull-request.png)
 
 * Once you've started a pull request, you can keep committing on top of the same branch. The pull request will be updated. To address reviewer comments, modify your colab, hit `File > Save a copy in GitHub` again, and save onto the same branch while you have your pull request open.
+
+## Generating student versions
+Student versions exclude sample answers and other auxiliary cells that are identified with the tag `to_remove`. This step is performed on jupyter notebook (not colab!).
+First, activate viewing of cell tags by clicking `View`>`Cell Toolbar`>`Tags` from the notebook menu:
+
+![View tags](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/static/view-tags.png)
+
+Add a tag `to_remove` to each cell to be excluded in student versions:
+
+![Adding tags](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/static/add-tag.png)
+
+![Tag added](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/static/tag-added.png)
+
+Open the notebook [`Generate student versions.ipynb`](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/utils/Generate%20student%20versions.ipynb), adjust the path variables `path_source` and `path_student` as needed and execute the notebook.
+
