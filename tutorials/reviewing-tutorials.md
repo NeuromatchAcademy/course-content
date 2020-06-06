@@ -20,4 +20,4 @@ Guidelines for file and folder names:
 
 How to provide feedback:
 * During the initial stage, we will use comments on colab notebooks. Check to make sure your comments are saved by reloading the notebook. Indicate code edits in comments.
-* Once the colabs are posted on Github, we'll use a different mechanis
+* Once the colabs are posted on Github, we'll use a different mechanism.
