@@ -17,3 +17,7 @@ Guidelines for file and folder names:
 * Lower case for folder names
 * Snake case for markdown and python files
 * First letter in caps for ipython notebooks (with spaces in the filename)
+
+How to provide feedback:
+* During the initial stage, we will use comments on colab notebooks. Check to make sure your comments are saved by reloading the notebook. Indicate code edits in comments.
+* Once the colabs are posted on Github, we'll use a different mechanism.
