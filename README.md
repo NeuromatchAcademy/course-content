@@ -13,8 +13,8 @@
 # Course outline
 
 * [Week 1](#week-1)
-    * [Mon, July 13: Introduction to Computational Neuroscience and NMA](#mon-july-13-introduction-to-computational-neuroscience-and-nma)
-    * [Tue, July 14: What do models buy us?](#tue-july-14-what-do-models-buy-us)
+    * [Mon, July 13: What do models buy us?](#mon-july-13-introduction-to-computational-neuroscience-and-nma)
+    * [Tue, July 14: How-to-model](#tue-july-14-what-do-models-buy-us)
     * [Wed, July 15: Model fitting](#wed-july-15-model-fitting)
     * [Thu, July 16: Machine learning (ML) - decoding](#thu-july-16-machine-learning-ml---decoding)
     * [Fri, July 17: Dimensionality reduction / manifolds](#fri-july-17-dimensionality-reduction--manifolds)
@@ -35,31 +35,13 @@
 
 ## Week 1
 
-### Mon, July 13: Introduction to Computational Neuroscience and NMA
-
-**Description** Introduction of datasets (spikes, EEG, fMRI + behavior), and questions about them. These questions will foreshadow the whole summer school.
-
-| Time (Hour) | Lecture                          | Details                                                            |
-|-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30 | Intro / keynote & tutorial setup | NMA organization, expectations, code of conduct, modeling vs. data |
-| 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
-| 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Data into, preprocessing, link of neural data to behavior          |
-| 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
-| 2:25 - 3:25 | Big break                        | BREAK                                                              |
-| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | Tuning (RFs, motor, STA), What is means to "understand" (signal detection) |
-| 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
-| 5:05 - 5:35 | Outro                            | Recap session                                                      |
-| 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
-
-----
-
-### Tue, July 14: What do models buy us?
+### Mon, July 13: What do models buy us?
 
 **Description** Introduce different example model types (Marr 1-3, what/how/why) and the kinds of questions they can answer. MRealize how different models map onto different datasets.
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30 | Intro / keynote & tutorial setup | Model classifications                                              |
+| 0:00 - 0:30*| Intro / keynote & tutorial setup | Model classifications                                              |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Marr 1-3                                                           |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -68,6 +50,26 @@
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, The role of models in discovery                     |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
+
+----
+
+### Tue, July 14: How-to-model
+
+**Description** Introduction of datasets (spikes, EEG, fMRI + behavior), and questions about them. These questions will foreshadow the whole summer school.
+
+| Time (Hour) | Lecture                          | Details                                                            |
+|-------------|----------------------------------|--------------------------------------------------------------------|
+| 0:00 - 0:30*| Intro / keynote & tutorial setup | NMA organization, expectations, code of conduct, modeling vs. data |
+| 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
+| 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Data into, preprocessing, link of neural data to behavior          |
+| 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
+| 2:25 - 3:25 | Big break                        | BREAK                                                              |
+| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | Tuning (RFs, motor, STA), What is means to "understand" (signal detection) |
+| 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
+| 5:05 - 5:35 | Outro                            | Recap session                                                      |
+| 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ----
 
@@ -77,7 +79,7 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30 | Intro / keynote & tutorial setup | Why and how to fit models                                          |
+| 0:00 - 0:30*| Intro / keynote & tutorial setup | Why and how to fit models                                          |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Fit a model 1 (linear regression), Get error bars                  |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -86,6 +88,7 @@
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Critical evaluation of model fitting                |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ----
 
@@ -95,7 +98,7 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30 | Intro / keynote & tutorial setup | We want to predict ([scikit learn](https://scikit-learn.org/))     |
+| 0:00 - 0:30*| Intro / keynote & tutorial setup | We want to predict ([scikit learn](https://scikit-learn.org/))     |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | GLMs (temporal filtering models), Linear classifier (SVM)          |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -104,6 +107,7 @@
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Promises and pitfalls of ML                         |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -113,7 +117,7 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30 | Intro / keynote & tutorial setup | Manifolds to understand                                            |
+| 0:00 - 0:30*| Intro / keynote & tutorial setup | Manifolds to understand                                            |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | PCA 1, PCA 2 (+CCA/clustering)                                     |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -122,6 +126,7 @@
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, The link between high-dimensional brain signals and low-dimensional behavior |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -140,7 +145,7 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30 | Intro / keynote & tutorial setup | Uncertainty                                                        |
+| 0:00 - 0:30*| Intro / keynote & tutorial setup | Uncertainty                                                        |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Bayes rule I (product rule: cue combination), Bayes rule II (Marginalization and nuisance variables) |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -149,6 +154,7 @@
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Advanced Bayesian methods                           |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -158,7 +164,7 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30 | Intro / keynote & tutorial setup | World has time                                                     |
+| 0:00 - 0:30*| Intro / keynote & tutorial setup | World has time                                                     |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Linear systems theory I (ND deterministic), Linear systems theory II (1D stochastic = OU process; ND stocastic = AR(1)) |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -167,6 +173,7 @@
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Linear systems rule the world                       |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -176,7 +183,7 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30 | Intro / keynote & tutorial setup | We need to decide stuff                                            |
+| 0:00 - 0:30*| Intro / keynote & tutorial setup | We need to decide stuff                                            |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Information theory, Sequential Probability Ratio Test (SPRT)       |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -185,6 +192,7 @@
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Decisions, decisions, decisions ...                 |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -194,7 +202,7 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30 | Intro / keynote & tutorial setup | We want to control our actions...                                  |
+| 0:00 - 0:30*| Intro / keynote & tutorial setup | We want to control our actions...                                  |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Expected utility / Cost, Markov decision process (MDP)             |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -203,6 +211,7 @@
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Advanced motor control                              |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -212,7 +221,7 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30 | Intro / keynote & tutorial setup | Problem formulations: actor-critic                                 |
+| 0:00 - 0:30*| Intro / keynote & tutorial setup | Problem formulations: actor-critic                                 |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Critic: reward prediction error, Exploration (POMDP) vs 
 Exploitation |
@@ -222,6 +231,7 @@ Exploitation |
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, RL and the brain                                    |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ----
 
@@ -240,7 +250,7 @@ Exploitation |
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30 | Intro / keynote & tutorial setup | Real neurons ftw                                                   |
+| 0:00 - 0:30*| Intro / keynote & tutorial setup | Real neurons ftw                                                   |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Channels, HH, LIF neuron                                           |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -249,6 +259,7 @@ Exploitation |
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, A variety of neuron models                          |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -258,7 +269,7 @@ Exploitation |
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30 | Intro / keynote & tutorial setup | Mechanistic models of different types of brain actvivity           |
+| 0:00 - 0:30*| Intro / keynote & tutorial setup | Mechanistic models of different types of brain actvivity           |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Spikes to rates, Wilson-Cowen model (coarse-grained), oscillations & synchrony |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -267,6 +278,7 @@ Exploitation |
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, A theory of the whole brain                         |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -276,7 +288,7 @@ Exploitation |
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30 | Intro / keynote & tutorial setup | Causality - different views                                        |
+| 0:00 - 0:30*| Intro / keynote & tutorial setup | Causality - different views                                        |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Pitfalls of Granger Causality, Centrality                          |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -285,6 +297,7 @@ Exploitation |
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Latters of causality                                |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -294,7 +307,7 @@ Exploitation |
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30 | Intro / keynote & tutorial setup | DL = crucial tool                                                  |
+| 0:00 - 0:30*| Intro / keynote & tutorial setup | DL = crucial tool                                                  |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Pytorch intro & model components, Training it & inductive bias     |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -303,6 +316,7 @@ Exploitation |
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Digging deep                                        |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -312,7 +326,7 @@ Exploitation |
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30 | Intro / keynote & tutorial setup | DL for structure                                                   |
+| 0:00 - 0:30*| Intro / keynote & tutorial setup | DL for structure                                                   |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Autoencoders, Recurrent Neural Network                             |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -321,6 +335,7 @@ Exploitation |
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Digging deeper                                      |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ----
 
