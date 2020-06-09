@@ -101,15 +101,15 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30\*| Intro / keynote & tutorial setup | We want to predict ([scikit learn](https://scikit-learn.org/))     |
-| 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
-| 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | GLMs (temporal filtering models), Linear classifier (SVM)          |
-| 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
-| 2:25 - 3:25 | Big break                        | BREAK                                                              |
-| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | Regularization (L1, L2), Shallow nonlinear classifier (SVM with RBF kernel) |
-| 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
-| 5:05 - 5:35 | Outro                            | Recap session, Promises and pitfalls of ML                         |
-| 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+|   0:00-0:30\*| Intro / keynote & tutorial setup | We want to predict ([scikit learn](https://scikit-learn.org/))     |
+|   0:30-0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
+|   0:50-2:05 | Tutorials 1 & 2 + nano-lectures  | GLMs (temporal filtering models), Linear classifier (SVM)          |
+|   2:05-2:25 | Discussion 1                     | Discussion with pod TA                                             |
+|   2:25-3:25 | Big break                        | BREAK                                                              |
+|   3:25-4:40 | Tutorials 3 & 4 + nano-lectures  | Regularization (L1, L2), Shallow nonlinear classifier (SVM with RBF kernel) |
+|   4:40-5:00 | Discussion 2                     | Discussion with pod TA                                             |
+|   5:05-5:35 | Outro                            | Recap session, Promises and pitfalls of ML                         |
+|   5:35-6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
@@ -150,15 +150,15 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30*| Intro / keynote & tutorial setup | Uncertainty                                                        |
-| 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
-| 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Bayes rule I (product rule: cue combination), Bayes rule II (Marginalization and nuisance variables) |
-| 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
-| 2:25 - 3:25 | Big break                        | BREAK                                                              |
-| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | Causal inference & structural models (use as example for marginalization), Bayesian decision theory |
-| 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
-| 5:05 - 5:35 | Outro                            | Recap session, Advanced Bayesian methods                           |
-| 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+|   0:00-0:30*| Intro / keynote & tutorial setup | Uncertainty                                                        |
+|   0:30-0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
+|   0:50-2:05 | Tutorials 1 & 2 + nano-lectures  | Bayes rule I (product rule: cue combination), Bayes rule II (Marginalization and nuisance variables) |
+|   2:05-2:25 | Discussion 1                     | Discussion with pod TA                                             |
+|   2:25-3:25 | Big break                        | BREAK                                                              |
+|   3:25-4:40 | Tutorials 3 & 4 + nano-lectures  | Causal inference & structural models (use as example for marginalization), Bayesian decision theory |
+|   4:40-5:00 | Discussion 2                     | Discussion with pod TA                                             |
+|   5:05-5:35 | Outro                            | Recap session, Advanced Bayesian methods                           |
+|   5:35-6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
@@ -170,15 +170,15 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30*| Intro / keynote & tutorial setup | World has time                                                     |
-| 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
-| 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Linear systems theory I (ND deterministic), Linear systems theory II (1D stochastic = OU process; ND stocastic = AR(1)) |
-| 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
-| 2:25 - 3:25 | Big break                        | BREAK                                                              |
-| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | Markov process, State space model                                  |
-| 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
-| 5:05 - 5:35 | Outro                            | Recap session, Linear systems rule the world                       |
-| 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+|   0:00-0:30*| Intro / keynote & tutorial setup | World has time                                                     |
+|   0:30-0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
+|   0:50-2:05 | Tutorials 1 & 2 + nano-lectures  | Linear systems theory I (ND deterministic), Linear systems theory II (1D stochastic = OU process; ND stocastic = AR(1)) |
+|   2:05-2:25 | Discussion 1                     | Discussion with pod TA                                             |
+|   2:25-3:25 | Big break                        | BREAK                                                              |
+|   3:25-4:40 | Tutorials 3 & 4 + nano-lectures  | Markov process, State space model                                  |
+|   4:40-5:00 | Discussion 2                     | Discussion with pod TA                                             |
+|   5:05-5:35 | Outro                            | Recap session, Linear systems rule the world                       |
+|   5:35-6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
