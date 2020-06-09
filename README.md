@@ -41,7 +41,7 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30*| Intro / keynote & tutorial setup | Model classifications                                              |
+| 0:00 - 0:30* | Intro / keynote & tutorial setup | Model classifications                                              |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Marr 1-3                                                           |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -60,7 +60,7 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30*| Intro / keynote & tutorial setup | NMA organization, expectations, code of conduct, modeling vs. data |
+| 0:00 - 0:30* | Intro / keynote & tutorial setup | NMA organization, expectations, code of conduct, modeling vs. data |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Data into, preprocessing, link of neural data to behavior          |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
