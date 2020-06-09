@@ -50,7 +50,7 @@
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, The role of models in discovery                     |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
-* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
+\* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ----
 
@@ -69,7 +69,7 @@
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session                                                      |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
-* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
+\* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ----
 
@@ -88,7 +88,7 @@
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Critical evaluation of model fitting                |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
-* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
+\* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ----
 
@@ -107,7 +107,7 @@
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Promises and pitfalls of ML                         |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
-* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
+\* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -126,7 +126,7 @@
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, The link between high-dimensional brain signals and low-dimensional behavior |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
-* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
+\* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -154,7 +154,7 @@
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Advanced Bayesian methods                           |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
-* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
+\* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -173,7 +173,7 @@
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Linear systems rule the world                       |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
-* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
+\* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -192,7 +192,7 @@
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Decisions, decisions, decisions ...                 |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
-* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
+\* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -211,7 +211,7 @@
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Advanced motor control                              |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
-* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
+\* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -231,7 +231,7 @@ Exploitation |
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, RL and the brain                                    |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
-* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
+\* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ----
 
@@ -259,7 +259,7 @@ Exploitation |
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, A variety of neuron models                          |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
-* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
+\* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -278,7 +278,7 @@ Exploitation |
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, A theory of the whole brain                         |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
-* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
+\* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -297,7 +297,7 @@ Exploitation |
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Latters of causality                                |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
-* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
+\* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -316,7 +316,7 @@ Exploitation |
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Digging deep                                        |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
-* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
+\* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ---- 
 
@@ -335,7 +335,7 @@ Exploitation |
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Digging deeper                                      |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
-* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
+\* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ----
 
