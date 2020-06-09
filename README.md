@@ -81,7 +81,7 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30* | Intro / keynote & tutorial setup | Why and how to fit models                                          |
+| 0:00 - 0:30*| Intro / keynote & tutorial setup | Why and how to fit models                                          |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Fit a model 1 (linear regression), Get error bars                  |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
