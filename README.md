@@ -61,7 +61,7 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30* | Intro / keynote & tutorial setup | NMA organization, expectations, code of conduct, modeling vs. data |
+| 0:00 - 0:30*| Intro / keynote & tutorial setup | NMA organization, expectations, code of conduct, modeling vs. data |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Data into, preprocessing, link of neural data to behavior          |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -86,7 +86,7 @@
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Fit a model 1 (linear regression), Get error bars                  |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
 | 2:25 - 3:25 | Big break                        | BREAK                                                              |
-| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | Compare models, cross-validation, hyperparameters, Fit a model 2 (nonlinear models) |
+| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | Compare models, cross-validation, hyperparameters, Fit a model 2  (nonlinear models) |
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Critical evaluation of model fitting                |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
