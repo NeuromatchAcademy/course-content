@@ -39,17 +39,17 @@
 
 **Description** Introduce different example model types (Marr 1-3, what/how/why) and the kinds of questions they can answer. MRealize how different models map onto different datasets.
 
-|    Time (Hour)     |    Lecture                            |    Details                                                            |
-|--------------------|---------------------------------------|-----------------------------------------------------------------------|
-|    0:00 - 0:30\*   |    Intro / keynote & tutorial setup   |    Model classifications                                              |
-|    0:30 - 0:45     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
-|    0:50 - 2:05     |    Tutorials 1 & 2 + nano-lectures    |    Marr 1-3                                                           |
-|    2:05 - 2:25     |    Discussion 1                       |    Discussion with pod TA                                             |
-|    2:25 - 3:25     |    Big break                          |    BREAK                                                              |
-|    3:25 - 4:40     |    Tutorials 3 & 4 + nano-lectures    |    "What"/"How"/"Why"                                                 |
-|    4:40 - 5:00     |    Discussion 2                       |    Discussion with pod TA                                             |
-|    5:05 - 5:35     |    Outro                              |    Recap session, The role of models in discovery                     |
-|    5:35 - 6:00     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
+|    Time (Hour)   |    Lecture                            |    Details                                                            |
+|------------------|---------------------------------------|-----------------------------------------------------------------------|
+|    0:00-0:30\*   |    Intro / keynote & tutorial setup   |    Model classifications                                              |
+|    0:30-0:45     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
+|    0:50-2:05     |    Tutorials 1 & 2 + nano-lectures    |    Marr 1-3                                                           |
+|    2:05-2:25     |    Discussion 1                       |    Discussion with pod TA                                             |
+|    2:25-3:25     |    Big break                          |    BREAK                                                              |
+|    3:25-4:40     |    Tutorials 3 & 4 + nano-lectures    |    "What"/"How"/"Why"                                                 |
+|    4:40-5:00     |    Discussion 2                       |    Discussion with pod TA                                             |
+|    5:05-5:35     |    Outro                              |    Recap session, The role of models in discovery                     |
+|    5:35-6:00     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
@@ -61,15 +61,15 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30\*| Intro / keynote & tutorial setup | NMA organization, expectations, code of conduct, modeling vs. data |
-| 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
-| 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Data into, preprocessing, link of neural data to behavior          |
-| 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
-| 2:25 - 3:25 | Big break                        | BREAK                                                              |
-| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | Tuning (RFs, motor, STA), What is means to "understand" (signal detection) |
-| 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
-| 5:05 - 5:35 | Outro                            | Recap session                                                      |
-| 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+|   0:00-0:30\*| Intro / keynote & tutorial setup | NMA organization, expectations, code of conduct, modeling vs. data |
+|   0:30-0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
+|   0:50-2:05 | Tutorials 1 & 2 + nano-lectures  | Data into, preprocessing, link of neural data to behavior          |
+|   2:05-2:25 | Discussion 1                     | Discussion with pod TA                                             |
+|   2:25-3:25 | Big break                        | BREAK                                                              |
+|   3:25-4:40 | Tutorials 3 & 4 + nano-lectures  | Tuning (RFs, motor, STA), What is means to "understand" (signal detection) |
+|   4:40-5:00 | Discussion 2                     | Discussion with pod TA                                             |
+|   5:05-5:35 | Outro                            | Recap session                                                      |
+|   5:35-6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
@@ -81,15 +81,15 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30\*| Intro / keynote & tutorial setup | Why and how to fit models                                          |
-| 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
-| 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Fit a model 1 (linear regression), Get error bars                  |
-| 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
-| 2:25 - 3:25 | Big break                        | BREAK                                                              |
-| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | Compare models, cross-validation, hyperparameters, Fit a model 2  (nonlinear models) |
-| 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
-| 5:05 - 5:35 | Outro                            | Recap session, Critical evaluation of model fitting                |
-| 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+|   0:00-0:30\*| Intro / keynote & tutorial setup | Why and how to fit models                                          |
+|   0:30-0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
+|   0:50-2:05 | Tutorials 1 & 2 + nano-lectures  | Fit a model 1 (linear regression), Get error bars                  |
+|   2:05-2:25 | Discussion 1                     | Discussion with pod TA                                             |
+|   2:25-3:25 | Big break                        | BREAK                                                              |
+|   3:25-4:40 | Tutorials 3 & 4 + nano-lectures  | Compare models, cross-validation, hyperparameters, Fit a model 2  (nonlinear models) |
+|   4:40-5:00 | Discussion 2                     | Discussion with pod TA                                             |
+|   5:05-5:35 | Outro                            | Recap session, Critical evaluation of model fitting                |
+|   5:35-6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
@@ -119,17 +119,17 @@
 
 **Description** Concept of dimensionality reduction, ways of doing it, what it means
 
-|    Time (Hour)     |    Lecture                            |    Details                                                            |
-|--------------------|---------------------------------------|-----------------------------------------------------------------------|
-|    0:00 - 0:30\*   |    Intro / keynote & tutorial setup   |    Manifolds to understand                                            |
-|    0:30 - 0:45     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
-|    0:50 - 2:05     |    Tutorials 1 & 2 + nano-lectures    |    PCA 1, PCA 2 (+CCA/clustering)                                     |
-|    2:05 - 2:25     |    Discussion 1                       |    Discussion with pod TA                                             |
-|    2:25 - 3:25     |    Big break                          |    BREAK                                                              |
-|    3:25 - 4:40     |    Tutorials 3 & 4 + nano-lectures    |    Signal vs. Noise Manifolds, Visualizing high-D nonlinear manifolds (e.g. t-SNE)   |
-|    4:40 - 5:00     |    Discussion 2                       |    Discussion with pod TA                                             |
-|    5:05 - 5:35     |    Outro                              |    Recap session, The link between high-dimensional brain signals and low-dimensional behavior   |
-|    5:35 - 6:00     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
+|    Time (Hour)   |    Lecture                            |    Details                                                            |
+|------------------|---------------------------------------|-----------------------------------------------------------------------|
+|    0:00-0:30\*   |    Intro / keynote & tutorial setup   |    Manifolds to understand                                            |
+|    0:30-0:45     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
+|    0:50-2:05     |    Tutorials 1 & 2 + nano-lectures    |    PCA 1, PCA 2 (+CCA/clustering)                                     |
+|    2:05-2:25     |    Discussion 1                       |    Discussion with pod TA                                             |
+|    2:25-3:25     |    Big break                          |    BREAK                                                              |
+|    3:25-4:40     |    Tutorials 3 & 4 + nano-lectures    |    Signal vs. Noise Manifolds, Visualizing high-D nonlinear manifolds (e.g. t-SNE)   |
+|    4:40-5:00     |    Discussion 2                       |    Discussion with pod TA                                             |
+|    5:05-5:35     |    Outro                              |    Recap session, The link between high-dimensional brain signals and low-dimensional behavior   |
+|    5:35-6:00     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
