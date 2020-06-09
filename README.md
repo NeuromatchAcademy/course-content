@@ -41,7 +41,7 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30*| Intro / keynote & tutorial setup | Model classifications                                              |
+| 0:00 - 0:30\*| Intro / keynote & tutorial setup | Model classifications                                              |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Marr 1-3                                                           |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -61,7 +61,7 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30*| Intro / keynote & tutorial setup | NMA organization, expectations, code of conduct, modeling vs. data |
+| 0:00 - 0:30\*| Intro / keynote & tutorial setup | NMA organization, expectations, code of conduct, modeling vs. data |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Data into, preprocessing, link of neural data to behavior          |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -81,7 +81,7 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30*| Intro / keynote & tutorial setup | Why and how to fit models                                          |
+| 0:00 - 0:30\*| Intro / keynote & tutorial setup | Why and how to fit models                                          |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Fit a model 1 (linear regression), Get error bars                  |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -101,7 +101,7 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30*| Intro / keynote & tutorial setup | We want to predict ([scikit learn](https://scikit-learn.org/))     |
+| 0:00 - 0:30\*| Intro / keynote & tutorial setup | We want to predict ([scikit learn](https://scikit-learn.org/))     |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | GLMs (temporal filtering models), Linear classifier (SVM)          |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -121,7 +121,7 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30*| Intro / keynote & tutorial setup | Manifolds to understand                                            |
+| 0:00 - 0:30\*| Intro / keynote & tutorial setup | Manifolds to understand                                            |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | PCA 1, PCA 2 (+CCA/clustering)                                     |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
