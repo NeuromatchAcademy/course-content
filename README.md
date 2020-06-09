@@ -41,7 +41,7 @@
 
 | Time (Hour) | Lecture                          | Details                                                            |
 |-------------|----------------------------------|--------------------------------------------------------------------|
-| 0:00 - 0:30* | Intro / keynote & tutorial setup | Model classifications                                              |
+| 0:00 - 0:30*| Intro / keynote & tutorial setup | Model classifications                                              |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
 | 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Marr 1-3                                                           |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
@@ -50,6 +50,7 @@
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, The role of models in discovery                     |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
+
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 
 ----
