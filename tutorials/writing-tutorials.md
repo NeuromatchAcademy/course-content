@@ -47,6 +47,8 @@ For each tutorial:
 4. Create sample answers for each tutorial, and so that the technical team can check the tutorials, and to facilitate training for the TAs before the summer school.
 5. Each tutorial stands on its own. Like a memorable story, set the context in the introduction, take the student forward through the exercises, and anchor what was learned in the conclusion section.
 
+Have a look at the reference tutorial to see what a tutorial looks like in the end: [Bayes Day tutorial 1](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/Bayes/TA_solutions/BayesDay_Tutorial_1_solutions.ipynb)
+
 ## Reviewing
 
 * Talk to your day organizer before submitting tutorials to the [NMA course-content github repo](https://github.com/NeuromatchAcademy/course-content/)

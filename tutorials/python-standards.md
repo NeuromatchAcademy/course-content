@@ -8,7 +8,7 @@ Tutorials are Python code. Therefore, they need to follow the conventions of Pyt
 
 Notebook tutorials are a little different from normal Python code. Things to watch out for when writing and reviewing them:
 
-* Run the notebook from top to bottom (`Runtime` > `Run all`). Notebooks cells often have dependencies on later cells - when they are run in order, they fail. Correct these and make sure to Run All after all changes to verify that dependencies run top to bottom.
+* Run the notebook from top to bottom (`Runtime` > `Run all`). Notebooks cells often have dependencies on later cells - when they are run in order, they fail. Correct these, restart the kernel (`Runtime` > `Restart runtime`) and make sure to Run All after all changes to verify that dependencies run top to bottom.
 * When a function needs to be filled in by the student, raise a `NotImplementedError` to indicate to the student they have to implement it.
 * Long notebooks can be hard to read. Using headings (Markdown `#`, `##`, `###`, etc.) can be used to create headings automatically. 
 * Heavy notebooks can be slow to load in developing countries. Use developer tools (`Ctrl+Shift+I`) and go to `Network` > `Throttle`, and choose 3G to test things out.

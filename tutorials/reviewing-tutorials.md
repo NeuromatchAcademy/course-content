@@ -18,7 +18,7 @@ These are the main areas for alignment and consistency:
 * Self-consistency: Each slide deck and notebook stands on its own, except for dependencies from other days
 
 ## Content review workflow
-1. Content creators post links to new material on Slack channel `#content-reviews`
+1. Content creators post links to new material on Slack channel `#content-reviews` with **comment permissions**.
 2. Content review team adds these links to the sheet [Content Review Sign-Up](https://docs.google.com/spreadsheets/d/1LtLEk0H7gkR34kXJVC3hICUsLwfabbSjTPSlterB-xg/edit)
 3. Reviewers comment directly on docs or colab notebooks or reply in Slack threads
 4. Materials migrate to Github after reaching initial draft status, and reviews continue there
