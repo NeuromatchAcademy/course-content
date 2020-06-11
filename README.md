@@ -37,7 +37,7 @@
 
 ### Mon, July 13: What do models buy us?
 
-**Description** Introduce different example model types (Marr 1-3, what/how/why) and the kinds of questions they can answer. MRealize how different models map onto different datasets.
+**Description** Introduce different example model types (Marr 1-3, what/how/why) and the kinds of questions they can answer. Realize how different models map onto different datasets.
 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
