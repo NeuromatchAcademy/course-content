@@ -14,7 +14,7 @@ These are the main areas for alignment and consistency:
 * Learning objectives and tutorial content from [One-page Topic/Lecture summaries](https://drive.google.com/drive/folders/1mrXdVGgPqb-NVVLZj3E0FWETp9z-L9I-)
 * Guidelines for [Writing tutorials for Neuromatch Academy (NMA)](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/writing-tutorials.md)
 * Python guidelines and best practices from [Python-standards](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/python-standards.md)
-* Consistent math notation and formatting defined in [Standardization](https://docs.google.com/document/d/1Z3Bc0oQA4a-y3xJU2mtIDMAOen1SO8AmUjkc3_xFOPM/edit)
+* Consistent math notation and formatting defined in [Standardized nomenclature, math, fonts](https://docs.google.com/document/d/1Z3Bc0oQA4a-y3xJU2mtIDMAOen1SO8AmUjkc3_xFOPM/edit)
 * Self-consistency: Each slide deck and notebook stands on its own, except for dependencies from other days
 
 ## Content review workflow
