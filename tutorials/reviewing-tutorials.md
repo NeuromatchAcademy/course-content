@@ -1,23 +1,26 @@
-# Reviewing tutorials
+# The zen of reviewing tutorials for Neuromatch Academy (NMA)
 
-Tutorials are Python code. Therefore, they need to follow the conventions of Python:
+Thank you for agreeing to review tutorials for NMA!
 
-* Use [PEP8 style](https://www.python.org/dev/peps/pep-0008/)
-* Use [Google commenting style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html)
-* Use colab spacing standard: 2 spaces
+How can tutorial content reviewers contribute to material authored by domain experts? Reviewers that are domain experts help double-checking scientific content. Non-experts contribute to alignment and consistency, which applies to all content in NMA.
 
-Reviewing colab/jupyter notebook tutorials is also a little different than normal Python code review. Things to watch out for:
+## Contribution scope
+Content creators design materials for a particular day. Reviewers see materials across days and assist in polishing them for publication. Creators and reviewers work together in iterative loops to improve consistency with the other days.
 
-* Run the notebook from top to bottom (`Runtime` > `Run all`). Very frequently, notebooks cells have dependencies on later cells - when they are run in order, they fail. Correct these and make sure to Run All after all changes to verify that dependencies run top to bottom.
-* When a function needs to be filled in by the student, raise a `NotImplementedError` to indicate to the student they have to implement the function.
-* Long notebooks can be hard to read. Using headings (Markdown `#`, `##`, `###`, etc.) can be used to automatically create headings. 
-* Heavy notebooks can be slow to load in developing countries. Use developer tools (`Ctrl+Shift+I`) and go to `Network` > `Throttle`, and choose 3G to test things out.
+Content reviewers follow 3 to 5 days of tutorials, and at least two reviewers see each content.
 
-Guidelines for file and folder names:
-* Lower case for folder names
-* Snake case for markdown and python files
-* First letter in caps for ipython notebooks (with spaces in the filename)
+## Reference documents
+These are the main areas for alignment and consistency: 
+* Learning objectives and tutorial content from [One-page Topic/Lecture summaries](https://drive.google.com/drive/folders/1mrXdVGgPqb-NVVLZj3E0FWETp9z-L9I-)
+* Guidelines for [Writing tutorials for Neuromatch Academy (NMA)](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/writing-tutorials.md)
+* Python guidelines and best practices from [Python-standards](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/python-standards.md)
+* Consistent math notation and formatting defined in [Standardized nomenclature, math, fonts](https://docs.google.com/document/d/1Z3Bc0oQA4a-y3xJU2mtIDMAOen1SO8AmUjkc3_xFOPM/edit)
+* Self-consistency: Each slide deck and notebook stands on its own, except for dependencies from other days
 
-How to provide feedback:
-* During the initial stage, we will use comments on colab notebooks. Check to make sure your comments are saved by reloading the notebook. Indicate code edits in comments.
-* Once the colabs are posted on Github, we'll use a different mechanism.
+## Content review workflow
+1. Content creators post links to new material on Slack channel `#content-reviews` with **comment permissions**.
+2. Content review team adds these links to the sheet [Content Review Sign-Up](https://docs.google.com/spreadsheets/d/1LtLEk0H7gkR34kXJVC3hICUsLwfabbSjTPSlterB-xg/edit)
+3. Reviewers comment directly on docs or colab notebooks or reply in Slack threads
+4. Materials migrate to Github after reaching initial draft status, and reviews continue there
+
+See [Content Review Sign-Up](https://docs.google.com/spreadsheets/d/1LtLEk0H7gkR34kXJVC3hICUsLwfabbSjTPSlterB-xg/edit) for additional instructions
