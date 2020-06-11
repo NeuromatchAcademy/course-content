@@ -13,7 +13,7 @@
 # Course outline
 
 * [Week 1](#week-1)
-    * [Mon, July 13: What do models buy us?](#mon-july-13-introduction-to-computational-neuroscience-and-nma)
+    * [Mon, July 13: What do models buy us?](#mon-july-13-what-do-models-buy-us)
     * [Tue, July 14: How-to-model](#tue-july-14-what-do-models-buy-us)
     * [Wed, July 15: Model fitting](#wed-july-15-model-fitting)
     * [Thu, July 16: Machine learning (ML) - decoding](#thu-july-16-machine-learning-ml---decoding)
