@@ -16,3 +16,5 @@ Add a tag `to_remove` to each cell to be excluded in student versions:
 ## Check student version
 Open the notebook [`Generate student versions.ipynb`](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/utils/Generate%20student%20versions.ipynb), adjust the path variables `path_source` and `path_student` as needed, and execute the notebook.
 
+## Code stubbing
+In addition to the to_remove tag, student versions of code blocks should include code-stubbing where possible. Code-stubbing includes including the main structure of the desired code, such as variable names or plotting routines, and letting the students fill-in the meat of the line. For examples, see: https://colab.research.google.com/drive/1VqH6iQ42p2M9VNh1Eo5mJ6OoeuYOpGWE?usp=sharing
