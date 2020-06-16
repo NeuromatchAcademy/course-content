@@ -42,11 +42,15 @@ For each tutorial:
    - A short description of what we want the student to do in this exercise
    - All equations necessary to implement the computation req. in the exercise (incl. links to external papers/websites for further reading)
    - A detailed itemized list called `Suggestions` (bullet point list) of the itemized actions we want the students to perform to complete the exercise
-   - Code skeleton, including all the plotting function req. for completing the exercise (incl. complete [PEP8 compliant](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) docstrings)
+   - Code skeleton, including all the plotting function req. for completing the exercise (incl. complete [Google-style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) docstrings)
+   - When a function needs to be filled in by the student, have it raise a `NotImplementedError` to indicate that it is part of an exercise. Add a message to the error so that this is explicit. Otherwise students may get confused about why the code won't run.
    - (optional) Include hints in the code skeleton to highlight where the students should complete the code and what Python functions they could use to complete it (e.g.: '#Hint: use the function `np.exp()` to exponentiate' )
    - (optional) A sample output of what the correct output of the exercise should look like. To prevent students from focussing on reproducing exactly the plots/sample outputs rather than understanding the core concepts, we provide them with the plotting functions and use the XKCD style for the expected sample outputs.
-5. Create sample answers for each tutorial, and so that the technical team can check the tutorials, and to facilitate training for the TAs before the summer school.
-6. Each tutorial stands on its own. Like a memorable story, set the context in the introduction, take the student forward through the exercises, and anchor learned points in the conclusion section.
+5. Create solutions for each excercise in the tutorial. This will allow the technical team to check the tutorials, and it will facilitate training for the TAs before the summer school.
+  - The sample answers should be written in a separate cell. The first line of the cell should begin with `# @title Solution`. This comment will signal that the cell should be removed from the student version of the tutorial.
+  - Make sure that later content doesn't depend on variables defined in these solution cells or on the output of the completed functions. Where necessary, you can "comment-out" such references and make it clear that the student should uncomment them once the exercise is complete. But it is better for the exercises to be self-contained.
+6. Tutorial notebooks should be able to execute from top-to-bottom without error, including after the solution cells are removed. This allows us to automatically enforce a minimum standard of correctness.
+7. Each tutorial stands on its own. Like a memorable story, set the context in the introduction, take the student forward through the exercises, and anchor learned points in the conclusion section.
 
 Have a look at the reference tutorial to see what a tutorial looks like in the end: [Bayes Day tutorial 1](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/Bayes/TA_solutions/BayesDay_Tutorial_1_solutions.ipynb)
 
