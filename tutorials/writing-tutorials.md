@@ -54,6 +54,8 @@ For each tutorial:
 
 Have a look at the reference tutorial to see what a tutorial looks like in the end: [Bayes Day tutorial 1](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/Bayes/TA_solutions/BayesDay_Tutorial_1_solutions.ipynb)
 
+There is also a collection of self-contained [Tutorial demos](./demos) illustrating invidual components.
+
 ## Reviewing
 
 * Talk to your day organizer before submitting tutorials to the [NMA course-content github repo](https://github.com/NeuromatchAcademy/course-content/)
