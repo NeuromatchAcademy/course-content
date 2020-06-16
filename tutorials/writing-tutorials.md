@@ -37,15 +37,16 @@ For each tutorial:
    - write `# @title` at the top of the cell, and click `...`>`Form`>`Hide code` to hide the code cell (special colab trickery)
    - check the notebook [`Installing Python libraries.ipynb`](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/utils/Installing%20Python%20libraries.ipynb) on how to install additional libraries or your custom library
 2. Describe the tutorial objectives using 2-3 sentences + bullet points
-3. Split the tutorial into 2-4 exercises. Each exercise should have:
+3. Start with a soft landing exercise to make students feel confident and relaxed.
+4. Split core tutorial content into additional 2-4 exercises. Each exercise should have:
    - A short description of what we want the student to do in this exercise
    - All equations necessary to implement the computation req. in the exercise (incl. links to external papers/websites for further reading)
    - A detailed itemized list called `Suggestions` (bullet point list) of the itemized actions we want the students to perform to complete the exercise
    - Code skeleton, including all the plotting function req. for completing the exercise (incl. complete [PEP8 compliant](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) docstrings)
    - (optional) Include hints in the code skeleton to highlight where the students should complete the code and what Python functions they could use to complete it (e.g.: '#Hint: use the function `np.exp()` to exponentiate' )
    - (optional) A sample output of what the correct output of the exercise should look like. To prevent students from focussing on reproducing exactly the plots/sample outputs rather than understanding the core concepts, we provide them with the plotting functions and use the XKCD style for the expected sample outputs.
-4. Create sample answers for each tutorial, and so that the technical team can check the tutorials, and to facilitate training for the TAs before the summer school.
-5. Each tutorial stands on its own. Like a memorable story, set the context in the introduction, take the student forward through the exercises, and anchor what was learned in the conclusion section.
+5. Create sample answers for each tutorial, and so that the technical team can check the tutorials, and to facilitate training for the TAs before the summer school.
+6. Each tutorial stands on its own. Like a memorable story, set the context in the introduction, take the student forward through the exercises, and anchor learned points in the conclusion section.
 
 Have a look at the reference tutorial to see what a tutorial looks like in the end: [Bayes Day tutorial 1](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/Bayes/TA_solutions/BayesDay_Tutorial_1_solutions.ipynb)
 
@@ -68,3 +69,4 @@ We recommend creating everything in colab, and when you're ready to pull the not
 ![Pull request](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/static/pull-request.png)
 
 * Once you've started a pull request, you can keep committing on top of the same branch. The pull request will be updated. To address reviewer comments, modify your colab, hit `File > Save a copy in GitHub` again, and save onto the same branch while you have your pull request open.
+
