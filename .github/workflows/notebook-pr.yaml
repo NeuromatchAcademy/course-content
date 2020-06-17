@@ -15,8 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -29,12 +33,33 @@ jobs:
           pip install -r requirements.txt
           pip install nbconvert
 
+      - name: Install XKCD fonts
+        run: |
+          sudo apt-get update -yq
+          sudo sh -c "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections"
+          sudo apt-get install msttcorefonts -qq
+          rm -f $HOME/.matplotlib/fontList.cache
+
       - name: Get changed files
         id: changes
         uses: trilom/file-changes-action@v1.2.4
         with:
           output: " "
 
-      - name : Process notebooks
+      - name: Process notebooks
         run: python ci/process_notebooks.py ${{ steps.changes.outputs.files}}
 
+      - name: Commit post-processed notebooks
+        if: ${{ success() }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add '**/*.ipynb'
+          git commit -m "Generate student and TA notebooks"
+
+      - name: Push post-processed notebooks
+        if: ${{ success() }}
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.head_ref }}
