@@ -16,6 +16,7 @@ These are the main areas for alignment and consistency:
 * Python guidelines and best practices from [Python-standards](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/python-standards.md)
 * Consistent math notation and formatting defined in [Standardized nomenclature, math, fonts](https://docs.google.com/document/d/1Z3Bc0oQA4a-y3xJU2mtIDMAOen1SO8AmUjkc3_xFOPM/edit)
 * Self-consistency: Each slide deck and notebook stands on its own, except for dependencies from other days
+* The Github repository has several demos of [example tutorial components](https://github.com/NeuromatchAcademy/course-content/tree/master/tutorials/demo)
 
 ## Content review workflow
 1. Content creators post links to new material on Slack channel `#content-reviews` with **comment permissions**.
@@ -24,3 +25,24 @@ These are the main areas for alignment and consistency:
 4. Materials migrate to Github after reaching initial draft status, and reviews continue there
 
 See [Content Review Sign-Up](https://docs.google.com/spreadsheets/d/1LtLEk0H7gkR34kXJVC3hICUsLwfabbSjTPSlterB-xg/edit) for additional instructions
+
+## Workflow for incorporation into the Github repostory
+After initial review, notebooks should be incorporated into the [NMA Github Repository](https://github.com/NeuromatchAcademy/course-content). This involves both manual and automated quality control.
+1. Once initial review is complete, Content Creators should "hand-off" the tutorial to their Review Day Chief. At this time, the tutorial content should be finished, but the notebook may be missing links to the finalized lecture videos. The hand-off is accomplished by having the Review Day Chief make a copy of the tutorial that they now own.
+2. The Review Day Chief should run their copy of the notebook from top-to-bottom on a fresh kernel (`Runtime -> Restart and run all`) and check that it succeeds without error.
+3. The Reivew Day Chief should upload their copy to Github:
+  - "File" -> "Save a copy in Github"
+  - Repository: `NeuromatchAcademy/course-content`
+  - Branch: `WxDy`
+    - Replace x and y with the appropriate week and day (e.g. W2D3)
+  - File path: `tutorials/WxDy-SubjectName/WxDy-Tutoriali.ipynb
+    - Replace `x`, `y`, `i`, and `$SubjectName`
+    - **Important**: Make sure the file name is correct; fixing them will be a pain
+4. The Reivew Day Chief should open a PR from the `WxDy` branch to `master`
+  - Assign Reviewers (@mwaskom, @mpbrigham, @patrickmineault)
+  - It is best to do this after all of the notebooks for a given day have been uploaded
+  - This will trigger an automated quality control workflow
+  - If the QC checks pass, student versions (solutions removed) will be created
+5. If the tutorials are missing final pieces (e.g. Youtube links), mark the PR as "draft"
+6. If the QC workflow fails, revise the notebook on Colab then repeat Step 3.
+7. Once the final pieces (e.g. video links) are in place, repeat Step 2 and Step 3, then remove the "draft" status from the PR on github and @ the reviewers for the merge.
