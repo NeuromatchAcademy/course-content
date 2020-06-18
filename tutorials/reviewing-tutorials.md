@@ -38,7 +38,7 @@ After initial review, notebooks should be incorporated into the [NMA Github Repo
   - File path: `tutorials/WxDy-SubjectName/WxDy-Tutoriali.ipynb
     - Replace `x`, `y`, `i`, and `$SubjectName`
     - **Important**: Make sure the file name is correct; fixing them will be a pain
-4. The Reivew Day Chief should open a PR from the `WxDy` branch to `master`
+4. The Review Day Chief should open a PR from the `WxDy` branch to `master`
   - Assign Reviewers (@mwaskom, @mpbrigham, @patrickmineault)
   - It is best to do this after all of the notebooks for a given day have been uploaded
   - This will trigger an automated quality control workflow
