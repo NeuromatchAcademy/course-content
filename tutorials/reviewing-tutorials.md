@@ -30,7 +30,7 @@ See [Content Review Sign-Up](https://docs.google.com/spreadsheets/d/1LtLEk0H7gkR
 After initial review, notebooks should be incorporated into the [NMA Github Repository](https://github.com/NeuromatchAcademy/course-content). This involves both manual and automated quality control.
 1. Once initial review is complete, Content Creators should "hand-off" the tutorial to their Review Day Chief. At this time, the tutorial content should be finished, but the notebook may be missing links to the finalized lecture videos. The hand-off is accomplished by having the Review Day Chief make a copy of the tutorial that they now own.
 2. The Review Day Chief should run their copy of the notebook from top-to-bottom on a fresh kernel (`Runtime -> Restart and run all`) and check that it succeeds without error.
-3. The Reivew Day Chief should upload their copy to Github:
+3. The Review Day Chief should upload their copy to Github:
   - "File" -> "Save a copy in Github"
   - Repository: `NeuromatchAcademy/course-content`
   - Branch: `WxDy`
