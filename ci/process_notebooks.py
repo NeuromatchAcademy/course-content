@@ -26,7 +26,10 @@ def main(arglist):
     args = parse_args(arglist)
 
     # Filter to only ipython notebook fikes
-    nb_paths = [arg for arg in args.files if arg.endswith(".ipynb")]
+    nb_paths = [
+        arg for arg in args.files
+        if arg.endswith(".ipynb") and "/student/" not in arg
+    ]
     if not nb_paths:
         print("No notebook files found")
         sys.exit(0)
