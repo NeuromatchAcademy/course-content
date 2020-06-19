@@ -41,7 +41,7 @@ After initial review, notebooks should be incorporated into the [NMA Github Repo
   - Repository: `NeuromatchAcademy/course-content`
   - Branch: `WxDy`
     - Replace `x` and `y` with the appropriate week and day (e.g. `W2D3`)
-  - File path: `tutorials/WxDy-$Topic/WxDy-Tutoriali.ipynb
+  - File path: `tutorials/WxDy-$Topic/WxDy-Tutoriali.ipynb`
     - Replace `x`, `y`, `i`, and `$Topic`
     - See the [tutorials directory](https://github.com/NeuromatchAcademy/course-content/tree/master/tutorials) for a list names to use for `$Topic`
     - **Important**: Double-check that the file name is correct; fixing it will be a pain
