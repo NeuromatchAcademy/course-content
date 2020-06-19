@@ -12,6 +12,7 @@
 import os
 import sys
 import argparse
+from copy import deepcopy
 import nbformat
 from traitlets.config import Config
 from nbconvert.exporters import RSTExporter
@@ -60,9 +61,13 @@ def main(arglist):
         try:
             executor.preprocess(nb)
         except Exception as err:
+            # Log the error, but then continue
             errors[nb_path] = err
         else:
             notebooks[nb_path] = nb
+            # Write out the executed version of the original notebook
+            with open(nb_path, "w") as f:
+                nbformat.write(nb, f)
 
     if errors or args.check_only:
         exit(errors)
@@ -97,10 +102,6 @@ def main(arglist):
             fname = fname.replace("../static", static_dir)
             with open(fname, "wb") as f:
                 f.write(imdata)
-
-        # Write out the executed version of the original notebook
-        with open(nb_path, "w") as f:
-            nbformat.write(nb, f)
 
     exit(errors)
 
