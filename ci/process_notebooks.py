@@ -12,7 +12,6 @@
 import os
 import sys
 import argparse
-from copy import deepcopy
 import nbformat
 from traitlets.config import Config
 from nbconvert.exporters import RSTExporter
