@@ -60,6 +60,7 @@ def main(arglist):
         try:
             executor.preprocess(nb)
         except Exception as err:
+            # Log the error, but then continue
             errors[nb_path] = err
         else:
             notebooks[nb_path] = nb
@@ -72,9 +73,15 @@ def main(arglist):
     # TODO Check notebook name format?
     # (If implemented, update the CI workflow to only run on tutorials)
 
-    # Remove solution code from notebooks and write out a "student" version
+    # Post-process notebooks to remove solution code and write both versions
     for nb_path, nb in notebooks.items():
 
+        # Write out the executed version of the original notebooks
+        print(f"Writing complete notebook to {nb_path}")
+        with open(nb_path, "w") as f:
+            nbformat.write(nb, f)
+
+        # Extract components of the notebook path
         nb_dir, nb_fname = os.path.split(nb_path)
         nb_name, _ = os.path.splitext(nb_fname)
 
@@ -97,10 +104,6 @@ def main(arglist):
             fname = fname.replace("../static", static_dir)
             with open(fname, "wb") as f:
                 f.write(imdata)
-
-        # Write out the executed version of the original notebook
-        with open(nb_path, "w") as f:
-            nbformat.write(nb, f)
 
     exit(errors)
 
