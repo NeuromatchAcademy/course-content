@@ -35,14 +35,15 @@ After initial review, notebooks should be incorporated into the [NMA Github Repo
   - Repository: `NeuromatchAcademy/course-content`
   - Branch: `WxDy`
     - Replace x and y with the appropriate week and day (e.g. W2D3)
-  - File path: `tutorials/WxDy-SubjectName/WxDy-Tutoriali.ipynb
-    - Replace `x`, `y`, `i`, and `$SubjectName`
-    - **Important**: Make sure the file name is correct; fixing them will be a pain
+  - File path: `tutorials/WxDy-Topic/WxDy-Tutoriali.ipynb
+    - Replace `x`, `y`, `i`, and `$Topic`
+    - See the [tutorials directory](https://github.com/NeuromatchAcademy/course-content/tree/master/tutorials) for a list names to use for `$Topic`
+    - **Important**: Double-check that the file name is correct; fixing it will be a pain
 4. The Review Day Chief should open a PR from the `WxDy` branch to `master`
   - Assign Reviewers (@mwaskom, @mpbrigham, @patrickmineault)
   - It is best to do this after all of the notebooks for a given day have been uploaded
   - This will trigger an automated quality control workflow
   - If the QC checks pass, student versions (solutions removed) will be created
-5. If the tutorials are missing final pieces (e.g. Youtube links), mark the PR as "draft"
+5. If the tutorials are missing final pieces (e.g. Youtube links), mark the PR as a "draft"
 6. If the QC workflow fails, revise the notebook on Colab then repeat Step 3.
 7. Once the final pieces (e.g. video links) are in place, repeat Step 2 and Step 3, then remove the "draft" status from the PR on github and @ the reviewers for the merge.
