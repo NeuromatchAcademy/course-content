@@ -65,9 +65,6 @@ def main(arglist):
             errors[nb_path] = err
         else:
             notebooks[nb_path] = nb
-            # Write out the executed version of the original notebook
-            with open(nb_path, "w") as f:
-                nbformat.write(nb, f)
 
     if errors or args.check_only:
         exit(errors)
@@ -77,9 +74,15 @@ def main(arglist):
     # TODO Check notebook name format?
     # (If implemented, update the CI workflow to only run on tutorials)
 
-    # Remove solution code from notebooks and write out a "student" version
+    # Post-process notebooks to remove solution code and write both versions
     for nb_path, nb in notebooks.items():
 
+        # Write out the executed version of the original notebooks
+        print(f"Writing complete notebook to {nb_path}")
+        with open(nb_path, "w") as f:
+            nbformat.write(nb, f)
+
+        # Extract components of the notebook path
         nb_dir, nb_fname = os.path.split(nb_path)
         nb_name, _ = os.path.splitext(nb_fname)
 
