@@ -44,9 +44,11 @@ After initial review, notebooks should be incorporated into the [NMA Github Repo
   - File path: `tutorials/WxDy-$Topic/WxDy-Tutorial$i.ipynb`
     - Replace `x`, `y`, `$Topic` and `$i`
     - See the [tutorials directory](https://github.com/NeuromatchAcademy/course-content/tree/master/tutorials) for a list names to use for `$Topic`
+    - E.g. `tutorials/W1D5-DimensionalityReduction/W1D5-Tutorial3.ipynb`
     - **Important**: Double-check that the file name is correct; fixing it will be a pain
-4. The Review Day Chief should open a PR from the `WxDy` branch to `master`
-  - Assign Reviewers (@mwaskom, @mpbrigham, @patrickmineault)
+4. The Review Day Chief should open a Pull Request (PR) from the `WxDy` branch to `master`
+  - To create a PR, click on 'course-content' at the top of the page to return to directory, then click on PR symbol.  
+  - On the right-hand side, click on the gear next to 'Reviewers' to select Github Reviewers (@mwaskom, @mpbrigham, @patrickmineault) to approve the PR.
   - It is best to do this after all of the notebooks for a given day have been uploaded
   - This will trigger an automated quality control workflow
   - If the QC checks pass, student versions (solutions removed) will be created
