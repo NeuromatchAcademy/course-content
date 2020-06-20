@@ -39,6 +39,7 @@ For each tutorial:
 2. Describe the tutorial objectives using 2-3 sentences + bullet points
 3. Start with a soft landing exercise to make students feel confident and relaxed.
 4. Split core tutorial content into additional 2-4 exercises. Each exercise should have:
+   - A markdown heading (i.e., `#### Excercise: <descriptive name>`) at the appropriate level to fit into the notebook outline.
    - A short description of what we want the student to do in this exercise
    - All equations necessary to implement the computation req. in the exercise (incl. links to external papers/websites for further reading)
    - A detailed itemized list called `Suggestions` (bullet point list) of the itemized actions we want the students to perform to complete the exercise
