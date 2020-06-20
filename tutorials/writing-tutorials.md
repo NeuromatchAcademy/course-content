@@ -34,7 +34,7 @@ Example tutorials are available at [NMA github course-content/tutorials](https:/
 
 For each tutorial:
 1. Import all necessary libraries, plotting settings and plotting functions in the top code cell of the tutorial
-   - write `# @title` at the top of the cell, and click `...`>`Form`>`Hide code` to hide the code cell (special colab trickery)
+   - write `# @title Imports` at the top of the cell, and click `...`>`Form`>`Hide code` to hide the code cell (special colab trickery)
    - check the notebook [`Installing Python libraries.ipynb`](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/utils/Installing%20Python%20libraries.ipynb) on how to install additional libraries or your custom library
 2. Describe the tutorial objectives using 2-3 sentences + bullet points
 3. Start with a soft landing exercise to make students feel confident and relaxed.
@@ -48,7 +48,7 @@ For each tutorial:
    - (optional) A sample output of what the correct output of the exercise should look like. To prevent students from focussing on reproducing exactly the plots/sample outputs rather than understanding the core concepts, we provide them with the plotting functions and use the XKCD style for the expected sample outputs.
 5. Create solutions for each excercise in the tutorial. This will allow the technical team to check the tutorials, and it will facilitate training for the TAs before the summer school.
    - See example [here](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/demo/Exercise_With_Solution.ipynb)
-   - The sample answers should be written in a separate cell. The first line of the cell should begin with `# @title Solution`. This comment will signal that the cell should be removed from the student version of the tutorial.
+   - The solutions should be written in a separate cell. The first line of the solution cell should begin with a comment that starts `# to_remove`. This comment will signal that the cell should be removed from the student version of the tutorial.
     - Make sure that later content doesn't depend on variables defined in these solution cells or on the output of the completed functions. Where necessary, you can "comment-out" such references and make it clear that the student should uncomment them once the exercise is complete. But it is better for the exercises to be self-contained.
 6. Tutorial notebooks should be able to execute from top-to-bottom without error, including after the solution cells are removed. This allows us to automatically enforce a minimum standard of correctness.
 7. Each tutorial stands on its own. Like a memorable story, set the context in the introduction, take the student forward through the exercises, and anchor learned points in the conclusion section.
