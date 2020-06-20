@@ -13,29 +13,29 @@
 # Course outline
 
 * [Week 1](#week-1)
-    * [Mon, July 13: What do models buy us?](#mon-july-13-what-do-models-buy-us)
-    * [Tue, July 14: How-to-model](#tue-july-14-how-to-model)
-    * [Wed, July 15: Model fitting](#wed-july-15-model-fitting)
-    * [Thu, July 16: Machine learning (ML) - decoding](#thu-july-16-machine-learning-ml---decoding)
-    * [Fri, July 17: Dimensionality reduction / manifolds](#fri-july-17-dimensionality-reduction--manifolds)
+    * [Mon, July 13: Model Types](#mon-july-13-model-types)
+    * [Tue, July 14: Modeling Practice](#tue-july-14-modeling-practice)
+    * [Wed, July 15: Model Fitting](#wed-july-15-model-fitting)
+    * [Thu, July 16: Machine Learning](#thu-july-16-machine-learning)
+    * [Fri, July 17: Dimensionality Reduction](#fri-july-17-dimensionality-reduction)
 * [Week 2](#week-2)
-    * [Mon, July 20: Bayes](#mon-july-20-bayes)
-    * [Tue, July 21: Time series 1 (linear systems)](#tue-july-21-time-series-1-linear-systems)
-    * [Wed, July 22: Time series 2 (decision making)](#wed-july-22-time-series-2-decision-making)
+    * [Mon, July 20: Bayesian Statistics](#mon-july-20-bayesian-statistics)
+    * [Tue, July 21: Linear Systems](#tue-july-21-linear-systems)
+    * [Wed, July 22: Decision Making](#wed-july-22-decision-making)
     * [Thu, July 23: Optimal control](#thu-july-23-optimal-control)
-    * [Fri, July 24: Reinforcement learning (RL)](#fri-july-24-reinforcement-learning-rl)
+    * [Fri, July 24: Reinforcement Learning](#fri-july-24-reinforcement-learning)
 * [Week 3](#week-3)
-    * [Mon, July 27: Real neurons](#mon-july-27-real-neurons)
-    * [Tue, July 28: What happens in dynamic networks?](#tue-july-28-what-happens-in-dynamic-networks)
-    * [Wed, July 29: Causality &amp; networks](#wed-july-29-causality--networks)
-    * [Thu, July 30: Deep learning (DL) 1](#thu-july-30-deep-learning-dl-1)
-    * [Fri, July 31: Deep learning (DL) 2](#fri-july-31-deep-learning-dl-2)
+    * [Mon, July 27: Real Neurons](#mon-july-27-real-neurons)
+    * [Tue, July 28: Dynamic Networks](#tue-july-28-dynamic-networks)
+    * [Wed, July 29: Network Causality](#wed-july-29-networks-causality)
+    * [Thu, July 30: Deep Learning 1](#thu-july-30-deep-learning-1)
+    * [Fri, July 31: Deep Learning 2](#fri-july-31-deep-learning-2)
 
 ----
 
 ## Week 1
 
-### Mon, July 13: What do models buy us?
+### Mon, July 13: Model Types
 
 **Description** Introduce different example model types (Marr 1-3, what/how/why) and the kinds of questions they can answer. Realize how different models map onto different datasets.
 
@@ -55,7 +55,7 @@
 
 ----
 
-### Tue, July 14: How-to-model
+### Tue, July 14: Modeling Practice
 
 **Description** Introduction of datasets (spikes, EEG, fMRI + behavior), and questions about them. These questions will foreshadow the whole summer school.
 
@@ -95,7 +95,7 @@
 
 ----
 
-### Thu, July 16: Machine learning (ML) - decoding
+### Thu, July 16: Machine Learning
 
 **Description** Introduction to machine learning. The commonly used approaches, how to avoid false positives, how to do it well
 
@@ -115,7 +115,7 @@
 
 ---- 
 
-### Fri, July 17: Dimensionality reduction / manifolds
+### Fri, July 17: Dimensionality Reduction
 
 **Description** Concept of dimensionality reduction, ways of doing it, what it means
 
@@ -144,7 +144,7 @@
 
 ## Week 2
 
-### Mon, July 20: Bayes
+### Mon, July 20: Bayesian Statistics
 
 **Description** Bayesian statistics, modeling of behavior, modeling of neural data, quantifying information
 
@@ -164,7 +164,7 @@
 
 ---- 
 
-### Tue, July 21: Time series 1 (linear systems)
+### Tue, July 21: Linear Systems
 
 **Description** How to make estimates over time, how the brain does it
 
@@ -184,7 +184,7 @@
 
 ---- 
 
-### Wed, July 22: Time series 2 (decision making)
+### Wed, July 22: Decision Making
 
 **Description** How we can make decisions when information comes in over time
 
@@ -204,7 +204,7 @@
 
 ---- 
 
-### Thu, July 23: Optimal control
+### Thu, July 23: Optimal Control
 
 **Description** We need to move gain info and reach goals
 
@@ -224,7 +224,7 @@
 
 ---- 
 
-### Fri, July 24: Reinforcement learning (RL)
+### Fri, July 24: Reinforcement Learning
 
 **Description** The setting of reinforcement learning and how it approximates the real world, behavior, and potential brain implementations
 
@@ -253,7 +253,7 @@
 
 ## Week 3
 
-### Mon, July 27: Real neurons
+### Mon, July 27: Real Neurons
 
 **Description** The things neurons are made of, channels, morphologies, neuromodulators, and plasticity
 
@@ -273,7 +273,7 @@
 
 ---- 
 
-### Tue, July 28: What happens in dynamic networks?
+### Tue, July 28: Dynamic Networks
 
 **Description** How single neurons create population dynamics
 
@@ -293,7 +293,7 @@
 
 ---- 
 
-### Wed, July 29: Causality & networks
+### Wed, July 29: Network Causality
 
 **Description** Ways of discovering causal relations, ways of estimating networks, what we can do with networks
 
@@ -313,7 +313,7 @@
 
 ---- 
 
-### Thu, July 30: Deep learning (DL) 1
+### Thu, July 30: Deep learning 1
 
 **Description** The concept of ANNs, how to train them,what they are made out of, convnets, and how to fit them to brains
 
@@ -333,7 +333,7 @@
 
 ---- 
 
-### Fri, July 31: Deep learning (DL) 2
+### Fri, July 31: Deep learning 2
 
 **Description** Deep learning in more advanced settings. Autoencoders for structure discovery, RNNs, and fitting them to brains
 
