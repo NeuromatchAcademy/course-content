@@ -42,10 +42,11 @@ For each tutorial:
    - A markdown heading (i.e., `#### Excercise: <descriptive name>`) at the appropriate level to fit into the notebook outline.
    - A short description of what we want the student to do in this exercise
    - All equations necessary to implement the computation req. in the exercise (incl. links to external papers/websites for further reading)
-   - A detailed itemized list called `Suggestions` (bullet point list) of the itemized actions we want the students to perform to complete the exercise
-   - Code skeleton, including all the plotting function req. for completing the exercise (incl. complete [Google-style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) docstrings)
-   - When a function needs to be filled in by the student, have it raise a `NotImplementedError` to indicate that it is part of an exercise. Add a message to the error so that this is explicit. Otherwise students may get confused about why the code won't run.
-   - (optional) Include hints in the code skeleton to highlight where the students should complete the code and what Python functions they could use to complete it (e.g.: '#Hint: use the function `np.exp()` to exponentiate' )
+   - A detailed bullet point list of the itemized actions we want the students to perform to complete the exercise
+   - Code skeleton, including all the plotting function req. for completing the exercise. Add `...` to indicate where students should fill in parts of the code. Comment out lines of code that aren't valid Python or that won't run until the exercise is complete.
+   - When the exercise would involve writing a function, provide a stub with all the parameters defined (including complete [Google-style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).
+   ocstrings). The stub function should raise a `NotImplementedError` to indicate that it is part of an exercise. Add a message to the error so that this is explicit. Otherwise students may get confused about why the code won't run.
+   - (optional) Include hints in the code skeleton to highlight where the students should complete the code and what Python functions they could use to complete it (e.g.: '# Hint: use the function `np.exp()` to exponentiate' )
    - (optional) A sample output of what the correct output of the exercise should look like. To prevent students from focussing on reproducing exactly the plots/sample outputs rather than understanding the core concepts, we provide them with the plotting functions and use the XKCD style for the expected sample outputs.
 5. Create solutions for each excercise in the tutorial. This will allow the technical team to check the tutorials, and it will facilitate training for the TAs before the summer school.
    - See example [here](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/demo/Exercise_With_Solution.ipynb)
