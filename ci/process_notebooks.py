@@ -150,7 +150,11 @@ def remove_solutions(nb, nb_name):
 def has_solution(cell):
     """Return True if cell is marked as containing an exercise solution."""
     cell_text = cell["source"].replace(" ", "").lower()
-    return cell_text.startswith("#@titlesolution")
+    first_line = cell_text.split("\n")[0]
+    return (
+        cell_text.startswith("#@titlesolution")
+        or "to_remove" in first_line
+    )
 
 
 def sequentially_executed(nb):
