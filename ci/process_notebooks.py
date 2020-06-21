@@ -171,14 +171,14 @@ def has_solution(cell):
 
 def has_colab_badge(cell):
     """Return True if cell has a Colab badge as an HTML element."""
-    return "colab_badge.svg" in cell["source"]
+    return "colab-badge.svg" in cell["source"]
 
 
 def redirect_colab_badge(cell):
     """Modify the Colab badge to point at the master branch on Github."""
     cell_text = cell["source"]
     p = re.compile(r"^(.+/NeuromatchAcademy/course-content/blob/)\w+(/.+$)")
-    return p.sub(r"\1master\2", cell_text)
+    cell["source"] = p.sub(r"\1master\2", cell_text)
 
 
 def sequentially_executed(nb):
