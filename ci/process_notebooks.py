@@ -171,7 +171,7 @@ def has_solution(cell):
 
 def has_colab_badge(cell):
     """Return True if cell has a Colab badge as an HTML element."""
-    return "colab_badge.svg" in cell["source"]
+    return "colab-badge.svg" in cell["source"]
 
 
 def redirect_colab_badge(cell):
