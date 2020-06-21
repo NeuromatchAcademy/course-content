@@ -120,9 +120,12 @@ def remove_solutions(nb, nb_name):
 
         if has_solution(cell):
 
-            # Simply remove solution cells without outputs
-
-            if not cell["outputs"]:
+            # Simply remove solution cells without output data
+            skip = (
+                not cell["outputs"]
+                or not any("data" in output for output in cell["outputs"])
+            )
+            if skip:
                 nb_cells.remove(cell)
                 continue
 
@@ -136,7 +139,10 @@ def remove_solutions(nb, nb_name):
             for j, output in enumerate(cell["outputs"]):
 
                 fname = f"../static/{nb_name}_Solution_{cell_id}_{j}.png"
-                image_data = a2b_base64(output.data["image/png"])
+                try:
+                    image_data = a2b_base64(output["data"]["image/png"])
+                except KeyError:
+                    continue
                 solution_resources[fname] = image_data
                 cell_images.append(fname)
 
