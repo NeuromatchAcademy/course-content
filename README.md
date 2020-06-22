@@ -10,8 +10,10 @@
 
 **Prerequisites**: [See here](https://github.com/NeuromatchAcademy/precourse)
 
-# Course outline
+**Welcome video**: [See here](https://www.youtube.com/playlist?list=PLkBQOLLbi18PS1Z8xH-MTcC4AAYiEVSP6)
 
+# Course outline
+ 
 * [Week 1](#week-1)
     * [Mon, July 13: Model Types](#mon-july-13-model-types)
     * [Tue, July 14: Modeling Practice](#tue-july-14-modeling-practice)
