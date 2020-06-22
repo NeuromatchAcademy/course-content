@@ -4,6 +4,7 @@
 - Check that the cells have been executed sequentially on a fresh kernel
 - Execute the notebook and report any errors encountered
 - Remove solution cells but retain any images they generated as static content
+- Redirect Colab-inserted badges
 - Write the executed version of the input notebook to its original path
 - Write the post-processed notebook to a student/ subdirectory
 - Write solution images to a static/ subdirectory
@@ -77,7 +78,7 @@ def main(arglist):
         # Loop through the cells and fix any Colab badges we encounter
         for cell in nb.get("cells", []):
             if has_colab_badge(cell):
-                redirect_colab_badge(cell)
+                redirect_colab_badge_to_master_branch(cell)
 
         # Write out the executed version of the original notebooks
         print(f"Writing complete notebook to {nb_path}")
@@ -95,6 +96,11 @@ def main(arglist):
         # Generate the student version and save it to a subdirectory
         print(f"Removing solutions from {nb_path}")
         student_nb, solution_resources = remove_solutions(nb, nb_name)
+
+        # Loop through cells and point the colab badge at the student version
+        for cell in nb.get("cells", []):
+            if has_colab_badge(cell):
+                redirect_colab_badge_to_student_version(cell)
 
         student_nb_path = os.path.join(student_dir, nb_fname)
         print(f"Writing student notebook to {student_nb_path}")
@@ -174,11 +180,18 @@ def has_colab_badge(cell):
     return "colab-badge.svg" in cell["source"]
 
 
-def redirect_colab_badge(cell):
+def redirect_colab_badge_to_master_branch(cell):
     """Modify the Colab badge to point at the master branch on Github."""
     cell_text = cell["source"]
     p = re.compile(r"^(.+/NeuromatchAcademy/course-content/blob/)\w+(/.+$)")
     cell["source"] = p.sub(r"\1master\2", cell_text)
+
+
+def redirect_colab_badge_to_student_version(cell):
+    """Modify the Colab badge to point at student version of the notebook."""
+    cell_text = cell["source"]
+    p = re.compile(r"(^.+/tutorials/W\dD\d-\w+)/(\w+\.ipynb.+)")
+    cell["source"] = p.sub(r"\1/student/\2", cell_text)
 
 
 def sequentially_executed(nb):
