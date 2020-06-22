@@ -166,8 +166,13 @@ def remove_solutions(nb, nb_dir, nb_name):
                 new_source += f"![Solution hint]({url})\n\n"
             cell["source"] = new_source
             cell["cell_type"] = "markdown"
-            del cell["outputs"]
-            del cell["execution_count"]
+            cell["metadata"]["colab_type"] = "text"
+            if "outputID" in cell["metadata"]:
+                del cell["metadata"]["outputId"]
+            if "outputs" in cell:
+                del cell["outputs"]
+            if "execution_count" in cell:
+                del cell["execution_count"]
 
     return nb, solution_resources
 
