@@ -163,7 +163,7 @@ def remove_solutions(nb, nb_dir, nb_name):
             new_source = "**Example output:**\n\n"
             for f in cell_images:
                 url = f"{GITHUB_RAW_URL}/tutorials/{tutorial_dir}/{f}"
-                new_source += f"{url}\n\n"
+                new_source += f"![Solution hint]({url})\n\n"
             cell["source"] = new_source
             cell["cell_type"] = "markdown"
             del cell["outputs"]
