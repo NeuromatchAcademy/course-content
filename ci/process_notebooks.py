@@ -124,7 +124,7 @@ def main(arglist):
 
 def remove_solutions(nb, nb_dir, nb_name):
     """Convert solution cells to markdown; embed images from Python output."""
-    _, tutorial_dir = os.path.splot(nb_dir)
+    _, tutorial_dir = os.path.split(nb_dir)
 
     solution_resources = {}
     nb_cells = nb.get("cells", [])
