@@ -20,6 +20,11 @@ import nbformat
 from nbconvert.preprocessors import ExecutePreprocessor
 
 
+GITHUB_RAW_URL = (
+    "https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master"
+)
+
+
 def main(arglist):
     """Process IPython notebooks from a list of files."""
     args = parse_args(arglist)
@@ -95,7 +100,7 @@ def main(arglist):
 
         # Generate the student version and save it to a subdirectory
         print(f"Removing solutions from {nb_path}")
-        student_nb, solution_resources = remove_solutions(nb, nb_name)
+        student_nb, solution_resources = remove_solutions(nb, nb_dir, nb_name)
 
         # Loop through cells and point the colab badge at the student version
         for cell in nb.get("cells", []):
@@ -110,15 +115,16 @@ def main(arglist):
         # Write the static files representing solutions for student notebooks
         print(f"Writing solution resources to {static_dir}")
         for fname, imdata in solution_resources.items():
-            fname = fname.replace("../static", static_dir)
+            fname = fname.replace("static", static_dir)
             with open(fname, "wb") as f:
                 f.write(imdata)
 
     exit(errors)
 
 
-def remove_solutions(nb, nb_name):
+def remove_solutions(nb, nb_dir, nb_name):
     """Convert solution cells to markdown; embed images from Python output."""
+    _, tutorial_dir = os.path.splot(nb_dir)
 
     solution_resources = {}
     nb_cells = nb.get("cells", [])
@@ -144,7 +150,7 @@ def remove_solutions(nb, nb_name):
 
             for j, output in enumerate(cell["outputs"]):
 
-                fname = f"../static/{nb_name}_Solution_{cell_id}_{j}.png"
+                fname = f"static/{nb_name}_Solution_{cell_id}_{j}.png"
                 try:
                     image_data = a2b_base64(output["data"]["image/png"])
                 except KeyError:
@@ -154,9 +160,10 @@ def remove_solutions(nb, nb_name):
 
             # Convert the solution cell to markdown, strip the source,
             # and embed the image as a link to static resource
-            new_source = "**Example output:**\n\n" + "\n\n".join([
-                f"<img src='{f}' align='left'>" for f in cell_images
-            ])
+            new_source = "**Example output:**\n\n"
+            for f in cell_images:
+                url = f"{GITHUB_RAW_URL}/tutorials/{tutorial_dir}/{f}"
+                new_source += f"{url}\n\n"
             cell["source"] = new_source
             cell["cell_type"] = "markdown"
             del cell["outputs"]
