@@ -16,6 +16,7 @@ import sys
 import argparse
 import hashlib
 from binascii import a2b_base64
+from copy import deepcopy
 import nbformat
 from nbconvert.preprocessors import ExecutePreprocessor
 
@@ -103,7 +104,7 @@ def main(arglist):
         student_nb, solution_resources = remove_solutions(nb, nb_dir, nb_name)
 
         # Loop through cells and point the colab badge at the student version
-        for cell in nb.get("cells", []):
+        for cell in student_nb.get("cells", []):
             if has_colab_badge(cell):
                 redirect_colab_badge_to_student_version(cell)
 
@@ -124,8 +125,8 @@ def main(arglist):
 
 def remove_solutions(nb, nb_dir, nb_name):
     """Convert solution cells to markdown; embed images from Python output."""
+    nb = deepcopy(nb)
     _, tutorial_dir = os.path.split(nb_dir)
-
     solution_resources = {}
     nb_cells = nb.get("cells", [])
     for i, cell in enumerate(nb_cells):
