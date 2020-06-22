@@ -2,7 +2,7 @@
 
 Tutorial notebooks are stored here, organized by each day.
 
-# W1D1 - Model Types
+# W1D1 - Model Types 
 
 [YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18NBjqgQzpeu-jMV9Kjr0Foj)
 
