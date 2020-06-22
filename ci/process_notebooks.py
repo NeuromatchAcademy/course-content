@@ -4,6 +4,7 @@
 - Check that the cells have been executed sequentially on a fresh kernel
 - Execute the notebook and report any errors encountered
 - Remove solution cells but retain any images they generated as static content
+- Redirect Colab-inserted badges
 - Write the executed version of the input notebook to its original path
 - Write the post-processed notebook to a student/ subdirectory
 - Write solution images to a static/ subdirectory
@@ -15,8 +16,14 @@ import sys
 import argparse
 import hashlib
 from binascii import a2b_base64
+from copy import deepcopy
 import nbformat
 from nbconvert.preprocessors import ExecutePreprocessor
+
+
+GITHUB_RAW_URL = (
+    "https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master"
+)
 
 
 def main(arglist):
@@ -77,7 +84,7 @@ def main(arglist):
         # Loop through the cells and fix any Colab badges we encounter
         for cell in nb.get("cells", []):
             if has_colab_badge(cell):
-                redirect_colab_badge(cell)
+                redirect_colab_badge_to_master_branch(cell)
 
         # Write out the executed version of the original notebooks
         print(f"Writing complete notebook to {nb_path}")
@@ -94,7 +101,12 @@ def main(arglist):
 
         # Generate the student version and save it to a subdirectory
         print(f"Removing solutions from {nb_path}")
-        student_nb, solution_resources = remove_solutions(nb, nb_name)
+        student_nb, solution_resources = remove_solutions(nb, nb_dir, nb_name)
+
+        # Loop through cells and point the colab badge at the student version
+        for cell in student_nb.get("cells", []):
+            if has_colab_badge(cell):
+                redirect_colab_badge_to_student_version(cell)
 
         student_nb_path = os.path.join(student_dir, nb_fname)
         print(f"Writing student notebook to {student_nb_path}")
@@ -104,16 +116,17 @@ def main(arglist):
         # Write the static files representing solutions for student notebooks
         print(f"Writing solution resources to {static_dir}")
         for fname, imdata in solution_resources.items():
-            fname = fname.replace("../static", static_dir)
+            fname = fname.replace("static", static_dir)
             with open(fname, "wb") as f:
                 f.write(imdata)
 
     exit(errors)
 
 
-def remove_solutions(nb, nb_name):
+def remove_solutions(nb, nb_dir, nb_name):
     """Convert solution cells to markdown; embed images from Python output."""
-
+    nb = deepcopy(nb)
+    _, tutorial_dir = os.path.split(nb_dir)
     solution_resources = {}
     nb_cells = nb.get("cells", [])
     for i, cell in enumerate(nb_cells):
@@ -138,7 +151,7 @@ def remove_solutions(nb, nb_name):
 
             for j, output in enumerate(cell["outputs"]):
 
-                fname = f"../static/{nb_name}_Solution_{cell_id}_{j}.png"
+                fname = f"static/{nb_name}_Solution_{cell_id}_{j}.png"
                 try:
                     image_data = a2b_base64(output["data"]["image/png"])
                 except KeyError:
@@ -148,13 +161,19 @@ def remove_solutions(nb, nb_name):
 
             # Convert the solution cell to markdown, strip the source,
             # and embed the image as a link to static resource
-            new_source = "**Example output:**\n\n" + "\n\n".join([
-                f"<img src='{f}' align='left'>" for f in cell_images
-            ])
+            new_source = "**Example output:**\n\n"
+            for f in cell_images:
+                url = f"{GITHUB_RAW_URL}/tutorials/{tutorial_dir}/{f}"
+                new_source += f"![Solution hint]({url})\n\n"
             cell["source"] = new_source
             cell["cell_type"] = "markdown"
-            del cell["outputs"]
-            del cell["execution_count"]
+            cell["metadata"]["colab_type"] = "text"
+            if "outputID" in cell["metadata"]:
+                del cell["metadata"]["outputId"]
+            if "outputs" in cell:
+                del cell["outputs"]
+            if "execution_count" in cell:
+                del cell["execution_count"]
 
     return nb, solution_resources
 
@@ -174,11 +193,18 @@ def has_colab_badge(cell):
     return "colab-badge.svg" in cell["source"]
 
 
-def redirect_colab_badge(cell):
+def redirect_colab_badge_to_master_branch(cell):
     """Modify the Colab badge to point at the master branch on Github."""
     cell_text = cell["source"]
     p = re.compile(r"^(.+/NeuromatchAcademy/course-content/blob/)\w+(/.+$)")
     cell["source"] = p.sub(r"\1master\2", cell_text)
+
+
+def redirect_colab_badge_to_student_version(cell):
+    """Modify the Colab badge to point at student version of the notebook."""
+    cell_text = cell["source"]
+    p = re.compile(r"(^.+/tutorials/W\dD\d-\w+)/(\w+\.ipynb.+)")
+    cell["source"] = p.sub(r"\1/student/\2", cell_text)
 
 
 def sequentially_executed(nb):
