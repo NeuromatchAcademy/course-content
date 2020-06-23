@@ -33,22 +33,25 @@ Markdown headings (`#`, `##`, `###`, etc.) can be used to automatically create h
 Example tutorials are available at [NMA github course-content/tutorials](https://github.com/NeuromatchAcademy/course-content/tree/master/tutorials).
 
 For each tutorial:
-1. Import all necessary libraries, plotting settings and plotting functions in the top code cell of the tutorial
-   - write `# @title` at the top of the cell, and click `...`>`Form`>`Hide code` to hide the code cell (special colab trickery)
+1. Import all necessary libraries, plotting settings and plotting functions in the top code cell(s) of the tutorial
+   - write `# @title Imports` (or other relevant title) at the top of each cell, and click `...`>`Form`>`Hide code` to hide the code cell (special colab trickery)
    - check the notebook [`Installing Python libraries.ipynb`](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/utils/Installing%20Python%20libraries.ipynb) on how to install additional libraries or your custom library
 2. Describe the tutorial objectives using 2-3 sentences + bullet points
 3. Start with a soft landing exercise to make students feel confident and relaxed.
 4. Split core tutorial content into additional 2-4 exercises. Each exercise should have:
+   - A markdown heading (i.e., `#### Excercise: <descriptive name>`) at the appropriate level to fit into the notebook outline.
    - A short description of what we want the student to do in this exercise
    - All equations necessary to implement the computation req. in the exercise (incl. links to external papers/websites for further reading)
-   - A detailed itemized list called `Suggestions` (bullet point list) of the itemized actions we want the students to perform to complete the exercise
-   - Code skeleton, including all the plotting function req. for completing the exercise (incl. complete [Google-style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) docstrings)
-   - When a function needs to be filled in by the student, have it raise a `NotImplementedError` to indicate that it is part of an exercise. Add a message to the error so that this is explicit. Otherwise students may get confused about why the code won't run.
-   - (optional) Include hints in the code skeleton to highlight where the students should complete the code and what Python functions they could use to complete it (e.g.: '#Hint: use the function `np.exp()` to exponentiate' )
+   - A detailed bullet point list of the itemized actions we want the students to perform to complete the exercise
+   - Code skeleton, including all the plotting function req. for completing the exercise. Add `...` to indicate where students should fill in parts of the code. Comment out lines of code that aren't valid Python or that won't run until the exercise is complete.
+   - When the exercise would involve writing a function, provide a stub with all the parameters defined (including complete [Google-style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).
+   ocstrings). The stub function should raise a `NotImplementedError` to indicate that it is part of an exercise. Add a message to the error so that this is explicit. Otherwise students may get confused about why the code won't run.
+   - (optional) Include hints in the code skeleton to highlight where the students should complete the code and what Python functions they could use to complete it (e.g.: '# Hint: use the function `np.exp()` to exponentiate' )
    - (optional) A sample output of what the correct output of the exercise should look like. To prevent students from focussing on reproducing exactly the plots/sample outputs rather than understanding the core concepts, we provide them with the plotting functions and use the XKCD style for the expected sample outputs.
 5. Create solutions for each excercise in the tutorial. This will allow the technical team to check the tutorials, and it will facilitate training for the TAs before the summer school.
-  - The sample answers should be written in a separate cell. The first line of the cell should begin with `# @title Solution`. This comment will signal that the cell should be removed from the student version of the tutorial.
-  - Make sure that later content doesn't depend on variables defined in these solution cells or on the output of the completed functions. Where necessary, you can "comment-out" such references and make it clear that the student should uncomment them once the exercise is complete. But it is better for the exercises to be self-contained.
+   - See example [here](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/demo/Exercise_With_Solution.ipynb)
+   - The solution should be written in a separate cell. The first line of the solution cell should begin with a comment that starts `# to_remove`. This comment will signal that the cell should be removed from the student version of the tutorial.
+    - Make sure that later content doesn't depend on variables defined in these solution cells or on the output of the completed functions. Where necessary, you can "comment-out" such references and make it clear that the student should uncomment them once the exercise is complete. But it is better for the exercises to be self-contained.
 6. Tutorial notebooks should be able to execute from top-to-bottom without error, including after the solution cells are removed. This allows us to automatically enforce a minimum standard of correctness.
 7. Each tutorial stands on its own. Like a memorable story, set the context in the introduction, take the student forward through the exercises, and anchor learned points in the conclusion section.
 
@@ -64,15 +67,5 @@ There is also a collection of self-contained [Tutorial demos](./demos) illustrat
 * [We use a branch-pull-request workflow for content](https://guides.github.com/introduction/flow/). You stage everything on your branch - you can mess up this branch as much as you want, it's 100% yours. Then when you're ready, you create a pull request to ask to merge your branch with the master branch (the stuff everybody sees). Add Marco and Patrick as reviewers. They'll review your notebooks, make comments, and after a couple of iterations, they will merge onto master.
 
 ## Colab & Github workflow
-
-We recommend creating everything in colab, and when you're ready to pull the notebook in, do it via this workflow: 
-
-* Use colab spacing standard: 2 spaces
-* Use `File` > `Save a copy in GitHub` in colab
-* Save into your daily branch (for example, `day06`). We've pre-made 15 branches just for you, but feel free to create a new one.
-* Once saved, go to https://github.com/NeuromatchAcademy/course-content. Github will invite you to start a pull request from your branch to `master`. Add Patrick and Marco as reviewers.
-
-![Pull request](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/static/pull-request.png)
-
-* Once you've started a pull request, you can keep committing on top of the same branch. The pull request will be updated. To address reviewer comments, modify your colab, hit `File > Save a copy in GitHub` again, and save onto the same branch while you have your pull request open.
+When you have final version of Colab, we'll pull into Github following this [workflow](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/reviewing-tutorials.md#workflow-for-incorporation-into-the-github-repostory)
 
