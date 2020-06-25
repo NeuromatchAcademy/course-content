@@ -33,9 +33,11 @@ Markdown headings (`#`, `##`, `###`, etc.) can be used to automatically create h
 Example tutorials are available at [NMA github course-content/tutorials](https://github.com/NeuromatchAcademy/course-content/tree/master/tutorials).
 
 For each tutorial:
-1. Import all necessary libraries, plotting settings and plotting functions in the top code cell(s) of the tutorial
-   - write `# @title Imports` (or other relevant title) at the top of each cell. We received feedback that students want to see the library imports, so don't hide this cell. For the rest (figure settings, helper functions, data loading), hide the cell: Left-click `...`>`Form`>`Hide code` (special colab trickery).
-   - Use a top code cell to set figure size to 8x6 inches, and remember to hide the cell. 
+1. Import all necessary libraries, in a separate code cell at the top of the tutorial. We received feedback that students want to see the library imports, so don't hide this cell or give it an `@title` since this squashes the code cell.
+2. For other setup cells (figure settings, helper functions, data loading):
+    - Write `# @title Imports` (or other relevant title) at the top of each cell.
+    - Hide the cell: Left-click `...`>`Form`>`Hide code` (special colab trickery).
+    - Include the following settings for figures:
       ```# @title Figure Settings  
       %matplotlib inline 
       fig_w, fig_h = (8, 6)
