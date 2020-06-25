@@ -110,7 +110,7 @@ def main(arglist):
         # Generate the student version and save it to a subdirectory
         print(f"Extracting solutions from {nb_path}")
         processed = extract_solutions(nb, nb_dir, nb_name)
-        student_nb, solution_resources, solution_snippets = processed
+        student_nb, static_images, solution_snippets = processed
 
         # Loop through cells and point the colab badge at the student version
         for cell in student_nb.get("cells", []):
@@ -125,9 +125,8 @@ def main(arglist):
 
         # Write the images extracted from the solution cells
         print(f"Writing solution images to {static_dir}")
-        for fname, imdata in solution_resources.items():
+        for fname, image in static_images.items():
             fname = fname.replace("static", static_dir)
-            image = Image.open(BytesIO(imdata))
             image.save(fname)
 
         # Write the solution snippets
@@ -145,7 +144,7 @@ def extract_solutions(nb, nb_dir, nb_name):
     nb = deepcopy(nb)
     _, tutorial_dir = os.path.split(nb_dir)
 
-    solution_resources = {}
+    static_images = {}
     solution_snippets = {}
 
     nb_cells = nb.get("cells", [])
@@ -160,7 +159,7 @@ def extract_solutions(nb, nb_dir, nb_name):
             cell_id = hashlib.sha1(cell_source.encode("utf-8")).hexdigest()[:8]
 
             # Extract image data from the cell outputs
-            cell_images = []
+            cell_images = {}
             for j, output in enumerate(cell.get("outputs", [])):
 
                 fname = f"static/{nb_name}_Solution_{cell_id}_{j}.png"
@@ -168,8 +167,8 @@ def extract_solutions(nb, nb_dir, nb_name):
                     image_data = a2b_base64(output["data"]["image/png"])
                 except KeyError:
                     continue
-                solution_resources[fname] = image_data
-                cell_images.append(fname)
+                cell_images[fname] = Image.open(BytesIO(image_data))
+                static_images.update(cell_images)
 
             # Clean up the cell source and assign a filename
             snippet = "\n".join(cell_source.split("\n")[1:])
@@ -177,18 +176,30 @@ def extract_solutions(nb, nb_dir, nb_name):
             solution_snippets[py_fname] = snippet
 
             # Convert the solution cell to markdown,
-            # embed the image as a link to static resource,
-            # And insert a link to the solution
-            new_source = ""
-            if cell_images:
-                new_source += "**Example output:**\n\n"
-            for f in cell_images:
-                url = f"{GITHUB_RAW_URL}/tutorials/{tutorial_dir}/{f}"
-                img = f"<img alt='Solution hint' align='left' src={url}>\n\n"
-                new_source += img
+            # Insert a link to the solution snippet script on github,
+            # and embed the image as a link to static file (also on github)
+            py_url = f"{GITHUB_TREE_URL}/tutorials/{tutorial_dir}/{py_fname}"
+            new_source = f"[*Click for solution*]({py_url})\n\n"
 
-            url = f"{GITHUB_TREE_URL}/tutorials/{tutorial_dir}/{py_fname}"
-            new_source += f"[Click for solution]({url})"
+            if cell_images:
+                new_source += "*Example output:*\n\n"
+                for f, img in cell_images.items():
+
+                    url = f"{GITHUB_RAW_URL}/tutorials/{tutorial_dir}/{f}"
+
+                    # Handle matplotlib retina mode
+                    dpi_w, dpi_h = img.info["dpi"]
+                    w = img.width // (dpi_w // 72)
+                    h = img.height // (dpi_h // 72)
+
+                    tag_args = " ".join([
+                        "alt='Solution hint'",
+                        "align='left'",
+                        f"width={w}",
+                        f"height={h}",
+                        f"src={url}",
+                    ])
+                    new_source += f"<img {tag_args}>\n\n"
 
             cell["source"] = new_source
             cell["cell_type"] = "markdown"
@@ -200,7 +211,7 @@ def extract_solutions(nb, nb_dir, nb_name):
             if "execution_count" in cell:
                 del cell["execution_count"]
 
-    return nb, solution_resources, solution_snippets
+    return nb, static_images, solution_snippets
 
 
 def has_solution(cell):
