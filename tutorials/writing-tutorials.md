@@ -33,8 +33,17 @@ Markdown headings (`#`, `##`, `###`, etc.) can be used to automatically create h
 Example tutorials are available at [NMA github course-content/tutorials](https://github.com/NeuromatchAcademy/course-content/tree/master/tutorials).
 
 For each tutorial:
-1. Import all necessary libraries, plotting settings and plotting functions in the top code cell(s) of the tutorial
-   - write `# @title Imports` (or other relevant title) at the top of each cell, and click `...`>`Form`>`Hide code` to hide the code cell (special colab trickery)
+1. Import all necessary libraries, in a separate code cell at the top of the tutorial. We received feedback that students want to see the library imports, so don't hide this cell or give it an `@title` since this squashes the code cell.
+2. For other setup cells (figure settings, helper functions, data loading):
+    - Write `# @title Figure Settings` (or other relevant title) at the top of each cell.
+    - Hide the cell: Left-click `...`>`Form`>`Hide code` (special colab trickery).
+    - Include the following settings for figures:
+      ```# @title Figure Settings  
+      %matplotlib inline 
+      fig_w, fig_h = (8, 6)
+      plt.rcParams.update({'figure.figsize': (fig_w, fig_h)})
+      %config InlineBackend.figure_format = 'retina'
+
    - check the notebook [`Installing Python libraries.ipynb`](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/utils/Installing%20Python%20libraries.ipynb) on how to install additional libraries or your custom library
 2. Describe the tutorial objectives using 2-3 sentences + bullet points
 3. Start with a soft landing exercise to make students feel confident and relaxed.
