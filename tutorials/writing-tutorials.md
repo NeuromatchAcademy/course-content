@@ -36,11 +36,11 @@ For each tutorial:
 1. Import all necessary libraries, plotting settings and plotting functions in the top code cell(s) of the tutorial
    - write `# @title Imports` (or other relevant title) at the top of each cell. We received feedback that students want to see the library imports, so don't hide this cell. For the rest (figure settings, helper functions, data loading), hide the cell: Left-click `...`>`Form`>`Hide code` (special colab trickery).
    - Use a top code cell to set figure size to 8x6 inches, and remember to hide the cell. 
-      `# @title Figure Settings`
-      `%matplotlib inline`
-      `fig_w, fig_h = (8, 6)`
-      `plt.rcParams.update({'figure.figsize': (fig_w, fig_h)})`
-      `%config InlineBackend.figure_format = 'retina'`
+      ```# @title Figure Settings  
+      %matplotlib inline' 
+      fig_w, fig_h = (8, 6)'
+      plt.rcParams.update({'figure.figsize': (fig_w, fig_h)})`
+      %config InlineBackend.figure_format = 'retina'```
 
    - check the notebook [`Installing Python libraries.ipynb`](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/utils/Installing%20Python%20libraries.ipynb) on how to install additional libraries or your custom library
 2. Describe the tutorial objectives using 2-3 sentences + bullet points
