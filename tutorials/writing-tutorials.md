@@ -35,7 +35,7 @@ Example tutorials are available at [NMA github course-content/tutorials](https:/
 For each tutorial:
 1. Import all necessary libraries, in a separate code cell at the top of the tutorial. We received feedback that students want to see the library imports, so don't hide this cell or give it an `@title` since this squashes the code cell.
 2. For other setup cells (figure settings, helper functions, data loading):
-    - Write `# @title Imports` (or other relevant title) at the top of each cell.
+    - Write `# @title Figure Settings` (or other relevant title) at the top of each cell.
     - Hide the cell: Left-click `...`>`Form`>`Hide code` (special colab trickery).
     - Include the following settings for figures:
       ```# @title Figure Settings  
