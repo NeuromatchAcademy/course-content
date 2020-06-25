@@ -17,7 +17,9 @@ import re
 import sys
 import argparse
 import hashlib
+from io import BytesIO
 from binascii import a2b_base64
+from PIL import Image
 from copy import deepcopy
 import nbformat
 from nbconvert.preprocessors import ExecutePreprocessor
@@ -125,8 +127,8 @@ def main(arglist):
         print(f"Writing solution images to {static_dir}")
         for fname, imdata in solution_resources.items():
             fname = fname.replace("static", static_dir)
-            with open(fname, "wb") as f:
-                f.write(imdata)
+            image = Image.open(BytesIO(imdata))
+            image.save(fname)
 
         # Write the solution snippets
         print(f"Writing solution snippets to {solutions_dir}")
@@ -182,7 +184,8 @@ def extract_solutions(nb, nb_dir, nb_name):
                 new_source += "**Example output:**\n\n"
             for f in cell_images:
                 url = f"{GITHUB_RAW_URL}/tutorials/{tutorial_dir}/{f}"
-                new_source += f"![Solution hint]({url})\n\n"
+                img = f"<img alt='Solution hint' align='left' src={url}>\n\n"
+                new_source += img
 
             url = f"{GITHUB_TREE_URL}/tutorials/{tutorial_dir}/{py_fname}"
             new_source += f"[Click for solution]({url})"
