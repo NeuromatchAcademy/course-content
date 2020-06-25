@@ -2,12 +2,14 @@
 
 - Filter input file list for .ipynb files
 - Check that the cells have been executed sequentially on a fresh kernel
-- Execute the notebook and report any errors encountered
-- Remove solution cells but retain any images they generated as static content
+- Execute the notebook and fail if errors are encountered
+- Extract solution code and write a .py file witht the solution
+- Replace solution cells with a "hint" image and a link to the solution code
 - Redirect Colab-inserted badges
 - Write the executed version of the input notebook to its original path
 - Write the post-processed notebook to a student/ subdirectory
 - Write solution images to a static/ subdirectory
+- Write solution code to a solutions/ subdirectory
 
 """
 import os
