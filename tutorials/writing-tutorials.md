@@ -40,7 +40,7 @@ For each tutorial:
       %matplotlib inline 
       fig_w, fig_h = (8, 6)
       plt.rcParams.update({'figure.figsize': (fig_w, fig_h)})
-      %config InlineBackend.figure_format = 'retina'```
+      %config InlineBackend.figure_format = 'retina'
 
    - check the notebook [`Installing Python libraries.ipynb`](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/utils/Installing%20Python%20libraries.ipynb) on how to install additional libraries or your custom library
 2. Describe the tutorial objectives using 2-3 sentences + bullet points
