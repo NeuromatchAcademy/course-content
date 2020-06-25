@@ -168,7 +168,7 @@ def extract_solutions(nb, nb_dir, nb_name):
                 except KeyError:
                     continue
                 cell_images[fname] = Image.open(BytesIO(image_data))
-                static_images.update(cell_images)
+            static_images.update(cell_images)
 
             # Clean up the cell source and assign a filename
             snippet = "\n".join(cell_source.split("\n")[1:])
