@@ -64,7 +64,8 @@ def main(arglist):
         if not sequentially_executed(nb):
             if args.require_sequntial:
                 err = (
-                    "Notebook is not sequentially executed on a fresh kernel."
+                    "Notebook is not sequentially executed on a fresh kernel.\n"
+                    "Please do 'Restart and run all' before pushing to Github."
                 )
                 errors[nb_path] = err
                 continue
