@@ -63,7 +63,10 @@ def main(arglist):
 
         if not sequentially_executed(nb):
             if args.require_sequntial:
-                errors[nb_path] = "Notebook is not sequentially executed."
+                err = (
+                    "Notebook is not sequentially executed on a fresh kernel."
+                )
+                errors[nb_path] = err
                 continue
 
         # Run the notebook from top to bottom, catching errors
