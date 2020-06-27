@@ -49,18 +49,18 @@ While it's helpful to have multiple people handle the work of merging the tutori
   - Select the course repository: (`NeuromatchAcademy/course-content`)
   - Select your feature branch: (e.g. `WxDy`)
   - Write out the complete file path, using the standardized template:
-    - `tutorials/W{x}D{y}-{Topic}/WxDy_Tutorial{i}.ipynb`
+    - `tutorials/W{x}D{y}_{Topic}/WxDy_Tutorial{i}.ipynb`
     - Replace `{x}`, `{y}`, `{Topic}` and `{i}`
-    - See the [tutorials directory](https://github.com/NeuromatchAcademy/course-content/tree/master/tutorials) for a list names to use for `{Topic}`
-    - Note: the directory name uses a dash (`-`), but the filename uses an underscore (`_`). This is regrettable, but please maintain the convention.
-    - An example filename will look like this: `tutorials/W1D5-DimensionalityReduction/W1D5_Tutorial3.ipynb`
-    - Don't copy the filename from a rich text display (e.g. the Github UI), which seems to produce duplicate files.
+    - See the [tutorials directory](https://github.com/NeuromatchAcademy/course-content/tree/master/tutorials) for a list of names to use for `{Topic}`
+    - An example filename will look like this: `tutorials/W1D5_DimensionalityReduction/W1D5_Tutorial3.ipynb`
+    - Don't copy the filename from a rich text display (e.g. the Github UI), because mixing unicode and ASCII can produce duplicate files. Copying the path from the URL bar works.
   - Make sure that "Include a link to Colaboratory" remains checked.
   - **Important**: Double-check that the file path is correct before pushing. Fixing incorrect names is a substantial pain, because multiple derivative files will be created using the name you push.
 4. Repeat Step 3 with the other tutorials for that day.
 5. On Github, open a Pull Request from your feature branch onto `master`.
 6. Opening the PR will trigger the notebook CI workflow. This will (1) run QC checks on the notebooks and (2) create student versions and derivative static files (solution images and scripts).
   - If the checks fail, click through to the Github Action log and try to figure out what's wrong (or ask for help on Slack).
+  - Fix the problem on Colab, then repeat step 3 for that notebook. This will trigger a re-run of the CI workflow.
 7. All PRs must be approved by someone else with commit rights to the repository before they can be merged. You can select reviewers in the upper-right-hand corner of the Pull Request UI. `@mwaskom`, `@patrickmineault`, or your week chief are good reviewers.
 8. Do visual checks of the processed and derivative files to make sure the student versions look correct.
   - The embedded "Open in Colab badge" is modified as part of the CI workflow to point towards the master branch, so you will need to manually change the URL to point towards the feature branch if you want to open on Colab.
