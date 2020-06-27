@@ -32,7 +32,9 @@ See [Content Review Sign-Up](https://docs.google.com/spreadsheets/d/1LtLEk0H7gkR
 
 ## Workflow for incorporation into the Github repostory
 
-Most of the notebook preparation is coordinated on Google Drive by sharing/tracking links. But after review and waxing, notebooks should be incorporated into the [NMA Github Repository](https://github.com/NeuromatchAcademy/course-content). This involves both manual and automated quality control. Here is a rough guide to the steps you should follow; it is best to communicate on Slack about what you are doing (`@Michael Waskom` is the best reference).
+Most of the notebook preparation is coordinated on Google Drive by making copies and sharing/tracking links. But after review and waxing, notebooks should be incorporated into the [NMA Github Repository](https://github.com/NeuromatchAcademy/course-content). Github is the canonical source for the version of the tutorials that students will actually see, so it is important to get this process right.
+
+The process involves both automated and manual quality control. Here is a guide to the basic steps you should follow. If you are new to the process, it is best to communicate on Slack about what you are doing (`@Michael Waskom` is the best reference).
 
 While it's helpful to have multiple people handle the work of merging the tutorials, if you're not familiar/confident with Github, feel free to hand the job off (just coordinate on Slack).
 
