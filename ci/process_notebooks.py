@@ -5,6 +5,7 @@
 - Execute the notebook and fail if errors are encountered
 - Extract solution code and write a .py file witht the solution
 - Replace solution cells with a "hint" image and a link to the solution code
+- Make the name that Colab uses match the file path
 - Redirect Colab-inserted badges
 - Write the executed version of the input notebook to its original path
 - Write the post-processed notebook to a student/ subdirectory
@@ -92,19 +93,23 @@ def main(arglist):
     # Post-process notebooks to remove solution code and write both versions
     for nb_path, nb in notebooks.items():
 
+        # Extract components of the notebook path
+        nb_dir, nb_fname = os.path.split(nb_path)
+        nb_name, _ = os.path.splitext(nb_fname)
+
         # Loop through the cells and fix any Colab badges we encounter
         for cell in nb.get("cells", []):
             if has_colab_badge(cell):
                 redirect_colab_badge_to_master_branch(cell)
 
+        # Set the colab metadata to have the notebook name match the filepath
+        if "colab" in nb["metadata"]:
+            nb["metadata"]["colab"]["name"] = f"NeuromatchAcademy_{nb_name}"
+
         # Write out the executed version of the original notebooks
         print(f"Writing complete notebook to {nb_path}")
         with open(nb_path, "w") as f:
             nbformat.write(nb, f)
-
-        # Extract components of the notebook path
-        nb_dir, nb_fname = os.path.split(nb_path)
-        nb_name, _ = os.path.splitext(nb_fname)
 
         # Create subdirectories, if they don't exist
         student_dir = make_sub_dir(nb_dir, "student")
