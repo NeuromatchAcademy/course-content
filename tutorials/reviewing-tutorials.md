@@ -36,7 +36,11 @@ Most of the notebook preparation is coordinated on Google Drive by sharing/track
 
 While it's helpful to have multiple people handle the work of merging the tutorials, if you're not familiar/confident with Github, feel free to hand the job off (just coordinate on Slack).
 
-1. Create a new feature branch off of master in the `NeuromatchAcademy/course-content` repository. (In the github UI, this can be accomplished from the `Branch` dropdown menu). Include `WxDy` in the name. It is best to branch off master at the time you're ready to push your tutorials, so that the CI will run the latest version of the notebook processing workflow. For the CI workflow to run properly, the PR must be made from a feature branch on the main repository, not a fork.
+1. Create a new feature branch off of master in the `NeuromatchAcademy/course-content` repository.
+  - In the github UI, this can be accomplished from the `Branch` dropdown menu.
+  - Include `WxDy` in the name. (Replace `x` and `y` to match your day code).
+  - It is best to branch off master at the time you're ready to push your tutorials, so that the CI will run the latest version of the notebook processing workflow.
+  - For the CI workflow to run properly, the PR must be made from a feature branch on the main repository, not a fork.
 2. Notebooks are required to have a sequential execution history on a fresh kernel. This will be automatically checked as part of CI. Before you push, execute the entire notebook (`Runtime -> Restart and run all` in the Colab menu) and make sure it completes without any errors. Then save the notebook.
 3. Push the notebook from Colab to Github:
   - `File -> Save a copy in Github` in the Colab menu
@@ -53,8 +57,11 @@ While it's helpful to have multiple people handle the work of merging the tutori
   - **Important**: Double-check that the file path is correct before pushing. Fixing incorrect names is a substantial pain, because multiple derivative files will be created using the name you push.
 4. Repeat Step 3 with the other tutorials for that day.
 5. On Github, open a Pull Request from your feature branch onto `master`.
-6. Opening the PR will trigger the notebook CI workflow. This will (1) run QC checks on the notebooks and (2) create student versions and derivative static files (solution images and scripts). If the checks fail, click through to the Github Action log and try to figure out (or ask for help on Slack).
-7. All PRs must be approved by someone else with commit rights to the repository before they can be merged. You can select reviewers in the upper-right-hand corner of the Pull Request UI. `@mwaskom`, `@patrickmineault`, or your Week chief are good reviewrs.
-8. Do visual checks of the processed and derivative files to make sure the student version looks correct. The embedded "Open in Colab badge" is modified as part of the CI workflow to point towards the master branch, so you will need to manually change the URL to point towards the feature branch. The links to the solution images and scripts will also reference `master` so those won't be populated yet.
+6. Opening the PR will trigger the notebook CI workflow. This will (1) run QC checks on the notebooks and (2) create student versions and derivative static files (solution images and scripts).
+  - If the checks fail, click through to the Github Action log and try to figure out what's wrong (or ask for help on Slack).
+7. All PRs must be approved by someone else with commit rights to the repository before they can be merged. You can select reviewers in the upper-right-hand corner of the Pull Request UI. `@mwaskom`, `@patrickmineault`, or your week chief are good reviewers.
+8. Do visual checks of the processed and derivative files to make sure the student versions look correct.
+  - The embedded "Open in Colab badge" is modified as part of the CI workflow to point towards the master branch, so you will need to manually change the URL to point towards the feature branch if you want to open on Colab.
+  - The links to the solution images and scripts will also reference `master` so those won't be populated yet.
 9. If everything looks good, the reviewer should approve the PR and then do a squash-merge onto master.
 10. Delete the feature branch after the merge is complete.
