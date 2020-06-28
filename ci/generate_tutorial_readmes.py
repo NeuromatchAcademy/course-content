@@ -15,6 +15,8 @@ def main():
         "",
     ]
 
+    playlist_urls = load_youtube_playlist_urls()
+
     day_paths = sorted(glob("tutorials/W?D?_*"))
     for day_path in day_paths:
 
@@ -43,6 +45,15 @@ def main():
             f"## {day_code} - {topic}",
             "",
         ])
+
+        # Add a link to the YouTube lecture playlist, if we have one
+        youtube_url = playlist_urls.get(day_code, None)
+        if youtube_url is not None:
+            course_readme_text.extend([
+                f"[YouTube Playlist]({youtube_url})"
+                "",
+            ])
+
         course_readme_text.extend(write_badge_table(student_notebooks))
         course_readme_text.append("\n")
 
@@ -69,6 +80,13 @@ def main():
     # Write the course README file
     with open("tutorials/README.md", "w") as f:
         f.write("\n".join(course_readme_text))
+
+
+def load_youtube_playlist_urls():
+    """Create a mapping from day code to youtube link based on text file."""
+    with open("tutorials/youtube_playlists.txt") as f:
+        lines = f.read().split("\n")
+    return dict(tuple(line.split(" ")) for line in lines)
 
 
 def write_badge_table(notebooks):
