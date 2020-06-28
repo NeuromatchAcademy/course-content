@@ -65,10 +65,10 @@
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    0:00-0:30\*   |    Intro / keynote & tutorial setup   |    How to approach modeling                                           |
 |    0:30-0:45     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
-|    0:50-2:05     |    Tutorials 1 & 2 + nano-lectures    |    Framing the question                                               |
+|    0:50-2:05     |    Tutorials 1 + nano-lectures        |    Framing the question                                               |
 |    2:05-2:25     |    Discussion 1                       |    Discussion with pod TA                                             |
 |    2:25-3:25     |    Big break                          |    BREAK                                                              |
-|    3:25-4:40     |    Tutorials 3 & 4 + nano-lectures    |    Model implementation and testing                                   |
+|    3:25-4:40     |    Tutorials 2 + nano-lectures        |    Model implementation and testing                                   |
 |    4:40-5:00     |    Discussion 2                       |    Discussion with pod TA                                             |
 |    5:05-5:35     |    Outro                              |    Recap session, the modeling process                                |
 |    5:35-6:00     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
