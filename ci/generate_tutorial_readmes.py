@@ -91,9 +91,11 @@ def load_youtube_playlist_urls():
 
 def write_badge_table(notebooks):
     """Make a markdown table with colab/nbviewer badge links."""
+
+    # Add the table header
     table_text = [
-        "|   | Runnable | Static |",
-        "| - | -------- | ------ |",
+        "|   | Run | View |",
+        "| - | --- | ---- |",
     ]
 
     # Add each row of the table
