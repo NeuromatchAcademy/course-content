@@ -59,7 +59,7 @@
 
 ### Tue, July 14: Modeling Practice
 
-**Description** Introduction of datasets (spikes, EEG, fMRI + behavior), and questions about them. These questions will foreshadow the whole summer school.
+**Description** Introduction to the process of building models.
 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
