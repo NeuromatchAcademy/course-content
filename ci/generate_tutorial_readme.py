@@ -9,6 +9,7 @@ from glob import glob
 
 def main():
 
+    # Initialize the lines in tutorials/README.md
     course_readme_text = [
         "# Neuromatch Academy Tutorial Notebooks",
         "",
@@ -29,7 +30,7 @@ def main():
                 topic_words[-1] += letter
         topic = " ".join(topic_words)
 
-        # Note: this will fail if we have 10 notebooks
+        # Note: this will fail if we have 10+ notebooks
         notebooks = sorted(glob(f"{day_path}/*.ipynb"))
 
         if not notebooks:
@@ -37,13 +38,11 @@ def main():
 
         student_notebooks = get_student_links(notebooks)
 
-        # Build the table header
+        # Write the day information into the course README
         course_readme_text.extend([
             f"## {day_code} - {topic}",
             "",
         ])
-
-        # Build the main table with student notebook links
         course_readme_text.extend(write_badge_table(student_notebooks))
         course_readme_text.append("\n")
 
@@ -63,7 +62,7 @@ def main():
         ])
         day_readme_text.extend(write_badge_table(student_notebooks))
 
-        # Write the course README file
+        # Write the day README file
         with open(f"{day_path}/README.md", "w") as f:
             f.write("\n".join(day_readme_text))
 
@@ -73,7 +72,7 @@ def main():
 
 
 def write_badge_table(notebooks):
-
+    """Make a markdown table with colab/nbviewer badge links."""
     table_text = [
         "|   | Runnable | Static |",
         "| - | -------- | ------ |",
@@ -93,7 +92,7 @@ def write_badge_table(notebooks):
 
 
 def get_student_links(instructor_notebooks):
-
+    """Convert a list of instructor notebook paths to student versions."""
     student_notebooks = []
     for instructor_nb in instructor_notebooks:
         day_path, nb_fname = os.path.split(instructor_nb)

@@ -47,7 +47,10 @@ jobs:
       - name: Process notebooks
         run: python ci/process_notebooks.py ${{ steps.changes.outputs.files}}
 
-      - name: Commit post-processed notebooks
+      - name: Update READMEs
+        run: python ci/generate_tutorial_readmes.py
+
+      - name: Commit processed files
         if: ${{ success() }}
         run: |
           git config --local user.email "action@github.com"
