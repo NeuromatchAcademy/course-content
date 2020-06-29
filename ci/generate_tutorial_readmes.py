@@ -86,7 +86,7 @@ def load_youtube_playlist_urls():
     """Create a mapping from day code to youtube link based on text file."""
     with open("tutorials/youtube_playlists.txt") as f:
         lines = f.read().split("\n")
-    return dict(tuple(line.split(" ")) for line in lines)
+    return dict(tuple(line.split(" ")) for line in lines if line != '')
 
 
 def write_badge_table(notebooks):
