@@ -2,12 +2,15 @@
 
 - Filter input file list for .ipynb files
 - Check that the cells have been executed sequentially on a fresh kernel
-- Execute the notebook and report any errors encountered
-- Remove solution cells but retain any images they generated as static content
+- Execute the notebook and fail if errors are encountered
+- Extract solution code and write a .py file witht the solution
+- Replace solution cells with a "hint" image and a link to the solution code
+- Make the name that Colab uses match the file path
 - Redirect Colab-inserted badges
 - Write the executed version of the input notebook to its original path
 - Write the post-processed notebook to a student/ subdirectory
 - Write solution images to a static/ subdirectory
+- Write solution code to a solutions/ subdirectory
 
 """
 import os
@@ -15,7 +18,9 @@ import re
 import sys
 import argparse
 import hashlib
+from io import BytesIO
 from binascii import a2b_base64
+from PIL import Image
 from copy import deepcopy
 import nbformat
 from nbconvert.preprocessors import ExecutePreprocessor
@@ -23,6 +28,9 @@ from nbconvert.preprocessors import ExecutePreprocessor
 
 GITHUB_RAW_URL = (
     "https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master"
+)
+GITHUB_TREE_URL = (
+    "https://github.com/NeuromatchAcademy/course-content/tree/master/"
 )
 
 
@@ -56,7 +64,12 @@ def main(arglist):
 
         if not sequentially_executed(nb):
             if args.require_sequntial:
-                errors[nb_path] = "Notebook is not sequentially executed."
+                err = (
+                    "Notebook is not sequentially executed on a fresh kernel."
+                    "\n"
+                    "Please do 'Restart and run all' before pushing to Github."
+                )
+                errors[nb_path] = err
                 continue
 
         # Run the notebook from top to bottom, catching errors
@@ -81,90 +94,123 @@ def main(arglist):
     # Post-process notebooks to remove solution code and write both versions
     for nb_path, nb in notebooks.items():
 
+        # Extract components of the notebook path
+        nb_dir, nb_fname = os.path.split(nb_path)
+        nb_name, _ = os.path.splitext(nb_fname)
+
         # Loop through the cells and fix any Colab badges we encounter
         for cell in nb.get("cells", []):
             if has_colab_badge(cell):
                 redirect_colab_badge_to_master_branch(cell)
+
+        # Set the colab metadata to have the notebook name match the filepath
+        if "colab" in nb["metadata"]:
+            nb["metadata"]["colab"]["name"] = f"NeuromatchAcademy_{nb_name}"
 
         # Write out the executed version of the original notebooks
         print(f"Writing complete notebook to {nb_path}")
         with open(nb_path, "w") as f:
             nbformat.write(nb, f)
 
-        # Extract components of the notebook path
-        nb_dir, nb_fname = os.path.split(nb_path)
-        nb_name, _ = os.path.splitext(nb_fname)
-
         # Create subdirectories, if they don't exist
         student_dir = make_sub_dir(nb_dir, "student")
         static_dir = make_sub_dir(nb_dir, "static")
+        solutions_dir = make_sub_dir(nb_dir, "solutions")
 
         # Generate the student version and save it to a subdirectory
-        print(f"Removing solutions from {nb_path}")
-        student_nb, solution_resources = remove_solutions(nb, nb_dir, nb_name)
+        print(f"Extracting solutions from {nb_path}")
+        processed = extract_solutions(nb, nb_dir, nb_name)
+        student_nb, static_images, solution_snippets = processed
 
         # Loop through cells and point the colab badge at the student version
         for cell in student_nb.get("cells", []):
             if has_colab_badge(cell):
                 redirect_colab_badge_to_student_version(cell)
 
+        # Write the student version of the notebook
         student_nb_path = os.path.join(student_dir, nb_fname)
         print(f"Writing student notebook to {student_nb_path}")
         with open(student_nb_path, "w") as f:
             nbformat.write(student_nb, f)
 
-        # Write the static files representing solutions for student notebooks
-        print(f"Writing solution resources to {static_dir}")
-        for fname, imdata in solution_resources.items():
+        # Write the images extracted from the solution cells
+        print(f"Writing solution images to {static_dir}")
+        for fname, image in static_images.items():
             fname = fname.replace("static", static_dir)
-            with open(fname, "wb") as f:
-                f.write(imdata)
+            image.save(fname)
+
+        # Write the solution snippets
+        print(f"Writing solution snippets to {solutions_dir}")
+        for fname, snippet in solution_snippets.items():
+            fname = fname.replace("solutions", solutions_dir)
+            with open(fname, "w") as f:
+                f.write(snippet)
 
     exit(errors)
 
 
-def remove_solutions(nb, nb_dir, nb_name):
+def extract_solutions(nb, nb_dir, nb_name):
     """Convert solution cells to markdown; embed images from Python output."""
     nb = deepcopy(nb)
     _, tutorial_dir = os.path.split(nb_dir)
-    solution_resources = {}
+
+    static_images = {}
+    solution_snippets = {}
+
     nb_cells = nb.get("cells", [])
     for i, cell in enumerate(nb_cells):
 
         if has_solution(cell):
 
-            # Simply remove solution cells without output data
-            skip = (
-                not cell["outputs"]
-                or not any("data" in output for output in cell["outputs"])
-            )
-            if skip:
-                nb_cells.remove(cell)
-                continue
+            # Get the cell source
+            cell_source = cell["source"]
 
-            # Extract image data from the cell outputs and assign a unique
-            # filename based on the cell source (not index, which can change)
+            # Hash the source to get a unique identifier
+            cell_id = hashlib.sha1(cell_source.encode("utf-8")).hexdigest()[:8]
 
-            cell_source = cell["source"].encode("utf-8")
-            cell_id = hashlib.sha1(cell_source).hexdigest()[:8]
-            cell_images = []
-
-            for j, output in enumerate(cell["outputs"]):
+            # Extract image data from the cell outputs
+            cell_images = {}
+            for j, output in enumerate(cell.get("outputs", [])):
 
                 fname = f"static/{nb_name}_Solution_{cell_id}_{j}.png"
                 try:
                     image_data = a2b_base64(output["data"]["image/png"])
                 except KeyError:
                     continue
-                solution_resources[fname] = image_data
-                cell_images.append(fname)
+                cell_images[fname] = Image.open(BytesIO(image_data))
+            static_images.update(cell_images)
 
-            # Convert the solution cell to markdown, strip the source,
-            # and embed the image as a link to static resource
-            new_source = "**Example output:**\n\n"
-            for f in cell_images:
-                url = f"{GITHUB_RAW_URL}/tutorials/{tutorial_dir}/{f}"
-                new_source += f"![Solution hint]({url})\n\n"
+            # Clean up the cell source and assign a filename
+            snippet = "\n".join(cell_source.split("\n")[1:])
+            py_fname = f"solutions/{nb_name}_Solution_{cell_id}.py"
+            solution_snippets[py_fname] = snippet
+
+            # Convert the solution cell to markdown,
+            # Insert a link to the solution snippet script on github,
+            # and embed the image as a link to static file (also on github)
+            py_url = f"{GITHUB_TREE_URL}/tutorials/{tutorial_dir}/{py_fname}"
+            new_source = f"[*Click for solution*]({py_url})\n\n"
+
+            if cell_images:
+                new_source += "*Example output:*\n\n"
+                for f, img in cell_images.items():
+
+                    url = f"{GITHUB_RAW_URL}/tutorials/{tutorial_dir}/{f}"
+
+                    # Handle matplotlib retina mode
+                    dpi_w, dpi_h = img.info["dpi"]
+                    w = img.width // (dpi_w // 72)
+                    h = img.height // (dpi_h // 72)
+
+                    tag_args = " ".join([
+                        "alt='Solution hint'",
+                        "align='left'",
+                        f"width={w}",
+                        f"height={h}",
+                        f"src={url}",
+                    ])
+                    new_source += f"<img {tag_args}>\n\n"
+
             cell["source"] = new_source
             cell["cell_type"] = "markdown"
             cell["metadata"]["colab_type"] = "text"
@@ -175,7 +221,7 @@ def remove_solutions(nb, nb_dir, nb_name):
             if "execution_count" in cell:
                 del cell["execution_count"]
 
-    return nb, solution_resources
+    return nb, static_images, solution_snippets
 
 
 def has_solution(cell):

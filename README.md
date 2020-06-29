@@ -59,18 +59,18 @@
 
 ### Tue, July 14: Modeling Practice
 
-**Description** Introduction of datasets (spikes, EEG, fMRI + behavior), and questions about them. These questions will foreshadow the whole summer school.
+**Description** Introduction to the process of building models.
 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
-|    0:00-0:30\*   |    Intro / keynote & tutorial setup   |    NMA organization, expectations, code of conduct, modeling vs. data |
+|    0:00-0:30\*   |    Intro / keynote & tutorial setup   |    How to approach modeling                                           |
 |    0:30-0:45     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
-|    0:50-2:05     |    Tutorials 1 & 2 + nano-lectures    |    Data into, preprocessing, link of neural data to behavior          |
+|    0:50-2:05     |    Tutorials 1 + nano-lectures        |    Framing the question                                               |
 |    2:05-2:25     |    Discussion 1                       |    Discussion with pod TA                                             |
 |    2:25-3:25     |    Big break                          |    BREAK                                                              |
-|    3:25-4:40     |    Tutorials 3 & 4 + nano-lectures    |    Tuning (RFs, motor, STA), What is means to "understand" (signal detection) |
+|    3:25-4:40     |    Tutorials 2 + nano-lectures        |    Model implementation and testing                                   |
 |    4:40-5:00     |    Discussion 2                       |    Discussion with pod TA                                             |
-|    5:05-5:35     |    Outro                              |    Recap session                                                      |
+|    5:05-5:35     |    Outro                              |    Recap session, the modeling process                                |
 |    5:35-6:00     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
