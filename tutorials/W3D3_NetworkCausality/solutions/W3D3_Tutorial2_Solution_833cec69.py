@@ -34,7 +34,7 @@ estimated_connectivity = compute_connectivity_single_neuron(X,1)
 
 with plt.xkcd():
     fig, axs = plt.subplots(1,2, figsize=(10,5))
-    plot_connectivity_matrix(X[:, [1]], ax=axs[0])
+    plot_connectivity_matrix(A[:, [1]], ax=axs[0])
     axs[0].set_xticklabels([1])
     axs[0].set_title("True connectivity for neuron 1")
 
