@@ -125,10 +125,10 @@
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    0:00-0:30\*   |    Intro / keynote & tutorial setup   |    Manifolds to understand                                            |
 |    0:30-0:45     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
-|    0:50-2:05     |    Tutorials 1 & 2 + nano-lectures    |    PCA 1, PCA 2 (+CCA/clustering)                                     |
+|    0:50-2:05     |    Tutorials 1 & 2 + nano-lectures    |    PCA 1 (orthonormal basis), PCA 2 (eigenvalues)                                     |
 |    2:05-2:25     |    Discussion 1                       |    Discussion with pod TA                                             |
 |    2:25-3:25     |    Big break                          |    BREAK                                                              |
-|    3:25-4:40     |    Tutorials 3 & 4 + nano-lectures    |    Signal vs. Noise Manifolds, Visualizing high-D nonlinear manifolds (e.g. t-SNE) |
+|    3:25-4:40     |    Tutorials 3 & 4 + nano-lectures    |    MNIST with PCA, MNIST with t-SNE |
 |    4:40-5:00     |    Discussion 2                       |    Discussion with pod TA                                             |
 |    5:05-5:35     |    Outro                              |    Recap session, The link between high-dimensional brain signals and low-dimensional behavior |
 |    5:35-6:00     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
@@ -154,10 +154,10 @@
 |-------------|----------------------------------|--------------------------------------------------------------------|
 |   0:00-0:30*| Intro / keynote & tutorial setup | Uncertainty                                                        |
 |   0:30-0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
-|   0:50-2:05 | Tutorials 1 & 2 + nano-lectures  | Bayes rule I (product rule: cue combination), Bayes rule II (Marginalization and nuisance variables) |
+|   0:50-2:05 | Tutorials 1 & 2 + nano-lectures  | Bayes rule I (product rule: cue combination), Bayes rule II (Causal inference) |
 |   2:05-2:25 | Discussion 1                     | Discussion with pod TA                                             |
 |   2:25-3:25 | Big break                        | BREAK                                                              |
-|   3:25-4:40 | Tutorials 3 & 4 + nano-lectures  | Causal inference & structural models (use as example for marginalization), Bayesian decision theory |
+|   3:25-4:40 | Tutorials 3 & 4 + nano-lectures  | Bayesian Decision Theory & Cost functions, Marginalization & Fitting to data |
 |   4:40-5:00 | Discussion 2                     | Discussion with pod TA                                             |
 |   5:05-5:35 | Outro                            | Recap session, Advanced Bayesian methods                           |
 |   5:35-6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
@@ -263,10 +263,10 @@
 |-------------|----------------------------------|--------------------------------------------------------------------|
 | 0:00 - 0:30*| Intro / keynote & tutorial setup | Real neurons ftw                                                   |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
-| 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Channels, HH, LIF neuron                                           |
+| 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | LIF neuron,Effects of Input Correlation                            |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
 | 2:25 - 3:25 | Big break                        | BREAK                                                              |
-| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | LNP (loses fine timing info), Hebbian plasticity & STDP            |
+| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | Synaptic transmission, STDP            |
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, A variety of neuron models                          |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
@@ -303,10 +303,10 @@
 |-------------|----------------------------------|--------------------------------------------------------------------|
 | 0:00 - 0:30*| Intro / keynote & tutorial setup | Causality - different views                                        |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
-| 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Pitfalls of Granger Causality, Centrality                          |
+| 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Interventions, Correlations                          |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
 | 2:25 - 3:25 | Big break                        | BREAK                                                              |
-| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | Instrumental variables, Interventions                              |
+| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | Simultaneous fitting and Granger causality; Instrumental Variables   |
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Latters of causality                                |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
