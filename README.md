@@ -4,7 +4,7 @@
 
 **Objectives**: Introduce traditional and emerging computational neuroscience tools, their complementarity, and what they can tell us about the brain. A main focus is on modeling choices, model creation, model evaluation and understanding how they relate to biological questions.
 
-**Tutorial microstructure**: ~10min talk, ~20min tutorial (repeated)
+**Tutorial microstructure**: ~5min talk, ~15min hands-on (repeated)
 
 **Day structure**: Opening keynote, 3h lecture/tutorial modules, 1h interpretation (what did we learn today, what does it mean, underlying philosophy, 1h professional development/ meta-science, evening group projects (for interactive track). There will also be many networking activities!
 
