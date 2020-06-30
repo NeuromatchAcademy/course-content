@@ -6,7 +6,7 @@
 
 **Tutorial microstructure**: ~5min talk, ~15min hands-on (repeated)
 
-**Day structure**: Opening keynote, 3h lecture/tutorial modules, 1h interpretation (what did we learn today, what does it mean, underlying philosophy, 1h professional development/ meta-science, evening group projects (for interactive track). There will also be many networking activities!
+**Day structure**: Opening keynote, 2.5h lecture/tutorial modules, 1/2h group discussion, 1h interpretation lecture + live Q&As (what did we learn today, what does it mean, underlying philosophy). There will also be many networking activities!
 
 **Prerequisites**: [See here](https://github.com/NeuromatchAcademy/precourse)
 
