@@ -88,15 +88,15 @@ def main(arglist):
 
     # TODO Check compliancy with PEP8, generate a report, but don't fail
 
-    # TODO Check notebook name format?
-    # (If implemented, update the CI workflow to only run on tutorials)
-
     # Further filter the notebooks to run post-processing only on tutorials
     tutorials = {
         nb_path: nb
         for nb_path, nb in notebooks.items()
         if nb_path.startswith("tutorials")
     }
+
+    # TODO Check notebook name format?
+    # (If implemented, update the CI workflow to only run on tutorials)
 
     # Post-process notebooks to remove solution code and write both versions
     for nb_path, nb in tutorials.items():
