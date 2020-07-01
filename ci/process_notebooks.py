@@ -249,7 +249,7 @@ def redirect_colab_badge_to_master_branch(cell):
 def redirect_colab_badge_to_student_version(cell):
     """Modify the Colab badge to point at student version of the notebook."""
     cell_text = cell["source"]
-    p = re.compile(r"(^.+/tutorials/W\dD\d-\w+)/(\w+\.ipynb.+)")
+    p = re.compile(r"(^.+/tutorials/W\dD\d\w+)/(\w+\.ipynb.+)")
     cell["source"] = p.sub(r"\1/student/\2", cell_text)
 
 

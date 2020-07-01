@@ -4,9 +4,9 @@
 
 **Objectives**: Introduce traditional and emerging computational neuroscience tools, their complementarity, and what they can tell us about the brain. A main focus is on modeling choices, model creation, model evaluation and understanding how they relate to biological questions.
 
-**Tutorial microstructure**: ~10min talk, ~20min tutorial (repeated)
+**Tutorial microstructure**: ~5min talk, ~15min hands-on (repeated)
 
-**Day structure**: Opening keynote, 3h lecture/tutorial modules, 1h interpretation (what did we learn today, what does it mean, underlying philosophy, 1h professional development/ meta-science, evening group projects (for interactive track). There will also be many networking activities!
+**Day structure**: Opening keynote, 2.5h lecture/tutorial modules, 1/2h group discussion, 1h interpretation lecture + live Q&As (what did we learn today, what does it mean, underlying philosophy). There will also be many networking activities!
 
 **Prerequisites**: [See here](https://github.com/NeuromatchAcademy/precourse)
 
@@ -45,10 +45,10 @@
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    0:00-0:30\*   |    Intro / keynote & tutorial setup   |    Model classifications                                              |
 |    0:30-0:45     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
-|    0:50-2:05     |    Tutorials 1 & 2 + nano-lectures    |    Marr 1-3                                                           |
+|    0:50-2:05     |    Tutorials 1 & 2 + nano-lectures    |    "What"/"How" models                                                |
 |    2:05-2:25     |    Discussion 1                       |    Discussion with pod TA                                             |
 |    2:25-3:25     |    Big break                          |    BREAK                                                              |
-|    3:25-4:40     |    Tutorials 3 & 4 + nano-lectures    |    "What"/"How"/"Why"                                                 |
+|    3:25-4:40     |    Tutorials 3 + nano-lectures        |    "Why" model & discussion                                           |
 |    4:40-5:00     |    Discussion 2                       |    Discussion with pod TA                                             |
 |    5:05-5:35     |    Outro                              |    Recap session, The role of models in discovery                     |
 |    5:35-6:00     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
@@ -65,10 +65,10 @@
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    0:00-0:30\*   |    Intro / keynote & tutorial setup   |    How to approach modeling                                           |
 |    0:30-0:45     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
-|    0:50-2:05     |    Tutorials 1 + nano-lectures        |    Framing the question                                               |
+|    0:50-2:05     |    Tutorial 1 + nano-lectures         |    Framing the question                                               |
 |    2:05-2:25     |    Discussion 1                       |    Discussion with pod TA                                             |
 |    2:25-3:25     |    Big break                          |    BREAK                                                              |
-|    3:25-4:40     |    Tutorials 2 + nano-lectures        |    Model implementation and testing                                   |
+|    3:25-4:40     |    Tutorial 2 + nano-lectures         |    Model implementation and testing                                   |
 |    4:40-5:00     |    Discussion 2                       |    Discussion with pod TA                                             |
 |    5:05-5:35     |    Outro                              |    Recap session, the modeling process                                |
 |    5:35-6:00     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
@@ -105,12 +105,12 @@
 |-------------|----------------------------------|--------------------------------------------------------------------|
 |   0:00-0:30\*| Intro / keynote & tutorial setup | We want to predict ([scikit learn](https://scikit-learn.org/))     |
 |   0:30-0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
-|   0:50-2:05 | Tutorials 1 & 2 + nano-lectures  | GLMs (temporal filtering models), Linear classifier (SVM)          |
+|   0:50-2:05 | Tutorials 1 & 2 + nano-lectures  | Introduction to GLMs and regularization                            |
 |   2:05-2:25 | Discussion 1                     | Discussion with pod TA                                             |
 |   2:25-3:25 | Big break                        | BREAK                                                              |
-|   3:25-4:40 | Tutorials 3 & 4 + nano-lectures  | Regularization (L1, L2), Shallow nonlinear classifier (SVM with RBF kernel) |
+|   3:25-4:40 | Tutorials 3 & 4 + nano-lectures  | GLMs for encoding and decoding                                     |
 |   4:40-5:00 | Discussion 2                     | Discussion with pod TA                                             |
-|   5:05-5:35 | Outro                            | Recap session, Promises and pitfalls of ML                         |
+|   5:05-5:35 | Outro                            | Recap session, Promises and pitfalls of ML for Neuroscience        |
 |   5:35-6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
@@ -125,10 +125,10 @@
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    0:00-0:30\*   |    Intro / keynote & tutorial setup   |    Manifolds to understand                                            |
 |    0:30-0:45     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
-|    0:50-2:05     |    Tutorials 1 & 2 + nano-lectures    |    PCA 1, PCA 2 (+CCA/clustering)                                     |
+|    0:50-2:05     |    Tutorials 1 & 2 + nano-lectures    |    PCA 1 (orthonormal basis), PCA 2 (eigenvalues)                                     |
 |    2:05-2:25     |    Discussion 1                       |    Discussion with pod TA                                             |
 |    2:25-3:25     |    Big break                          |    BREAK                                                              |
-|    3:25-4:40     |    Tutorials 3 & 4 + nano-lectures    |    Signal vs. Noise Manifolds, Visualizing high-D nonlinear manifolds (e.g. t-SNE) |
+|    3:25-4:40     |    Tutorials 3 & 4 + nano-lectures    |    MNIST with PCA, MNIST with t-SNE |
 |    4:40-5:00     |    Discussion 2                       |    Discussion with pod TA                                             |
 |    5:05-5:35     |    Outro                              |    Recap session, The link between high-dimensional brain signals and low-dimensional behavior |
 |    5:35-6:00     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
@@ -154,10 +154,10 @@
 |-------------|----------------------------------|--------------------------------------------------------------------|
 |   0:00-0:30*| Intro / keynote & tutorial setup | Uncertainty                                                        |
 |   0:30-0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
-|   0:50-2:05 | Tutorials 1 & 2 + nano-lectures  | Bayes rule I (product rule: cue combination), Bayes rule II (Marginalization and nuisance variables) |
+|   0:50-2:05 | Tutorials 1 & 2 + nano-lectures  | Bayes rule: cue combination and marginalization                    |
 |   2:05-2:25 | Discussion 1                     | Discussion with pod TA                                             |
 |   2:25-3:25 | Big break                        | BREAK                                                              |
-|   3:25-4:40 | Tutorials 3 & 4 + nano-lectures  | Causal inference & structural models (use as example for marginalization), Bayesian decision theory |
+|   3:25-4:40 | Tutorials 3 & 4 + nano-lectures  | Bayesian Decision Theory & Causal inference                        |
 |   4:40-5:00 | Discussion 2                     | Discussion with pod TA                                             |
 |   5:05-5:35 | Outro                            | Recap session, Advanced Bayesian methods                           |
 |   5:35-6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
@@ -174,10 +174,10 @@
 |-------------|----------------------------------|--------------------------------------------------------------------|
 |   0:00-0:30*| Intro / keynote & tutorial setup | World has time                                                     |
 |   0:30-0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
-|   0:50-2:05 | Tutorials 1 & 2 + nano-lectures  | Linear systems theory I (ND deterministic), Linear systems theory II (1D stochastic = OU process; ND stocastic = AR(1)) |
+|   0:50-2:05 | Tutorials 1 & 2 + nano-lectures  | Linear systems theory I (ND deterministic) and Markov process      |
 |   2:05-2:25 | Discussion 1                     | Discussion with pod TA                                             |
 |   2:25-3:25 | Big break                        | BREAK                                                              |
-|   3:25-4:40 | Tutorials 3 & 4 + nano-lectures  | Markov process, State space model                                  |
+|   3:25-4:40 | Tutorials 3 & 4 + nano-lectures  | Linear systems theory II (1D stochastic = OU process; ND stocastic = AR(1)) and State space model |
 |   4:40-5:00 | Discussion 2                     | Discussion with pod TA                                             |
 |   5:05-5:35 | Outro                            | Recap session, Linear systems rule the world                       |
 |   5:35-6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
@@ -263,10 +263,10 @@
 |-------------|----------------------------------|--------------------------------------------------------------------|
 | 0:00 - 0:30*| Intro / keynote & tutorial setup | Real neurons ftw                                                   |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
-| 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Channels, HH, LIF neuron                                           |
+| 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Reduced neuron models and transfer of synchrony                    |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
 | 2:25 - 3:25 | Big break                        | BREAK                                                              |
-| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | LNP (loses fine timing info), Hebbian plasticity & STDP            |
+| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | Short-term plasticity of synapses and Hebbian plasticity & STDP    |
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, A variety of neuron models                          |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
@@ -283,10 +283,10 @@
 |-------------|----------------------------------|--------------------------------------------------------------------|
 | 0:00 - 0:30*| Intro / keynote & tutorial setup | Mechanistic models of different types of brain actvivity           |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
-| 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Spikes to rates, Wilson-Cowen model (coarse-grained), oscillations & synchrony |
+| 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | 2D dynamical systems, Wilson-Cowen model (coarse-grained), oscillations & synchrony |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
 | 2:25 - 3:25 | Big break                        | BREAK                                                              |
-| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | Attractors & local linearization around fixed points, Chaos in rate networks (stimulus dependent chaotic attractor) |
+| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | Attractors & local linearization around fixed points, Balanced Amplification & Inhibition-stabilized network |
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, A theory of the whole brain                         |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
@@ -303,12 +303,12 @@
 |-------------|----------------------------------|--------------------------------------------------------------------|
 | 0:00 - 0:30*| Intro / keynote & tutorial setup | Causality - different views                                        |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
-| 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Pitfalls of Granger Causality, Centrality                          |
+| 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Pittfalls of Granger and Centrality                                |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
 | 2:25 - 3:25 | Big break                        | BREAK                                                              |
-| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | Instrumental variables, Interventions                              |
+| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | Instrumental Variables and interventions                           |
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
-| 5:05 - 5:35 | Outro                            | Recap session, Latters of causality                                |
+| 5:05 - 5:35 | Outro                            | Recap session, Ladders of causality                                |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
@@ -343,10 +343,10 @@
 |-------------|----------------------------------|--------------------------------------------------------------------|
 | 0:00 - 0:30*| Intro / keynote & tutorial setup | DL for structure                                                   |
 | 0:30 - 0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
-| 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Autoencoders, Recurrent Neural Network                             |
+| 0:50 - 2:05 | Tutorials 1 & 2 + nano-lectures  | Variational autoencorders and uses in Neuroscience                 |
 | 2:05 - 2:25 | Discussion 1                     | Discussion with pod TA                                             |
 | 2:25 - 3:25 | Big break                        | BREAK                                                              |
-| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | Transfer learning / generalization, Causality                      |
+| 3:25 - 4:40 | Tutorials 3 & 4 + nano-lectures  | NMA wrap-up                      |
 | 4:40 - 5:00 | Discussion 2                     | Discussion with pod TA                                             |
 | 5:05 - 5:35 | Outro                            | Recap session, Digging deeper                                      |
 | 5:35 - 6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
