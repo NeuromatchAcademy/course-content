@@ -8,6 +8,8 @@
 
 **Day structure**: Opening keynote, 2.5h lecture/tutorial modules, 1/2h group discussion, 1h interpretation lecture + live Q&As (what did we learn today, what does it mean, underlying philosophy). There will also be many networking activities!
 
+**Note for visitors from China**: This repository contains many links to YouTube and Google Colab. We have a version of the repository with those same videos posted on bilibili, and the Google Colab links replaced with links to Aliyun. Please visit the [China Accessible Neuromatch Course-Content](https://github.com/erlichlab/course-content/)
+
 **Prerequisites**: [See here](https://github.com/NeuromatchAcademy/precourse)
 
 **Welcome video**: [See here](https://www.youtube.com/playlist?list=PLkBQOLLbi18PS1Z8xH-MTcC4AAYiEVSP6)
