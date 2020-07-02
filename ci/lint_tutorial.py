@@ -1,3 +1,4 @@
+"""Script for linting tutorial notebooks."""
 import os
 import io
 import re
@@ -23,9 +24,9 @@ def main(arglist):
     violations = check_style(script)
 
     if args.brief:
-        pass
+        report_brief(fname, warnings, errors, violations)
     else:
-        report_verbose(fname, line_map, warnings, errors, violations)
+        report_verbose(fname, warnings, errors, violations, line_map)
 
 
 def parse_args(arglist):
@@ -33,13 +34,13 @@ def parse_args(arglist):
     parser = argparse.ArgumentParser("Lint a notebook")
     parser.add_argument("path", help="Path to notebook file")
     parser.add_argument("--brief", action="store_true",
-                        help="Print brief report (useful for aggregating")
+                        help="Print brief report (useful for aggregating)")
 
     return parser.parse_args(arglist)
 
 
 def extract_code(nb_fname):
-    """Turn code cells from notebook intro a script, track cell sizes."""
+    """Turn code cells from notebook into a script, track cell sizes."""
     with open(nb_fname) as f:
         nb = nbformat.read(f, nbformat.NO_CONVERT)
 
@@ -74,9 +75,18 @@ def check_code(script):
 
 def check_style(script):
     """Write a temporary script and run pycodestyle (PEP8) on it."""
+
     with tempfile.NamedTemporaryFile("w", suffix=".py") as f:
+
         f.write(script)
-        res = subprocess.run(["pycodestyle", f.name], capture_output=True)
+
+        cmdline = [
+            "pycodestyle",
+            "--ignore=E111,E114",
+            "--max-line-length=88",
+            f.name,
+        ]
+        res = subprocess.run(cmdline, capture_output=True)
 
     output = res.stdout.decode().replace(f.name, "f").split("\n")
 
@@ -104,10 +114,18 @@ def remap_line_numbers(cell_lines):
     return line_map
 
 
-def report_verbose(fname, line_map, warnings, errors, violations):
+def report_brief(fname, warnings, errors, violations):
+    """Print a single-line report, suibtable for aggregation."""
+    n_warnings = len(warnings.read().splitlines())
+    n_errors = len(errors.read().splitlines())
+    n_violations = len(list(violations.elements()))
+    print(f"{fname} {n_warnings + n_errors} {n_violations}")
+
+
+def report_verbose(fname, warnings, errors, violations, line_map):
     """Report every pyflakes problem and more codestyle information."""
     s = f"Code report for {fname}"
-    print("", s, "=" * len(s), "", sep="\n")
+    print("", s, "=" * len(s), sep="\n")
 
     s = "Quality (pyflakes)"
     print("", s, "-" * len(s), "", sep="\n")
@@ -130,9 +148,10 @@ def report_verbose(fname, line_map, warnings, errors, violations):
     # TODO parametrize n_most_common
     if violations:
         print()
-        print("Most common problems:")
-        for code, count in violations.most_common(5):
-            print(f" - {count} instances of {code}")
+        print("Common problems:")
+        for code, count in violations.most_common(10):
+            plural = "" if count == 1 else "s"
+            print(f"- {count} instance{plural} of {code}")
 
     print("")
 
