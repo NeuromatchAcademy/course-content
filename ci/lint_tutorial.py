@@ -1,4 +1,17 @@
-"""Script for linting tutorial notebooks."""
+"""Lint tutorial notebooks with pyflakes and pycodestyle (aka flake8).
+
+Running this script on a notebook will print a report of issues flagged by
+pyflakes (which checks some aspects of code quality) and pycodestyle (which
+checks adherence to the PEP8 stylistic standards).
+
+Note that these checks do not capture all potential issues with a codebase,
+and some checks will false-alarm because of deliberate choices we have made
+about how to write tutorials. Nevertheless, this can be an easy way to flag
+potential issues.
+
+Requires nbformat (part of Jupyter) and flake8.
+
+"""
 import os
 import io
 import re
@@ -20,18 +33,18 @@ def main(arglist):
 
     script, cell_lines = extract_code(args.path)
     warnings, errors = check_code(script)
-    line_map = remap_line_numbers(cell_lines)
     violations = check_style(script)
 
     if args.brief:
         report_brief(fname, warnings, errors, violations)
     else:
+        line_map = remap_line_numbers(cell_lines)
         report_verbose(fname, warnings, errors, violations, line_map)
 
 
 def parse_args(arglist):
 
-    parser = argparse.ArgumentParser("Lint a notebook")
+    parser = argparse.ArgumentParser(__doc__)
     parser.add_argument("path", help="Path to notebook file")
     parser.add_argument("--brief", action="store_true",
                         help="Print brief report (useful for aggregating)")
