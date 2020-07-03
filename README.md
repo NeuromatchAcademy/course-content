@@ -31,7 +31,7 @@
 * [Week 3](#week-3)
     * [Mon, July 27: Real Neurons](#mon-july-27-real-neurons)
     * [Tue, July 28: Dynamic Networks](#tue-july-28-dynamic-networks)
-    * [Wed, July 29: Network Causality](#wed-july-29-networks-causality)
+    * [Wed, July 29: Network Causality](#wed-july-29-network-causality)    
     * [Thu, July 30: Deep Learning 1](#thu-july-30-deep-learning-1)
     * [Fri, July 31: Deep Learning 2](#fri-july-31-deep-learning-2)
 
