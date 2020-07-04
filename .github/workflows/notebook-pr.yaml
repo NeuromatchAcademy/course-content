@@ -50,6 +50,9 @@ jobs:
       - name: Update READMEs
         run: python ci/generate_tutorial_readmes.py
 
+      - name: Remove unreferenced derivatives
+        run: python ci/find_orphan_content.py | xargs git rm
+
       - name: Commit processed files
         if: ${{ success() }}
         run: |
