@@ -12,8 +12,6 @@
 
 **Prerequisites**: [See here](https://github.com/NeuromatchAcademy/precourse)
 
-**Welcome video**: [See here](https://www.youtube.com/playlist?list=PLkBQOLLbi18PS1Z8xH-MTcC4AAYiEVSP6)
-
 # Course outline
  
 * [Week 1](#week-1)
