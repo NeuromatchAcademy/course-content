@@ -50,6 +50,11 @@ jobs:
       - name: Update READMEs
         run: python ci/generate_tutorial_readmes.py
 
+      - name: Remove unreferenced derivatives
+        run: |
+          python ci/find_unreferenced_content.py > to_remove.txt
+          if [ -s to_remove.txt ]; then git rm --pathspec-from-file=to_remove.txt; fi
+
       - name: Commit processed files
         if: ${{ success() }}
         run: |
