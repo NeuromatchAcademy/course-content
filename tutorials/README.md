@@ -20,7 +20,7 @@
 
 ## W1D1 - Model Types
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18NBjqgQzpeu-jMV9Kjr0Foj)
+[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18ObAiSOZ42YBwOQIKNvspeI)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D1_ModelTypes/student/W1D1_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D1_ModelTypes/student/W1D1_Tutorial1.ipynb) |
