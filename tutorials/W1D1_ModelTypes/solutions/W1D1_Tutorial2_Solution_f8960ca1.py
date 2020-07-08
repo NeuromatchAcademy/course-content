@@ -12,7 +12,9 @@ def lif_neuron(n_steps=1000, alpha=0.01, rate=10):
   v = np.zeros(n_steps)
   spike_times = []
   for i in range(1, n_steps):
+
     dv = alpha * exc[i]
+
     v[i] = v[i-1] + dv
     if v[i] > 1:
       spike_times.append(i)
