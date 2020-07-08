@@ -5,8 +5,8 @@ with plt.xkcd():
   # Draw with stepfilled so this looks like what we want the students to make,
   # but it's fine for students to leave that parameter out.
   plt.hist(total_spikes_per_neuron, n_bins, histtype="stepfilled")
-  plt.xlabel("Total spikes per neuron")
-  plt.ylabel("Number of neurons")
   plt.axvline(mean_spike_count, color="orange", label="Mean neuron")
   plt.axvline(median_spike_count, color="limegreen", label="Median neuron")
+  plt.xlabel("Total spikes per neuron")
+  plt.ylabel("Number of neurons")
   plt.legend()
