@@ -12,11 +12,14 @@ def entropy(pmf):
   Args:
     pmf (np.ndarray): The probability mass function for a discrete distribution
       represented as an array of probabilities.
+  Returns:
+    h (number): The entropy of the distribution in `pmf`.
   """
-  # remove non-zero entries to avoid an error from log2(0)
+  # reduce to non-zero entries to avoid an error from log2(0)
   pmf = pmf[pmf > 0]
+  # implement the equation for shannon entropy (in bits)
   h = -np.sum(pmf * np.log2(pmf))
-  # absolute value applied to avoid getting a -0 result
+  # return the absolute value (avoids getting a -0 result)
   return np.abs(h)
 
 print(f"{entropy(pmf):.2f} bits")
