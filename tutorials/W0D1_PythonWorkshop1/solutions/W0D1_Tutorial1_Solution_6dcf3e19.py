@@ -1,6 +1,6 @@
 
 # initialize step_end and v
-step_end = int(t_max/dt)
+step_end = int(t_max / dt)
 v = el
 
 with plt.xkcd():
@@ -9,7 +9,7 @@ with plt.xkcd():
   # loop for step_end steps
   for step in range(step_end):
     t = step * dt
-    i = i_mean * (1+np.sin((t * 2 * np.pi) / 0.01))
+    i = i_mean * (1 + np.sin((t * 2 * np.pi) / 0.01))
     plt.plot(t, v, 'k.')
 
     v = v + dt/tau * (el - v + r*i)
