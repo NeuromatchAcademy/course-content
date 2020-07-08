@@ -2,6 +2,7 @@
 
 ## W0D1 - Python Workshop1
 
+[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18M8aIPAL3n2q7D_AbbuPPtM)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W0D1_PythonWorkshop1/student/W0D1_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/tutorials/W0D1_PythonWorkshop1/student/W0D1_Tutorial1.ipynb) |

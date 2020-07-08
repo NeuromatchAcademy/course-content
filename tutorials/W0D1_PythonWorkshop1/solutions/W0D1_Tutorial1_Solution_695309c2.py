@@ -3,7 +3,7 @@
 np.random.seed(2020)
 
 # initialize step_end and v
-step_end = int(t_max/dt)
+step_end = int(t_max / dt)
 v = el
 t = 0
 
@@ -19,7 +19,7 @@ with plt.xkcd():
     t = step * dt
     plt.plot(t, v, 'k.')
 
-    i = i_mean * (1 + 0.1*(t_max/dt)**(0.5)*(2*np.random.random()-1))
-    v = v + dt/tau * (el - v + r*i)
+    i = i_mean * (1 + 0.1 * (t_max / dt)**(0.5) * (2 * np.random.random() - 1))
+    v = v + (dt / tau) * (el - v + r * i)
 
   plt.show()
