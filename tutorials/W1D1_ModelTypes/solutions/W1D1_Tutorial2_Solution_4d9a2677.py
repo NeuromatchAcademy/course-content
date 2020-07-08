@@ -16,10 +16,17 @@ def lif_neuron_inh(n_steps=1000, alpha=0.5, beta=0.1, exc_rate=10, inh_rate=10):
   v = np.zeros(n_steps)
   spike_times = []
   for i in range(1, n_steps):
+
     dv = -beta * v[i-1] + alpha * (exc[i] - inh[i])
+
     v[i] = v[i-1] + dv
     if v[i] > 1:
       spike_times.append(i)
       v[i] = 0
 
   return v, spike_times
+
+v, spike_times = lif_neuron_inh()
+
+with plt.xkcd():
+  plot_neuron_stats(v, spike_times)
