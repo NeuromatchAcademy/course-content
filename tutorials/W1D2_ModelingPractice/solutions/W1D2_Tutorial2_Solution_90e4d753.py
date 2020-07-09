@@ -1,5 +1,7 @@
+
+
 def my_selfmotion(ves, params):
-    '''
+    """
     Estimates self motion for one vestibular signal
 
     Args:
@@ -9,7 +11,7 @@ def my_selfmotion(ves, params):
 
     Returns:
         (float): an estimate of self motion in m/s
-    '''
+    """
 
     # 1. integrate vestibular signal
     # 2. running window function
