@@ -8,9 +8,9 @@ def simulate_accuracy_vs_stoptime(sigma, stop_time_list, num_sample):
     repeated SPRT simulations for each stop time.
 
     Args:
-        sigma (float): standard deviation for observation model 
+        sigma (float): standard deviation for observation model
         stop_list_list (list-like object): a list of stopping times to run over
-        num_sample (int): number of simulations to run per stopping time 
+        num_sample (int): number of simulations to run per stopping time
 
     Returns:
         accuracy_list: a list of average accuracies corresponding to input
@@ -24,7 +24,7 @@ def simulate_accuracy_vs_stoptime(sigma, stop_time_list, num_sample):
         for i in range(num_sample):
             _, decision, _= simulate_SPRT_fixedtime(sigma, stop_time)
             decision_list.append(decision)
-            
+
         accuracy = sum(decision_list) / len(decision_list)
         accuracy_list.append(accuracy)
         decisions_list.append(decision_list)

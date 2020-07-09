@@ -1,14 +1,13 @@
 def simulate_accuracy_vs_threshold(sigma, threshold_list, num_sample):
-    """
-    Calculate the average decision accuracy vs. average decision length by
+    """Calculate the average decision accuracy vs. average decision length by
     running repeated SPRT simulations with thresholding stopping rule for each
     threshold.
 
     Args:
-        sigma (float): standard deviation for observation model 
+        sigma (float): standard deviation for observation model
         threshold_list (list-like object): a list of evidence thresholds to run
                                            over
-        num_sample (int): number of simulations to run per stopping time 
+        num_sample (int): number of simulations to run per stopping time
 
     Returns:
         accuracy_list: a list of average accuracies corresponding to input
@@ -38,7 +37,8 @@ def simulate_accuracy_vs_threshold(sigma, threshold_list, num_sample):
 np.random.seed(100)
 sigma = 3.75
 num_sample = 100
-log_alphas = np.concatenate([np.linspace(-5, -1, 4), np.linspace(-0.7, -0.1, 3)])
+log_alphas = np.concatenate([np.linspace(-5, -1, 4),
+                             np.linspace(-0.7, -0.1, 3)])
 alpha_list = np.power(10, log_alphas)
 threshold_list = threshold_from_errorrate(alpha_list)
 
