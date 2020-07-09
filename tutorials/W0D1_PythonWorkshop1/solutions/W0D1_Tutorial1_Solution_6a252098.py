@@ -31,7 +31,7 @@ with plt.xkcd():
   plt.plot(t_range, v_mean-v_std, 'C7', alpha=0.8, label='mean $\pm$ std')
 
   # # alternative for filling plot between v_mean-+v_std
-  # plt.fill_between(t_range, v_mean-v_std, v_mean+v_std, color='C1', alpha=0.6)
+  # plt.fill_between(t_range, v_mean-v_std, v_mean+v_std, color='C0', alpha=0.6)
   
   plt.legend()
   plt.show()

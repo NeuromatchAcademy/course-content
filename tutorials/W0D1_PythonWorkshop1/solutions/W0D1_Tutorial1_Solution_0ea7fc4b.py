@@ -9,7 +9,7 @@ v_n = [el] * n
 
 # initialize the figure
 plt.figure()
-plt.title('Multiple realizations of $V_m$')
+plt.title('SAMPLE OUTPUT')
 plt.xlabel('time (s)')
 plt.ylabel(r'$V_m$ (V)')
 
