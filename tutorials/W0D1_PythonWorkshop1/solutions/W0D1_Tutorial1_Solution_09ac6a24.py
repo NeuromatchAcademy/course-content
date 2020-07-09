@@ -9,7 +9,7 @@ v_n = [el] * n
 
 # initialize the figure
 plt.figure()
-plt.title('SAMPLE OUTPUT')
+plt.title('Multiple realizations of $V_m$')
 plt.xlabel('time (s)')
 plt.ylabel(r'$V_m$ (V)')
 
@@ -19,7 +19,7 @@ for step in range(step_end):
 
   v_mean = sum(v_n) / n 
   plt.plot(n*[t], v_n, 'k.', alpha=0.05)
-  plt.plot(t, v_mean, 'C1.', alpha=0.8, markersize=10)
+  plt.plot(t, v_mean, 'C0.', alpha=0.8, markersize=10)
 
   for j in range(0, n):
     i = i_mean * (1 + 0.1 * (t_max / dt)**(0.5) * (2 * np.random.random() - 1))

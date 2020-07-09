@@ -23,7 +23,7 @@ for step in range(step_end):
   v_std = np.sqrt(v_var)
 
   plt.plot(n*[t], v_n, 'k.', alpha=0.05)
-  plt.plot(t, v_mean, 'C1.', alpha=0.8)
+  plt.plot(t, v_mean, 'C0.', alpha=0.8)
   plt.plot(t, v_mean + v_std, 'C7.', alpha=0.8)
   plt.plot(t, v_mean - v_std, 'C7.', alpha=0.8)
 
