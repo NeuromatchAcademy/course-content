@@ -8,6 +8,7 @@ def create_model(switch_prob=0.1, noise_level=1e-8, startprob=[1.0, 0.0]):
         switch_prob (float): probability to jump to the other state
         noise_level (float): standard deviation of observation models. Same for
         two components
+
     Returns:
         model (hmm.GaussianHMM instance): the described HMM
     """
@@ -23,6 +24,7 @@ def create_model(switch_prob=0.1, noise_level=1e-8, startprob=[1.0, 0.0]):
     model.covars_ = np.ones((2, 1, 1)) * noise_level
     model.sample(1)
     return model
+
 
 np.random.seed(101)
 nstep = 50
