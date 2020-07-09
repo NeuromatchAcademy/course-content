@@ -2,16 +2,16 @@
 poi_rate = 20.
 c = 0.2 # set true correlation 
 pars = default_pars(T=10000)
-sp1, sp2 = generate_corr_Poisson(pars, poi_rate, c)
+sp1, sp2 = generate_corr_Poisson(pars, poi_rate, c, myseed=2020)
 
 #bin the spike time
 bin_size = 20 # [ms]
 my_bin = np.arange(0, pars['T'], bin_size)
 
-n_trials = 100 # 20 realizations
+n_trials = 100 # 100 realizations
 r12 = np.zeros(n_trials)
 for i in range(n_trials):  
-  sp1, sp2 = generate_corr_Poisson(pars, 20., 0.2)
+  sp1, sp2 = generate_corr_Poisson(pars, poi_rate, c, myseed=i)
   sp1_count, _ = np.histogram(sp1, bins=my_bin)
   sp2_count, _ = np.histogram(sp2, bins=my_bin)
 

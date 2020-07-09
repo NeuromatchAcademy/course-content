@@ -18,8 +18,8 @@ if rec_spikes.size:
     sp_num = (rec_spikes/dt).astype(int)-1
     v[sp_num] = 10   # draw nicer spikes
 
-#measure FMP
-pars['V_th'] = 1e3
+# measure FMP
+pars['V_th'] = 1e3 # note we have increased the threshold to a very hig positive value -- eqv. to removing the threshold for all practical input range  
 v_fmp, _, _, _ = run_LIF_cond(pars, 0, pre_spike_train_ex, pre_spike_train_in)
 
 # plotting
