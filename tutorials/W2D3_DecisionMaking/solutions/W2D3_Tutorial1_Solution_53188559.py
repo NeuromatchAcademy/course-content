@@ -1,7 +1,6 @@
 sigma = 4.65  # standard deviation for observation noise
 num_sample = 200  # number of simulations to run for each stopping time
-# Stopping times to play with
-stop_time_list = np.arange(1, 150, 10)
+stop_time_list = np.arange(1, 150, 10) # Stopping times to play with
 
 def simulate_accuracy_vs_stoptime(sigma, stop_time_list, num_sample):
     """Calculate the average decision accuracy vs. stopping time by running
@@ -30,6 +29,7 @@ def simulate_accuracy_vs_stoptime(sigma, stop_time_list, num_sample):
         decisions_list.append(decision_list)
 
     return accuracy_list, decisions_list
+
 
 np.random.seed(100)
 with plt.xkcd():

@@ -49,9 +49,9 @@ def simulate_SPRT_threshold(sigma, threshold , true_dist=1):
   evidence_history = np.array(evidence_history)
 
   # Make decision
-  if evidence_history[-1] >0:
+  if evidence_history[-1] > 0:
     decision = 1
-  elif evidence_history[-1] <0:
+  elif evidence_history[-1] < 0:
     decision = 0
   else:
     decision = np.random.randint(2)

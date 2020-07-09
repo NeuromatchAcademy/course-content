@@ -41,6 +41,7 @@ def simulate_SPRT_fixedtime(sigma, stop_time, true_dist=1):
 
   return evidence_history, decision, data
 
+
 np.random.seed(100)
 sigma = 3.5  # standard deviation for pL and pR
 num_sample = 10  # number of simulations to run for each stopping time

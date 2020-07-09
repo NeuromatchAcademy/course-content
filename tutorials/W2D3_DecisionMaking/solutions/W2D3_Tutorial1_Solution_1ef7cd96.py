@@ -34,6 +34,7 @@ def simulate_accuracy_vs_threshold(sigma, threshold_list, num_sample):
 
     return accuracy_list, decision_length_list
 
+
 np.random.seed(100)
 sigma = 3.75
 num_sample = 100
@@ -41,6 +42,5 @@ log_alphas = np.concatenate([np.linspace(-5, -1, 4),
                              np.linspace(-0.7, -0.1, 3)])
 alpha_list = np.power(10, log_alphas)
 threshold_list = threshold_from_errorrate(alpha_list)
-
 with plt.xkcd():
   simulate_and_plot_accuracy_vs_threshold(sigma, threshold_list, num_sample)
