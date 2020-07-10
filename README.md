@@ -14,8 +14,8 @@
 
 # Course materials
 
-- [Links to materials for tutorial](./tutorials/README.md)
-- [Links to materials for projects](./projects/README.md)
+- [Links to videos, notebooks, and slides for tutorials](./tutorials/README.md)
+- [Links to videos, notebooks, and slides for projects](./projects/README.md)
 
 
 # Course outline
