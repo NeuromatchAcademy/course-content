@@ -111,10 +111,10 @@
 |-------------|----------------------------------|--------------------------------------------------------------------|
 |   0:00-0:30\*| Intro / keynote & tutorial setup | We want to predict ([scikit learn](https://scikit-learn.org/))     |
 |   0:30-0:45 | Pod Q&A                          | Lecture discussion with pod TA                                     |
-|   0:50-2:05 | Tutorials 1 & 2 + nano-lectures  | Introduction to GLMs and regularization                            |
+|   0:50-2:05 | Tutorial 1  + nano-lectures  | Introduction to GLMs and predicting neural responses                |
 |   2:05-2:25 | Discussion 1                     | Discussion with pod TA                                             |
 |   2:25-3:25 | Big break                        | BREAK                                                              |
-|   3:25-4:40 | Tutorials 3 & 4 + nano-lectures  | GLMs for encoding and decoding                                     |
+|   3:25-4:40 | Tutorial 2 + nano-lectures  | Logistic regression, regularization, and decoding neural activity                                    |
 |   4:40-5:00 | Discussion 2                     | Discussion with pod TA                                             |
 |   5:05-5:35 | Outro                            | Recap session, Promises and pitfalls of ML for Neuroscience        |
 |   5:35-6:00 | Q&A                              | Q&A with lecturers/Mentors                                         |
