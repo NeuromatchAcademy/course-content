@@ -38,11 +38,18 @@ def main(arglist):
     """Process IPython notebooks from a list of files."""
     args = parse_args(arglist)
 
-    # Filter to only ipython notebook fikes
-    nb_paths = [
-        arg for arg in args.files
-        if arg.endswith(".ipynb") and "student/" not in arg
-    ]
+    # Filter paths from the git manifest
+    # - Only process .ipynb
+    # - Don't process student notebooks
+    # - Don't process deleted notebooks
+    def should_process(path):
+        return all([
+            path.endswith(".ipynb"),
+            "student/" not in path,
+            os.path.isfile(path),
+        ])
+
+    nb_paths = [arg for arg in args.files if should_process(arg)]
     if not nb_paths:
         print("No notebook files found")
         sys.exit(0)
