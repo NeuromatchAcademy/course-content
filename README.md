@@ -14,8 +14,8 @@
 
 # Course materials
 
-- [Links to tutorial materials](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/README.md)
-- [Links to project materials](https://github.com/NeuromatchAcademy/course-content/blob/master/projects/README.md)
+- [Links to materials for tutorial](./tutorials/README.md)
+- [Links to materials for projects](./projects/README.md)
 
 
 # Course outline
