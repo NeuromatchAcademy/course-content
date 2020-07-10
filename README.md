@@ -12,6 +12,12 @@
 
 **Prerequisites**: [See here](https://github.com/NeuromatchAcademy/precourse)
 
+# Course materials
+
+- [Links to tutorial materials](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/README.md)
+- [Links to project materials](https://github.com/NeuromatchAcademy/course-content/blob/master/projects/README.md)
+
+
 # Course outline
  
 * [Week 1](#week-1)
