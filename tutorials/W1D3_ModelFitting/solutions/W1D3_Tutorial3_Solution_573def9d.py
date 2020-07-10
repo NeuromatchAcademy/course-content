@@ -10,8 +10,11 @@ def resample_with_replacement(x, y):
   Returns:
     ndarray, ndarray: The newly resampled `x` and `y` data points.
   """
-  
+
+  # Get array of indices for resampled points
   sample_idx = np.random.choice(len(x), size=len(x), replace=True)
+
+  # Sample from x and y according to sample_idx
   x_ = x[sample_idx]
   y_ = y[sample_idx]
 

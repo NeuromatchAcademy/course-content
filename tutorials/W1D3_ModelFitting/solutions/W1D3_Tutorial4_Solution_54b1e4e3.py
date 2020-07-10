@@ -13,7 +13,7 @@ def solve_poly_reg(x, y, max_order):
 
   # Create a dictionary with polynomial order as keys, and np array of theta 
   # (weights) as the values
-  theta_hat = {}
+  theta_hats = {}
 
   # Loop over polynomial orders from 0 through max_order
   for order in range(max_order + 1):
@@ -22,12 +22,12 @@ def solve_poly_reg(x, y, max_order):
     
     this_theta = ordinary_least_squares(X_design, y)
 
-    theta_hat[order] = this_theta
+    theta_hats[order] = this_theta
 
-  return theta_hat
+  return theta_hats
 
 
 max_order = 5
-theta_hat = solve_poly_reg(x, y, max_order)
+theta_hats = solve_poly_reg(x, y, max_order)
 with plt.xkcd():
-  plot_fitted_polynomials(x, y, theta_hat)
+  plot_fitted_polynomials(x, y, theta_hats)

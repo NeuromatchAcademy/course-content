@@ -8,6 +8,8 @@ def ordinary_least_squares(X, y):
   Returns:
     ndarray: estimated parameter values of shape (n_regressors)
   """
+  
+  # Compute theta_hat using OLS
   theta_hat = np.linalg.inv(X.T @ X) @ X.T @ y
   
   return theta_hat

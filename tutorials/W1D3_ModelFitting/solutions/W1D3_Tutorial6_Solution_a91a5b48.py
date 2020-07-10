@@ -26,10 +26,10 @@ def cross_validate(x_train, y_train, max_order, n_splits):
       y_cv_val = y_train[val_indices]
 
       # Fit models
-      theta_hat = solve_poly_reg(x_cv_train, y_cv_train, max_order)
+      theta_hats = solve_poly_reg(x_cv_train, y_cv_train, max_order)
 
       # Compute MSE
-      mse_this_split = evaluate_poly_reg(x_cv_val, y_cv_val, theta_hat, max_order)
+      mse_this_split = evaluate_poly_reg(x_cv_val, y_cv_val, theta_hats, max_order)
 
       mse_all[i_split] = mse_this_split
 
