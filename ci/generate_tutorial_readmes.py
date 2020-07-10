@@ -11,7 +11,7 @@ def main():
 
     # Initialize the lines in tutorials/README.md
     course_readme_text = [
-        "# Neuromatch Academy Tutorial Notebooks",
+        "# Neuromatch Academy Tutorial Materials",
         "",
     ]
 
