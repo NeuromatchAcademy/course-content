@@ -1,4 +1,4 @@
-def bootstrap_estimates(x, y, n=1000):
+def bootstrap_estimates(x, y, n=2000):
   """Generate a set of theta_hat estimates using the bootstrap method.
     
   Args:
@@ -15,3 +15,9 @@ def bootstrap_estimates(x, y, n=1000):
     x_, y_ = resample_with_replacement(x, y)
     theta_hats[i] = solve_normal_eqn(x_, y_)
   return theta_hats
+
+
+np.random.seed(123)  # set random seed for checking solutions
+
+theta_hats = bootstrap_estimates(x, y, n=2000)
+print(theta_hats[0:5])
