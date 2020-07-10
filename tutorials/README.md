@@ -1,4 +1,4 @@
-# Neuromatch Academy Tutorial Notebooks
+# Neuromatch Academy Tutorial Materials
 
 ## W0D1 - Python Workshop1
 
@@ -45,7 +45,7 @@
 
 ## W1D3 - Model Fitting
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18NYLPOMpphYvyS2n48GSPUo)
+[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18MqTMnc_mMiuawnczEa8xm9)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D3_ModelFitting/student/W1D3_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D3_ModelFitting/student/W1D3_Tutorial1.ipynb) |
@@ -60,7 +60,7 @@
 
 ## W1D4 - Machine Learning
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18PKZEq2papHofIapHAC9lSu)
+[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18NQvqJOvyUxeaOwuEICnWB6)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D4_MachineLearning/student/W1D4_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D4_MachineLearning/student/W1D4_Tutorial1.ipynb) |
@@ -71,7 +71,7 @@
 
 ## W1D5 - Dimensionality Reduction
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18NQYq2JxasSMWkq8p18OetX)
+[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18N0E0Bx-ZueacF2oRr5eEpU)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D5_DimensionalityReduction/student/W1D5_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D5_DimensionalityReduction/student/W1D5_Tutorial1.ipynb) |
@@ -84,7 +84,7 @@
 
 ## W2D1 - Bayesian Statistics
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18POROoqtKzppHyitBGk-Yf4)
+[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18NmYKYd6AjspUPnlys9R3R0)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D1_BayesianStatistics/student/W2D1_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D1_BayesianStatistics/student/W2D1_Tutorial1.ipynb) |
@@ -97,7 +97,7 @@
 
 ## W2D2 - Linear Systems
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18MAXULTnd0hx-GkxO3TLhRS)
+[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18NamPEHJnnljSC-4hWGvsJK)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D2_LinearSystems/student/W2D2_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D2_LinearSystems/student/W2D2_Tutorial1.ipynb) |
@@ -110,7 +110,7 @@
 
 ## W2D3 - Decision Making
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18P7P535AyvKGEGWRQtTMH-Y)
+[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18NaQb7HyKp-O3Ag5JJ9MmXi)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D3_DecisionMaking/student/W2D3_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D3_DecisionMaking/student/W2D3_Tutorial1.ipynb) |
@@ -122,7 +122,7 @@
 
 ## W2D4 - Optimal Control
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18ME5cjO_0DRJtmGK_f9QTn5)
+[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18NSMbvuDS2WaXLWctg3QArY)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D4_OptimalControl/student/W2D4_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D4_OptimalControl/student/W2D4_Tutorial1.ipynb) |
@@ -133,7 +133,7 @@
 
 ## W2D5 - Reinforcement Learning
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18Nsgq0x-InVqYGZjbL3bJnw)
+[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18P7mSCMDbLiTMdo_7eRvdjl)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D5_ReinforcementLearning/student/W2D5_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D5_ReinforcementLearning/student/W2D5_Tutorial1.ipynb) |
@@ -145,7 +145,7 @@
 
 ## W3D1 - Real Neurons
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18NFb_hxIqCMgxId_Vfb1WXh)
+[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18MCEdPJQ7gdnqP-Z0Tkmcjy)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W3D1_RealNeurons/student/W3D1_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/tutorials/W3D1_RealNeurons/student/W3D1_Tutorial1.ipynb) |
@@ -158,7 +158,7 @@
 
 ## W3D2 - Dynamic Networks
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18MFb0V3eal_jAcWhnot32ad)
+[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18PrZb52EVhNgrfPjLF0OPEJ)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W3D2_DynamicNetworks/student/W3D2_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/tutorials/W3D2_DynamicNetworks/student/W3D2_Tutorial1.ipynb) |
@@ -169,7 +169,7 @@
 
 ## W3D3 - Network Causality
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18Np77hYRq_9dZ6uLO2nMFE3)
+[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18P46LiVj6hCd4w1SLpVJo63)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W3D3_NetworkCausality/student/W3D3_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/tutorials/W3D3_NetworkCausality/student/W3D3_Tutorial1.ipynb) |
@@ -182,7 +182,7 @@
 
 ## W3D4 - Deep Learning1
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18P1qRKyolFqfbfIPpeT80hT)
+[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18PZ2uw0p7G4EkzjzqP8l0Eg)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W3D4_DeepLearning1/student/W3D4_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/tutorials/W3D4_DeepLearning1/student/W3D4_Tutorial1.ipynb) |
@@ -194,7 +194,7 @@
 
 ## W3D5 - Deep Learning2
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18NNaOnCHoBK24r7JIBWzXA2)
+[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18Ojl1CV8W00JZ0C0hivBxw1)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W3D5_DeepLearning2/student/W3D5_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/tutorials/W3D5_DeepLearning2/student/W3D5_Tutorial1.ipynb) |
