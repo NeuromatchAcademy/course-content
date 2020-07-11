@@ -16,6 +16,7 @@ def predict_spike_counts_lnp(stim, spikes, theta=None, d=25):
   X = np.column_stack([constant, make_design_matrix(stim)])
   if theta is None:
     theta = fit_lnp(X, y, d)
+
   yhat = np.exp(X @ theta)
   return yhat
 
