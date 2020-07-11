@@ -11,8 +11,8 @@ def neg_log_lik_lnp(theta, X, y):
 
   """ 
   rate = np.exp(X @ theta)
-  loglik = np.log(rate) @ y - rate.sum()
-  return -loglik
+  log_lik = y @ np.log(rate) - rate.sum()
+  return -log_lik
 
 
 def fit_lnp(stim, spikes, d=25):
@@ -32,6 +32,7 @@ def fit_lnp(stim, spikes, d=25):
   X = np.column_stack([constant, make_design_matrix(stim)])
 
   x0 = np.random.normal(0, .2, d + 1)
+
   res = minimize(neg_log_lik_lnp, x0, args=(X, y))
   return res["x"]
 

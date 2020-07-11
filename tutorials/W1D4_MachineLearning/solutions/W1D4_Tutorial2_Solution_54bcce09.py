@@ -9,10 +9,10 @@ def compute_accuracy(X, y, model):
   Returns:
     accuracy (float): Proportion of correct predictions.  
   """
-  y_hat = model.predict(X)
-  accuracy = (y == y_hat).mean()
+  y_pred = model.predict(X)
+  accuracy = (y == y_pred).mean()
 
   return accuracy
 
 train_accuracy = compute_accuracy(X, y, log_reg)
-print(f"Accuracy on the training data: {train_accuracy:.2%}%")
+print(f"Accuracy on the training data: {train_accuracy:.2%}")
