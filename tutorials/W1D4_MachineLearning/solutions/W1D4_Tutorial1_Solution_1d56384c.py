@@ -17,6 +17,7 @@ def make_design_matrix(stim, d=25):
 
   return X            
 
-with plt.xkcd():
-  X = make_design_matrix(stim)
-  plot_glm_matrices(X, spikes, nt=50)
+#with plt.xkcd(): #not using plt.xkcd() as it changes plot suboptimally
+X = make_design_matrix(stim)
+plot_glm_matrices(X, spikes, nt=50)
+plt.show()

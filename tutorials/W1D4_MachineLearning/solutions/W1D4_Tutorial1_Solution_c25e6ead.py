@@ -11,7 +11,7 @@ def neg_log_lik_lnp(theta, X, y):
 
   """ 
   rate = np.exp(X @ theta)
-  loglik = np.log(rate) @ y - rate.sum()
+  loglik = y @ np.log(rate) - rate.sum()
   return -loglik
 
 
