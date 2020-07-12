@@ -20,7 +20,10 @@
 
 
 # Course outline
- 
+
+* [Week 0](#week-0)
+    * [Thu, July 9: Python for NMA Part 1](#python-for-nma-workshop)
+    * [Fri, July 10: Python for NMA Part 2](#python-for-nma-workshop) 
 * [Week 1](#week-1)
     * [Mon, July 13: Model Types](#mon-july-13-model-types)
     * [Tue, July 14: Modeling Practice](#tue-july-14-modeling-practice)
@@ -39,6 +42,15 @@
     * [Wed, July 29: Network Causality](#wed-july-29-network-causality)    
     * [Thu, July 30: Deep Learning 1](#thu-july-30-deep-learning-1)
     * [Fri, July 31: Deep Learning 2](#fri-july-31-deep-learning-2)
+
+----
+
+## Week 0
+
+### Python for NMA workshop
+
+**Description** Two-day workshop for absolute Python beginners. Learn essential Python skills for course tutorials and practice by coding a neuronal simulation.
+
 
 ----
 
