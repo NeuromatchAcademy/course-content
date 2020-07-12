@@ -2,8 +2,8 @@
 
 *July 13-31, 2020*
 
-## [Project Schedule](#Project-schedule)
-## [Mentor’s Guide to NMA Projects](#Mentor’s-Guide-to-NMA-Projects)
+* [Project Schedule](#Project-schedule)
+* [Mentor’s Guide to NMA Projects](#Mentor’s-Guide-to-NMA-Projects)
 ## **[Student’s Guide to NMA Projects](#Student’s-Guide-to-NMA-Projects)**
 
 # **Project materials**
