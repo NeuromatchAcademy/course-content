@@ -1,7 +1,7 @@
 # NeuroMatch Academy (NMA) projects
 
 *July 13-31, 2020*
-## **[Structure of the NMA project](#Structure-of-the-NMA-project)**
+## **[Project Schedule](#Project-schedule)**
 ## **[Mentor’s Guide to NMA Projects](#Mentor’s-Guide-to-NMA-Projects)**
 ## **[Student’s Guide to NMA Projects](#Student’s-Guide-to-NMA-Projects)**
 
@@ -17,7 +17,7 @@
 - [Links to Project Proposals]()
 
 
-## ## **Project schedule**
+## **Project schedule**
 
   The NMA projects are conducted over 14 days, beginning on the morning of the ‘second’ curriculum day. Note that the the schedule of NMA is complex, due to the fact that we operate worldwide and have to accommodate three ‘zones’ and many timezones. The timezones are grouped into A, B and C groupings. This is the structure of the NMA times (note: times are in GMT+1):
 
