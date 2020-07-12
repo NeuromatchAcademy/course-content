@@ -2,27 +2,39 @@
 
 *July 13-31, 2020*
 
-* [Project Schedule](#Project-schedule)
-* [Mentor’s Guide to NMA Projects](#Mentor-Guide-to-NMA-Projects)
+* [Project Structure and Schedule](#Project-structure-and-schedule)
   * [Week One](#Week-One)
   * [Week-Two-and-Three](#Week-two-and-three)
+* [Mentor’s Guide to NMA Projects](#Mentor-Guide-to-NMA-Projects)
 * [Student’s Guide to NMA Projects](#Student-Guide-to-NMA-Projects)
   * [Time Commitment](#time-commitment)
   * [Your schedule](#Your-schedule)
 
 # **Project materials**
 ## Links for project introductory videos
-- [Link to Curriculum Overview](https://youtu.be/s4kBB1OMs0Q)
-- [Links to Projects Inro](./tutorials/README.md)
-- [Links to Curated Datasets](./projects/README.md)
-- [Links to Brainstorming Example](./projects/README.md)
+- [Link to Curriculum Overview](https://youtu.be/T1VSYU-H8-Y)
+- [Links to Projects Inro](https://youtu.be/fNOxmO1Hq3Y)
+- [Links to Curated Datasets](https://www.youtube.com/playlist?list=PLkBQOLLbi18ODTckxhgah98JloMLXt4oF)
+ - [Stringer Dataset](https://youtu.be/78GSgf6Dkkk)
+ - [Steinmetz Dataset](https://youtu.be/WXn4-FpVaOo)
+ - [Kay/Gallant Dataset](https://youtu.be/LdJkLyw4yzg)
+ - [HCP Dataset](https://youtu.be/iOCcY0QFMS4)
+ - [IBL Dataset](https://youtu.be/NofrFH8FRZU)
+
+- [Links to Brainstorming Example](https://youtu.be/H6rSlZzlrgQ)
 
 ## Links for project slides
 - [Links to Project Instruction]()
 - [Links to Project Proposals]()
 
+Overview: 
+Brainstorm: 
+Instructions: 
+Playlist of projects: 
 
-## Project schedule
+
+
+## Project Structure and Schedule
 
   The NMA projects are conducted over 14 days, beginning on the morning of the ‘second’ curriculum day. Note that the the schedule of NMA is complex, due to the fact that we operate worldwide and have to accommodate three ‘zones’ and many timezones. The timezones are grouped into A, B and C groupings. This is the structure of the NMA times (note: times are in GMT+1):
 
@@ -32,32 +44,11 @@ Daily project time can be
   - B zones — Split — 2h before and after
   - C zones — Late — 4h after content
 
-# Mentor Guide to NMA Projects
-The Neuromatch Academy projects are small group projects that will help the students build the skill of taking a question and trying to apply concepts or tools from the NMA curriculum. Mentors are a critical component of this process and you will be providing guidance and support for these projects. The primary goals are:
-  * Understanding how to develop a clear scientific question
-  * Understanding the limits of a particular dataset
-  * Understanding how to select the appropriate techniques or tools to answer the scientific question given the available data
-  * Interactive discussions with mentors who can provide experience, guidance and support for scientific growth
-  * Completing a full cycle of the scientific process: question generation, analysis, generation of a presentation of the findings
-
-Two important things to remember:
-  * The exact question and data set is not important, we are interested in the process
-  * The ‘quality’, ‘novelty’ and ‘depth’ of the question and outcome are less important than completing the full cycle from question generation to modeling or analysis to presenting the question and results
-
-As a Mentor, you will have two roles:
-- **Week one**: brainstorming and project idea refinement
-- **Week two and three**: guiding projects to completion
-
-The NMA students are grouped into Pods, which are run by a TA. The Pods are located in a zone and with a grouping within that zone based on their local timezone. The NMA projects are divided into two components. In week one, you will be assigned to a Pod and will help the students within the Pod refine their project ideas. You should look over the topics being covered in the summer school (with an introduction video) and try to help them select approaches, concepts and tools to help them answer their scientific question from the curriculum content. We have provided curated datasets and a selection of project ideas provided by the Mentors. By the end of week one, the students should have selected a project that is coherent and can be applied to a dataset (unless purely theoretical/computational) Normally, this should be one of the NMA datasets, but if you feel the students have a clear, just ocoherent plan that is achievable in two weeks working 2h a day, they can use other public datasets.
-  
-In weeks two and three, you will be assigned to specific projects, matched to your general area of research. Your goal in weeks two and three is to help the students through the process of analyzing data from datasets. The students value the discussion and interactions with Mentors, we would like you to be open to general discussions about science, but you should also ensure the projects are on track.
-
-
 ## Week One
 
 Week one begins on the morning of curriculum day two (project day one),
 where the students are introduced to the projects and brainstorm widely on
-ideas and questions they would like to explore. For project day two and three,
+ideas and questions they would like to explore. For project day three or four,
 you will meet with a Pod of students and work with the students to refine their ideas
 and form groups around a question. The Pod TA will help with this process, control
 the Zoom interactions and support you in this process.
@@ -89,6 +80,35 @@ brainstorming. The project day for the students are:
 
 ## Week Two and Three
 During weeks two and three, the students will work in their project groups and you and the TAs will alternate in providing support, guidance and discussions. As a Mentor, you should encourage the students to explore, understand and develop their projects. You should also help them stay on track by trying to keep them from pursuing paths that are too difficult for the allotted time or that seem like dead ends. Remember, this is about the experience, not producing a publication-worthy project. All groups must finish their projects by the end of curriculum day 4 of the final week. The students will make a 10min project presentation + recording for presentations and virtual ‘poster session’.
+
+# Mentor Guide to NMA Projects
+The Neuromatch Academy projects are small group projects that will help the students build the skill of taking a question and trying to apply concepts or tools from the NMA curriculum. Mentors are a critical component of this process and you will be providing guidance and support for these projects. The primary goals are:
+  * Understanding how to develop a clear scientific question
+  * Understanding the limits of a particular dataset
+  * Understanding how to select the appropriate techniques or tools to answer the scientific question given the available data
+  * Interactive discussions with mentors who can provide experience, guidance and support for scientific growth
+  * Completing a full cycle of the scientific process: question generation, analysis, generation of a presentation of the findings
+
+We expect mentors to
+  * Help students with assessing feasibility of projects (week 1)
+  * Help students to solidify ideas and questions, by enforcing clarity
+  * Promote course materials and toolkits provided by the NMA
+  * Help students use tools like a (neuro)scientist vs like a data scientist 
+  * Provide scientific advice, without getting too involved in their projects 
+  * Familiarize themselves with the datasets selected for projects
+
+Two important things to remember:
+  * The exact question and data set is not important, we are interested in the process
+  * The ‘quality’, ‘novelty’ and ‘depth’ of the question and outcome are less important than completing the full cycle from question generation to modeling or analysis to presenting the question and results
+
+As a Mentor, you will have two roles:
+- **Week one**: brainstorming and project idea refinement
+- **Week two and three**: guiding projects to completion
+
+The NMA students are grouped into Pods, which are run by a TA. The Pods are located in a zone and with a grouping within that zone based on their local timezone. The NMA projects are divided into two components. In week one, you will be assigned to a Pod and will help the students within the Pod refine their project ideas. You should look over the topics being covered in the summer school (with an introduction video) and try to help them select approaches, concepts and tools to help them answer their scientific question from the curriculum content. We have provided curated datasets and a selection of project ideas provided by the Mentors. By the end of week one, the students should have selected a project that is coherent and can be applied to a dataset (unless purely theoretical/computational) Normally, this should be one of the NMA datasets, but if you feel the students have a clear, just ocoherent plan that is achievable in two weeks working 2h a day, they can use other public datasets.
+  
+In weeks two and three, you will be assigned to specific projects, matched to your general area of research. Your goal in weeks two and three is to help the students through the process of analyzing data from datasets. The students value the discussion and interactions with Mentors, we would like you to be open to general discussions about science, but you should also ensure the projects are on track.
+
 
 
 # Student Guide to NMA Projects
