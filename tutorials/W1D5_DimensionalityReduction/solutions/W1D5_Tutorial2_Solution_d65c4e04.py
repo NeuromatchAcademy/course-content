@@ -27,8 +27,8 @@ def pca(X):
   return score, evectors, evals
 
 
-# perform PCA on the data matrix X
+# Perform PCA on the data matrix X
 score, evectors, evals = pca(X)
-# plot_data_new_basis(score)
+# Plot the data projected into the new basis
 with plt.xkcd():
   plot_data_new_basis(score)

@@ -20,7 +20,5 @@ def get_variance_explained(evals):
 
 # calculate the variance explained
 variance_explained = get_variance_explained(evals)
-
-# Uncomment to plot the variance explained
 with plt.xkcd():
   plot_variance_explained(variance_explained)

@@ -12,7 +12,7 @@ def calculate_cov_matrix(var_1, var_2, corr_coef):
     (numpy array of floats) : covariance matrix
   """
 
-  # calculate the covariance from the variances and correlation
+  # Calculate the covariance from the variances and correlation
   cov = corr_coef * np.sqrt(var_1 * var_2)
 
   cov_matrix = np.array([[var_1, cov], [cov, var_2]])
@@ -28,6 +28,5 @@ corr_coef = 0.8
 # Uncomment to test your code and plot
 cov_matrix = calculate_cov_matrix(variance_1, variance_2, corr_coef)
 X = get_data(cov_matrix)
-
 with plt.xkcd():
   plot_data(X)

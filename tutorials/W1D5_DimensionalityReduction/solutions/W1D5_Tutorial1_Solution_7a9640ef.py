@@ -32,6 +32,5 @@ u = np.array([3, 1])
 
 # Uncomment and run below to plot the basis vectors
 W = define_orthonormal_basis(u)
-
 with plt.xkcd():
   plot_basis_vectors(X, W)
