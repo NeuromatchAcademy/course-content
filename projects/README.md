@@ -25,7 +25,7 @@
 
 ## Links for project slides
 - [Links to Project Instruction]()
-- [Links to Project Proposals]()
+- [Links to Project Proposals](https://docs.google.com/presentation/d/1WAHfJcBPM4rmwwvreAAS92sRYtltJRwklxH-82NzCYo/edit#slide=id.g8225ef52cb_0_10)
 
 Overview: 
 Brainstorm: 
