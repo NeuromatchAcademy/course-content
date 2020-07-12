@@ -14,10 +14,11 @@
 
 # Course materials
 
-- [Link to Welcome Video](https://youtu.be/s4kBB1OMs0Q)
-- [Links to videos, notebooks, and slides for tutorials](./tutorials/README.md)
-- [Links to videos, notebooks, and slides for projects](./projects/README.md)
+- [Welcome Video](https://youtu.be/s4kBB1OMs0Q)
+- [**Tutorials**: videos, notebooks, and slides](./tutorials/README.md)
+- [**Projects**: videos, notebooks, and slides](./projects/README.md)
 
+Group projects are offered for the *interactive track* only and will be running during all 3 weeks of NMA!
 
 # Course outline
 
@@ -430,12 +431,6 @@
 
 ----
 
-
-## Group projects (throughout) - interactive track only
-
-TBA
-
-----
 
 Shield: [![CC BY 4.0][cc-by-shield]][cc-by]
 
