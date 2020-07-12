@@ -3,8 +3,8 @@
 *July 13-31, 2020*
 
 * [Project Schedule](#Project-schedule)
-* [Mentor’s Guide to NMA Projects](#Mentors-Guide-to-NMA-Projects)
-* [Student’s Guide to NMA Projects](#Students-Guide-to-NMA-Projects)
+* [Mentor’s Guide to NMA Projects](#Mentor-Guide-to-NMA-Projects)
+* [Student’s Guide to NMA Projects](#Student-Guide-to-NMA-Projects)
 
 # **Project materials**
 ## Links for project introductory videos
@@ -28,7 +28,7 @@ Daily project time can be
   - B zones — Split — 2h before and after
   - C zones — Late — 4h after content
 
-# Mentor’s Guide to NMA Projects
+# Mentor Guide to NMA Projects
 The Neuromatch Academy projects are small group projects that will help the students build the skill of taking a question and trying to apply concepts or tools from the NMA curriculum. Mentors are a critical component of this process and you will be providing guidance and support for these projects. The primary goals are:
   * Understanding how to develop a clear scientific question
   * Understanding the limits of a particular dataset
