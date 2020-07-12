@@ -2,8 +2,8 @@
 
 *July 13-31, 2020*
 
-* [Project Schedule](#Project-schedule)
-* [Mentor’s Guide to NMA Projects](#Mentors-Guide-to-NMA-Projects)
+## [Project Schedule](#Project-schedule)
+## [Mentor’s Guide to NMA Projects](#Mentors-Guide-to-NMA-Projects)
 ## **[Student’s Guide to NMA Projects](#Student’s-Guide-to-NMA-Projects)**
 
 # **Project materials**
@@ -85,7 +85,7 @@ brainstorming. The project day for the students are:
 During weeks two and three, the students will work in their project groups and you and the TAs will alternate in providing support, guidance and discussions. As a Mentor, you should encourage the students to explore, understand and develop their projects. You should also help them stay on track by trying to keep them from pursuing paths that are too difficult for the allotted time or that seem like dead ends. Remember, this is about the experience, not producing a publication-worthy project. All groups must finish their projects by the end of curriculum day 4 of the final week. The students will make a 10min project presentation + recording for presentations and virtual ‘poster session’.
 
 
-# **Student Guide to NMA Projects**
+# Student Guide to NMA Projects
 Welcome to the Neuromatch Academy projects! During the next three weeks you will work in small groups to develop a scientific question, select a data set to analyze and work together to develop a project that you will present at the end of NMA. You will be able to see an overview of the curriculum topics to help you brainstorm and we have prepared data sets for your projects. During your project time, you will be meeting with your teaching assistant and to mentors, who will be neuromatched to your projects at the end of week one! You questions you should try to :
 1. How do you develop a clear scientific question?
 2. What are the limits of a particular dataset?
