@@ -1,5 +1,3 @@
-
-
 def define_orthonormal_basis(u):
   """
   Calculates an orthonormal basis given an arbitrary vector u.
@@ -13,17 +11,10 @@ def define_orthonormal_basis(u):
                                 columns correspond to basis vectors
   """
 
-  ###################################################################
-  # Insert your code here to:
-  ###################################################################
-  
   # normalize vector u
   u = u / np.sqrt(u[0] ** 2 + u[1] ** 2)
   # calculate vector w that is orthogonal to w
   w = np.array([-u[1], u[0]])
-
-  # Comment this once you've filled the function
-  # raise NotImplementedError("Student excercise: implement the orthonormal basis function")
 
   W = np.column_stack((u, w))
 

@@ -1,5 +1,3 @@
-
-
 def calculate_cov_matrix(var_1, var_2, corr_coef):
   """
   Calculates the covariance matrix based on the variances and correlation
@@ -14,26 +12,14 @@ def calculate_cov_matrix(var_1, var_2, corr_coef):
     (numpy array of floats) : covariance matrix
   """
 
-  ##################################################################
-  # Insert your code here to:
-  ##################################################################
-
   # calculate the covariance from the variances and correlation
   cov = corr_coef * np.sqrt(var_1 * var_2)
 
   cov_matrix = np.array([[var_1, cov], [cov, var_2]])
-
-  # Comment once you've filled in the function
-  # raise NotImplementedError("Student excercise: calculate the covariance matrix!")
   
   return cov_matrix
 
 
-###################################################################
-# generate and plot bivariate Gaussian data with variances of 1
-# and a correlation coefficients of: 0.8
-# repeat while varying the correlation coefficient from -1 to 1
-###################################################################
 np.random.seed(2020)  # set random seed
 variance_1 = 1
 variance_2 = 1

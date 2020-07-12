@@ -1,5 +1,3 @@
-
-
 def change_of_basis(X, W):
   """
   Projects data onto new basis W.
@@ -14,15 +12,8 @@ def change_of_basis(X, W):
     (numpy array of floats)    : Data matrix expressed in new basis
   """
 
-  ###################################################################
-  # Insert your code here to:
-  ###################################################################
-
   # project data onto new basis described by W
   Y = np.matmul(X, W)
-
-  # comment this once you've filled the function
-  # raise NotImplementedError("Student excercise: implement change of basis")
 
   return Y
 
