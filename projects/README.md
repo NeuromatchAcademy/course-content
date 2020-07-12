@@ -9,6 +9,7 @@
 * [Student’s Guide to NMA Projects](#Student-Guide-to-NMA-Projects)
   * [Time Commitment](#time-commitment)
   * [Your schedule](#Your-schedule)
+* [Data Loader](#data-loader)
 
 # **Project materials**
 ## Links for project introductory videos
@@ -27,10 +28,6 @@
 - [Links to Project Instruction]()
 - [Links to Project Proposals](https://docs.google.com/presentation/d/1WAHfJcBPM4rmwwvreAAS92sRYtltJRwklxH-82NzCYo/edit#slide=id.g8225ef52cb_0_10)
 
-Overview: 
-Brainstorm: 
-Instructions: 
-Playlist of projects: 
 
 
 
