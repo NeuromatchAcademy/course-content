@@ -66,23 +66,25 @@ project proposal including a question, data set and planned techniques to apply 
 the question. We are suggesting that the students use the [Miro](https://miro.com) collaborative board for
 brainstorming. The project day for the students are:
 
-* **Project Day 1** — General discussion
+* **Project Day 1** — General discussion (led by TAs)
 
-  *Extended ice-breaker. Get to know each other’s scientific interests
+  *Extended ice-breaker. Students get to know about each other's 
 
-* **Project Day 2** — Project Structure
+* **Project Day 2** — Project Structure (led by TAs)
     * Videos: from topic to scientific questions
     * Videos: intros to data sets
     * Videos: overview of course content
     * Pod brainstorm: dreaming big ideas
-* **Project Day 3** — Refinement
+    
+* **Project Day 3** — Refinement (with Mentors)
   * Form project groups of 3–5 students
   * Develop projects from idea to plan
 
-* **Project Day 4** — Refinement
+* **Project Day 4** — Refinement (with Mentors)
   * Refine, specify techniques
   * Write short proposal (format TBD)
-* **Project Day 5** — Groups
+  
+* **Project Day 5** — Groups (led by TAs)
   * The TAs confirm the project groups, projects and the groups will be matched to Mentors.
 
 ## Week Two and Three
