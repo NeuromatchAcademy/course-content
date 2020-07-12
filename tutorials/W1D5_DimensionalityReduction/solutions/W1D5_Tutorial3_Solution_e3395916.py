@@ -13,25 +13,14 @@ def reconstruct_data(score, evectors, X_mean, K):
 
   """
 
-  ###################################################################
-  # Insert your code here to:
-  ###################################################################
-
   # Reconstruct the data from the score and eigenvectors
   # Don't forget to add the mean!!
   X_reconstructed =  np.matmul(score[:, :K], evectors[:, :K].T) + X_mean
-
-  # Comment once you've filled in the function
-  # raise NotImplementedError("Student excercise: reconstructing data function!")
 
   return X_reconstructed
 
 
 K = 784
-
-###################################################################
-# Insert your code here to:
-###################################################################
 
 # Reconstruct the data based on all components
 X_mean = np.mean(X, 0)

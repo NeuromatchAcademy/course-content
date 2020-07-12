@@ -1,7 +1,3 @@
-###################################################################
-# Insert your code here to ...
-###################################################################
-
 # Calculate the eigenvalues and eigenvectors
 evals, evectors = np.linalg.eigh(cov_matrix)
 # Sort the eigenvalues in descending order

@@ -13,10 +13,6 @@ def pca(X):
 
   """
 
-  ###################################################################
-  # Insert your code here to ...
-  ###################################################################
-
   # Subtract the mean of X
   X = X - np.mean(X, axis=0)
   # Calculate the sample covariance matrix
@@ -30,10 +26,6 @@ def pca(X):
 
   return score, evectors, evals
 
-
-###################################################################
-# Insert your code here to ...
-###################################################################
 
 # perform PCA on the data matrix X
 score, evectors, evals = pca(X)
