@@ -4,7 +4,7 @@
 
 * [Project Schedule](#Project-schedule)
 * [Mentor’s Guide to NMA Projects](#Mentors-Guide-to-NMA-Projects)
-* [Student’s Guide to NMA Projects](#Student’s-Guide-to-NMA-Projects)
+* [Student’s Guide to NMA Projects](#Students-Guide-to-NMA-Projects)
 
 # **Project materials**
 ## Links for project introductory videos
