@@ -9,7 +9,7 @@
 * [Student’s Guide to NMA Projects](#Student-Guide-to-NMA-Projects)
   * [Time Commitment](#time-commitment)
   * [Your schedule](#Your-schedule)
-* [Data Loader](#data-loader)
+* [Data Loaders](#data-loaders)
 
 # **Project materials**
 ## Links for project introductory videos
