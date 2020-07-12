@@ -17,6 +17,7 @@ def change_of_basis(X, W):
   ###################################################################
   # Insert your code here to:
   ###################################################################
+
   # project data onto new basis described by W
   Y = np.matmul(X, W)
 
