@@ -15,11 +15,11 @@
 - [Link to Curriculum Overview](https://youtu.be/T1VSYU-H8-Y)
 - [Links to Projects Inro](https://youtu.be/fNOxmO1Hq3Y)
 - [Links to Curated Datasets](https://www.youtube.com/playlist?list=PLkBQOLLbi18ODTckxhgah98JloMLXt4oF)
- - [Stringer Dataset](https://youtu.be/78GSgf6Dkkk)
- - [Steinmetz Dataset](https://youtu.be/WXn4-FpVaOo)
- - [Kay/Gallant Dataset](https://youtu.be/LdJkLyw4yzg)
- - [HCP Dataset](https://youtu.be/iOCcY0QFMS4)
- - [IBL Dataset](https://youtu.be/NofrFH8FRZU)
+  * [Stringer Dataset](https://youtu.be/78GSgf6Dkkk)
+  * [Steinmetz Dataset](https://youtu.be/WXn4-FpVaOo)
+  * [Kay/Gallant Dataset](https://youtu.be/LdJkLyw4yzg)
+  * [HCP Dataset](https://youtu.be/iOCcY0QFMS4)
+  * [IBL Dataset](https://youtu.be/NofrFH8FRZU)
 
 - [Links to Brainstorming Example](https://youtu.be/H6rSlZzlrgQ)
 
