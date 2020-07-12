@@ -4,7 +4,11 @@
 
 * [Project Schedule](#Project-schedule)
 * [Mentor’s Guide to NMA Projects](#Mentor-Guide-to-NMA-Projects)
+  * [Week One](#Week-One)
+  * [Week-Two-and-Three](#Week-two-and-three)
 * [Student’s Guide to NMA Projects](#Student-Guide-to-NMA-Projects)
+  * [Time Commitment](#time-commitment)
+  * [Your schedule](#Your-schedule)
 
 # **Project materials**
 ## Links for project introductory videos
@@ -102,7 +106,7 @@ Daily project time can be:
  - B zones — Split — 2h before and after content
  - C zones — Late — 4h after content
 
-## **Project schedule**
+## **Your schedule**
 Your project time can be
 - A zones — Early — 4h before content
 - B zones — Split — 2h before and after
