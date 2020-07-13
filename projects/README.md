@@ -187,9 +187,13 @@ Week one begins on the morning of curriculum day two (project day one). During t
    * Begin by watching videos (1h)
    
      a. While videos are running, TA should create a miro.com account and start a whiteboard.
+     
      b. Video (16 min): [Project Instructions](https://youtu.be/fNOxmO1Hq3Y)
+     
      c. Video (11 min): [Overview of the course content](https://www.youtube.com/watch?v=T1VSYU-H8-Y&feature=youtu.be)
+     
      d. Video (~20 min): [Intros to datasets](https://docs.google.com/document/d/1_Cam97RDwfQofVSoQb-r9o4e2z3Jc4DdkNUSg6fDxjA/edit?usp=sharing) (watch around 2 out of 5, pod’s choice. Watch others at other times)
+     
      e. Video (11 min): [Demonstration of discussion](https://youtu.be/H6rSlZzlrgQ): moving from topic to scientific question
 
  * **Pod brainstorm: dreaming big ideas**
