@@ -194,25 +194,25 @@ Week one begins on the morning of curriculum day two (project day one). During t
  * **Pod brainstorm: dreaming big ideas**
  
    **Expansion phase (1h):**
-   1. TA shares links to miro whiteboard.
-   2. 5 min: students log in to miro, and explore/play with interface.
-   3. 15 min: independent thinking by students, entering ideas in different places on miro board. For example:
+  1. TA shares links to miro whiteboard.
+  2. 5 min: students log in to miro, and explore/play with interface.
+  3. 15 min: independent thinking by students, entering ideas in different places on miro board. For example:
  	* Sticky notes (try to use distinct colors) with a few sentences for a topic, idea, questions
  	* Sketch plots you might like to generate
 	* Imaginary data
-   4. 20 min: Each student presents 1 or 2 of their favorite ideas
-   5. 10 min: Put students into **random breakout rooms** to respond to favorite ideas
-   6. 10 min: Come back together to present new ideas for 10min
-   7. 30 min break
+  4. 20 min: Each student presents 1 or 2 of their favorite ideas
+  5. 10 min: Put students into **random breakout rooms** to respond to favorite ideas
+  6. 10 min: Come back together to present new ideas for 10min
+  7. 30 min break
 		
  **30 min break**
  
  **Contraction phase (1h)**
  
-   8. 10 min: Divide ideas into a few different categories
-   9. 10 min: Put students into new random breakout rooms to brainstorm new ideas, prioritize previous ideas
-   10. 10 min: present organization
-   11. 30 min: Open discussion aimed toward practical projects
+  8. 10 min: Divide ideas into a few different categories
+  9. 10 min: Put students into new random breakout rooms to brainstorm new ideas, prioritize previous ideas
+  10. 10 min: present organization
+  11. 30 min: Open discussion aimed toward practical projects
 
 * **Project Day 3** — Refinement
 
@@ -241,7 +241,6 @@ Week one begins on the morning of curriculum day two (project day one). During t
 ### **Week One** Implement and Present 
 
 * **Project days 5-13**: Implement
-
   	* Check in with each project every day for at least 30 min.
   	* Evaluate social functioning of group, make sure students are working well and talking **together**
   	* Ask students to summarize progress
