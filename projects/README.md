@@ -192,6 +192,7 @@ Week one begins on the morning of curriculum day two (project day one). During t
      e. Video (11 min): [Demonstration of discussion](https://youtu.be/H6rSlZzlrgQ): moving from topic to scientific question
 
  * **Pod brainstorm: dreaming big ideas**
+ 
    **Expansion phase (1h):**
     1. TA shares links to miro whiteboard.
     2. 5 min: students log in to miro, and explore/play with interface.
@@ -204,6 +205,7 @@ Week one begins on the morning of curriculum day two (project day one). During t
     6. 10 min: Come back together to present new ideas for 10min
     7. 30 min break
  **30 min break
+ 
  **Contraction phase (1h)**
     8. 10 min: Divide ideas into a few different categories
     9. 10 min: Put students into new random breakout rooms to brainstorm new ideas, prioritize previous ideas
