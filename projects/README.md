@@ -25,8 +25,8 @@
 - [Brainstorming Example](https://youtu.be/H6rSlZzlrgQ)
 
 ## Links for project slides
-- [Project Instruction](https://osf.io/7frh3/)
-- [Possible Project Proposals](https://osf.io/9j38s/)
+- [Project Instruction](https://mfr.ca-1.osf.io/render?url=https://osf.io/7frh3/?direct%26mode=render%26action=download%26mode=render)
+- [Possible Project Proposals](https://mfr.ca-1.osf.io/render?url=https://osf.io/9j38s/?direct%26mode=render%26action=download%26mode=render)
 
 
 
