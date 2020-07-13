@@ -14,9 +14,7 @@ def my_threshold(selfmotion_vel_est, threshold):
       the brain decides there really is self motion.
 
   Returns:
-      (numpy.ndarray): 3 floats with the proportion of trials classified as
-      having self motion in the world-motion condition, in the self-motion
-      condition, and the proportion correct.
+      self-motion: yes or no.
   """
 
   ##############################################################
