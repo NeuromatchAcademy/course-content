@@ -234,7 +234,9 @@ Week one begins on the morning of curriculum day two (project day one). During t
 
 **Project mentors will be selected algorithmically over the weekend between Project Day 4 and 5.**
 
-* **Project days 5-13** (Week Two and Three): Implement
+### **Week One** Implement and Present 
+
+* **Project days 5-13**: Implement
 
   * Check in with each project every day for at least 30 min.
   * Evaluate social functioning of group, make sure students are working well and talking **together**
@@ -247,10 +249,6 @@ Week one begins on the morning of curriculum day two (project day one). During t
 	 * All students should contribute to both slides and video.
   * More detailed guidance to be announced.
   * Videos will be presented at virtual poster session on Content Day 15.
-
-
-### **Week Two and Three**
-During weeks two and three, the students will work in their project groups and you and the Mentor will alternate in providing support, guidance and discussions. As a TA, you should encourage the students to explore, understand and develop their projects, but also make sure they don’t get lost. You should also help them stay on track by trying to keep them from pursuing paths that are too difficult for the allotted time or that seem like dead ends. Remember, this is about the experience, not producing a publication-worthy project. All groups must finish their projects by the end of curriculum day 4 of the final week. The students will make a 10min project presentation + recording for presentations and virtual ‘poster session’.
 
 
 # Data loaders
