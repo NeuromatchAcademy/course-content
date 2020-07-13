@@ -126,7 +126,6 @@ Daily project time can be:
  - B zones — Split — 2h before and after content
  - C zones — Late — 4h after content
 
-- TimeZones 1B, 2B, 3B: Project Day 2 is partly the afternoon of Course Day 2, and partly the morning of Course Day 3.
 - TimeZones 1C, 2C, 3C: Project Day 2 is the afternoon of Course Day 2.
 
 You need to check with your TA and communicate with your mentors and TAs to make sure you have coordinated when you are meeting!
