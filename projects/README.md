@@ -172,7 +172,6 @@ In weeks two and three, you will oversee your students projects. Working with me
 ### **Week One**
 Week one begins on the morning of curriculum day two (project day one). During the first day, your role is to encourage students to share their scientific background, interests and goals. It’s a icebreaking session, with emphasis on scientific backgrounds, interests and big questions they might have in neuroscience that would like to explore in future.  For project day two, you will help going through the videos (Project Intro, Curriculum overview, Dataset Intro, and Brainstorm Example). You will control the Zoom interactions and support the students in this process (put them in breakout rooms to discuss the videos). Day three or four, a mentor will join to help with the refinement process: help students to converge on a few projects topics, form groups and work on a project proposal that includes a question, data set and planned techniques to apply to answer the question. We are suggesting you to use the [Miro](https://miro.com/) collaborative board for brainstorming. The project day for the students are:
 
-* **Project Day 1** — General discussion 
    * Extended ice-breaker. Encourage students to get to know each other’s scientific interests (this is very important later to form Project Groups, based on shared interests)
    
 * **Project Day 2** — Project Structure
