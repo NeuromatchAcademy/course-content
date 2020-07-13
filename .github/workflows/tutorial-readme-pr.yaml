@@ -1,0 +1,43 @@
+name: tutorial-readme-pr
+on: 
+  pull_request:
+    branches: master
+    paths:
+      - tutorials/slide_links.txt
+      - tutorials/youtube_playlists.txt
+
+jobs:
+
+  generate-readme:
+
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Update READMEs
+        run: python ci/generate_tutorial_readmes.py
+
+      - name: Commit processed files
+        if: ${{ success() }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add '**/README.md'
+          git diff-index --quiet HEAD || git commit -m "Update tutorial README"
+
+      - name: Push post-processed notebooks
+        if: ${{ success() }}
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.head_ref }}
