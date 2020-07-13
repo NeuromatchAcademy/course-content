@@ -9,12 +9,13 @@
 * [Student’s Guide to NMA Projects](#Student-Guide-to-NMA-Projects)
   * [Time Commitment](#time-commitment)
   * [Your schedule](#Your-schedule)
+* [TA’s Guide to NMA Projects](#TA-Guide-to-NMA-Projects) 
 * [Data Loaders](#data-loaders)
 
 # **Project materials**
 ## Links for project introductory videos
-- [Curriculum Overview](https://youtu.be/T1VSYU-H8-Y)
 - [Projects Intro](https://youtu.be/fNOxmO1Hq3Y)
+- [Curriculum Overview](https://youtu.be/T1VSYU-H8-Y)
 - [Curated Datasets](https://www.youtube.com/playlist?list=PLkBQOLLbi18ODTckxhgah98JloMLXt4oF)
   * [Stringer Dataset](https://youtu.be/78GSgf6Dkkk)
   * [Steinmetz Dataset](https://youtu.be/WXn4-FpVaOo)
@@ -36,10 +37,12 @@
   The NMA projects are conducted over 14 days, beginning on the morning of the ‘second’ curriculum day. Note that the the schedule of NMA is complex, due to the fact that we operate worldwide and have to accommodate three ‘zones’ and many timezones. The timezones are grouped into A, B and C groupings. This is the structure of the NMA times (note: times are in GMT+1):
 
 ![Calendar](Caltz.png)
-Daily project time can be
-  - A zones — Early — 4h before content
-  - B zones — Split — 2h before and after
-  - C zones — Late — 4h after content
+There are fourteen Project days, falling between the fifteen content days. Daily project time can b
+
+- TimeZones 1A, 2A, 3A: Project Day 2 is the morning of course Day 3
+- TimeZones 1B, 2B, 3B: Project Day 2 is partly the afternoon of Course Day 2, and partly the morning of Course Day 3.
+- TimeZones 1C, 2C, 3C: Project Day 2 is the afternoon of Course Day 2.
+
 
 ## Week One
 
@@ -126,10 +129,10 @@ Daily project time can be:
  - C zones — Late — 4h after content
 
 ## **Your schedule**
-Your project time can be
-- A zones — Early — 4h before content
-- B zones — Split — 2h before and after
-- C zones — Late — 4h after content
+There are fourteen Project days, falling between the fifteen content days. Your project time can be:
+- TimeZones 1A, 2A, 3A: Project Day 2 is the morning of course Day 3
+- TimeZones 1B, 2B, 3B: Project Day 2 is partly the afternoon of Course Day 2, and partly the morning of Course Day 3.
+- TimeZones 1C, 2C, 3C: Project Day 2 is the afternoon of Course Day 2.
 
 You need to check with your TA and communicate with your mentors and TAs to make sure you have coordinated when you are meeting!
 
@@ -141,6 +144,43 @@ The goal of week one is to begin by brainstorming and expanding the possible ide
 During weeks two and three, you will work in your project groups. The mentors and the TAs will alternate in providing you with support, guidance and general discussions. You must finish your projects your presentations by the end of project day 13 (week three day four). You will prepare a 10min project presentation and a recording for possible presentation to the rest of the NMA regional zone and a virtual ‘poster session’!
 Remember you have the entire NMA community who can also help you! Please ask questions in the Neurostars forum and help to answer questions from your fellow NMA classmates!
 
+# TA's Guide to NMA Projects
+
+The Neuromatch Academy projects are small group projects that will help the students build the skill of taking a question and trying to apply concepts or tools from the NMA curriculum. Teaching assistants are a critical component of this process and you will be providing guidance and support for these projects. The primary goals are:
+- Understanding how to develop a clear scientific question
+- Understanding the limits of a particular dataset
+- Understanding how to select the appropriate techniques or tools to answer the scientific question given the available data
+- Interactive discussions with mentors who can provide experience, guidance and support for scientific growth
+- Completing a full cycle of the scientific process: question generation, analysis, generation of a presentation of the findings
+
+Two important things to remember:
+- The exact question and data set is not important, we are interested in the process
+- The ‘quality’, ‘novelty’ and ‘depth’ of the question and outcome are less important than completing the full cycle from question generation to modeling or analysis to presenting the question and results
+
+These are **student-run** projects. TAs are only facilitators, and you are not responsible for the content of the projects.
+
+We expect TAs to
+  * Facilitate students through process of brainstorming and idea refinement (week 1: 3h on project day 2, 1-2h for rest of week)
+  * Spend 30 min per day per project during weeks 2-3
+  * Remind students about project schedule to keep them on track
+  * Promote course materials and toolkits provided by the NMA
+  * Attend to social dynamics of project groups and help identify and smooth out problems or alert lead TAs
+  * Advise students about good presentations
+
+## Structure of the NMA project
+As a TA, you will have two roles:
+1. Week one: brainstorming and project idea refinement
+2. Week two and three: guiding projects to completion
+Your role is to shepherd the students through the project process. The primary goal for you should be to encourage the students. In week one, you will help the students within the Pod brainstorm a wide range of project ideas and then refine those ideas. During the refinement (project days three and four) a Mentor will be assigned to your pod and you should help them lead a discussion. By the end of week one (Project day five), the students should have selected a project that is coherent and can be applied to a dataset (unless purely theoretical/computational). Normally, this should be one of the NMA datasets, but if you feel the students have a clear, just coherent plan that is achievable in two weeks working 2h a day, they can use other public datasets. Importantly, students should **not** use their own data set, even if they think this could help, because this would create imbalances within the project group.
+
+In weeks two and three, you will oversee your students projects. Working with mentors matched to the projects, your role is to answer questions—especially coding or technical questions—and guide the projects. You should also ensure the projects are on track by estimating if they will be done by the middle of week three. Day four of week three should be working on a presentation of the project. In the last day, projects will be presented.
+
+### **Week One**
+Week one begins on the morning of curriculum day two (project day one). During the first day, your role is to encourage students to share their scientific background, interests and goals. It’s a icebreaking session, with emphasis on scientific backgrounds, interests and big questions they might have in neuroscience that would like to explore in future.  For project day two, you will help going through the videos (Project Intro, Curriculum overview, Dataset Intro, and Brainstorm Example). You will control the Zoom interactions and support the students in this process (put them in breakout rooms to discuss the videos). Day three or four, a mentor will join to help with the refinement process: help students to converge on a few projects topics, form groups and work on a project proposal that includes a question, data set and planned techniques to apply to answer the question. We are suggesting you to use the [Miro](https://miro.com/) collaborative board for brainstorming. The project day for the students are:
+
+
+### **Week Two and Three**
+During weeks two and three, the students will work in their project groups and you and the Mentor will alternate in providing support, guidance and discussions. As a TA, you should encourage the students to explore, understand and develop their projects, but also make sure they don’t get lost. You should also help them stay on track by trying to keep them from pursuing paths that are too difficult for the allotted time or that seem like dead ends. Remember, this is about the experience, not producing a publication-worthy project. All groups must finish their projects by the end of curriculum day 4 of the final week. The students will make a 10min project presentation + recording for presentations and virtual ‘poster session’.
 
 
 # Data loaders
