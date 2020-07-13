@@ -32,7 +32,7 @@ Group projects are offered for the *interactive track* only and will be running 
     * [Thu, July 16: Machine Learning: GLM](#thu-july-16-machine-learning)
     * [Fri, July 17: Dimensionality Reduction](#fri-july-17-dimensionality-reduction)
     
- * [Professional Development](### Weekend 1)
+ * [Professional Development](###Weekend 1)
     
 * [Week 2](#week-2)
     * [Mon, July 20: Bayesian Statistics](#mon-july-20-bayesian-statistics)
@@ -41,7 +41,7 @@ Group projects are offered for the *interactive track* only and will be running 
     * [Thu, July 23: Optimal Control](#thu-july-23-optimal-control)
     * [Fri, July 24: Reinforcement Learning](#fri-july-24-reinforcement-learning)
     
- * [Professional Development](### Weekend 2)
+ * [Professional Development](###Weekend 2)
  
 * [Week 3](#week-3)
     * [Mon, July 27: Real Neurons](#mon-july-27-real-neurons)
