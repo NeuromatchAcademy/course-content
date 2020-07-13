@@ -9,6 +9,7 @@ def F_inv(x, a, theta):
     F_inverse : value of the inverse function
   """
 
+  # Calculate Finverse (ln(x) can be calculated as np.log(x))
   F_inverse = -1/a * np.log((x + (1 + np.exp(a * theta))**-1)**-1 - 1) + theta
 
   return F_inverse
@@ -30,6 +31,7 @@ def get_E_nullcline(pars, rE):
   wEE, wEI = pars['wEE'], pars['wEI']
   I_ext_E = pars['I_ext_E']
 
+  # calculate rI for E nullclines on rI
   rI = 1 / wEI * (wEE * rE - F_inv(rE, a_E, theta_E) + I_ext_E)
 
   return rI
@@ -51,6 +53,7 @@ def get_I_nullcline(pars, rI):
   wIE, wII = pars['wIE'], pars['wII']
   I_ext_I = pars['I_ext_I']
 
+  # calculate rE for I nullclines on rI
   rE = 1 / wIE * (wII * rI + F_inv(rI, a_I, theta_I) - I_ext_I)
 
   return rE
