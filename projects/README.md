@@ -194,24 +194,25 @@ Week one begins on the morning of curriculum day two (project day one). During t
  * **Pod brainstorm: dreaming big ideas**
  
    **Expansion phase (1h):**
-  1. TA shares links to miro whiteboard.
-  2. 5 min: students log in to miro, and explore/play with interface.
-  3. 15 min: independent thinking by students, entering ideas in different places on miro board. For example:
+   1. TA shares links to miro whiteboard.
+   2. 5 min: students log in to miro, and explore/play with interface.
+   3. 15 min: independent thinking by students, entering ideas in different places on miro board. For example:
  	* Sticky notes (try to use distinct colors) with a few sentences for a topic, idea, questions
  	* Sketch plots you might like to generate
 	* Imaginary data
-  4. 20 min: Each student presents 1 or 2 of their favorite ideas
-  5. 10 min: Put students into **random breakout rooms** to respond to favorite ideas
-  6. 10 min: Come back together to present new ideas for 10min
-  7. 30 min break
+   4. 20 min: Each student presents 1 or 2 of their favorite ideas
+   5. 10 min: Put students into **random breakout rooms** to respond to favorite ideas
+   6. 10 min: Come back together to present new ideas for 10min
+   7. 30 min break
 		
  **30 min break**
  
  **Contraction phase (1h)**
-  8. 10 min: Divide ideas into a few different categories
-  9. 10 min: Put students into new random breakout rooms to brainstorm new ideas, prioritize previous ideas
-  10. 10 min: present organization
-  11. 30 min: Open discussion aimed toward practical projects
+ 
+   8. 10 min: Divide ideas into a few different categories
+   9. 10 min: Put students into new random breakout rooms to brainstorm new ideas, prioritize previous ideas
+   10. 10 min: present organization
+   11. 30 min: Open discussion aimed toward practical projects
 
 * **Project Day 3** — Refinement
 
@@ -220,7 +221,7 @@ Week one begins on the morning of curriculum day two (project day one). During t
     3. 30 min: Create breakout rooms for each tentative project group. Students should discuss projects, as should also voice priorities and their expected time commitments to project. It may be helpful for students to articulate their personal strengths and weaknesses, and make suggestions for inviting other pod members with complementary experience. TA and Mentor will move between the breakout rooms separately to help the students refine their project ideas.
    4. 10 min: After some period of discussion in tentative groups, allow students to reshuffle their project preferences. Rebalance groups if needed.
    5. Continued discussion.
-   * Mentors may be scheduled for various 30-min windows during this day, depending on availability. Breaks can be scheduled as needed, but be mindful of mentor times.
+   	* Mentors may be scheduled for various 30-min windows during this day, depending on availability. Breaks can be scheduled as needed, but be mindful of mentor times.
 
 * **Project Day 4** — Refinement
    	1. 2 hour: Unstructured project time within groups. Help the students refine their projects. Ask leading questions: how do the data set and analyses help answer the questions? What might be possible confounds?
