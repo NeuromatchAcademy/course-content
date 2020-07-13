@@ -158,7 +158,7 @@ Two important things to remember:
 - The exact question and data set is not important, we are interested in the process
 - The ‘quality’, ‘novelty’ and ‘depth’ of the question and outcome are less important than completing the full cycle from question generation to modeling or analysis to presenting the question and results
 
-These are **student-run** projects. TAs are only facilitators, and you are not responsible for the content of the projects.
+*These are **student-run** projects. TAs are only facilitators, and you are not responsible for the content of the projects.*
 
 We expect TAs to
   * Facilitate students through process of brainstorming and idea refinement (week 1: 3h on project day 2, 1-2h for rest of week)
