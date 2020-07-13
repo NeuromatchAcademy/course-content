@@ -34,7 +34,7 @@
 
 ## Project Structure and Schedule
 
-  The NMA projects are conducted over 14 days, beginning on the morning of the ‘second’ curriculum day. Note that the the schedule of NMA is complex, due to the fact that we operate worldwide and have to accommodate three ‘zones’ and many timezones. The timezones are grouped into A, B and C groupings. This is the structure of the NMA times (note: times are in GMT+1):
+  The NMA projects are conducted over 14 days, beginning on the morning of the ‘second’ curriculum day (W1D2).
 
 ![Calendar](Caltz.png)
 There are fourteen Project days, falling between the fifteen content days. Daily project time can be:
