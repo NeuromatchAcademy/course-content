@@ -77,8 +77,8 @@ Group projects are offered for the *interactive track* only and will be running 
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    "Why" model & discussion                                           |
 |    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, The role of models in discovery                     |
-|    5:05-5:30     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    5:30-6:30     |    Social hour                        |    Social hour                                                        |
+|    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
+|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -99,8 +99,8 @@ Group projects are offered for the *interactive track* only and will be running 
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Model implementation and testing                                   |
 |    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, the modeling process                                |
-|    5:05-5:30     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    5:30-6:30     |    Social hour                        |    Social hour                                                        |
+|    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
+|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -122,8 +122,8 @@ Group projects are offered for the *interactive track* only and will be running 
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Compare models, cross-validation, hyperparameters, Fit a model 2  (nonlinear models) |
 |    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, Critical evaluation of model fitting                |
-|    5:05-5:30     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    5:30-6:30     |    Social hour                        |    Social hour                                                        |
+|    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
+|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -145,8 +145,8 @@ Group projects are offered for the *interactive track* only and will be running 
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Logistic regression, regularization, and decoding neural activity      |
 |    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, Promises and pitfalls of ML for Neuroscience        |
-|    5:05-5:30     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    5:30-6:30     |    Social hour                        |    Social hour                                                        |
+|    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
+|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -168,8 +168,8 @@ Group projects are offered for the *interactive track* only and will be running 
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    MNIST with PCA, MNIST with t-SNE                                   |
 |    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, The link between high-dimensional brain signals and low-dimensional behavior    |
-|    5:05-5:30     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    5:30-6:30     |    Social hour                        |    Social hour                                                        |
+|    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
+|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -200,8 +200,8 @@ Group projects are offered for the *interactive track* only and will be running 
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Bayesian Decision Theory & Causal inference                        |
 |    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, Advanced Bayesian methods                           |
-|    5:05-5:30     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    5:30-6:30     |    Social hour                        |    Social hour                                                        |
+|    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
+|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -223,8 +223,8 @@ Group projects are offered for the *interactive track* only and will be running 
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Linear systems theory II (1D stochastic = OU process; ND stocastic = AR(1)) and State space model |
 |    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, Linear systems rule the world                       |
-|    5:05-5:30     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    5:30-6:30     |    Social hour                        |    Social hour                                                        |
+|    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
+|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -246,8 +246,8 @@ Group projects are offered for the *interactive track* only and will be running 
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Hidden Markov Model inference (DDM), Kalman filter                 |
 |    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, Decisions, decisions, decisions ...                 |
-|    5:05-5:30     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    5:30-6:30     |    Social hour                        |    Social hour                                                        |
+|    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
+|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -269,8 +269,8 @@ Group projects are offered for the *interactive track* only and will be running 
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    LQG control (MDP for linear systems), Motor control (signal-dependent noise, time cost, ...) |
 |    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, Advanced motor control                              |
-|    5:05-5:30     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    5:30-6:30     |    Social hour                        |    Social hour                                                        |
+|    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
+|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -292,8 +292,8 @@ Group projects are offered for the *interactive track* only and will be running 
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Model-based vs model-free RL, Multi-arm bandits: foraging          |
 |    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, RL and the brain                                    |
-|    5:05-5:30     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    5:30-6:30     |    Social hour                        |    Social hour                                                        |
+|    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
+|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -324,8 +324,8 @@ Group projects are offered for the *interactive track* only and will be running 
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Short-term plasticity of synapses and Hebbian plasticity & STDP    |
 |    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, A variety of neuron models                          |
-|    5:05-5:30     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    5:30-6:30     |    Social hour                        |    Social hour                                                        |
+|    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
+|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -347,8 +347,8 @@ Group projects are offered for the *interactive track* only and will be running 
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Attractors & local linearization around fixed points, Balanced Amplification & Inhibition-stabilized network |
 |    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, A theory of the whole brain                         |
-|    5:05-5:30     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    5:30-6:30     |    Social hour                        |    Social hour                                                        |
+|    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
+|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -370,8 +370,8 @@ Group projects are offered for the *interactive track* only and will be running 
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Instrumental Variables and interventions                           |
 |    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, Ladders of causality                                |
-|    5:05-5:30     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    5:30-6:30     |    Social hour                        |    Social hour                                                        |
+|    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
+|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -393,8 +393,8 @@ Group projects are offered for the *interactive track* only and will be running 
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Convolutional Neural Network, Fit to brain (RSA - represenatational similarity analysis) |
 |    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, Digging deep                                        |
-|    5:05-5:30     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    5:30-6:30     |    Social hour                        |    Social hour                                                        |
+|    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
+|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -416,8 +416,8 @@ Group projects are offered for the *interactive track* only and will be running 
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    NMA wrap-up                                                        |
 |    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, Digging deeper                                      |
-|    5:05-5:30     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    5:30-6:30     |    Social hour                        |    Social hour                                                        |
+|    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
+|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
