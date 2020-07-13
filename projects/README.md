@@ -184,17 +184,18 @@ Week one begins on the morning of curriculum day two (project day one). During t
    * Extended ice-breaker. Encourage students to get to know each other’s scientific interests (this is very important later to form Project Groups, based on shared interests)
    
 * **Project Day 2** — Project Structure
-   * Begin by watching videos (1h)
-     a. While videos are running, TA should create a miro.com account and start a whiteboard.
-     b. Video (16 min): [Project Instructions](https://youtu.be/fNOxmO1Hq3Y)
-     c. Video (11 min): [Overview of the course content](https://www.youtube.com/watch?v=T1VSYU-H8-Y&feature=youtu.be)
-     d. Video (~20 min): [Intros to datasets](https://docs.google.com/document/d/1_Cam97RDwfQofVSoQb-r9o4e2z3Jc4DdkNUSg6fDxjA/edit?usp=sharing) (watch around 2 out of 5, pod’s choice. Watch others at other times)
-     e. Video (11 min): [Demonstration of discussion](https://youtu.be/H6rSlZzlrgQ): moving from topic to scientific question
+   	* Begin by watching videos (1h)
+     		a. While videos are running, TA should create a miro.com account and start a whiteboard.
+     		b. Video (16 min): [Project Instructions](https://youtu.be/fNOxmO1Hq3Y)
+     		c. Video (11 min): [Overview of the course content](https://www.youtube.com/watch?v=T1VSYU-H8-Y&feature=youtu.be)
+     		d. Video (~20 min): [Intros to datasets](https://docs.google.com/document/d/1_Cam97RDwfQofVSoQb-r9o4e2z3Jc4DdkNUSg6fDxjA/edit?usp=sharing) (watch around 2 out of 5, pod’s choice. Watch others at other times)
+     		e. Video (11 min): [Demonstration of discussion](https://youtu.be/H6rSlZzlrgQ): moving from topic to scientific question
 
  * **Pod brainstorm: dreaming big ideas**
  
    	**Expansion phase (1h):**
-    		1. TA shares links to miro whiteboard.
+    		
+		1. TA shares links to miro whiteboard.
    		2. 5 min: students log in to miro, and explore/play with interface.
    		3. 15 min: independent thinking by students, entering ideas in different places on miro board. For example:
        			* Sticky notes (try to use distinct colors) with a few sentences for a topic, idea, questions
@@ -208,6 +209,7 @@ Week one begins on the morning of curriculum day two (project day one). During t
  **30 min break**
  
  	**Contraction phase (1h)**
+	
     		8. 10 min: Divide ideas into a few different categories
     		9. 10 min: Put students into new random breakout rooms to brainstorm new ideas, prioritize previous ideas
     		10. 10 min: present organization
