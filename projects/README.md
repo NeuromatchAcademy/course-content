@@ -171,6 +171,7 @@ We expect TAs to
 As a TA, you will have two roles:
 1. Week one: brainstorming and project idea refinement
 2. Week two and three: guiding projects to completion
+
 Your role is to shepherd the students through the project process. The primary goal for you should be to encourage the students. In week one, you will help the students within the Pod brainstorm a wide range of project ideas and then refine those ideas. During the refinement (project days three and four) a Mentor will be assigned to your pod and you should help them lead a discussion. By the end of week one (Project day five), the students should have selected a project that is coherent and can be applied to a dataset (unless purely theoretical/computational). Normally, this should be one of the NMA datasets, but if you feel the students have a clear, just coherent plan that is achievable in two weeks working 2h a day, they can use other public datasets. Importantly, students should **not** use their own data set, even if they think this could help, because this would create imbalances within the project group.
 
 In weeks two and three, you will oversee your students projects. Working with mentors matched to the projects, your role is to answer questions—especially coding or technical questions—and guide the projects. You should also ensure the projects are on track by estimating if they will be done by the middle of week three. Day four of week three should be working on a presentation of the project. In the last day, projects will be presented.
