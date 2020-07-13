@@ -70,15 +70,15 @@ Group projects are offered for the *interactive track* only and will be running 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    -0:30-0:00\*   |    Intro / keynote & tutorial setup   |    Model classifications                                              |
-|    0:00-0:15     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
+|    0:00-0:15     |    Pod Discussion I                   |    Lecture discussion with pod TA                                     |
 |    0:20-1:35     |    Tutorials + nano-lectures I        |    "What"/"How" models                                                |
-|    1:35-1:55     |    Discussion I                       |    Discussion with pod TA                                             |
-|    1:55-2:55     |    Big break                          |    BREAK incl. 20min yoga session                                     |
+|    1:35-1:55     |    Pod Discussion II                  |    Discussion with pod TA                                             |
+|    1:55-2:55     |    Big break + Physical Activity      |    BREAK incl. 20min yoga session                                     |
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    "Why" model & discussion                                           |
-|    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
+|    4:10-4:30     |    Pod Discussion III                 |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, The role of models in discovery                     |
 |    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
+|    6:00-7:00     |    Social Activity                    |    Hangout in Mozilla Hubs                                            |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -92,15 +92,15 @@ Group projects are offered for the *interactive track* only and will be running 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    -0:30-0:00\*   |    Intro / keynote & tutorial setup   |    How to approach modeling                                          |
-|    0:00-0:15     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
+|    0:00-0:15     |    Pod Discussion I                   |    Lecture discussion with pod TA                                     |
 |    0:20-1:35     |    Tutorials + nano-lectures I        |    Framing the question                                               |
-|    1:35-1:55     |    Discussion I                       |    Discussion with pod TA                                             |
+|    1:35-1:55     |    Pod Discussion II                  |    Discussion with pod TA                                             |
 |    1:55-2:55     |    Big break                          |    BREAK                                                              |
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Model implementation and testing                                   |
-|    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
+|    4:10-4:30     |    Pod Discussion III                 |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, the modeling process                                |
 |    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
+|    6:00-7:00     |    Social Activity                    |    Hangout in Mozilla Hubs                                            |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -115,15 +115,15 @@ Group projects are offered for the *interactive track* only and will be running 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    -0:30-0:00\*   |    Intro / keynote & tutorial setup   |    Why and how to fit models                                          |
-|    0:00-0:15     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
+|    0:00-0:15     |    Pod Discussion I                   |    Lecture discussion with pod TA                                     |
 |    0:20-1:35     |    Tutorials + nano-lectures I        |    Fit a model 1 (linear regression), Get error bars                  |
-|    1:35-1:55     |    Discussion I                       |    Discussion with pod TA                                             |
-|    1:55-2:55     |    Big break                          |    BREAK incl. 20min yoga session                                     |
+|    1:35-1:55     |    Pod Discussion II                  |    Discussion with pod TA                                             |
+|    1:55-2:55     |    Big break + Physical Activity      |    BREAK incl. 20min yoga session                                     |
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Compare models, cross-validation, hyperparameters, Fit a model 2  (nonlinear models) |
-|    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
+|    4:10-4:30     |    Pod Discussion III                 |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, Critical evaluation of model fitting                |
 |    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
+|    6:00-7:00     |    Social Activity                    |    Hangout in Mozilla Hubs                                            |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -138,15 +138,15 @@ Group projects are offered for the *interactive track* only and will be running 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    -0:30-0:00\*   |    Intro / keynote & tutorial setup   |    We want to predict ([scikit learn](https://scikit-learn.org/))    |
-|    0:00-0:15     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
+|    0:00-0:15     |    Pod Discussion I                   |    Lecture discussion with pod TA                                     |
 |    0:20-1:35     |    Tutorials + nano-lectures I        |    Introduction to GLMs and predicting neural responses               |
-|    1:35-1:55     |    Discussion I                       |    Discussion with pod TA                                             |
-|    1:55-2:55     |    Big break                          |    BREAK incl. 20min yoga session                                     |
+|    1:35-1:55     |    Pod Discussion II                  |    Discussion with pod TA                                             |
+|    1:55-2:55     |    Big break + Physical Activity      |    BREAK incl. 20min yoga session                                     |
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Logistic regression, regularization, and decoding neural activity      |
-|    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
+|    4:10-4:30     |    Pod Discussion III                 |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, Promises and pitfalls of ML for Neuroscience        |
 |    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
+|    6:00-7:00     |    Social Activity                    |    Hangout in Mozilla Hubs                                            |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -161,15 +161,15 @@ Group projects are offered for the *interactive track* only and will be running 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    -0:30-0:00\*   |    Intro / keynote & tutorial setup   |    Manifolds to understand                                           |
-|    0:00-0:15     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
+|    0:00-0:15     |    Pod Discussion I                   |    Lecture discussion with pod TA                                     |
 |    0:20-1:35     |    Tutorials + nano-lectures I        |    PCA 1 (orthonormal basis), PCA 2 (eigenvalues)                     |
-|    1:35-1:55     |    Discussion I                       |    Discussion with pod TA                                             |
+|    1:35-1:55     |    Pod Discussion II                  |    Discussion with pod TA                                             |
 |    1:55-2:55     |    Big break                          |    BREAK                                                              |
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    MNIST with PCA, MNIST with t-SNE                                   |
-|    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
+|    4:10-4:30     |    Pod Discussion III                 |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, The link between high-dimensional brain signals and low-dimensional behavior    |
 |    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
+|    6:00-7:00     |    Social Activity                    |    Hangout in Mozilla Hubs                                            |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -193,15 +193,15 @@ Group projects are offered for the *interactive track* only and will be running 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    -0:30-0:00\*   |    Intro / keynote & tutorial setup   |    Uncertainty                                                        |
-|    0:00-0:15     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
+|    0:00-0:15     |    Pod Discussion I                   |    Lecture discussion with pod TA                                     |
 |    0:20-1:35     |    Tutorials + nano-lectures I        |    Bayes rule: cue combination and marginalization                    |
-|    1:35-1:55     |    Discussion I                       |    Discussion with pod TA                                             |
-|    1:55-2:55     |    Big break                          |    BREAK incl. 20min yoga session                                     |
+|    1:35-1:55     |    Pod Discussion II                  |    Discussion with pod TA                                             |
+|    1:55-2:55     |    Big break + Physical Activity      |    BREAK incl. 20min yoga session                                     |
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Bayesian Decision Theory & Causal inference                        |
-|    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
+|    4:10-4:30     |    Pod Discussion III                 |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, Advanced Bayesian methods                           |
 |    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
+|    6:00-7:00     |    Social Activity                    |    Hangout in Mozilla Hubs                                            |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -216,15 +216,15 @@ Group projects are offered for the *interactive track* only and will be running 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    -0:30-0:00\*   |    Intro / keynote & tutorial setup   |    World has time                                                     |
-|    0:00-0:15     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
+|    0:00-0:15     |    Pod Discussion I                   |    Lecture discussion with pod TA                                     |
 |    0:20-1:35     |    Tutorials + nano-lectures I        |    Linear systems theory I (ND deterministic) and Markov process      |
-|    1:35-1:55     |    Discussion I                       |    Discussion with pod TA                                             |
+|    1:35-1:55     |    Pod Discussion II                  |    Discussion with pod TA                                             |
 |    1:55-2:55     |    Big break                          |    BREAK                                                              |
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Linear systems theory II (1D stochastic = OU process; ND stocastic = AR(1)) and State space model |
-|    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
+|    4:10-4:30     |    Pod Discussion III                 |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, Linear systems rule the world                       |
 |    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
+|    6:00-7:00     |    Social Activity                    |    Hangout in Mozilla Hubs                                            |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -239,15 +239,15 @@ Group projects are offered for the *interactive track* only and will be running 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    -0:30-0:00\*   |    Intro / keynote & tutorial setup   |    We need to decide stuff                                            |
-|    0:00-0:15     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
+|    0:00-0:15     |    Pod Discussion I                   |    Lecture discussion with pod TA                                     |
 |    0:20-1:35     |    Tutorials + nano-lectures I        |    Information theory, Sequential Probability Ratio Test (SPRT)       |
-|    1:35-1:55     |    Discussion I                       |    Discussion with pod TA                                             |
-|    1:55-2:55     |    Big break                          |    BREAK incl. 20min yoga session                                     |
+|    1:35-1:55     |    Pod Discussion II                  |    Discussion with pod TA                                             |
+|    1:55-2:55     |    Big break + Physical Activity      |    BREAK incl. 20min yoga session                                     |
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Hidden Markov Model inference (DDM), Kalman filter                 |
-|    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
+|    4:10-4:30     |    Pod Discussion III                 |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, Decisions, decisions, decisions ...                 |
 |    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
+|    6:00-7:00     |    Social Activity                    |    Hangout in Mozilla Hubs                                            |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -262,15 +262,15 @@ Group projects are offered for the *interactive track* only and will be running 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    -0:30-0:00\*   |    Intro / keynote & tutorial setup   |    We want to control our actions...                                  |
-|    0:00-0:15     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
+|    0:00-0:15     |    Pod Discussion I                   |    Lecture discussion with pod TA                                     |
 |    0:20-1:35     |    Tutorials + nano-lectures I        |    Expected utility / Cost, Markov decision process (MDP)             |
-|    1:35-1:55     |    Discussion I                       |    Discussion with pod TA                                             |
-|    1:55-2:55     |    Big break                          |    BREAK incl. 20min yoga session                                     |
+|    1:35-1:55     |    Pod Discussion II                  |    Discussion with pod TA                                             |
+|    1:55-2:55     |    Big break + Physical Activity      |    BREAK incl. 20min yoga session                                     |
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    LQG control (MDP for linear systems), Motor control (signal-dependent noise, time cost, ...) |
-|    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
+|    4:10-4:30     |    Pod Discussion III                 |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, Advanced motor control                              |
 |    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
+|    6:00-7:00     |    Social Activity                    |    Hangout in Mozilla Hubs                                            |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -285,15 +285,15 @@ Group projects are offered for the *interactive track* only and will be running 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    -0:30-0:00\*   |    Intro / keynote & tutorial setup   |    Problem formulations: actor-critic                                 |
-|    0:00-0:15     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
+|    0:00-0:15     |    Pod Discussion I                   |    Lecture discussion with pod TA                                     |
 |    0:20-1:35     |    Tutorials + nano-lectures I        |    Critic: reward prediction error, Exploration (POMDP) vs exploitation |
-|    1:35-1:55     |    Discussion I                       |    Discussion with pod TA                                             |
+|    1:35-1:55     |    Pod Discussion II                  |    Discussion with pod TA                                             |
 |    1:55-2:55     |    Big break                          |    BREAK                                                              |
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Model-based vs model-free RL, Multi-arm bandits: foraging          |
-|    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
+|    4:10-4:30     |    Pod Discussion III                 |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, RL and the brain                                    |
 |    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
+|    6:00-7:00     |    Social Activity                    |    Hangout in Mozilla Hubs                                            |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -317,12 +317,12 @@ Group projects are offered for the *interactive track* only and will be running 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    -0:30-0:00\*   |    Intro / keynote & tutorial setup   |    Real neurons ftw                                                   |
-|    0:00-0:15     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
+|    0:00-0:15     |    Pod Discussion I                   |    Lecture discussion with pod TA                                     |
 |    0:20-1:35     |    Tutorials + nano-lectures I        |    Reduced neuron models and transfer of synchrony                    |
-|    1:35-1:55     |    Discussion I                       |    Discussion with pod TA                                             |
-|    1:55-2:55     |    Big break                          |    BREAK incl. 20min yoga session                                     |
+|    1:35-1:55     |    Pod Discussion II                  |    Discussion with pod TA                                             |
+|    1:55-2:55     |    Big break + Physical Activity      |    BREAK incl. 20min yoga session                                     |
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Short-term plasticity of synapses and Hebbian plasticity & STDP    |
-|    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
+|    4:10-4:30     |    Pod Discussion III                 |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, A variety of neuron models                          |
 |    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
 |    6:05-7:05     |    Social hour                        |    Social hour                                                        |
@@ -340,12 +340,12 @@ Group projects are offered for the *interactive track* only and will be running 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    -0:30-0:00\*   |    Intro / keynote & tutorial setup   |    Mechanistic models of different types of brain actvivity           |
-|    0:00-0:15     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
+|    0:00-0:15     |    Pod Discussion I                   |    Lecture discussion with pod TA                                     |
 |    0:20-1:35     |    Tutorials + nano-lectures I        |    2D dynamical systems, Wilson-Cowen model (coarse-grained), oscillations & synchrony |
-|    1:35-1:55     |    Discussion I                       |    Discussion with pod TA                                             |
+|    1:35-1:55     |    Pod Discussion II                  |    Discussion with pod TA                                             |
 |    1:55-2:55     |    Big break                          |    BREAK                                                              |
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Attractors & local linearization around fixed points, Balanced Amplification & Inhibition-stabilized network |
-|    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
+|    4:10-4:30     |    Pod Discussion III                 |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, A theory of the whole brain                         |
 |    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
 |    6:05-7:05     |    Social hour                        |    Social hour                                                        |
@@ -363,15 +363,15 @@ Group projects are offered for the *interactive track* only and will be running 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    -0:30-0:00\*   |    Intro / keynote & tutorial setup   |    Causality - different views                                        |
-|    0:00-0:15     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
+|    0:00-0:15     |    Pod Discussion I                   |    Lecture discussion with pod TA                                     |
 |    0:20-1:35     |    Tutorials + nano-lectures I        |    Pittfalls of Granger and Centrality                                |
-|    1:35-1:55     |    Discussion I                       |    Discussion with pod TA                                             |
-|    1:55-2:55     |    Big break                          |    BREAK incl. 20min yoga session                                     |
+|    1:35-1:55     |    Pod Discussion II                  |    Discussion with pod TA                                             |
+|    1:55-2:55     |    Big break + Physical Activity      |    BREAK incl. 20min yoga session                                     |
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Instrumental Variables and interventions                           |
-|    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
+|    4:10-4:30     |    Pod Discussion III                 |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, Ladders of causality                                |
 |    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
+|    6:00-7:00     |    Social Activity                    |    Hangout in Mozilla Hubs                                            |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -386,15 +386,15 @@ Group projects are offered for the *interactive track* only and will be running 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    -0:30-0:00\*   |    Intro / keynote & tutorial setup   |    DL = crucial tool                                                  |
-|    0:00-0:15     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
+|    0:00-0:15     |    Pod Discussion I                   |    Lecture discussion with pod TA                                     |
 |    0:20-1:35     |    Tutorials + nano-lectures I        |    Pytorch intro & model components, Training it & inductive bias     |
-|    1:35-1:55     |    Discussion I                       |    Discussion with pod TA                                             |
-|    1:55-2:55     |    Big break                          |    BREAK incl. 20min yoga session                                     |
+|    1:35-1:55     |    Pod Discussion II                  |    Discussion with pod TA                                             |
+|    1:55-2:55     |    Big break + Physical Activity      |    BREAK incl. 20min yoga session                                     |
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    Convolutional Neural Network, Fit to brain (RSA - represenatational similarity analysis) |
-|    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
+|    4:10-4:30     |    Pod Discussion III                 |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, Digging deep                                        |
 |    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
+|    6:00-7:00     |    Social Activity                    |    Hangout in Mozilla Hubs                                            |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
@@ -409,15 +409,15 @@ Group projects are offered for the *interactive track* only and will be running 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
 |    -0:30-0:00\*   |    Intro / keynote & tutorial setup   |    DL for structure                                                   |
-|    0:00-0:15     |    Pod Q&A                            |    Lecture discussion with pod TA                                     |
+|    0:00-0:15     |    Pod Discussion I                   |    Lecture discussion with pod TA                                     |
 |    0:20-1:35     |    Tutorials + nano-lectures I        |    Variational autoencorders and uses in Neuroscience                 |
-|    1:35-1:55     |    Discussion I                       |    Discussion with pod TA                                             |
+|    1:35-1:55     |    Pod Discussion II                  |    Discussion with pod TA                                             |
 |    1:55-2:55     |    Big break                          |    BREAK                                                              |
 |    2:55-4:10     |    Tutorials + nano-lectures II       |    NMA wrap-up                                                        |
-|    4:10-4:30     |    Discussion II                      |    Discussion with pod TA                                             |
+|    4:10-4:30     |    Pod Discussion III                 |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, Digging deeper                                      |
 |    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    6:05-7:05     |    Social hour                        |    Social hour                                                        |
+|    6:00-7:00     |    Social Activity                    |    Hangout in Mozilla Hubs                                            |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
