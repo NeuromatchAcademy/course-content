@@ -25,8 +25,8 @@
 - [Brainstorming Example](https://youtu.be/H6rSlZzlrgQ)
 
 ## Links for project slides
-- [Project Instruction]() TBA
-- [Project Proposals](https://docs.google.com/presentation/d/1WAHfJcBPM4rmwwvreAAS92sRYtltJRwklxH-82NzCYo/edit#slide=id.g8225ef52cb_0_10)
+- [Project Instruction](https://osf.io/7frh3/)
+- [Possible Project Proposals](https://osf.io/9j38s/)
 
 
 
