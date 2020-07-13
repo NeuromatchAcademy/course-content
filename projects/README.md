@@ -144,7 +144,7 @@ The goal of week one is to begin by brainstorming and expanding the possible ide
 During weeks two and three, you will work in your project groups. The mentors and the TAs will alternate in providing you with support, guidance and general discussions. You must finish your projects your presentations by the end of project day 13 (week three day four). You will prepare a 10min project presentation and a recording for possible presentation to the rest of the NMA regional zone and a virtual ‘poster session’!
 Remember you have the entire NMA community who can also help you! Please ask questions in the Neurostars forum and help to answer questions from your fellow NMA classmates!
 
-# TA's Guide to NMA Projects
+# TA Guide to NMA Projects
 
 The Neuromatch Academy projects are small group projects that will help the students build the skill of taking a question and trying to apply concepts or tools from the NMA curriculum. Teaching assistants are a critical component of this process and you will be providing guidance and support for these projects. The primary goals are:
 - Understanding how to develop a clear scientific question
@@ -178,6 +178,44 @@ In weeks two and three, you will oversee your students projects. Working with me
 ### **Week One**
 Week one begins on the morning of curriculum day two (project day one). During the first day, your role is to encourage students to share their scientific background, interests and goals. It’s a icebreaking session, with emphasis on scientific backgrounds, interests and big questions they might have in neuroscience that would like to explore in future.  For project day two, you will help going through the videos (Project Intro, Curriculum overview, Dataset Intro, and Brainstorm Example). You will control the Zoom interactions and support the students in this process (put them in breakout rooms to discuss the videos). Day three or four, a mentor will join to help with the refinement process: help students to converge on a few projects topics, form groups and work on a project proposal that includes a question, data set and planned techniques to apply to answer the question. We are suggesting you to use the [Miro](https://miro.com/) collaborative board for brainstorming. The project day for the students are:
 
+* **Project Day 1** — General discussion 
+   * Extended ice-breaker. Encourage students to get to know each other’s scientific interests (this is very important later to form Project Groups, based on shared interests)
+   
+* **Project Day 2** — Project Structure
+   * Begin by watching videos (1h)
+   * a. While videos are running, TA should create a miro.com account and start a whiteboard.
+   * b. Video (16 min): [Project Instructions] (https://youtu.be/fNOxmO1Hq3Y)
+   * c. Video (11 min): [Overview of the course content](https://www.youtube.com/watch?v=T1VSYU-H8-Y&feature=youtu.be)
+   * d. Video (~20 min): intros to datasets (watch around 2 out of 5, pod’s choice. Watch others at other times)
+   * e. Video (11 min): [demonstration of discussion](https://youtu.be/H6rSlZzlrgQ): moving from topic to scientific question
+
+ * **Pod brainstorm: dreaming big ideas**
+  **Expansion phase (1h):**
+  1. TA shares links to miro whiteboard.
+  2. 5 min: students log in to miro, and explore/play with interface.
+  3. 15 min: independent thinking by students, entering ideas in different places on miro board. For example:
+   * Sticky notes (try to use distinct colors) with a few sentences for a topic, idea, questions
+   * Sketch plots you might like to generate
+   * Imaginary data
+  4. 20 min: Each student presents 1 or 2 of their favorite ideas
+  5. 10 min: Put students into random breakout rooms to respond to favorite ideas
+  6. 10 min: Come back together to present new ideas for 10min
+  7. 30 min break
+ **30 min break
+ **Contraction phase (1h)**
+  8. 10 min: Divide ideas into a few different categories
+  9. 10 min: Put students into new random breakout rooms to brainstorm new ideas, prioritize previous ideas
+  10. 10 min: present organization
+  11. 30 min: Open discussion aimed toward practical projects
+
+* **Project Day 3** — Refinement
+
+1. 20 min: pod level discussion. Return to miro board while everyone communicates via zoom. Take ideas from Project Day 2 and ask the students to clarify points, ensure questions makes sense, help refine ideas.
+2. 10 min: Ask students to define a few project topics on the miro board, and have students place names under those topics. Popular topics with too many people should be split (similar questions is fine). Groups should have no fewer than three and no more than six (ideal is 4).
+3. 30 min: Create breakout rooms for each tentative project group. Students should discuss projects, as should also voice priorities and their expected time commitments to project. It may be helpful for students to articulate their personal strengths and weaknesses, and make suggestions for inviting other pod members with complementary experience. TA and Mentor will move between the breakout rooms separately to help the students refine their project ideas.
+4. 10 min: After some period of discussion in tentative groups, allow students to reshuffle their project preferences. Rebalance groups if needed.
+5. Continued discussion.
+  * Mentors may be scheduled for various 30-min windows during this day, depending on availability. Breaks can be scheduled as needed, but be mindful of mentor times.
 
 ### **Week Two and Three**
 During weeks two and three, the students will work in their project groups and you and the Mentor will alternate in providing support, guidance and discussions. As a TA, you should encourage the students to explore, understand and develop their projects, but also make sure they don’t get lost. You should also help them stay on track by trying to keep them from pursuing paths that are too difficult for the allotted time or that seem like dead ends. Remember, this is about the experience, not producing a publication-worthy project. All groups must finish their projects by the end of curriculum day 4 of the final week. The students will make a 10min project presentation + recording for presentations and virtual ‘poster session’.
