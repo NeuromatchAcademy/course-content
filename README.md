@@ -177,7 +177,7 @@ Group projects are offered for the *interactive track* only and will be running 
 
 ---- 
 
-### Weekend 1: [Professional Development & Social](https://github.com/NeuromatchAcademy/course-content/tree/msarvestani-patch-1#weekend-1-july-18--19) 
+### Weekend 1: [Professional Development & Social](https://github.com/NeuromatchAcademy/course-content#professional-development-sessions) 
 
 **Description** Professional development sessions and social activities will be offered on the weekend. More information, including exact times are available on the Neurostars Calendar
 
@@ -301,7 +301,7 @@ Group projects are offered for the *interactive track* only and will be running 
 
 ----
 
-### Weekend 2: [Professional Development & Social](https://github.com/NeuromatchAcademy/course-content/tree/msarvestani-patch-1#weekend-2-july-25--26) 
+### Weekend 2: [Professional Development & Social](https://github.com/NeuromatchAcademy/course-content#weekend-2-july-25--26) 
 
 **Description** Professional development sessions and social activities will be offered on the weekend. More information, including exact times are available on the Neurostars Calendar
 
