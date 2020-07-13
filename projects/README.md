@@ -25,10 +25,10 @@
 
 - [Brainstorming Example](https://youtu.be/H6rSlZzlrgQ)
 
-## Links for project slides
+## Links for project slides/documents
 - [Project Instruction](https://mfr.ca-1.osf.io/render?url=https://osf.io/7frh3/?direct%26mode=render%26action=download%26mode=render)
 - [Possible Project Proposals](https://mfr.ca-1.osf.io/render?url=https://osf.io/9j38s/?direct%26mode=render%26action=download%26mode=render)
-
+- [Dataset Overview](https://www.youtube.com/playlist?list=PLkBQOLLbi18ODTckxhgah98JloMLXt4oF)
 
 
 
@@ -138,7 +138,7 @@ You need to check with your TA and communicate with your mentors and TAs to make
 
 ## Project week one
 In your first two days in the NMA curriculum you will learn how to think about modeling and using computational tools to answer a scientific question by analyzing data. You should actively think through the [how-to-model guidelines](https://www.eneuro.org/content/7/1/ENEURO.0352-19.2019). Your first day is just a get-to-know you time, where you should learn about other members of your pod and their interests. By the end of week one, you will need to have formed groups of three to five students! On the second day, we will introduce you to the projects through a series of videos and a teaching assistant led discussion. On days three and four you will meet with a mentor and your teaching assistant to refine your ideas and form groups. On day five, you much have finalized your group, selected a data set and written up a brief description of your project (for neuromatching with your project mentor!).
-The goal of week one is to begin by brainstorming and expanding the possible ideas for projects. We are suggesting that you use the [Miro](https://miro.com/) collaborative board for brainstorming. Be broad initially, and try to encourage expansion! But starting on day three, you should focus on refining and narrowing to make sure you have a concrete proposal that you can complete in the following two weeks. We have many [project examples](https://docs.google.com/presentation/d/1WAHfJcBPM4rmwwvreAAS92sRYtltJRwklxH-82NzCYo/edit#slide=id.g8225ef52cb_0_10) provided by the mentors. We have prepared [datasets](), with examples, linked papers, and [videos](https://www.youtube.com/playlist?list=PLkBQOLLbi18ODTckxhgah98JloMLXt4oF) that describe the data sets and experiment. This is science! Most of what we try doesn’t work. That’s okay. Enjoy the process of questioning.
+The goal of week one is to begin by brainstorming and expanding the possible ideas for projects. We are suggesting that you use the [Miro](https://miro.com/) collaborative board for brainstorming. Be broad initially, and try to encourage expansion! But starting on day three, you should focus on refining and narrowing to make sure you have a concrete proposal that you can complete in the following two weeks. We have many [project examples](https://docs.google.com/presentation/d/1WAHfJcBPM4rmwwvreAAS92sRYtltJRwklxH-82NzCYo/edit#slide=id.g8225ef52cb_0_10) provided by the mentors. We have prepared [datasets](https://www.youtube.com/playlist?list=PLkBQOLLbi18ODTckxhgah98JloMLXt4oF), with examples, linked papers, and [videos](https://www.youtube.com/playlist?list=PLkBQOLLbi18ODTckxhgah98JloMLXt4oF) that describe the data sets and experiment. This is science! Most of what we try doesn’t work. That’s okay. Enjoy the process of questioning.
 
 ## Week Two and Three
 During weeks two and three, you will work in your project groups. The mentors and the TAs will alternate in providing you with support, guidance and general discussions. You must finish your projects your presentations by the end of project day 13 (week three day four). You will prepare a 10min project presentation and a recording for possible presentation to the rest of the NMA regional zone and a virtual ‘poster session’!
@@ -187,7 +187,7 @@ Week one begins on the morning of curriculum day two (project day one). During t
    * a. While videos are running, TA should create a miro.com account and start a whiteboard.
    * b. Video (16 min): [Project Instructions] (https://youtu.be/fNOxmO1Hq3Y)
    * c. Video (11 min): [Overview of the course content](https://www.youtube.com/watch?v=T1VSYU-H8-Y&feature=youtu.be)
-   * d. Video (~20 min): intros to datasets (watch around 2 out of 5, pod’s choice. Watch others at other times)
+   * d. Video (~20 min): [intros to datasets](https://www.youtube.com/playlist?list=PLkBQOLLbi18ODTckxhgah98JloMLXt4oF) (watch around 2 out of 5, pod’s choice. Watch others at other times)
    * e. Video (11 min): [demonstration of discussion](https://youtu.be/H6rSlZzlrgQ): moving from topic to scientific question
 
  * **Pod brainstorm: dreaming big ideas**
@@ -195,9 +195,9 @@ Week one begins on the morning of curriculum day two (project day one). During t
     1. TA shares links to miro whiteboard.
     2. 5 min: students log in to miro, and explore/play with interface.
     3. 15 min: independent thinking by students, entering ideas in different places on miro board. For example:
-      * Sticky notes (try to use distinct colors) with a few sentences for a topic, idea, questions
-      * Sketch plots you might like to generate
-      * Imaginary data
+       * Sticky notes (try to use distinct colors) with a few sentences for a topic, idea, questions
+       * Sketch plots you might like to generate
+       * Imaginary data
     4. 20 min: Each student presents 1 or 2 of their favorite ideas
     5. 10 min: Put students into random breakout rooms to respond to favorite ideas
     6. 10 min: Come back together to present new ideas for 10min
