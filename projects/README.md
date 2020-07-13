@@ -185,11 +185,12 @@ Week one begins on the morning of curriculum day two (project day one). During t
    
 * **Project Day 2** — Project Structure
    * Begin by watching videos (1h)
-     	a. While videos are running, TA should create a miro.com account and start a whiteboard.
-     	b. Video (16 min): [Project Instructions](https://youtu.be/fNOxmO1Hq3Y)
-     	c. Video (11 min): [Overview of the course content](https://www.youtube.com/watch?v=T1VSYU-H8-Y&feature=youtu.be)
-     	d. Video (~20 min): [Intros to datasets](https://docs.google.com/document/d/1_Cam97RDwfQofVSoQb-r9o4e2z3Jc4DdkNUSg6fDxjA/edit?usp=sharing) (watch around 2 out of 5, pod’s choice. Watch others at other times)
-     	e. Video (11 min): [Demonstration of discussion](https://youtu.be/H6rSlZzlrgQ): moving from topic to scientific question
+   
+     a. While videos are running, TA should create a miro.com account and start a whiteboard.
+     b. Video (16 min): [Project Instructions](https://youtu.be/fNOxmO1Hq3Y)
+     c. Video (11 min): [Overview of the course content](https://www.youtube.com/watch?v=T1VSYU-H8-Y&feature=youtu.be)
+     d. Video (~20 min): [Intros to datasets](https://docs.google.com/document/d/1_Cam97RDwfQofVSoQb-r9o4e2z3Jc4DdkNUSg6fDxjA/edit?usp=sharing) (watch around 2 out of 5, pod’s choice. Watch others at other times)
+     e. Video (11 min): [Demonstration of discussion](https://youtu.be/H6rSlZzlrgQ): moving from topic to scientific question
 
  * **Pod brainstorm: dreaming big ideas**
  
@@ -216,16 +217,16 @@ Week one begins on the morning of curriculum day two (project day one). During t
 
 * **Project Day 3** — Refinement
 
-  1. 20 min: pod level discussion. Return to miro board while everyone communicates via zoom. Take ideas from Project Day 2 and ask the students to clarify points, ensure questions makes sense, help refine ideas.
-  2. 10 min: Ask students to define a few project topics on the miro board, and have students place names under those topics. Popular topics with too many people should be split (similar questions is fine). Groups should have no fewer than three and no more than six (ideal is 4).
-  3. 30 min: Create breakout rooms for each tentative project group. Students should discuss projects, as should also voice priorities and their expected time commitments to project. It may be helpful for students to articulate their personal strengths and weaknesses, and make suggestions for inviting other pod members with complementary experience. TA and Mentor will move between the breakout rooms separately to help the students refine their project ideas.
-  4. 10 min: After some period of discussion in tentative groups, allow students to reshuffle their project preferences. Rebalance groups if needed.
-  5. Continued discussion.
+ 1. 20 min: pod level discussion. Return to miro board while everyone communicates via zoom. Take ideas from Project Day 2 and ask the students to clarify points, ensure questions makes sense, help refine ideas.
+ 2. 10 min: Ask students to define a few project topics on the miro board, and have students place names under those topics. Popular topics with too many people should be split (similar questions is fine). Groups should have no fewer than three and no more than six (ideal is 4).
+ 3. 30 min: Create breakout rooms for each tentative project group. Students should discuss projects, as should also voice priorities and their expected time commitments to project. It may be helpful for students to articulate their personal strengths and weaknesses, and make suggestions for inviting other pod members with complementary experience. TA and Mentor will move between the breakout rooms separately to help the students refine their project ideas.
+ 4. 10 min: After some period of discussion in tentative groups, allow students to reshuffle their project preferences. Rebalance groups if needed.
+ 5. Continued discussion.
    	* Mentors may be scheduled for various 30-min windows during this day, depending on availability. Breaks can be scheduled as needed, but be mindful of mentor times.
 
 * **Project Day 4** — Refinement
-   1. 2 hour: Unstructured project time within groups. Help the students refine their projects. Ask leading questions: how do the data set and analyses help answer the questions? What might be possible confounds?
-   2. 1 hour: Groups write short proposal (<1 page, format to be determined).
+ 1. 2 hour: Unstructured project time within groups. Help the students refine their projects. Ask leading questions: how do the data set and analyses help answer the questions? What might be possible confounds?
+ 2. 1 hour: Groups write short proposal (<1 page, format to be determined).
       	* The scientific question
       	* Brief scientific background
       	* Data set (used to select mentors!)
@@ -234,7 +235,7 @@ Week one begins on the morning of curriculum day two (project day one). During t
       	* Possible alternative outcomes
       	* Controls
       	* What would results mean if predictions were true?
-   	3. TA adds each project to their row on the AirTable (details will be communicated later).
+ 3. TA adds each project to their row on the AirTable (details will be communicated later).
 
 **Project mentors will be selected algorithmically over the weekend between Project Day 4 and 5.**
 
