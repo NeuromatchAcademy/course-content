@@ -43,7 +43,6 @@ There are fourteen Project days, falling between the fifteen content days. Daily
 - TimeZones 1C, 2C, 3C: Project Day 2 is the afternoon of Course Day 2.
 
 
-## Week One
 
 Week one begins on the morning of curriculum day two (project day one),
 where the students are introduced to the projects and brainstorm widely on
