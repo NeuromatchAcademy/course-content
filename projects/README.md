@@ -240,6 +240,12 @@ Week one begins on the morning of curriculum day two (project day one). During t
   * Ask students to summarize progress
   * Give coding advice if needed and possible
   * Direct students to Neurostars
+  
+* **Project Day 13-14**: Preparing presentations
+  * Prepare about 10 slides and 10 minute video.
+	 * All students should contribute to both slides and video.
+  * More detailed guidance to be announced.
+  * Videos will be presented at virtual poster session on Content Day 15.
 
 
 ### **Week Two and Three**
