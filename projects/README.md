@@ -36,7 +36,6 @@
 
   The NMA projects are conducted over 14 days, beginning on the morning of the ‘second’ curriculum day (W1D2).
 
-![Calendar](Caltz.png)
 There are fourteen Project days, falling between the fifteen content days. Daily project time can be:
 
 - TimeZones 1A, 2A, 3A: Project Day 2 is the morning of course Day 3
