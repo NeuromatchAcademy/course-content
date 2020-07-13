@@ -126,7 +126,6 @@ Daily project time can be:
  - B zones — Split — 2h before and after content
  - C zones — Late — 4h after content
 
-There are fourteen Project days, falling between the fifteen content days. Your project time can be:
 
 - TimeZones 1A, 2A, 3A: Project Day 2 is the morning of course Day 3
 - TimeZones 1B, 2B, 3B: Project Day 2 is partly the afternoon of Course Day 2, and partly the morning of Course Day 3.
