@@ -200,7 +200,9 @@ Week one begins on the morning of curriculum day two (project day one). During t
    	3. 15 min: independent thinking by students, entering ideas in different places on miro board. For example:
 		
        		* Sticky notes (try to use distinct colors) with a few sentences for a topic, idea, questions
+		
        		* Sketch plots you might like to generate
+		
        		* Imaginary data
 		
     	4. 20 min: Each student presents 1 or 2 of their favorite ideas
