@@ -28,7 +28,7 @@
 ## Links for project slides/documents
 - [Project Instruction](https://mfr.ca-1.osf.io/render?url=https://osf.io/7frh3/?direct%26mode=render%26action=download%26mode=render)
 - [Possible Project Proposals](https://mfr.ca-1.osf.io/render?url=https://osf.io/9j38s/?direct%26mode=render%26action=download%26mode=render)
-- [Dataset Overview](https://www.youtube.com/playlist?list=PLkBQOLLbi18ODTckxhgah98JloMLXt4oF)
+- [Dataset Overview](https://docs.google.com/document/d/1_Cam97RDwfQofVSoQb-r9o4e2z3Jc4DdkNUSg6fDxjA/edit?usp=sharing)
 
 
 
@@ -138,7 +138,7 @@ You need to check with your TA and communicate with your mentors and TAs to make
 
 ## Project week one
 In your first two days in the NMA curriculum you will learn how to think about modeling and using computational tools to answer a scientific question by analyzing data. You should actively think through the [how-to-model guidelines](https://www.eneuro.org/content/7/1/ENEURO.0352-19.2019). Your first day is just a get-to-know you time, where you should learn about other members of your pod and their interests. By the end of week one, you will need to have formed groups of three to five students! On the second day, we will introduce you to the projects through a series of videos and a teaching assistant led discussion. On days three and four you will meet with a mentor and your teaching assistant to refine your ideas and form groups. On day five, you much have finalized your group, selected a data set and written up a brief description of your project (for neuromatching with your project mentor!).
-The goal of week one is to begin by brainstorming and expanding the possible ideas for projects. We are suggesting that you use the [Miro](https://miro.com/) collaborative board for brainstorming. Be broad initially, and try to encourage expansion! But starting on day three, you should focus on refining and narrowing to make sure you have a concrete proposal that you can complete in the following two weeks. We have many [project examples](https://docs.google.com/presentation/d/1WAHfJcBPM4rmwwvreAAS92sRYtltJRwklxH-82NzCYo/edit#slide=id.g8225ef52cb_0_10) provided by the mentors. We have prepared [datasets](https://www.youtube.com/playlist?list=PLkBQOLLbi18ODTckxhgah98JloMLXt4oF), with examples, linked papers, and [videos](https://www.youtube.com/playlist?list=PLkBQOLLbi18ODTckxhgah98JloMLXt4oF) that describe the data sets and experiment. This is science! Most of what we try doesn’t work. That’s okay. Enjoy the process of questioning.
+The goal of week one is to begin by brainstorming and expanding the possible ideas for projects. We are suggesting that you use the [Miro](https://miro.com/) collaborative board for brainstorming. Be broad initially, and try to encourage expansion! But starting on day three, you should focus on refining and narrowing to make sure you have a concrete proposal that you can complete in the following two weeks. We have many [project examples](https://docs.google.com/presentation/d/1WAHfJcBPM4rmwwvreAAS92sRYtltJRwklxH-82NzCYo/edit#slide=id.g8225ef52cb_0_10) provided by the mentors. We have prepared [datasets](https://docs.google.com/document/d/1_Cam97RDwfQofVSoQb-r9o4e2z3Jc4DdkNUSg6fDxjA/edit?usp=sharing), with examples, linked papers, and [videos](https://www.youtube.com/playlist?list=PLkBQOLLbi18ODTckxhgah98JloMLXt4oF) that describe the data sets and experiment. This is science! Most of what we try doesn’t work. That’s okay. Enjoy the process of questioning.
 
 ## Week Two and Three
 During weeks two and three, you will work in your project groups. The mentors and the TAs will alternate in providing you with support, guidance and general discussions. You must finish your projects your presentations by the end of project day 13 (week three day four). You will prepare a 10min project presentation and a recording for possible presentation to the rest of the NMA regional zone and a virtual ‘poster session’!
@@ -187,7 +187,7 @@ Week one begins on the morning of curriculum day two (project day one). During t
    * a. While videos are running, TA should create a miro.com account and start a whiteboard.
    * b. Video (16 min): [Project Instructions] (https://youtu.be/fNOxmO1Hq3Y)
    * c. Video (11 min): [Overview of the course content](https://www.youtube.com/watch?v=T1VSYU-H8-Y&feature=youtu.be)
-   * d. Video (~20 min): [intros to datasets](https://www.youtube.com/playlist?list=PLkBQOLLbi18ODTckxhgah98JloMLXt4oF) (watch around 2 out of 5, pod’s choice. Watch others at other times)
+   * d. Video (~20 min): [intros to datasets](https://docs.google.com/document/d/1_Cam97RDwfQofVSoQb-r9o4e2z3Jc4DdkNUSg6fDxjA/edit?usp=sharing) (watch around 2 out of 5, pod’s choice. Watch others at other times)
    * e. Video (11 min): [demonstration of discussion](https://youtu.be/H6rSlZzlrgQ): moving from topic to scientific question
 
  * **Pod brainstorm: dreaming big ideas**
@@ -199,7 +199,7 @@ Week one begins on the morning of curriculum day two (project day one). During t
        * Sketch plots you might like to generate
        * Imaginary data
     4. 20 min: Each student presents 1 or 2 of their favorite ideas
-    5. 10 min: Put students into random breakout rooms to respond to favorite ideas
+    5. 10 min: Put students into **random breakout rooms** to respond to favorite ideas
     6. 10 min: Come back together to present new ideas for 10min
     7. 30 min break
  **30 min break
@@ -217,6 +217,30 @@ Week one begins on the morning of curriculum day two (project day one). During t
     4. 10 min: After some period of discussion in tentative groups, allow students to reshuffle their project preferences. Rebalance groups if needed.
     5. Continued discussion.
        * Mentors may be scheduled for various 30-min windows during this day, depending on availability. Breaks can be scheduled as needed, but be mindful of mentor times.
+
+* **Project Day 4** — Refinement
+   1. 2 hour: Unstructured project time within groups. Help the students refine their projects. Ask leading questions: how do the data set and analyses help answer the questions? What might be possible confounds?
+   2. 1 hour: Groups write short proposal (<1 page, format to be determined).
+      * The scientific question
+      * Brief scientific background
+      * Data set (used to select mentors!)
+      * Proposed analyses
+      * Theoretical predictions
+      * Possible alternative outcomes
+      * Controls
+      * What would results mean if predictions were true?
+
+
+**Project mentors will be selected algorithmically over the weekend between Project Day 4 and 5.**
+
+* **Project days 5-13** (Week Two and Three): Implement
+
+  * Check in with each project every day for at least 30 min.
+  * Evaluate social functioning of group, make sure students are working well and talking together
+  * Ask students to summarize progress
+  * Give coding advice if needed and possible
+  * Direct students to Neurostars
+
 
 ### **Week Two and Three**
 During weeks two and three, the students will work in their project groups and you and the Mentor will alternate in providing support, guidance and discussions. As a TA, you should encourage the students to explore, understand and develop their projects, but also make sure they don’t get lost. You should also help them stay on track by trying to keep them from pursuing paths that are too difficult for the allotted time or that seem like dead ends. Remember, this is about the experience, not producing a publication-worthy project. All groups must finish their projects by the end of curriculum day 4 of the final week. The students will make a 10min project presentation + recording for presentations and virtual ‘poster session’.
