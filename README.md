@@ -31,12 +31,18 @@ Group projects are offered for the *interactive track* only and will be running 
     * [Wed, July 15: Model Fitting](#wed-july-15-model-fitting)
     * [Thu, July 16: Machine Learning: GLM](#thu-july-16-machine-learning)
     * [Fri, July 17: Dimensionality Reduction](#fri-july-17-dimensionality-reduction)
+    
+ * [Professional Development](### Weekend 1)
+    
 * [Week 2](#week-2)
     * [Mon, July 20: Bayesian Statistics](#mon-july-20-bayesian-statistics)
     * [Tue, July 21: Linear Systems](#tue-july-21-linear-systems)
     * [Wed, July 22: Decision Making](#wed-july-22-decision-making)
     * [Thu, July 23: Optimal Control](#thu-july-23-optimal-control)
     * [Fri, July 24: Reinforcement Learning](#fri-july-24-reinforcement-learning)
+    
+ * [Professional Development](### Weekend 2)
+ 
 * [Week 3](#week-3)
     * [Mon, July 27: Real Neurons](#mon-july-27-real-neurons)
     * [Tue, July 28: Dynamic Networks](#tue-july-28-dynamic-networks)
@@ -171,7 +177,7 @@ Group projects are offered for the *interactive track* only and will be running 
 
 ---- 
 
-### Sat/Sun, July 18/19: [Professional Development & Social](https://github.com/NeuromatchAcademy/course-content/tree/msarvestani-patch-1#weekend-1-july-18--19) 
+### Weekend 1: [Professional Development & Social](https://github.com/NeuromatchAcademy/course-content/tree/msarvestani-patch-1#weekend-1-july-18--19) 
 
 **Description** Professional development sessions and social activities will be offered on the weekend. More information, including exact times are available on the Neurostars Calendar
 
@@ -295,7 +301,7 @@ Group projects are offered for the *interactive track* only and will be running 
 
 ----
 
-### Sat/Sun, July 25/26: [Professional Development & Social](https://github.com/NeuromatchAcademy/course-content/tree/msarvestani-patch-1#weekend-2-july-25--26) 
+### Weekend 2: [Professional Development & Social](https://github.com/NeuromatchAcademy/course-content/tree/msarvestani-patch-1#weekend-2-july-25--26) 
 
 **Description** Professional development sessions and social activities will be offered on the weekend. More information, including exact times are available on the Neurostars Calendar
 
