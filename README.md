@@ -14,31 +14,50 @@
 
 # Course materials
 
-- [Link to Welcome Video](https://youtu.be/s4kBB1OMs0Q)
-- [Links to videos, notebooks, and slides for tutorials](./tutorials/README.md)
-- [Links to videos, notebooks, and slides for projects](./projects/README.md)
+- [Welcome Video](https://youtu.be/s4kBB1OMs0Q)
+- [**Tutorials**: videos, notebooks, and slides](./tutorials/README.md)
+- [**Projects**: videos, notebooks, and slides](./projects/README.md)
 
+Group projects are offered for the *interactive track* only and will be running during all 3 weeks of NMA!
 
 # Course outline
- 
+
+* [Week 0](#week-0)
+    * [Thu, July 9: Python for NMA Part 1](#python-for-nma-workshop)
+    * [Fri, July 10: Python for NMA Part 2](#python-for-nma-workshop) 
 * [Week 1](#week-1)
     * [Mon, July 13: Model Types](#mon-july-13-model-types)
     * [Tue, July 14: Modeling Practice](#tue-july-14-modeling-practice)
     * [Wed, July 15: Model Fitting](#wed-july-15-model-fitting)
     * [Thu, July 16: Machine Learning: GLM](#thu-july-16-machine-learning)
     * [Fri, July 17: Dimensionality Reduction](#fri-july-17-dimensionality-reduction)
+    
+ * [Professional Development](#weekend-1-july-18--19)
+    
 * [Week 2](#week-2)
     * [Mon, July 20: Bayesian Statistics](#mon-july-20-bayesian-statistics)
     * [Tue, July 21: Linear Systems](#tue-july-21-linear-systems)
     * [Wed, July 22: Decision Making](#wed-july-22-decision-making)
     * [Thu, July 23: Optimal Control](#thu-july-23-optimal-control)
     * [Fri, July 24: Reinforcement Learning](#fri-july-24-reinforcement-learning)
+    
+ * [Professional Development](#weekend-2-july-25--26)
+ 
 * [Week 3](#week-3)
     * [Mon, July 27: Real Neurons](#mon-july-27-real-neurons)
     * [Tue, July 28: Dynamic Networks](#tue-july-28-dynamic-networks)
     * [Wed, July 29: Network Causality](#wed-july-29-network-causality)    
     * [Thu, July 30: Deep Learning 1](#thu-july-30-deep-learning-1)
     * [Fri, July 31: Deep Learning 2](#fri-july-31-deep-learning-2)
+
+----
+
+## Week 0
+
+### Python for NMA workshop
+
+**Description** Two-day workshop for absolute Python beginners. Learn essential Python skills for course tutorials and practice by coding a neuronal simulation.
+
 
 ----
 
@@ -158,7 +177,7 @@
 
 ---- 
 
-### Sat/Sun, July 18/19: Professional Development & Social 
+### Weekend 1: [Professional Development & Social](https://github.com/NeuromatchAcademy/course-content/tree/msarvestani-patch-1#weekend-1-july-18--19) 
 
 **Description** Professional development sessions and social activities will be offered on the weekend. More information, including exact times are available on the Neurostars Calendar
 
@@ -282,7 +301,7 @@
 
 ----
 
-### Sat/Sun, July 24/25: Professional development & Social 
+### Weekend 2: [Professional Development & Social](https://github.com/NeuromatchAcademy/course-content/tree/msarvestani-patch-1#weekend-2-july-25--26) 
 
 **Description** Professional development sessions and social activities will be offered on the weekend. More information, including exact times are available on the Neurostars Calendar
 
@@ -419,9 +438,35 @@
 ----
 
 
-## Group projects (throughout) - interactive track only
+# Professional Development Sessions
+These are hour-long Crowdcast events with a panel of speakers that will discuss a topic and answer audience questions.  For exact times in the relevant time-zones, see the [Neurostars Calendar](https://neurostars.org/t/professional-development-and-social-calendar/10496). They will be live streamed and recorded for later watching. Some sessions are duplicated to ensure coverage for students in different time-zones.
 
-TBA
+
+## Weekend 1: July 18 & 19
+|    Session   |   Speakers|    Description                                                         |
+|-------------------|--------------------|-----------------------------------------------------------------------|
+|   **2.1: Data management**| Dimitri Yatsenko (DataJoint), Edgar Walker (DataJoint), Ben Dichter (NWB)   |Software tools for efficient management, analysis, and sharing of experimental data. 
+|    **2.2: Data management**|  Russ Poldrack (Stanford) | Efficient data management and sharing strategies focusing on fMRI data.                                                  |
+|   **3.1 Open Science**  |  Nici Pfeiffer (COS), Mark Musen (Stanford)   | Discussion of tools to improve accessibility and transparency of scientific data and analysis.                                    
+|   **4.1 Visualization**  |  Colin Prahl (Artist), Amy Robinson Stirling (Eyewire)   | Presentation on scientific visualization, ranging from scientific data visulaziation to visualization in scientific communication and science-inspired art.           
+|    **5.1 Publishing**  |  Brett Mensh   | The art and logic of writing peer-reviewed journal papers.
+|    **6.1 Philosophy**  |  Lisa Mirachi (U Penn)  |  What is the difference between “what a cognitive agent does” and “what processes happen inside an agent”? Lisa Miracchi, philosophy professor at UPenn, talks about how this distinction relates to selecting models.
+|    **6.2 Philosophy**  |  Lisa Mirachi (U Penn)  | What is the difference between “the content of representations” and “the content of perceptions and thoughts”? Lisa Miracchi, philosophy professor at UPenn, talks about Marr’s Computational Level and how these questions relate to what robots might internally represent
+
+
+
+
+## Weekend 2: July 25 & 26
+|    Session   |   Speakers|    Description                                                            |
+|-------------------|--------------------|-----------------------------------------------------------------------|
+|    **3.2 Open Science**  |  Nici Pfeiffer (COS), Mark Musen (Stanford)   | Discussion of tools to improve accessibility and transparency of scientific data and analysis.   
+|   **7.1 Job fair**  |  Facebook Reality Labs | Research careers at FRL, a  division of Facebook focused on creating the future of virtual and augmented reality. 
+|   **7.2 Job fair**  |  Facebook Reality Labs | Research careers at FRL, a  division of Facebook focused on creating the future of virtual and augmented reality. 
+|   **8.1 Careers in industry**  | Becky Clarkson (Apple), Kyle Frankovich (Insight Data Science), Kachi Odoememe (APL) | Research careers in industry. 
+|   **8.2 Careers in industry**  | Feryal MP Behbahani (DeepMind), Sophie Kenny (Vpixx), Graeme Moffat | Research careers in industry.
+|    **9.1 Careers in academia**  | Sripati Panditaradhyula Arun (IISc), Minhae Kwon (Soongsil University), Taro Toyoizumi (RIKEN) | Research careers in academia.
+
+
 
 ----
 
