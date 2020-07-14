@@ -200,7 +200,7 @@ def make_nbviewer_badge(local_path):
         "https://nbviewer.jupyter.org/"
         "github/NeuromatchAcademy/course-content/blob/master"
     )
-    return make_badge(alt_text, badge_svg, url_base, local_path)
+    return make_badge(alt_text, badge_svg, url_base, local_path+'?flush_cache=true')
 
 
 def make_badge(alt_text, badge_svg, url_base, local_path):
