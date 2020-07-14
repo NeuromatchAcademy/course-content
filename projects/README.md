@@ -55,25 +55,30 @@ project proposal including a question, data set and planned techniques to apply 
 the question. We are suggesting that the students use the [Miro](https://miro.com) collaborative board for
 brainstorming. The project day for the students are:
 
-* **Project Day 1** — General discussion (led by TAs)
+* **Project Day 1** — General discussion (led by TAs).
+  *(zone A: Tues; zone B: Mon-Tues; zone C: Mon)
 
   *Extended ice-breaker. Students get to know about each other's 
 
 * **Project Day 2** — Project Structure (led by TAs)
+  *(zone A: Weds; zone B: Tues-Weds; zone C: Tues)
     * Videos: from topic to scientific questions
     * Videos: intros to data sets
     * Videos: overview of course content
     * Pod brainstorm: dreaming big ideas
     
 * **Project Day 3** — Refinement (with Mentors)
+  *(zone A: Thurs; zone B: Weds-Thurs; zone C: Weds)
   * Form project groups of 3–5 students
   * Develop projects from idea to plan
 
 * **Project Day 4** — Refinement (with Mentors)
+  *(zone A: Fri; zone B: Thurs-Fri; zone C: Thurs)
   * Refine, specify techniques
   * Write short proposal (format TBD)
   
 * **Project Day 5** — Groups (led by TAs)
+  *(zone A: Mon; zone B: Fri-Mon; zone C: Fri)
   * The TAs confirm the project groups, projects and the groups will be matched to Mentors.
 
 ## Week Two and Three
@@ -87,7 +92,7 @@ The Neuromatch Academy projects are small group projects that will help the stud
   * Interactive discussions with mentors who can provide experience, guidance and support for scientific growth
   * Completing a full cycle of the scientific process: question generation, analysis, generation of a presentation of the findings
 
-We expect mentors to
+We expect mentors to:
   * Help students with assessing feasibility of projects (week 1)
   * Help students to solidify ideas and questions, by enforcing clarity
   * Promote course materials and toolkits provided by the NMA
@@ -173,6 +178,8 @@ In weeks two and three, you will oversee your students projects. Working with me
 Week one begins on the morning of curriculum day two (project day one). During the first day, your role is to encourage students to share their scientific background, interests and goals. It’s a icebreaking session, with emphasis on scientific backgrounds, interests and big questions they might have in neuroscience that would like to explore in future.  For project day two, you will help going through the videos (Project Intro, Curriculum overview, Dataset Intro, and Brainstorm Example). You will control the Zoom interactions and support the students in this process (put them in breakout rooms to discuss the videos). Day three or four, a mentor will join to help with the refinement process: help students to converge on a few projects topics, form groups and work on a project proposal that includes a question, data set and planned techniques to apply to answer the question. We are suggesting you to use the [Miro](https://miro.com/) collaborative board for brainstorming. The project day for the students are:
 
 * **Project Day 2** — Project Structure
+  *(zone A: Weds; zone B: Tues-Weds; zone C: Tues)
+  
    * Begin by watching videos (1h)
    
      a. While videos are running, TA should create a miro.com account and start a whiteboard.
@@ -209,7 +216,8 @@ Week one begins on the morning of curriculum day two (project day one). During t
   11. 30 min: Open discussion aimed toward practical projects
 
 * **Project Day 3** — Refinement
-
+  *(zone A: Thurs; zone B: Weds-Thurs; zone C: Weds)
+  
  1. 20 min: pod level discussion. Return to miro board while everyone communicates via zoom. Take ideas from Project Day 2 and ask the students to clarify points, ensure questions makes sense, help refine ideas.
  2. 10 min: Ask students to define a few project topics on the miro board, and have students place names under those topics. Popular topics with too many people should be split (similar questions is fine). Groups should have no fewer than three and no more than six (ideal is 4).
  3. 30 min: Create breakout rooms for each tentative project group. Students should discuss projects, as should also voice priorities and their expected time commitments to project. It may be helpful for students to articulate their personal strengths and weaknesses, and make suggestions for inviting other pod members with complementary experience. TA and Mentor will move between the breakout rooms separately to help the students refine their project ideas.
@@ -218,6 +226,8 @@ Week one begins on the morning of curriculum day two (project day one). During t
    	* Mentors may be scheduled for various 30-min windows during this day, depending on availability. Breaks can be scheduled as needed, but be mindful of mentor times.
 
 * **Project Day 4** — Refinement
+  *(zone A: Fri; zone B: Thurs-Fri; zone C: Thurs)
+  
  1. 2 hour: Unstructured project time within groups. Help the students refine their projects. Ask leading questions: how do the data set and analyses help answer the questions? What might be possible confounds?
  2. 1 hour: Groups write short proposal (<1 page, format to be determined).
       	* The scientific question
