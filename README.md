@@ -448,9 +448,7 @@ These are hour-long Crowdcast events with a panel of speakers that will discuss 
 |   **2.1: Data sharing and management**| Dimitri Yatsenko (DataJoint), Edgar Walker (DataJoint), Ben Dichter (NWB)   |Software tools for efficient management, analysis, and sharing of experimental data. 
 |    **2.2: Data sharing and management**|  Russ Poldrack (Stanford) | Efficient data management and sharing strategies focusing on fMRI data.                                              
 |   **3.1 Open Science**  |  Nici Pfeiffer (COS), Mark Musen (CEDAR, Stanford)   | Discussion of tools for open and accessible science: project management and collaboration, preregistration of experiments, data reproducibility and exploration.   
-
 |   **4.1 Visualization**  |  Colin Prahl (Artist), Amy Robinson Stirling (Eyewire)  | Data Visualization and communication. Neuroscience-inspired art.     
-
 |    **5.1 Publishing**  |  Brett Mensh (Optimize Science)   | Maximizing the impact of your paper and the journal it gets into.
 |    **6.1 Philosophy**  |  Lisa Mirachi (U Penn)  |  What is the difference between “what a cognitive agent does” and “what processes happen inside an agent”? Lisa Miracchi, philosophy professor at UPenn, talks about how this distinction relates to selecting models.
 |    **6.2 Philosophy**  |  Lisa Mirachi (U Penn)  | What is the difference between “the content of representations” and “the content of perceptions and thoughts”? Lisa Miracchi, philosophy professor at UPenn, talks about Marr’s Computational Level and how these questions relate to what robots might internally represent
