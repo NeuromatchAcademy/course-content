@@ -446,9 +446,10 @@ These are hour-long Crowdcast events with a panel of speakers that will discuss 
 |    Session   |   Speakers|    Description                                                         |
 |-------------------|--------------------|-----------------------------------------------------------------------|
 |   **2.1: Data sharing and management**| Dimitri Yatsenko (DataJoint), Edgar Walker (DataJoint), Ben Dichter (NWB)   |Software tools for efficient management, analysis, and sharing of experimental data. 
-|    **2.2: Data sharing and management**|  Russ Poldrack (Stanford) | Efficient data management and sharing strategies focusing on fMRI data.                                                  |
-|   **3.1 Open Science**  |  Nici Pfeiffer (COS), Mark Musen (CEDAR, Stanford)   | Discussion of tools for open and accessible science: project management and collaboration, preregistration of experiments, data reproducibility and exploration.                            
-|   **4.1 Visualization**  |  Colin Prahl (Artist), Amy Robinson Stirling (Eyewire)   |Data Visualization and communication. Neuroscience-inspired art.     
+|    **2.2: Data sharing and management**|  Russ Poldrack (Stanford) | Efficient data management and sharing strategies focusing on fMRI data.                                              
+|   **3.1 Open Science**  |  Nici Pfeiffer (COS), Mark Musen (CEDAR, Stanford)   | Discussion of tools for open and accessible science: project management and collaboration, preregistration of experiments, data reproducibility and exploration.   
+
+|   **4.1 Visualization**  |  Colin Prahl (Artist), Amy Robinson Stirling (Eyewire)  | Data Visualization and communication. Neuroscience-inspired art.     
 
 |    **5.1 Publishing**  |  Brett Mensh (Optimize Science)   | Maximizing the impact of your paper and the journal it gets into.
 |    **6.1 Philosophy**  |  Lisa Mirachi (U Penn)  |  What is the difference between “what a cognitive agent does” and “what processes happen inside an agent”? Lisa Miracchi, philosophy professor at UPenn, talks about how this distinction relates to selecting models.
@@ -460,7 +461,7 @@ These are hour-long Crowdcast events with a panel of speakers that will discuss 
 ## Weekend 2: July 25 & 26
 |    Session   |   Speakers|    Description                                                            |
 |-------------------|--------------------|-----------------------------------------------------------------------|
-| | **3.1 Open Science**  |  Nici Pfeiffer (COS), Mark Musen (CEDAR, Stanford)   | Discussion of tools for open and accessible science: project management and collaboration, preregistration of experiments, data reproducibility and exploration.     
+|  **3.1 Open Science**  |  Nici Pfeiffer (COS), Mark Musen (CEDAR, Stanford)   | Discussion of tools for open and accessible science: project management and collaboration, preregistration of experiments, data reproducibility and exploration.     
 |   **7.1 Job fair**  |  Facebook Reality Labs | Research careers at FRL, a  division of Facebook focused on creating the future of virtual and augmented reality. 
 |   **7.2 Job fair**  |  Facebook Reality Labs | Research careers at FRL, a  division of Facebook focused on creating the future of virtual and augmented reality. 
 |   **8.1 Careers in industry**  | Becky Clarkson (Apple), Kyle Frankovich (Insight Data Science), Kachi Odoememe (APL) | Research careers in industry. 
