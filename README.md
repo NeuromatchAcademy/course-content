@@ -463,7 +463,7 @@ These are hour-long Crowdcast events with a panel of speakers that will discuss 
 |   **7.1 Job fair**  |  Facebook Reality Labs | Research careers at FRL, a  division of Facebook focused on creating the future of virtual and augmented reality. 
 |   **7.2 Job fair**  |  Facebook Reality Labs | Research careers at FRL, a  division of Facebook focused on creating the future of virtual and augmented reality. 
 |   **8.1 Careers in industry**  | Becky Clarkson (Apple), Kyle Frankovich (Insight Data Science), Kachi Odoememe (APL) | Research careers in industry. 
-|   **8.2 Careers in industry**  | Feryal MP Behbahani (DeepMind), Sophie Kenny (Vpixx), Graeme Moffat (System2 Neurotechnology) | Research careers in industry.
+|   **8.2 Careers in industry**  | Feryal Behbahani (DeepMind), Sophie Kenny (Vpixx), Graeme Moffat (System2 Neurotechnology) | Research careers in industry.
 |   **9.1 Careers in academia**  | Sripati Panditaradhyula Arun (IISc), Minhae Kwon (Soongsil University), Taro Toyoizumi (RIKEN) | Research careers in academia.
 
 
