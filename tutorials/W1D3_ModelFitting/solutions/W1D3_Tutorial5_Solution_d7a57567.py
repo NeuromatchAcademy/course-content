@@ -22,6 +22,7 @@ def compute_mse(x_train,x_test,y_train,y_test,theta_hats,max_order):
 
 mse_train, mse_test = compute_mse(x_train, x_test, y_train, y_test, theta_hats, max_order)
 
+width = .35
 with plt.xkcd():
   fig, ax = plt.subplots()
   ax.bar(np.arange(max_order + 1) - width/2, mse_train, width, label="train MSE")
