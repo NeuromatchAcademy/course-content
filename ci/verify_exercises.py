@@ -33,7 +33,7 @@ def main(nb_fpath):
                 stub_comments, solu_code + solu_comments
             )
 
-            print("-" * 88)
+            print("-" * 60)
             print(f"Exercise {exercise}")
             report("Code", unmatched_code)
             report("Comment", unmatched_comments)
