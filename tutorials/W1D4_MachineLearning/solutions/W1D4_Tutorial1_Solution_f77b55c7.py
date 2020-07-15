@@ -10,6 +10,7 @@ def neg_log_lik_lnp(theta, X, y):
     number: Negative log likelihood.
 
   """ 
+  # Compute the Poisson log likeliood
   rate = np.exp(X @ theta)
   log_lik = y @ np.log(rate) - rate.sum()
   return -log_lik
@@ -27,13 +28,18 @@ def fit_lnp(stim, spikes, d=25):
     1D array: MLE parameters
 
   """
+
+  # Build the design matrix
   y = spikes
-  constant = np.ones_like(spikes)
+  constant = np.ones_like(y)
   X = np.column_stack([constant, make_design_matrix(stim)])
 
+  # Use a random vector of weights to start (mean 0, sd .2)
   x0 = np.random.normal(0, .2, d + 1)
 
+  # Find parameters that minmize the negative log likelihood function
   res = minimize(neg_log_lik_lnp, x0, args=(X, y))
+
   return res["x"]
 
 
