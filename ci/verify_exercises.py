@@ -17,18 +17,27 @@ This script will report whether exercises and solutions otherwise match.
 import os
 import re
 import sys
+import argparse
 from textwrap import dedent
 from fuzzywuzzy import fuzz
 import nbformat
 
 
-def main(nb_fpaths):
+def main(arglist):
+
+    args = parse_args(arglist)
+
+    if "skip verify" in args.commit_message:
+        # Putting this logic here as I didn't have time to figure
+        # out how to do it in the github actions workflow
+        print("Skipping exercise verification")
+        sys.exit(0)
 
     # Track overall status
     failure = False
     unmatched = {}
 
-    for nb_fpath in nb_fpaths:
+    for nb_fpath in args.files:
 
         _, nb_name = os.path.split(nb_fpath)
         unmatched[nb_name] = []
@@ -211,11 +220,24 @@ def has_solution(cell):
     )
 
 
+def parse_args(arglist):
+    """Handle the command-line arguments."""
+    parser = argparse.ArgumentParser(
+        description="Process neuromatch tutorial notebooks",
+    )
+    parser.add_argument(
+        "files",
+        nargs="+",
+        help="File name(s) to process. Will filter for .ipynb extension."
+    )
+    parser.add_argument(
+        "--commit-message",
+        default="",
+        help="Will exit cleanly if message contains 'skip verify'",
+    )
+    return parser.parse_args(arglist)
+
+
 if __name__ == "__main__":
 
-    try:
-        _, *nb_fpaths = sys.argv
-    except Exception:
-        sys.exit("USAGE: python verify_exercies.py <nb_fpath> [<nb_fpath> ... ]")
-
-    main(nb_fpaths)
+    main(sys.argv[1:])

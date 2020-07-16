@@ -48,7 +48,7 @@ jobs:
         run: |
           nbs=`python ci/select_notebooks.py ${{ steps.changes.outputs.files}}`
           python ci/process_notebooks.py $nbs
-          if [[ ${{ github.event.head_commit.message }} != *"skip verify"* ]]; python ci/verify_exercises.py $nbs; fi
+          python ci/verify_exercises.py $nbs --c ${{ github.event.head_commit.message }}
 
       - name: Update READMEs
         run: python ci/generate_tutorial_readmes.py
