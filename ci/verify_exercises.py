@@ -93,7 +93,7 @@ def main(arglist):
 def report(exercise, code, comment, thresh=50):
     """Print information about unmatched code and comments in an exercise."""
     code_status = "FAIL" if code else "PASS"
-    comment_status = "FAIL" if code else "PASS"
+    comment_status = "FAIL" if comment else "PASS"
     print(
         f"Exercise {exercise} | Code {code_status} | Comments {comment_status}"
     )
