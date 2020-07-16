@@ -48,11 +48,7 @@ jobs:
         run: |
           nbs=`python ci/select_notebooks.py ${{ steps.changes.outputs.files}}`
           python ci/process_notebooks.py $nbs
-          if [[ ${{ github.event.head_commit.message }} != *"skip verify"* ]];
-            then for nb in nbs; do
-              python ci/verify_exercises.py $nb
-            done
-          fi
+          if [[ ${{ github.event.head_commit.message }} != *"skip verify"* ]]; python ci/verify_exercises.py $nbs; fi
 
       - name: Update READMEs
         run: python ci/generate_tutorial_readmes.py
@@ -62,7 +58,7 @@ jobs:
           python ci/find_unreferenced_content.py > to_remove.txt
           if [ -s to_remove.txt ]; then git rm --pathspec-from-file=to_remove.txt; fi
 
-      - name: Commit processed files
+      - name: Commit post-processed files
         if: ${{ success() }}
         run: |
           git config --local user.email "action@github.com"
@@ -73,7 +69,7 @@ jobs:
           git add '**/README.md'
           git diff-index --quiet HEAD || git commit -m "Process tutorial notebooks"
 
-      - name: Push post-processed notebooks
+      - name: Push post-processed files
         if: ${{ success() }}
         uses: ad-m/github-push-action@v0.6.0
         with:

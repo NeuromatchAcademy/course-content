@@ -27,7 +27,7 @@ jobs:
       - name: Update READMEs
         run: python ci/generate_tutorial_readmes.py
 
-      - name: Commit processed files
+      - name: Commit post-processed files
         if: ${{ success() }}
         run: |
           git config --local user.email "action@github.com"
@@ -35,7 +35,7 @@ jobs:
           git add '**/README.md'
           git diff-index --quiet HEAD || git commit -m "Update tutorial README"
 
-      - name: Push post-processed notebooks
+      - name: Push post-processed files
         if: ${{ success() }}
         uses: ad-m/github-push-action@v0.6.0
         with:
