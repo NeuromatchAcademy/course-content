@@ -14,6 +14,7 @@ Additionally:
 This script will report whether exercises and solutions otherwise match.
 
 """
+import os
 import re
 import sys
 from textwrap import dedent
@@ -21,76 +22,82 @@ from fuzzywuzzy import fuzz
 import nbformat
 
 
-def main(nb_fpath):
+def main(nb_fpaths):
 
     # Track overall status
     failure = False
+    unmatched = {}
 
-    # Track the ordinal exercise cell number
-    # (note, exercises may be labeled differently in the notebook)
-    exercise = 0
+    for nb_fpath in nb_fpaths:
 
-    # Load the notebook file
-    with open(nb_fpath) as f:
-        nb = nbformat.read(f, nbformat.NO_CONVERT)
+        _, nb_name = os.path.split(nb_fpath)
+        unmatched[nb_name] = []
 
-    for i, cell in enumerate(nb.get("cells", [])):
+        # Load the notebook file
+        with open(nb_fpath) as f:
+            nb = nbformat.read(f, nbformat.NO_CONVERT)
 
-        # Detect solution cells based on removal tag
-        if has_solution(cell):
-            exercise += 1
+        for i, cell in enumerate(nb.get("cells", [])):
 
-            # Find a corresponding exercise cell
-            # (Assume it is the previous *code* cell)
-            j = 1
-            stub_cell = None
-            while (i - j):
-                stub_cell = nb["cells"][i - j]
-                if stub_cell["cell_type"] == "code":
-                    stub_cell = None
-                    break
-                j += 1
-            if stub_cell is None:
-                continue
+            # Detect solution cells based on removal tag
+            if has_solution(cell):
 
-            # Extract the code and comments from both cells
-            stub_code, stub_comments = logical_lines(stub_cell["source"])
-            solu_code, solu_comments = logical_lines(cell["source"])
+                # Find a corresponding exercise cell
+                # (Assume it is the previous *code* cell)
+                j, stub_cell = 1, None
+                while (i - j):
+                    stub_cell = nb["cells"][i - j]
+                    if stub_cell["cell_type"] == "code":
+                        break
+                    else:
+                        stub_cell = None
+                    j += 1
+                if stub_cell is None:
+                    continue
 
-            # Identify violations in the exercise cell
-            unmatched_code = unmatched_lines(stub_code, solu_code)
-            unmatched_comments = unmatched_lines(
-                stub_comments, solu_code + solu_comments
-            )
+                # Extract the code and comments from both cells
+                stub_code, stub_comments = logical_lines(stub_cell["source"])
+                solu_code, solu_comments = logical_lines(cell["source"])
 
-            # Report the outcome for this exercise
-            print("-" * 69)
-            print(f"Exercise {exercise}")
-            report("Code", unmatched_code)
-            report("Comment", unmatched_comments)
-            if unmatched_code or unmatched_comments:
-                failure = True
+                # Identify violations in the exercise cell
+                unmatched_code = unmatched_lines(stub_code, solu_code)
+                unmatched_comments = unmatched_lines(
+                    stub_comments, solu_code + solu_comments
+                )
+                unmatched[nb_name].append((unmatched_code, unmatched_comments))
+                if unmatched_code or unmatched_comments:
+                    failure = True
+
+    # Report the results for this noteobokk
+    for nb_name, nb_unmatched in unmatched.items():
+        print()
+        print("---" + nb_name + "-" * (69 - 5 - len(nb_name)))
+        for exercise, (code, comments) in enumerate(nb_unmatched, 1):
+            report(exercise, code, comments)
 
     # Print overall summary and exit with return code
     message = "Failure" if failure else "Success"
-    print("=" * 30, message, "=" * 30)
+    print("\n" + "=" * 30, message, "=" * 30)
     sys.exit(failure)
 
 
-def report(kind, unmatched, thresh=50):
-    """Print information about code or comments in an exercise."""
-    if unmatched:
-        print(f"{kind}: FAIL")
-    else:
-        print(f"{kind}: PASS")
-    for (score, stub, solu) in unmatched:
-        if score < thresh:
-            print(f" {kind} without close match:")
-            print(f" * {stub}")
-        else:
-            print(f" {kind} with close mismatch ({score}%)")
-            print(f" + {stub}")
-            print(f" - {solu}")
+def report(exercise, code, comment, thresh=50):
+    """Print information about unmatched code and comments in an exercise."""
+    code_status = "FAIL" if code else "PASS"
+    comment_status = "FAIL" if code else "PASS"
+    print(
+        f"Exercise {exercise} | Code {code_status} | Comments {comment_status}"
+    )
+
+    for kind, unmatched in zip(["Code", "Comment"], [code, comment]):
+        for (score, stub, solu) in unmatched:
+            if score < thresh:
+                print(f"  {kind} without close match:")
+                print(f"  * {stub}")
+            else:
+                print(f"  {kind} with close mismatch ({score}%)")
+                print(f"  + {stub}")
+                print(f"  - {solu}")
 
 
 def logical_lines(func_str):
@@ -207,8 +214,8 @@ def has_solution(cell):
 if __name__ == "__main__":
 
     try:
-        _, nb_fpath = sys.argv
+        _, *nb_fpaths = sys.argv
     except Exception:
-        sys.exit("USAGE: python verify_exercies.py <nb_fpath>")
+        sys.exit("USAGE: python verify_exercies.py <nb_fpath> [<nb_fpath> ... ]")
 
-    main(nb_fpath)
+    main(nb_fpaths)
