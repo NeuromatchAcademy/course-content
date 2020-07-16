@@ -49,7 +49,8 @@ jobs:
           nbs=`python ci/select_notebooks.py ${{ steps.changes.outputs.files}}`
           python ci/process_notebooks.py $nbs
           readonly local last_commit_log=$(git log -1 --pretty=format:"%s")
-          python ci/verify_exercises.py $nbs --c '$last_commit_log'
+          echo $last_commit_log
+          python ci/verify_exercises.py $nbs --c "$last_commit_log"
 
       - name: Update READMEs
         run: python ci/generate_tutorial_readmes.py
