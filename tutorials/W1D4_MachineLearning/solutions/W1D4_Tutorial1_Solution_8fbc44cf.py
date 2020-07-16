@@ -14,7 +14,7 @@ def predict_spike_counts_lnp(stim, spikes, theta=None, d=25):
   y = spikes
   constant = np.ones_like(spikes)
   X = np.column_stack([constant, make_design_matrix(stim)])
-  if theta is None:
+  if theta is None:  # Allow pre-cached weights, as fitting is slow
     theta = fit_lnp(X, y, d)
 
   yhat = np.exp(X @ theta)

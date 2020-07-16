@@ -9,13 +9,17 @@ def make_design_matrix(stim, d=25):
     X (2D array): GLM design matrix with shape T, d
 
   """
-  padded_stim = np.concatenate([np.zeros(d - 1), stim])   
-  T = len(stim)
+  # Create version of stimulus vector with zeros before onset
+  padded_stim = np.concatenate([np.zeros(d - 1), stim])
+
+  # Construct a matrix where each row has the d frames of
+  # the stimulus proceeding and including timepoint t
+  T = len(stim)  # Total number of timepoints
   X = np.zeros((T, d))
   for t in range(T):
       X[t] = padded_stim[t:t + d]
 
-  return X            
+  return X
 
 with plt.xkcd():
   X = make_design_matrix(stim)

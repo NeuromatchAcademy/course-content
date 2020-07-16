@@ -14,6 +14,7 @@ def model_selection(X, y, C_values):
   for C in C_values:
 
     # Initialize and fit the model
+    # (Hint, you may need to set max_iter)
     model = LogisticRegression(penalty="l2", C=C, max_iter=5000)
 
     # Get the accuracy for each test split
@@ -24,7 +25,9 @@ def model_selection(X, y, C_values):
 
   return accuracies
 
+# Use log-spaced values for C
 C_values = np.logspace(-4, 4, 9)
+
 accuracies = model_selection(X, y, C_values)
 with plt.xkcd():
   plot_model_selection(C_values, accuracies)

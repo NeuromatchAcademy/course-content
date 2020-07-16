@@ -122,6 +122,8 @@ def main():
         "",
         nav_line,
         "",
+        "*Warning:* The 'render with NBViewer' buttons may show outdated content.",
+        "",
     ]
     course_readme_text = course_readme_header + course_readme_text
 

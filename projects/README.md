@@ -10,7 +10,7 @@
   * [Time Commitment](#time-commitment)
   * [Your schedule](#Your-schedule)
 * [TA’s Guide to NMA Projects](#TA-Guide-to-NMA-Projects) 
-* [Data Loaders](#data-loaders)
+* [Data Loaders (Google Colab) for Each Data Set](#data-loaders)
 
 # **Project materials**
 ## Links for project introductory videos
