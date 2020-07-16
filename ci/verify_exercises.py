@@ -27,8 +27,6 @@ def main(arglist):
 
     args = parse_args(arglist)
 
-    print("Commit message:")
-    print(args.commit_message)
     if "skip verify" in args.commit_message:
         # Putting this logic here as I didn't have time to figure
         # out how to do it in the github actions workflow
@@ -127,7 +125,12 @@ def logical_lines(func_str):
 
     for line in func_str.split("\n"):
 
-        # Detect and ignore lines within two kinds of multi-line comments
+        # Detect and ignore single-line docstrings
+        text = line.strip()
+        if text.startswith('"""') and text.endswith('"""'):
+            continue
+
+        # Detect and ignore lines within multi-line comments
         # - triple quotes (docstrings)
         # - comment hashmark fences
         comment_block_fence = dedent(line).startswith('"""') or "###" in line
