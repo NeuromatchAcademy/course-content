@@ -22,11 +22,11 @@ are highly encouraged, but not required to participate in a group project. Pleas
 you decide to join a group, please try to see the projec through to the end! On the last day, some projects will be
 presented and we will be organizing a 'poster' session!
 
- It is important to note that project time can begin:
+ <!-- It is important to note that project time can begin:
 
 - TimeZones 1A, 2A, 3A: Project Day 2 is the morning of course Day 3
 - TimeZones 1B, 2B, 3B: Project Day 2 is partly the afternoon of Course Day 2, and partly the morning of Course Day 3.
-- TimeZones 1C, 2C, 3C: Project Day 2 is the afternoon of Course Day 2.
+- TimeZones 1C, 2C, 3C: Project Day 2 is the afternoon of Course Day 2. -->
 
 Daily project time can be:
 
