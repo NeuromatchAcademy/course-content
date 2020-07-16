@@ -68,7 +68,8 @@ brainstorming. The project days are:
   
 * **Project Day 5** — Groups (led by TAs) — (zone A: Mon; zone B: Fri-Mon; zone C: Fri)
   * Organize into final project groups (projects and the groups will be matched to Mentors)
-  * Projects are submitted for neuromatching via AirTable
+  * Projects are submitted for neuromatching via [AirTable](https://airtable.com/shr8F7Tz0wf0x0L7A "Project proposal form")
+  * HARD DEADLINE OF W1D5 (Friday, local time)
 
 ## Week Two and Three
 During weeks two and three, project groups meet together to work on the projects. Neuromatched Mentors will
@@ -188,4 +189,6 @@ As a Mentor, you will have two roles:
 
 ## AirTable match information
 
-You will receive an email with 'match' information from NMA for week one and then again for week two and three.
+ * You will receive an email with 'match' information from NMA for week one and then again for week two and three.
+ * You will have contact information (Links for video, emal and names in an 'AirTable')
+ * If you thin you have any quesrtons, please contact us!
