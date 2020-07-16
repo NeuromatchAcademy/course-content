@@ -29,7 +29,6 @@ def main(arglist):
 
     print("Commit message:")
     print(args.commit_message)
-    print()
     if "skip verify" in args.commit_message:
         # Putting this logic here as I didn't have time to figure
         # out how to do it in the github actions workflow
