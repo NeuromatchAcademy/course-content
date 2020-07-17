@@ -451,7 +451,7 @@ These are hour-long Crowdcast events with a panel of speakers that will discuss 
 |   **4.1 Visualization**  |  Colin Prahl (Artist), Amy Robinson Stirling (Eyewire)  | Data Visualization and communication. Neuroscience-inspired art.     
 |    **5.1 Publishing**  |  Brett Mensh (Optimize Science)   | Maximizing the impact of your paper and the journal it gets into.
 |    **6.1 Philosophy**  |  Lisa Mirachi (U Penn)  |  What is the difference between “what a cognitive agent does” and “what processes happen inside an agent”? Lisa Miracchi, philosophy professor at UPenn, talks about how this distinction relates to selecting models.
-|    **6.2 Philosophy**  |  Lisa Mirachi (U Penn)  | What is the difference between “the content of representations” and “the content of perceptions and thoughts”? Lisa Miracchi, philosophy professor at UPenn, talks about Marr’s Computational Level and how these questions relate to what robots might internally represent
+|    **6.2 Philosophy**  |  Lisa Mirachi (U Penn)  | What is the difference between “the content of representations” and “the content of perceptions and thoughts”? Lisa Miracchi, philosophy professor at UPenn, talks about Marr’s Computational Level and how these questions relate to what robots might internally represent.
 
 
 
@@ -465,7 +465,7 @@ These are hour-long Crowdcast events with a panel of speakers that will discuss 
 |   **8.1 Careers in Industry**  | Becky Clarkson (Apple), Kyle Frankovich (Insight Data Science), Kachi Odoememe (APL) | Research careers in industry. 
 |   **8.2 Careers in Industry**  | Feryal Behbahani (DeepMind), Sophie Kenny (Vpixx), Graeme Moffat (System2 Neurotechnology) | Research careers in industry.
 |   **9.1 Careers in Academia**  | Sripati Panditaradhyula Arun (IISc), Minhae Kwon (Soongsil University), Taro Toyoizumi (RIKEN) | Research careers in academia.
-|   **10.1 How We Built This**  | Patrick Mineault, Tara van Viegen, Michael Waskom, Madineh Sarvcestani| 2000 students, 200 TAs, 200 volunteers, 20 days of content, 20 hours of video - how we built and launched NMA in 2 months
+|   **10.1 How We Built This**  | Patrick Mineault, Tara van Viegen, Michael Waskom, Madineh Sarvestani| 2000 students, 200 TAs, 200 volunteers, 20 days of content, 20 hours of video - how we built and launched NMA in 2 months.
 
 
 
