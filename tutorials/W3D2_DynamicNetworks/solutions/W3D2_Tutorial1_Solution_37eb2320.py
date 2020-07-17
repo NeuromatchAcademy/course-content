@@ -4,7 +4,7 @@ pars = default_pars_single()  # get default parameters
 pars['I_ext'] = 0.5
 pars['w'] = 5.0
 
-r = np.linspace(0, 1., 1000)    # give the values of r
+r = np.linspace(0, 1, 1000)  # give the values of r
 
 # Calculate drEdt
 drdt = (-r + F(pars['w'] * r + pars['I_ext'],

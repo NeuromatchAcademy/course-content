@@ -10,10 +10,11 @@ with plt.xkcd():
   # Find the correct fixed point
   x_fp_1 = my_fp(pars, 0.8, 0.8)
   if check_fp(pars, x_fp_1):
-    plot_fp(x_fp_1, position=(0., 0.), rotation=40)
+    plot_fp(x_fp_1, position=(0, 0), rotation=40)
 
   my_plot_trajectories(pars, 0.2, 3,
-                        'Sample trajectories \nwith different initial values')
+                       'Sample trajectories \nwith different initial values')
+
   my_plot_vector(pars)
 
   plt.legend(loc=[1.01, 0.7])

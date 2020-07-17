@@ -26,7 +26,7 @@ def simulate_wc(pars):
   rE[0] = rE_init
   rI[0] = rI_init
   I_ext_E = I_ext_E * np.ones(Lt)
-  I_ext_I = I_ext_I * np.ones(Lt)
+  I_ext_I = I_ext_I * np.ones(Lt)  # ensure the external input an array
 
   # simulate the Wilson-Cowan equations
   for k in range(Lt-1):

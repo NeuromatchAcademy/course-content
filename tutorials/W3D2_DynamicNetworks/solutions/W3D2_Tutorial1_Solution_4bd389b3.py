@@ -11,6 +11,7 @@ def eig_single(pars, fp):
   # get the parameters
   tau, a, theta = pars['tau'], pars['a'], pars['theta']
   w, I_ext = pars['w'], pars['I_ext']
+  print(tau, a, theta, w, I_ext)
 
   # Compute the eigenvalue
   eig = (-1. + w * dF(w * fp + I_ext, a, theta)) / tau
@@ -21,6 +22,8 @@ def eig_single(pars, fp):
 pars = default_pars_single()
 pars['w'] = 5.0
 pars['I_ext'] = 0.5
+
+# Find the eigenvalues for all fixed points of Exercise 2
 
 x_fp_1 = my_fp_single(pars, 0.).item()
 eig_fp_1 = eig_single(pars, x_fp_1).item()

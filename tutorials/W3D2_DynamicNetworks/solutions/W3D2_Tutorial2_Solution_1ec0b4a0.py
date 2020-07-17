@@ -2,7 +2,7 @@ def get_dGdE(pars, fp):
   """
   Simulate the Wilson-Cowan equations
 
-  Expects:
+  Args:
     pars : Parameter dictionary
     fp   : fixed point (E, I), array
 
@@ -19,7 +19,7 @@ def get_dGdE(pars, fp):
   rE = fp[0]
   rI = fp[1]
 
-  # calculate the J[0,0]
+  # Calculate the J[0,0]
   dGdrE = (-1 + wEE * dF(wEE * rE - wEI * rI + I_ext_E, a_E, theta_E)) / tau_E
 
   return dGdrE
