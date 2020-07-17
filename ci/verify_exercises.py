@@ -117,6 +117,10 @@ def logical_lines(func_str):
     # Define a regular expression to remove comments
     pattern = re.compile(r"^([^#]*)\s*#*\s*(.*?)\s*$")
 
+    # TODO: An issue: for commented code, this ignores leading
+    # whitespace, but for uncommented code, it keeps it.
+    # This needs a little thinking about the best solution.
+
     code_lines = []
     comment_lines = []
 
