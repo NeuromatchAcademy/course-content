@@ -115,11 +115,7 @@ def logical_lines(func_str):
     func_str = func_str.replace("'''", '"""')
 
     # Define a regular expression to remove comments
-    pattern = re.compile(r"^([^#]*)\s*#*\s*(.*?)\s*$")
-
-    # TODO: An issue: for commented code, this ignores leading
-    # whitespace, but for uncommented code, it keeps it.
-    # This needs a little thinking about the best solution.
+    pattern = re.compile(r"^([^#]*)\s*#* {0,1}(.*?)\s*$")
 
     code_lines = []
     comment_lines = []
@@ -160,7 +156,7 @@ def logical_lines(func_str):
                 making_xkcd_plot = True
                 continue
             if making_xkcd_plot:
-                code_line = dedent(code_line)
+                code_line = code_line[2:]
 
             # Check for reasons to ignore the line, otherwise keep it
 
