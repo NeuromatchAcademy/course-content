@@ -465,7 +465,7 @@ These are hour-long Crowdcast events with a panel of speakers that will discuss 
 |   **8.1 Careers in Industry**  | Becky Clarkson (Apple), Kyle Frankovich (Insight Data Science), Kachi Odoememe (APL) | Research careers in industry. 
 |   **8.2 Careers in Industry**  | Feryal Behbahani (DeepMind), Sophie Kenny (Vpixx), Graeme Moffat (System2 Neurotechnology) | Research careers in industry.
 |   **9.1 Careers in Academia**  | Sripati Panditaradhyula Arun (IISc), Minhae Kwon (Soongsil University), Taro Toyoizumi (RIKEN) | Research careers in academia.
-|   **10.1 How We Built This **  | Patrick Mineault, Tara van Viegen, Michael Waskom, Madineh Sarvcestani| 200 TAs, 2000 students, 15 days of content, 20 hours of video, 200 volunteers - how we built and launched NMA in 2 months
+|   **10.1 How We Built This**  | Patrick Mineault, Tara van Viegen, Michael Waskom, Madineh Sarvcestani| 200 TAs, 2000 students, 15 days of content, 20 hours of video, 200 volunteers - how we built and launched NMA in 2 months
 
 
 
