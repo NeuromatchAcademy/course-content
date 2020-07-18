@@ -2,7 +2,7 @@ x = np.arange(-10, 10, 0.1)
 
 def calculate_prior_array(x_points, stim_array, p_indep, 
                           prior_mean_common=.0, prior_sigma_common=.5,
-                          prior_mean_indep=.0, prior_sigma_indep=10,):
+                          prior_mean_indep=.0, prior_sigma_indep=10):
     """
         'common' stands for common
         'indep' stands for independent 
