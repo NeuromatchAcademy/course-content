@@ -2,7 +2,7 @@
 Discussion: 
 (1) Does the general shape of the inter-switch interval distribution 
 change or does it stay relatively the same? 
-How does the bar graph of system states change based on these values?
+(2) How does the bar graph of system states change based on these values?
 
 Answers: 
 (1) The shape of the distribution remains the same, but larger values of either 
