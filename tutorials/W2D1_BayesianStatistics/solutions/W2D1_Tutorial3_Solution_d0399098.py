@@ -1,0 +1,16 @@
+def calculate_binary_decision_array(x_points, posterior_array):
+
+    binary_decision_array = np.zeros_like(posterior_array)
+
+    for i in range(len(posterior_array)):
+        mean, _, _ = moments_myfunc(x_points, posterior_array[i])
+        idx = np.argmin(np.abs(x_points - mean))
+        binary_decision_array[i, idx] = 1 
+
+    return binary_decision_array
+
+binary_decision_array = calculate_binary_decision_array(x, posterior_array)
+with plt.xkcd():
+  plot_myarray(binary_decision_array,
+               '$\^x$', 'Hypothetical True Stimulus $x$',
+               'Sample Binary Decision array\n $\^x$ = mean($\~x$)')
