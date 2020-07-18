@@ -4,11 +4,11 @@ def Delta_W(pars, A_plus, A_minus, tau_stdp):
 
   Args:
     pars       : parameter dictionary
-    A_plus     : (float) maxmimum amount of synaptic modification 
-                 which occurs when the timing difference between pre- and 
+    A_plus     : (float) maxmimum amount of synaptic modification
+                 which occurs when the timing difference between pre- and
                  post-synaptic spikes is positive
-    A_plus     : (float) maxmimum amount of synaptic modification 
-                 which occurs when the timing difference between pre- and 
+    A_plus     : (float) maxmimum amount of synaptic modification
+                 which occurs when the timing difference between pre- and
                  post-synaptic spikes is negative
     tau_stdp   : the ranges of pre-to-postsynaptic interspike intervals
                  over which synaptic strengthening or weakening occurs

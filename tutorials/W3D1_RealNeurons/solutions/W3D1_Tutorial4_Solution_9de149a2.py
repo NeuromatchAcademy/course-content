@@ -15,7 +15,6 @@ def generate_P(pars, pre_spike_train_ex):
   A_plus, tau_stdp = pars['A_plus'], pars['tau_stdp']
   dt, range_t = pars['dt'], pars['range_t']
   Lt = range_t.size
-  n_pre = pre_spike_train_ex.shape[0]
 
   # Initialize
   P = np.zeros(pre_spike_train_ex.shape)
