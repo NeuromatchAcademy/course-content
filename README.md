@@ -439,7 +439,7 @@ Group projects are offered for the *interactive track* only and will be running 
 
 
 # Professional Development Sessions
-These are hour-long Crowdcast events with a panel of speakers that will discuss a topic and answer audience questions.  For exact times in the relevant time-zones, see the [Neurostars Calendar](https://neurostars.org/t/professional-development-and-social-calendar/10496). They will be live streamed and recorded for later watching. Some sessions are duplicated to ensure coverage for students in different time-zones.
+These are hour-long Crowdcast events with a panel of speakers that will discuss a topic and answer audience questions.  For exact times in the relevant time-zones, see the [Neurostars Calendar](https://neurostars.org/t/professional-development-and-social-calendar/10496). They will be live streamed and recorded for later watching. Some sessions are duplicated to ensure coverage for students in different time-zones. **All sessions can be watched on [NMA Crowdcast](https://www.crowdcast.io/e/nma/)**
 
 
 ## Weekend 1: July 18 & 19
