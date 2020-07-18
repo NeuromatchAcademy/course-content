@@ -16,14 +16,14 @@ def integrate_exponential(a, x0, dt, T):
   # Initialize variables
   t = np.arange(0, T, dt)
   x = np.zeros_like(t, dtype=complex)
-  x[0] = x0
+  x[0] = x0 # This is x at time t_0
 
   # Step through system and integrate in time
   for k in range(1, len(t)):
-    # for each point in time, compute xdot = a*x
+    # for each point in time, compute xdot from x[k-1]
     xdot = (a*x[k-1])
 
-    # update x by adding xdot scaled by dt
+    # Update x based on x[k-1] and xdot
     x[k] = x[k-1] +  xdot * dt
 
   return x, t
@@ -34,9 +34,9 @@ T = 10      # total Time duration
 dt = 0.001  # timestep of our simulation
 x0 = 1.     # initial condition of x at time 0
 
+# Uncomment once you've filled in code above
 x, t = integrate_exponential(a, x0, dt, T)
 with plt.xkcd():
-  fig = plt.figure(figsize=(8, 6))
-  plt.plot(t, x.real)  
+  plt.plot(t, x.real)
   plt.xlabel('Time (s)')
   plt.ylabel('x')

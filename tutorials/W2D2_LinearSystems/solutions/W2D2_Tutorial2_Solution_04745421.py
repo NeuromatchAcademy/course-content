@@ -2,7 +2,7 @@
 Discussion: 
 Which of the eigenvalues corresponds to the stable solution?
 What is the eigenvector of this eigenvalue?
-How does that explain the equilibrium solutions in part B?
+How does that explain the equilibrium solutions in Section 2?
 
 Recommendation: 
 Ask the students to work in small groups (of 2 or 3) to discuss these questions.
@@ -17,7 +17,7 @@ The eigenvector corresponding to this eigenvalue is the stable solution.
 To see this, we need to normalize this eigenvector so that its 2 elements
 sum to one, then we would see that the two numbers correspond to
 [P(open), P(closed)] at equilibrium -- hopefully these are exactly the
-equilibrium solutions observed in Part B.
+equilibrium solutions observed in Section 2.
 
 
 """;
