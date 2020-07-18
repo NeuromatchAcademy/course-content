@@ -13,7 +13,7 @@ with plt.xkcd():
               '$x$', 
               '$\^x$', 
               'Marginalization array: $p(\^x | x)$')
-  
+  plt.figure()
   plt.plot(x, marginal)
   plt.xlabel('$\^x$')
   plt.ylabel('probability')
