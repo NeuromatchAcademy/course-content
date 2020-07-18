@@ -1,3 +1,4 @@
+np.random.seed(2020) # set random seed
 
 # sweep through values for lambda
 lambdas = np.arange(0.05, 0.95, 0.01)

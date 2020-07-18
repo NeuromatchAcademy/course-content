@@ -34,6 +34,7 @@ x0 = 4.      # initial condition of x at time 0
 xinfty = 1.  # x drifts towards this value in long time
 
 # Uncomment once above is completed to plot x as it evolves in time
+np.random.seed(2020)
 t, x = simulate_ddm(lam, sig, x0, xinfty, T)
 with plt.xkcd():
   plot_ddm(t, x, xinfty, lam, x0)

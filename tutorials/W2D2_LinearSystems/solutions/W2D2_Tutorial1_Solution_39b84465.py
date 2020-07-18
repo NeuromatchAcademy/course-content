@@ -18,11 +18,11 @@ def system(t, x, a00, a01, a10, a11):
 
     return np.array([x1dot, x2dot])
 
-# Uncomment once the system function is complete
-T = 6      # total Time duration
-dt = 0.1   # timestep of our simulation
-
+T = 6 # total time duration
+dt = 0.1 # timestep of our simulation
 A = np.array([[2, -5],
               [1, -2]])
 x0 = [-0.1, 0.2]
+
+# Uncomment once the system function is complete
 plot_trajectory(system, [A[0,0],A[0,1],A[1,0],A[1,1]], x0, dt=dt, T=T)

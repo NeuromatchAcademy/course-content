@@ -16,7 +16,7 @@ def integrate_exponential(a, x0, dt, T):
   # Initialize variables
   t = np.arange(0, T, dt)
   x = np.zeros_like(t, dtype=complex)
-  x[0] = x0
+  x[0] = x0 # This is x at time t_0
 
   # Step through system and integrate in time
   for k in range(1, len(t)):
@@ -37,6 +37,6 @@ x0 = 1.     # initial condition of x at time 0
 # Uncomment once you've filled in code above
 x, t = integrate_exponential(a, x0, dt, T)
 with plt.xkcd():
-  plt.plot(t, x.real)  
+  plt.plot(t, x.real)
   plt.xlabel('Time (s)')
   plt.ylabel('x')
