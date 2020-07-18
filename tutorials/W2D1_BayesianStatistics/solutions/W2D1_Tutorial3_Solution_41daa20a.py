@@ -11,5 +11,6 @@ def generate_input_array(x_points, stim_array, posterior_array,
 
 input_array = generate_input_array(x, hypothetical_stim, posterior_array)
 with plt.xkcd():
-  plot_myarray(input_array, 'hypothetical stimulus $x$', '$\~x$',
-  'Sample Input Matrix: $p(\~x | x = -2.5)$')
+  plot_myarray(input_array,
+               'hypothetical stimulus $x$', '$\~x$',
+               'Sample Input Matrix: $p(\~x | x = -2.5)$')

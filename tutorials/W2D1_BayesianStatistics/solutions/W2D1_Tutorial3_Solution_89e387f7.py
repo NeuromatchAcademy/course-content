@@ -21,4 +21,6 @@ p_independent=.05
 prior_array = calculate_prior_array(x, hypothetical_stim, p_independent)
 
 with plt.xkcd():
-  plot_myarray(prior_array, 'prior: p(x)', 'Hypothetical True Stimulus x', 'Prior as a fcn x : p(x)')
+  plot_myarray(prior_array,
+               'prior: p(x)', 'Hypothetical True Stimulus x',
+               'Prior as a fcn x : p(x)')
