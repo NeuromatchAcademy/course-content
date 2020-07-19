@@ -461,7 +461,7 @@ These are hour-long Crowdcast events with a panel of speakers that will discuss 
 |   **8.2 Careers in Industry**  | July 25 18:00 UTC| Feryal Behbahani (DeepMind), Sophie Kenny (Vpixx), Graeme Moffat (System2 Neurotechnology) <br>Research careers in industry.<br>[https://www.crowdcast.io/e/nma/41](https://www.crowdcast.io/e/nma/41) 
 |   **9.1 Careers in Academia**  | July 26 5:00 UTC | Sripati Panditaradhyula Arun (IISc), Minhae Kwon (Soongsil University), Taro Toyoizumi (RIKEN) <br> Research careers in academia.<br>[https://www.crowdcast.io/e/nma/44](https://www.crowdcast.io/e/nma/44) 
 |   **9.3 Careers in Academia**  | July 26 16:00 UTC  | Russ Poldrack (Stanford), Xiao-Jing Wang (NYU) <br> Research careers in academia.<br>[https://www.crowdcast.io/e/nma/46](https://www.crowdcast.io/e/nma/46) 
-|   **10.1 How We Built This**  | July 26 20:00 UTC | Patrick Mineault, Tara van Viegen, Michael Waskom, Madineh Sarvestani<br>2000 students, 200 TAs, 200 volunteers, 20 days of content, 20 hours of video - how we built and launched NMA in 2 months.<br>[https://www.crowdcast.io/e/nma/47](https://www.crowdcast.io/e/nma/47) 
+|   **10.1 How We Built This**  | July 26 20:00 UTC | Ella Batty, Patrick Mineault, Madineh Sarvestani, Tara van Viegen, Michael Waskom, <br>2000 students, 200 TAs, 200 volunteers, 20 days of content, 20 hours of video - how we built and launched NMA in 2 months.<br>[https://www.crowdcast.io/e/nma/47](https://www.crowdcast.io/e/nma/47) 
 
 
 
