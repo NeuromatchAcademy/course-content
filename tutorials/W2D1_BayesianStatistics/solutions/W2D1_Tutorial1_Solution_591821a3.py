@@ -40,7 +40,6 @@ def compare_computational_analytical_means():
 
 
 # Uncomment the lines below to visualize your results
-mu_visuals, mu_computational, mu_analytical = compare_computational_analytical_means()
-
+mu_visuals, mus_integrated, mus_analytical = compare_computational_analytical_means()
 with plt.xkcd():
-  plot_visual(mu_visuals, mu_computational, mu_analytical)
+  plot_mean_comparison(mu_visuals, mus_integrated, mus_analytical)
