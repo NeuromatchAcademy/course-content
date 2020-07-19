@@ -436,36 +436,33 @@ Group projects are offered for the *interactive track* only and will be running 
 * Meet people that are local to you (same city, country)
 
 ----
-
-
 # Professional Development Sessions
-These are hour-long Crowdcast events with a panel of speakers that will discuss a topic and answer audience questions.  For exact times in the relevant time-zones, see the [Neurostars Calendar](https://neurostars.org/t/professional-development-and-social-calendar/10496). They will be live streamed and recorded for later watching. Some sessions are duplicated to ensure coverage for students in different time-zones. **All sessions can be watched on [NMA Crowdcast](https://www.crowdcast.io/e/nma/)**
-
+These are hour-long Crowdcast events with a panel of speakers that will discuss a topic and answer audience questions.  For times in the relevant time-zones, see the [Neurostars Calendar](https://neurostars.org/t/professional-development-and-social-calendar/10496). They will be live streamed and recorded for later watching at the same Crowdcast link. Some sessions are duplicated to ensure coverage for students in different time-zones. 
 
 ## Weekend 1: July 18 & 19
-|    Session   |   Speakers|    Description                                                         |
-|-------------------|--------------------|-----------------------------------------------------------------------|
-|   **2.1: Data Sharing and Management**| Dimitri Yatsenko (DataJoint), Edgar Walker (DataJoint), Ben Dichter (NWB)   |Software tools for efficient management, analysis, and sharing of experimental data. 
-|    **2.2: Data Sharing and Management**|  Russ Poldrack (Stanford) | Efficient data management and sharing strategies focusing on fMRI data.                                              
-|   **3.1 Open Science**  |  Nici Pfeiffer (COS), Mark Musen (CEDAR, Stanford)   | The Center for Open Science develops tools for project management, collaboration, preregistration, and data sharing. CEDAR enables investigators to author metadata, annotating experimental datasets to make data more findable, accessible, interoperable, and reusable (FAIR). 
-|   **4.1 Visualization**  |  Colin Prahl (Artist), Amy Robinson Sterling (Eyewire), Helena Ledmyr (INCF)  | Data Visualization and communication. Neuroscience-inspired art.     
-|    **5.1 Publishing**  |  Brett Mensh (Optimize Science)   | Maximizing the impact of your paper and the journal it gets into.
-|    **6.1 Philosophy**  |  Lisa Miracchi (U Penn)  |  What is the difference between “what a cognitive agent does” and “what processes happen inside an agent”? Lisa Miracchi, philosophy professor at UPenn, talks about how this distinction relates to selecting models.
-|    **6.2 Philosophy**  |  Lisa Miracchi (U Penn)  | What is the difference between “the content of representations” and “the content of perceptions and thoughts”? Lisa Miracchi, philosophy professor at UPenn, talks about Marr’s Computational Level and how these questions relate to what robots might internally represent.
-
-
+|   Session   |  Date |   Description                                                         |
+|-------------------|--------------------|----------------------------------------------------------------------|
+|   **2.1: Data Sharing and Management**| July 18, 13:00 UTC | Dimitri Yatsenko (DataJoint), Edgar Walker (DataJoint), Ben Dichter (NWB) <br>Software tools for efficient management, analysis, and sharing of experimental data.<br>[https://www.crowdcast.io/e/nma/18](https://www.crowdcast.io/e/nma/18)
+|    **2.2: Data Sharing and Management**| July 18, 23:00 UTC |  Russ Poldrack (Stanford)<br> Efficient data management and sharing strategies focusing on fMRI data. <br>[https://www.crowdcast.io/e/nma/20](https://www.crowdcast.io/e/nma/20)                                             
+|   **3.1 Open Science**  | July 19, 0:00 UTC | Nici Pfeiffer (COS), Mark Musen (CEDAR, Stanford)<br> The Center for Open Science develops tools for project management, collaboration, preregistration, and data sharing. CEDAR enables investigators to author metadata, annotating experimental datasets to make data more findable, accessible, interoperable, and reusable (FAIR). <br>[https://www.crowdcast.io/e/nma/21](https://www.crowdcast.io/e/nma/21)  
+|   **4.1 Visualization**  |July 18 16:00 UTC |  Colin Prahl (Artist), Amy Robinson Sterling (Eyewire), Helena Ledmyr (INCF)<br> Data Visualization and communication. Neuroscience-inspired art. <br>[https://www.crowdcast.io/e/nma/19](https://www.crowdcast.io/e/nma/19)      
+|    **5.1 Publishing**  |  July 19, 18:00 UTC|Brett Mensh (Optimize Science)<br>   Maximizing the impact of your paper and the journal it gets into.<br>[https://www.crowdcast.io/e/nma/24](https://www.crowdcast.io/e/nma/24) 
+|    **6.1 Philosophy**  |  July 19, 1:00 UTC|Lisa Miracchi (U Penn)<br>  What is the difference between “what a cognitive agent does” and “what processes happen inside an agent”? Lisa Miracchi, philosophy professor at UPenn, talks about how this distinction relates to selecting models.<br>[https://www.crowdcast.io/e/nma/22](https://www.crowdcast.io/e/nma/22) 
+|    **6.2 Philosophy**  | July 19, 15:00 UTC|  Lisa Miracchi (U Penn)<br> What is the difference between “the content of representations” and “the content of perceptions and thoughts”? Lisa Miracchi, philosophy professor at UPenn, talks about Marr’s Computational Level and how these questions relate to what robots might internally represent.<br>[https://www.crowdcast.io/e/nma/23](https://www.crowdcast.io/e/nma/23) 
 
 
 ## Weekend 2: July 25 & 26
-|    Session   |   Speakers|    Description                                                            |
+|    Session   |   Date|    Description                                                            |
 |-------------------|--------------------|-----------------------------------------------------------------------|
-|  **3.1 Open Science**  |  Nici Pfeiffer (COS), Mark Musen (CEDAR, Stanford)   | The Center for Open Science develops tools for project management, collaboration, preregistration, and data sharing. CEDAR enables investigators to author metadata, annotating experimental datasets to make data more findable, accessible, interoperable, and reusable (FAIR).      
-|   **7.1 Job Fair**  |  Facebook Reality Labs | FRL brings together a world-class team of researchers, developers, and engineers to build the future of connection within virtual and augmented reality. FRL is a growing center of neuroscience and machine learning excellence, including a computational neuroscience team in NYC that joined via the CTRL-labs acquisition and a Brain Computer Interface (BCI) group in the SF Bay Area. 
-|   **7.2 Job Fair**  |  Facebook Reality Labs | FRL brings together a world-class team of researchers, developers, and engineers to build the future of connection within virtual and augmented reality. FRL is a growing center of neuroscience and machine learning excellence, including a computational neuroscience team in NYC that joined via the CTRL-labs acquisition and a Brain Computer Interface (BCI) group in the SF Bay Area. 
-|   **8.1 Careers in Industry**  | Becky Clarkson (Apple), Kyle Frankovich (Insight Data Science), Kachi Odoememe (APL) | Research careers in industry. 
-|   **8.2 Careers in Industry**  | Feryal Behbahani (DeepMind), Sophie Kenny (Vpixx), Graeme Moffat (System2 Neurotechnology) | Research careers in industry.
-|   **9.1 Careers in Academia**  | Sripati Panditaradhyula Arun (IISc), Minhae Kwon (Soongsil University), Taro Toyoizumi (RIKEN) | Research careers in academia.
-|   **10.1 How We Built This**  | Patrick Mineault, Tara van Viegen, Michael Waskom, Madineh Sarvestani| 2000 students, 200 TAs, 200 volunteers, 20 days of content, 20 hours of video - how we built and launched NMA in 2 months.
+|  **3.1 Open Science**  |  July 25, 15:00 UTC|  Nici Pfeiffer (COS), Mark Musen (CEDAR, Stanford) <br> The Center for Open Science develops tools for project management, collaboration, preregistration, and data sharing. CEDAR enables investigators to author metadata, annotating experimental datasets to make data more findable, accessible, interoperable, and reusable (FAIR).<br>[https://www.crowdcast.io/e/nma/40](https://www.crowdcast.io/e/nma/40)       
+|   **7.1 Job Fair**  | July 26 1:00 UTC | Facebook Reality Labs (FRL) brings together a world-class team of researchers, developers, and engineers to build the future of connection within virtual and augmented reality. FRL is a growing center of neuroscience and machine learning excellence, including a computational neuroscience team in NYC that joined via the CTRL-labs acquisition and a Brain Computer Interface (BCI) group in the SF Bay Area. <br>[https://www.crowdcast.io/e/nma/43](https://www.crowdcast.io/e/nma/43) 
+|   **7.2 Job Fair**  | July 26 14:00 UTC | FRL brings together a world-class team of researchers, developers, and engineers to build the future of connection within virtual and augmented reality. FRL is a growing center of neuroscience and machine learning excellence, including a computational neuroscience team in NYC that joined via the CTRL-labs acquisition and a Brain Computer Interface (BCI) group in the SF Bay Area. <br>[https://www.crowdcast.io/e/nma/45](https://www.crowdcast.io/e/nma/45) 
+|   **8.1 Careers in Industry** | July 25 20:00 UTC| Becky Clarkson (Apple), Kyle Frankovich (Insight Data Science), Kachi Odoememe (APL)<br> Research careers in industry. <br>[https://www.crowdcast.io/e/nma/42](https://www.crowdcast.io/e/nma/42) 
+|   **8.2 Careers in Industry**  | July 25 18:00 UTC| Feryal Behbahani (DeepMind), Sophie Kenny (Vpixx), Graeme Moffat (System2 Neurotechnology) <br>Research careers in industry.<br>[https://www.crowdcast.io/e/nma/41](https://www.crowdcast.io/e/nma/41) 
+|   **9.1 Careers in Academia**  | July 26 5:00 UTC | Sripati Panditaradhyula Arun (IISc), Minhae Kwon (Soongsil University), Taro Toyoizumi (RIKEN) <br> Research careers in academia.<br>[https://www.crowdcast.io/e/nma/44](https://www.crowdcast.io/e/nma/44) 
+|   **9.3 Careers in Academia**  | July 26 16:00 UTC  | Russ Poldrack (Stanford), Xiao-Jing Wang (NYU) <br> Research careers in academia.<br>[https://www.crowdcast.io/e/nma/46](https://www.crowdcast.io/e/nma/46) 
+|   **10.1 How We Built This**  | July 26 20:00 UTC | Patrick Mineault, Tara van Viegen, Michael Waskom, Madineh Sarvestani<br>2000 students, 200 TAs, 200 volunteers, 20 days of content, 20 hours of video - how we built and launched NMA in 2 months.<br>[https://www.crowdcast.io/e/nma/47](https://www.crowdcast.io/e/nma/47) 
+
 
 
 
