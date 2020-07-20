@@ -12,5 +12,5 @@ def calculate_binary_decision_array(x_points, posterior_array):
 binary_decision_array = calculate_binary_decision_array(x, posterior_array)
 with plt.xkcd():
   plot_myarray(binary_decision_array,
-               '$\^x$', 'Hypothetical True Stimulus $x$',
-               'Sample Binary Decision array\n $\^x$ = mean($\~x$)')
+               'Chosen position $\hat x$', 'Brain-encoded Stimulus $\~ x$',
+               'Sample Binary Decision Array')

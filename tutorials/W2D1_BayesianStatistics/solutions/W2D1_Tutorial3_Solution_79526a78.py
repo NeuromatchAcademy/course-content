@@ -22,5 +22,5 @@ prior_array = calculate_prior_array(x, hypothetical_stim, p_independent)
 
 with plt.xkcd():
   plot_myarray(prior_array,
-               'prior: p(x)', 'Hypothetical True Stimulus x',
-               'Prior as a fcn x : p(x)')
+               'Hypothesized position $x$', 'Brain encoded position $\~x$',
+               'Prior as a fcn of $\~x$ : $p(x|\~x)$')
