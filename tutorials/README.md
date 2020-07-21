@@ -138,6 +138,9 @@ Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/vx5ny/?direct%
 ## W2D3 - Decision Making
 
 [YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18NaQb7HyKp-O3Ag5JJ9MmXi)
+
+Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/8u92f/?direct%26mode=render%26action=download%26mode=render) | [Tutorials](https://mfr.ca-1.osf.io/render?url=https://osf.io/rh23s/?direct%26mode=render%26action=download%26mode=render) | [Outro](https://mfr.ca-1.osf.io/render?url=https://osf.io/nqcy3/?direct%26mode=render%26action=download%26mode=render) | [Reading](https://mfr.ca-1.osf.io/render?url=https://osf.io/4wpkf/?direct%26mode=render%26action=download%26mode=render)
+
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D3_DecisionMaking/student/W2D3_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D3_DecisionMaking/student/W2D3_Tutorial1.ipynb?flush_cache=true) |
