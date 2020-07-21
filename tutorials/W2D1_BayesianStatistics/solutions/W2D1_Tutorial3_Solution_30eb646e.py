@@ -17,6 +17,6 @@ likelihood_array = compute_likelihood_array(x, hypothetical_stim)
 
 with plt.xkcd():
   plot_myarray(likelihood_array,
-               '$\~x$ : Brain representation of $x$',
-               'Hypothetical True Stimulus $x$',
-               'Sample Likelihood Array : $p(\~x | x)$')
+              '$x$ : Potential true stimulus $x$',
+              'Possible brain encoding $\~x$',
+              'Likelihood as a function of $\~x$ : $p(\~x | x)$')
