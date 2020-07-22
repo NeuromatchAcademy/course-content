@@ -16,8 +16,8 @@ def one_step_update(model, posterior_tm1, Y_t):
 
 
 np.random.seed(101)
-switch_prob = 0.06
-noise_level = 1.2
+switch_prob = 0.1
+noise_level = 0.5
 nsample = 50
 T = 160
 model = create_model(switch_prob, noise_level)
