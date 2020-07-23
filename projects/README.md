@@ -9,7 +9,7 @@
 * [Student’s Guide to NMA Projects](#Student-Guide-to-NMA-Projects)
   * [Time Commitment](#time-commitment)
   * [Your schedule](#Your-schedule)
-* [TA’s Guide to NMA Projects](#TA-Guide-to-NMA-Projects) 
+* [TA’s Guide to NMA Projects](#TA-Guide-to-NMA-Projects)
 * [Mentor’s Guide to NMA Projects](#Mentor-Guide-to-NMA-Projects)
 
 ----
@@ -52,7 +52,7 @@ brainstorming. The project days are:
     * Videos: overview of course content
     * Pod brainstorm: dreaming big ideas
     * We suggest using [Miro](https://miro.com/) collaborative board for brainstorming
-    
+
 * **Project Day 3** — Refinement (with Mentors)
   * In temporary groups of 3–5 students
   * Develop projects from idea to plan
@@ -65,7 +65,7 @@ brainstorming. The project days are:
       * What data set will you use?
       * What analysis or models will you use?
       * What do you predict you will find?
-  
+
 * **Project Day 5** — Groups (led by TAs) — (zone A: Mon; zone B: Fri-Mon; zone C: Fri)
   * Organize into final project groups (projects and the groups will be matched to Mentors)
   * Projects are submitted for neuromatching via [AirTable](https://airtable.com/shr8F7Tz0wf0x0L7A "Project proposal form")
@@ -81,9 +81,9 @@ publication-worthy project! All groups must finish their projects by the end of 
  * All group members should contribute to the presenation slides and video!
 
  * **NMA final day** — Presentation of projects
- 
+
   * The afternoon of the final day of NMA will include project presentations!
- 
+
 # **Project materials**
 
 ---
@@ -110,6 +110,7 @@ publication-worthy project! All groups must finish their projects by the end of 
 |   | Run | View |
 | - | --- | ---- |
 | Steinmetz decisions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/load_steinmetz_decisions.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/load_steinmetz_decisions.ipynb)|
+| Steinmetz extra | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/load_steinmetz_extra.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/load_steinmetz_extra.ipynb)|
 | Stringer spontaneous | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/load_stringer_spontaneous.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/load_stringer_spontaneous.ipynb)|
 | Stringer orientations | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/load_stringer_orientations.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/load_stringer_orientations.ipynb) |
 | Kay images | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/load_kay_images.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/load_kay_images.ipynb) |
