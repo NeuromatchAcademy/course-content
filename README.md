@@ -284,12 +284,12 @@ Group projects are offered for the *interactive track* only and will be running 
 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
 |------------------|---------------------------------------|-----------------------------------------------------------------------|
-|    -0:30-0:00\*   |    Intro / keynote & tutorial setup   |    Problem formulations: actor-critic                                 |
+|    -0:30-0:00\*   |    Intro / keynote & tutorial setup   |    We want reward now and in the future...                           |
 |    0:00-0:15     |    Pod Discussion I                   |    Lecture discussion with pod TA                                     |
-|    0:20-1:35     |    Tutorials + nano-lectures I        |    Critic: reward prediction error, Exploration (POMDP) vs exploitation |
+|    0:20-1:35     |    Tutorials + nano-lectures I        |    Predicting rewards, learning to act in one-step tasks, Exploration vs exploitation |
 |    1:35-1:55     |    Pod Discussion II                  |    Discussion with pod TA                                             |
 |    1:55-2:55     |    Big break                          |    BREAK                                                              |
-|    2:55-4:10     |    Tutorials + nano-lectures II       |    Model-based vs model-free RL, Multi-arm bandits: foraging          |
+|    2:55-4:10     |    Tutorials + nano-lectures II       |    Learning to act in multi-step tasks, on-policy vs. off-policy control, Model-based vs model-free RL          |
 |    4:10-4:30     |    Pod Discussion III                 |    Discussion with pod TA                                             |
 |    4:35-5:05**     |    Outro                              |    Recap session, RL and the brain                                    |
 |    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
