@@ -46,7 +46,7 @@ jobs:
           output: " "
 
       - name: Process notebooks
-        id: process
+        id: process_notebooks
         run: |
           nbs=`python ci/select_notebooks.py ${{ steps.changes.outputs.files }}`
           python ci/process_notebooks.py $nbs
@@ -60,12 +60,11 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            var BRANCH_NAME = process.env.BRANCH_NAME;
             github.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: context.steps.process.outputs.comment
+              body: '${{ steps.process_notebooks.outputs.comment }}'
             })
 
 
