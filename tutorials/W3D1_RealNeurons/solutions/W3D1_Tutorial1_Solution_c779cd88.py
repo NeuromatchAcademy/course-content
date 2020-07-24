@@ -9,7 +9,7 @@ def run_LIF(pars, Iinj, stop=False):
     stop       : boolean. If True, use a current pulse
 
   Returns:
-    rec_v      : mebrane potential
+    rec_v      : membrane potential
     rec_sp     : spike times
   """
   # Set parameters
@@ -19,15 +19,17 @@ def run_LIF(pars, Iinj, stop=False):
   dt, range_t = pars['dt'], pars['range_t']
   Lt = range_t.size
   tref = pars['tref']
+
   # Initialize voltage and current
   v = np.zeros(Lt)
   v[0] = V_init
   Iinj = Iinj * np.ones(Lt)
-  if stop:
+  if stop:  # set end of current to 0 if current pulse
     Iinj[:int(len(Iinj) / 2) - 1000] = 0
     Iinj[int(len(Iinj) / 2) + 1000:] = 0
   tr = 0.  # the count for refractory duration
-  # simulate the LIF dynamics
+
+  # Simulate the LIF dynamics
   rec_spikes = []  # record spike times
   for it in range(Lt - 1):
     if tr > 0:  # check for refractoriness
@@ -37,6 +39,7 @@ def run_LIF(pars, Iinj, stop=False):
       rec_spikes.append(it)
       v[it] = V_reset
       tr = tref / dt
+
     # calculate the increment of the membrane potential
     dv = (-(v[it] - E_L) + Iinj[it] / g_L) * (dt / tau_m)
 
