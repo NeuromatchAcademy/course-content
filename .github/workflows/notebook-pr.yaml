@@ -46,11 +46,27 @@ jobs:
           output: " "
 
       - name: Process notebooks
+        id: process
         run: |
           nbs=`python ci/select_notebooks.py ${{ steps.changes.outputs.files}}`
           python ci/process_notebooks.py $nbs
           readonly local last_commit_log=$(git log -1 --pretty=format:"%s")
           python ci/verify_exercises.py $nbs --c "$last_commit_log"
+          ::set-output name=comment::`python ci/make_pr_comment.py $nbs --branch ${{ github.event.pull_request.head.ref }}`
+
+      - name: Add comment
+        uses: actions/github-script@v1
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            var BRANCH_NAME = process.env.BRANCH_NAME;
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: context.steps.process.outputs.comment
+            })
+
 
       - name: Update READMEs
         run: python ci/generate_tutorial_readmes.py
