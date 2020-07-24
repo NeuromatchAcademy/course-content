@@ -51,31 +51,36 @@ def make_lint_report(nb_fpath):
 
 def make_colab_badge_table(branch, notebooks):
     """Add Colab badges for the branch version of each notebook."""
-    header = []
-    divider = []
-    badges = []
+    header = [""]
+    divider = ["-"]
+    instructor = ["Instructor"]
+    student = ["Student"]
+
     for nb_fpath in notebooks:
-        _, nb_fname = os.path.split(nb_fpath)
+        nb_dir, nb_fname = os.path.split(nb_fpath)
         nb_name, _ = os.path.splitext(nb_fname)
         header.append(nb_name)
-        badges.append(make_colab_badge(branch, nb_fpath))
+        instructor.append(make_colab_badge(branch, nb_dir, nb_fname))
+        student.append(make_colab_badge(branch, nb_dir, nb_fname, student=True))
         divider.append("-")
 
-    rows = header, divider, badges
+    rows = header, divider, instructor, student
     table = "\n".join(
        ["|" + "|".join(row) + "|" for row in rows]
     )
     return table
 
 
-def make_colab_badge(branch, local_path):
+def make_colab_badge(branch, nb_dir, nb_fname, student=False):
     """Generate a Google Colaboratory badge for a notebook on github."""
     alt_text = "Open In Colab"
     badge_svg = "https://colab.research.google.com/assets/colab-badge.svg"
+    if student:
+        nb_dir = os.path.join(nb_dir, "student")
     url = (
         "https://colab.research.google.com/"
         "github/NeuromatchAcademy/course-content/blob/"
-        f"{branch}/{local_path}"
+        f"{branch}/{nb_dir}/{nb_fname}"
     )
     return f"[![{alt_text}]({badge_svg})]({url})"
 
