@@ -30,7 +30,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip wheel
           pip install -r requirements.txt
-          pip install nbconvert pillow fuzzywuzzy[speedup]
+          pip install nbconvert pillow flake8 fuzzywuzzy[speedup]
 
       - name: Install XKCD fonts
         run: |
@@ -46,11 +46,21 @@ jobs:
           output: " "
 
       - name: Process notebooks
+        id: process_notebooks
         run: |
-          nbs=`python ci/select_notebooks.py ${{ steps.changes.outputs.files}}`
+          branch=${{ github.event.pull_request.head.ref }}
+          nbs=`python ci/select_notebooks.py ${{ steps.changes.outputs.files }}`
           python ci/process_notebooks.py $nbs
           readonly local last_commit_log=$(git log -1 --pretty=format:"%s")
           python ci/verify_exercises.py $nbs --c "$last_commit_log"
+          python ci/make_pr_comment.py $nbs --branch $branch --o comment.txt
+
+      - name: Add comment
+        uses: machine-learning-apps/pr-comment@1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          path: comment.txt
 
       - name: Update READMEs
         run: python ci/generate_tutorial_readmes.py
