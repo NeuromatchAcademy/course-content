@@ -29,11 +29,12 @@ def main(arglist):
             f"<summary><i>{nb_name} code report</i></summary>",
             make_lint_report(nb_fpath),
             "---",
+            "",
             "</details>",
         ])
 
     # Dump to stdout
-    print("\n".join(comment_lines))
+    print("\n".join(comment_lines), flush=True)
 
 
 def make_lint_report(nb_fpath):
@@ -54,8 +55,10 @@ def make_colab_badge_table(branch, notebooks):
         header.append(nb_name)
         badges.append(make_colab_badge(branch, nb_fpath))
         divider.append("-")
+
+    rows = header, divider, badges
     table = "\n".join(
-       ["|".join(parts) for parts in [header, divider, badges]]
+       ["|" + "|".join(row) + "|" for row in rows]
     )
     return table
 
