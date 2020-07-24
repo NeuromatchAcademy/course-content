@@ -53,8 +53,8 @@ jobs:
           python ci/process_notebooks.py $nbs
           readonly local last_commit_log=$(git log -1 --pretty=format:"%s")
           python ci/verify_exercises.py $nbs --c "$last_commit_log"
-          comment=`python ci/make_pr_comment.py $nbs --branch $branch`
-          echo "::set-output name=comment::'$comment'"
+          python ci/make_pr_comment.py $nbs --branch $branch --o comment.txt
+          echo "::set-output name=comment::`cat comment.txt`"
 
       - name: Add comment
         uses: actions/github-script@v1

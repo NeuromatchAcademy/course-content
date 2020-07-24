@@ -33,8 +33,13 @@ def main(arglist):
             "</details>",
         ])
 
-    # Dump to stdout
-    print("\n".join(comment_lines), flush=True)
+    # Dump to stdout or a file
+    comment = "\n".join(comment_lines)
+    if args.output is None:
+        print(comment, flush=True)
+    else:
+        with open(args.output, "w") as fid:
+            fid.write(comment)
 
 
 def make_lint_report(nb_fpath):
@@ -79,6 +84,7 @@ def parse_args(arglist):
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--branch", default="master")
+    parser.add_argument("--output")
     parser.add_argument("notebooks", nargs="*")
     return parser.parse_args(arglist)
 
