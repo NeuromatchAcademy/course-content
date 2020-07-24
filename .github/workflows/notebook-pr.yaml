@@ -53,23 +53,15 @@ jobs:
           python ci/process_notebooks.py $nbs
           readonly local last_commit_log=$(git log -1 --pretty=format:"%s")
           python ci/verify_exercises.py $nbs --c "$last_commit_log"
-          comment=`python ci/make_pr_comment.py $nbs --branch $branch`
-          comment="${comment//$'\n'/'%0A'}"
-          comment="${comment//$'\r'/'%0D'}"
-          echo "::set-output name=comment::$comment"
+          python ci/make_pr_comment.py $nbs --branch $branch --o comment.txt
+          cat comment.txt
 
       - name: Add comment
-        uses: actions/github-script@v1
+        uses: machine-learning-apps/pr-comment@1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '${{ steps.process_notebooks.outputs.comment }}'
-            })
-
+          path: comment.txt
 
       - name: Update READMEs
         run: python ci/generate_tutorial_readmes.py

@@ -26,7 +26,7 @@ def main(arglist):
         comment_lines.extend([
             "\n"
             "<details>",
-            f"<summary><i>{nb_name} code report</i></summary>",
+            f"<summary><i>Code report for {nb_name}</i></summary>",
             make_lint_report(nb_fpath),
             "---",
             "",
