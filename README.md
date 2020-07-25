@@ -437,7 +437,7 @@ Group projects are offered for the *interactive track* only and will be running 
 
 ----
 # Professional Development Sessions
-These are hour-long Crowdcast events with a panel of speakers that will discuss a topic and answer audience questions.  For times in the relevant time-zones, see the [Neurostars Calendar](https://neurostars.org/t/professional-development-and-social-calendar/10496). They will be live streamed and recorded for later watching at the same Crowdcast link. Some sessions are duplicated to ensure coverage for students in different time-zones. 
+These are hour-long live-streamed events with a panel of speakers that will discuss a topic and answer audience questions.  For times in the relevant time-zones, see the [Neurostars Calendar](https://neurostars.org/t/professional-development-and-social-calendar/10496). These sessions will be recorded for later replay. Some sessions are duplicated to ensure coverage for students in different time-zones. 
 
 ## Weekend 1: July 18 & 19
 |   Session   |  Date |   Description                                                         |
@@ -460,7 +460,7 @@ These are hour-long Crowdcast events with a panel of speakers that will discuss 
 |   **7.2 FRL Career Forum**  | July 26 14:00 UTC | Facebook Reality Labs (FRL) researchers, developers, and engineers are building the future of connection within AR/VR. Join our ‘FRL Career Forum’ to hear from our scientists about how we use computational neuroscience & machine learning – and from our recruiters about job opportunities. Excited to meet the many diverse talents from NMA! <br>[http://neuromatchacademy.org/stream](http://neuromatchacademy.org/stream)   
 |   **8.1 Careers in Industry** | July 25 20:00 UTC| Becky Clarkson (Apple), Kyle Frankovich (Insight Data Science), Kachi Odoememe (APL)<br> Research careers in industry. <br>[http://neuromatchacademy.org/stream](http://neuromatchacademy.org/stream)  
 |   **8.2 Careers in Industry**  | July 25 18:00 UTC| Feryal Behbahani (DeepMind), Sophie Kenny (Vpixx), Graeme Moffat (System2 Neurotechnology) <br>Research careers in industry.<br>[http://neuromatchacademy.org/stream](http://neuromatchacademy.org/stream)  
-|   **9.1 Careers in Academia**  | July 26 5:00 UTC | Sripati Panditaradhyula Arun (IISc), Minhae Kwon (Soongsil University), Taro Toyoizumi (RIKEN) <br> Research careers in academia.<br>[http://neuromatchacademy.org/stream](http://neuromatchacademy.org/stream)   
+|   **9.1 Careers in Academia**  | July 26 5:00 UTC | S.P. Arun (IISc), Minhae Kwon (Soongsil University), Taro Toyoizumi (RIKEN) <br> Research careers in academia.<br>[http://neuromatchacademy.org/stream](http://neuromatchacademy.org/stream)   
 |   **9.3 Careers in Academia**  | July 26 16:00 UTC  | Russ Poldrack (Stanford), Xiao-Jing Wang (NYU) <br> Research careers in academia.<br>[http://neuromatchacademy.org/stream](http://neuromatchacademy.org/stream)  
 |   **10.1 How We Built This**  | July 26 20:00 UTC | Ella Batty, Patrick Mineault, Madineh Sarvestani, Tara van Viegen, Michael Waskom, <br>2000 students, 200 TAs, 200 volunteers, 20 days of content, 20 hours of video - how we built and launched NMA in 2 months.<br>[http://neuromatchacademy.org/stream](http://neuromatchacademy.org/stream) 
 
