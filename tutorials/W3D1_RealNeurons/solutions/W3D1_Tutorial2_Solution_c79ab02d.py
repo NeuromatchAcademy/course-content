@@ -21,10 +21,10 @@ def corr_coeff_pairs(pars, rate, c, trials, bins):
     sp1, sp2 = generate_corr_Poisson(pars, poi_rate, c, myseed=2020+i)
 
     # Bin the spike times of the first input
-    sp1_count, _ = np.histogram(sp1, bins=my_bin)
+    sp1_count, _ = np.histogram(sp1, bins=bins)
 
     # Bin the spike times of the second input
-    sp2_count, _ = np.histogram(sp2, bins=my_bin)
+    sp2_count, _ = np.histogram(sp2, bins=bins)
     
     # Calculate the correlation coefficient
     r12[i] = my_CC(sp1_count, sp2_count)
