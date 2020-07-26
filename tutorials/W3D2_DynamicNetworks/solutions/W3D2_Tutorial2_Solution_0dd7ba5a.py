@@ -1,7 +1,7 @@
-pars = default_pars()  # get params
+pars = default_pars()
 
 with plt.xkcd():
-  my_plot_nullcline(pars)  # plot nullclines
+  my_plot_nullcline(pars)
 
   # Find the first fixed point
   x_fp_1 = my_fp(pars, 0.1, 0.1)

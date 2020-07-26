@@ -1,12 +1,12 @@
-pars = default_pars()     # get the default value
-x = np.arange(0, 10, .1)  # set the input
+pars = default_pars()
+x = np.arange(0, 10, .1)
 
 print(pars['a_E'], pars['theta_E'])
 print(pars['a_I'], pars['theta_I'])
 
-# Compute the F-I of E population
+# Compute the F-I curve of the excitatory population
 FI_exc = F(x, pars['a_E'], pars['theta_E'])
-# Compute the F-I of I population
+# Compute the F-I curve of the inhibitory population
 FI_inh = F(x, pars['a_I'], pars['theta_I'])
 
 # Uncomment when you fill the (...)
