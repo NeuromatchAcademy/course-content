@@ -1,5 +1,3 @@
-
-
 def F(x, a, theta):
   """
   Population activation function.
