@@ -18,7 +18,7 @@ def corr_coeff_pairs(pars, rate, c, trials, bins):
 
   for i in range(n_trials):
     # Generate correlated Poisson inputs
-    sp1, sp2 = generate_corr_Poisson(pars, poi_rate, c, myseed=2020+i)
+    sp1, sp2 = generate_corr_Poisson(pars, rate, c, myseed=2020+i)
 
     # Bin the spike times of the first input
     sp1_count, _ = np.histogram(sp1, bins=bins)
