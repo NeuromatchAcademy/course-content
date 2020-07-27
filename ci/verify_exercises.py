@@ -137,9 +137,15 @@ def logical_lines(func_str):
 
             # Detect and ignore single-line docstrings
             text = line.strip()
-            if text.startswith('"""') and text.endswith('"""'):
+            single_line_docstring = (
+                text.startswith('"""')
+                and text.endswith('"""')
+                and len(text) > 3
+            )
+            if single_line_docstring:
                 continue
 
+            # Otherwise, assume we are starting a comment block
             if comment_block_fence:
                 reading_block_comment = True
                 continue
