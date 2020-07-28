@@ -28,8 +28,8 @@ def get_regression_estimate(X, neuron_idx):
     return V
 
 # Parameters
-n_neurons = 50 # the size of our system
-timesteps = 10000 # the number of timesteps to take
+n_neurons = 50  # the size of our system
+timesteps = 10000  # the number of timesteps to take
 random_state = 42
 neuron_idx = 1
 
@@ -40,6 +40,6 @@ X = simulate_neurons(A, timesteps)
 # Uncomment below to test your function
 V = get_regression_estimate(X, neuron_idx)
 
-print("Regression: correlation of estimated connectivity with true connectivity: {:.3f}".format(np.corrcoef(A[neuron_idx, :], V)[1,0]))
+print("Regression: correlation of estimated connectivity with true connectivity: {:.3f}".format(np.corrcoef(A[neuron_idx, :], V)[1, 0]))
 
 print("Lagged correlation of estimated connectivity with true connectivity: {:.3f}".format(get_sys_corr(n_neurons, timesteps, random_state, neuron_idx=neuron_idx)))
