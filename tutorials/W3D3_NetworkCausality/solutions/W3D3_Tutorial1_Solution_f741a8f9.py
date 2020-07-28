@@ -21,24 +21,24 @@ def simulate_neurons(A, timesteps, random_state=42):
     n_neurons = len(A)
     X = np.zeros((n_neurons, timesteps))
 
-    for t in range(timesteps-1):
+    for t in range(timesteps - 1):
 
         # Create noise vector
         epsilon = np.random.multivariate_normal(np.zeros(n_neurons), np.eye(n_neurons))
 
         # Update activity vector for next step
-        X[:, t+1] = sigmoid(A @ X[:,t] + epsilon) # we are using helper function sigmoid
+        X[:, t+1] = sigmoid(A @ X[:,t] + epsilon)  # we are using helper function sigmoid
 
     return X
 
 
 # Set simulation length
-timesteps = 5000 
+timesteps = 5000
 
 # Uncomment below to test your function
 
-# Simulate our dynamical system 
+# Simulate our dynamical system
 X = simulate_neurons(A, timesteps)
 
-with plt.xkcd():  
+with plt.xkcd():
   plot_neural_activity(X)

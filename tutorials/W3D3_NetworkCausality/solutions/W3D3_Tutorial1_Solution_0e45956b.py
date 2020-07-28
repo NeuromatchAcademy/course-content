@@ -10,13 +10,13 @@ def get_perturbed_connectivity_from_single_neuron(perturbed_X, selected_neuron):
         estimated_connectivity (np.ndarray): estimated connectivity for the selected neuron, of shape (n_neurons,)
     """
     # Extract the perturbations of neuron 1 (every other timestep)
-    neuron_perturbations = perturbed_X[selected_neuron, ::2]  
+    neuron_perturbations = perturbed_X[selected_neuron, ::2]
     
     # Extract the observed outcomes of all the neurons (every other timestep)
-    all_neuron_output = perturbed_X[:, 1::2] 
+    all_neuron_output = perturbed_X[:, 1::2]
 
     # Initialize estimated connectivity matrix
-    estimated_connectivity = np.zeros(n_neurons) 
+    estimated_connectivity = np.zeros(n_neurons)
 
     # Loop over neurons
     for neuron_idx in range(n_neurons):
@@ -36,8 +36,8 @@ def get_perturbed_connectivity_from_single_neuron(perturbed_X, selected_neuron):
 
 
 # Initialize the system
-n_neurons = 6  
-timesteps = 5000 
+n_neurons = 6
+timesteps = 5000
 selected_neuron = 1
 
 # Simulate our perturbed dynamical system 
@@ -49,5 +49,5 @@ perturbed_X = simulate_neurons_perturb(A, timesteps)
 # Measure connectivity of neuron 1
 estimated_connectivity = get_perturbed_connectivity_from_single_neuron(perturbed_X, selected_neuron)
 
-with plt.xkcd():  
+with plt.xkcd():
   plot_true_vs_estimated_connectivity(estimated_connectivity, A, selected_neuron)
