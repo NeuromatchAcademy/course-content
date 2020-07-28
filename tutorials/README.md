@@ -213,6 +213,9 @@ Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/mdve5/?direct%
 ## W3D3 - Network Causality
 
 [YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18P46LiVj6hCd4w1SLpVJo63)
+
+Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/fsxkt/?direct%26mode=render%26action=download%26mode=render) | [Tutorials](https://mfr.ca-1.osf.io/render?url=https://osf.io/gp4m9/?direct%26mode=render%26action=download%26mode=render) | [Outro](https://mfr.ca-1.osf.io/render?url=https://osf.io/acxqf/?direct%26mode=render%26action=download%26mode=render) | [Reading](https://mfr.ca-1.osf.io/render?url=https://osf.io/5kbrs/?direct%26mode=render%26action=download%26mode=render)
+
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W3D3_NetworkCausality/student/W3D3_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/tutorials/W3D3_NetworkCausality/student/W3D3_Tutorial1.ipynb?flush_cache=true) |
