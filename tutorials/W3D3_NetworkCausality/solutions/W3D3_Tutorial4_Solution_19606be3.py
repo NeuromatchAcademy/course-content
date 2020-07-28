@@ -1,4 +1,4 @@
-def fit_second_stage(T_hat,Y):
+def fit_second_stage(T_hat, Y):
     """
     Estimates a scalar causal effect from 2-stage least squares regression using
     an instrument.
@@ -20,6 +20,6 @@ def fit_second_stage(T_hat,Y):
 
 
 # Uncomment below to test your function
-T_hat = fit_first_stage(T,Z)
-beta = fit_second_stage(T_hat,Y)
-print("Estimated causal effect is: {:.3f}".format(beta[0,0]))
+T_hat = fit_first_stage(T, Z)
+beta = fit_second_stage(T_hat, Y)
+print("Estimated causal effect is: {:.3f}".format(beta[0, 0]))

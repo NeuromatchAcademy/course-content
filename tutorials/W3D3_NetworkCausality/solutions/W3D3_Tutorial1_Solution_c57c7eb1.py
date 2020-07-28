@@ -11,7 +11,7 @@ def get_perturbed_connectivity_from_single_neuron(perturbed_X, selected_neuron):
     """
     # Extract the perturbations of neuron 1 (every other timestep)
     neuron_perturbations = perturbed_X[selected_neuron, ::2]
-    
+
     # Extract the observed outcomes of all the neurons (every other timestep)
     all_neuron_output = perturbed_X[:, 1::2]
 

@@ -16,7 +16,7 @@ def get_granger_causality(X, selected_neuron, alpha=0.05):
     n_neurons = X.shape[0]
     max_lag = 1
 
-    reject_null = []   
+    reject_null = []
     p_vals = []
 
     for target_neuron in range(n_neurons):

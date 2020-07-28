@@ -5,7 +5,7 @@ def simulate_neurons(A, timesteps, random_state=42):
         A (np.array): the connectivity matrix
         timesteps (int): the number of timesteps to simulate our system.
         random_state (int): random seed for reproducibility
-        
+
     Returns:
         - X has shape (n_neurons, timeteps). A schematic:
                    ___t____t+1___
@@ -27,7 +27,7 @@ def simulate_neurons(A, timesteps, random_state=42):
         epsilon = np.random.multivariate_normal(np.zeros(n_neurons), np.eye(n_neurons))
 
         # Update activity vector for next step
-        X[:, t+1] = sigmoid(A @ X[:,t] + epsilon)  # we are using helper function sigmoid
+        X[:, t + 1] = sigmoid(A @ X[:, t] + epsilon)  # we are using helper function sigmoid
 
     return X
 
