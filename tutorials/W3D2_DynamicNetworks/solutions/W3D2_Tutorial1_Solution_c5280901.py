@@ -10,7 +10,7 @@ def compute_drdt(r, I_ext, w, a, theta, tau, **other_pars):
     drdt function for each value of r
   """
   # Calculate drdt
-  drdt = -r + F(w * r + I_ext, a, theta) / tau
+  drdt = (-r + F(w * r + I_ext, a, theta)) / tau
 
   return drdt
 
