@@ -153,9 +153,14 @@ def logical_lines(func_str):
         match = pattern.match(line)
         if match:
 
-            # Use nonn-commented component of a lie with inline comments
+            # Split the line on the first comment hash encountered
             code_line = match.group(1)
             comment_line = match.group(2)
+
+            # If there is code before the comment, assume comment is inline
+            # use entire line (allows inline comments in commented-out code)
+            if dedent(code_line):
+                code_line = match.group(0)
 
             # Handle xkcd context, which is always last thing in solution cell
             if "plt.xkcd()" in code_line:

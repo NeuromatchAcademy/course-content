@@ -2,6 +2,7 @@
 
 - Filter input file list for .ipynb files
 - Check that the cells have been executed sequentially on a fresh kernel
+- Strip trailing whitespace from all code lines
 - Execute the notebook and fail if errors are encountered
 - Extract solution code and write a .py file witht the solution
 - Replace solution cells with a "hint" image and a link to the solution code
@@ -78,6 +79,9 @@ def main(arglist):
                 )
                 errors[nb_path] = err
                 continue
+
+        # Clean whitespace from all code cells
+        clean_whitespace(nb)
 
         # Run the notebook from top to bottom, catching errors
         print(f"Executing {nb_path}")
@@ -236,6 +240,15 @@ def extract_solutions(nb, nb_dir, nb_name):
                 del cell["execution_count"]
 
     return nb, static_images, solution_snippets
+
+
+def clean_whitespace(nb):
+    """Remove trailing whitespace from all code cell lines."""
+    for cell in nb.get("cells", []):
+        if cell.get("cell_type", "") == "code":
+            source_lines = cell["source"].splitlines()
+            clean_lines = [line.rstrip() for line in source_lines]
+            cell["source"] = "\n".join(clean_lines)
 
 
 def has_solution(cell):
