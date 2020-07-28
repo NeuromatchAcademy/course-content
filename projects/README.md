@@ -19,8 +19,12 @@
 The NMA projects are conducted over 14 days, beginning on the morning of the ‘second’ curriculum day (W1D2) and ending
 W3D4. The first week is about the process of forming a project. The second two weeks are for executing a project. You
 are highly encouraged, but not required to participate in a group project. Please think about your project partners, if
-you decide to join a group, please try to see the projec through to the end! On the last day, some projects will be
-presented and we will be organizing a 'poster' session!
+you decide to join a group, please try to see the project through to the end! On the last day, there will be a presentation
+of your the projects in small groups within your super pod. These presenations are five minutes and you should have at
+least three slides--but remember that you have only about five minutes to present, so five or six slides is probably
+reasonable. After presenting you will have five minutes for question and discussion. We will ask, but not require, that
+you allow your project to be highlighted across the zone on W3D4 during the closing celebration! We will randomly select
+a representative sample of projects to discuss and highlight the diversity of NMA projects.
 
  <!-- It is important to note that project time can begin:
 
@@ -77,9 +81,15 @@ visit the groups to discuss the projects and provide advice. Remember, this is a
 publication-worthy project! All groups must finish their projects by the end of project day 13 (W3D3).
 
  * **Project day 14** — Prepare project presentation
- * Groups make a 10 minute project presentation and a recording for a virtual ‘poster session’
+ * Groups make a five minute project presentation
+ * RESULTS ARE OPTIONAL! We would like you to present your experience, and results if you happen to have them
+ * Optionally, a recording for a group presenation and to allow other NMA students to see the project
  * All group members should contribute to the presenation slides and video!
-
+ * [Example project video one](https://youtu.be/zMphz4yvyfc) (*notice how quickly our mascot black cat jumps continents!*)
+ * [Example project video two](https://www.youtube.com/watch?v=pvfy0_v12wI)
+ * PROJECTS ARE DUE PRIOR TO THE INTRO FOR W3D5!!
+ * Submit your project (only once per group) using this [project submission form](https://airtable.com/shrBTUnFNkVcHSgl5)
+ 
  * **NMA final day** — Presentation of projects
 
   * The afternoon of the final day of NMA will include project presentations!
@@ -169,7 +179,8 @@ A few important things to remember:
   * Promote course materials and toolkits provided by the NMA
   * Advise students about how to make a good presentation
  * If you want to make time availible for answer questions outside of this time, we appreciate it, but it is not required!
-
+ * Remind the students to submit their projects at the end of W3D4 using the [project submission form](https://airtable.com/shrBTUnFNkVcHSgl5)
+ 
 *These are **student-run** projects. TAs are only facilitators, and you are not responsible for the content of the projects.*
 
 ---
