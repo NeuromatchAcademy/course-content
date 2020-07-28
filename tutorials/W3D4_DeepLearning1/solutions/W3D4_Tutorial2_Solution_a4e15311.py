@@ -48,23 +48,15 @@ class ConvFC(nn.Module):
 # Choose loss function
 MSE_loss = nn.MSELoss()
 
-
 # Initialize network
-net = ConvFC(n_neurons)  
+net = ConvFC(n_neurons)
 
 # Run GD on training set data
 # ** this time we are also providing the test data to estimate the test loss
-train_loss, test_loss = train(net, MSE_loss, stim_binary, resp_train, 
+train_loss, test_loss = train(net, MSE_loss, stim_binary, resp_train,
                               test_data=stim_binary, test_labels=resp_test,
                               n_iter=500, learning_rate=20)
 
 # Plot the training loss over iterations of GD
 with plt.xkcd():
-  plt.plot(train_loss, 'y')
-  plt.plot(test_loss, '.', markersize=10, color='m')
-
-  plt.xlabel('iterations of gradient descent')
-  plt.ylabel('mean squared error')
-  plt.legend(['train loss', 'test loss'])
-  plt.show()
-    
+  plot_training_curves(train_loss, test_loss)
