@@ -5,11 +5,11 @@ def correlate_rdms(rdm1, rdm2):
     rdm1 (np.ndarray): S x S representational dissimilarity matrix
     rdm2 (np.ndarray): S x S representational dissimilarity matrix to
       correlate with rdm1
-  
+
   Returns:
     float: correlation coefficient between the off-diagonal elements
       of rdm1 and rdm2
-    
+
   """
 
   # Extract off-diagonal elements of each RDM
@@ -18,7 +18,7 @@ def correlate_rdms(rdm1, rdm2):
   rdm2_offdiag = rdm2[ioffdiag]
 
   corr_coef = np.corrcoef(rdm1_offdiag, rdm2_offdiag)[0,1]
-  
+
   return corr_coef
 
 

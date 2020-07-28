@@ -1,5 +1,5 @@
 def regularized_MSE_loss(output, target, weights=None, L2_penalty=0, L1_penalty=0):
-  """loss function for MSE 
+  """loss function for MSE
 
   Args:
     output (torch.Tensor): output of network

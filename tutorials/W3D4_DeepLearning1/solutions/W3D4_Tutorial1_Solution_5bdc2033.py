@@ -15,7 +15,7 @@ class DeepNetReLU(nn.Module):
 
 
 # Set random seeds for reproducibility
-np.random.seed(1) 
+np.random.seed(1)
 torch.manual_seed(1)
 
 # Get neural responses (r) to and orientation (ori) to one stimulus in dataset

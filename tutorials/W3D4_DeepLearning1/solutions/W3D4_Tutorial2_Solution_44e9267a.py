@@ -9,10 +9,10 @@ convout = np.zeros(0) # assign convolutional activations to convout
 convLayer = ConvolutionalLayer(c_in=1, c_out=conv_channels, K=K)
 
 # Call conv layer on stimulus
-convout = convLayer(stim_binary) 
+convout = convLayer(stim_binary)
 convout = convout.detach() # detach gradients
 print(convout.shape) # can you identify what each of these dimensions are?
 
 # Plot results
-with plt.xkcd():    
+with plt.xkcd():
   plot_example_activations(convout)

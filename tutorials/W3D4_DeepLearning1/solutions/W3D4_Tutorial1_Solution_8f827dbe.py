@@ -1,7 +1,7 @@
 
 def train(net, loss_fn, train_data, train_labels, n_iter=50, learning_rate=1e-4):
   """Run gradient descent to opimize parameters of a given network
-  
+
   Args:
     net (nn.Module): PyTorch network whose parameters to optimize
     loss_fn: built-in PyTorch loss function to minimize
@@ -28,7 +28,7 @@ def train(net, loss_fn, train_data, train_labels, n_iter=50, learning_rate=1e-4)
     loss = loss_fn(out, train_labels)  # evaluate loss function
 
     # Compute gradients
-    optimizer.zero_grad()  
+    optimizer.zero_grad()
     loss.backward()
 
     # Update weights
@@ -42,13 +42,13 @@ def train(net, loss_fn, train_data, train_labels, n_iter=50, learning_rate=1e-4)
       print(f'iteration {i + 1}/{n_iter} | loss: {loss.item():.3f}')
 
   return track_loss
-  
+
 # Set random seeds for reproducibility
-np.random.seed(1) 
+np.random.seed(1)
 torch.manual_seed(1)
 
 # Initialize network
-net = DeepNetReLU(n_neurons, 20)  
+net = DeepNetReLU(n_neurons, 20)
 
 # Initialize built-in PyTorch MSE loss function
 loss_fn = nn.MSELoss()

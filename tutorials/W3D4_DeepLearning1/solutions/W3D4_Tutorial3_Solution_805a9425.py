@@ -4,15 +4,15 @@ def RDM(resp):
   Args:
     resp (ndarray): S x N matrix with population responses to
       each stimulus in each row
-  
+
   Returns:
     ndarray: S x S representational dissimilarity matrix
   """
 
   # z-score responses to each stimulus
-  zresp = zscore(resp, axis=1) 
+  zresp = zscore(resp, axis=1)
 
-  # Compute RDM 
+  # Compute RDM
   RDM = 1 - (zresp @ zresp.T) / zresp.shape[1]
 
   return RDM

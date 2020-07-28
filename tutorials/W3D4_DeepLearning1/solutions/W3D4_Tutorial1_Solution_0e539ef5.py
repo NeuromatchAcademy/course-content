@@ -1,6 +1,6 @@
 
 # Set random seeds for reproducibility
-np.random.seed(1) 
+np.random.seed(1)
 torch.manual_seed(1)
 
 # Initialize a deep network with M=20 hidden units
@@ -10,7 +10,7 @@ net = DeepNetReLU(n_neurons, 20)
 r, ori = get_data(20, resp_train, stimuli_train)
 
 # Decode orientation from these neural responses
-out = net(r)  
+out = net(r)
 
 # Initialize PyTorch mean squared error loss function (Hint: look at nn.MSELoss)
 loss_fn = nn.MSELoss()

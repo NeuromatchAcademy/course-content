@@ -16,9 +16,9 @@ def plot_resp_lowd(resp_dict):
       # Plot dimensionality-reduced population responses
       # on 2D axes, with each point colored by stimulus orientation
       x, y = resp_lowd[:, 0], resp_lowd[:, 1]
-      pts = ax.scatter(x, y, c=ori, cmap='twilight', vmin=-90, vmax=90)  
+      pts = ax.scatter(x, y, c=ori, cmap='twilight', vmin=-90, vmax=90)
       fig.colorbar(pts, ax=ax, ticks=np.linspace(-90, 90, 5), label='Stimulus orientation')
-      
+
       ax.set_xlabel('Dimension 1')
       ax.set_ylabel('Dimension 2')
       ax.set_xticks([])

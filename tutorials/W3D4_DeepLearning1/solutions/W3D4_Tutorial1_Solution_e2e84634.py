@@ -38,7 +38,7 @@ def decode_orientation(n_classes, train_data, train_labels, test_data, test_labe
 
 
 # Set random seeds for reproducibility
-np.random.seed(1) 
+np.random.seed(1)
 torch.manual_seed(1)
 
 n_classes = 12  # start with 12, then (bonus) try making this as big as possible! does decoding get worse?

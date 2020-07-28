@@ -4,10 +4,10 @@ class ConvFC(nn.Module):
   Attributes:
     conv (nn.Conv1d): convolutional layer
     dims (tuple): shape of convolutional layer output
-    out_layer (nn.Linear): linear layer 
-    
+    out_layer (nn.Linear): linear layer
+
   """
-  
+
   def __init__(self, n_neurons, c_in=1, c_out=8, K=9, b=60):
     """ initialize layer
     Args:
@@ -20,7 +20,7 @@ class ConvFC(nn.Module):
     self.conv = nn.Conv1d(c_in, c_out, kernel_size=K, padding=K//2)
     self.dims = (c_out, b)  # dimensions of conv layer output
     M = np.prod(self.dims) # number of hidden units
-    
+
     self.out_layer = nn.Linear(M, n_neurons)
 
     nn.init.normal_(self.out_layer.weight, std=0.01) # initialize weights to be small
@@ -30,7 +30,7 @@ class ConvFC(nn.Module):
 
     Args:
         s (torch.Tensor): p x L tensor with stimuli
-    
+
     Returns:
         torch.Tensor: p x N tensor with convolutional layer unit activations.
 
@@ -38,9 +38,9 @@ class ConvFC(nn.Module):
     s = s.unsqueeze(1)  # p x 1 x L, add a singleton dimension for the single channel
     a = self.conv(s)  # output of convolutional layer
     a = a.view(-1, np.prod(self.dims))  # flatten each convolutional layer output into a vector
-    
+
     y = self.out_layer(a)
-    
+
     return y
 
 

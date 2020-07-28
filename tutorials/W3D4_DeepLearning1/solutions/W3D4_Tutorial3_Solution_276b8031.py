@@ -8,7 +8,7 @@ def plot_rdm_rows(ori_list, rdm_dict, rdm_oris):
     rdm_dict (dict): RDM's from which to extract dissimilarities
     rdm_oris (np.ndarray): orientations corresponding to each row/column of RDMs
     in rdm_dict
-  
+
   """
   n_col = len(ori_list)
   f, axs = plt.subplots(1, n_col, figsize=(4 * n_col, 4), sharey=True)
@@ -27,7 +27,7 @@ def plot_rdm_rows(ori_list, rdm_dict, rdm_oris):
     # Label axes
     ax.set_title(f'Dissimilarity with response\nto {ori_plot: .0f}$^o$ stimulus')
     ax.set_xlabel('Stimulus orientation ($^o$)')
-  
+
   axs[0].set_ylabel('Dissimilarity')
   axs[-1].legend(loc="upper left", bbox_to_anchor=(1, 1))
 
