@@ -26,7 +26,8 @@ r, ori = get_data(1, resp_train, stimuli_train)
 net = DeepNetReLU(n_neurons, 20)
 
 # Decode orientation from these neural responses using initialized network
-out = net(r)  # compute output from network, equivalent to net.forward(r)
+# net(r) is equivalent to net.forward(r)
+out = net(r)
 
 print('decoded orientation: %.2f degrees' % out)
 print('true orientation: %.2f degrees' % ori)

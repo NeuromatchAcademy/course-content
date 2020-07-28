@@ -16,4 +16,3 @@ print(convout.shape) # can you identify what each of these dimensions are?
 # Plot results
 with plt.xkcd():    
   plot_example_activations(convout)
-

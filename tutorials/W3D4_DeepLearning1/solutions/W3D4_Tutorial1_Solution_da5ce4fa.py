@@ -12,7 +12,7 @@ r, ori = get_data(20, resp_train, stimuli_train)
 # Decode orientation from these neural responses
 out = net(r)  
 
-# Initialize PyTorch mean squared error loss function
+# Initialize PyTorch mean squared error loss function (Hint: look at nn.MSELoss)
 loss_fn = nn.MSELoss()
 
 # Evaluate mean squared error
