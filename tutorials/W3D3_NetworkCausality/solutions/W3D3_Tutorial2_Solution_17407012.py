@@ -10,14 +10,14 @@ def compute_connectivity_from_single_neuron(X, selected_neuron):
         estimated_connectivity (ndarray): estimated connectivity for the selected neuron, of shape (n_neurons,)
     """
 
-    # Extract the current activity of selected_neuron, t 
-    current_activity = X[selected_neuron, :-1] 
+    # Extract the current activity of selected_neuron, t
+    current_activity = X[selected_neuron, :-1]
 
     # Extract the observed outcomes of all the neurons
-    next_activity = X[:, 1:] 
+    next_activity = X[:, 1:]
 
     # Initialize estimated connectivity matrix
-    estimated_connectivity = np.zeros(n_neurons) 
+    estimated_connectivity = np.zeros(n_neurons)
 
     # Loop through all neurons
     for neuron_idx in range(n_neurons):
@@ -26,7 +26,7 @@ def compute_connectivity_from_single_neuron(X, selected_neuron):
         this_output_activity = next_activity[neuron_idx]
 
         # Compute correlation
-        correlation = np.corrcoef(this_output_activity, current_activity)[0,1]
+        correlation = np.corrcoef(this_output_activity, current_activity)[0, 1]
         
         # Store this neuron's correlation
         estimated_connectivity[neuron_idx] = correlation
@@ -39,13 +39,13 @@ timesteps = 5000
 selected_neuron = 1
 
 # Invoke a helper function that generates our nxn causal connectivity matrix
-A = create_connectivity(n_neurons) 
+A = create_connectivity(n_neurons)
 
 # Invoke a helper function that simulates the neural activity
-X = simulate_neurons(A, timesteps) 
+X = simulate_neurons(A, timesteps)
 
 # Uncomment below to test your function
-estimated_connectivity = compute_connectivity_from_single_neuron(X,1)
+estimated_connectivity = compute_connectivity_from_single_neuron(X, selected_neuron)
 
 with plt.xkcd():
   plot_true_vs_estimated_connectivity(estimated_connectivity, A, selected_neuron)

@@ -18,7 +18,7 @@ def instrument_strength_effect(etas, n_neurons, timesteps, n_trials):
 
   # Loop over trials
   for trial in range(n_trials):
-      print("Trial {} of {}".format(trial+1, n_trials))
+      print("Trial {} of {}".format(trial + 1, n_trials))
 
       # Loop over instrument strenghs
       for j, eta in enumerate(etas):
@@ -30,7 +30,7 @@ def instrument_strength_effect(etas, n_neurons, timesteps, n_trials):
           iv_V = get_iv_estimate_network(X, Z)
 
           # Compute correlation
-          corr_data[trial, j] =  np.corrcoef(A.flatten(), iv_V.flatten())[1,0]
+          corr_data[trial, j] =  np.corrcoef(A.flatten(), iv_V.flatten())[1, 0]
 
   return corr_data
 
@@ -38,7 +38,7 @@ def instrument_strength_effect(etas, n_neurons, timesteps, n_trials):
 n_neurons = 20 
 timesteps = 10000
 n_trials = 3
-etas = [2, 1, 0.5, 0.25, 0.12] # instrument strengths to search over
+etas = [2, 1, 0.5, 0.25, 0.12]  # instrument strengths to search over
 
 # Uncomment below to test your function
 corr_data = instrument_strength_effect(etas, n_neurons, timesteps, n_trials)
