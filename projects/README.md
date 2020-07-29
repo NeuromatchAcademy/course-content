@@ -114,6 +114,7 @@ publication-worthy project! All groups must finish their projects by the end of 
 - [Project Instruction](https://mfr.ca-1.osf.io/render?url=https://osf.io/7frh3/?direct%26mode=render%26action=download%26mode=render)
 - [Possible Project Proposals](https://mfr.ca-1.osf.io/render?url=https://osf.io/9j38s/?direct%26mode=render%26action=download%26mode=render)
 - [Dataset Overview](https://docs.google.com/document/d/1_Cam97RDwfQofVSoQb-r9o4e2z3Jc4DdkNUSg6fDxjA/edit?usp=sharing)
+- [Project Presentation Cover Slide](https://osf.io/ky6fj/download) (click to download)
 
 ## Data set notebooks
 
