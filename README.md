@@ -404,20 +404,22 @@ Group projects are offered for the *interactive track* only and will be running 
 
 ### Fri, July 31: Deep Learning 2
 
-**Description** Deep learning in more advanced settings. Autoencoders for structure discovery, RNNs, and fitting them to brains
+**Description** Deep learning and autoencoders for structure discovery + end-of-course celebration
 
 |    Time (Hour)   |    Lecture                            |    Details                                                            |
-|------------------|---------------------------------------|-----------------------------------------------------------------------|
-|    -0:30-0:00\*   |    Intro / keynote & tutorial setup   |    DL for structure                                                   |
-|    0:00-0:15     |    Pod Discussion I                   |    Lecture discussion with pod TA                                     |
-|    0:20-1:35     |    Tutorials + nano-lectures I        |    Variational autoencorders and uses in Neuroscience                 |
-|    1:35-1:55     |    Pod Discussion II                  |    Discussion with pod TA                                             |
-|    1:55-2:55     |    Big break                          |    BREAK                                                              |
-|    2:55-4:10     |    Tutorials + nano-lectures II       |    NMA wrap-up                                                        |
-|    4:10-4:30     |    Pod Discussion III                 |    Discussion with pod TA                                             |
-|    4:35-5:05**     |    Outro                              |    Recap session, Digging deeper                                      |
-|    5:05-6:05     |    Q&A                                |    Q&A with lecturers/Mentors                                         |
-|    6:00-7:00     |    Social Activity                    |    Hangout in Mozilla Hubs                                            |
+--------------------|--------------------------------------|------------------------------------------------------------------------|
+|-0:30-0:00\*		| Intro					| DL for structure |
+|0:00-0:15		| Pod Discussion I		| Lecture discussion with pod TA |
+|0:20-1:40		|Tutorial 				| Variational autoencorders and uses in Neuroscience |
+|1:45-1:55		| Pod Discussion II		| Discussion with pod TA |
+|1:55-2:55		| Big Break				|                                             |
+|3:00-3:30**		| Outro					| Application of DL autoencoders |
+|3:35-4:05		| Faculty QA				| Shortened QA |
+|4:05-4:30		| Evals					| Fill in our end of term evaluation survey |
+|4:30-5:15		| Project presentations	| Presentation and discussion of projects in small groups in your superpod |
+|5:15-5:30		| Pod farewell			| Closing discussion of NMA with your pod |
+|5:40-6:10		| NMA project highlights	| Highlights and discussion of the project experience |
+|6:15-7:00		| NMA closing 			| Celebration, shared experience, credits, memories, call to action and the future! |
 
 \* the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day
 \** please watch the Outro on your own after having completed the tutorials and before the Q&A session
