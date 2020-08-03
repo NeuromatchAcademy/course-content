@@ -21,18 +21,26 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
 
+      - name: Get commit message
+        run: |
+          readonly local msg=$(git log -1 --pretty=format:"%s")
+          echo "::set-env name=COMMIT_MESSAGE::$msg"
+
       - name: Set up Python
+        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
         uses: actions/setup-python@v2
         with:
           python-version: 3.7
 
       - name: Install dependencies
+        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
         run: |
           python -m pip install --upgrade pip wheel
           pip install -r requirements.txt
           pip install nbconvert pillow flake8 fuzzywuzzy[speedup]
 
       - name: Install XKCD fonts
+        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
         run: |
           sudo apt-get update -yq
           sudo sh -c "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections"
@@ -40,22 +48,24 @@ jobs:
           rm -f $HOME/.matplotlib/fontList.cache
 
       - name: Get changed files
+        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
         id: changes
         uses: trilom/file-changes-action@v1.2.4
         with:
           output: " "
 
       - name: Process notebooks
+        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
         id: process_notebooks
         run: |
           branch=${{ github.event.pull_request.head.ref }}
           nbs=`python ci/select_notebooks.py ${{ steps.changes.outputs.files }}`
           python ci/process_notebooks.py $nbs
-          readonly local last_commit_log=$(git log -1 --pretty=format:"%s")
-          python ci/verify_exercises.py $nbs --c "$last_commit_log"
+          python ci/verify_exercises.py $nbs --c "$COMMIT_MESSAGE"
           python ci/make_pr_comment.py $nbs --branch $branch --o comment.txt
 
-      - name: Add comment
+      - name: Add PR comment
+        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
         uses: machine-learning-apps/pr-comment@1.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -63,15 +73,17 @@ jobs:
           path: comment.txt
 
       - name: Update READMEs
+        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
         run: python ci/generate_tutorial_readmes.py
 
       - name: Remove unreferenced derivatives
+        if: "!contains(env.COMMIT_MESSAGE, 'skip ci') && success()"
         run: |
           python ci/find_unreferenced_content.py > to_remove.txt
           if [ -s to_remove.txt ]; then git rm --pathspec-from-file=to_remove.txt; fi
 
       - name: Commit post-processed files
-        if: ${{ success() }}
+        if: "!contains(env.COMMIT_MESSAGE, 'skip ci') && success()"
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -82,7 +94,7 @@ jobs:
           git diff-index --quiet HEAD || git commit -m "Process tutorial notebooks"
 
       - name: Push post-processed files
-        if: ${{ success() }}
+        if: "!contains(env.COMMIT_MESSAGE, 'skip ci') && success()"
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

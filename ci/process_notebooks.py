@@ -6,8 +6,10 @@
 - Execute the notebook and fail if errors are encountered
 - Extract solution code and write a .py file witht the solution
 - Replace solution cells with a "hint" image and a link to the solution code
-- Make the name that Colab uses match the file path
-- Redirect Colab-inserted badges
+- Redirect Colab-inserted badges to the master branch
+- Set the Colab notebook name field based on file path
+- Standardize some Colab settings (always have ToC, always hide form cells)
+- Clean the notebooks (remove outputs and noisy metadata)
 - Write the executed version of the input notebook to its original path
 - Write the post-processed notebook to a student/ subdirectory
 - Write solution images to a static/ subdirectory
@@ -97,17 +99,12 @@ def main(arglist):
     if errors or args.check_only:
         exit(errors)
 
-    # TODO Check compliancy with PEP8, generate a report, but don't fail
-
     # Further filter the notebooks to run post-processing only on tutorials
     tutorials = {
         nb_path: nb
         for nb_path, nb in notebooks.items()
         if nb_path.startswith("tutorials")
     }
-
-    # TODO Check notebook name format?
-    # (If implemented, update the CI workflow to only run on tutorials)
 
     # Post-process notebooks to remove solution code and write both versions
     for nb_path, nb in tutorials.items():
@@ -121,14 +118,14 @@ def main(arglist):
             if has_colab_badge(cell):
                 redirect_colab_badge_to_master_branch(cell)
 
-        # Set the colab metadata to have the notebook name match the filepath
-        if "colab" in nb["metadata"]:
-            nb["metadata"]["colab"]["name"] = f"NeuromatchAcademy_{nb_name}"
+        # Ensure that Colab metadata dict exists and enforce some settings
+        add_colab_metadata(nb, nb_name)
 
-        # Write out the executed version of the original notebooks
+        # Clean the original notebook and save it to disk
         print(f"Writing complete notebook to {nb_path}")
         with open(nb_path, "w") as f:
-            nbformat.write(nb, f)
+            nb_clean = clean_notebook(nb)
+            nbformat.write(nb_clean, f)
 
         # Create subdirectories, if they don't exist
         student_dir = make_sub_dir(nb_dir, "student")
@@ -149,7 +146,8 @@ def main(arglist):
         student_nb_path = os.path.join(student_dir, nb_fname)
         print(f"Writing student notebook to {student_nb_path}")
         with open(student_nb_path, "w") as f:
-            nbformat.write(student_nb, f)
+            clean_student_nb = clean_notebook(student_nb)
+            nbformat.write(clean_student_nb, f)
 
         # Write the images extracted from the solution cells
         print(f"Writing solution images to {static_dir}")
@@ -240,6 +238,69 @@ def extract_solutions(nb, nb_dir, nb_name):
                 del cell["execution_count"]
 
     return nb, static_images, solution_snippets
+
+
+def clean_notebook(nb):
+    """Remove cell outputs and most unimportant metadata."""
+    # Always operate on a copy of the input notebook
+    nb = deepcopy(nb)
+
+    # Remove some noisy metadata
+    nb.metadata.pop("widgets", None)
+
+    # Set kernel to default Python3
+    nb.metadata["kernel"] = {
+        "display_name": "Python 3", "language": "python", "name": "python3"
+    }
+
+    # Iterate through the cells and clean up each one
+    for cell in nb.get("cells", []):
+
+        # Reset cell-level Jupyter metadata
+        for key in ["prompt_number", "execution_count"]:
+            if key in cell:
+                cell[key] = None
+
+        if "metadata" in cell:
+            for field in ["collapsed", "scrolled", "ExecuteTime"]:
+                cell.metadata.pop(field, None)
+
+        # Reset cell-level Colab metadata
+        if "id" in cell["metadata"]:
+            if not cell["metadata"]["id"].startswith("view-in"):
+                cell["metadata"].pop("id")
+
+        # Remove code cell outputs
+        if cell["cell_type"] == "code":
+            cell["outputs"] = []
+
+        # Ensure that form cells are hidden by default
+        if cell["cell_type"] == "code":
+            first_line, *_ = cell["source"]
+            if "@title" in first_line or "@markdown" in first_line:
+                cell["metadata"]["cellView"] = "form"
+
+        # Remove blank cells
+        if not cell["source"]:
+            nb.cells.remove(cell)
+
+    return nb
+
+
+def add_colab_metadata(nb, nb_name):
+    """Ensure that notebook has Colab metadata and enforce some settings."""
+    if "colab" not in nb["metadata"]:
+        nb["metadata"]["colab"] = {}
+
+    # Always overwrite the name and show the ToC/Colab button
+    nb["metadata"]["colab"].update({
+        "name": nb_name,
+        "toc_visible": True,
+        "include_colab_link": True,
+    })
+
+    # Allow collapsed sections, but default to not having any
+    nb["metadata"]["colab"].setdefault("collapsed_sections", [])
 
 
 def clean_whitespace(nb):
