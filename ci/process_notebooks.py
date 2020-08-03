@@ -266,7 +266,9 @@ def clean_notebook(nb):
                 cell.metadata.pop(field, None)
 
         # Reset cell-level Colab metadata
-        cell.metadata.pop("id", None)
+        if "id" in cell["metadata"]:
+            if not cell["metadata"]["id"].startswith("view-in"):
+                cell["metadata"].pop("id")
 
         # Remove code cell outputs
         if cell["cell_type"] == "code":
