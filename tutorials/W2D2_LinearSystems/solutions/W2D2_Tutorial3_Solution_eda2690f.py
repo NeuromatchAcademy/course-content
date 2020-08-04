@@ -10,7 +10,7 @@ def simulate_ddm(lam, sig, x0, xinfty, T):
     T (scalar): total duration of the simulation (in steps)
 
   Returns:
-    ndarray, ndarray: `x` for all simulation steps and the time `t` at each step 
+    ndarray, ndarray: `x` for all simulation steps and the time `t` at each step
   """
 
   # initiatialize variables
@@ -24,7 +24,7 @@ def simulate_ddm(lam, sig, x0, xinfty, T):
       # hint: the deterministic component will be like above, and
       #   the stochastic component is drawn from a scaled normal distribution
       x[k+1] = xinfty + lam * (x[k] - xinfty) + sig * np.random.standard_normal(size=1)
-  
+
   return t, x
 
 lam = 0.9    # decay rate
