@@ -39,7 +39,7 @@ A = np.array([[1 - c2o*dt, o2c*dt],
               [c2o*dt,     1 - o2c*dt]])
 
 # initial condition: start as Closed
-x0 = np.array([[1, 0]]) 
+x0 = np.array([[1, 0]])
 
 # Uncomment this to plot the probabilities
 x, t = simulate_prob_prop(A, x0, dt, T)

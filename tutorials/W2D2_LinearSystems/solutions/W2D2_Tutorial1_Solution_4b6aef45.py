@@ -1,12 +1,12 @@
 """
-In top-left A, both eigenvalues are imaginary (no real component, the two 
-eigenvalues are complex conjugate pairs), so the solutions are all stable 
+In top-left A, both eigenvalues are imaginary (no real component, the two
+eigenvalues are complex conjugate pairs), so the solutions are all stable
 oscillations. The eigenvectors are also complex conjugate pairs (that's why
 we see them plotted on top of each other). They point in the direction of the
 major axis of the elliptical trajectories.
 
 In the top-right A, both eigenvalues are positive, so they are growing. The larger
-eigenvalue direction (red) grows faster than the other direction (blue), 
+eigenvalue direction (red) grows faster than the other direction (blue),
 so trajectories all eventually follow the red eigenvector direction. Those that
 start close to the blue direction follow blue for a bit initially.
 

@@ -1,8 +1,8 @@
 def integrate_exponential(a, x0, dt, T):
-  """Compute solution of the differential equation xdot=a*x with 
+  """Compute solution of the differential equation xdot=a*x with
   initial condition x0 for a duration T. Use time step dt for numerical
   solution.
-  
+
   Args:
     a (scalar): parameter of xdot (xdot=a*x)
     x0 (scalar): initial condition (x at time 0)
