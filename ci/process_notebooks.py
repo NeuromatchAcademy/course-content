@@ -256,6 +256,11 @@ def clean_notebook(nb):
     # Iterate through the cells and clean up each one
     for cell in nb.get("cells", []):
 
+        # Remove blank cells
+        if not cell["source"]:
+            nb.cells.remove(cell)
+            continue
+
         # Reset cell-level Jupyter metadata
         for key in ["prompt_number", "execution_count"]:
             if key in cell:
@@ -276,13 +281,9 @@ def clean_notebook(nb):
 
         # Ensure that form cells are hidden by default
         if cell["cell_type"] == "code":
-            first_line, *_ = cell["source"]
+            first_line, *_ = cell["source"].splitlines()
             if "@title" in first_line or "@markdown" in first_line:
                 cell["metadata"]["cellView"] = "form"
-
-        # Remove blank cells
-        if not cell["source"]:
-            nb.cells.remove(cell)
 
     return nb
 
