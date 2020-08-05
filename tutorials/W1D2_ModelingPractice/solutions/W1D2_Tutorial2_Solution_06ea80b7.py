@@ -1,5 +1,4 @@
 
-
 def my_selfmotion(ves, params):
     """
     Estimates self motion for one vestibular signal
@@ -13,6 +12,7 @@ def my_selfmotion(ves, params):
         (float): an estimate of self motion in m/s
     """
 
+    ##################################################
     # 1. integrate vestibular signal
     # 2. running window function
     # 3. take final value
@@ -20,4 +20,6 @@ def my_selfmotion(ves, params):
 
     # if higher than threshold: return value
     # if lower than threshold: return 0
+    ##################################################
+
     return output

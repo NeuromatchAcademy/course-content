@@ -1,5 +1,4 @@
 
-
 def my_selfmotion(ves, params):
     """
     Estimates self motion for one vestibular signal
@@ -13,16 +12,20 @@ def my_selfmotion(ves, params):
         (float)            : an estimate of self motion in m/s
     """
 
-    # 1. integrate signal:
+    # 1. integrate vestibular signal:
     ves = np.cumsum(ves * (1 / params['samplingrate']))
 
-    # 2. use running window to accumulate evidence:
+    # 2. running window function to accumulate evidence:
     selfmotion = my_moving_window(ves, window=params['filterwindows'][0])
 
-    # 3. take the final value as our estimate:
+    # 3. take final value of self-motion vector as our estimate
     selfmotion = selfmotion[-1]
 
-    # 4. compare to threshold, set to 0 if lower
+    # 4. compare to threshold. Hint the threshodl is stored in
+    # params['threshold']
+    # if selfmotion is higher than threshold: return value
+    # if it's lower than threshold: return 0
+
     if selfmotion < params['threshold']:
         selfmotion = 0
 
