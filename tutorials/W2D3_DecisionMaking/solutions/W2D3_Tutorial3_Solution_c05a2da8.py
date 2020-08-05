@@ -9,7 +9,7 @@ def sample_lds(n_timesteps, params, seed=0):
 
   Returns:
   ndarray, ndarray: the generated state and observation data
-  """    
+  """
   n_dim_state = params['F'].shape[0]
   n_dim_obs = params['H'].shape[0]
 
@@ -32,7 +32,7 @@ def sample_lds(n_timesteps, params, seed=0):
       state[t] = params['mu_0']
     else:
       state[t] = params['F'] @ state[t-1] + zi[t]
-    
+
     # write the expression for computing the observation
     obs[t] = params['H'] @ state[t] + eta[t]
 

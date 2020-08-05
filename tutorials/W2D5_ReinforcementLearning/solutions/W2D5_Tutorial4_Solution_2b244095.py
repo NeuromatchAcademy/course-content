@@ -9,7 +9,7 @@ def dyna_q_model_update(model, state, action, reward, next_state):
     action (int): the action taken
     reward (float): the reward received
     next_state (int): the transitioned to state identifier
-  
+
   Returns:
     ndarray: the updated model
   """

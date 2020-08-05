@@ -6,7 +6,7 @@ def td_learner(env, n_trials, gamma=0.98, alpha=0.001):
     n_trials (int): the number of trials to run
     gamma (float): temporal discount factor
     alpha (float): learning rate
-  
+
   Returns:
     ndarray, ndarray: the value function and temporal difference error arrays
   """
@@ -20,13 +20,13 @@ def td_learner(env, n_trials, gamma=0.98, alpha=0.001):
       next_state, reward = env.get_outcome(state)
       # Is the current state in the delay period (after CS)?
       is_delay = env.state_dict[state][0]
-      
+
       # Write an expression to compute the TD-error
-      TDE[state, n] = (reward + gamma * V[next_state] - V[state]) 
-      
+      TDE[state, n] = (reward + gamma * V[next_state] - V[state])
+
       # Write an expression to update the value function
       V[state] += alpha * TDE[state, n] * is_delay
-      
+
       # Update state
       state = next_state
 
