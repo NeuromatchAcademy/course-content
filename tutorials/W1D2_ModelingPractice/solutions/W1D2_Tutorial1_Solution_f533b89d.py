@@ -6,9 +6,9 @@ with plt.xkcd():
   plt.plot([0, 0], [-0.5, 1.5], ':', color='xkcd:black')
   plt.plot([-0.5, 1.5], [0, 0], ':', color='xkcd:black')
 
-  # determine which variables you want to look at
-  plt.scatter(v_w,     # variable on the abscissa / x-axis
-              v_s)     # variable on the ordinate / y-axis
+  # determine which variables you want to look at (variable on the abscissa / x-axis, variable on the ordinate / y-axis)
+  plt.scatter(v_w, v_s)
+
   plt.xlabel('world-motion velocity [m/s]')
   plt.ylabel('self-motion velocity [m/s]')
   plt.show()
