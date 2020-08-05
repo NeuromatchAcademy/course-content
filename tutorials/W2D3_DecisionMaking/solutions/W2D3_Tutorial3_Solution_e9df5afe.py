@@ -3,7 +3,7 @@ def kalman_filter(data, params):
   system parameters.
 
   Args:
-    data (ndarray): a sequence of osbervations of shape(n_timesteps, n_dim_obs)    
+    data (ndarray): a sequence of osbervations of shape(n_timesteps, n_dim_obs)
     params (dict): a dictionary of model paramters: (F, Q, H, R, mu_0, sigma_0)
 
   Returns:
@@ -19,7 +19,7 @@ def kalman_filter(data, params):
   n_dim_obs = H.shape[0]
   I = np.eye(n_dim_state)  # identity matrix
 
-  # state tracking arrays  
+  # state tracking arrays
   mu = np.zeros((len(data), n_dim_state))
   sigma = np.zeros((len(data), n_dim_state, n_dim_state))
 
@@ -34,15 +34,15 @@ def kalman_filter(data, params):
 
     # write the expression for computing the Kalman gain
     K = sigma_pred @ H.T @ np.linalg.inv(H @ sigma_pred @ H.T + R)
-    # write the expression for computing the filtered state mean 
+    # write the expression for computing the filtered state mean
     mu[t] = mu_pred + K @ (y - H @ mu_pred)
     # write the expression for computing the filtered state noise covariance
     sigma[t] = (I - K @ H) @ sigma_pred
-  
+
   return mu, sigma
 
 
 filtered_state_means, filtered_state_covariances = kalman_filter(obs, params)
-with plt.xkcd():    
+with plt.xkcd():
   plot_kalman(state, obs, filtered_state_means, title="my kf-filter",
               color='r', label='my kf-filter')

@@ -7,7 +7,7 @@ def update_action_value(q, action, reward, alpha):
     action (int): the action taken
     reward (float): the reward received for taking the action
     alpha (float): the learning rate
-  
+
   Returns:
     float: the updated value for the selected action
   """

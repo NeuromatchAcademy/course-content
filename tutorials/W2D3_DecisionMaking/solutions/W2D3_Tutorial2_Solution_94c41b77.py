@@ -3,7 +3,7 @@ nstep = 100
 switch_prob = 0.1
 log10_noise_level = -1
 
-# Build model 
+# Build model
 model = create_model(switch_prob=switch_prob,
                      noise_level=10.**log10_noise_level,
                      startprob=[0.5, 0.5])
