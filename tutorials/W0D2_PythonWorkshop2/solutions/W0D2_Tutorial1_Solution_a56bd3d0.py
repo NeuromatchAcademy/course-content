@@ -1,4 +1,3 @@
-
 # set random number generator
 np.random.seed(2020)
 
@@ -21,7 +20,7 @@ for step, t in enumerate(t_range):
   v_n[:, step] = v_n[:, step - 1] + (dt / tau) * (el - v_n[:, step - 1] + r*syn[:, step])
 
   # collect spike times and reset to resting potential
-  for j in range(0, n):
+  for j in range(n):
     if v_n[j, step] >= vth:
       v_n[j, step] = vr
       spikes[j] += [t]

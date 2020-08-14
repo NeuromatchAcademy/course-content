@@ -1,4 +1,3 @@
-
 t_max = 150e-3   # second
 dt = 1e-3        # second
 tau = 20e-3      # second

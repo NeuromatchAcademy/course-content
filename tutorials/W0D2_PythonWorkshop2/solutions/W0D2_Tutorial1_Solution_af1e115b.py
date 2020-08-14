@@ -1,4 +1,3 @@
-
 # set random number generator
 np.random.seed(2020)
 

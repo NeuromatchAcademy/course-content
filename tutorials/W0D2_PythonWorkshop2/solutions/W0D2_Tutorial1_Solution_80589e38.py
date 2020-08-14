@@ -1,8 +1,7 @@
-
 def ode_step(v, i, dt):
   """
   Evolves membrane potential by one step of discrete time integration
-  
+
   Args:
     v (numpy array of floats)
       membrane potential at previous time step of shape (neurons)
@@ -12,7 +11,7 @@ def ode_step(v, i, dt):
 
     dt (float)
       time step increment
-            
+
   Returns:
     v (numpy array of floats)
       membrane potential at current time step of shape (neurons)
@@ -23,27 +22,27 @@ def ode_step(v, i, dt):
 
 def spike_clamp(v, delta_spike):
   """
-  Resets membrane potential of neurons if v>= vth 
+  Resets membrane potential of neurons if v>= vth
   and clamps to vr if interval of time since last spike < t_ref
-  
+
   Args:
     v (numpy array of floats)
       membrane potential of shape (neurons)
 
     delta_spike (numpy array of floats)
       interval of time since last spike of shape (neurons)
-            
+
   Returns:
     v (numpy array of floats)
       membrane potential of shape (neurons)
     spiked (numpy array of floats)
-      boolean array of neurons that spiked  of shape (neurons)      
-  """ 
-  # bolean array spiked indexes neurons with v>=vth
+      boolean array of neurons that spiked  of shape (neurons)
+  """
+  # boolean array spiked indexes neurons with v>=vth
   spiked = (v >= vth)
   v[spiked] = vr
 
-  # bolean array clamped indexes refractory neurons  
+  # boolean array clamped indexes refractory neurons
   clamped = (t_ref > delta_spike)
   v[clamped] = vr
 
@@ -75,7 +74,6 @@ for step, t in enumerate(t_range):
     continue
 
   v_n[:,step] = ode_step(v_n[:,step-1], syn[:,step], dt)
-
   v_n[:,step], spiked = spike_clamp(v_n[:,step], t - last_spike)
 
   # update raster and last_spike

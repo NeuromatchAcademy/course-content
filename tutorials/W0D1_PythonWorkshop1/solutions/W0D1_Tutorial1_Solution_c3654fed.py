@@ -1,4 +1,3 @@
-
 # set random number generator
 np.random.seed(2020)
 
@@ -12,7 +11,7 @@ with plt.xkcd():
   plt.figure()
   plt.title('$V_m$ with random I(t)')
   plt.xlabel('time (s)')
-  plt.ylabel(r'$V_m$ (V)')
+  plt.ylabel('$V_m$ (V)')
 
   # loop for step_end steps
   for step in range(step_end):
