@@ -161,6 +161,9 @@ def logical_lines(func_str):
             # use entire line (allows inline comments in commented-out code)
             if dedent(code_line):
                 code_line = match.group(0)
+            else:
+                comment_line = code_line + comment_line
+                code_line = dedent(code_line)
 
             # Handle xkcd context, which is always last thing in solution cell
             if "plt.xkcd()" in code_line:
@@ -168,6 +171,7 @@ def logical_lines(func_str):
                 continue
             if making_xkcd_plot:
                 code_line = code_line[2:]
+                comment_line = comment_line[2:]
 
             # Check for reasons to ignore the line, otherwise keep it
 
