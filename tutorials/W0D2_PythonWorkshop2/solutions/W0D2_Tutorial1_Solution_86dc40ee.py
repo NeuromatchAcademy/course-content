@@ -1,14 +1,12 @@
-
 # simulation class
 class LIFNeurons:
   """
-  Keeps track of membrane potential for multiple realizations of LIF neuron, 
+  Keeps track of membrane potential for multiple realizations of LIF neuron,
   and performs single step discrete time integration.
   """
   def __init__(self, n, t_ref_mu=0.01, t_ref_sigma=0.002,
-               tau=20e-3, el=-60e-3, vr=-70e-3, vth=-50e-3, r=100e6
-               ):
-    
+               tau=20e-3, el=-60e-3, vr=-70e-3, vth=-50e-3, r=100e6):
+
     # neuron count
     self.n = n
 
@@ -22,25 +20,25 @@ class LIFNeurons:
     # initializes refractory period distribution
     self.t_ref_mu = t_ref_mu
     self.t_ref_sigma = t_ref_sigma
-    self.t_ref = self.t_ref_mu + self.t_ref_sigma*np.random.normal(size=self.n)
+    self.t_ref = self.t_ref_mu + self.t_ref_sigma * np.random.normal(size=self.n)
     self.t_ref[self.t_ref<0] = 0
 
     # state variables
     self.v = self.el * np.ones(self.n)
     self.spiked = self.v >= self.vth
     self.last_spike = -self.t_ref * np.ones([self.n])
-    self.t = 0
+    self.t = 0.
     self.steps = 0
 
 
   def ode_step(self, dt, i):
-    
+
     # update running time and steps
     self.t += dt
     self.steps += 1
 
     # one step of discrete time integration of dt
-    self.v = self.v + dt/self.tau * (self.el - self.v + self.r*i)
+    self.v = self.v + dt / self.tau * (self.el - self.v + self.r * i)
 
     # spike and clamp
     self.spiked = (self.v >= self.vth)
@@ -50,7 +48,7 @@ class LIFNeurons:
     self.v[clamped] = self.vr
 
     self.last_spike[self.spiked] = self.t
-      
+
 
 # set random number generator
 np.random.seed(2020)
@@ -68,7 +66,6 @@ neurons = LIFNeurons(n)
 
 # loop time steps
 for step, t in enumerate(t_range):
-
   neurons.ode_step(dt, syn[:,step])
 
   # log v_n and spike history

@@ -1,3 +1,4 @@
+# initialize t
 t = 0
 
 # loop for 10 steps, variable 'step' takes values from 0 to 9

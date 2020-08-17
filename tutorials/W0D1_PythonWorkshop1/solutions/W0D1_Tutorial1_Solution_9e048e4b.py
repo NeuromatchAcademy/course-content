@@ -1,4 +1,3 @@
-
 # set random number generator
 np.random.seed(2020)
 
@@ -11,7 +10,7 @@ v_n = [el] * n
 plt.figure()
 plt.title('Multiple realizations of $V_m$')
 plt.xlabel('time (s)')
-plt.ylabel(r'$V_m$ (V)')
+plt.ylabel('$V_m$ (V)')
 
 # loop for step_end steps
 for step in range(step_end):

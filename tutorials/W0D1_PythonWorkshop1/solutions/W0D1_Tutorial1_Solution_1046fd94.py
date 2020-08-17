@@ -1,4 +1,3 @@
-
 # initialize step_end and v
 step_end = int(t_max / dt)
 v = el
@@ -6,6 +5,9 @@ v = el
 with plt.xkcd():
   # initialize the figure
   plt.figure()
+  plt.title('$V_m$ with sinusoidal I(t)')
+  plt.xlabel('time (s)')
+  plt.ylabel('$V_m$ (V)');
   # loop for step_end steps
   for step in range(step_end):
     t = step * dt
@@ -16,8 +18,4 @@ with plt.xkcd():
 
   t = t + dt
   plt.plot(t, v, 'k.')
-  
-  plt.title('$V_m$ with sinusoidal I(t)')
-  plt.xlabel('time (s)')
-  plt.ylabel(r'$V_m$ (V)')
   plt.show()
