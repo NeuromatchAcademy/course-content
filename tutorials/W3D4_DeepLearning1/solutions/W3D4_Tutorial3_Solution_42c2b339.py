@@ -15,11 +15,11 @@ def plot_rdm_rows(ori_list, rdm_dict, rdm_oris):
 
   # Get index of orientation closest to ori_plot
   for ax, ori_plot in zip(axs, ori_list):
-    iori = np.argmin(np.abs(ori - ori_plot))
+    iori = np.argmin(np.abs(rdm_oris - ori_plot))
 
     # Plot dissimilarity curves in each RDM
     for label, rdm in rdm_dict.items():
-      ax.plot(ori, rdm[iori, :], label=label)
+      ax.plot(rdm_oris, rdm[iori, :], label=label)
 
     # Draw vertical line at stimulus we are plotting dissimilarity w.r.t.
     ax.axvline(rdm_oris[iori], color=".7", zorder=-1)

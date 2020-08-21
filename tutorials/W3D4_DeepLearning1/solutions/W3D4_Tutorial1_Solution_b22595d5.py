@@ -31,7 +31,7 @@ def decode_orientation(n_classes, train_data, train_labels, test_data, test_labe
   train_loss = train(net, loss_fn, train_data, train_binned_labels, learning_rate=0.1)
 
   # Decode neural responses in testing set data
-  out = net(resp_test)
+  out = net(test_data)
   out_labels = np.argmax(out.detach(), axis=1)  # predicted classes
 
   return train_loss, out_labels
