@@ -16,6 +16,7 @@ with plt.xkcd():
   # loop for step_end steps
   for step in range(step_end):
     t = step * dt
+    print(t)
     plt.plot(t, v, 'k.')
 
     i = i_mean * (1 + 0.1 * (t_max / dt)**(0.5) * (2 * np.random.random() - 1))
