@@ -5,7 +5,6 @@ def generate_input_array(x_points, stim_array, posterior_array,
 
     for i in range(len(x_points)):
         input_array[:, i] = my_gaussian(stim_array, mean, sigma)
-        input_array[:, i] /= np.sum(input_array[:, i])  # normalize
 
     return input_array
 

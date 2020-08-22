@@ -9,7 +9,6 @@ def compute_likelihood_array(x_points, stim_array, sigma=1.):
     # looping over stimulus array
     for i in range(len(stim_array)):
         likelihood_array[i, :] = my_gaussian(x_points, stim_array[i], sigma)
-        likelihood_array[i, :] /= likelihood_array[i, :].sum()  # normalize
 
     return likelihood_array
 
