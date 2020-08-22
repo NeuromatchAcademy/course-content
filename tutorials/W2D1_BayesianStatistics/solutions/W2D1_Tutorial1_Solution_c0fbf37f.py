@@ -17,7 +17,7 @@ def posterior_mode(x, posterior):
   ## Finish this function so that it returns the location of the mode
   #
   # Comment out the line below to test out your solution
-  #raise NotImplementedError("Please implement the bimodal prior")
+  #raise NotImplementedError("Please implement the posterior mode")
   ################################################################################
   mode = x[np.argmax(posterior)]
 
