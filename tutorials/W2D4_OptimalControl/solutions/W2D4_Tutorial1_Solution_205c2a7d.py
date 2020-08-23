@@ -7,6 +7,7 @@ def value_function(measurement, act, cost_sw):
     act (numpy array of string): length T with each element
                                   taking value "stay" or "switch"
     cost_sw (float): the cost of switching side
+    measurement (numpy array of binary): whether a reward is obtained
 
   Returns:
     value (float): expected utility per unit time
