@@ -2,8 +2,9 @@
 np.random.seed(2020)
 
 # initialize step_end, t_range, v and syn
-step_end = int(t_max / dt)
-t_range = np.linspace(0, t_max, num=step_end)
+step_end = int(t_max / dt) - 1
+# skip the endpoint to match Exercise 7 plot
+t_range = np.linspace(0, t_max, num=step_end, endpoint=False)
 v = el * np.ones(step_end)
 syn = i_mean * (1 + 0.1 * (t_max/dt) ** (0.5) * (2 * np.random.random(step_end) - 1))
 
