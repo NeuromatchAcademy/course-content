@@ -29,7 +29,8 @@ def sample_lds(n_timesteps, params, seed=0):
   for t in range(n_timesteps):
     # write the expressions for computing state values given the time step
     if t == 0:
-      state[t] = params['mu_0']
+      state[t] = stats.multivariate_normal(mean=params['mu_0'],
+                                           cov=params['sigma_0']).rvs(1)
     else:
       state[t] = params['F'] @ state[t-1] + zi[t]
 

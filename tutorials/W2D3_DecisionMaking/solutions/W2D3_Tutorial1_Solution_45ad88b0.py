@@ -12,7 +12,7 @@ def simulate_accuracy_vs_threshold(sigma, threshold_list, num_sample):
   Returns:
       accuracy_list: a list of average accuracies corresponding to input
                       `threshold_list`
-      decision_speed_list: a list of average decision lengths
+      decision_speed_list: a list of average decision speeds
   """
   decision_speed_list = []
   accuracy_list = []

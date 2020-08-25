@@ -36,11 +36,11 @@ def compare_computational_analytical_means():
     mus_by_integration.append(mu_integrated)
     mus_analytical.append(mu_analytical)
 
-  return mu_visuals, mus_by_integration, mus_analytical
+  return mu_visuals, mus_analytical, mus_by_integration
 
 
 # Uncomment the lines below to visualize your results
-mu_visuals, mu_computational, mu_analytical = compare_computational_analytical_means()
+mu_visuals, mu_analytical, mu_computational = compare_computational_analytical_means()
 
 with plt.xkcd():
-  plot_visual(mu_visuals, mu_computational, mu_analytical)
+  plot_visual(mu_visuals, mu_analytical, mu_computational)
