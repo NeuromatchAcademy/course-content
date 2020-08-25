@@ -22,6 +22,9 @@ def lif_neuron(n_steps=1000, alpha=0.01, rate=10):
 
   return v, spike_times
 
+# Set random seed (for reproducibility)
+np.random.seed(12)
+
 v, spike_times = lif_neuron()
 with plt.xkcd():
   plot_neuron_stats(v, spike_times)

@@ -26,6 +26,9 @@ def lif_neuron_inh(n_steps=1000, alpha=0.5, beta=0.1, exc_rate=10, inh_rate=10):
 
   return v, spike_times
 
+# Set random seed (for reproducibility)
+np.random.seed(12)
+
 v, spike_times = lif_neuron_inh()
 
 with plt.xkcd():
