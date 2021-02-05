@@ -77,23 +77,20 @@ class NMAPreprocessor(ExecutePreprocessor):
         store_history : bool
             Determines if history should be stored in the kernel (default: False).
             Specific to ipython kernels, which can store command histories.
-        Returns
-        -------
-        output : dict
-            The execution output payload (or None for no output).
+
         Raises
         ------
         CellExecutionError
             If execution failed and should raise an exception, this will be raised
             with defaults about the failure.
+
         Returns
         -------
         cell : NotebookNode
             The cell which was just processed.
 
-        This method was copied from the nbclient library and modified to specifically
-        ignore NotImplementedError exceptions. The original code is under the following
-        license:
+        License
+        -------
 
         This project is licensed under the terms of the Modified BSD License
         (also known as New or Revised or 3-Clause BSD), as follows:
