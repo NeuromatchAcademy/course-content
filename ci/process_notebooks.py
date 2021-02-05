@@ -78,7 +78,7 @@ def main(arglist):
             nb = nbformat.read(f, nbformat.NO_CONVERT)
 
         if not sequentially_executed(nb):
-            if args.require_sequntial:
+            if args.require_sequential:
                 err = (
                     "Notebook is not sequentially executed on a fresh kernel."
                     "\n"
@@ -578,7 +578,7 @@ def parse_args(arglist):
     parser.add_argument(
         "--allow-non-sequential",
         action="store_false",
-        dest="require_sequntial",
+        dest="require_sequential",
         help="Don't fail if the notebook is not sequentially executed"
     )
     return parser.parse_args(arglist)
