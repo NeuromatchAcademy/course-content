@@ -42,6 +42,137 @@ GITHUB_TREE_URL = (
 )
 
 
+def main(arglist):
+    """Process IPython notebooks from a list of files."""
+    args = parse_args(arglist)
+
+    # Filter paths from the git manifest
+    # - Only process .ipynb
+    # - Don't process student notebooks
+    # - Don't process deleted notebooks
+    def should_process(path):
+        return all([
+            path.endswith(".ipynb"),
+            "student/" not in path,
+            os.path.isfile(path),
+        ])
+
+    nb_paths = [arg for arg in args.files if should_process(arg)]
+    if not nb_paths:
+        print("No notebook files found")
+        sys.exit(0)
+
+    # Allow environment to override stored kernel name
+    exec_kws = {"timeout": 600}
+    if "NB_KERNEL" in os.environ:
+        exec_kws["kernel_name"] = os.environ["NB_KERNEL"]
+
+    # Defer failures until after processing all notebooks
+    errors = {}
+    notebooks = {}
+
+    for nb_path in nb_paths:
+
+        # Load the notebook structure
+        with open(nb_path) as f:
+            nb = nbformat.read(f, nbformat.NO_CONVERT)
+
+        if not sequentially_executed(nb):
+            if args.require_sequntial:
+                err = (
+                    "Notebook is not sequentially executed on a fresh kernel."
+                    "\n"
+                    "Please do 'Restart and run all' before pushing to Github."
+                )
+                errors[nb_path] = err
+                continue
+
+        # Clean whitespace from all code cells
+        clean_whitespace(nb)
+
+        # Run the notebook from top to bottom, catching errors
+        print(f"Executing {nb_path}")
+        executor = NMAPreprocessor(**exec_kws)
+        try:
+            executor.preprocess(nb)
+        except Exception as err:
+            # Log the error, but then continue
+            errors[nb_path] = err
+        else:
+            notebooks[nb_path] = nb
+
+    if errors or args.check_only:
+        exit(errors)
+
+    # Further filter the notebooks to run post-processing only on tutorials
+    tutorials = {
+        nb_path: nb
+        for nb_path, nb in notebooks.items()
+        if nb_path.startswith("tutorials")
+    }
+
+    # Post-process notebooks to remove solution code and write both versions
+    for nb_path, nb in tutorials.items():
+
+        # Extract components of the notebook path
+        nb_dir, nb_fname = os.path.split(nb_path)
+        nb_name, _ = os.path.splitext(nb_fname)
+
+        # Loop through the cells and fix any Colab badges we encounter
+        for cell in nb.get("cells", []):
+            if has_colab_badge(cell):
+                redirect_colab_badge_to_master_branch(cell)
+
+        # Ensure that Colab metadata dict exists and enforce some settings
+        add_colab_metadata(nb, nb_name)
+
+        # Clean the original notebook and save it to disk
+        print(f"Writing complete notebook to {nb_path}")
+        with open(nb_path, "w") as f:
+            nb_clean = clean_notebook(nb)
+            nbformat.write(nb_clean, f)
+
+        # Create subdirectories, if they don't exist
+        student_dir = make_sub_dir(nb_dir, "student")
+        static_dir = make_sub_dir(nb_dir, "static")
+        solutions_dir = make_sub_dir(nb_dir, "solutions")
+
+        # Generate the student version and save it to a subdirectory
+        print(f"Extracting solutions from {nb_path}")
+        processed = extract_solutions(nb, nb_dir, nb_name)
+        student_nb, static_images, solution_snippets = processed
+
+        # Loop through cells and point the colab badge at the student version
+        for cell in student_nb.get("cells", []):
+            if has_colab_badge(cell):
+                redirect_colab_badge_to_student_version(cell)
+
+        # Write the student version of the notebook
+        student_nb_path = os.path.join(student_dir, nb_fname)
+        print(f"Writing student notebook to {student_nb_path}")
+        with open(student_nb_path, "w") as f:
+            clean_student_nb = clean_notebook(student_nb)
+            nbformat.write(clean_student_nb, f)
+
+        # Write the images extracted from the solution cells
+        print(f"Writing solution images to {static_dir}")
+        for fname, image in static_images.items():
+            fname = fname.replace("static", static_dir)
+            image.save(fname)
+
+        # Write the solution snippets
+        print(f"Writing solution snippets to {solutions_dir}")
+        for fname, snippet in solution_snippets.items():
+            fname = fname.replace("solutions", solutions_dir)
+            with open(fname, "w") as f:
+                f.write(snippet)
+
+    exit(errors)
+
+
+# ------------------------------------------------------------------------------------ #
+
+
 class NMAPreprocessor(ExecutePreprocessor):
     """
     Custom subclass of the ExecutePreprocessor for NMA tutorials.
@@ -213,132 +344,7 @@ class NMAPreprocessor(ExecutePreprocessor):
     execute_cell = run_sync(async_execute_cell)
 
 
-def main(arglist):
-    """Process IPython notebooks from a list of files."""
-    args = parse_args(arglist)
-
-    # Filter paths from the git manifest
-    # - Only process .ipynb
-    # - Don't process student notebooks
-    # - Don't process deleted notebooks
-    def should_process(path):
-        return all([
-            path.endswith(".ipynb"),
-            "student/" not in path,
-            os.path.isfile(path),
-        ])
-
-    nb_paths = [arg for arg in args.files if should_process(arg)]
-    if not nb_paths:
-        print("No notebook files found")
-        sys.exit(0)
-
-    # Allow environment to override stored kernel name
-    exec_kws = {"timeout": 600}
-    if "NB_KERNEL" in os.environ:
-        exec_kws["kernel_name"] = os.environ["NB_KERNEL"]
-
-    # Defer failures until after processing all notebooks
-    errors = {}
-    notebooks = {}
-
-    for nb_path in nb_paths:
-
-        # Load the notebook structure
-        with open(nb_path) as f:
-            nb = nbformat.read(f, nbformat.NO_CONVERT)
-
-        if not sequentially_executed(nb):
-            if args.require_sequntial:
-                err = (
-                    "Notebook is not sequentially executed on a fresh kernel."
-                    "\n"
-                    "Please do 'Restart and run all' before pushing to Github."
-                )
-                errors[nb_path] = err
-                continue
-
-        # Clean whitespace from all code cells
-        clean_whitespace(nb)
-
-        # Run the notebook from top to bottom, catching errors
-        print(f"Executing {nb_path}")
-        executor = NMAPreprocessor(**exec_kws)
-        try:
-            executor.preprocess(nb)
-        except Exception as err:
-            # Log the error, but then continue
-            errors[nb_path] = err
-        else:
-            notebooks[nb_path] = nb
-
-    if errors or args.check_only:
-        exit(errors)
-
-    # Further filter the notebooks to run post-processing only on tutorials
-    tutorials = {
-        nb_path: nb
-        for nb_path, nb in notebooks.items()
-        if nb_path.startswith("tutorials")
-    }
-
-    # Post-process notebooks to remove solution code and write both versions
-    for nb_path, nb in tutorials.items():
-
-        # Extract components of the notebook path
-        nb_dir, nb_fname = os.path.split(nb_path)
-        nb_name, _ = os.path.splitext(nb_fname)
-
-        # Loop through the cells and fix any Colab badges we encounter
-        for cell in nb.get("cells", []):
-            if has_colab_badge(cell):
-                redirect_colab_badge_to_master_branch(cell)
-
-        # Ensure that Colab metadata dict exists and enforce some settings
-        add_colab_metadata(nb, nb_name)
-
-        # Clean the original notebook and save it to disk
-        print(f"Writing complete notebook to {nb_path}")
-        with open(nb_path, "w") as f:
-            nb_clean = clean_notebook(nb)
-            nbformat.write(nb_clean, f)
-
-        # Create subdirectories, if they don't exist
-        student_dir = make_sub_dir(nb_dir, "student")
-        static_dir = make_sub_dir(nb_dir, "static")
-        solutions_dir = make_sub_dir(nb_dir, "solutions")
-
-        # Generate the student version and save it to a subdirectory
-        print(f"Extracting solutions from {nb_path}")
-        processed = extract_solutions(nb, nb_dir, nb_name)
-        student_nb, static_images, solution_snippets = processed
-
-        # Loop through cells and point the colab badge at the student version
-        for cell in student_nb.get("cells", []):
-            if has_colab_badge(cell):
-                redirect_colab_badge_to_student_version(cell)
-
-        # Write the student version of the notebook
-        student_nb_path = os.path.join(student_dir, nb_fname)
-        print(f"Writing student notebook to {student_nb_path}")
-        with open(student_nb_path, "w") as f:
-            clean_student_nb = clean_notebook(student_nb)
-            nbformat.write(clean_student_nb, f)
-
-        # Write the images extracted from the solution cells
-        print(f"Writing solution images to {static_dir}")
-        for fname, image in static_images.items():
-            fname = fname.replace("static", static_dir)
-            image.save(fname)
-
-        # Write the solution snippets
-        print(f"Writing solution snippets to {solutions_dir}")
-        for fname, snippet in solution_snippets.items():
-            fname = fname.replace("solutions", solutions_dir)
-            with open(fname, "w") as f:
-                f.write(snippet)
-
-    exit(errors)
+# ------------------------------------------------------------------------------------ #
 
 
 def extract_solutions(nb, nb_dir, nb_name):
