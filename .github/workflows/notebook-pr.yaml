@@ -24,7 +24,7 @@ jobs:
       - name: Get commit message
         run: |
           readonly local msg=$(git log -1 --pretty=format:"%s")
-          echo "::set-env name=COMMIT_MESSAGE::$msg"
+          echo "COMMIT_MESSAGE=$msg" >> $GITHUB_ENV
 
       - name: Set up Python
         if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
