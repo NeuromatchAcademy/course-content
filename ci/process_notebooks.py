@@ -55,6 +55,11 @@ class NMAPreprocessor(ExecutePreprocessor):
     # for errors with a private method (_check_raise_for_error). It would be cleaner
     # to customize only the error handling method, but alas, that is not allowed.
 
+    # The nbconvert.ExecutePreprocessor class inherits from both
+    # nbconvert.Preprocessor and nbclient.NotebookClient. The relevant methods that we
+    # patch are defined on the latter. The code here was taken from this specific tag:
+    # https://github.com/jupyter/nbclient/blob/0.5.1/nbclient/client.py
+
     async def async_execute_cell(
             self,
             cell: nbformat.NotebookNode,
@@ -180,7 +185,10 @@ class NMAPreprocessor(ExecutePreprocessor):
 
         if execution_count:
             cell['execution_count'] = execution_count
+
+        # -- NMA-specific code here -- #
         self._check_raise_for_error_nma(cell, exec_reply)
+
         self.nb['cells'][cell_index] = cell
         return cell
 
@@ -196,7 +204,9 @@ class NMAPreprocessor(ExecutePreprocessor):
 
             if (exec_reply is not None) and exec_reply['content']['status'] == 'error':
 
+                # -- NMA-specific code here -- #
                 if exec_reply['content']['ename'] != 'NotImplementedError':
+
                     raise CellExecutionError.from_cell_and_msg(cell,
                                                                exec_reply['content'])
 
