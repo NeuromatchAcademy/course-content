@@ -95,8 +95,12 @@ def main(arglist):
         try:
             executor.preprocess(nb)
         except Exception as err:
-            # Log the error, but then continue
-            errors[nb_path] = err
+            if args.raise_fast:
+                # Exit here (useful for debugging)
+                raise err
+            else:
+                # Log the error, but then continue
+                errors[nb_path] = err
         else:
             notebooks[nb_path] = nb
 
@@ -399,6 +403,12 @@ def parse_args(arglist):
         action="store_true",
         dest="check_only",
         help="Only run QC checks; don't do post-processing"
+    )
+    parser.add_argument(
+        "--raise-fast",
+        action="store_true",
+        dest="raise_fast",
+        help="Raise errors immediately rather than collecting and reporting."
     )
     parser.add_argument(
         "--allow-non-sequential",
