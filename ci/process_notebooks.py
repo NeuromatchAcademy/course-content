@@ -21,17 +21,13 @@ import re
 import sys
 import argparse
 import hashlib
-import typing as t
 from io import BytesIO
 from binascii import a2b_base64
 from copy import deepcopy
-import asyncio
 
 from PIL import Image
 import nbformat
 from nbconvert.preprocessors import ExecutePreprocessor
-from nbclient.util import run_sync, ensure_async
-from nbclient.exceptions import CellControlSignal, CellExecutionError, DeadKernelError
 
 
 GITHUB_RAW_URL = (
@@ -49,7 +45,7 @@ def main(arglist):
     # Filter paths from the git manifest
     # - Only process .ipynb
     # - Don't process student notebooks
-    # - Don't process deleted notebooks
+    # - Don't process deleted notebooks (which are paths in the git manifest)
     def should_process(path):
         return all([
             path.endswith(".ipynb"),
@@ -62,8 +58,11 @@ def main(arglist):
         print("No notebook files found")
         sys.exit(0)
 
+    # Set execution parameters. We allow NotImplementedError as that is raised
+    # by incomplete exercises and is unlikely to be otherwise encountered.
+    exec_kws = {"timeout": 600, "allow_error_names": ["NotImplementedError"]}
+
     # Allow environment to override stored kernel name
-    exec_kws = {"timeout": 600}
     if "NB_KERNEL" in os.environ:
         exec_kws["kernel_name"] = os.environ["NB_KERNEL"]
 
@@ -92,12 +91,16 @@ def main(arglist):
 
         # Run the notebook from top to bottom, catching errors
         print(f"Executing {nb_path}")
-        executor = NMAPreprocessor(**exec_kws)
+        executor = ExecutePreprocessor(**exec_kws)
         try:
             executor.preprocess(nb)
         except Exception as err:
-            # Log the error, but then continue
-            errors[nb_path] = err
+            if args.raise_fast:
+                # Exit here (useful for debugging)
+                raise err
+            else:
+                # Log the error, but then continue
+                errors[nb_path] = err
         else:
             notebooks[nb_path] = nb
 
@@ -168,180 +171,6 @@ def main(arglist):
                 f.write(snippet)
 
     exit(errors)
-
-
-# ------------------------------------------------------------------------------------ #
-
-
-class NMAPreprocessor(ExecutePreprocessor):
-    """
-    Custom subclass of the ExecutePreprocessor for NMA tutorials.
-
-    This class overwrites the execute_cell method to ignore NotImplementedError
-    exceptions, which are raised when incomplete exercise functions are called.
-    All other errors will be handled as normal.
-
-    """
-    # Note: we have to patch the entire async_execute_cell method because it checks
-    # for errors with a private method (_check_raise_for_error). It would be cleaner
-    # to customize only the error handling method, but alas, that is not allowed.
-
-    # The nbconvert.ExecutePreprocessor class inherits from both
-    # nbconvert.Preprocessor and nbclient.NotebookClient. The relevant methods that we
-    # patch are defined on the latter. The code here was taken from this specific tag:
-    # https://github.com/jupyter/nbclient/blob/0.5.1/nbclient/client.py
-
-    async def async_execute_cell(
-            self,
-            cell: nbformat.NotebookNode,
-            cell_index: int,
-            execution_count: t.Optional[int] = None,
-            store_history: bool = True) -> nbformat.NotebookNode:
-        """
-        Executes a single code cell.
-
-        To execute all cells see :meth:`execute`.
-
-        Parameters
-        ----------
-        cell : nbformat.NotebookNode
-            The cell which is currently being processed.
-        cell_index : int
-            The position of the cell within the notebook object.
-        execution_count : int
-            The execution count assigned to the cell (default: Use kernel response)
-        store_history : bool
-            Determines if history should be stored in the kernel (default: False).
-            Specific to ipython kernels, which can store command histories.
-
-        Raises
-        ------
-        CellExecutionError
-            If execution failed and should raise an exception, this will be raised
-            with defaults about the failure.
-
-        Returns
-        -------
-        cell : NotebookNode
-            The cell which was just processed.
-
-        License
-        -------
-
-        This project is licensed under the terms of the Modified BSD License
-        (also known as New or Revised or 3-Clause BSD), as follows:
-
-        - Copyright (c) 2020-, Jupyter Development Team
-
-        All rights reserved.
-
-        Redistribution and use in source and binary forms, with or without
-        modification, are permitted provided that the following conditions are met:
-
-        Redistributions of source code must retain the above copyright notice, this
-        list of conditions and the following disclaimer.
-
-        Redistributions in binary form must reproduce the above copyright notice, this
-        list of conditions and the following disclaimer in the documentation and/or
-        other materials provided with the distribution.
-
-        Neither the name of the Jupyter Development Team nor the names of its
-        contributors may be used to endorse or promote products derived from this
-        software without specific prior written permission.
-
-        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-        ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-        WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-        DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
-        FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-        DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-        SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-        CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-        OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-        OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-        """
-        assert self.kc is not None
-        if cell.cell_type != 'code' or not cell.source.strip():
-            self.log.debug("Skipping non-executing cell %s", cell_index)
-            return cell
-
-        if self.record_timing and 'execution' not in cell['metadata']:
-            cell['metadata']['execution'] = {}
-
-        self.log.debug("Executing cell:\n%s", cell.source)
-        parent_msg_id = await ensure_async(
-            self.kc.execute(
-                cell.source,
-                store_history=store_history,
-                stop_on_error=not self.allow_errors
-            )
-        )
-        # We launched a code cell to execute
-        self.code_cells_executed += 1
-        exec_timeout = self._get_timeout(cell)
-
-        cell.outputs = []
-        self.clear_before_next_output = False
-
-        task_poll_kernel_alive = asyncio.ensure_future(
-            self._async_poll_kernel_alive()
-        )
-        task_poll_output_msg = asyncio.ensure_future(
-            self._async_poll_output_msg(parent_msg_id, cell, cell_index)
-        )
-        self.task_poll_for_reply = asyncio.ensure_future(
-            self._async_poll_for_reply(
-                parent_msg_id,
-                cell,
-                exec_timeout,
-                task_poll_output_msg,
-                task_poll_kernel_alive,
-            )
-        )
-        try:
-            exec_reply = await self.task_poll_for_reply
-        except asyncio.CancelledError:
-            # can only be cancelled by task_poll_kernel_alive when the kernel is dead
-            task_poll_output_msg.cancel()
-            raise DeadKernelError("Kernel died")
-        except Exception as e:
-            # Best effort to cancel request if it hasn't been resolved
-            try:
-                # Check if the task_poll_output is doing the raising for us
-                if not isinstance(e, CellControlSignal):
-                    task_poll_output_msg.cancel()
-            finally:
-                raise
-
-        if execution_count:
-            cell['execution_count'] = execution_count
-
-        # -- NMA-specific code here -- #
-        self._check_raise_for_error_nma(cell, exec_reply)
-
-        self.nb['cells'][cell_index] = cell
-        return cell
-
-    def _check_raise_for_error_nma(
-            self,
-            cell: nbformat.NotebookNode,
-            exec_reply: t.Optional[t.Dict]) -> None:
-
-        cell_tags = cell.metadata.get("tags", [])
-        cell_allows_errors = self.allow_errors or "raises-exception" in cell_tags
-
-        if self.force_raise_errors or not cell_allows_errors:
-
-            if (exec_reply is not None) and exec_reply['content']['status'] == 'error':
-
-                # -- NMA-specific code here -- #
-                if exec_reply['content']['ename'] != 'NotImplementedError':
-
-                    raise CellExecutionError.from_cell_and_msg(cell,
-                                                               exec_reply['content'])
-
-    execute_cell = run_sync(async_execute_cell)
 
 
 # ------------------------------------------------------------------------------------ #
@@ -574,6 +403,12 @@ def parse_args(arglist):
         action="store_true",
         dest="check_only",
         help="Only run QC checks; don't do post-processing"
+    )
+    parser.add_argument(
+        "--raise-fast",
+        action="store_true",
+        dest="raise_fast",
+        help="Raise errors immediately rather than collecting and reporting."
     )
     parser.add_argument(
         "--allow-non-sequential",
