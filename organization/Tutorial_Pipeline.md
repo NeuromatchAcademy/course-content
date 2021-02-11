@@ -1,20 +1,20 @@
 # Neuromatch Academy Content Pipeline
 
-This document summarizes the pipeline from content creation to publishing, focusing on practical details relating to the Tutorials.
+This document summarizes the pipeline from content creation to publishing, focusing on practical details relating to the tutorials.
 
 ## Content Creation
 
-The Content Creation team produces Tutorials to accompany their lecture videos. The tutorial notebooks take full advantage of the Jupyter/Colab literate programming environment. They weave together expository prose, math, embedded videos, code, and interactive exercises to make the concepts from the lectures concrete.
+The Content Creation team produces tutorials to accompany their lecture videos. The tutorial notebooks take full advantage of the Jupyter/Colab literate programming environment. They weave together expository prose, math, embedded videos, code, and interactive exercises to make the concepts from the lectures concrete.
 
 The tutorials are made interactive in two ways: exercises and interactive "demos", or "widgets".
 
 Exercises present students with a coding challenge: they must implement some of the ideas in the tutorial. Exercises are meant to encourage deeper engagement with the ideas and conceptual understanding; the actual coding should be straightforward. Each exercise should require not more than a few lines to be written. Exercises are typically structured as a function with clearly defined inputs and outputs and a skeleton describing the operations that must be carried out. Use comments to describe the logic of the function, and provide partial code with `...` indicating where the code needs to be completed.
 
-Exercises cells should include a bit of code the calls the exercise function and produces a visual cue about success or failure -- typically in the form of a plot. An incomplete exercise function should raise a `NotImplementedError` exception with a clear message that the student has a task to complete.
+Exercises cells should include a bit of code that calls the exercise function and produces a visual cue about success or failure – typically in the form of a plot. An incomplete exercise function should raise a `NotImplementedError` exception with a clear message that the student has a task to complete.
 
-When writing the tutorial notebooks, the exercise cells should be duplicated. One cell should provide the incomplete exercise "stub", and the following cell should provide the exercise solution. The solution should look just like the exercise stub, but the relevant sections should be completed. Solution cells should start with a comment reading `# to_remove solution`; they will be automatically removed during notebook production (see below).
+When writing the tutorial notebooks, the exercise cells should be duplicated. One cell should provide the incomplete exercise "stub" described above, and the following cell should provide the exercise solution. The solution should look just like the exercise stub, but with the relevant sections completed. Solution cells must start with a comment reading `# to_remove solution`; they will be automatically removed during notebook production (see below).
 
-Tutorials should also make use of the [ipywidgets](https://ipywidgets.readthedocs.io/en/stable/) library for interactivity. These "demos" do not require coding, but they build intuition by letting students play with the parameters of a function and see the result through changes in a plot. Interactive demos should pose thought questions to guide the students' interactions and, they can discuss possible answers to those questions in a cell that is structured like an exercise solution but with a `# to_remove explanation` comment in the first line.
+Tutorials should also make use of the [ipywidgets](https://ipywidgets.readthedocs.io/en/stable/) library for interactivity. These "demos" do not require coding, but they build intuition by letting students play with the parameters of a function and see their effect through changes in a plot. Interactive demos should pose thought questions to guide the students' explorations, and they can discuss possible answers to those questions in a cell that is structured like an exercise solution but with a `# to_remove explanation` comment in the first line.
 
 Tutorials should be hierarchically organized with meaningful section headers, and they should otherwise use consistent formatting and coding style. The ideal format is described in the [NMA Style Guide](./Neuromatch_Tutorial_Format.ipynb). The Editing process described below will ensure that all notebooks conform to this format, but the process will go more smoothly if it is adopted from the beginning of content creation.
 
@@ -22,9 +22,9 @@ Strive to minimize the amount of unnecessary code that students are exposed to. 
 
 ## Content Review
 
-After Tutorials have been created, they are evaluated by several Reviewers. The review process focuses on the accuracy and pedagogical effectiveness of the content, including videos, prose, math, and code. Ideally, Reviewers will have domain-specific expertise relating to the days that they volunteer to review, although non-experts can provide helpful feedback about clarity and organization. Reviewing and Editing are partially overlapping, but Reviewers should focus on content, not style.
+After tutorials have been created, they are evaluated by several Reviewers. The review process focuses on the accuracy and pedagogical effectiveness of the content, including videos, prose, math, and code. Ideally, Reviewers will have domain-specific expertise relating to the days that they volunteer to review, although non-experts can provide helpful feedback about clarity and organization. Reviewing and Editing are partially overlapping, but Reviewers should focus on content, not style.
 
-Content Review is organized externally to the GitHub repository using a Google Sheet that tracks the URLs for the latest version of each notebook, the associated Tutorial videos, and the identities of the various parties involved. There is also a slack channel (`#content-reviews`) where review assignments are coordinated.
+Content Review is organized externally to the GitHub repository using a Google Sheet that tracks the URLs for the latest version of each notebook, the associated tutorial videos, and the identities of the various parties involved. There is also a slack channel (`#content-reviews`) where review assignments are coordinated.
 
 Google Colab's commenting feature is the primary medium for the review. Notebooks should be shared with commenting enabled, but do *not* enable third-party editing, as this can lead to loss of work. Be aware that comments apply on a cell-wise basis; to comment about specific lines of code, enable line numbering (`Ctrl-M Ctrl-L`) and reference the number in the comment. There will also be a dedicated Slack channel (e.g. `#w1d3-modelfitting-review`) for each day that serves as a forum for discussions between Content Creators and Reviewers.
 
