@@ -2,9 +2,23 @@
 
 This document summarizes the pipeline from content creation to publishing, focusing on practical details relating to the Tutorials.
 
-
 ## Content Creation
 
+The Content Creation team produces Tutorials to accompany their lecture videos. The tutorial notebooks take full advantage of the Jupyter/Colab literate programming environment. They weave together expository prose, math, embedded videos, code, and interactive exercises to make the concepts from the lectures concrete.
+
+The tutorials are made interactive in two ways: exercises and interactive "demos", or "widgets".
+
+Exercises present students with a coding challenge: they must implement some of the ideas in the tutorial. Exercises are meant to encourage deeper engagement with the ideas and conceptual understanding; the actual coding should be straightforward. Each exercise should require not more than a few lines to be written. Exercises are typically structured as a function with clearly defined inputs and outputs and a skeleton describing the operations that must be carried out. Use comments to describe the logic of the function, and provide partial code with `...` indicating where the code needs to be completed.
+
+Exercises cells should include a bit of code the calls the exercise function and produces a visual cue about success or failure -- typically in the form of a plot. An incomplete exercise function should raise a `NotImplementedError` exception with a clear message that the student has a task to complete.
+
+When writing the tutorial notebooks, the exercise cells should be duplicated. One cell should provide the incomplete exercise "stub", and the following cell should provide the exercise solution. The solution should look just like the exercise stub, but the relevant sections should be completed. Solution cells should start with a comment reading `# to_remove solution`; they will be automatically removed during notebook production (see below).
+
+Tutorials should also make use of the [ipywidgets](https://ipywidgets.readthedocs.io/en/stable/) library for interactivity. These "demos" do not require coding, but they build intuition by letting students play with the parameters of a function and see the result through changes in a plot. Interactive demos should pose thought questions to guide the students' interactions and, they can discuss possible answers to those questions in a cell that is structured like an exercise solution but with a `# to_remove explanation` comment in the first line.
+
+Tutorials should be hierarchically organized with meaningful section headers, and they should otherwise use consistent formatting and coding style. The ideal format is described in the [NMA Style Guide](./Neuromatch_Tutorial_Format.ipynb). The Editing process described below will ensure that all notebooks conform to this format, but the process will go more smoothly if it is adopted from the beginning of content creation.
+
+Strive to minimize the amount of unnecessary code that students are exposed to. Colab notebooks will automatically "fold" cells that start with a comment beginning `# @title` or `# @markdown`. Most notebooks have a folded cell near the beginning with utility functions, such as those that download example data or generate plots for the exercises. Some of the tutorials discuss complex algorithms, and these may require larger bodies of code that do not need to be read in detail for conceptual understanding. While this code can also be hidden, it is better to do so in a dedicated cell positioned within the relevant narrative of the notebook so it can be easily accessed by more advanced students.
 
 ## Content Review
 
@@ -52,8 +66,10 @@ If the checks pass, the CI workflow will automatically generate "student" versio
 
 The workflow will also overwrite the original notebook with a "clean" version, which normalizes whitespace, removes cell outputs, and strips Colab metadata. This reduces noise in the GitHub diffs.
 
-The comment with the code report will add links to view the staging branch versions of the student and instructor notebooks on Colab; these should be manually checked to ensure that the conversion process worked as expected. Note that the solution links will point at the master branch, so solution images and scripts may not render properly in these previews. (Check them by looking in the PR's "Files changed" tab).
+The workflow will also re-generate the [`README`](../tutorials/README.md) file, adding links to the Colab notebooks, YouTube playlists, and slide links. Links to the notebooks are generated automatically; links to videos and slides read from text files in the [`tutorials/`](../tutorials/) directory.
 
-If the checks fail, or if the notebook needs further revisions, simple push a new version to the same branch it will restart the process.
+The comment with the code report will also add links to view the staging branch versions of the student and instructor notebooks on Colab; these should be manually checked to ensure that the conversion process worked as expected. Note that the solution links will point at the master branch, so solution images and scripts may not render properly in these previews. (Check them by looking in the PR's "Files changed" tab).
+
+If the checks fail, or if the notebook needs further revisions, edit and then push a new version to the same branch it will restart the process.
 
 Once the tests are passing and the notebooks are in a finalized state, another organizer with commit rights on the GitHub repository can approve the PR and merge. Delete the staging branch after merge to keep things tidy.
