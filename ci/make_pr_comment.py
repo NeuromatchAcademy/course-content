@@ -66,7 +66,7 @@ def make_colab_badge_table(branch, notebooks):
 
     rows = header, divider, instructor, student
     table = "\n".join(
-       ["|" + "|".join(row) + "|" for row in rows]
+        ["|" + "|".join(row) + "|" for row in rows]
     )
     return table
 

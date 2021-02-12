@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 """Check that exercise code matches solution code.
 
-Exercises are allowed to deivate from solutions in several ways:
+Exercises are allowed to deviate from solutions in several ways:
 
 - Exercise code may replace solution code with an ellipsis (...)
 - Exercise code may have "commented-out" solution code
