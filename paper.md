@@ -7,451 +7,456 @@ tags:
   - summer school
 date: 14 Februari 2021
 authors:
- - name: 't Hart, Bernard Marius
+ - name: Bernard Marius 't Hart
    orcid: 0000-0002-0045-3769
    affiliation: 1
- - name: Achakulvisut, Titipat
+ - name: Titipat Achakulvisut
    orcid: 0000-0002-2124-2979
    affiliation: 2
- - name: Adeyemi, Ayoade
+ - name: Ayoade Adeyemi
    affiliation: 3
- - name: Akrami, Athena
+ - name: Athena Akrami
    orcid: 0000-0001-5711-0903
    affiliation: 4
- - name: Alicea, Bradly
+ - name: Bradly Alicea
    orcid: 0000-0003-3869-3175
    affiliation: 5
- - name: Alonso-Andres, Alicia
+ - name: Alicia Alonso-Andres
    affiliation: 6
- - name: Alzate-Correa, Diego
+ - name: Diego Alzate-Correa
    orcid: 0000-0001-5750-0207
    affiliation: 7
- - name: Ash, Arash
+ - name: Arash Ash
    orcid: 0000-0002-5567-0613
    affiliation: 8
- - name: Ballesteros, Jesus J.
+ - name: Jesus J. Ballesteros
    orcid: 0000-0003-2162-5117
    affiliation: 9
- - name: Balwani, Aishwarya
+ - name: Aishwarya Balwani
    orcid: 0000-0002-9234-1632
    affiliation: 10
- - name: Batty, Eleanor
+ - name: Eleanor Batty
    affiliation: 11
- - name: Beierholm, Ulrik
+ - name: Ulrik Beierholm
    orcid: 0000-0002-7296-7996
    affiliation: 12
- - name: Benjamin, Ari S.
+ - name: Ari S. Benjamin
    orcid: 0000-0001-9241-9615
+   affiliation: 2
+ - name: Upinder Bhalla
+   orcid: 0000-0003-1722-5188
    affiliation: 13
- - name: Bhalla, Upinder
-   affiliation: 14
- - name: Blohm, Gunnar
+ - name: Gunnar Blohm
    orcid: 0000-0002-2297-3271
-   affiliation: 15
- - name: Blohm, Joachim C H
-   affiliation: 15
- - name: Bonnen, Kathryn
+   affiliation: 14
+ - name: Joachim C H Blohm
+   affiliation: 14
+ - name: Kathryn Bonnen
    orcid: 0000-0002-9210-8275
-   affiliation: 16
- - name: Brigham, Marco
+   affiliation: 15
+ - name: Marco Brigham
    orcid: 0000-0001-5271-808X
-   affiliation: 17
- - name: Brunton, Bingni
+   affiliation: 16
+ - name: Bingni W Brunton
    orcid: 0000-0002-4831-3466
-   affiliation: 18
- - name: Butler, John S
+   affiliation: 17
+ - name: John S Butler
    orcid: 0000-0001-5567-8634
+   affiliation: 18
+ - name: ccnss CCNSS
    affiliation: 19
- - name: CCNSS
-   affiliation: 20
- - name: Caie, Brandon
-   affiliation: 21
- - name: Cayco Gajic, N Alex
+ - name: Brandon Caie
+   affiliation: 14
+ - name: N Alex Cayco Gajic
    orcid: 0000-0003-3593-5773
-   affiliation: 22
- - name: Chatterjee, Sharbatanu
-   affiliation: 23
- - name: Chavlis, Spyridon
+   affiliation: 20
+ - name: Sharbatanu Chatterjee
+   affiliation: 21
+ - name: Spyridon Chavlis
    orcid: 0000-0002-1046-1201
-   affiliation: 24
- - name: Chen, Ruidong
+   affiliation: 22
+ - name: Ruidong Chen
    orcid: 0000-0003-0163-979X
-   affiliation: 25
- - name: Cheng, You
+   affiliation: 23
+ - name: You Cheng
    orcid: 0000-0002-3141-0104
-   affiliation: 26
- - name: Chow, H.M.
+   affiliation: 24
+ - name: H.M. Chow
    orcid: 0000-0001-6294-1189
+   affiliation: 25
+ - name: Raymond Chua
+   affiliation: 26
+ - name: Yunwei Dai
    affiliation: 27
- - name: Chua, Raymond
-   affiliation: 28
- - name: DAI, YUN-WEI
-   affiliation: 29
- - name: David, Isaac
+ - name: Isaac David
    orcid: 0000-0001-7786-6257
-   affiliation: 30
- - name: DeWitt, Eric EJ
+   affiliation: 28
+ - name: Eric EJ DeWitt
    orcid: 0000-0001-9182-8257
-   affiliation: 31
- - name: Denis, Julien
+   affiliation: 29
+ - name: Julien Denis
    orcid: 0000-0002-0537-6483
-   affiliation: 32
- - name: Dipani, Alish
+   affiliation: 30
+ - name: Alish Dipani
    orcid: 0000-0002-9201-1369
-   affiliation: 33
- - name: Dorschel, Arianna
+   affiliation: 31
+ - name: Arianna Dorschel
    orcid: 0000-0003-4148-1878
-   affiliation: 34
- - name: Drugowitsch, Jan
+   affiliation: 32
+ - name: Jan Drugowitsch
    orcid: 0000-0002-7846-0408
-   affiliation: 35
- - name: Dwivedi, Kshitij
+   affiliation: 33
+ - name: Kshitij Dwivedi
    orcid: 0000-0001-6442-7140
-   affiliation: 36
- - name: Escola, Sean
+   affiliation: 34
+ - name: Sean Escola
    orcid: 0000-0003-0645-1964
-   affiliation: 37
- - name: Fan, Haoxue
-   affiliation: 38
- - name: Farhoodi, Roozbeh
+   affiliation: 35
+ - name: Haoxue Fan
+   affiliation: 36
+ - name: Roozbeh Farhoodi
    orcid: 0000-0003-3374-4041
-   affiliation: 13
- - name: Fei, Yicheng
-   affiliation: 39
- - name: Fiquet, Pierre-Étienne
-   affiliation: 40
- - name: Fontolan, Lorenzo
+   affiliation: 2
+ - name: Yicheng Fei
+   affiliation: 37
+ - name: Pierre-Étienne Fiquet
+   affiliation: 38
+ - name: Lorenzo Fontolan
    orcid: 0000-0002-1566-6636
-   affiliation: 41
- - name: Forest, Jeremy
+   affiliation: 39
+ - name: Jeremy Forest
    orcid: 0000-0002-8486-5559
-   affiliation: 42
- - name: Fujishima, Yuki
-   affiliation: 43
- - name: Galbraith, Byron V
-   affiliation: 44
- - name: Galdamez, Mario
-   orcid: 0000-0002-1626-4823
-   affiliation: 45
- - name: Gao, Richard
-   orcid: 0000-0001-5916-6433
-   affiliation: 46
- - name: Gjorgjieva, Julijana
-   orcid: 0000-0001-7118-4079
-   affiliation: 47
- - name: Gonzalez, Alexander
-   orcid: 0000-0002-7328-9533
-   affiliation: 48
- - name: Gu, Qinglong
-   orcid: 0000-0001-8878-4716
-   affiliation: 49
- - name: Guo, Yueqi
-   orcid: 0000-0002-2731-1058
-   affiliation: 50
- - name: Guo, Ziyi
-   orcid: 0000-0002-0841-2654
-   affiliation: 51
- - name: Gupta, Pankaj K.
-   orcid: 0000-0001-6814-2812
-   affiliation: 52
- - name: Gurbuz, Busra Tugce
-   affiliation: 53
- - name: Haimerl, Caroline
-   orcid: 0000-0003-4964-8003
    affiliation: 40
- - name: Harrod, Jordan B.
+ - name: Yuki Fujishima
+   affiliation: 41
+ - name: Byron V Galbraith
+   affiliation: 42
+ - name: Mario Galdamez
+   orcid: 0000-0002-1626-4823
+   affiliation: 43
+ - name: Richard Gao
+   orcid: 0000-0001-5916-6433
+   affiliation: 44
+ - name: Julijana Gjorgjieva
+   orcid: 0000-0001-7118-4079
+   affiliation: 45
+ - name: Alexander Gonzalez
+   orcid: 0000-0002-7328-9533
+   affiliation: 46
+ - name: Qinglong Gu
+   orcid: 0000-0001-8878-4716
+   affiliation: 47
+ - name: Yueqi Guo
+   orcid: 0000-0002-2731-1058
+   affiliation: 48
+ - name: Ziyi Guo
+   orcid: 0000-0002-0841-2654
+   affiliation: 49
+ - name: Pankaj K. Gupta
+   orcid: 0000-0001-6814-2812
+   affiliation: 50
+ - name: Busra Tugce Gurbuz
+   affiliation: 51
+ - name: Caroline Haimerl
+   orcid: 0000-0003-4964-8003
+   affiliation: 38
+ - name: Jordan B. Harrod
    orcid: 0000-0003-3162-2112
-   affiliation: 54
- - name: Hyafil, Alexandre
+   affiliation: 52
+ - name: Alexandre Hyafil
    orcid: 0000-0002-0566-651X
-   affiliation: 55
- - name: Irani, Martin
+   affiliation: 53
+ - name: Martin Irani
    orcid: 0000-0002-4724-2248
-   affiliation: 56
- - name: Jacobson, Daniel
+   affiliation: 54
+ - name: Daniel Jacobson
    orcid: 0000-0003-0887-4960
-   affiliation: 57
- - name: Johnson, Michelle
+   affiliation: 55
+ - name: Michelle Johnson
    orcid: 0000-0002-7964-0304
    affiliation: 2
- - name: Jones, Ilenna Simone
+ - name: Ilenna Simone Jones
    orcid: 0000-0002-2169-2195
-   affiliation: 13
- - name: Karni, Gili
-   affiliation: 58
- - name: Kass, Robert E.
-   affiliation: 59
- - name: Kim, Hyosub
-   orcid: 0000-0003-0109-593X
-   affiliation: 60
- - name: Kist, Andreas M
-   orcid: 0000-0003-3643-7776
-   affiliation: 61
- - name: Koene, Randal
-   orcid: 0000-0001-8316-5326
-   affiliation: 62
- - name: Kording, Konrad
-   orcid: 0000-0001-8408-4499
-   affiliation: 63
- - name: Krause, Matthew R.
-   affiliation: 64
- - name: Kumar, Arvind
-   orcid: 0000-0002-8044-9195
-   affiliation: 65
- - name: Kühn, Norma K.
-   orcid: 0000-0001-8371-2166
-   affiliation: 66
- - name: LC, RAY
-   orcid: 0000-0001-7310-8790
-   affiliation: 67
- - name: Laporte, Matthew L.
-   orcid: 0000-0002-2643-657X
-   affiliation: 68
- - name: Lee, Junseok
-   orcid: 0000-0002-8622-6259
-   affiliation: 69
- - name: Li, Songting
-   affiliation: 70
- - name: Lin, Sikun
-   affiliation: 71
- - name: Lin, Yang
-   affiliation: 72
- - name: Liu, Shuze
    affiliation: 2
- - name: Liu, Tony
+ - name: Gili Karni
+   affiliation: 56
+ - name: Robert E. Kass
+   affiliation: 57
+ - name: Hyosub Edward Kim
+   orcid: 0000-0003-0109-593X
+   affiliation: 58
+ - name: Andreas M Kist
+   orcid: 0000-0003-3643-7776
+   affiliation: 59
+ - name: Randal Koene
+   orcid: 0000-0001-8316-5326
+   affiliation: 60
+ - name: Konrad Kording
+   orcid: 0000-0001-8408-4499
+   affiliation: 2
+ - name: Matthew R. Krause
+   affiliation: 61
+ - name: Arvind Kumar
+   orcid: 0000-0002-8044-9195
+   affiliation: 62
+ - name: Norma K. Kühn
+   orcid: 0000-0001-8371-2166
+   affiliation: 63
+ - name: RAY LC
+   orcid: 0000-0001-7310-8790
+   affiliation: 64
+ - name: Matthew L. Laporte
+   orcid: 0000-0002-2643-657X
+   affiliation: 14
+ - name: Junseok Lee
+   orcid: 0000-0002-8622-6259
+   affiliation: 65
+ - name: Songting Li
+   affiliation: 66
+ - name: Sikun Lin
+   affiliation: 67
+ - name: Yang Lin
+   affiliation: 68
+ - name: Shuze Liu
+   affiliation: 2
+ - name: Tony Liu
    orcid: 0000-0002-3707-3989
    affiliation: 2
- - name: Livezey, Jesse A.
+ - name: Jesse A. Livezey
    orcid: 0000-0003-0494-8758
-   affiliation: 73
- - name: Lu, Linlin
-   affiliation: 74
- - name: Macke, Jakob H
+   affiliation: 69
+ - name: Linlin Lu
+   affiliation: 70
+ - name: Jakob H Macke
    orcid: 0000-0001-5154-8912
-   affiliation: 75
- - name: Mahaffy, Kelly
-   affiliation: 76
- - name: Martins, A Lucas
-   affiliation: 77
- - name: Martorell, Nicolás
+   affiliation: 71
+ - name: Kelly Mahaffy
+   affiliation: 72
+ - name: A Lucas Martins
+   affiliation: 73
+ - name: Nicolás Martorell
    orcid: 0000-0003-1778-7738
-   affiliation: 78
- - name: Martínez, Manolo
+   affiliation: 74
+ - name: Manolo Martínez
    orcid: 0000-0002-6194-7121
-   affiliation: 79
- - name: Mattar, Marcelo G
+   affiliation: 75
+ - name: Marcelo G Mattar
    orcid: 0000-0003-3303-2490
-   affiliation: 80
- - name: Menendez, Jorge Aurelio
+   affiliation: 76
+ - name: Jorge Aurelio Menendez
    orcid: 0000-0002-5005-8791
-   affiliation: 81
- - name: Miller, Kenneth D
+   affiliation: 77
+ - name: Kenneth D Miller
    orcid: 0000-0002-1433-0647
-   affiliation: 82
- - name: Mineault, Patrick J
+   affiliation: 78
+ - name: Patrick J Mineault
    orcid: 0000-0001-5519-842X
- - name: Mohammadi, Nosratullah
+ - name: Nosratullah Mohammadi
    orcid: 0000-0003-4214-2173
-   affiliation: 83
- - name: Mohsenzadeh, Yalda
+   affiliation: 79
+ - name: Yalda Mohsenzadeh
    orcid: 0000-0001-8525-957X
-   affiliation: 84
- - name: Morgenroth, Elenor
+   affiliation: 80
+ - name: Elenor Morgenroth
    orcid: 0000-0002-1386-6642
-   affiliation: 85
- - name: Morshedzadeh, Taha
+   affiliation: 81
+ - name: Taha Morshedzadeh
    orcid: 0000-0002-0205-7647
-   affiliation: 86
- - name: Mosberger, Alice Claudia
+   affiliation: 82
+ - name: Alice Claudia Mosberger
    orcid: 0000-0003-1114-1469
-   affiliation: 82
- - name: Muliya, Madhuvanthi
-   affiliation: 87
- - name: Mur, Marieke
+   affiliation: 78
+ - name: Madhuvanthi Muliya
+   affiliation: 83
+ - name: Marieke Mur
    orcid: 0000-0003-1749-9058
-   affiliation: 88
- - name: Murray, John D.
+   affiliation: 80
+ - name: John D. Murray
    orcid: 0000-0003-4115-8181
-   affiliation: 89
- - name: ND, Yashas
+   affiliation: 47
+ - name: Yashas ND
    orcid: 0000-0003-0834-2542
-   affiliation: 90
- - name: Naud, Richard
+   affiliation: 84
+ - name: Richard Naud
    orcid: 0000-0001-7383-3095
-   affiliation: 91
- - name: Nayak, Prakriti
+   affiliation: 85
+ - name: Prakriti Nayak
    orcid: 0000-0003-1356-0712
-   affiliation: 92
- - name: Oak, Anushka
-   affiliation: 93
- - name: Olivos Castillo, Itzel
-   affiliation: 39
- - name: Orouji, Seyedmehdi
-   affiliation: 94
- - name: Otero-Millan, Jorge
+   affiliation: 86
+ - name: Anushka Oak
+   affiliation: 87
+ - name: Itzel Olivos Castillo
+   affiliation: 37
+ - name: Seyedmehdi Orouji
+   affiliation: 24
+ - name: Jorge Otero-Millan
    orcid: 0000-0002-9789-8392
-   affiliation: 95
- - name: Pachitariu, Marius
+   affiliation: 88
+ - name: Marius Pachitariu
    orcid: 0000-0001-7106-814X
-   affiliation: 96
- - name: Pandey, Biraj
-   affiliation: 97
- - name: Paredes, Renato
+   affiliation: 89
+ - name: Biraj Pandey
+   affiliation: 17
+ - name: Renato Paredes
    orcid: 0000-0002-8261-3331
-   affiliation: 98
- - name: Parent, Jesse
+   affiliation: 90
+ - name: Jesse Parent
    orcid: 0000-0002-6979-1520
-   affiliation: 99
- - name: Park, Il Memming
+   affiliation: 91
+ - name: Il Memming Park
    orcid: 0000-0002-4255-7750
-   affiliation: 100
- - name: Peters, Megan A. K.
+   affiliation: 92
+ - name: Megan A. K. Peters
    orcid: 0000-0002-0248-0816
-   affiliation: 101
- - name: Pitkow, Xaq
+   affiliation: 24
+ - name: Xaq Pitkow
    orcid: 0000-0001-6376-329X
-   affiliation: 102
- - name: Poirazi, Panayiota
+   affiliation: 93
+ - name: Panayiota Poirazi
    orcid: 0000-0001-6152-595X
-   affiliation: 103
- - name: Popal, Haroon
+   affiliation: 22
+ - name: Haroon Popal
    orcid: 0000-0002-4508-5218
-   affiliation: 104
- - name: Prabhakaran, Sandhya
+   affiliation: 94
+ - name: Sandhya Prabhakaran
    orcid: 0000-0002-9537-507X
-   affiliation: 105
- - name: Qiu, Tian
+   affiliation: 95
+ - name: Tian Qiu
    orcid: 0000-0002-0323-8298
-   affiliation: 106
- - name: Ragunathan, Srinidhi
-   affiliation: 107
- - name: Rodriguez-Cruces, Raul
-   orcid: 0000-0002-2917-1212
-   affiliation: 108
- - name: Rolnick, David
-   affiliation: 109
- - name: Sahoo, Ashish Kumar
-   orcid: 0000-0003-1815-6655
-   affiliation: 110
- - name: Salehinajafabadi, Saeed
-   affiliation: 111
- - name: Savin, Cristina
-   orcid: 0000-0002-3414-8244
-   affiliation: 40
- - name: Saxena, Shreya
-   orcid: 0000-0003-4655-7050
-   affiliation: 112
- - name: Schrater, Paul
-   orcid: 0000-0001-7853-8984
-   affiliation: 113
- - name: Schroeder, Karen
-   orcid: 0000-0003-3149-4659
-   affiliation: 82
- - name: Schwarze, Alice
-   orcid: 0000-0002-9146-8068
+   affiliation: 96
+ - name: Srinidhi Ragunathan
    affiliation: 97
- - name: Sedigh-Sarvestani, Madineh
-   affiliation: 114
- - name: Sekhar, K Yuvaraj
-   affiliation: 115
- - name: Shadmehr, Reza
+ - name: Raul Rodriguez-Cruces
+   orcid: 0000-0002-2917-1212
+   affiliation: 98
+ - name: David Rolnick
+   affiliation: 26
+ - name: Ashish Kumar Sahoo
+   orcid: 0000-0003-1815-6655
+   affiliation: 99
+ - name: Saeed Salehinajafabadi
+   affiliation: 100
+ - name: Cristina Savin
+   orcid: 0000-0002-3414-8244
+   affiliation: 38
+ - name: Shreya Saxena
+   orcid: 0000-0003-4655-7050
+   affiliation: 101
+ - name: Paul Schrater
+   orcid: 0000-0001-7853-8984
+   affiliation: 102
+ - name: Karen Schroeder
+   orcid: 0000-0003-3149-4659
+   affiliation: 78
+ - name: Alice C Schwarze
+   orcid: 0000-0002-9146-8068
+   affiliation: 17
+ - name: Madineh Sedigh-Sarvestani
+   affiliation: 103
+ - name: K Yuvaraj Sekhar
+   affiliation: 104
+ - name: Reza Shadmehr
    orcid: 0000-0002-7686-2569
-   affiliation: 116
- - name: Shanechi, Maryam M.
+   affiliation: 105
+ - name: Maryam M. Shanechi
    orcid: 0000-0002-0544-7720
-   affiliation: 117
- - name: Sharma, Siddhant
+   affiliation: 106
+ - name: Siddhant Sharma
    orcid: 0000-0003-1768-1802
-   affiliation: 118
- - name: Shea-Brown, Eric
-   affiliation: 18
- - name: Shenoy, Krishna V.
+   affiliation: 107
+ - name: Eric Shea-Brown
+   affiliation: 17
+ - name: Krishna V. Shenoy
    orcid: 0000-0003-1534-9240
-   affiliation: 119
- - name: Shimabukuro, Carolina L.
+   affiliation: 108
+ - name: Carolina L. Shimabukuro
    orcid: 0000-0001-5669-4097
-   affiliation: 120
- - name: Shuvaev, Sergey
+   affiliation: 109
+ - name: Sergey Shuvaev
    orcid: 0000-0001-5215-8019
-   affiliation: 121
- - name: Sin, Man Ching Alison
-   affiliation: 122
- - name: Smith, Maurice
+   affiliation: 110
+ - name: Man Ching Alison Sin
+   orcid: 0000-0002-4889-1397
+   affiliation: 111
+ - name: Maurice Smith
    orcid: 0000-0003-4214-1277
-   affiliation: 123
- - name: Stosio, Karolina
-   affiliation: 124
- - name: Straley, Elizabeth
-   affiliation: 45
- - name: Strandquist, Gabrielle
+   affiliation: 112
+ - name: Nicholas A. Steinmetz
+   orcid: 0000-0001-7029-2908
+   affiliation: 17
+ - name: Karolina Stosio
+   affiliation: 113
+ - name: Elizabeth Straley
+   affiliation: 43
+ - name: Gabrielle Strandquist
    orcid: 0000-0002-8345-6905
-   affiliation: 125
- - name: Stringer, Carsen
-   affiliation: 126
- - name: Tomar, Rimjhim
+   affiliation: 17
+ - name: Carsen Stringer
+   affiliation: 89
+ - name: Rimjhim Tomar
    orcid: 0000-0003-1528-976X
-   affiliation: 127
- - name: Tran, Ngoc
-   affiliation: 128
- - name: Triantafillou, Sofia
+   affiliation: 114
+ - name: Ngoc Tran
+   affiliation: 110
+ - name: Sofia Triantafillou
    orcid: 0000-0002-2535-0432
-   affiliation: 129
- - name: Udeigwe, Lawrence
+   affiliation: 115
+ - name: Lawrence Udeigwe
    orcid: 0000-0002-7627-4820
-   affiliation: 130
- - name: Valeriani, Davide
+   affiliation: 116
+ - name: Davide Valeriani
    orcid: 0000-0001-9866-0063
-   affiliation: 131
- - name: Valton, Vincent
+   affiliation: 33
+ - name: Vincent Valton
    orcid: 0000-0002-2508-6731
-   affiliation: 132
- - name: Vaziri-Pashkam, Maryam
+   affiliation: 117
+ - name: Maryam Vaziri-Pashkam
    orcid: 0000-0003-1830-2501
-   affiliation: 133
- - name: Vincent, Peter
+   affiliation: 118
+ - name: Peter Vincent
    orcid: 0000-0002-2641-1874
-   affiliation: 134
- - name: Vishne, Gal
+   affiliation: 119
+ - name: Gal Vishne
    orcid: 0000-0001-7906-2543
-   affiliation: 135
- - name: Wallisch, Pascal
+   affiliation: 120
+ - name: Pascal Wallisch
    orcid: 0000-0001-6047-349X
-   affiliation: 40
- - name: Wang, Peiyuan
+   affiliation: 38
+ - name: Peiyuan Wang
    orcid: 0000-0003-2289-1660
-   affiliation: 136
- - name: Ward, Claire
+   affiliation: 121
+ - name: Claire Ward
    orcid: 0000-0002-1486-4403
-   affiliation: 137
- - name: Waskom, Michael
-   affiliation: 40
- - name: Wei, Kunlin
+   affiliation: 122
+ - name: Michael Waskom
+   affiliation: 38
+ - name: Kunlin Wei
    orcid: 0000-0001-5098-3808
-   affiliation: 138
- - name: Wu, Anqi
+   affiliation: 123
+ - name: Anqi Wu
    orcid: 0000-0002-7866-9455
-   affiliation: 139
- - name: Wu, Zhengwei
-   affiliation: 45
- - name: Wyble, Brad
+   affiliation: 124
+ - name: Zhengwei Wu
+   affiliation: 43
+ - name: Brad Wyble
    orcid: 0000-0002-9984-3037
-   affiliation: 140
- - name: Zhang, Lei
+   affiliation: 125
+ - name: Lei Zhang
    orcid: 0000-0002-9586-595X
-   affiliation: 141
- - name: Zysman, Daniel
+   affiliation: 126
+ - name: Daniel Zysman
    orcid: 0000-0002-5924-1154
-   affiliation: 142
- - name: d'Oleire Uquillas, Federico
+   affiliation: 127
+ - name: Federico d'Oleire Uquillas
    orcid: 0000-0001-9078-9452
-   affiliation: 143
- - name: van Viegen, Tara
+   affiliation: 128
+ - name: Tara van Viegen
    orcid: 0000-0001-6109-1004
-   affiliation: 144
+   affiliation: 128
 affiliations:
- - name: York University, Toronto
+ - name: CVR, York University, Toronto
    index: 1
- - name: University of Pennsylvania
+ - name: University of Pennsylvania, Philadelphia
    index: 2
  - name: Square wave Limited
    index: 3
@@ -473,271 +478,238 @@ affiliations:
    index: 11
  - name: Durham University, England
    index: 12
- - name: University of Pennsylvania, Philadelphia
+ - name: National Centre for Biological Sciences, Tata Institute of Fundamental Research, Bangalore, India
    index: 13
- - name: National Centre for Biological Sciences, Tata Institute of Fundamental Research
+ - name: Center for Neuroscience Studies, Queen’s University, Kingston, Ontario
    index: 14
- - name: Center for Neuroscience Studies, Queen’s University, Kingston, Ontario 
-   index: 15
  - name: New York University, New York City
-   index: 16
+   index: 15
  - name: Narrativa Comum Lda
-   index: 17
- - name: University of Washington
-   index: 18
- - name: TU Dublin, School of Mathematical Sciences, City Campus, Dublin Ireland
-   index: 19
- - name: Computational and Cognitive Neuroscience Summer School: https://www.ccnss.org/
-   index: 20
- - name: Queen's University
-   index: 21
- - name: Ecole Normale Supérieure, PSL University, Paris
-   index: 22
- - name: University College London (presently Laboratoire Jean Perrin, Sorbonne Université)
-   index: 23
- - name: Foundation for Research and Technology Hellas (FORTH), Greece
-   index: 24
- - name: Massachusetts Institute of Technology
-   index: 25
- - name: University of California, Irvine
-   index: 26
- - name: The University of British Columbia, Vancouver, Canada
-   index: 27
- - name: McGill University & Mila, Montreal
-   index: 28
- - name: East China Normal University, Shanghai
-   index: 29
- - name: National Autonomous University of Mexico
-   index: 30
- - name: Champalimaud Research, Lisbon
-   index: 31
- - name: INMED, Marseille
-   index: 32
- - name: Upload AI LLC
-   index: 33
- - name: ETH Zürich
-   index: 34
- - name: Harvard Medical School
-   index: 35
- - name: Goethe University Frankfurt
-   index: 36
- - name: Columbia University
-   index: 37
- - name: Harvard University, Cambridge, MA, USA
-   index: 38
- - name: Rice University
-   index: 39
- - name: New York University
-   index: 40
- - name: Howard Hughes Medical Institute
-   index: 41
- - name: New York University, New York
-   index: 42
- - name: Kyushu University
-   index: 43
- - name: Talla, Inc
-   index: 44
- - name: Baylor College of Medicine
-   index: 45
- - name: University of California San Diego
-   index: 46
- - name: Max Planck Institute for Brain Research, Frankfurt, Germany
-   index: 47
- - name: Stanford University
-   index: 48
- - name: Yale University, New Haven
-   index: 49
- - name: Johns Hopkins University, Baltimore MD
-   index: 50
- - name: Brandeis University
-   index: 51
- - name: University of British Columbia
-   index: 52
- - name: Bilkent University, Turkey
-   index: 53
- - name: Harvard-MIT Health Sciences and Technology, Cambridge MA
-   index: 54
- - name: Centre de Recerca Matemàtica
-   index: 55
- - name: Neurodynamics of Cognition Laboratory, School of Medicine, Pontificia Universidad Catolica de Chile
-   index: 56
- - name: Lockheed Martin
-   index: 57
- - name: Minerva schools at KGI
-   index: 58
- - name: Carnegie Mellon University
-   index: 59
- - name: University of Delaware
-   index: 60
- - name: 1Division of Phoniatrics and Pediatric Audiology, Department of Otorhinolaryngology, Head & Neck Surgery, University Hospital Erlangen, Friedrich-Alexander-University Erlangen-Nürnberg, Waldstr. 1, 91054 Erlangen, Germany
-   index: 61
- - name: Carboncopies Brain Research Foundation, San Francisco
-   index: 62
- - name: Upenn
-   index: 63
- - name: Montreal Neurological Institute, McGill University
-   index: 64
- - name: KTH Royal Institute of Technology, Stockholm, Sweden
-   index: 65
- - name: Neuro-Electronics Research Flanders empowered by imec, VIB and KU Leuven
-   index: 66
- - name: City University of Hong Kong
-   index: 67
- - name: Queen's University, Kingston
-   index: 68
- - name: Ecole Normale Supérieure, Paris, France
-   index: 69
- - name: School of Mathematical Sciences, MOE-LSC, and Institute of Natural Sciences, Shanghai Jiao Tong University, Shanghai, China
-   index: 70
- - name: University of California, Santa Barbara
-   index: 71
- - name: Tsinghua University
-   index: 72
- - name: Lawrence Berkeley National Laboratory
-   index: 73
- - name: Peking University, Suoxinda 
-   index: 74
- - name: University of Tübingen and Max Planck Institute for Intelligent Systems
-   index: 75
- - name: University of Connecticut
-   index: 76
- - name: Champalimaud Center for the Unknown
-   index: 77
- - name: University of Buenos Aires
-   index: 78
- - name: Universitat de Barcelona
-   index: 79
- - name: University of California, San Diego
-   index: 80
- - name: Gatsby Computational Neuroscience Unit, University College London
-   index: 81
- - name: Columbia University, New York
-   index: 82
- - name: Institute for Advanced Studies in Basic Sciences (IASBS)
-   index: 83
- - name: University of Western Ontario, London, ON, Canada
-   index: 84
- - name: Ecole Polytechnique Federale Lausanne
-   index: 85
- - name: University of Toronto, Toronto
-   index: 86
- - name: SASTRA Deemed University, Thanjavur, India
-   index: 87
- - name: Western University, London
-   index: 88
- - name: Yale University
-   index: 89
- - name: PES University, Bengaluru
-   index: 90
- - name: University of Ottawa, Ottawa
-   index: 91
- - name: King's College London
-   index: 92
- - name: University of Houston
-   index: 93
- - name: University of California-Irvine
-   index: 94
- - name: University of California, Berkeley
-   index: 95
- - name: HHMI Janelia
-   index: 96
+   index: 16
  - name: University of Washington, Seattle
-   index: 97
- - name: The University of Edinburgh
-   index: 98
- - name: Orthogonal Research and Education Lab, Champaign-Urbana, IL USA
-   index: 99
- - name: Stony Brook University
-   index: 100
- - name: University of California, Irvine, Irvine, CA 92697 USA
-   index: 101
- - name: Baylor College of Medicine, Rice University, Houston TX
-   index: 102
- - name: Institute of Molecular Biology and Biotechnology (IMBB), Foundation of Research and Technology-Hellas (FORTH), Heraklion, Crete GREECE
-   index: 103
- - name: Temple University, Philadelphia
-   index: 104
- - name: Moffitt Cancer Center, Florida
-   index: 105
- - name: Institute of Neuroscience, Chinese Academy of Science, Shanghai
-   index: 106
- - name: Cactus Communication, India 
-   index: 107
- - name: McGill University
-   index: 108
- - name: McGill University, Montreal
-   index: 109
- - name: National Institute of Science Education and Research, India
-   index: 110
- - name: Bernstein Center for Computational Neuroscience. Berlin
-   index: 111
- - name: University of Florida, Gainesville, FL
-   index: 112
- - name: University of Minnesota, Minneapolis MN
-   index: 113
- - name: Max Planck Florida Institute for Neuroscience
-   index: 114
- - name: Freelance Machine Learning Consultant
-   index: 115
- - name: Johns Hopkins University
-   index: 116
- - name: University of Southern California
-   index: 117
- - name: Deshbandhu College, University of Delhi, India
-   index: 118
- - name: Departments of Electrical Engineering, Bioengineering and Neurobiology, Stanford University, Stanford CA 94305 and Howard Hughes Medical Institute at Stanford University, Stanford, CA 94305
-   index: 119
- - name: University of Buenos Aires, Argentina
-   index: 120
- - name: Cold Spring Harbor Laboratory, Cold Spring Harbor, NY, 11724 USA
-   index: 121
- - name: Cornell University
-   index: 122
- - name: Harvard University, School of Engineering and Applied Sciences, Cambridge MA
-   index: 123
- - name: Volkswagen Group Machine Learning Research Lab, Munich
-   index: 124
- - name: The University of Washington
-   index: 125
+   index: 17
+ - name: TU Dublin, School of Mathematical Sciences, City Campus, Dublin Ireland
+   index: 18
+ - name: Computational and Cognitive Neuroscience Summer School: https://www.ccnss.org/
+   index: 19
+ - name: Ecole Normale Supérieure, PSL University, Paris
+   index: 20
+ - name: University College London (presently Laboratoire Jean Perrin, Sorbonne Université)
+   index: 21
+ - name: Institute of Molecular Biology and Biotechnology (IMBB), Foundation for Research and Technology-Hellas (FORTH), Greece
+   index: 22
+ - name: Massachusetts Institute of Technology
+   index: 23
+ - name: University of California, Irvine
+   index: 24
+ - name: The University of British Columbia, Vancouver, Canada
+   index: 25
+ - name: McGill University & Mila, Montreal
+   index: 26
+ - name: East China Normal University, Shanghai
+   index: 27
+ - name: National Autonomous University of Mexico
+   index: 28
+ - name: Champalimaud Research, Lisbon
+   index: 29
+ - name: INMED, Marseille
+   index: 30
+ - name: Upload AI LLC
+   index: 31
+ - name: ETH Zürich
+   index: 32
+ - name: Harvard Medical School, Boston MA
+   index: 33
+ - name: Goethe University Frankfurt
+   index: 34
+ - name: Columbia University
+   index: 35
+ - name: Harvard University, Cambridge, MA, USA
+   index: 36
+ - name: Rice University
+   index: 37
+ - name: New York University
+   index: 38
+ - name: Howard Hughes Medical Institute
+   index: 39
+ - name: New York University, New York
+   index: 40
+ - name: Kyushu University
+   index: 41
+ - name: Talla, Inc
+   index: 42
+ - name: Baylor College of Medicine
+   index: 43
+ - name: University of California San Diego
+   index: 44
+ - name: Max Planck Institute for Brain Research, Frankfurt, Germany
+   index: 45
+ - name: Stanford University
+   index: 46
+ - name: Yale University
+   index: 47
+ - name: Johns Hopkins University, Baltimore MD
+   index: 48
+ - name: Brandeis University
+   index: 49
+ - name: University of British Columbia
+   index: 50
+ - name: Bilkent University, Turkey
+   index: 51
+ - name: Harvard-MIT Health Sciences and Technology, Cambridge MA
+   index: 52
+ - name: Centre de Recerca Matemàtica
+   index: 53
+ - name: Neurodynamics of Cognition Laboratory, School of Medicine, Pontificia Universidad Catolica de Chile
+   index: 54
+ - name: Lockheed Martin
+   index: 55
+ - name: Minerva schools at KGI
+   index: 56
+ - name: Carnegie Mellon University
+   index: 57
+ - name: University of Delaware
+   index: 58
+ - name: 1Division of Phoniatrics and Pediatric Audiology, Department of Otorhinolaryngology, Head & Neck Surgery, University Hospital Erlangen, Friedrich-Alexander-University Erlangen-Nürnberg, Waldstr. 1, 91054 Erlangen, Germany
+   index: 59
+ - name: Carboncopies Brain Research Foundation, San Francisco
+   index: 60
+ - name: Montreal Neurological Institute, McGill University
+   index: 61
+ - name: KTH Royal Institute of Technology, Stockholm, Sweden
+   index: 62
+ - name: Neuro-Electronics Research Flanders empowered by imec, VIB and KU Leuven
+   index: 63
+ - name: City University of Hong Kong
+   index: 64
+ - name: Ecole Normale Supérieure, Paris, France
+   index: 65
+ - name: School of Mathematical Sciences, MOE-LSC, and Institute of Natural Sciences, Shanghai Jiao Tong University, Shanghai, China
+   index: 66
+ - name: University of California, Santa Barbara
+   index: 67
+ - name: Tsinghua University
+   index: 68
+ - name: Lawrence Berkeley National Laboratory
+   index: 69
+ - name: Peking University, Suoxinda 
+   index: 70
+ - name: University of Tübingen and Max Planck Institute for Intelligent Systems
+   index: 71
+ - name: University of Connecticut
+   index: 72
+ - name: Champalimaud Center for the Unknown
+   index: 73
+ - name: University of Buenos Aires
+   index: 74
+ - name: Universitat de Barcelona
+   index: 75
+ - name: University of California, San Diego
+   index: 76
+ - name: Gatsby Computational Neuroscience Unit, University College London
+   index: 77
+ - name: Columbia University, New York
+   index: 78
+ - name: Institute for Advanced Studies in Basic Sciences (IASBS)
+   index: 79
+ - name: Western University, London, ON
+   index: 80
+ - name: Ecole Polytechnique Federale Lausanne
+   index: 81
+ - name: University of Toronto, Toronto
+   index: 82
+ - name: SASTRA Deemed University, Thanjavur, India
+   index: 83
+ - name: PES University, Bengaluru
+   index: 84
+ - name: University of Ottawa, Ottawa
+   index: 85
+ - name: King's College London
+   index: 86
+ - name: University of Houston
+   index: 87
+ - name: University of California, Berkeley
+   index: 88
  - name: HHMI Janelia Research Campus
-   index: 126
+   index: 89
+ - name: The University of Edinburgh
+   index: 90
+ - name: Orthogonal Research and Education Lab, Champaign-Urbana, IL USA
+   index: 91
+ - name: Stony Brook University
+   index: 92
+ - name: Baylor College of Medicine, Rice University, Houston TX
+   index: 93
+ - name: Temple University, Philadelphia
+   index: 94
+ - name: Moffitt Cancer Center, Florida
+   index: 95
+ - name: Institute of Neuroscience, Chinese Academy of Science, Shanghai
+   index: 96
+ - name: Cactus Communication, India 
+   index: 97
+ - name: McGill University
+   index: 98
+ - name: National Institute of Science Education and Research, India
+   index: 99
+ - name: Bernstein Center for Computational Neuroscience. Berlin
+   index: 100
+ - name: University of Florida, Gainesville, FL
+   index: 101
+ - name: University of Minnesota, Minneapolis MN
+   index: 102
+ - name: Max Planck Florida Institute for Neuroscience
+   index: 103
+ - name: Freelance Machine Learning Consultant
+   index: 104
+ - name: Johns Hopkins University
+   index: 105
+ - name: University of Southern California
+   index: 106
+ - name: Blue Marble Space Institute of Science, Seattle, Washington, USA
+   index: 107
+ - name: Departments of Electrical Engineering, Bioengineering and Neurobiology, Stanford University, Stanford CA 94305 and Howard Hughes Medical Institute at Stanford University, Stanford, CA 94305
+   index: 108
+ - name: University of Buenos Aires, Argentina
+   index: 109
+ - name: Cold Spring Harbor Laboratory
+   index: 110
+ - name: Cornell University
+   index: 111
+ - name: Harvard University, School of Engineering and Applied Sciences, Cambridge MA
+   index: 112
+ - name: Volkswagen Group Machine Learning Research Lab, Munich
+   index: 113
  - name: Czech Academy of Sciences, Prague
-   index: 127
- - name: Cold Spring Habor Laboratory
-   index: 128
+   index: 114
  - name: University of Pittsburgh
-   index: 129
+   index: 115
  - name: Manhattan College
-   index: 130
- - name: Massachusetts Eye and Ear, Harvard Medical School, Boston MA
-   index: 131
+   index: 116
  - name: University College London
-   index: 132
+   index: 117
  - name: National Institute of Mental Health
-   index: 133
+   index: 118
  - name: Sainsbury Wellcome Centre
-   index: 134
+   index: 119
  - name: The Hebrew University, Jerusalem, Israel
-   index: 135
+   index: 120
  - name: Arizona State University, Tempe, AZ
-   index: 136
+   index: 121
  - name: Albert Einstein College of Medicine
-   index: 137
+   index: 122
  - name: Peking University
-   index: 138
+   index: 123
  - name: Columbia University, USA
-   index: 139
+   index: 124
  - name: Penn State University, State College, PA
-   index: 140
+   index: 125
  - name: Department of Cognition, Emotion, and Methods in Psychology, Faculty of Psychology, University of Vienna, Vienna, Austria
-   index: 141
+   index: 126
  - name: DeepLearning.AI
-   index: 142
- - name: Princeton University, Princeton, NJ
-   index: 143
- - name: Princeton Neuroscience Institute, Princeton University, NJ, US
-   index: 144
-
+   index: 127
+ - name: Princeton Neuroscience Institute, Princeton University, NJ, USA
+   index: 128
 ---
 
 # Neuromatch Academy: a 3-week, online summer school in computational neuroscience
@@ -849,18 +821,18 @@ For self-study or mixing the NMA course content with other content, we provide a
 
 | Team                           | Members                                                      |
 | ------------------------------ | ------------------------------------------------------------ |
-| Curriculum Design & Management | Akrami A; Hyafil A; Kumar A; Wyble B; Stringer C; DeWitt EEJ; d'Oleire Uquillas F; Blohm G; Murray JD; Macke JH; Bonnen K; Kording K; Peters MAK; Schrater P; Wallisch P; Mineault PJ; Escola S; van Viegen T; Valton V; Pitkow X |
-| Group Projects                 | Akrami A; Alicea B; Straley E; DeWitt EEJ; Strandquist G; Parent J; Lee J; Murray JD; Butler JS; Zhang L; Waskom M; Pachitariu M; Mohammadi N; Schrater P; Gupta PK; Rodriguez-Cruces R; LC RAY; Saxena S; Sharma S; Morshedzadeh T; Valton V; Pitkow X |
-| Day Coordinators               | W0D1, Brigham M; W1D2, Blohm G; W1D3, Hyafil A; W1D4, Macke JH; W1D5, Murray JD; W2D1, Kording K; W2D2, Brunton B; W2D3, Wallisch P; W2D4, Pitkow X; W2D5, DeWitt EEJ; W3D1, Kumar A; W3D2, Kumar A; W3D3, Kording K; W3D4, Stringer C; W3D5, DeWitt EEJ |
+| Curriculum Design & Management | Akrami A; Blohm G; Bonnen K; DeWitt EEJ; Escola S; Hyafil A; Kording K; Kumar A; Macke JH; Mineault PJ; Murray JD; Peters MAK; Pitkow X; Schrater P; Stringer C; Valton V; Wallisch P; Wyble B; d'Oleire Uquillas F; van Viegen T |
+| Group Projects                 | Akrami A, Alicea B, Butler JS, DeWitt EEJ, Gupta PK, LC RAY, Lee J, Mohammadi N, Murray JD, Pachitariu M, Parent J, Pitkow X, Rodriguez-Cruces R, Saxena S, Schrater P, Sharma S, Steinmetz "NA", Straley E, Strandquist G, Valton V, Waskom M, Zhang L |
+| Day Coordinators               | W0D1: Brigham M, W1D2: Blohm G, W1D3: Hyafil A, W1D4: Macke JH, W1D5: Murray JD, W2D1: Kording K, W2D2: Brunton BW, W2D3: Wallisch P, W2D4: Pitkow X, W2D5: DeWitt EEJ, W3D1: Kumar A, W3D2: Kumar A, W3D3: Kording K, W3D4: Stringer C, W3D5: DeWitt EEJ |
 | Intro & Outro Lecturers        | W0D1: Brigham M, W1D1: Blohm G, Peters MAK, W1D2: Blohm G, Peters MAK, W1D3: Drugowitsch J, Wei K, W1D4: Park IM, Savin C, W2D1: Kording K, Schrater P, Pitkow X, W2D2: Shea-Brown E, Shenoy KV, W2D3: Escola S, Shanechi MM, W2D4: Shadmehr R, Smith M, W3D1: Bhalla U, Poirazi P, W3D2: Miller KD, W3D3: Kording K, Kass RE, Triantafillou S, W3D4: Johnson M, Mur M, W3D5: Rolnick D |
-| Micro-Lecturers                | W0D1: Brigham M, W1D1: Kording K, W1D2: Blohm G, Schrater P, W1D3: Wu A, W1D4: Wu A, W1D5: Cayco Gajic NA, W2D1: Kording K, Valton V, W2D2: Brunton B, W2D3: Fei Y, W2D4: Pitkow X, W2D5: DeWitt EEJ, Mattar MG, W3D1: Naud R, W3D2: Gjorgjieva J, W3D3: Kording K, Liu T, W3D4: Stringer C, Mohsenzadeh Y, W3D5: Brigham M |
-| Tutorial writers               | W0D1: Brigham M, CCNSS W1D1: Kording K, Galbraith BV, Laporte ML, W1D2: Blohm G, Schrater P, 't Hart BM, W1D3: Fiquet PÉ, Galbraith BV, W1D4: Benjamin AS, Fiquet PÉ, W1D5: Murray JD, Cayco Gajic NA, W2D1: Kording K, Valton V, Krause MR, W2D2: Brunton B, Pandey B, Schwarze A, Strandquist G, Pitkow X, W2D3: Fei Y, Galbraith BV, Haimerl C, Livezey JA, Pitkow X, W2D4: Schrater P, Saxena S, Wu Z, Pitkow X, W2D5: DeWitt EEJ, Galbraith BV, Krause MR, Mattar MG, W3D1: Kumar A, Murray JD, Gu Q, Li S, W3D2: Kumar A, Murray JD, Gjorgjieva J, Gu Q, Li S, W3D3: Kording K, Benjamin AS, Liu T, W3D4: Stringer C, Menendez JA, W3D5: DeWitt EEJ, Brigham M |
+| Micro-Lecturers                | W0D1: Brigham M, W1D1: Kording K, W1D2: Blohm G, Schrater P, W1D3: Wu A, W1D4: Wu A, W1D5: Cayco Gajic NA, W2D1: Kording K, Valton V, W2D2: Brunton BW, W2D3: Fei Y, W2D4: Pitkow X, W2D5: DeWitt EEJ, Mattar MG, W3D1: Naud R, W3D2: Gjorgjieva J, W3D3: Kording K, Liu T, W3D4: Stringer C, Mohsenzadeh Y, W3D5: Brigham M |
+| Tutorial writers               | W0D1: Brigham M, CCNSS " ", W1D1: Kording K, Galbraith BV, Laporte ML, W1D2: Blohm G, Schrater P, 't Hart BM, W1D3: Fiquet PÉ, Galbraith BV, W1D4: Benjamin AS, Fiquet PÉ, W1D5: Murray JD, Cayco Gajic "NA", W2D1: Kording K, Valton V, Krause MR, W2D2: Brunton BW, Pandey B, Schwarze AC, Strandquist G, Pitkow X, W2D3: Fei Y, Galbraith BV, Haimerl C, Livezey JA, Pitkow X, W2D4: Schrater P, Saxena S, Wu Z, Pitkow X, W2D5: DeWitt EEJ, Galbraith BV, Krause MR, Mattar MG, W3D1: Kumar A, Murray JD, Gu Q, Li S, W3D2: Kumar A, Murray JD, Gjorgjieva J, Gu Q, Li S, W3D3: Kording K, Benjamin AS, Liu T, W3D4: Stringer C, Menendez JA, W3D5: DeWitt EEJ, Brigham M |
 | Code Editing & Management      | Bonnen, K; Batty, E; Chavlis, S; Dwivedi, K; Farhoodi, R; Fontolan, L; Galbraith, BV; Gao, R; Krause, MR; Kording, K; Kühn, NK; Livezey, JA; Laporte, ML; Mineault, PJ; Parent, J; Pandey, B; Pitkow, X; Sedigh-Sarvestani, M; Sharma, S; Salehinajafabadi, S; Strandquist, G; Valton, V; Waskom, M; Wu, Z |
-| Quality Control & Testing      | Alicea, B; Bonnen, K; Balwani, A; Beierholm, U; Butler, JS; Cheng, Y; Chua, R; Caie, B; David, I; DeWitt, EEJ; Dipani, A; Farhoodi, R; Gupta, PK; Gonzalez, A; Jones, IS; Jacobson, D; Kording, K; Koene, R; Kist, AM; Kim, H; LC, RAY; Laporte, ML; Lu, L; Morshedzadeh, T; Martorell, N; Orouji, S; Oak, A; Olivos Castillo, I; Popal, H; Paredes, R; Prabhakaran, S; Pitkow, X; Parent, J; Rodriguez-Cruces, R; Schroeder, K; Sharma, S; Stosio, K; Salehinajafabadi, S; Sedigh-Sarvestani, M; Strandquist, G; Tomar, R; Udeigwe, L; Vaziri-Pashkam, M; Valeriani, D; Zysman, D; Zhang, L |
+| Quality Control & Testing      | Alicea, B; Bonnen, K; Balwani, A; Beierholm, U; Butler, JS; Cheng, Y; Chua, R; Caie, B; David, I; DeWitt, EEJ; Dipani, A; Farhoodi, R; Gupta, PK; Gonzalez, A; Jones, IS; Jacobson, D; Kording, K; Koene, R; Kist, AM; Kim, HE; LC, RAY; Laporte, ML; Lu, L; Morshedzadeh, T; Martorell, N; Orouji, S; Oak, A; Olivos Castillo, I; Popal, H; Paredes, R; Prabhakaran, S; Pitkow, X; Parent, J; Rodriguez-Cruces, R; Schroeder, K; Sharma, S; Stosio, K; Salehinajafabadi, S; Sedigh-Sarvestani, M; Strandquist, G; Tomar, R; Udeigwe, L; Vaziri-Pashkam, M; Valeriani, D; Zysman, D; Zhang, L |
 | Copyright Checks & Corrections | Blohm, G; Jacobson, D; Karni, G; Kording, K; LC, RAY; Martorell, N; Morgenroth, E; Parent, J; Park, IM; Sedigh-Sarvestani, M; Stringer, C; Shuvaev, S; Tran, N; Udeigwe, L; Ward, C |
-| Video Editing                  | Adeyemi, A; Ash, A; Alicea, B; Blohm, JCH; Fujishima, Y; Forest, J; Gurbuz, BT; Harrod, JB; Irani, M; Lin, S; Mohammadi, N; Mineault, PJ; Nayak, P; Oak, A; Qiu, T; Vaziri-Pashkam, M; van Viegen, T; Valeriani, D |
+| Video Editing                  | Adeyemi, A; Ash, A; Alicea, B; Blohm, JCH; d'Oleire Uquillas, F; Fujishima, Y; Forest, J; Gurbuz, BT; Harrod, JB; Irani, M; Lin, S; Mohammadi, N; Mineault, PJ; Nayak, P; Oak, A; Qiu, T; Valeriani, D; van Viegen, T; Vaziri-Pashkam, M |
 | Captioning                     | Blohm, JCH; Chow, HM; Chatterjee, S; Dorschel, A; Denis, J; Fan, H; Martins, AL; Mosberger, AC; Muliya, M; Mahaffy, K; ND, Y; Olivos Castillo, I; Ragunathan, S; Sekhar, KY; Sin, MCA; Sahoo, AK; Vishne, G |
 | Spanish Translations           | Alzate-Correa, D; Alonso-Andres, A; Ballesteros, JJ; Galdamez, M; Martínez, M; Otero-Millan, J; Shimabukuro, CL; Vincent, P |
-| Mandarin Translations          | Chen, R; Chow, HM; DAI, YUNWEI; Fan, H; Guo, Y; Guo, Z; Lin, Y; Liu, S; Wang, P |
+| Mandarin Translations          | Chen, R; Chow, HM; Dai, Y; Fan, H; Guo, Y; Guo, Z; Lin, Y; Liu, S; Wang, P |
 
-
+**Table A2: Contributions of Neuromatch Academy content creators.**
