@@ -251,6 +251,7 @@ authors:
    affiliation: 77
  - name: Patrick J Mineault
    orcid: 0000-0001-5519-842X
+   affiliation: 
  - name: Nosratullah Mohammadi
    orcid: 0000-0003-4214-2173
    affiliation: 78
@@ -311,7 +312,7 @@ authors:
    affiliation: 24
  - name: Xaq Pitkow
    orcid: 0000-0001-6376-329X
-   affiliation: 92
+   affiliation: 43,92
  - name: Panayiota Poirazi
    orcid: 0000-0001-6152-595X
    affiliation: 22
@@ -636,7 +637,7 @@ affiliations:
    index: 90
  - name: Stony Brook University
    index: 91
- - name: Baylor College of Medicine, Rice University, Houston TX
+ - name: Rice University, Houston TX
    index: 92
  - name: Temple University, Philadelphia
    index: 93
