@@ -154,24 +154,24 @@ authors:
    affiliation: 49
  - name: Pankaj K. Gupta
    orcid: 0000-0001-6814-2812
-   affiliation: 50
+   affiliation: 25
  - name: Busra Tugce Gurbuz
-   affiliation: 51
+   affiliation: 50
  - name: Caroline Haimerl
    orcid: 0000-0003-4964-8003
    affiliation: 38
  - name: Jordan B. Harrod
    orcid: 0000-0003-3162-2112
-   affiliation: 52
+   affiliation: 51
  - name: Alexandre Hyafil
    orcid: 0000-0002-0566-651X
-   affiliation: 53
+   affiliation: 52
  - name: Martin Irani
    orcid: 0000-0002-4724-2248
-   affiliation: 54
+   affiliation: 53
  - name: Daniel Jacobson
    orcid: 0000-0003-0887-4960
-   affiliation: 55
+   affiliation: 54
  - name: Michelle Johnson
    orcid: 0000-0002-7964-0304
    affiliation: 2
@@ -179,44 +179,44 @@ authors:
    orcid: 0000-0002-2169-2195
    affiliation: 2
  - name: Gili Karni
-   affiliation: 56
+   affiliation: 55
  - name: Robert E. Kass
-   affiliation: 57
+   affiliation: 56
  - name: Hyosub Edward Kim
    orcid: 0000-0003-0109-593X
-   affiliation: 58
+   affiliation: 57
  - name: Andreas M Kist
    orcid: 0000-0003-3643-7776
-   affiliation: 59
+   affiliation: 58
  - name: Randal Koene
    orcid: 0000-0001-8316-5326
-   affiliation: 60
+   affiliation: 59
  - name: Konrad Kording
    orcid: 0000-0001-8408-4499
    affiliation: 2
  - name: Matthew R. Krause
-   affiliation: 61
+   affiliation: 60
  - name: Arvind Kumar
    orcid: 0000-0002-8044-9195
-   affiliation: 62
+   affiliation: 61
  - name: Norma K. Kühn
    orcid: 0000-0001-8371-2166
-   affiliation: 63
+   affiliation: 62
  - name: RAY LC
    orcid: 0000-0001-7310-8790
-   affiliation: 64
+   affiliation: 63
  - name: Matthew L. Laporte
    orcid: 0000-0002-2643-657X
    affiliation: 14
  - name: Junseok Lee
    orcid: 0000-0002-8622-6259
-   affiliation: 65
+   affiliation: 64
  - name: Songting Li
-   affiliation: 66
+   affiliation: 65
  - name: Sikun Lin
-   affiliation: 67
+   affiliation: 66
  - name: Yang Lin
-   affiliation: 68
+   affiliation: 67
  - name: Shuze Liu
    affiliation: 2
  - name: Tony Liu
@@ -224,235 +224,235 @@ authors:
    affiliation: 2
  - name: Jesse A. Livezey
    orcid: 0000-0003-0494-8758
-   affiliation: 69
+   affiliation: 68
  - name: Linlin Lu
-   affiliation: 70
+   affiliation: 69
  - name: Jakob H Macke
    orcid: 0000-0001-5154-8912
-   affiliation: 71
+   affiliation: 70
  - name: Kelly Mahaffy
-   affiliation: 72
+   affiliation: 71
  - name: A Lucas Martins
-   affiliation: 73
+   affiliation: 72
  - name: Nicolás Martorell
    orcid: 0000-0003-1778-7738
-   affiliation: 74
+   affiliation: 73
  - name: Manolo Martínez
    orcid: 0000-0002-6194-7121
-   affiliation: 75
+   affiliation: 74
  - name: Marcelo G Mattar
    orcid: 0000-0003-3303-2490
-   affiliation: 76
+   affiliation: 75
  - name: Jorge Aurelio Menendez
    orcid: 0000-0002-5005-8791
-   affiliation: 77
+   affiliation: 76
  - name: Kenneth D Miller
    orcid: 0000-0002-1433-0647
-   affiliation: 78
+   affiliation: 77
  - name: Patrick J Mineault
    orcid: 0000-0001-5519-842X
  - name: Nosratullah Mohammadi
    orcid: 0000-0003-4214-2173
-   affiliation: 79
+   affiliation: 78
  - name: Yalda Mohsenzadeh
    orcid: 0000-0001-8525-957X
-   affiliation: 80
+   affiliation: 79
  - name: Elenor Morgenroth
    orcid: 0000-0002-1386-6642
-   affiliation: 81
+   affiliation: 80
  - name: Taha Morshedzadeh
    orcid: 0000-0002-0205-7647
-   affiliation: 82
+   affiliation: 81
  - name: Alice Claudia Mosberger
    orcid: 0000-0003-1114-1469
-   affiliation: 78
+   affiliation: 77
  - name: Madhuvanthi Muliya
-   affiliation: 83
+   affiliation: 82
  - name: Marieke Mur
    orcid: 0000-0003-1749-9058
-   affiliation: 80
+   affiliation: 79
  - name: John D. Murray
    orcid: 0000-0003-4115-8181
    affiliation: 47
  - name: Yashas ND
    orcid: 0000-0003-0834-2542
-   affiliation: 84
+   affiliation: 83
  - name: Richard Naud
    orcid: 0000-0001-7383-3095
-   affiliation: 85
+   affiliation: 84
  - name: Prakriti Nayak
    orcid: 0000-0003-1356-0712
-   affiliation: 86
+   affiliation: 85
  - name: Anushka Oak
-   affiliation: 87
+   affiliation: 86
  - name: Itzel Olivos Castillo
    affiliation: 37
  - name: Seyedmehdi Orouji
    affiliation: 24
  - name: Jorge Otero-Millan
    orcid: 0000-0002-9789-8392
-   affiliation: 88
+   affiliation: 87
  - name: Marius Pachitariu
    orcid: 0000-0001-7106-814X
-   affiliation: 89
+   affiliation: 88
  - name: Biraj Pandey
    affiliation: 17
  - name: Renato Paredes
    orcid: 0000-0002-8261-3331
-   affiliation: 90
+   affiliation: 89
  - name: Jesse Parent
    orcid: 0000-0002-6979-1520
-   affiliation: 91
+   affiliation: 90
  - name: Il Memming Park
    orcid: 0000-0002-4255-7750
-   affiliation: 92
+   affiliation: 91
  - name: Megan A. K. Peters
    orcid: 0000-0002-0248-0816
    affiliation: 24
  - name: Xaq Pitkow
    orcid: 0000-0001-6376-329X
-   affiliation: 93
+   affiliation: 92
  - name: Panayiota Poirazi
    orcid: 0000-0001-6152-595X
    affiliation: 22
  - name: Haroon Popal
    orcid: 0000-0002-4508-5218
-   affiliation: 94
+   affiliation: 93
  - name: Sandhya Prabhakaran
    orcid: 0000-0002-9537-507X
-   affiliation: 95
+   affiliation: 94
  - name: Tian Qiu
    orcid: 0000-0002-0323-8298
-   affiliation: 96
+   affiliation: 95
  - name: Srinidhi Ragunathan
-   affiliation: 97
+   affiliation: 96
  - name: Raul Rodriguez-Cruces
    orcid: 0000-0002-2917-1212
-   affiliation: 98
+   affiliation: 97
  - name: David Rolnick
    affiliation: 26
  - name: Ashish Kumar Sahoo
    orcid: 0000-0003-1815-6655
-   affiliation: 99
+   affiliation: 98
  - name: Saeed Salehinajafabadi
-   affiliation: 100
+   affiliation: 99
  - name: Cristina Savin
    orcid: 0000-0002-3414-8244
    affiliation: 38
  - name: Shreya Saxena
    orcid: 0000-0003-4655-7050
-   affiliation: 101
+   affiliation: 100
  - name: Paul Schrater
    orcid: 0000-0001-7853-8984
-   affiliation: 102
+   affiliation: 101
  - name: Karen Schroeder
    orcid: 0000-0003-3149-4659
-   affiliation: 78
+   affiliation: 77
  - name: Alice C Schwarze
    orcid: 0000-0002-9146-8068
    affiliation: 17
  - name: Madineh Sedigh-Sarvestani
-   affiliation: 103
+   affiliation: 102
  - name: K Yuvaraj Sekhar
-   affiliation: 104
+   affiliation: 103
  - name: Reza Shadmehr
    orcid: 0000-0002-7686-2569
-   affiliation: 105
+   affiliation: 104
  - name: Maryam M. Shanechi
    orcid: 0000-0002-0544-7720
-   affiliation: 106
+   affiliation: 105
  - name: Siddhant Sharma
    orcid: 0000-0003-1768-1802
-   affiliation: 107
+   affiliation: 106
  - name: Eric Shea-Brown
    affiliation: 17
  - name: Krishna V. Shenoy
    orcid: 0000-0003-1534-9240
-   affiliation: 108
+   affiliation: 107
  - name: Carolina L. Shimabukuro
    orcid: 0000-0001-5669-4097
-   affiliation: 109
+   affiliation: 108
  - name: Sergey Shuvaev
    orcid: 0000-0001-5215-8019
-   affiliation: 110
+   affiliation: 109
  - name: Man Ching Alison Sin
    orcid: 0000-0002-4889-1397
-   affiliation: 111
+   affiliation: 110
  - name: Maurice Smith
    orcid: 0000-0003-4214-1277
-   affiliation: 112
+   affiliation: 111
  - name: Nicholas A. Steinmetz
    orcid: 0000-0001-7029-2908
    affiliation: 17
  - name: Karolina Stosio
-   affiliation: 113
+   affiliation: 112
  - name: Elizabeth Straley
    affiliation: 43
  - name: Gabrielle Strandquist
    orcid: 0000-0002-8345-6905
    affiliation: 17
  - name: Carsen Stringer
-   affiliation: 89
+   affiliation: 88
  - name: Rimjhim Tomar
    orcid: 0000-0003-1528-976X
-   affiliation: 114
+   affiliation: 113
  - name: Ngoc Tran
-   affiliation: 110
+   affiliation: 109
  - name: Sofia Triantafillou
    orcid: 0000-0002-2535-0432
-   affiliation: 115
+   affiliation: 114
  - name: Lawrence Udeigwe
    orcid: 0000-0002-7627-4820
-   affiliation: 116
+   affiliation: 115
  - name: Davide Valeriani
    orcid: 0000-0001-9866-0063
    affiliation: 33
  - name: Vincent Valton
    orcid: 0000-0002-2508-6731
-   affiliation: 117
+   affiliation: 116
  - name: Maryam Vaziri-Pashkam
    orcid: 0000-0003-1830-2501
-   affiliation: 118
+   affiliation: 117
  - name: Peter Vincent
    orcid: 0000-0002-2641-1874
-   affiliation: 119
+   affiliation: 118
  - name: Gal Vishne
    orcid: 0000-0001-7906-2543
-   affiliation: 120
+   affiliation: 119
  - name: Pascal Wallisch
    orcid: 0000-0001-6047-349X
    affiliation: 38
  - name: Peiyuan Wang
    orcid: 0000-0003-2289-1660
-   affiliation: 121
+   affiliation: 120
  - name: Claire Ward
    orcid: 0000-0002-1486-4403
-   affiliation: 122
+   affiliation: 121
  - name: Michael Waskom
    affiliation: 38
  - name: Kunlin Wei
    orcid: 0000-0001-5098-3808
-   affiliation: 123
+   affiliation: 122
  - name: Anqi Wu
    orcid: 0000-0002-7866-9455
-   affiliation: 124
+   affiliation: 123
  - name: Zhengwei Wu
    affiliation: 43
  - name: Brad Wyble
    orcid: 0000-0002-9984-3037
-   affiliation: 125
+   affiliation: 124
  - name: Lei Zhang
    orcid: 0000-0002-9586-595X
-   affiliation: 126
+   affiliation: 125
  - name: Daniel Zysman
    orcid: 0000-0002-5924-1154
-   affiliation: 127
+   affiliation: 126
  - name: Federico d'Oleire Uquillas
    orcid: 0000-0001-9078-9452
-   affiliation: 128
+   affiliation: 127
  - name: Tara van Viegen
    orcid: 0000-0001-6109-1004
-   affiliation: 128
+   affiliation: 127
 affiliations:
  - name: CVR, York University, Toronto
    index: 1
@@ -552,164 +552,162 @@ affiliations:
    index: 48
  - name: Brandeis University
    index: 49
- - name: University of British Columbia
-   index: 50
  - name: Bilkent University, Turkey
-   index: 51
+   index: 50
  - name: Harvard-MIT Health Sciences and Technology, Cambridge MA
-   index: 52
+   index: 51
  - name: Centre de Recerca Matemàtica
-   index: 53
+   index: 52
  - name: Neurodynamics of Cognition Laboratory, School of Medicine, Pontificia Universidad Catolica de Chile
-   index: 54
+   index: 53
  - name: Lockheed Martin
-   index: 55
+   index: 54
  - name: Minerva schools at KGI
-   index: 56
+   index: 55
  - name: Carnegie Mellon University
-   index: 57
+   index: 56
  - name: University of Delaware
-   index: 58
+   index: 57
  - name: 1Division of Phoniatrics and Pediatric Audiology, Department of Otorhinolaryngology, Head & Neck Surgery, University Hospital Erlangen, Friedrich-Alexander-University Erlangen-Nürnberg, Waldstr. 1, 91054 Erlangen, Germany
-   index: 59
+   index: 58
  - name: Carboncopies Brain Research Foundation, San Francisco
-   index: 60
+   index: 59
  - name: Montreal Neurological Institute, McGill University
-   index: 61
+   index: 60
  - name: KTH Royal Institute of Technology, Stockholm, Sweden
-   index: 62
+   index: 61
  - name: Neuro-Electronics Research Flanders empowered by imec, VIB and KU Leuven
-   index: 63
+   index: 62
  - name: City University of Hong Kong
-   index: 64
+   index: 63
  - name: Ecole Normale Supérieure, Paris, France
-   index: 65
+   index: 64
  - name: School of Mathematical Sciences, MOE-LSC, and Institute of Natural Sciences, Shanghai Jiao Tong University, Shanghai, China
-   index: 66
+   index: 65
  - name: University of California, Santa Barbara
-   index: 67
+   index: 66
  - name: Tsinghua University
-   index: 68
+   index: 67
  - name: Lawrence Berkeley National Laboratory
-   index: 69
+   index: 68
  - name: Peking University, Suoxinda 
-   index: 70
+   index: 69
  - name: University of Tübingen and Max Planck Institute for Intelligent Systems
-   index: 71
+   index: 70
  - name: University of Connecticut
-   index: 72
+   index: 71
  - name: Champalimaud Center for the Unknown
-   index: 73
+   index: 72
  - name: University of Buenos Aires
-   index: 74
+   index: 73
  - name: Universitat de Barcelona
-   index: 75
+   index: 74
  - name: University of California, San Diego
-   index: 76
+   index: 75
  - name: Gatsby Computational Neuroscience Unit, University College London
-   index: 77
+   index: 76
  - name: Columbia University, New York
-   index: 78
+   index: 77
  - name: Institute for Advanced Studies in Basic Sciences (IASBS)
-   index: 79
+   index: 78
  - name: Western University, London, ON
-   index: 80
+   index: 79
  - name: Ecole Polytechnique Federale Lausanne
-   index: 81
+   index: 80
  - name: University of Toronto, Toronto
-   index: 82
+   index: 81
  - name: SASTRA Deemed University, Thanjavur, India
-   index: 83
+   index: 82
  - name: PES University, Bengaluru
-   index: 84
+   index: 83
  - name: University of Ottawa, Ottawa
-   index: 85
+   index: 84
  - name: King's College London
-   index: 86
+   index: 85
  - name: University of Houston
-   index: 87
+   index: 86
  - name: University of California, Berkeley
-   index: 88
+   index: 87
  - name: HHMI Janelia Research Campus
-   index: 89
+   index: 88
  - name: The University of Edinburgh
-   index: 90
+   index: 89
  - name: Orthogonal Research and Education Lab, Champaign-Urbana, IL USA
-   index: 91
+   index: 90
  - name: Stony Brook University
-   index: 92
+   index: 91
  - name: Baylor College of Medicine, Rice University, Houston TX
-   index: 93
+   index: 92
  - name: Temple University, Philadelphia
-   index: 94
+   index: 93
  - name: Moffitt Cancer Center, Florida
-   index: 95
+   index: 94
  - name: Institute of Neuroscience, Chinese Academy of Science, Shanghai
-   index: 96
+   index: 95
  - name: Cactus Communication, India 
-   index: 97
+   index: 96
  - name: McGill University
-   index: 98
+   index: 97
  - name: National Institute of Science Education and Research, India
-   index: 99
+   index: 98
  - name: Bernstein Center for Computational Neuroscience. Berlin
-   index: 100
+   index: 99
  - name: University of Florida, Gainesville, FL
-   index: 101
+   index: 100
  - name: University of Minnesota, Minneapolis MN
-   index: 102
+   index: 101
  - name: Max Planck Florida Institute for Neuroscience
-   index: 103
+   index: 102
  - name: Freelance Machine Learning Consultant
-   index: 104
+   index: 103
  - name: Johns Hopkins University
-   index: 105
+   index: 104
  - name: University of Southern California
-   index: 106
+   index: 105
  - name: Blue Marble Space Institute of Science, Seattle, Washington, USA
-   index: 107
+   index: 106
  - name: Departments of Electrical Engineering, Bioengineering and Neurobiology, Stanford University, Stanford CA 94305 and Howard Hughes Medical Institute at Stanford University, Stanford, CA 94305
-   index: 108
+   index: 107
  - name: University of Buenos Aires, Argentina
-   index: 109
+   index: 108
  - name: Cold Spring Harbor Laboratory
-   index: 110
+   index: 109
  - name: Cornell University
-   index: 111
+   index: 110
  - name: Harvard University, School of Engineering and Applied Sciences, Cambridge MA
-   index: 112
+   index: 111
  - name: Volkswagen Group Machine Learning Research Lab, Munich
-   index: 113
+   index: 112
  - name: Czech Academy of Sciences, Prague
-   index: 114
+   index: 113
  - name: University of Pittsburgh
-   index: 115
+   index: 114
  - name: Manhattan College
-   index: 116
+   index: 115
  - name: University College London
-   index: 117
+   index: 116
  - name: National Institute of Mental Health
-   index: 118
+   index: 117
  - name: Sainsbury Wellcome Centre
-   index: 119
+   index: 118
  - name: The Hebrew University, Jerusalem, Israel
-   index: 120
+   index: 119
  - name: Arizona State University, Tempe, AZ
-   index: 121
+   index: 120
  - name: Albert Einstein College of Medicine
-   index: 122
+   index: 121
  - name: Peking University
-   index: 123
+   index: 122
  - name: Columbia University, USA
-   index: 124
+   index: 123
  - name: Penn State University, State College, PA
-   index: 125
+   index: 124
  - name: Department of Cognition, Emotion, and Methods in Psychology, Faculty of Psychology, University of Vienna, Vienna, Austria
-   index: 126
+   index: 125
  - name: DeepLearning.AI
-   index: 127
+   index: 126
  - name: Princeton Neuroscience Institute, Princeton University, NJ, USA
-   index: 128
+   index: 127
 ---
 
 # Neuromatch Academy: a 3-week, online summer school in computational neuroscience
