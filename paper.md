@@ -491,7 +491,7 @@ affiliations:
    index: 17
  - name: TU Dublin, School of Mathematical Sciences, City Campus, Dublin Ireland
    index: 18
- - name: Computational and Cognitive Neuroscience Summer School: https://www.ccnss.org/
+ - name: Computational and Cognitive Neuroscience Summer School
    index: 19
  - name: Ecole Normale Supérieure, PSL University, Paris
    index: 20
