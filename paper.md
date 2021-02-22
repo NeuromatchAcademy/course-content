@@ -251,68 +251,68 @@ authors:
    affiliation: 77
  - name: Patrick J Mineault
    orcid: 0000-0001-5519-842X
-   affiliation: 
+   affiliation: 78
  - name: Nosratullah Mohammadi
    orcid: 0000-0003-4214-2173
-   affiliation: 78
+   affiliation: 79
  - name: Yalda Mohsenzadeh
    orcid: 0000-0001-8525-957X
-   affiliation: 79
+   affiliation: 80
  - name: Elenor Morgenroth
    orcid: 0000-0002-1386-6642
-   affiliation: 80
+   affiliation: 81
  - name: Taha Morshedzadeh
    orcid: 0000-0002-0205-7647
-   affiliation: 81
+   affiliation: 82
  - name: Alice Claudia Mosberger
    orcid: 0000-0003-1114-1469
    affiliation: 77
  - name: Madhuvanthi Muliya
-   affiliation: 82
+   affiliation: 83
  - name: Marieke Mur
    orcid: 0000-0003-1749-9058
-   affiliation: 79
+   affiliation: 80
  - name: John D. Murray
    orcid: 0000-0003-4115-8181
    affiliation: 47
  - name: Yashas ND
    orcid: 0000-0003-0834-2542
-   affiliation: 83
+   affiliation: 84
  - name: Richard Naud
    orcid: 0000-0001-7383-3095
-   affiliation: 84
+   affiliation: 85
  - name: Prakriti Nayak
    orcid: 0000-0003-1356-0712
-   affiliation: 85
- - name: Anushka Oak
    affiliation: 86
+ - name: Anushka Oak
+   affiliation: 87
  - name: Itzel Olivos Castillo
    affiliation: 37
  - name: Seyedmehdi Orouji
    affiliation: 24
  - name: Jorge Otero-Millan
    orcid: 0000-0002-9789-8392
-   affiliation: 87
+   affiliation: 88
  - name: Marius Pachitariu
    orcid: 0000-0001-7106-814X
-   affiliation: 88
+   affiliation: 89
  - name: Biraj Pandey
    affiliation: 17
  - name: Renato Paredes
    orcid: 0000-0002-8261-3331
-   affiliation: 89
+   affiliation: 90
  - name: Jesse Parent
    orcid: 0000-0002-6979-1520
-   affiliation: 90
+   affiliation: 91
  - name: Il Memming Park
    orcid: 0000-0002-4255-7750
-   affiliation: 91
+   affiliation: 92
  - name: Megan A. K. Peters
    orcid: 0000-0002-0248-0816
    affiliation: 24
  - name: Xaq Pitkow
    orcid: 0000-0001-6376-329X
-   affiliation: 43,92
+   affiliation: 43
  - name: Panayiota Poirazi
    orcid: 0000-0001-6152-595X
    affiliation: 22
@@ -393,7 +393,7 @@ authors:
    orcid: 0000-0002-8345-6905
    affiliation: 17
  - name: Carsen Stringer
-   affiliation: 88
+   affiliation: 89
  - name: Rimjhim Tomar
    orcid: 0000-0003-1528-976X
    affiliation: 113
@@ -491,7 +491,7 @@ affiliations:
    index: 17
  - name: TU Dublin, School of Mathematical Sciences, City Campus, Dublin Ireland
    index: 18
- - name: Computational and Cognitive Neuroscience Summer School, https://www.ccnss.org/
+ - name: Computational and Cognitive Neuroscience Summer School: https://www.ccnss.org/
    index: 19
  - name: Ecole Normale Supérieure, PSL University, Paris
    index: 20
@@ -557,7 +557,7 @@ affiliations:
    index: 50
  - name: Harvard-MIT Health Sciences and Technology, Cambridge MA
    index: 51
- - name: Centre de Recerca Matemàtica
+ - name: Centre de Recerca Matemàtica, Spain
    index: 52
  - name: Neurodynamics of Cognition Laboratory, School of Medicine, Pontificia Universidad Catolica de Chile
    index: 53
@@ -609,35 +609,35 @@ affiliations:
    index: 76
  - name: Columbia University, New York
    index: 77
- - name: Institute for Advanced Studies in Basic Sciences (IASBS)
+ - name: Independent Researcher
    index: 78
- - name: Western University, London, ON
+ - name: Institute for Advanced Studies in Basic Sciences (IASBS)
    index: 79
- - name: Ecole Polytechnique Federale Lausanne
+ - name: Western University, London, ON
    index: 80
- - name: University of Toronto, Toronto
+ - name: Ecole Polytechnique Federale Lausanne
    index: 81
- - name: SASTRA Deemed University, Thanjavur, India
+ - name: University of Toronto, Toronto
    index: 82
- - name: PES University, Bengaluru
+ - name: SASTRA Deemed University, Thanjavur, India
    index: 83
- - name: University of Ottawa, Ottawa
+ - name: PES University, Bengaluru
    index: 84
- - name: King's College London
+ - name: University of Ottawa, Ottawa
    index: 85
- - name: University of Houston
+ - name: King's College London
    index: 86
- - name: University of California, Berkeley
+ - name: University of Houston
    index: 87
- - name: HHMI Janelia Research Campus
+ - name: University of California, Berkeley
    index: 88
- - name: The University of Edinburgh
+ - name: HHMI Janelia Research Campus
    index: 89
- - name: Orthogonal Research and Education Lab, Champaign-Urbana, IL USA
+ - name: The University of Edinburgh
    index: 90
- - name: Stony Brook University
+ - name: Orthogonal Research and Education Lab, Champaign-Urbana, IL USA
    index: 91
- - name: Rice University, Houston TX
+ - name: Stony Brook University
    index: 92
  - name: Temple University, Philadelphia
    index: 93
