@@ -491,7 +491,7 @@ affiliations:
    index: 17
  - name: TU Dublin, School of Mathematical Sciences, City Campus, Dublin Ireland
    index: 18
- - name: Computational and Cognitive Neuroscience Summer School: https://www.ccnss.org/
+ - name: Computational and Cognitive Neuroscience Summer School, https://www.ccnss.org/
    index: 19
  - name: Ecole Normale Supérieure, PSL University, Paris
    index: 20
@@ -569,7 +569,7 @@ affiliations:
    index: 56
  - name: University of Delaware
    index: 57
- - name: 1Division of Phoniatrics and Pediatric Audiology, Department of Otorhinolaryngology, Head & Neck Surgery, University Hospital Erlangen, Friedrich-Alexander-University Erlangen-Nürnberg, Waldstr. 1, 91054 Erlangen, Germany
+ - name: Division of Phoniatrics and Pediatric Audiology, Department of Otorhinolaryngology, Head & Neck Surgery, University Hospital Erlangen, Friedrich-Alexander-University Erlangen-Nürnberg, Waldstr. 1, 91054 Erlangen, Germany
    index: 58
  - name: Carboncopies Brain Research Foundation, San Francisco
    index: 59
