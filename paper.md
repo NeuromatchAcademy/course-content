@@ -709,13 +709,14 @@ affiliations:
    index: 126
  - name: Princeton Neuroscience Institute, Princeton University, NJ, USA
    index: 127
+bibliography: bibliography.bib
 ---
 
 # Neuromatch Academy: a 3-week, online summer school in computational neuroscience
 
 ## Summary
 
-Neuromatch Academy ([*https://neuromatch.io/academy)*](https://neuromatch.io/academy) was designed as an online summer school to cover the basics of computational neuroscience in three weeks. The materials cover dominant and emerging computational neuroscience tools, how they complement one another, and specifically focus on how they can help us to better understand how the brain functions. An original component of the materials is its focus on modeling choices, i.e. how do we choose the right approach, how do we build models, and how can we evaluate models to determine if they provide real (meaningful) insight. This meta-modeling component of the instructional materials asks what questions can be answered by different techniques, and how to apply them meaningfully to get insight about brain function.
+Neuromatch Academy ([*https://neuromatch.io/academy)*](https://neuromatch.io/academy) [@van_viegen_neuromatch_2020] was designed as an online summer school to cover the basics of computational neuroscience in three weeks. The materials cover dominant and emerging computational neuroscience tools, how they complement one another, and specifically focus on how they can help us to better understand how the brain functions. An original component of the materials is its focus on modeling choices, i.e. how do we choose the right approach, how do we build models, and how can we evaluate models to determine if they provide real (meaningful) insight. This meta-modeling component of the instructional materials asks what questions can be answered by different techniques, and how to apply them meaningfully to get insight about brain function.
 
 Each day constitutes one teaching module and covers one topic in computational neuroscience (see table 1). While the content is organized as a 3-week crash-course (+ 2 optional Python introduction days) of consecutive teaching modules that build on one another, it can be rolled out at any pace, in its entirety or as stand-alone parts (provided prerequisites for each part are met). Materials consist of highly curated recorded lectures and tutorials, organized in ‘days’, as well as 5 data sets for group projects. Most days can be used as separate, independent modules and can, for example, be combined with other instructional content. To facilitate this, we not only provide general prerequisites for the entire course but also daily topic-specific prerequisites (see appendix 1). The material is meant to either be taught to small groups of ~10 attendees guided by a teaching assistant, for instruction in a classroom, or for usage in other (potentially for-profit) events. As such the material is largely self sufficient and could be used for self-study.
 
@@ -835,3 +836,6 @@ For self-study or mixing the NMA course content with other content, we provide a
 | Mandarin Translations          | Chen, R; Chow, HM; Dai, Y; Fan, H; Guo, Y; Guo, Z; Lin, Y; Liu, S; Wang, P |
 
 **Table A2: Contributions of Neuromatch Academy content creators.**
+
+# References
+
