@@ -1,4 +1,4 @@
-# NeuroMatch Academy (NMA) syllabus
+# NeuroMatch Academy (NMA) Computational Neuroscience syllabus
 
 *July 13-31, 2020*
 
