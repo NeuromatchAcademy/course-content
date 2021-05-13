@@ -1,4 +1,4 @@
-# **This is now under construction for 2021. For stable materials from 2020, please refer to https://academy.neuromatch.io/nma2020/course-materials**
+# **This is now under construction for 2021. For stable materials from 2020, please refer to [our website](https://academy.neuromatch.io/nma2020/course-materials)**
 
 # NeuroMatch Academy (NMA) Computational Neuroscience syllabus
 
