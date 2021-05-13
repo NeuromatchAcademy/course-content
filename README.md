@@ -1,6 +1,6 @@
-# NeuroMatch Academy (NMA) Computational Neuroscience syllabus
+# **This is now under construction for 2021. For stable materials from 2020, please refer to https://academy.neuromatch.io/nma2020/course-materials**
 
-*July 13-31, 2020*
+# NeuroMatch Academy (NMA) Computational Neuroscience syllabus
 
 **Objectives**: Introduce traditional and emerging computational neuroscience tools, their complementarity, and what they can tell us about the brain. A main focus is on modeling choices, model creation, model evaluation and understanding how they relate to biological questions.
 
