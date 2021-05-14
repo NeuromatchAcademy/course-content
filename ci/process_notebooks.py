@@ -342,7 +342,7 @@ def has_colab_badge(cell):
 def redirect_colab_badge_to_master_branch(cell):
     """Modify the Colab badge to point at the master branch on Github."""
     cell_text = cell["source"]
-    p = re.compile(r"^(.+/NeuromatchAcademy/course-content/blob/)\w+(/.+$)")
+    p = re.compile(r"^(.+/NeuromatchAcademy/course-content/blob/)[\w-]+(/.+$)")
     cell["source"] = p.sub(r"\1master\2", cell_text)
 
 
