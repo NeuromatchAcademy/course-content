@@ -32,6 +32,13 @@ jobs:
         with:
           python-version: 3.7
 
+      - name: Install CI tools
+        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
+        run: |
+          wget https://github.com/NeuromatchAcademy/nmaci/archive/refs/heads/main.tar.gz
+          tar -xzf main.tar.gz
+          mv nmaci-main/scripts/ ci/
+
       - name: Install dependencies
         if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
         run: |
