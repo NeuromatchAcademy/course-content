@@ -39,6 +39,8 @@ jobs:
           wget https://github.com/NeuromatchAcademy/nmaci/archive/refs/heads/$BRANCH.tar.gz
           tar -xzf $BRANCH.tar.gz
           mv nmaci-$BRANCH/scripts/ ci/
+          rm -r nmaci-main
+          echo ci/ >> .gitignore
 
       - name: Install dependencies
         if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
