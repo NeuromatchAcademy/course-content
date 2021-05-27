@@ -1,0 +1,1348 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neuromatch Academy 2020, Week 2, Day 2, Tutorial 1 &#8212; Neuromatch Computational Neuroscience</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Neuromatch Academy 2020, Week 2, Day 2, Tutorial 2" href="W2D2_Tutorial2.html" />
+    <link rel="prev" title="W2D2 - Linear Systems" href="README.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   NMA 2021
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Preliminary
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../W0D1_PythonWorkshop1/README.html">
+   Python Workshop 1
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W0D1_PythonWorkshop1/W0D1_Tutorial1.html">
+     Neuromatch Academy: Week 0, Day 1, Tutorial 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../W0D2_PythonWorkshop2/README.html">
+   Python Workshop 2
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W0D2_PythonWorkshop2/W0D2_Tutorial1.html">
+     Neuromatch Academy: Week 0, Day 2, Tutorial 1
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Week 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../W1D1_ModelTypes/README.html">
+   Model Types
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D1_ModelTypes/W1D1_Tutorial1.html">
+     Neuromatch Academy: Week 1, Day 1, Tutorial 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D1_ModelTypes/W1D1_Tutorial2.html">
+     Neuromatch Academy: Week 1, Day 1, Tutorial 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D1_ModelTypes/W1D1_Tutorial3.html">
+     Neuromatch Academy: Week 1, Day 1, Tutorial 3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../W1D2_ModelingPractice/README.html">
+   Modeling Practice
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D2_ModelingPractice/W1D2_Tutorial1.html">
+     Neuromatch Academy: Week 1, Day 2, Tutorial 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D2_ModelingPractice/W1D2_Tutorial2.html">
+     Neuromatch Academy: Week 1, Day 2, Tutorial 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../W1D3_ModelFitting/README.html">
+   Model Fitting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D3_ModelFitting/W1D3_Tutorial1.html">
+     Neuromatch Academy: Week 1, Day 3, Tutorial 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D3_ModelFitting/W1D3_Tutorial2.html">
+     Neuromatch Academy: Week 1, Day 3, Tutorial 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D3_ModelFitting/W1D3_Tutorial3.html">
+     Neuromatch Academy: Week 1, Day 3, Tutorial 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D3_ModelFitting/W1D3_Tutorial4.html">
+     Neuromatch Academy: Week 1, Day 3, Tutorial 4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D3_ModelFitting/W1D3_Tutorial5.html">
+     Neuromatch Academy: Week 1, Day 3, Tutorial 5
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D3_ModelFitting/W1D3_Tutorial6.html">
+     Neuromatch Academy: Week 1, Day 3, Tutorial 6
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../W1D4_MachineLearning/README.html">
+   Machine Learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D4_MachineLearning/W1D4_Tutorial1.html">
+     Neuromatch Academy: Week 1, Day 4, Tutorial 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D4_MachineLearning/W1D4_Tutorial2.html">
+     Neuromatch Academy: Week 1, Day 4, Tutorial 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../W1D5_DimensionalityReduction/README.html">
+   Dimensionality Reduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D5_DimensionalityReduction/W1D5_Tutorial1.html">
+     Neuromatch Academy: Week 1, Day 5, Tutorial 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D5_DimensionalityReduction/W1D5_Tutorial2.html">
+     Neuromatch Academy: Week 1, Day 5, Tutorial 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D5_DimensionalityReduction/W1D5_Tutorial3.html">
+     Neuromatch Academy: Week 1, Day 5, Tutorial 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D5_DimensionalityReduction/W1D5_Tutorial4.html">
+     Neuromatch Academy: Week 1, Day 5, Tutorial 4
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Week 2
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="README.html">
+   Linear Systems
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Neuromatch Academy 2020, Week 2, Day 2, Tutorial 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W2D2_Tutorial2.html">
+     Neuromatch Academy 2020, Week 2, Day 2, Tutorial 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W2D2_Tutorial3.html">
+     Neuromatch Academy 2020, Week 2, Day 2, Tutorial 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W2D2_Tutorial4.html">
+     Neuromatch Academy 2020, Week 2, Day 2, Tutorial 4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../W2D3_DecisionMaking/README.html">
+   Decision Making
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../W2D4_OptimalControl/README.html">
+   Optimal Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/tutorials/W2D2_LinearSystems/W2D2_Tutorial1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/tutorials/W2D2_LinearSystems/W2D2_Tutorial1.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Neuromatch Academy 2020, Week 2, Day 2, Tutorial 1
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-dynamical-systems">
+   Linear dynamical systems
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial-objectives">
+   Tutorial Objectives
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-1-one-dimensional-differential-equations">
+   Section 1: One-dimensional Differential Equations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1-1a-forward-euler-integration">
+     Exercise 1 (1A): Forward Euler Integration
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interactive-demo-forward-euler-integration">
+     Interactive Demo: Forward Euler Integration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-2-oscillatory-dynamics">
+   Section 2: Oscillatory Dynamics
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interactive-demo-oscillatory-dynamics">
+     Interactive Demo: Oscillatory Dynamics
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2-1b-finding-oscillatory-solutions">
+     Exercise 2 (1B): Finding Oscillatory Solutions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-3-deterministic-linear-dynamics-in-two-dimensions">
+   Section 3: Deterministic Linear Dynamics in Two Dimensions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3-1c-sample-trajectories-in-2-dimensions">
+     Exercise 3 (1C): Sample trajectories in 2 dimensions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interactive-demo-varying-a">
+     Interactive Demo: Varying A
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interactive-demo-varying-initial-conditions">
+     Interactive Demo: Varying Initial Conditions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-4-stream-plots">
+   Section 4: Stream Plots
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#think">
+     Think
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D2_LinearSystems/W2D2_Tutorial1.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="neuromatch-academy-2020-week-2-day-2-tutorial-1">
+<h1>Neuromatch Academy 2020, Week 2, Day 2, Tutorial 1<a class="headerlink" href="#neuromatch-academy-2020-week-2-day-2-tutorial-1" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="linear-dynamical-systems">
+<h1>Linear dynamical systems<a class="headerlink" href="#linear-dynamical-systems" title="Permalink to this headline">¶</a></h1>
+<p><strong>Content Creators</strong>: Bing Wen Brunton, Alice Schwarze</p>
+<p><strong>Content Reviewers</strong>: Norma Kuhn, Karolina Stosio, John Butler, Matthew Krause, Ella Batty, Richard Gao, Michael Waskom</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="tutorial-objectives">
+<h1>Tutorial Objectives<a class="headerlink" href="#tutorial-objectives" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial, we will be learning about behavior of dynamical systems – systems that evolve in time – where the rules by which they evolve in time are described precisely by a differential equation.</p>
+<p>Differential equations are equations that express the <strong>rate of change</strong> of the state variable <span class="math notranslate nohighlight">\(x\)</span>. One typically describes this rate of change using the derivative of <span class="math notranslate nohighlight">\(x\)</span> with respect to time (<span class="math notranslate nohighlight">\(dx/dt\)</span>) on the left hand side of the differential equation:</p>
+<div class="math notranslate nohighlight">
+\[\frac{dx}{dt} = f(x)\]</div>
+<p>A common notational short-hand is to write <span class="math notranslate nohighlight">\(\dot{x}\)</span> for <span class="math notranslate nohighlight">\(\frac{dx}{dt}\)</span>. The dot means “the derivative with respect to time”.</p>
+<p>Today, the focus will be on <strong>linear dynamics</strong>, where <span class="math notranslate nohighlight">\(f(x)\)</span> is a linear function of <span class="math notranslate nohighlight">\(x\)</span>. In Tutorial 1, we will:</p>
+<ul class="simple">
+<li><p>Explore and understand the behavior of such systems where <span class="math notranslate nohighlight">\(x\)</span> is a single variable</p></li>
+<li><p>Consider cases where <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is a state vector representing two variables.</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>  <span class="c1"># numerical integration solver</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Figure settings</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>       <span class="c1"># interactive display</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Helper functions</span>
+<span class="k">def</span> <span class="nf">plot_trajectory</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">initial_condition</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+                    <span class="n">figtitle</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Shows the solution of a linear system with two variables in 3 plots.</span>
+<span class="sd">    The first plot shows x1 over time. The second plot shows x2 over time.</span>
+<span class="sd">    The third plot shows x1 and x2 in a phase portrait.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      system (function): a function f(x) that computes a derivative from</span>
+<span class="sd">                         inputs (t, [x1, x2], *params)</span>
+<span class="sd">      params (list or tuple): list of parameters for function &quot;system&quot;</span>
+<span class="sd">      initial_condition (list or array): initial condition x0</span>
+<span class="sd">      dt (float): time step of simulation</span>
+<span class="sd">      T (float): end time of simulation</span>
+<span class="sd">      figtitlte (string): title for the figure</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      nothing, but it shows a figure</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># time points for which we want to evaluate solutions</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+
+    <span class="c1"># Integrate</span>
+    <span class="c1"># use built-in ode solver</span>
+    <span class="n">solution</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">system</span><span class="p">,</span>
+                     <span class="n">t_span</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">),</span>
+                     <span class="n">y0</span><span class="o">=</span><span class="n">initial_condition</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t</span><span class="p">,</span>
+                     <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">params</span><span class="p">),</span>
+                     <span class="n">dense_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">y</span>
+
+    <span class="c1"># make a color map to visualize time</span>
+    <span class="n">timecolors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span> <span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">t</span> <span class="o">/</span> <span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+
+    <span class="c1"># make a large figure</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ah1</span><span class="p">,</span> <span class="n">ah2</span><span class="p">,</span> <span class="n">ah3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+    <span class="c1"># plot x1 as a function of time</span>
+    <span class="n">ah1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,],</span> <span class="n">color</span><span class="o">=</span><span class="n">timecolors</span><span class="p">)</span>
+    <span class="n">ah1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+    <span class="n">ah1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="c1"># plot x2 as a function of time</span>
+    <span class="n">ah2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">timecolors</span><span class="p">)</span>
+    <span class="n">ah2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+    <span class="n">ah2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="c1"># plot x1 and x2 in a phase portrait</span>
+    <span class="n">ah3</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,],</span> <span class="n">color</span><span class="o">=</span><span class="n">timecolors</span><span class="p">)</span>
+    <span class="n">ah3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x1&#39;</span><span class="p">)</span>
+    <span class="n">ah3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
+    <span class="c1">#include initial condition is a blue cross</span>
+    <span class="n">ah3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;bx&#39;</span><span class="p">)</span>
+
+    <span class="c1"># adjust spacing between subplots</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="c1"># add figure title</span>
+    <span class="k">if</span> <span class="n">figtitle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">figtitle</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plot_streamplot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">figtitle</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Show a stream plot for a linear ordinary differential equation with</span>
+<span class="sd">    state vector x=[x1,x2] in axis ax.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      A (numpy array): 2x2 matrix specifying the dynamical system</span>
+<span class="sd">      figtitle (string): title for the figure</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      nothing, but shows a figure</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># sample 20 x 20 grid uniformly to get x1 and x2</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">grid</span><span class="p">)</span>
+
+    <span class="c1"># calculate x1dot and x2dot at each grid point</span>
+    <span class="n">x1dot</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">x2</span>
+    <span class="n">x2dot</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">x2</span>
+
+    <span class="c1"># make a colormap</span>
+    <span class="n">magnitude</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x1dot</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">x2dot</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">magnitude</span><span class="p">)</span> <span class="c1">#Avoid taking log of zero</span>
+
+    <span class="c1"># plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">sca</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">streamplot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">x1dot</span><span class="p">,</span> <span class="n">x2dot</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+                   <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">cividis</span><span class="p">,</span>
+                   <span class="n">density</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">arrowstyle</span><span class="o">=</span><span class="s1">&#39;-&gt;&#39;</span><span class="p">,</span> <span class="n">arrowsize</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x1$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x2$&#39;</span><span class="p">)</span>
+
+    <span class="c1"># figure title</span>
+    <span class="k">if</span> <span class="n">figtitle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">figtitle</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+    <span class="c1"># include eigenvectors</span>
+    <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># get eigenvalues and eigenvectors of A</span>
+        <span class="n">lam</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+        <span class="c1"># get eigenvectors of A</span>
+        <span class="n">eigenvector1</span> <span class="o">=</span> <span class="n">v</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">real</span>
+        <span class="n">eigenvector2</span> <span class="o">=</span> <span class="n">v</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">real</span>
+
+        <span class="c1"># plot eigenvectors</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="o">*</span><span class="n">eigenvector1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">20</span><span class="o">*</span><span class="n">eigenvector1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                  <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">head_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                  <span class="n">length_includes_head</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="o">*</span><span class="n">eigenvector2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">20</span><span class="o">*</span><span class="n">eigenvector2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                  <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">head_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                  <span class="n">length_includes_head</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_specific_example_stream_plots</span><span class="p">(</span><span class="n">A_options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Show a stream plot for each A in A_options</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      A (list): a list of numpy arrays (each element is A)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      nothing, but shows a figure</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># get stream plots for the four different systems</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">A</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">A_options</span><span class="p">):</span>
+
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">+</span><span class="n">i</span><span class="p">)</span>
+        <span class="c1"># get eigenvalues and eigenvectors</span>
+        <span class="n">lam</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+        <span class="c1"># plot eigenvalues as title</span>
+        <span class="c1"># (two spaces looks better than one)</span>
+        <span class="n">eigstr</span> <span class="o">=</span> <span class="s2">&quot;,  &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lam</span><span class="p">])</span>
+        <span class="n">figtitle</span> <span class="o">=</span><span class="sa">f</span><span class="s2">&quot;A with eigenvalues</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span> <span class="s1">&#39;[&#39;</span> <span class="o">+</span> <span class="n">eigstr</span> <span class="o">+</span> <span class="s1">&#39;]&#39;</span>
+        <span class="n">plot_streamplot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">figtitle</span><span class="o">=</span><span class="n">figtitle</span><span class="p">)</span>
+
+        <span class="c1"># Remove y_labels on righthand plots</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="k">2</span>:
+          <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">:</span>
+          <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-1-one-dimensional-differential-equations">
+<h1>Section 1: One-dimensional Differential Equations<a class="headerlink" href="#section-1-one-dimensional-differential-equations" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 1: Linear Dynamical Systems</span>
+<span class="c1"># Insert the ID of the corresponding youtube video</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;87z6OR7-DBI&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s start by reminding ourselves of a one-dimensional differential equation in <span class="math notranslate nohighlight">\(x\)</span> of the form</p>
+<div class="math notranslate nohighlight">
+\[\dot{x} = a x\]</div>
+<p>where <span class="math notranslate nohighlight">\(a\)</span> is a scalar.</p>
+<p>Solutions for how <span class="math notranslate nohighlight">\(x\)</span> evolves in time when its dynamics are governed by such a differential equation take the form</p>
+<div class="math notranslate nohighlight">
+\[x(t) = x_0\exp(a t)\]</div>
+<p>where <span class="math notranslate nohighlight">\(x_0\)</span> is the <strong>initial condition</strong> of the equation – that is, the value of <span class="math notranslate nohighlight">\(x\)</span> at time <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<p>To gain further intuition, let’s explore the behavior of such systems with a simple simulation. We can simulate an ordinary differential equation by approximating or modelling time as a discrete list of time steps <span class="math notranslate nohighlight">\(t_0, t_1, t_2, \dots\)</span>, such that <span class="math notranslate nohighlight">\(t_{i+1}=t_i+dt\)</span>. We can get the small change <span class="math notranslate nohighlight">\(dx\)</span> over a small duration <span class="math notranslate nohighlight">\(dt\)</span> of time from the definition of the differential:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \
+\begin{eqnarray}
+  \dot x &amp;=&amp; \frac{dx}{dt} \\
+  dx     &amp;=&amp; \dot x\, dt  \\
+\end{eqnarray}
+\end{split}\]</div>
+<p>So, at each time step <span class="math notranslate nohighlight">\(t_i\)</span>, we compute a value of <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(x(t_i)\)</span>, as the sum of the value of <span class="math notranslate nohighlight">\(x\)</span> at the previous time step, <span class="math notranslate nohighlight">\(x(t_{i-1})\)</span> and a small change <span class="math notranslate nohighlight">\(dx=\dot x\,dt\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[x(t_i)=x(t_{i-1})+\dot x(t_{i-1}) dt\]</div>
+<p>This very simple integration scheme, known as <strong>forward Euler integration</strong>, works well if <span class="math notranslate nohighlight">\(dt\)</span> is small and the ordinary differential equation is simple. It can run into issues when the ordinary differential equation is very noisy or when the dynamics include sudden big changes of <span class="math notranslate nohighlight">\(x\)</span>. Such big jumps can occur, for example, in models of excitable neurons. In such cases, one needs to choose an integration scheme carefully. However, for our simple system, the simple integration scheme should work just fine!</p>
+<div class="section" id="exercise-1-1a-forward-euler-integration">
+<h2>Exercise 1 (1A): Forward Euler Integration<a class="headerlink" href="#exercise-1-1a-forward-euler-integration" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise, we will complete a function, <code class="docutils literal notranslate"><span class="pre">integrate_exponential</span></code>, to compute the solution of the differential equation <span class="math notranslate nohighlight">\(\dot{x} = a x\)</span> using forward Euler integration. We will then plot this solution over time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">integrate_exponential</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Compute solution of the differential equation xdot=a*x with</span>
+<span class="sd">  initial condition x0 for a duration T. Use time step dt for numerical</span>
+<span class="sd">  solution.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    a (scalar): parameter of xdot (xdot=a*x)</span>
+<span class="sd">    x0 (scalar): initial condition (x at time 0)</span>
+<span class="sd">    dt (scalar): timestep of the simulation</span>
+<span class="sd">    T (scalar): total duration of the simulation</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    ndarray, ndarray: `x` for all simulation steps and the time `t` at each step</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># Initialize variables</span>
+  <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
+  <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span> <span class="c1"># This is x at time t_0</span>
+
+  <span class="c1"># Step through system and integrate in time</span>
+  <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)):</span>
+
+    <span class="c1">###################################################################</span>
+    <span class="c1">## Fill out the following then remove</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: need to implement simulation&quot;</span><span class="p">)</span>
+    <span class="c1">###################################################################</span>
+
+    <span class="c1"># for each point in time, compute xdot from x[k-1]</span>
+    <span class="n">xdot</span> <span class="o">=</span> <span class="o">...</span>
+
+    <span class="c1"># Update x based on x[k-1] and xdot</span>
+    <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span>
+
+
+<span class="c1"># choose parameters</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span>    <span class="c1"># parameter in f(x)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">10</span>      <span class="c1"># total Time duration</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.001</span>  <span class="c1"># timestep of our simulation</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">1.</span>     <span class="c1"># initial condition of x at time 0</span>
+
+<span class="c1"># Uncomment once you&#39;ve filled in code above</span>
+<span class="c1"># x, t = integrate_exponential(a, x0, dt, T)</span>
+<span class="c1"># plt.plot(t, x.real)</span>
+<span class="c1"># plt.xlabel(&#39;Time (s)&#39;)</span>
+<span class="c1"># plt.ylabel(&#39;x&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to_remove solution</span>
+<span class="k">def</span> <span class="nf">integrate_exponential</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Compute solution of the differential equation xdot=a*x with</span>
+<span class="sd">  initial condition x0 for a duration T. Use time step dt for numerical</span>
+<span class="sd">  solution.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    a (scalar): parameter of xdot (xdot=a*x)</span>
+<span class="sd">    x0 (scalar): initial condition (x at time 0)</span>
+<span class="sd">    dt (scalar): timestep of the simulation</span>
+<span class="sd">    T (scalar): total duration of the simulation</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    ndarray, ndarray: `x` for all simulation steps and the time `t` at each step</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># Initialize variables</span>
+  <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
+  <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span> <span class="c1"># This is x at time t_0</span>
+
+  <span class="c1"># Step through system and integrate in time</span>
+  <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)):</span>
+    <span class="c1"># for each point in time, compute xdot from x[k-1]</span>
+    <span class="n">xdot</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># Update x based on x[k-1] and xdot</span>
+    <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span>  <span class="n">xdot</span> <span class="o">*</span> <span class="n">dt</span>
+
+  <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span>
+
+<span class="c1"># choose parameters</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span>    <span class="c1"># parameter in f(x)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">10</span>      <span class="c1"># total Time duration</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.001</span>  <span class="c1"># timestep of our simulation</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">1.</span>     <span class="c1"># initial condition of x at time 0</span>
+
+<span class="c1"># Uncomment once you&#39;ve filled in code above</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">integrate_exponential</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">xkcd</span><span class="p">():</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="interactive-demo-forward-euler-integration">
+<h2>Interactive Demo: Forward Euler Integration<a class="headerlink" href="#interactive-demo-forward-euler-integration" title="Permalink to this headline">¶</a></h2>
+<p>What happens when you change <span class="math notranslate nohighlight">\(a\)</span>? Try values where <span class="math notranslate nohighlight">\(a&lt;0\)</span> and <span class="math notranslate nohighlight">\(a&gt;0\)</span>.</p>
+<p>The <span class="math notranslate nohighlight">\(dt\)</span> is the step size of the forward Euler integration. Try <span class="math notranslate nohighlight">\(a = -1.5\)</span> and increase <span class="math notranslate nohighlight">\(dt\)</span>. What happens to the numerical solution when you increase <span class="math notranslate nohighlight">\(dt\)</span>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+
+<span class="c1">#@markdown Make sure you execute this cell to enable the widget!</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="mi">10</span>      <span class="c1"># total Time duration</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">1.</span>     <span class="c1"># initial condition of x at time 0</span>
+
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span>
+<span class="k">def</span> <span class="nf">plot_euler_integration</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="o">.</span><span class="mi">25</span><span class="p">),</span> <span class="n">dt</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">SelectionSlider</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;</span><span class="si">%g</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">i</span>,i) for i in np.arange(0.001, 1.001, 0.01)])):
+  <span class="c1"># Have to do this clunky word around to show small values in slider accurately</span>
+  <span class="c1"># (from https://github.com/jupyter-widgets/ipywidgets/issues/259)</span>
+
+  <span class="n">x</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">integrate_exponential</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="p">)</span> <span class="c1"># integrate_exponential returns complex</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to_remove explanation</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">For a&lt;0, the solution decays in time.</span>
+<span class="sd">For a&gt;0, the solution grows in time.</span>
+<span class="sd">For a=0, the solution stays at 1 (and is stable).</span>
+
+<span class="sd">For small-ish dt, the solution still looks the same.</span>
+<span class="sd">As dt gets bigger, the solution starts to look choppier and is no longer smooth,</span>
+<span class="sd">but still has mostly the right trends.</span>
+<span class="sd">For a = 0.15, as dt gets above 0.7 or so, we start to see the forward Euler</span>
+<span class="sd">integration start to actually break down. Specifically, the solution is no</span>
+<span class="sd">longer decreasing monotonically and has developed an erroneous dip below zero.</span>
+
+<span class="sd">The more general lesson is that, for each system, there is a dt threshold</span>
+<span class="sd">above which the simulation introduces numerical artifacts and no longer behaves</span>
+<span class="sd">as an accurate estimate of the true underlying system. We may tolerate some</span>
+<span class="sd">choppiness in the solution, but eventually qualitatively wrong things creep in!</span>
+<span class="sd">&quot;&quot;&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-2-oscillatory-dynamics">
+<h1>Section 2: Oscillatory Dynamics<a class="headerlink" href="#section-2-oscillatory-dynamics" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 2: Oscillatory Solutions</span>
+<span class="c1"># Insert the ID of the corresponding youtube video</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;vPYQPI4nKT8&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will now explore what happens when <span class="math notranslate nohighlight">\(a\)</span> is a complex number and has a non-zero imaginary component.</p>
+<div class="section" id="interactive-demo-oscillatory-dynamics">
+<h2>Interactive Demo: Oscillatory Dynamics<a class="headerlink" href="#interactive-demo-oscillatory-dynamics" title="Permalink to this headline">¶</a></h2>
+<p>In the following demo, you can change the real part and imaginary part of <span class="math notranslate nohighlight">\(a\)</span> (so a = real + imaginary i)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+
+<span class="c1">#@markdown Make sure you execute this cell to enable the widget!</span>
+
+<span class="c1"># parameters</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">5</span>         <span class="c1"># total Time duration</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.0001</span>      <span class="c1"># timestep of our simulation</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">1.</span>        <span class="c1"># initial condition of x at time 0</span>
+
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span>
+<span class="k">def</span> <span class="nf">plot_euler_integration</span><span class="p">(</span><span class="n">real</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">),</span> <span class="n">imaginary</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">)):</span>
+
+  <span class="n">a</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imaginary</span><span class="p">)</span>
+  <span class="n">x</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">integrate_exponential</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="p">)</span> <span class="c1">#integrate exponential returns complex</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-2-1b-finding-oscillatory-solutions">
+<h2>Exercise 2 (1B): Finding Oscillatory Solutions<a class="headerlink" href="#exercise-2-1b-finding-oscillatory-solutions" title="Permalink to this headline">¶</a></h2>
+<p>Using the demo above, answer the following:</p>
+<ul class="simple">
+<li><p>What values of <span class="math notranslate nohighlight">\(a\)</span> produce dynamics that both <em><strong>oscillate</strong></em> and <em><strong>grow</strong></em>?</p></li>
+<li><p>What value of <span class="math notranslate nohighlight">\(a\)</span> is needed to produce a stable oscillation of 0.5 Hertz (cycles/time units)?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to_remove explanation</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">To make the system both oscillate and grow, real has to be positive,</span>
+<span class="sd">and imaginary has to be not zero.</span>
+
+<span class="sd">Stable oscillation of 0.5 Hz (half a cycle per unit time, or one cycle per two</span>
+<span class="sd">unit time) is achieved with real = 0 and imagineary = +/- pi</span>
+<span class="sd">(approximately 3.1 or -3.1).</span>
+
+<span class="sd">Note: For really large values of the imaginary component, the numerical</span>
+<span class="sd">integration scheme breaks down a bit, and we see non-stable oscillations</span>
+<span class="sd">even when real=0. This is a numerical artifact of the forward Euler scheme.</span>
+<span class="sd">Some of the students may discover this if they push the parameters, but I&#39;ve</span>
+<span class="sd">tried to constrain the widget so that it is not obvious, as it is not the point</span>
+<span class="sd">of this exercise.</span>
+
+<span class="sd">&quot;&quot;&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-3-deterministic-linear-dynamics-in-two-dimensions">
+<h1>Section 3: Deterministic Linear Dynamics in Two Dimensions<a class="headerlink" href="#section-3-deterministic-linear-dynamics-in-two-dimensions" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 3: Multi-Dimensional Dynamics</span>
+<span class="c1"># Insert the ID of the corresponding youtube video</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;c_GdNS3YH_M&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Adding one additional variable (or <em>dimension</em>) adds more variety of behaviors. Additional variables are useful in modeling the dynamics of more complex systems with richer behaviors, such as systems of multiple neurons. We can write such a system using two linear ordinary differential equations:
+$<span class="math notranslate nohighlight">\(
+\begin{eqnarray}
+  \dot{x}_1 &amp;=&amp; {a}_{11} x_1 \\
+  \dot{x}_2 &amp;=&amp; {a}_{22} x_2 \\
+\end{eqnarray}
+\)</span><span class="math notranslate nohighlight">\(
+So far, this system consists of two variables (e.g. neurons) in isolation. To make things interesting, we can add interaction terms:
+\)</span><span class="math notranslate nohighlight">\(
+\begin{eqnarray}
+  \dot{x}_1 &amp;=&amp; {a}_{11} x_1 + {a}_{12} x_2 \\
+  \dot{x}_2 &amp;=&amp; {a}_{21} x_1 + {a}_{22} x_2 \\
+\end{eqnarray}
+\)</span>$
+We can write the two equations that describe our system as one (vector-valued) linear ordinary differential equation:</p>
+<div class="math notranslate nohighlight">
+\[\dot{\mathbf{x}} = \mathbf{A} \mathbf{x}\]</div>
+<p>For two-dimensional systems, <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is a vector with 2 elements (<span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>) and <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is a <span class="math notranslate nohighlight">\(2 \times 2\)</span> matrix with <span class="math notranslate nohighlight">\(\mathbf{A}=\bigg[\begin{array} &amp; a_{11} &amp; a_{12} \\ a_{21} &amp; a_{22} \end{array} \bigg]\)</span>.</p>
+<div class="section" id="exercise-3-1c-sample-trajectories-in-2-dimensions">
+<h2>Exercise 3 (1C): Sample trajectories in 2 dimensions<a class="headerlink" href="#exercise-3-1c-sample-trajectories-in-2-dimensions" title="Permalink to this headline">¶</a></h2>
+<p>We want to simulate some <strong>trajectories</strong> of a given system and plot how  𝑥1  and  𝑥2  evolve in time. We will begin with this example system:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\dot{\mathbf{x}} = \bigg[\begin{array} &amp;2 &amp; -5 \\ 1 &amp; -2 \end{array} \bigg] \mathbf{x}\end{split}\]</div>
+<p>We will use an integrator from scipy, so we won’t have to solve the system ourselves. We have a helper function, <code class="docutils literal notranslate"><span class="pre">plot_trajectory</span></code>, that plots these trajectories given a system function. In this exercise, we will write the system function for a linear system with two variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">a00</span><span class="p">,</span> <span class="n">a01</span><span class="p">,</span> <span class="n">a10</span><span class="p">,</span> <span class="n">a11</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Compute the derivative of the state x at time t for a linear</span>
+<span class="sd">    differential equation with A matrix [[a00, a01], [a10, a11]].</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      t (float): time</span>
+<span class="sd">      x (ndarray): state variable</span>
+<span class="sd">      a00, a01, a10, a11 (float): parameters of the system</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      ndarray: derivative xdot of state variable x at time t</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1">#################################################</span>
+    <span class="c1">## TODO for students: Compute xdot1 and xdot2 ##</span>
+    <span class="c1">## Fill out the following then remove</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: say what they should have done&quot;</span><span class="p">)</span>
+    <span class="c1">#################################################</span>
+
+    <span class="c1"># compute x1dot and x2dot</span>
+    <span class="n">x1dot</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="n">x2dot</span> <span class="o">=</span> <span class="o">...</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x1dot</span><span class="p">,</span> <span class="n">x2dot</span><span class="p">])</span>
+
+
+<span class="n">T</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1"># total time duration</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c1"># timestep of our simulation</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>
+
+<span class="c1"># Uncomment once the system function is complete</span>
+<span class="c1"># plot_trajectory(system, [A[0,0],A[0,1],A[1,0],A[1,1]], x0, dt=dt, T=T)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to_remove solution</span>
+<span class="k">def</span> <span class="nf">system</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">a00</span><span class="p">,</span> <span class="n">a01</span><span class="p">,</span> <span class="n">a10</span><span class="p">,</span> <span class="n">a11</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Compute the derivative of the state x at time t for a linear</span>
+<span class="sd">    differential equation with A matrix [[a00, a01], [a10, a11]].</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      t (float): time</span>
+<span class="sd">      x (ndarray): state variable</span>
+<span class="sd">      a00, a01, a10, a11 (float): parameters of the system</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      ndarray: derivative xdot of state variable x at time t</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="c1"># compute x1dot and x2dot</span>
+    <span class="n">x1dot</span> <span class="o">=</span> <span class="n">a00</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">a01</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">x2dot</span> <span class="o">=</span> <span class="n">a10</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">a11</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x1dot</span><span class="p">,</span> <span class="n">x2dot</span><span class="p">])</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1"># total time duration</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c1"># timestep of our simulation</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>
+
+<span class="c1"># Uncomment once the system function is complete</span>
+<span class="n">plot_trajectory</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]],</span> <span class="n">x0</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="interactive-demo-varying-a">
+<h2>Interactive Demo: Varying A<a class="headerlink" href="#interactive-demo-varying-a" title="Permalink to this headline">¶</a></h2>
+<p>We will now use the function we created in the last exercise to plot trajectories with different options for A. What kinds of qualitatively different dynamics do you observe? Hint: Keep an eye on the x-axis and y-axis!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+
+<span class="c1">#@markdown Make sure you execute this cell to enable the widget!</span>
+
+<span class="c1"># parameters</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">6</span>      <span class="c1"># total Time duration</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span>   <span class="c1"># timestep of our simulation</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>        <span class="c1"># initial condition of x at time 0</span>
+
+<span class="n">A_option_1</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]]</span>
+<span class="n">A_option_2</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="n">A_option_3</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">]]</span>
+<span class="n">A_option_4</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]]</span>
+
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span>
+<span class="k">def</span> <span class="nf">plot_euler_integration</span><span class="p">(</span><span class="n">A</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+  <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="n">A_option_1</span><span class="p">,</span> <span class="n">A_option_2</span><span class="p">,</span> <span class="n">A_option_3</span><span class="p">,</span> <span class="n">A_option_4</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+  <span class="n">value</span><span class="o">=</span><span class="n">A_option_1</span>
+<span class="p">)):</span>
+  <span class="k">if</span> <span class="n">A</span><span class="p">:</span>
+    <span class="n">plot_trajectory</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]],</span> <span class="n">x0</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to_remove explanation</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">Students should observe exponential growth to positive values, exponential</span>
+<span class="sd">growth to negative values, stable oscillations, and decay to the origin.</span>
+
+<span class="sd">&quot;&quot;&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="interactive-demo-varying-initial-conditions">
+<h2>Interactive Demo: Varying Initial Conditions<a class="headerlink" href="#interactive-demo-varying-initial-conditions" title="Permalink to this headline">¶</a></h2>
+<p>We will now vary the initial conditions for a given <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\dot{\mathbf{x}} = \bigg[\begin{array} &amp;2 &amp; -5 \\ 1 &amp; -2 \end{array} \bigg] \mathbf{x}\end{split}\]</div>
+<p>What kinds of qualitatively different dynamics do you observe? Hint: Keep an eye on the x-axis and y-axis!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+
+<span class="c1">#@markdown Make sure you execute this cell to enable the widget!</span>
+
+<span class="c1"># parameters</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">6</span>      <span class="c1"># total Time duration</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span>   <span class="c1"># timestep of our simulation</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>        <span class="c1"># initial condition of x at time 0</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]]</span>
+
+<span class="n">x0_option_1</span> <span class="o">=</span> <span class="p">[</span><span class="o">-.</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>
+<span class="n">x0_option_2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">x0_option_3</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span>
+<span class="k">def</span> <span class="nf">plot_euler_integration</span><span class="p">(</span><span class="n">x0</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+  <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="n">x0_option_1</span><span class="p">,</span> <span class="n">x0_option_2</span><span class="p">,</span> <span class="n">x0_option_3</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+  <span class="n">value</span><span class="o">=</span><span class="n">x0_option_1</span>
+<span class="p">)):</span>
+  <span class="k">if</span> <span class="n">x0</span><span class="p">:</span>
+    <span class="n">plot_trajectory</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]],</span> <span class="n">x0</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to_remove explanation</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Changing the initial conditions for this A always produces oscillatory</span>
+<span class="sd">dynamics. The only difference is the radii of the resulting elliptical</span>
+<span class="sd">trajectories.</span>
+
+<span class="sd">&quot;&quot;&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-4-stream-plots">
+<h1>Section 4: Stream Plots<a class="headerlink" href="#section-4-stream-plots" title="Permalink to this headline">¶</a></h1>
+<p>It’s a bit tedious to plot trajectories one initial condition at a time!</p>
+<p>Fortunately, to get an overview of how a grid of initial conditions affect trajectories of a system, we can use a <em>stream plot</em>.</p>
+<p>We can think of a initial condition <span class="math notranslate nohighlight">\({\bf x}_0=(x_{1_0},x_{2_0})\)</span>  as coordinates for a position in a space. For a 2x2 matrix <span class="math notranslate nohighlight">\(\bf A\)</span>, a stream plot computes at each position <span class="math notranslate nohighlight">\(\bf x\)</span> a small arrow that indicates <span class="math notranslate nohighlight">\(\bf Ax\)</span> and then connects the small arrows to form <em>stream lines</em>. Remember from the beginning of this tutorial that <span class="math notranslate nohighlight">\(\dot {\bf x} = \bf Ax\)</span> is the rate of change of <span class="math notranslate nohighlight">\(\bf x\)</span>. So the stream lines indicate how a system changes. If you are interested in a particular initial condition <span class="math notranslate nohighlight">\({\bf x}_0\)</span>, just find the correponding position in the stream plot. The stream line that goes through that point in the stream plot indicates <span class="math notranslate nohighlight">\({\bf x}(t)\)</span>.</p>
+<p>Using some helper functions, we show the stream plots for each option of A that you examined in the earlier interactive demo. We included the eigenvectors of <span class="math notranslate nohighlight">\(\bf A\)</span> as a red line (1st eigenvalue) and a blue line (2nd eigenvalue) in the stream plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A_option_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+<span class="n">A_option_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">A_option_3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">]])</span>
+<span class="n">A_option_4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+
+<span class="n">A_options</span> <span class="o">=</span> <span class="p">[</span><span class="n">A_option_1</span><span class="p">,</span> <span class="n">A_option_2</span><span class="p">,</span> <span class="n">A_option_3</span><span class="p">,</span> <span class="n">A_option_4</span><span class="p">]</span>
+<span class="n">plot_specific_example_stream_plots</span><span class="p">(</span><span class="n">A_options</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="think">
+<h2>Think<a class="headerlink" href="#think" title="Permalink to this headline">¶</a></h2>
+<p>What is special about the direction in which the principal eigenvector points? And how does the stability of the system relate to the corresponding eigenvalues? (Hint: Remember from your <a class="reference external" href="https://www.youtube.com/watch?v=PFDu9oVAE-g&amp;list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&amp;index=15&amp;t=0s">introduction to linear algebra</a> that, for matrices with real eigenvalues, the eigenvectors indicate the lines on which <span class="math notranslate nohighlight">\(\bf Ax\)</span> is parallel to <span class="math notranslate nohighlight">\(\bf x\)</span> and real eigenvalues indicate the factor by which <span class="math notranslate nohighlight">\(\bf Ax\)</span> is streched or shrunk compared to <span class="math notranslate nohighlight">\(\bf x\)</span>.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### Jot downs some thoughts here ###</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to_remove explanation</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">In top-left A, both eigenvalues are imaginary (no real component, the two</span>
+<span class="sd">eigenvalues are complex conjugate pairs), so the solutions are all stable</span>
+<span class="sd">oscillations. The eigenvectors are also complex conjugate pairs (that&#39;s why</span>
+<span class="sd">we see them plotted on top of each other). They point in the direction of the</span>
+<span class="sd">major axis of the elliptical trajectories.</span>
+
+<span class="sd">In the top-right A, both eigenvalues are positive, so they are growing. The larger</span>
+<span class="sd">eigenvalue direction (red) grows faster than the other direction (blue),</span>
+<span class="sd">so trajectories all eventually follow the red eigenvector direction. Those that</span>
+<span class="sd">start close to the blue direction follow blue for a bit initially.</span>
+
+<span class="sd">In the bottom-left A, both eigenvalues are negative, so they are both decaying.</span>
+<span class="sd">All solutions decay towards the origin [0, 0]. The red eigenvalue is larger in</span>
+<span class="sd">magnitude, so decay is faster along the red eigenvector.</span>
+
+<span class="sd">In the bottm-right A, one eigenvalue is positive (red) and one eigenvalue is negative</span>
+<span class="sd">(blue). This makes the shape of the landscape the shape of a saddle (named after</span>
+<span class="sd">the saddle that one puts on a horse for a rider). Trajectories decay along the</span>
+<span class="sd">blue eigenvector but grow along the red eigenvector.</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial, we learned:</p>
+<ul class="simple">
+<li><p>How to simulate the trajectory of a dynamical system specified by a differential equation <span class="math notranslate nohighlight">\(\dot{x} = f(x)\)</span> using a forward Euler integration scheme.</p></li>
+<li><p>The behavior of a one-dimensional linear dynamical system <span class="math notranslate nohighlight">\(\dot{x} = a x\)</span> is determined by <span class="math notranslate nohighlight">\(a\)</span>, which may be a complex valued number. Knowing <span class="math notranslate nohighlight">\(a\)</span>, we know about the stability and oscillatory dynamics of the system.</p></li>
+<li><p>The dynamics of high-dimensional linear dynamical systems <span class="math notranslate nohighlight">\(\dot{\mathbf{x}} = \mathbf{A} \mathbf{x}\)</span> can be understood using the same intuitions, where we can summarize the behavior of the trajectories using the eigenvalues and eigenvectors of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.</p></li>
+</ul>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/W2D2_LinearSystems"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="README.html" title="previous page">W2D2 - Linear Systems</a>
+    <a class='right-next' id="next-link" href="W2D2_Tutorial2.html" title="next page">Neuromatch Academy 2020, Week 2, Day 2, Tutorial 2</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Neuromatch<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
