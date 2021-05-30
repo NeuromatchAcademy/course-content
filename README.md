@@ -25,8 +25,11 @@ Group projects are offered for the *interactive track* only and will be running 
 # Course outline
 
 * [Week 0](#week-0)
-    * [Thu, July 9: Python for NMA Part 1](#python-for-nma-workshop)
-    * [Fri, July 10: Python for NMA Part 2](#python-for-nma-workshop) 
+    * [Python for NMA Part 1](#python-for-nma-workshop)
+    * [Python for NMA Part 2](#python-for-nma-workshop) 
+    * [Linear Algebra]() 
+    * [Calculus]() 
+    * [Probability & Statistics]() 
 * [Week 1](#week-1)
     * [Mon, July 13: Model Types](#mon-july-13-model-types)
     * [Tue, July 14: Modeling Practice](#tue-july-14-modeling-practice)
