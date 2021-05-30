@@ -43,7 +43,7 @@ Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/rbx2a/?direct%
 
 ## W1D2 - Modeling Practice
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18Nc7rjBNO99bZQyuTY0TAcE)
+[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18PxZse6mPHnxviOnp5bMs-g)
 
 Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/kmwus/?direct%26mode=render%26action=download%26mode=render) | [Tutorials](https://mfr.ca-1.osf.io/render?url=https://osf.io/kygfn/?direct%26mode=render%26action=download%26mode=render) | [Outro](https://mfr.ca-1.osf.io/render?url=https://osf.io/agrp6/?direct%26mode=render%26action=download%26mode=render) | [Reading](https://mfr.ca-1.osf.io/render?url=https://osf.io/2esh5/?direct%26mode=render%26action=download%26mode=render) | [TA](https://mfr.ca-1.osf.io/render?url=https://osf.io/v5emn/?direct%26mode=render%26action=download%26mode=render)
 
