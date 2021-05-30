@@ -28,6 +28,7 @@
 
 ## W0D3 - Linear Algebra
 
+[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18Oz3lb0fo06k0cAWk54rsoE)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W0D3_LinearAlgebra/student/W0D3_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/tutorials/W0D3_LinearAlgebra/student/W0D3_Tutorial1.ipynb?flush_cache=true) |
@@ -53,7 +54,7 @@ Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/rbx2a/?direct%
 
 ## W1D2 - Modeling Practice
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18Nc7rjBNO99bZQyuTY0TAcE)
+[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18PxZse6mPHnxviOnp5bMs-g)
 
 Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/kmwus/?direct%26mode=render%26action=download%26mode=render) | [Tutorials](https://mfr.ca-1.osf.io/render?url=https://osf.io/kygfn/?direct%26mode=render%26action=download%26mode=render) | [Outro](https://mfr.ca-1.osf.io/render?url=https://osf.io/agrp6/?direct%26mode=render%26action=download%26mode=render) | [Reading](https://mfr.ca-1.osf.io/render?url=https://osf.io/2esh5/?direct%26mode=render%26action=download%26mode=render) | [TA](https://mfr.ca-1.osf.io/render?url=https://osf.io/v5emn/?direct%26mode=render%26action=download%26mode=render)
 
