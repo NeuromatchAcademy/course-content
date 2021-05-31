@@ -13,4 +13,4 @@ One approach would be to predict a sine and a cosine of the angle and then takin
 An alternative approach is to bin the stimulus responses and predict the bin of the stimulus.
 This turns the problem into a classification problem rather than a regression problem,
 and in this case you will need to use a new loss function (see below).
-"""
+""";
