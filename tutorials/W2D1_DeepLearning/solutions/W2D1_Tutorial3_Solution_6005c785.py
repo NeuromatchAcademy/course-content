@@ -17,6 +17,9 @@ def RDM(resp):
 
   return RDM
 
+# Compute RDMs
 rdm_dict = {label: RDM(resp) for label, resp in resp_dict.items()}
+
+# Plot RDMs
 with plt.xkcd():
   plot_multiple_rdm(rdm_dict)
