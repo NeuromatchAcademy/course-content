@@ -20,7 +20,7 @@ def train(net, loss_fn, train_data, train_labels, n_iter=50, learning_rate=1e-4)
   # Placeholder to save the loss at each iteration
   track_loss = []
 
-  # Loop over epochs (cf. appendix)
+  # Loop over epochs
   for i in range(n_iter):
 
     # Evaluate loss using loss_fn
