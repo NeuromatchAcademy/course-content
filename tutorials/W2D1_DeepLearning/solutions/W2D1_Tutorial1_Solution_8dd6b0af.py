@@ -3,8 +3,8 @@
 np.random.seed(1)
 torch.manual_seed(1)
 
-# Initialize a deep network with M=20 hidden units
-net = DeepNetReLU(n_neurons, 20)
+# Initialize a deep network with M=10 hidden units
+net = DeepNetReLU(n_neurons, 10)
 
 # Get neural responses to first 20 stimuli in the data set
 r, ori = get_data(20, resp_train, stimuli_train)

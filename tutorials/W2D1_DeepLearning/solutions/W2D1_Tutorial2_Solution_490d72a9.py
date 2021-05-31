@@ -8,7 +8,8 @@ class ConvFC(nn.Module):
 
   """
 
-  def __init__(self, n_neurons, c_in=1, c_out=8, K=9, b=60):
+  def __init__(self, n_neurons, c_in=1, c_out=6, K=7, b=12*16,
+               filters=None):
     """ initialize layer
     Args:
         c_in: number of input stimulus channels
@@ -17,11 +18,16 @@ class ConvFC(nn.Module):
         h: number of stimulus bins, n_bins
     """
     super().__init__()
-    self.conv = nn.Conv1d(c_in, c_out, kernel_size=K, padding=K//2)
+    self.conv = nn.Conv2d(c_in, c_out, kernel_size=K,
+                          padding=K//2, stride=1)
     self.dims = (c_out, b)  # dimensions of conv layer output
     M = np.prod(self.dims) # number of hidden units
-
     self.out_layer = nn.Linear(M, n_neurons)
+
+    # initialize weights
+    if filters is not None:
+      self.conv.weight = nn.Parameter(filters)
+      self.conv.bias = nn.Parameter(torch.zeros((c_out,), dtype=torch.float32))
 
     nn.init.normal_(self.out_layer.weight, std=0.01) # initialize weights to be small
 
@@ -35,27 +41,34 @@ class ConvFC(nn.Module):
         torch.Tensor: p x N tensor with convolutional layer unit activations.
 
     """
-    s = s.unsqueeze(1)  # p x 1 x L, add a singleton dimension for the single channel
+    s = s.unsqueeze(1)  # p x 1 x W x H, add a singleton dimension for the single channel
     a = self.conv(s)  # output of convolutional layer
     a = a.view(-1, np.prod(self.dims))  # flatten each convolutional layer output into a vector
-
     y = self.out_layer(a)
-
     return y
 
 
+device = torch.device('cpu')
 
-# Choose loss function
-MSE_loss = nn.MSELoss()
+# (Optional) To speed up processing, go to "Runtime" menu and "Change runtime"
+# and select GPU processing, then uncomment line below, otherwise runtime will
+# be ~ 2 minutes
+# device = torch.device('cuda')
 
 # Initialize network
-net = ConvFC(n_neurons)
+n_neurons = resp_train.shape[1]
+K = 7
+# we will initialize with the same filters as above
+net = ConvFC(n_neurons, filters=filters(K))
+net = net.to(device)
 
 # Run GD on training set data
 # ** this time we are also providing the test data to estimate the test loss
-train_loss, test_loss = train(net, MSE_loss, stim_binary, resp_train,
-                              test_data=stim_binary, test_labels=resp_test,
-                              n_iter=500, learning_rate=20)
+train_loss, test_loss = train(net, regularized_MSE_loss,
+                              train_data=grating_stimuli.to(device), train_labels=resp_train.to(device),
+                              test_data=grating_stimuli.to(device), test_labels=resp_test.to(device),
+                              n_iter=200, learning_rate=2,
+                              L2_penalty=5e-4, L1_penalty=1e-6)
 
 # Plot the training loss over iterations of GD
 with plt.xkcd():
