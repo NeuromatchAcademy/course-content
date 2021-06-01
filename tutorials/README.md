@@ -174,6 +174,19 @@ Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/2uc6v/?direct%
 
 
 
+## W3D1 - Bayesian Decisions
+
+[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18MCEdPJQ7gdnqP-Z0Tkmcjy)
+
+Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/gyfr2/?direct%26mode=render%26action=download%26mode=render) | [Tutorials](https://mfr.ca-1.osf.io/render?url=https://osf.io/8djsm/?direct%26mode=render%26action=download%26mode=render) | [Outro](https://mfr.ca-1.osf.io/render?url=https://osf.io/agpmt/?direct%26mode=render%26action=download%26mode=render) | [Reading](https://mfr.ca-1.osf.io/render?url=https://osf.io/cd5u8/?direct%26mode=render%26action=download%26mode=render)
+
+|   | Run | View |
+| - | --- | ---- |
+| Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W3D1_BayesianDecisions/student/W3D1_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/tutorials/W3D1_BayesianDecisions/student/W3D1_Tutorial1.ipynb?flush_cache=true) |
+
+
+
+
 ## W3D1 - Bayesian Statistics
 
 [YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18MCEdPJQ7gdnqP-Z0Tkmcjy)
