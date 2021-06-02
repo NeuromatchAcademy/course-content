@@ -19,8 +19,10 @@ def my_gaussian(x_points, mu, sigma):
   return px
 
 x = np.arange(-8, 9, 0.1)
+
+# Generate Gaussian
 px = my_gaussian(x, -1, 1)
 
-# Uncomment to plot the results
+# Visualize
 with plt.xkcd():
   my_plot_single(x, px)

@@ -28,11 +28,16 @@ def generate_random_walk(num_steps, step_size):
 
   return x, y
 
+# Set a random seed
+np.random.seed(2)
+
 # Select parameters
 num_steps = 100   # number of steps in random walk
 step_size = 0.5   # size of each step
 
-# Uncomment once you've filled in code above plot the rat's random walk
+# Generate the random walk
 x, y = generate_random_walk(num_steps, step_size)
+
+# Visualize
 with plt.xkcd():
   plot_random_walk(x, y, "Rat's location throughout random walk")
