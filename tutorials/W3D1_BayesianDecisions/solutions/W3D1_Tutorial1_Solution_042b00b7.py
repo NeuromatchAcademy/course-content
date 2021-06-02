@@ -16,7 +16,7 @@ def compute_posterior(likelihood, prior):
   # Compute unnormalized posterior (likelihood times prior)
   posterior = likelihood * prior # first row is s = left, second row is s = right
 
-  # Compute p(m) (our formula is equivalent to summing each column in the posterior)
+  # Compute p(m)
   p_m = np.sum(posterior, axis = 0)
 
   # Normalize posterior (divide elements by p_m)
@@ -24,16 +24,15 @@ def compute_posterior(likelihood, prior):
 
   return posterior
 
-
-# Create prior
+# Make prior
 prior = np.array([0.3, 0.7]).reshape((2, 1)) # first row is s = left, second row is s = right
 
-# Create likelihood
+# Make likelihood
 likelihood = np.array([[0.5, 0.5], [0.1, 0.9]]) # first row is s = left, second row is s = right
 
 # Compute posterior
 posterior = compute_posterior(likelihood, prior)
 
-# Plot all
+# Visualize
 with plt.xkcd():
   plot_prior_likelihood_posterior(prior, likelihood, posterior)
