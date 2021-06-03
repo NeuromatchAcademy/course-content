@@ -5,28 +5,33 @@ def main():
     with open('tutorials/materials.yml') as fh:
         materials = yaml.load(fh, Loader=yaml.FullLoader)
     
-    toc = [{'file': 'intro.md'},
-           {'part': 'Preliminary', 'chapters': []},
-           {'part': 'Week 1', 'chapters': []},
-           {'part': 'Week 2', 'chapters': []},
-           {'part': 'Week 3', 'chapters': []}]
+    toc = {'Intro to Modeling': {'part': 'Intro to Modeling', 'chapters': []},
+           'Machine Learning': {'part': 'Machine Learning', 'chapters': []},
+           'Dynamical Systems': {'part': 'Dynamical Systems', 'chapters': []}}
     
     for m in materials:
-        directory = f"tutorials/{m['day']}_{''.join(m['name'].split())}"
-        chapter = {'file': f"{directory}/README.md", 
-                   'title': m['name'],
+        directory = f"{m['day']}_{''.join(m['name'].split())}"
+        chapter = {'file': f"{directory}/intro_text.md",
+                   'title': f"{m['name']} ({m['day']})",
                    'sections': []}
-        part = int(m['day'][1]) + 1
+        print(m['day'])
+        part = m['category']
         
         for i in range(m['tutorials']):
-            directory = f"tutorials/{m['day']}_{''.join(m['name'].split())}"
+            directory = f"{m['day']}_{''.join(m['name'].split())}"
             notebook = f"{m['day']}_Tutorial{i+1}.ipynb"
-            chapter['sections'].append({'file': f"{directory}/{notebook}"})
+            chapter['sections'].append({'file': f"{directory}/student/{notebook}"})
 
         toc[part]['chapters'].append(chapter)
-    
-    with open('book/_toc.yml', 'w') as fh:
-        yaml.dump(toc, fh)
+
+
+    # Turn toc into list
+    toc_list = [{'file': 'intro.md'}]
+    for key in toc.keys():
+        toc_list.append(toc[key])
+
+    with open('tutorials/_toc.yml', 'w') as fh:
+        yaml.dump(toc_list, fh)
 
 
 if __name__ == '__main__':
