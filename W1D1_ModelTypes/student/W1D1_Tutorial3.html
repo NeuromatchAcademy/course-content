@@ -1,0 +1,1370 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 3: “Why” models &#8212; Neuromatch Computational Neuroscience</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Intro Video" href="../outro_vid.html" />
+    <link rel="prev" title="Tutorial 2: “How” models" href="W1D1_Tutorial2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/nma-logo-square-4xp.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Pre-reqs Refresher
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D1_PythonWorkshop1/intro_text.html">
+   Python Workshop 1 (W0D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
+     Tutorial: LIF Neuron - Part I
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D2_PythonWorkshop2/intro_text.html">
+   Python Workshop 2 (W0D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
+     Neuromatch Academy: Week 0, Day 2, Tutorial 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D3_LinearAlgebra/intro_text.html">
+   Linear Algebra (W0D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
+     Tutorial 1: Vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
+     Tutorial 2: Matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
+     Bonus Tutorial: Discrete Dynamical Systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D4_Calculus/intro_text.html">
+   Calculus (W0D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
+     Tutorial 1: Basics of Differential and Integral Calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
+     Tutorial 2: Differential Equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
+     Tutorial 3: Numerical Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D5_Statistics/intro_text.html">
+   Statistics (W0D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
+     Tutorial 1: Probability Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
+     Tutorial 2: Statistical Inference
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Intro to Modeling
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../intro_text.html">
+   Model Types (W1D1)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W1D1_Tutorial1.html">
+     Tutorial 1: “What” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W1D1_Tutorial2.html">
+     Tutorial 2: “How” models
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tutorial 3: “Why” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../outro_vid.html">
+     Intro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D2_ModelingPractice/intro_text.html">
+   Modeling Practice (W1D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
+     Tutorial: Framing the Question
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D3_ModelFitting/intro_text.html">
+   Model Fitting (W1D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
+     Tutorial 1: Linear regression with MSE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
+     Tutorial 2: Linear regression with MLE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
+     Tutorial 3: Confidence intervals and bootstrapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
+     Tutorial 4: Multiple linear regression and polynomial regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
+     Tutorial 5: Model Selection: Bias-variance trade-off
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
+     Tutorial 6: Model Selection: Cross-validation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D4_MachineLearning/intro_text.html">
+   Machine Learning (W1D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial1.html">
+     Tutorial 1: GLMs for Encoding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial2.html">
+     Tutorial 2: Classifiers and regularizers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D5_DimensionalityReduction/intro_text.html">
+   Dimensionality Reduction (W1D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
+     Tutorial 1: Geometric view of data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
+     Tutorial 2: Principal Component Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
+     Tutorial 3: Dimensionality Reduction &amp; Reconstruction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
+     Tutorial 4:  Nonlinear Dimensionality Reduction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D1_DeepLearning/intro_text.html">
+   Deep Learning (W2D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
+     Tutorial 1: Decoding Neural Responses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
+     Tutorial 2: Convolutional Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
+     Tutorial 2: Building and Evaluating Normative Encoding Models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dynamical Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D2_LinearSystems/intro_text.html">
+   Linear Systems (W2D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
+     Tutorial 1: Linear dynamical systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
+     Tutorial 2: Markov Processes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
+     Tutorial 3: Combining determinism and stochasticity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
+     Tutorial 4: Autoregressive models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D3_RealNeurons/intro_text.html">
+   Real Neurons (W2D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial1.html">
+     Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial2.html">
+     Tutorial 2: Effects of Input Correlation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial3.html">
+     Tutorial 3: Synaptic transmission - Models of static and dynamic synapses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial4.html">
+     Tutorial 4: Spike-timing dependent plasticity (STDP)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D4_DynamicNetworks/intro_text.html">
+   Dynamic Networks (W2D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
+     Tutorial 1: Neural Rate Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
+     Tutorial 2: Wilson-Cowan Model
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Stochastic Processes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D1_BayesianDecisions/intro_text.html">
+   Bayesian Decisions (W3D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
+     Tutorial 1: Bayes with a binary hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
+     Tutorial 2: Bayesian inference and decisions with continuous hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
+     Bonus Tutorial:Fitting to data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D2_HiddenDynamics/intro_text.html">
+   Hidden Dynamics (W3D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
+     Tutorial 1: Sequential Probability Ratio Test
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
+     Tutorial 2: Hidden Markov Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
+     Tutorial 3: 1D Kalman Filter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
+     Tutorial 4: 2D Kalman Filter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D3_OptimalControl/intro_text.html">
+   Optimal Control (W3D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
+     Neuromatch Academy: Week 3, Day 3, Tutorial 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
+     Tutorial 2: Optimal Control for Continuous State
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D4_ReinforcementLearning/intro_text.html">
+   Reinforcement Learning (W3D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
+     Tutorial 1: Learning to Predict
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
+     Tutorial 2: Learning to Act: Multi-Armed Bandits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
+     Tutorial 3: Learning to Act: Q-Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
+     Tutorial 4: From Reinforcement Learning to Planning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D5_NetworkCausality/intro_text.html">
+   Network Causality (W3D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
+     Tutorial 1: Interventions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
+     Tutorial 2: Correlations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
+     Tutorial 3: Simultaneous fitting/regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
+     Tutorial 4: Instrumental Variables
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/W1D1_ModelTypes/student/W1D1_Tutorial3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/W1D1_ModelTypes/student/W1D1_Tutorial3.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial 3: “Why” models
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial-objectives">
+   Tutorial Objectives
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-1-optimization-and-information">
+   Section 1: Optimization and Information
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1-computing-entropy">
+     Exercise 1: Computing Entropy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-2-information-neurons-and-spikes">
+   Section 2: Information, neurons, and spikes
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2-probabilty-mass-function">
+     Exercise 2: Probabilty Mass Function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-3-calculate-entropy-from-a-pmf">
+   Section 3: Calculate entropy from a PMF
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interactive-demo-entropy-of-neurons">
+     Interactive Demo: Entropy of neurons
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus">
+   Bonus
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-foundations-for-entropy">
+     The foundations for Entropy
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D1_ModelTypes/student/W1D1_Tutorial3.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="tutorial-3-why-models">
+<h1>Tutorial 3: “Why” models<a class="headerlink" href="#tutorial-3-why-models" title="Permalink to this headline">¶</a></h1>
+<p><strong>Week 1, Day 1: Model Types</strong></p>
+<p><strong>By Neuromatch Academy</strong>
+<strong>Content creators:</strong> Matt Laporte, Byron Galbraith, Konrad Kording</p>
+<p><strong>Content reviewers:</strong> Dalin Guo, Aishwarya Balwani, Madineh Sarvestani, Maryam Vaziri-Pashkam, Michael Waskom</p>
+<p>We would like to acknowledge <a class="reference external" href="https://www.nature.com/articles/s41586-019-1787-x">Steinmetz <em>et al.</em> (2019)</a> for sharing their data, a subset of which is used here.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="tutorial-objectives">
+<h1>Tutorial Objectives<a class="headerlink" href="#tutorial-objectives" title="Permalink to this headline">¶</a></h1>
+<p>This is tutorial 3 of a 3-part series on different flavors of models used to understand neural data. In parts 1 and 2 we explored mechanisms that would produce the data. In this tutorial we will explore models and techniques that can potentially explain <em>why</em> the spiking data we have observed is produced the way it is.</p>
+<p>To understand why different spiking behaviors may be beneficial, we will learn about the concept of entropy. Specifically, we will:</p>
+<ul class="simple">
+<li><p>Write code to compute formula for entropy, a measure of information</p></li>
+<li><p>Compute the entropy of a number of toy distributions</p></li>
+<li><p>Compute the entropy of spiking activity from the Steinmetz dataset</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 1: “Why” models</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;OOIDEr1e5Gg&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Figure Settings</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span> <span class="c1">#interactive display</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Helper Functions</span>
+
+<span class="k">def</span> <span class="nf">plot_pmf</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span><span class="n">isi_range</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Plot the probability mass function.&quot;&quot;&quot;</span>
+  <span class="n">ymax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.05</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">pmf</span><span class="p">))</span>
+  <span class="n">pmf_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pmf</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">pmf_</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps&quot;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">pmf_</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="s2">&quot;pre&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neuron </span><span class="si">{</span><span class="n">neuron_idx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Inter-spike interval (s)&quot;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Probability mass&quot;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">isi_range</span><span class="p">);</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Download Data</span>
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://osf.io/sy5xt/download&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Could not download data&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="n">steinmetz_spikes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">),</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="s1">&#39;spike_times&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="section-1-optimization-and-information">
+<h1>Section 1: Optimization and Information<a class="headerlink" href="#section-1-optimization-and-information" title="Permalink to this headline">¶</a></h1>
+<p>Neurons can only fire so often in a fixed period of time, as the act of emitting a spike consumes energy that is depleted and must eventually be replenished. To communicate effectively for downstream computation, the neuron would need to make good use of its limited spiking capability. This becomes an optimization problem:</p>
+<p>What is the optimal way for a neuron to fire in order to maximize its ability to communicate information?</p>
+<p>In order to explore this question, we first need to have a quantifiable measure for information. Shannon introduced the concept of entropy to do just that, and defined it as</p>
+<p>\begin{align}
+H_b(X) &amp;= -\sum_{x\in X} p(x) \log_b p(x)
+\end{align}</p>
+<p>where <span class="math notranslate nohighlight">\(H\)</span> is entropy measured in units of base <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(p(x)\)</span> is the probability of observing the event <span class="math notranslate nohighlight">\(x\)</span> from the set of all possible events in <span class="math notranslate nohighlight">\(X\)</span>. See the Appendix for a more detailed look at how this equation was derived.</p>
+<p>The most common base of measuring entropy is <span class="math notranslate nohighlight">\(b=2\)</span>, so we often talk about <em>bits</em> of information, though other bases are used as well e.g. when <span class="math notranslate nohighlight">\(b=e\)</span> we call the units <em>nats</em>.</p>
+<p>First, let’s explore how entropy changes between some simple discrete probability distributions. In the rest of this tutorial we will refer to these as probability mass functions (PMF), where <span class="math notranslate nohighlight">\(p(x_i)\)</span> equals the <span class="math notranslate nohighlight">\(i^{th}\)</span> value in an array, and mass refers to how much of the distribution is contained at that value.</p>
+<p>For our first PMF, we will choose one where all of the probability mass is located in the middle of the distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_bins</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># number of points supporting the distribution</span>
+<span class="n">x_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># will be subdivided evenly into bins corresponding to points</span>
+
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">x_range</span><span class="p">,</span> <span class="n">n_bins</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># bin edges</span>
+
+<span class="n">pmf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_bins</span><span class="p">)</span>
+<span class="n">pmf</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">pmf</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># middle point has all the mass</span>
+
+<span class="c1"># Since we already have a PMF, rather than un-binned samples, `plt.hist` is not</span>
+<span class="c1"># suitable. Instead, we directly plot the PMF as a step function to visualize</span>
+<span class="c1"># the histogram:</span>
+<span class="n">pmf_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pmf</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># this is necessary to align plot steps with bin edges</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">pmf_</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps&quot;</span><span class="p">)</span>
+<span class="c1"># `fill_between` provides area shading</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">pmf_</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="s2">&quot;pre&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;p(x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x_range</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we were to draw a sample from this distribution, we know exactly what we would get every time. Distributions where all the mass is concentrated on a single event are known as <em>deterministic</em>.</p>
+<p>How much entropy is contained in a deterministic distribution?</p>
+<div class="section" id="exercise-1-computing-entropy">
+<h2>Exercise 1: Computing Entropy<a class="headerlink" href="#exercise-1-computing-entropy" title="Permalink to this headline">¶</a></h2>
+<p>Your first exercise is to implement a method that computes the entropy of a discrete probability distribution, given its mass function. Remember that we are interested in entropy in units of <em>bits</em>, so be sure to use the correct log function.</p>
+<p>Recall that <span class="math notranslate nohighlight">\(\log(0)\)</span> is undefined. When evaluated at <span class="math notranslate nohighlight">\(0\)</span>, NumPy log functions (such as <code class="docutils literal notranslate"><span class="pre">np.log2</span></code>) return <code class="docutils literal notranslate"><span class="pre">np.nan</span></code> (“Not a Number”). By convention, these undefined terms— which correspond to points in the distribution with zero mass—are excluded from the sum that computes the entropy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">entropy</span><span class="p">(</span><span class="n">pmf</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Given a discrete distribution, return the Shannon entropy in bits.</span>
+
+<span class="sd">  This is a measure of information in the distribution. For a totally</span>
+<span class="sd">  deterministic distribution, where samples are always found in the same bin,</span>
+<span class="sd">  then samples from the distribution give no more information and the entropy</span>
+<span class="sd">  is 0.</span>
+
+<span class="sd">  For now this assumes `pmf` arrives as a well-formed distribution (that is,</span>
+<span class="sd">  `np.sum(pmf)==1` and `not np.any(pmf &lt; 0)`)</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    pmf (np.ndarray): The probability mass function for a discrete distribution</span>
+<span class="sd">      represented as an array of probabilities.</span>
+<span class="sd">  Returns:</span>
+<span class="sd">    h (number): The entropy of the distribution in `pmf`.</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1">############################################################################</span>
+  <span class="c1"># Exercise for students: compute the entropy of the provided PMF</span>
+  <span class="c1">#   1. Exclude the points in the distribution with no mass (where `pmf==0`).</span>
+  <span class="c1">#      Hint: this is equivalent to including only the points with `pmf&gt;0`.</span>
+  <span class="c1">#   2. Implement the equation for Shannon entropy (in bits).</span>
+  <span class="c1">#  When ready to test, comment or remove the next line</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Excercise: implement the equation for entropy&quot;</span><span class="p">)</span>
+  <span class="c1">############################################################################</span>
+
+  <span class="c1"># reduce to non-zero entries to avoid an error from log2(0)</span>
+  <span class="n">pmf</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="c1"># implement the equation for Shannon entropy (in bits)</span>
+  <span class="n">h</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="c1"># return the absolute value (avoids getting a -0 result)</span>
+  <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+
+<span class="c1"># Uncomment to test your entropy function</span>
+<span class="c1"># print(f&quot;{entropy(pmf):.2f} bits&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W1D1_ModelTypes/solutions/W1D1_Tutorial3_Solution_3dc69011.py"><em>Click for solution</em></a></p>
+<p>We expect zero surprise from a deterministic distribution. If we had done this calculation by hand, it would simply be</p>
+<p><span class="math notranslate nohighlight">\(-1\log_2 1 = -0=0\)</span></p>
+<p>Note that changing the location of the peak (i.e. the point and bin on which all the mass rests) doesn’t alter the entropy. The entropy is about how predictable a sample is with respect to a distribution. A single peak is deterministic regardless of which point it sits on.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_bins</span><span class="p">)</span>
+<span class="n">pmf</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># arbitrary point has all the mass</span>
+
+<span class="n">pmf_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pmf</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">pmf_</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">pmf_</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="s2">&quot;pre&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;p(x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x_range</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>What about a distribution with mass split equally between two points?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_bins</span><span class="p">)</span>
+<span class="n">pmf</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">pmf</span><span class="p">)</span> <span class="o">//</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">pmf</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">pmf</span><span class="p">)</span> <span class="o">//</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="n">pmf_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pmf</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">pmf_</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">pmf_</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="s2">&quot;pre&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;p(x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x_range</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, the entropy calculation is</p>
+<p><span class="math notranslate nohighlight">\(-(0.5 \log_2 0.5 + 0.5\log_2 0.5)=1\)</span></p>
+<p>There is 1 bit of entropy. This means that before we take a random sample, there is 1 bit of uncertainty about which point in the distribution the sample will fall on: it will either be the first peak or the second one.</p>
+<p>Likewise, if we make one of the peaks taller (i.e. its point holds more of the probability mass) and the other one shorter, the entropy will decrease because of the increased certainty that the sample will fall on one point and not the other:</p>
+<p><span class="math notranslate nohighlight">\(-(0.2 \log_2 0.2 + 0.8\log_2 0.8)\approx 0.72\)</span></p>
+<p>Try changing the definition of the number and weighting of peaks, and see how the entropy varies.</p>
+<p>If we split the probability mass among even more points, the entropy continues to increase. Let’s derive the general form for <span class="math notranslate nohighlight">\(N\)</span> points of equal mass, where <span class="math notranslate nohighlight">\(p_i=p=1/N\)</span>:</p>
+<p>\begin{align}
+-\sum_i p_i \log_b p_i&amp;= -\sum_i^N \frac{1}{N} \log_b \frac{1}{N}\
+&amp;= -\log_b \frac{1}{N} \
+&amp;= \log_b N
+\end{align}
+$$$$</p>
+<p>If we have <span class="math notranslate nohighlight">\(N\)</span> discrete points, the <em>uniform distribution</em> (where all points have equal mass) is the distribution with the highest entropy: <span class="math notranslate nohighlight">\(\log_b N\)</span>. This upper bound on entropy is useful when considering binning strategies, as any estimate of entropy over <span class="math notranslate nohighlight">\(N\)</span> discrete points (or bins) must be in the interval <span class="math notranslate nohighlight">\([0, \log_b N]\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_bins</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_bins</span>  <span class="c1"># [1/N] * N</span>
+
+<span class="n">pmf_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pmf</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">pmf_</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">pmf_</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="s2">&quot;pre&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;p(x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x_range</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, there are 50 points and the entropy of the uniform distribution is <span class="math notranslate nohighlight">\(\log_2 50\approx 5.64\)</span>. If we construct <em>any</em> discrete distribution <span class="math notranslate nohighlight">\(X\)</span> over 50 points (or bins) and calculate an entropy of <span class="math notranslate nohighlight">\(H_2(X)&gt;\log_2 50\)</span>, something must be wrong with our implementation of the discrete entropy computation.</p>
+</div>
+</div>
+<div class="section" id="section-2-information-neurons-and-spikes">
+<h1>Section 2: Information, neurons, and spikes<a class="headerlink" href="#section-2-information-neurons-and-spikes" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 2: Entropy of different distributions</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;o6nyrx3KH20&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Recall the discussion of spike times and inter-spike intervals (ISIs) from Tutorial 1. What does the information content (or distributional entropy) of these measures say about our theory of nervous systems?</p>
+<p>We’ll consider three hypothetical neurons that all have the same mean ISI, but with different distributions:</p>
+<ol class="simple">
+<li><p>Deterministic</p></li>
+<li><p>Uniform</p></li>
+<li><p>Exponential</p></li>
+</ol>
+<p>Fixing the mean of the ISI distribution is equivalent to fixing its inverse: the neuron’s mean firing rate. If a neuron has a fixed energy budget and each of its spikes has the same energy cost, then by fixing the mean firing rate, we are normalizing for energy expenditure. This provides a basis for comparing the entropy of different ISI distributions. In other words: if our neuron has a fixed budget, what ISI distribution should it express (all else being equal) to maximize the information content of its outputs?</p>
+<p>Let’s construct our three distributions and see how their entropies differ.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_bins</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">mean_isi</span> <span class="o">=</span> <span class="mf">0.025</span>
+<span class="n">isi_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">isi_range</span><span class="p">,</span> <span class="n">n_bins</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">mean_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">mean_isi</span><span class="p">)</span>
+
+<span class="c1"># 1. all mass concentrated on the ISI mean</span>
+<span class="n">pmf_single</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_bins</span><span class="p">)</span>
+<span class="n">pmf_single</span><span class="p">[</span><span class="n">mean_idx</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1"># 2. mass uniformly distributed about the ISI mean</span>
+<span class="n">pmf_uniform</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_bins</span><span class="p">)</span>
+<span class="n">pmf_uniform</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="o">*</span><span class="n">mean_idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mean_idx</span><span class="p">)</span>
+
+<span class="c1"># 3. mass exponentially distributed about the ISI mean</span>
+<span class="n">pmf_exp</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">expon</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">scale</span><span class="o">=</span><span class="n">mean_isi</span><span class="p">)</span>
+<span class="n">pmf_exp</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pmf_exp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+<span class="c1">#@markdown Run this cell to plot the three PMFs</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">dists</span> <span class="o">=</span>  <span class="p">[</span><span class="c1"># (subplot title, pmf, ylim)</span>
+          <span class="p">(</span><span class="s2">&quot;(1) Deterministic&quot;</span><span class="p">,</span> <span class="n">pmf_single</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">)),</span>
+          <span class="p">(</span><span class="s2">&quot;(1) Uniform&quot;</span><span class="p">,</span> <span class="n">pmf_uniform</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">)),</span>
+          <span class="p">(</span><span class="s2">&quot;(1) Exponential&quot;</span><span class="p">,</span> <span class="n">pmf_exp</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">))]</span>
+
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">pmf_</span><span class="p">,</span> <span class="n">ylim</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">dists</span><span class="p">):</span>
+  <span class="n">pmf_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pmf_</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pmf_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">pmf_</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps&quot;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">pmf_</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="s2">&quot;pre&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Inter-spike interval (s)&quot;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability mass&quot;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">isi_range</span><span class="p">);</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
+  <span class="sa">f</span><span class="s2">&quot;Deterministic: </span><span class="si">{</span><span class="n">entropy</span><span class="p">(</span><span class="n">pmf_single</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> bits&quot;</span><span class="p">,</span>
+  <span class="sa">f</span><span class="s2">&quot;Uniform: </span><span class="si">{</span><span class="n">entropy</span><span class="p">(</span><span class="n">pmf_uniform</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> bits&quot;</span><span class="p">,</span>
+  <span class="sa">f</span><span class="s2">&quot;Exponential: </span><span class="si">{</span><span class="n">entropy</span><span class="p">(</span><span class="n">pmf_exp</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> bits&quot;</span><span class="p">,</span>
+  <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 3: Probabilities from histogram</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;e2U_-07O9jo&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the previous example we created the PMFs by hand to illustrate idealized scenarios. How would we compute them from data recorded from actual neurons?</p>
+<p>One way is to convert the ISI histograms we’ve previously computed into discrete probability distributions using the following equation:</p>
+<p>\begin{align}
+p_i = \frac{n_i}{\sum\nolimits_{i}n_i}
+\end{align}</p>
+<p>where <span class="math notranslate nohighlight">\(p_i\)</span> is the probability of an ISI falling within a particular interval <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(n_i\)</span> is the count of how many ISIs were observed in that interval.</p>
+<div class="section" id="exercise-2-probabilty-mass-function">
+<h2>Exercise 2: Probabilty Mass Function<a class="headerlink" href="#exercise-2-probabilty-mass-function" title="Permalink to this headline">¶</a></h2>
+<p>Your second exercise is to implement a method that will produce a probability mass function from an array of ISI bin counts.</p>
+<p>To verify your solution, we will compute the probability distribution of ISIs from real neural data taken from the Steinmetz dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neuron_idx</span> <span class="o">=</span> <span class="mi">283</span>
+
+<span class="n">isi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">steinmetz_spikes</span><span class="p">[</span><span class="n">neuron_idx</span><span class="p">])</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">isi_range</span><span class="p">,</span> <span class="n">n_bins</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">counts</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">isi</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pmf_from_counts</span><span class="p">(</span><span class="n">counts</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Given counts, normalize by the total to estimate probabilities.&quot;&quot;&quot;</span>
+  <span class="c1">###########################################################################</span>
+  <span class="c1"># Exercise: Compute the PMF. Remove the next line to test your function</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student excercise: compute the PMF from ISI counts&quot;</span><span class="p">)</span>
+  <span class="c1">###########################################################################</span>
+
+  <span class="n">pmf</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="k">return</span> <span class="n">pmf</span>
+
+<span class="c1"># Uncomment when ready to test your function</span>
+<span class="c1"># pmf = pmf_from_counts(counts)</span>
+<span class="c1"># plot_pmf(pmf,isi_range)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W1D1_ModelTypes/solutions/W1D1_Tutorial3_Solution_49231923.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=558 height=414 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W1D1_ModelTypes/static/W1D1_Tutorial3_Solution_49231923_0.png>
+</div>
+</div>
+<div class="section" id="section-3-calculate-entropy-from-a-pmf">
+<h1>Section 3: Calculate entropy from a PMF<a class="headerlink" href="#section-3-calculate-entropy-from-a-pmf" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 4: Calculating entropy from pmf</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;Xjy-jj-6Oz0&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have the probability distribution for the actual neuron spiking activity, we can calculate its entropy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Entropy for Neuron </span><span class="si">{</span><span class="n">neuron_idx</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">entropy</span><span class="p">(</span><span class="n">pmf</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> bits&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="interactive-demo-entropy-of-neurons">
+<h2>Interactive Demo: Entropy of neurons<a class="headerlink" href="#interactive-demo-entropy-of-neurons" title="Permalink to this headline">¶</a></h2>
+<p>We can combine the above distribution plot and entropy calculation with an interactive widget to explore how the different neurons in the dataset vary in spiking activity and relative information. Note that the mean firing rate across neurons is not fixed, so some neurons with a uniform ISI distribution may have higher entropy than neurons with a more exponential distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+<span class="c1">#@markdown **Run the cell** to enable the sliders.</span>
+
+<span class="k">def</span> <span class="nf">_pmf_from_counts</span><span class="p">(</span><span class="n">counts</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Given counts, normalize by the total to estimate probabilities.&quot;&quot;&quot;</span>
+  <span class="n">pmf</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">pmf</span>
+
+<span class="k">def</span> <span class="nf">_entropy</span><span class="p">(</span><span class="n">pmf</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Given a discrete distribution, return the Shannon entropy in bits.&quot;&quot;&quot;</span>
+  <span class="c1"># remove non-zero entries to avoid an error from log2(0)</span>
+  <span class="n">pmf</span> <span class="o">=</span> <span class="n">pmf</span><span class="p">[</span><span class="n">pmf</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+  <span class="n">h</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pmf</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">pmf</span><span class="p">))</span>
+  <span class="c1"># absolute value applied to avoid getting a -0 result</span>
+  <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span><span class="n">neuron</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">steinmetz_spikes</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+<span class="k">def</span> <span class="nf">steinmetz_pmf</span><span class="p">(</span><span class="n">neuron</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Given a neuron from the Steinmetz data, compute its PMF and entropy &quot;&quot;&quot;</span>
+  <span class="n">isi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">steinmetz_spikes</span><span class="p">[</span><span class="n">neuron</span><span class="p">])</span>
+  <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">isi_range</span><span class="p">,</span> <span class="n">n_bins</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="n">counts</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">isi</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
+  <span class="n">pmf</span> <span class="o">=</span> <span class="n">_pmf_from_counts</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+
+  <span class="n">plot_pmf</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span><span class="n">isi_range</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neuron </span><span class="si">{</span><span class="n">neuron</span><span class="si">}</span><span class="s2">: H = </span><span class="si">{</span><span class="n">_entropy</span><span class="p">(</span><span class="n">pmf</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> bits&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 5: Summary of model types</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;X4K2RR5qBK8&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Congratulations! You’ve finished your first NMA tutorial. In this 3 part tutorial series, we used different types of models to understand the spiking behavior of neurons recorded in the Steinmetz data set.</p>
+<ul class="simple">
+<li><p>We used “what” models to discover that the ISI distribution of real neurons is closest to an exponential distribution</p></li>
+<li><p>We used “how” models to discover that balanced excitatory and inbhitiory inputs, coupled with a leaky membrane, can give rise to neuronal spiking with exhibiting such an exponential ISI distribution</p></li>
+<li><p>We used “why” models to discover that exponential ISI distributions contain the most information when the mean spiking is constrained</p></li>
+</ul>
+</div>
+<div class="section" id="bonus">
+<h1>Bonus<a class="headerlink" href="#bonus" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-foundations-for-entropy">
+<h2>The foundations for Entropy<a class="headerlink" href="#the-foundations-for-entropy" title="Permalink to this headline">¶</a></h2>
+<p>In his foundational <a class="reference external" href="https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication">1948 paper</a> on information theory, Claude Shannon began with three criteria for a function <span class="math notranslate nohighlight">\(H\)</span> defining the entropy of a discrete distribution of probability masses <span class="math notranslate nohighlight">\(p_i\in p(X)\)</span> over the points <span class="math notranslate nohighlight">\(x_i\in X\)</span>:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(H\)</span> should be continuous in the <span class="math notranslate nohighlight">\(p_i\)</span>.</p></li>
+</ol>
+<ul class="simple">
+<li><p>That is, <span class="math notranslate nohighlight">\(H\)</span> should change smoothly in response to smooth changes to the mass <span class="math notranslate nohighlight">\(p_i\)</span> on each point <span class="math notranslate nohighlight">\(x_i\)</span>.</p></li>
+</ul>
+<ol class="simple">
+<li><p>If all the points have equal shares of the probability mass, <span class="math notranslate nohighlight">\(p_i=1/N\)</span>, <span class="math notranslate nohighlight">\(H\)</span> should be a non-decreasing function of <span class="math notranslate nohighlight">\(N\)</span>.</p></li>
+</ol>
+<ul class="simple">
+<li><p>That is, if <span class="math notranslate nohighlight">\(X_N\)</span> is the support with <span class="math notranslate nohighlight">\(N\)</span> discrete points and <span class="math notranslate nohighlight">\(p(x\in X_N)\)</span> assigns constant mass to each point, then <span class="math notranslate nohighlight">\(H(X_1) &lt; H(X_2) &lt; H(X_3) &lt; \dots\)</span></p></li>
+</ul>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(H\)</span> should be preserved by (invariant to) the equivalent (de)composition of distributions.</p></li>
+</ol>
+<ul>
+<li><p>For example (from Shannon’s paper) if we have a discrete distribution over three points with masses <span class="math notranslate nohighlight">\((\frac{1}{2},\frac{1}{3},\frac{1}{6})\)</span>, then their entropy can be represented in terms of a direct choice between the three and calculated <span class="math notranslate nohighlight">\(H(\frac{1}{2},\frac{1}{3},\frac{1}{6})\)</span>. However, it could also be represented in terms of a series of two choices:</p>
+<ol class="simple">
+<li><p>either we sample the point with mass <span class="math notranslate nohighlight">\(1/2\)</span> or not (<em>not</em> is the other <span class="math notranslate nohighlight">\(1/2\)</span>, whose subdivisions are not given in the first choice),</p></li>
+<li><p>if (with probability <span class="math notranslate nohighlight">\(1/2\)</span>) we <em>don’t</em> sample the first point, we sample one of the two remaining points, masses <span class="math notranslate nohighlight">\(1/3\)</span> and <span class="math notranslate nohighlight">\(1/6\)</span>.</p></li>
+</ol>
+<p>Thus in this case we require that <span class="math notranslate nohighlight">\(H(\frac{1}{2},\frac{1}{3},\frac{1}{6})=H(\frac{1}{2},\frac{1}{2}) + \frac{1}{2}H(\frac{1}{3}, \frac{1}{6})\)</span></p>
+</li>
+</ul>
+<p>There is a unique function (up to a linear scaling factor) which satisfies these 3 requirements:</p>
+<p>\begin{align}
+H_b(X) &amp;= -\sum_{x\in X} p(x) \log_b p(x)
+\end{align}</p>
+<p>Where the base of the logarithm <span class="math notranslate nohighlight">\(b&gt;1\)</span> controls the units of entropy. The two most common cases are <span class="math notranslate nohighlight">\(b=2\)</span> for units of <em>bits</em>, and <span class="math notranslate nohighlight">\(b=e\)</span> for <em>nats</em>.</p>
+<p>We can view this function as the expectation of the self-information over a distribution:</p>
+<div class="math notranslate nohighlight">
+\[H_b(X) = \mathbb{E}_{x\in X} \left[I_b(x)\right]\]</div>
+<div class="math notranslate nohighlight">
+\[I_b(x)=-\log_b p(x)\]</div>
+<p>Self-information is just the negative logarithm of probability, and is a measure of how surprising an event sampled from the distribution would be. Events with <span class="math notranslate nohighlight">\(p(x)=1\)</span> are certain to occur, and their self-information is zero (as is the entropy of the distribution they compose) meaning they are totally unsurprising. The smaller the probability of an event, the higher its self-information, and the more surprising the event would be to observe.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./W1D1_ModelTypes/student"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="W1D1_Tutorial2.html" title="previous page">Tutorial 2: “How” models</a>
+    <a class='right-next' id="next-link" href="../outro_vid.html" title="next page">Intro Video</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Neuromatch<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

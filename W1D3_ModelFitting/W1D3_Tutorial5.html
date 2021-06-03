@@ -1,0 +1,850 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 5: Model Selection: Bias-variance trade-off &#8212; Neuromatch Computational Neuroscience</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tutorial 6: Model Selection: Cross-validation" href="W1D3_Tutorial6.html" />
+    <link rel="prev" title="Tutorial 4: Multiple linear regression and polynomial regression" href="W1D3_Tutorial4.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   NMA 2021
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Intro to Modeling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../W1D1_ModelTypes/README.html">
+   Model Types (W1D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D1_ModelTypes/W1D1_Tutorial1.html">
+     Tutorial 1: “What” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D1_ModelTypes/W1D1_Tutorial2.html">
+     Tutorial 2: “How” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D1_ModelTypes/W1D1_Tutorial3.html">
+     Tutorial 3: “Why” models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../W1D2_ModelingPractice/README.html">
+   Modeling Practice (W1D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D2_ModelingPractice/W1D2_Tutorial1.html">
+     Neuromatch Academy: Week 1, Day 2, Tutorial
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="README.html">
+   Model Fitting (W1D3)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="W1D3_Tutorial1.html">
+     Tutorial 1: Linear regression with MSE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W1D3_Tutorial2.html">
+     Tutorial 2: Linear regression with MLE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W1D3_Tutorial3.html">
+     Tutorial 3: Confidence intervals and bootstrapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W1D3_Tutorial4.html">
+     Tutorial 4: Multiple linear regression and polynomial regression
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tutorial 5: Model Selection: Bias-variance trade-off
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W1D3_Tutorial6.html">
+     Tutorial 6: Model Selection: Cross-validation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../W1D4_MachineLearning/README.html">
+   Machine Learning (W1D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D4_MachineLearning/W1D4_Tutorial1.html">
+     Tutorial 1: GLMs for Encoding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D4_MachineLearning/W1D4_Tutorial2.html">
+     Tutorial 2: Classifiers and regularizers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../W1D5_DimensionalityReduction/README.html">
+   Dimensionality Reduction (W1D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D5_DimensionalityReduction/W1D5_Tutorial1.html">
+     Tutorial 1: Geometric view of data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D5_DimensionalityReduction/W1D5_Tutorial2.html">
+     Tutorial 2: Principal Component Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D5_DimensionalityReduction/W1D5_Tutorial3.html">
+     Tutorial 3: Dimensionality Reduction &amp; Reconstruction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D5_DimensionalityReduction/W1D5_Tutorial4.html">
+     Tutorial 4:  Nonlinear Dimensionality Reduction
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dynamical Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../W2D2_LinearSystems/README.html">
+   Linear Systems (W2D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W2D2_LinearSystems/W2D2_Tutorial1.html">
+     Neuromatch Academy 2020, Week 2, Day 2, Tutorial 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W2D2_LinearSystems/W2D2_Tutorial2.html">
+     Neuromatch Academy 2020, Week 2, Day 2, Tutorial 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W2D2_LinearSystems/W2D2_Tutorial3.html">
+     Neuromatch Academy 2020, Week 2, Day 2, Tutorial 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W2D2_LinearSystems/W2D2_Tutorial4.html">
+     Neuromatch Academy 2020, Week 2, Day 2, Tutorial 4
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/W1D3_ModelFitting/W1D3_Tutorial5.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/W1D3_ModelFitting/W1D3_Tutorial5.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial 5: Model Selection: Bias-variance trade-off
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-1-train-vs-test-data">
+   Section 1: Train vs test data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-2-bias-variance-tradeoff">
+   Section 2: Bias-variance tradeoff
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1-compute-and-compare-train-vs-test-error">
+     Exercise 1: Compute and compare train vs test error
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix">
+   Appendix
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bonus-exercise">
+     Bonus Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D3_ModelFitting/W1D3_Tutorial5.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="tutorial-5-model-selection-bias-variance-trade-off">
+<h1>Tutorial 5: Model Selection: Bias-variance trade-off<a class="headerlink" href="#tutorial-5-model-selection-bias-variance-trade-off" title="Permalink to this headline">¶</a></h1>
+<p><strong>Week 1, Day 3: Model Fitting</strong></p>
+<p><strong>By Neuromatch Academy</strong>
+<strong>Content creators</strong>: Pierre-Étienne Fiquet, Anqi Wu, Alex Hyafil with help from Ella Batty</p>
+<p><strong>Content reviewers</strong>: Lina Teichmann, Patrick Mineault, Michael Waskom</p>
+<hr class="docutils" />
+<p>#Tutorial Objectives</p>
+<p>This is Tutorial 5 of a series on fitting models to data. We start with simple linear regression, using least squares optimization (Tutorial 1) and Maximum Likelihood Estimation (Tutorial 2). We will use bootstrapping to build confidence intervals around the inferred linear model parameters (Tutorial 3). We’ll finish our exploration of regression models by generalizing to multiple linear regression and polynomial regression (Tutorial 4). We end by learning how to choose between these various models. We discuss the bias-variance trade-off (Tutorial 5) and Cross Validation for model selection (Tutorial 6).</p>
+<p>In this tutorial, we will learn about the bias-variance tradeoff and see it in action using polynomial regression models.</p>
+<p>Tutorial objectives:</p>
+<ul class="simple">
+<li><p>Understand difference between test and train data</p></li>
+<li><p>Compare train and test error for models of varying complexity</p></li>
+<li><p>Understand how bias-variance tradeoff relates to what model we choose</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 1: Bias Variance Tradeoff</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;NcUH_seBcVw&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=NcUH_seBcVw
+</pre></div>
+</div>
+<div class="output text_html">
+<iframe
+    width="854"
+    height="480"
+    src="https://www.youtube.com/embed/NcUH_seBcVw?fs=1"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Figure Settings</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Helper functions</span>
+<span class="k">def</span> <span class="nf">ordinary_least_squares</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Ordinary least squares estimator for linear regression.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x (ndarray): design matrix of shape (n_samples, n_regressors)</span>
+<span class="sd">    y (ndarray): vector of measurements of shape (n_samples)</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    ndarray: estimated parameter values of shape (n_regressors)</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">x</span><span class="p">)</span> <span class="o">@</span> <span class="n">x</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">y</span>
+
+<span class="k">def</span> <span class="nf">make_design_matrix</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Create the design matrix of inputs for use in polynomial regression</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x (ndarray): input vector of shape (n_samples)</span>
+<span class="sd">    order (scalar): polynomial regression order</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    ndarray: design matrix for polynomial regression of shape (samples, order+1)</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># Broadcast to shape (n x 1) so dimensions work</span>
+  <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span>
+
+  <span class="c1">#if x has more than one feature, we don&#39;t want multiple columns of ones so we assign</span>
+  <span class="c1"># x^0 here</span>
+  <span class="n">design_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">))</span>
+
+  <span class="c1"># Loop through rest of degrees and stack columns</span>
+  <span class="k">for</span> <span class="n">degree</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">order</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+      <span class="n">design_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">design_matrix</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="n">degree</span><span class="p">))</span>
+
+  <span class="k">return</span> <span class="n">design_matrix</span>
+
+
+<span class="k">def</span> <span class="nf">solve_poly_reg</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">max_order</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Fit a polynomial regression model for each order 0 through max_order.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x (ndarray): input vector of shape (n_samples)</span>
+<span class="sd">    y (ndarray): vector of measurements of shape (n_samples)</span>
+<span class="sd">    max_order (scalar): max order for polynomial fits</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    dict: fitted weights for each polynomial model (dict key is order)</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># Create a dictionary with polynomial order as keys, and np array of theta</span>
+  <span class="c1"># (weights) as the values</span>
+  <span class="n">theta_hats</span> <span class="o">=</span> <span class="p">{}</span>
+
+  <span class="c1"># Loop over polynomial orders from 0 through max_order</span>
+  <span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_order</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">make_design_matrix</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+    <span class="n">this_theta</span> <span class="o">=</span> <span class="n">ordinary_least_squares</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="n">theta_hats</span><span class="p">[</span><span class="n">order</span><span class="p">]</span> <span class="o">=</span> <span class="n">this_theta</span>
+
+  <span class="k">return</span> <span class="n">theta_hats</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-1-train-vs-test-data">
+<h1>Section 1: Train vs test data<a class="headerlink" href="#section-1-train-vs-test-data" title="Permalink to this headline">¶</a></h1>
+<p>The data used for the fitting procedure for a given model is the <strong>training data</strong>. In tutorial 4, we computed MSE on the training data of our polynomial regression models and compared training MSE across models. An additional important type of data is <strong>test data</strong>. This is held-out data that is not used (in any way) during the fitting procedure. When fitting models, we often want to consider both the train error (the quality of prediction on the training data) and the test error (the quality of prediction on the test data) as we will see in the next section.</p>
+<p>We will generate some noisy data for use in this tutorial using a similar process as in Tutorial 4.However, now we will also generate test data. We want to see how our model generalizes beyond the range of values see in the training phase. To accomplish this, we will generate x from a wider range of values ([-3, 3]). We then plot the train and test data together.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+<span class="c1">#@markdown Execute this cell to simulate both training and test data</span>
+
+<span class="c1">### Generate training data</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">n_train_samples</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">n_train_samples</span><span class="p">)</span> <span class="c1"># sample from a uniform distribution over [-2, 2.5)</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_train_samples</span><span class="p">)</span> <span class="c1"># sample from a standard normal distribution</span>
+<span class="n">y_train</span> <span class="o">=</span>  <span class="n">x_train</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x_train</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">noise</span>
+
+<span class="c1">### Generate testing data</span>
+<span class="n">n_test_samples</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">n_test_samples</span><span class="p">)</span> <span class="c1"># sample from a uniform distribution over [-2, 2.5)</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_test_samples</span><span class="p">)</span> <span class="c1"># sample from a standard normal distribution</span>
+<span class="n">y_test</span> <span class="o">=</span>  <span class="n">x_test</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x_test</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">noise</span>
+
+<span class="c1">## Plot both train and test data</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Training &amp; Test Data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Training&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="s1">&#39;g+&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/W1D3_Tutorial5_10_0.png" src="../_images/W1D3_Tutorial5_10_0.png" />
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-2-bias-variance-tradeoff">
+<h1>Section 2: Bias-variance tradeoff<a class="headerlink" href="#section-2-bias-variance-tradeoff" title="Permalink to this headline">¶</a></h1>
+<p>Finding a good model can be difficult. One of the most important concepts to keep in mind when modeling is the <strong>bias-variance tradeoff</strong>.</p>
+<p><strong>Bias</strong> is the difference between the prediction of the model and the corresponding true output variables you are trying to predict. Models with high bias will not fit the training data well since the predictions are quite different from the true data. These high bias models are overly simplified - they do not have enough parameters and complexity to accurately capture the patterns in the data and are thus <strong>underfitting</strong>.</p>
+<p><strong>Variance</strong> refers to the variability of model predictions for a given input. Essentially, do the model predictions change a lot with changes in the exact training data used? Models with high variance are highly dependent on the exact training data used - they will not generalize well to test data. These high variance models are <strong>overfitting</strong> to the data.</p>
+<p>In essence:</p>
+<ul class="simple">
+<li><p>High bias, low variance models have high train and test error.</p></li>
+<li><p>Low bias, high variance models have low train error, high test error</p></li>
+<li><p>Low bias, low variance models have low train and test error</p></li>
+</ul>
+<p>As we can see from this list, we ideally want low bias and low variance models! These goals can be in conflict though - models with enough complexity to have low bias also tend to overfit and depend on the training data more. We need to decide on the correct tradeoff.</p>
+<p>In this section, we will see the bias-variance tradeoff in action with polynomial regression models of different orders.</p>
+<p>Graphical illustration of bias and variance.
+(Source: <a class="reference external" href="http://scott.fortmann-roe.com/docs/BiasVariance.html">http://scott.fortmann-roe.com/docs/BiasVariance.html</a>)</p>
+<p><img alt="bias-variance" src="https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/images/bias_variance/bullseye.png" /></p>
+<p>We will first fit polynomial regression models of orders 0-5 on our simulated training data just as we did in Tutorial 4.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+<span class="c1">#@markdown Execute this cell to estimate theta_hats</span>
+<span class="n">max_order</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">theta_hats</span> <span class="o">=</span> <span class="n">solve_poly_reg</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">max_order</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-1-compute-and-compare-train-vs-test-error">
+<h2>Exercise 1: Compute and compare train vs test error<a class="headerlink" href="#exercise-1-compute-and-compare-train-vs-test-error" title="Permalink to this headline">¶</a></h2>
+<p>We will use MSE as our error metric again. Compute MSE on training data (<span class="math notranslate nohighlight">\(x_{train},y_{train}\)</span>) and test data (<span class="math notranslate nohighlight">\(x_{test}, y_{test}\)</span>) for each polynomial regression model (orders 0-5). Since you already developed code in T4 Exercise 4 for evaluating fit polynomials, we have ported that here into the function <code class="docutils literal notranslate"><span class="pre">evaluate_poly_reg</span></code> for your use.</p>
+<p><em>Please think about after completing exercise before reading the following text! Do you think the order 0 model has high or low bias? High or low variance? How about the order 5 model?</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">evaluate_poly_reg</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta_hats</span><span class="p">,</span> <span class="n">max_order</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Evaluates MSE of polynomial regression models on data</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      x (ndarray): input vector of shape (n_samples)</span>
+<span class="sd">      y (ndarray): vector of measurements of shape (n_samples)</span>
+<span class="sd">      theta_hats (dict):  fitted weights for each polynomial model (dict key is order)</span>
+<span class="sd">      max_order (scalar): max order of polynomial fit</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">      (ndarray): mean squared error for each order, shape (max_order)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">mse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">max_order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+      <span class="n">X_design</span> <span class="o">=</span> <span class="n">make_design_matrix</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+      <span class="n">y_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_design</span><span class="p">,</span> <span class="n">theta_hats</span><span class="p">[</span><span class="n">order</span><span class="p">])</span>
+      <span class="n">residuals</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">y_hat</span>
+      <span class="n">mse</span><span class="p">[</span><span class="n">order</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">residuals</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">mse</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_mse</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span><span class="n">x_test</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_test</span><span class="p">,</span><span class="n">theta_hats</span><span class="p">,</span><span class="n">max_order</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Compute MSE on training data and test data.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x_train(ndarray): training data input vector of shape (n_samples)</span>
+<span class="sd">    x_test(ndarray): test data input vector of shape (n_samples)</span>
+<span class="sd">    y_train(ndarray): training vector of measurements of shape (n_samples)</span>
+<span class="sd">    y_test(ndarray): test vector of measurements of shape (n_samples)</span>
+<span class="sd">    theta_hats(dict): fitted weights for each polynomial model (dict key is order)</span>
+<span class="sd">    max_order (scalar): max order of polynomial fit</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    ndarray, ndarray: MSE error on training data and test data for each order</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1">#######################################################</span>
+  <span class="c1">## TODO for students: calculate mse error for both sets</span>
+  <span class="c1">## Hint: look back at tutorial 5 where we calculated MSE</span>
+  <span class="c1"># Fill out function and remove</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student excercise: calculate mse for train and test set&quot;</span><span class="p">)</span>
+  <span class="c1">#######################################################</span>
+
+  <span class="n">mse_train</span> <span class="o">=</span> <span class="o">...</span>
+  <span class="n">mse_test</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="k">return</span> <span class="n">mse_train</span><span class="p">,</span> <span class="n">mse_test</span>
+
+
+<span class="c1">#Uncomment below to test your function</span>
+<span class="c1"># mse_train, mse_test = compute_mse(x_train, x_test, y_train, y_test, theta_hats, max_order)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">width</span> <span class="o">=</span> <span class="o">.</span><span class="mi">35</span>
+
+<span class="c1"># ax.bar(np.arange(max_order + 1) - width / 2, mse_train, width, label=&quot;train MSE&quot;)</span>
+<span class="c1"># ax.bar(np.arange(max_order + 1) + width / 2, mse_test , width, label=&quot;test MSE&quot;)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Polynomial order&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;MSE&#39;</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span><span class="s1">&#39;Comparing polynomial fits&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No handles with labels found to put in legend.
+</pre></div>
+</div>
+<img alt="../_images/W1D3_Tutorial5_16_1.png" src="../_images/W1D3_Tutorial5_16_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to_remove solution</span>
+
+<span class="k">def</span> <span class="nf">compute_mse</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span><span class="n">x_test</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_test</span><span class="p">,</span><span class="n">theta_hats</span><span class="p">,</span><span class="n">max_order</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Compute MSE on training data and test data.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x_train(ndarray): training data input vector of shape (n_samples)</span>
+<span class="sd">    x_test(ndarray): test vector of shape (n_samples)</span>
+<span class="sd">    y_train(ndarray): training vector of measurements of shape (n_samples)</span>
+<span class="sd">    y_test(ndarray): test vector of measurements of shape (n_samples)</span>
+<span class="sd">    theta_hats(dict): fitted weights for each polynomial model (dict key is order)</span>
+<span class="sd">    max_order (scalar): max order of polynomial fit</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    ndarray, ndarray: MSE error on training data and test data for each order</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">mse_train</span> <span class="o">=</span> <span class="n">evaluate_poly_reg</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">theta_hats</span><span class="p">,</span> <span class="n">max_order</span><span class="p">)</span>
+  <span class="n">mse_test</span> <span class="o">=</span> <span class="n">evaluate_poly_reg</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">theta_hats</span><span class="p">,</span> <span class="n">max_order</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">mse_train</span><span class="p">,</span> <span class="n">mse_test</span>
+
+
+<span class="n">mse_train</span><span class="p">,</span> <span class="n">mse_test</span> <span class="o">=</span> <span class="n">compute_mse</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">theta_hats</span><span class="p">,</span> <span class="n">max_order</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">xkcd</span><span class="p">():</span>
+  <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+  <span class="n">width</span> <span class="o">=</span> <span class="o">.</span><span class="mi">35</span>
+
+  <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">max_order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">mse_train</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;train MSE&quot;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">max_order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">mse_test</span> <span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;test MSE&quot;</span><span class="p">)</span>
+
+  <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Polynomial order&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;MSE&#39;</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span><span class="s1">&#39;Comparing polynomial fits&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/W1D3_Tutorial5_17_0.png" src="../_images/W1D3_Tutorial5_17_0.png" />
+</div>
+</div>
+<p>As we can see from the plot above, more complex models (higher order polynomials) have lower MSE for training data. The overly simplified models (orders 0 and 1) have high MSE on the training data. As we add complexity to the model, we go from high bias to low bias.</p>
+<p>The MSE on test data follows a different pattern. The best test MSE is for an order 2 model - this makes sense as the data was generated with an order 2 model. Both simpler models and more complex models have higher test MSE.</p>
+<p>So to recap:</p>
+<p>Order 0 model: High bias, low variance</p>
+<p>Order 5 model: Low bias, high variance</p>
+<p>Order 2 model: Just right, low bias, low variance</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Training data is the data used for fitting, test data is held-out data.</p></li>
+<li><p>We need to strike the right balance between bias and variance. Ideally we want to find a model with optimal model complexity that has both low bias and low variance</p></li>
+<li><p>Too complex models have low bias and high variance.</p></li>
+<li><p>Too simple models have high bias and low variance.</p></li>
+</ul>
+<p><strong>Note</strong></p>
+<ul class="simple">
+<li><p>Bias and variance are very important concepts in modern machine learning, but it has recently been observed that they do not necessaruly trade off (see for example the phenomenon and theory of “double descent”)</p></li>
+</ul>
+<p><strong>Further readings:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/">The elements of statistical learning</a> by Hastie, Tibshirani and Friedman</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="appendix">
+<h1>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="bonus-exercise">
+<h2>Bonus Exercise<a class="headerlink" href="#bonus-exercise" title="Permalink to this headline">¶</a></h2>
+<p>Prove the bias-variance decomposition for MSE</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{E}_{x}\left[(y-\hat{y}(x ; \theta))^{2}\right]=\left(\operatorname{Bias}_{x}[\hat{y}(x ; \theta)]\right)^{2}+\operatorname{Var}_{x}[\hat{y}(x ; \theta)]+\sigma^{2}
+$$where
+$$\operatorname{Bias}_{x}[\hat{y}(x ; \theta)]=\mathrm{E}_{x}[\hat{y}(x ; \theta)]-y
+$$and
+$$\operatorname{Var}_{x}[\hat{y}(x ; \theta)]=\mathrm{E}_{x}\left[\hat{y}(x ; \theta)^{2}\right]-\mathrm{E}_{x}[\hat{y}(x ; \theta)]^{2}
+\]</div>
+<p>Hint: use $<span class="math notranslate nohighlight">\(\operatorname{Var}[X]=\mathrm{E}\left[X^{2}\right]-(\mathrm{E}[X])^{2}\)</span>$</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./W1D3_ModelFitting"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="W1D3_Tutorial4.html" title="previous page">Tutorial 4: Multiple linear regression and polynomial regression</a>
+    <a class='right-next' id="next-link" href="W1D3_Tutorial6.html" title="next page">Tutorial 6: Model Selection: Cross-validation</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Neuromatch<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -1,0 +1,1419 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 3: Combining determinism and stochasticity &#8212; Neuromatch Computational Neuroscience</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial 4: Autoregressive models" href="W2D2_Tutorial4.html" />
+    <link rel="prev" title="Tutorial 2: Markov Processes" href="W2D2_Tutorial2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/nma-logo-square-4xp.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Pre-reqs Refresher
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D1_PythonWorkshop1/intro_text.html">
+   Python Workshop 1 (W0D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
+     Tutorial: LIF Neuron - Part I
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D2_PythonWorkshop2/intro_text.html">
+   Python Workshop 2 (W0D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
+     Neuromatch Academy: Week 0, Day 2, Tutorial 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D3_LinearAlgebra/intro_text.html">
+   Linear Algebra (W0D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
+     Tutorial 1: Vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
+     Tutorial 2: Matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
+     Bonus Tutorial: Discrete Dynamical Systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D4_Calculus/intro_text.html">
+   Calculus (W0D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
+     Tutorial 1: Basics of Differential and Integral Calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
+     Tutorial 2: Differential Equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
+     Tutorial 3: Numerical Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D5_Statistics/intro_text.html">
+   Statistics (W0D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
+     Tutorial 1: Probability Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
+     Tutorial 2: Statistical Inference
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Intro to Modeling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D1_ModelTypes/intro_text.html">
+   Model Types (W1D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
+     Tutorial 1: “What” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
+     Tutorial 2: “How” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
+     Tutorial 3: “Why” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/outro_vid.html">
+     Intro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D2_ModelingPractice/intro_text.html">
+   Modeling Practice (W1D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
+     Tutorial: Framing the Question
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D3_ModelFitting/intro_text.html">
+   Model Fitting (W1D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
+     Tutorial 1: Linear regression with MSE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
+     Tutorial 2: Linear regression with MLE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
+     Tutorial 3: Confidence intervals and bootstrapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
+     Tutorial 4: Multiple linear regression and polynomial regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
+     Tutorial 5: Model Selection: Bias-variance trade-off
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
+     Tutorial 6: Model Selection: Cross-validation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D4_MachineLearning/intro_text.html">
+   Machine Learning (W1D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial1.html">
+     Tutorial 1: GLMs for Encoding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial2.html">
+     Tutorial 2: Classifiers and regularizers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D5_DimensionalityReduction/intro_text.html">
+   Dimensionality Reduction (W1D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
+     Tutorial 1: Geometric view of data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
+     Tutorial 2: Principal Component Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
+     Tutorial 3: Dimensionality Reduction &amp; Reconstruction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
+     Tutorial 4:  Nonlinear Dimensionality Reduction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D1_DeepLearning/intro_text.html">
+   Deep Learning (W2D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
+     Tutorial 1: Decoding Neural Responses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
+     Tutorial 2: Convolutional Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
+     Tutorial 2: Building and Evaluating Normative Encoding Models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dynamical Systems
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../intro_text.html">
+   Linear Systems (W2D2)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="W2D2_Tutorial1.html">
+     Tutorial 1: Linear dynamical systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W2D2_Tutorial2.html">
+     Tutorial 2: Markov Processes
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tutorial 3: Combining determinism and stochasticity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W2D2_Tutorial4.html">
+     Tutorial 4: Autoregressive models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D3_RealNeurons/intro_text.html">
+   Real Neurons (W2D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial1.html">
+     Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial2.html">
+     Tutorial 2: Effects of Input Correlation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial3.html">
+     Tutorial 3: Synaptic transmission - Models of static and dynamic synapses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial4.html">
+     Tutorial 4: Spike-timing dependent plasticity (STDP)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D4_DynamicNetworks/intro_text.html">
+   Dynamic Networks (W2D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
+     Tutorial 1: Neural Rate Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
+     Tutorial 2: Wilson-Cowan Model
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Stochastic Processes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D1_BayesianDecisions/intro_text.html">
+   Bayesian Decisions (W3D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
+     Tutorial 1: Bayes with a binary hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
+     Tutorial 2: Bayesian inference and decisions with continuous hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
+     Bonus Tutorial:Fitting to data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D2_HiddenDynamics/intro_text.html">
+   Hidden Dynamics (W3D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
+     Tutorial 1: Sequential Probability Ratio Test
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
+     Tutorial 2: Hidden Markov Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
+     Tutorial 3: 1D Kalman Filter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
+     Tutorial 4: 2D Kalman Filter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D3_OptimalControl/intro_text.html">
+   Optimal Control (W3D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
+     Neuromatch Academy: Week 3, Day 3, Tutorial 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
+     Tutorial 2: Optimal Control for Continuous State
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D4_ReinforcementLearning/intro_text.html">
+   Reinforcement Learning (W3D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
+     Tutorial 1: Learning to Predict
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
+     Tutorial 2: Learning to Act: Multi-Armed Bandits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
+     Tutorial 3: Learning to Act: Q-Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
+     Tutorial 4: From Reinforcement Learning to Planning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D5_NetworkCausality/intro_text.html">
+   Network Causality (W3D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
+     Tutorial 1: Interventions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
+     Tutorial 2: Correlations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
+     Tutorial 3: Simultaneous fitting/regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
+     Tutorial 4: Instrumental Variables
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/W2D2_LinearSystems/student/W2D2_Tutorial3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/W2D2_LinearSystems/student/W2D2_Tutorial3.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial 3: Combining determinism and stochasticity
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial-objectives">
+   Tutorial Objectives
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-1-random-walks">
+   Section 1: Random Walks
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1-3a-part-1-random-walk-simulation">
+     Exercise 1 (3A Part 1): Random walk simulation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2-3a-part-2-random-walk-mean-variance">
+     Exercise 2 (3A Part 2): Random walk mean &amp; variance
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interactive-demo-influence-of-parameter-choice">
+     Interactive Demo: Influence of Parameter Choice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-2-the-ornstein-uhlenbeck-ou-process">
+   Section 2: The Ornstein-Uhlenbeck (OU) process
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3-3b-drift-diffusion-model">
+     Exercise 3 (3B): Drift-diffusion model
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#think">
+       Think
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-3-variance-of-the-ou-process">
+   Section 3: Variance of the OU process
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-4-3c-computing-the-variances-empirically">
+     Exercise 4 (3C): Computing the variances empirically
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D2_LinearSystems/student/W2D2_Tutorial3.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="tutorial-3-combining-determinism-and-stochasticity">
+<h1>Tutorial 3: Combining determinism and stochasticity<a class="headerlink" href="#tutorial-3-combining-determinism-and-stochasticity" title="Permalink to this headline">¶</a></h1>
+<p><strong>Week 2, Day 2: Linear Systems</strong></p>
+<p><strong>By Neuromatch Academy</strong>
+<strong>Content Creators</strong>: Bing Wen Brunton, Alice Schwarze, Biraj Pandey</p>
+<p><strong>Content Reviewers</strong>: Norma Kuhn, John Butler, Matthew Krause, Ella Batty, Richard Gao, Michael Waskom</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="tutorial-objectives">
+<h1>Tutorial Objectives<a class="headerlink" href="#tutorial-objectives" title="Permalink to this headline">¶</a></h1>
+<p>Time-dependent processes rule the world.</p>
+<p>Now that we’ve spent some time familiarizing ourselves with the behavior of such systems when their trajectories are (1) entirely predictable and deterministic, or (2) governed by random processes, it’s time to consider that neither is sufficient to describe neuroscience. Instead, we are often faced with processes for which we know some dynamics, but there is some random aspect as well. We call these <strong>dynamical systems with stochasticity</strong>.</p>
+<p>This tutorial will build on our knowledge and gain some intuition for how deterministic and stochastic processes can both be a part of a dynamical system by:</p>
+<ul class="simple">
+<li><p>Simulating random walks</p></li>
+<li><p>Investigating the mean and variance of a Ornstein-Uhlenbeck (OU) process</p></li>
+<li><p>Quantifying the OU process’s behavior at equilibrium.</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Figure settings</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>       <span class="c1"># interactive display</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Helper Functions</span>
+<span class="c1"># drift-diffusion model</span>
+<span class="c1"># returns t, x</span>
+<span class="k">def</span> <span class="nf">ddm</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">xinfty</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">sig</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">xinfty</span> <span class="o">+</span> <span class="n">lam</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">xinfty</span><span class="p">)</span> <span class="o">+</span> <span class="n">sig</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">x</span>
+
+<span class="c1"># computes equilibrium variance of ddm</span>
+<span class="c1"># returns variance</span>
+<span class="k">def</span> <span class="nf">ddm_eq_var</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">xinfty</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">sig</span><span class="p">):</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">ddm</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">xinfty</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+
+    <span class="c1"># returns variance of the second half of the simulation</span>
+    <span class="c1"># this is a hack: assumes system has settled by second half</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="nb">round</span><span class="p">(</span><span class="n">T</span><span class="o">/</span><span class="mi">2</span><span class="p">):]</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">plot_random_walk_sims</span><span class="p">(</span><span class="n">sims</span><span class="p">,</span> <span class="n">nsims</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Helper for exercise 3A&quot;&quot;&quot;</span>
+  <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sim</span><span class="p">[:</span><span class="n">nsims</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;position x&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">plot_mean_var_by_timestep</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Helper function for exercise 3A.2&quot;&quot;&quot;</span>
+  <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ah1</span><span class="p">,</span> <span class="n">ah2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+  <span class="c1"># plot mean of distribution as a function of time</span>
+  <span class="n">ah1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
+  <span class="n">ah1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+  <span class="n">ah1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+  <span class="c1"># plot variance of distribution as a function of time</span>
+  <span class="n">ah2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+  <span class="n">ah2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+  <span class="n">ah2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;variance&#39;</span><span class="p">)</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">plot_ddm</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">xinfty</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">x0</span><span class="p">):</span>
+  <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">xinfty</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">lam</span><span class="o">**</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">x0</span> <span class="o">*</span> <span class="n">lam</span><span class="o">**</span><span class="n">t</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;k.&#39;</span><span class="p">)</span>          <span class="c1"># simulated data pts</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">({</span><span class="s1">&#39;deterministic solution&#39;</span><span class="p">,</span> <span class="s1">&#39;simulation&#39;</span><span class="p">})</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">var_comparison_plot</span><span class="p">(</span><span class="n">empirical</span><span class="p">,</span> <span class="n">analytical</span><span class="p">):</span>
+  <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">empirical</span><span class="p">,</span> <span class="n">analytical</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;empirical equilibrium variance&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;analytic equilibrium variance&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;45 deg line&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-1-random-walks">
+<h1>Section 1: Random Walks<a class="headerlink" href="#section-1-random-walks" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 1: E. coli and Random Walks</span>
+<span class="c1"># Insert the ID of the corresponding youtube video</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;VHwTBCQJjfw&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To begin, let’s first take a gander at how life sometimes wanders around aimlessly. One of the simplest and best-studied living systems that has some interesting behaviors is the <em>E. coli</em> bacterium, which is capable of navigating odor gradients on a substrate to seek a food source. Larger life (including flies, dogs, and blindfolded humans) sometimes use the same strategies to guide their decisions.</p>
+<p>Here, we will consider what the <em>E. coli</em> does in the absence of food odors. What’s the best strategy when one does not know where to head? Why, flail around randomly, of course!</p>
+<p>The <strong>random walk</strong> is exactly that — at every time step, use a random process like flipping a coin to change one’s heading accordingly. Note that this process is closely related to <em>Brownian motion</em>, so you may sometimes hear that terminology used as well.</p>
+<p>Let’s start with a <strong>one-dimensional random walk</strong>. A bacterium starts at <span class="math notranslate nohighlight">\(x=0\)</span>. At every time step, it flips a coin (a very small, microscopic coin of protein mintage), then heads left <span class="math notranslate nohighlight">\(\Delta x = -1\)</span> or right <span class="math notranslate nohighlight">\(\Delta x = +1\)</span> for with equal probability. For instance, if at time step <span class="math notranslate nohighlight">\(1\)</span> the result of the coin flip is to head right, then its position at that time step becomes <span class="math notranslate nohighlight">\(x_1 = x_0 + \Delta x = 1.\)</span> Continuing in this way, its position at time step <span class="math notranslate nohighlight">\(k+1\)</span> is given by
+$<span class="math notranslate nohighlight">\(x_{k+1} = x_k + \Delta x \)</span>$</p>
+<p>We will simulate this process below and plot the position of the bacterium as a function of the time step. <strong>Run the code below.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Simulating the random walk</span>
+<span class="c1"># parameters of simulation</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span> <span class="c1"># set random seed</span>
+
+<span class="c1"># initial position</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># step forward in time</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># choose randomly between -1 and 1 (coin flip)</span>
+    <span class="n">this_step</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># make the step</span>
+    <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">this_step</span>
+
+<span class="c1"># plot this trajectory</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;position x&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-1-3a-part-1-random-walk-simulation">
+<h2>Exercise 1 (3A Part 1): Random walk simulation<a class="headerlink" href="#exercise-1-3a-part-1-random-walk-simulation" title="Permalink to this headline">¶</a></h2>
+<p>In the previous plot, we assumed that the bacterium takes a step of size <span class="math notranslate nohighlight">\(1\)</span> at every point in time. Let’s let it take steps of different sizes!</p>
+<p>We will code a random walk where the steps have a standard normal distribution (with mean <span class="math notranslate nohighlight">\(\mu\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>). Instead of running one trajectory at a time, we will write our code so that we can simulate a large number of trajectories efficiently. We will combine this all into a function <code class="docutils literal notranslate"><span class="pre">random_walk_simulator</span></code> that generates <span class="math notranslate nohighlight">\(N\)</span> random walks each with <span class="math notranslate nohighlight">\(T\)</span> time points efficiently.</p>
+<p>We will plot 10 random walks for 10000 time steps each.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">random_walk_simulator</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Simulate N random walks for T time points. At each time point, the step</span>
+<span class="sd">       is drawn from a Gaussian distribution with mean mu and standard deviation</span>
+<span class="sd">       sigma.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      T (integer) : Duration of simulation in time steps</span>
+<span class="sd">      N (integer) : Number of random walks</span>
+<span class="sd">      mu (float) : mean of step distribution</span>
+<span class="sd">      sigma (float) : standard deviation of step distribution</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      (numpy array) : NxT array in which each row corresponds to trajectory</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="c1">###############################################################################</span>
+    <span class="c1">## TODO: Code the simulated random steps to take</span>
+    <span class="c1">## Hints: you can generate all the random steps in one go in an N x T matrix</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Complete random_walk_simulator_function&#39;</span><span class="p">)</span>
+    <span class="c1">###############################################################################</span>
+    <span class="c1"># generate all the random steps for all steps in all simulations in one go</span>
+    <span class="c1"># produces a N x T array</span>
+    <span class="n">steps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="o">...</span><span class="p">))</span>
+
+    <span class="c1"># compute the cumulative sum of all the steps over the time axis</span>
+    <span class="n">sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">steps</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">sim</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span> <span class="c1"># set random seed</span>
+
+<span class="c1"># Uncomment the lines below once the function above is completed</span>
+<span class="c1"># simulate 1000 random walks for 10000 time steps</span>
+<span class="c1"># sim = random_walk_simulator(1000, 10000,  mu=0, sigma=1)</span>
+<span class="c1"># take a peek at the first 10 simulations</span>
+<span class="c1"># plot_random_walk_sims(sim, nsims=10)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D2_LinearSystems/solutions/W2D2_Tutorial3_Solution_cb38054b.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=560 height=416 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D2_LinearSystems/static/W2D2_Tutorial3_Solution_cb38054b_0.png>
+<p>We see that the trajectories all look a little different from each other. But there are some general observations one can make: at the beginning almost all trajectories are very close to <span class="math notranslate nohighlight">\(x=0\)</span>, which is where our bacterium started. As time progresses, some trajectories move further and further away from the starting point. However, a lot of trajectories stay close to the starting point of <span class="math notranslate nohighlight">\(x=0\)</span>.</p>
+<p>Now let’s take a look at the distribution of bacteria positions at different points in time, analyzing all the trajectories we just generated above. <strong>Run the code below.</strong> You do not have to modify anything.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Distribution of bateria positions</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="c1"># look at the distribution of positions at different times</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mi">1000</span><span class="p">,</span><span class="mi">2500</span><span class="p">,</span><span class="mi">10000</span><span class="p">]):</span>
+
+    <span class="c1"># get mean and standard deviation of distribution at time t</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">sim</span><span class="p">[:,</span> <span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">sig2</span> <span class="o">=</span> <span class="n">sim</span><span class="p">[:,</span> <span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+    <span class="c1"># make a plot label</span>
+    <span class="n">mytitle</span> <span class="o">=</span> <span class="s1">&#39;$t=$</span><span class="si">{time:d}</span><span class="s1"> ($\mu=$</span><span class="si">{mu:.2f}</span><span class="s1">, $\sigma=$</span><span class="si">{var:.2f}</span><span class="s1">)&#39;</span>
+
+    <span class="c1"># plot histogram</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sim</span><span class="p">[:,</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+             <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;black&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span>
+             <span class="c1">#make sure the histograms have the same bins!</span>
+             <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span>
+             <span class="c1"># make histograms a little see-through</span>
+             <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+             <span class="c1"># draw second histogram behind the first one</span>
+             <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="o">-</span><span class="n">i</span><span class="p">,</span>
+             <span class="n">label</span><span class="o">=</span><span class="n">mytitle</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="n">sig2</span><span class="p">))</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;position x&#39;</span><span class="p">)</span>
+
+    <span class="c1"># plot range</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">500</span><span class="p">,</span> <span class="mi">250</span><span class="p">])</span>
+
+    <span class="c1"># add legend</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># add title</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Distribution of trajectory positions at time $t$&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>At the beginning of the simulation, the distribution of positions is sharply peaked about <span class="math notranslate nohighlight">\(0\)</span>. As time progresses, the distribution becomes wider but its center stays closer to <span class="math notranslate nohighlight">\(0\)</span>. In other words, the mean of the distribution is independent of time, but the variance and standard deviation of the distribution scale with time. Such a process is called a <strong>diffusive process</strong>.</p>
+</div>
+<div class="section" id="exercise-2-3a-part-2-random-walk-mean-variance">
+<h2>Exercise 2 (3A Part 2): Random walk mean &amp; variance<a class="headerlink" href="#exercise-2-3a-part-2-random-walk-mean-variance" title="Permalink to this headline">¶</a></h2>
+<p>Compute and then plot the mean and variance of our bacterium’s random walk as a function of time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># simulate random walks</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span> <span class="c1"># set random seed</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">random_walk_simulator</span><span class="p">(</span><span class="mi">5000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">##############################################################################</span>
+<span class="c1"># TODO: Insert your code here to compute the mean and variance of trajectory positions</span>
+<span class="c1"># at every time point:</span>
+<span class="c1">##############################################################################</span>
+
+<span class="c1"># mu = ...</span>
+<span class="c1"># var = ...</span>
+
+<span class="c1"># Uncomment below once you&#39;ve completed above task</span>
+<span class="c1">#plot_mean_var_by_timestep(mu, var)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D2_LinearSystems/solutions/W2D2_Tutorial3_Solution_0605fd94.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=560 height=416 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D2_LinearSystems/static/W2D2_Tutorial3_Solution_0605fd94_0.png>
+<p>The expected value of <span class="math notranslate nohighlight">\(x\)</span> stays close to 0, even for random walks of very long time. Cool!</p>
+<p>The variance, on the other hand, clearly increases with time. In fact, the variance seems to increase linearly with time!</p>
+</div>
+<div class="section" id="interactive-demo-influence-of-parameter-choice">
+<h2>Interactive Demo: Influence of Parameter Choice<a class="headerlink" href="#interactive-demo-influence-of-parameter-choice" title="Permalink to this headline">¶</a></h2>
+<p>How do the parameters <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> of the Gaussian distribution from which we choose the steps affect the mean and variance of the bacterium’s random walk?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+
+<span class="c1">#@markdown Make sure you execute this cell to enable the widget!</span>
+
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span>
+<span class="k">def</span> <span class="nf">plot_gaussian</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">.</span><span class="mi">02</span><span class="p">),</span> <span class="n">std</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">)):</span>
+  <span class="n">sim</span> <span class="o">=</span> <span class="n">random_walk_simulator</span><span class="p">(</span><span class="mi">5000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">std</span><span class="p">)</span>
+
+  <span class="c1"># compute the mean and variance of trajectory positions at every time point</span>
+  <span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+  <span class="n">var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+  <span class="c1">#  make a figure</span>
+  <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ah1</span><span class="p">,</span> <span class="n">ah2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+  <span class="c1"># plot mean of distribution as a function of time</span>
+  <span class="n">ah1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
+  <span class="n">ah1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+
+  <span class="c1"># plot variance of distribution as a function of time</span>
+  <span class="n">ah2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+  <span class="n">ah2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+  <span class="n">ah2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;variance&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D2_LinearSystems/solutions/W2D2_Tutorial3_Solution_0049e98b.py"><em>Click for solution</em></a></p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-2-the-ornstein-uhlenbeck-ou-process">
+<h1>Section 2: The Ornstein-Uhlenbeck (OU) process<a class="headerlink" href="#section-2-the-ornstein-uhlenbeck-ou-process" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 2: Combining Deterministic &amp; Stochastic Processes</span>
+<span class="c1"># Insert the ID of the corresponding youtube video</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;pDNfs5p38fI&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The random walk process we just explored is diffusive, and the distribution of possible trajectories <em>spreads</em>, taking on increasing variance with time. Even so, at least in one dimension, the mean remains close to the initial value (in the example above, 0).</p>
+<p>Our goal is now to build on this model to construct a <strong>drift-diffusion</strong> model (DDM). DDM is a popular model for memory, which as we all know, is often an exercise in hanging on to a value imperfectly. Decision-making and memory will be the topic for tomorrow, so here we build the mathematical foundations and develop some intuition for how such systems behave!</p>
+<p>To build such a model, let’s combine the random walk model with the first differential equations we explored in Tutorial 1 earlier. Although those models had been written in continuous time as <span class="math notranslate nohighlight">\(\dot{x} = a x\)</span>, here let’s consider the discrete version of the same system and write:</p>
+<p><span class="math notranslate nohighlight">\(x_{k+1} = \lambda x_k\)</span>,</p>
+<p>whose solution can be written as</p>
+<p><span class="math notranslate nohighlight">\(x_k = x_0 \lambda^k\)</span>,</p>
+<p>where <span class="math notranslate nohighlight">\(x_0\)</span> is the value of <span class="math notranslate nohighlight">\(x\)</span> at time <span class="math notranslate nohighlight">\(t=0\)</span>.</p>
+<p>Now, let’s simulate and plot the solution of the discrete version of our first differential equation from Tutorial 1 below. <strong>Run the code below.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># parameters</span>
+<span class="n">lam</span> <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">100</span>      <span class="c1"># total Time duration in steps</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">4.</span>     <span class="c1"># initial condition of x at time 0</span>
+
+<span class="c1"># initiatialize variables</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span>
+
+<span class="c1"># Step through in time</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">lam</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+
+<span class="c1"># plot x as it evolves in time</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$\lambda=</span><span class="si">%0.1f</span><span class="s1">$&#39;</span> <span class="o">%</span> <span class="n">lam</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span> <span class="o">*</span> <span class="n">lam</span><span class="o">**</span><span class="n">t</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="c1"># analytic solution</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;k.&#39;</span><span class="p">)</span>          <span class="c1"># simulated data pts</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x0</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that this process decays towards position <span class="math notranslate nohighlight">\(x=0\)</span>. We can make it decay towards any position by adding another parameter <span class="math notranslate nohighlight">\(x_\infty\)</span>. The rate of decay is proportional to the difference between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(x_\infty\)</span>. Our new system is</p>
+<p><span class="math notranslate nohighlight">\(x_{k+1} = x_\infty + \lambda(x_k - x_{\infty})\)</span></p>
+<p>We have to modify our analytic solution slightly to take this into account:</p>
+<p><span class="math notranslate nohighlight">\(x_k = x_\infty(1 - \lambda^k) + x_0 \lambda^k\)</span>.</p>
+<p>Let’s simulate and plot the dynamics of this process below. Hopefully, we see that it start at <span class="math notranslate nohighlight">\(x_0\)</span> and decay towards <span class="math notranslate nohighlight">\(x_{\infty}.\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># parameters</span>
+<span class="n">lam</span> <span class="o">=</span> <span class="mf">0.9</span>    <span class="c1"># decay rate</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">100</span>      <span class="c1"># total Time duration in steps</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">4.</span>      <span class="c1"># initial condition of x at time 0</span>
+<span class="n">xinfty</span> <span class="o">=</span> <span class="mf">1.</span>  <span class="c1"># x drifts towards this value in long time</span>
+
+<span class="c1"># initiatialize variables</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span>
+
+<span class="c1"># Step through in time</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">xinfty</span> <span class="o">+</span> <span class="n">lam</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">xinfty</span><span class="p">)</span>
+
+<span class="c1"># plot x as it evolves in time</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$\lambda=</span><span class="si">%0.1f</span><span class="s1">$&#39;</span> <span class="o">%</span> <span class="n">lam</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">xinfty</span> <span class="o">+</span> <span class="p">(</span><span class="n">x0</span> <span class="o">-</span> <span class="n">xinfty</span><span class="p">)</span> <span class="o">*</span> <span class="n">lam</span><span class="o">**</span><span class="n">t</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;analytic solution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;k.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;simulation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x0</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we are ready to take this basic, deterministic difference equation and add a diffusion process on top of it! Fun times in Python land.</p>
+<p>As a point of terminology: this type of process is commonly known as a <strong>drift-diffusion model</strong> or <strong>Ornstein-Uhlenbeck (OU) process</strong>. The model is a combination of a <em>drift</em> term toward <span class="math notranslate nohighlight">\(x_{\infty}\)</span> and a <em>diffusion</em> term that walks randomly. You may sometimes see them written as continuous stochastic differential equations, but here we are doing the discrete version to maintain continuity in the tutorial. The discrete version of our OU process has the following form:</p>
+<p><span class="math notranslate nohighlight">\(x_{k+1} = x_\infty + \lambda(x_k - x_{\infty}) + \sigma \eta\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(\eta\)</span> is sampled from a standard normal distribution (<span class="math notranslate nohighlight">\(\mu=0, \sigma=1\)</span>).</p>
+<div class="section" id="exercise-3-3b-drift-diffusion-model">
+<h2>Exercise 3 (3B): Drift-diffusion model<a class="headerlink" href="#exercise-3-3b-drift-diffusion-model" title="Permalink to this headline">¶</a></h2>
+<p>Modify the code below so that each step through time has a <em>deterministic</em> part (<em>hint</em>: exactly like the code above) plus a <em>random, diffusive</em> part that is drawn from from a normal distribution with standard deviation of <span class="math notranslate nohighlight">\(\sigma\)</span> (sig in the code). It will plot the dynamics of this process.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_ddm</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">xinfty</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Simulate the drift-diffusion model with given parameters and initial condition.</span>
+<span class="sd">  Args:</span>
+<span class="sd">    lam (scalar): decay rate</span>
+<span class="sd">    sig (scalar): standard deviation of normal distribution</span>
+<span class="sd">    x0 (scalar): initial condition (x at time 0)</span>
+<span class="sd">    xinfty (scalar): drift towards convergence in the limit</span>
+<span class="sd">    T (scalar): total duration of the simulation (in steps)</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    ndarray, ndarray: `x` for all simulation steps and the time `t` at each step</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># initiatialize variables</span>
+  <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+  <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span>
+
+  <span class="c1"># Step through in time</span>
+  <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+      <span class="c1">##############################################################################</span>
+      <span class="c1">## TODO: Insert your code below then remove</span>
+      <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: need to implement simulation&quot;</span><span class="p">)</span>
+      <span class="c1">##############################################################################</span>
+      <span class="c1"># update x at time k+1 with a determinstic and a stochastic component</span>
+      <span class="c1"># hint: the deterministic component will be like above, and</span>
+      <span class="c1">#   the stochastic component is drawn from a scaled normal distribution</span>
+      <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">x</span>
+
+<span class="n">lam</span> <span class="o">=</span> <span class="mf">0.9</span>    <span class="c1"># decay rate</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="mf">0.1</span>   <span class="c1"># standard deviation of diffusive process</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">500</span>      <span class="c1"># total Time duration in steps</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">4.</span>      <span class="c1"># initial condition of x at time 0</span>
+<span class="n">xinfty</span> <span class="o">=</span> <span class="mf">1.</span>  <span class="c1"># x drifts towards this value in long time</span>
+
+<span class="c1"># Uncomment once above is completed to plot x as it evolves in time</span>
+<span class="c1"># np.random.seed(2020)</span>
+<span class="c1"># t, x = simulate_ddm(lam, sig, x0, xinfty, T)</span>
+<span class="c1"># plot_ddm(t, x, xinfty, lam, x0)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D2_LinearSystems/solutions/W2D2_Tutorial3_Solution_eda2690f.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=560 height=416 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D2_LinearSystems/static/W2D2_Tutorial3_Solution_eda2690f_0.png>
+<div class="section" id="think">
+<h3>Think<a class="headerlink" href="#think" title="Permalink to this headline">¶</a></h3>
+<p>Describe the behavior of your simulation by making some observations. How does it compare to the deterministic solution? How does it behave in the beginning of the stimulation? At the end?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some space for your ideas</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D2_LinearSystems/solutions/W2D2_Tutorial3_Solution_301f6f83.py"><em>Click for solution</em></a></p>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-3-variance-of-the-ou-process">
+<h1>Section 3: Variance of the OU process<a class="headerlink" href="#section-3-variance-of-the-ou-process" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 3: Balance of Variances</span>
+<span class="c1"># Insert the ID of the corresponding youtube video</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;49A-3kftau0&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we can see, the <strong>mean</strong> of the process follows the solution to the deterministic part of the governing equation. So far, so good!</p>
+<p>But what about the <strong>variance</strong>?</p>
+<p>Unlike the random walk, because there’s a decay process that “pulls” <span class="math notranslate nohighlight">\(x\)</span> back towards <span class="math notranslate nohighlight">\(x_\infty\)</span>, the variance does not grow without bound with large <span class="math notranslate nohighlight">\(t\)</span>. Instead, when it gets far from <span class="math notranslate nohighlight">\(x_\infty\)</span>, the position of <span class="math notranslate nohighlight">\(x\)</span> is restored, until an equilibrium is reached.</p>
+<p>The equilibrium variance for our drift-diffusion system is</p>
+<p>Var <span class="math notranslate nohighlight">\(= \frac{\sigma^2}{1 - \lambda^2}\)</span>.</p>
+<p>Notice that the value of this equilibrium variance depends on <span class="math notranslate nohighlight">\(\lambda\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>. It does not depend on <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_\infty\)</span>.</p>
+<p>To convince ourselves that things are behaving sensibly, let’s compare the empirical variances of the equilibrium solution to the OU equations with the expected formula.</p>
+<div class="section" id="exercise-4-3c-computing-the-variances-empirically">
+<h2>Exercise 4 (3C): Computing the variances empirically<a class="headerlink" href="#exercise-4-3c-computing-the-variances-empirically" title="Permalink to this headline">¶</a></h2>
+<p>Write code to compute the analytical variance: Var <span class="math notranslate nohighlight">\(= \frac{\sigma^2}{1 - \lambda^2}\)</span>, and compare against the empirical variances (which is already provided for you using the helper function). You should see that they should be about equal to each other and lie close to the 45 degree (<span class="math notranslate nohighlight">\(y=x\)</span>) line.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span> <span class="c1"># set random seed</span>
+
+<span class="c1"># sweep through values for lambda</span>
+<span class="n">lambdas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">empirical_variances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">lambdas</span><span class="p">)</span>
+<span class="n">analytical_variances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">lambdas</span><span class="p">)</span>
+
+<span class="n">sig</span> <span class="o">=</span> <span class="mf">0.87</span>
+
+<span class="c1"># compute empirical equilibrium variance</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">lam</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lambdas</span><span class="p">):</span>
+    <span class="n">empirical_variances</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddm_eq_var</span><span class="p">(</span><span class="mi">5000</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">xinfty</span><span class="p">,</span> <span class="n">lambdas</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sig</span><span class="p">)</span>
+
+<span class="c1">##############################################################################</span>
+<span class="c1">## Insert your code below to calculate the analytical variances</span>
+<span class="c1">##############################################################################</span>
+<span class="c1"># Hint: you can also do this in one line outside the loop!</span>
+<span class="c1"># analytical_variances = ...</span>
+
+<span class="c1"># Uncomment this line to plot the empirical variance vs analytical variance</span>
+<span class="c1"># var_comparison_plot(empirical_variances, analytical_variances)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D2_LinearSystems/solutions/W2D2_Tutorial3_Solution_195c3cef.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=560 height=416 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D2_LinearSystems/static/W2D2_Tutorial3_Solution_195c3cef_0.png>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial, we have built and observed OU systems, which have both deterministic and stochastic parts. We see that they behave, on average, similar to our expectations from analyzing deterministic dynamical systems.</p>
+<p>Importantly, <strong>the interplay between the deterministic and stochastic parts</strong> serve to <em>balance</em> the tendency of purely stochastic processes (like the random walk) to increase in variance over time. This behavior is one of the properties of OU systems that make them popular choices for modeling cognitive functions, including short-term memory and decision-making.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./W2D2_LinearSystems/student"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="W2D2_Tutorial2.html" title="previous page">Tutorial 2: Markov Processes</a>
+    <a class='right-next' id="next-link" href="W2D2_Tutorial4.html" title="next page">Tutorial 4: Autoregressive models</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Neuromatch<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -1,0 +1,1315 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 3: Dimensionality Reduction &amp; Reconstruction &#8212; Neuromatch Computational Neuroscience</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tutorial 4: Nonlinear Dimensionality Reduction" href="W1D5_Tutorial4.html" />
+    <link rel="prev" title="Tutorial 2: Principal Component Analysis" href="W1D5_Tutorial2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   NMA 2021
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Intro to Modeling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../W1D1_ModelTypes/README.html">
+   Model Types (W1D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D1_ModelTypes/W1D1_Tutorial1.html">
+     Tutorial 1: “What” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D1_ModelTypes/W1D1_Tutorial2.html">
+     Tutorial 2: “How” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D1_ModelTypes/W1D1_Tutorial3.html">
+     Tutorial 3: “Why” models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../W1D2_ModelingPractice/README.html">
+   Modeling Practice (W1D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D2_ModelingPractice/W1D2_Tutorial1.html">
+     Neuromatch Academy: Week 1, Day 2, Tutorial
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../W1D3_ModelFitting/README.html">
+   Model Fitting (W1D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D3_ModelFitting/W1D3_Tutorial1.html">
+     Tutorial 1: Linear regression with MSE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D3_ModelFitting/W1D3_Tutorial2.html">
+     Tutorial 2: Linear regression with MLE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D3_ModelFitting/W1D3_Tutorial3.html">
+     Tutorial 3: Confidence intervals and bootstrapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D3_ModelFitting/W1D3_Tutorial4.html">
+     Tutorial 4: Multiple linear regression and polynomial regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D3_ModelFitting/W1D3_Tutorial5.html">
+     Tutorial 5: Model Selection: Bias-variance trade-off
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D3_ModelFitting/W1D3_Tutorial6.html">
+     Tutorial 6: Model Selection: Cross-validation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../W1D4_MachineLearning/README.html">
+   Machine Learning (W1D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D4_MachineLearning/W1D4_Tutorial1.html">
+     Tutorial 1: GLMs for Encoding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W1D4_MachineLearning/W1D4_Tutorial2.html">
+     Tutorial 2: Classifiers and regularizers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="README.html">
+   Dimensionality Reduction (W1D5)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="W1D5_Tutorial1.html">
+     Tutorial 1: Geometric view of data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W1D5_Tutorial2.html">
+     Tutorial 2: Principal Component Analysis
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tutorial 3: Dimensionality Reduction &amp; Reconstruction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W1D5_Tutorial4.html">
+     Tutorial 4:  Nonlinear Dimensionality Reduction
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dynamical Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../W2D2_LinearSystems/README.html">
+   Linear Systems (W2D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W2D2_LinearSystems/W2D2_Tutorial1.html">
+     Neuromatch Academy 2020, Week 2, Day 2, Tutorial 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W2D2_LinearSystems/W2D2_Tutorial2.html">
+     Neuromatch Academy 2020, Week 2, Day 2, Tutorial 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W2D2_LinearSystems/W2D2_Tutorial3.html">
+     Neuromatch Academy 2020, Week 2, Day 2, Tutorial 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../W2D2_LinearSystems/W2D2_Tutorial4.html">
+     Neuromatch Academy 2020, Week 2, Day 2, Tutorial 4
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/W1D5_DimensionalityReduction/W1D5_Tutorial3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/W1D5_DimensionalityReduction/W1D5_Tutorial3.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial 3: Dimensionality Reduction &amp; Reconstruction
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial-objectives">
+   Tutorial Objectives
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-1-perform-pca-on-mnist">
+   Section 1: Perform PCA on MNIST
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1-scree-plot-of-mnist">
+     Exercise 1: Scree plot of MNIST
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-2-calculate-the-variance-explained">
+   Section 2: Calculate the variance explained
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2-plot-the-explained-variance">
+     Exercise 2: Plot the explained variance
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-3-reconstruct-data-with-different-numbers-of-pcs">
+   Section 3: Reconstruct data with different numbers of PCs
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3-data-reconstruction">
+     Exercise 3: Data reconstruction
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interactive-demo-reconstruct-the-data-matrix-using-different-numbers-of-pcs">
+     Interactive Demo: Reconstruct the data matrix using different numbers of PCs
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-4-visualization-of-the-weights">
+     Exercise 4: Visualization of the weights
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus-examine-denoising-using-pca">
+   Bonus: Examine denoising using PCA
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-5-add-noise-to-the-data">
+     Exercise 5: Add noise to the data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-6-denoising">
+     Exercise 6: Denoising
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D5_DimensionalityReduction/W1D5_Tutorial3.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="tutorial-3-dimensionality-reduction-reconstruction">
+<h1>Tutorial 3: Dimensionality Reduction &amp; Reconstruction<a class="headerlink" href="#tutorial-3-dimensionality-reduction-reconstruction" title="Permalink to this headline">¶</a></h1>
+<p><strong>Week 1, Day 5: Dimensionality Reduction</strong></p>
+<p><strong>By Neuromatch Academy</strong>
+<strong>Content creators:</strong> Alex Cayco Gajic, John Murray</p>
+<p><strong>Content reviewers:</strong> Roozbeh Farhoudi, Matt Krause, Spiros Chavlis, Richard Gao, Michael Waskom</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="tutorial-objectives">
+<h1>Tutorial Objectives<a class="headerlink" href="#tutorial-objectives" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook we’ll learn to apply PCA for dimensionality reduction, using a classic dataset that is often used to benchmark machine learning algorithms: MNIST. We’ll also learn how to use PCA for reconstruction and denoising.</p>
+<p>Overview:</p>
+<ul class="simple">
+<li><p>Perform PCA on MNIST</p></li>
+<li><p>Calculate the variance explained</p></li>
+<li><p>Reconstruct data with different numbers of PCs</p></li>
+<li><p>(Bonus) Examine denoising using PCA</p></li>
+</ul>
+<p>You can learn more about MNIST dataset <a class="reference external" href="https://en.wikipedia.org/wiki/MNIST_database">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Video 1: PCA for dimensionality reduction</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;oO0bbInoO_0&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<p>Run these cells to get the tutorial started.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Figure Settings</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>   <span class="c1"># interactive display</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Helper Functions</span>
+
+
+<span class="k">def</span> <span class="nf">plot_variance_explained</span><span class="p">(</span><span class="n">variance_explained</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Plots eigenvalues.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    variance_explained (numpy array of floats) : Vector of variance explained</span>
+<span class="sd">                                                 for each PC</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Nothing.</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">variance_explained</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">variance_explained</span><span class="p">,</span>
+           <span class="s1">&#39;--k&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of components&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Variance explained&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">plot_MNIST_reconstruction</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X_reconstructed</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Plots 9 images in the MNIST dataset side-by-side with the reconstructed</span>
+<span class="sd">  images.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    X (numpy array of floats)               : Data matrix each column</span>
+<span class="sd">                                              corresponds to a different</span>
+<span class="sd">                                              random variable</span>
+<span class="sd">    X_reconstructed (numpy array of floats) : Data matrix each column</span>
+<span class="sd">                                              corresponds to a different</span>
+<span class="sd">                                              random variable</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Nothing.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+  <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+  <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">for</span> <span class="n">k1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">k2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+      <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:],</span> <span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)),</span>
+                 <span class="n">extent</span><span class="o">=</span><span class="p">[(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="n">k1</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="p">(</span><span class="n">k2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="n">k2</span> <span class="o">*</span> <span class="mi">28</span><span class="p">],</span>
+                 <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                  <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">clim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">250</span><span class="p">])</span>
+  <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+  <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">for</span> <span class="n">k1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">k2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+      <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">X_reconstructed</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:]),</span> <span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)),</span>
+                 <span class="n">extent</span><span class="o">=</span><span class="p">[(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="n">k1</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="p">(</span><span class="n">k2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="n">k2</span> <span class="o">*</span> <span class="mi">28</span><span class="p">],</span>
+                 <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                  <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">clim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">250</span><span class="p">])</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Reconstructed&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">plot_MNIST_sample</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Plots 9 images in the MNIST dataset.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">     X (numpy array of floats) : Data matrix each column corresponds to a</span>
+<span class="sd">                                 different random variable</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Nothing.</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+  <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">for</span> <span class="n">k1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">k2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+      <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:],</span> <span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)),</span>
+                 <span class="n">extent</span><span class="o">=</span><span class="p">[(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="n">k1</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="p">(</span><span class="n">k2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="n">k2</span> <span class="o">*</span> <span class="mi">28</span><span class="p">],</span>
+                 <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                  <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">clim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">250</span><span class="p">])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">plot_MNIST_weights</span><span class="p">(</span><span class="n">weights</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Visualize PCA basis vector weights for MNIST. Red = positive weights,</span>
+<span class="sd">  blue = negative weights, white = zero weight.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">     weights (numpy array of floats) : PCA basis vector</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">     Nothing.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+  <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;seismic&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">))),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                  <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">clim</span><span class="p">(</span><span class="o">-.</span><span class="mi">15</span><span class="p">,</span> <span class="o">.</span><span class="mi">15</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="o">-.</span><span class="mi">15</span><span class="p">,</span> <span class="o">-.</span><span class="mi">1</span><span class="p">,</span> <span class="o">-.</span><span class="mi">05</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">05</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="o">.</span><span class="mi">15</span><span class="p">])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">add_noise</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">frac_noisy_pixels</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Randomly corrupts a fraction of the pixels by setting them to random values.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">     X (numpy array of floats)  : Data matrix</span>
+<span class="sd">     frac_noisy_pixels (scalar) : Fraction of noisy pixels</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">     (numpy array of floats)    : Data matrix + noise</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">X_noisy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+  <span class="n">N_noise_ixs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">X_noisy</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">frac_noisy_pixels</span><span class="p">)</span>
+  <span class="n">noise_ixs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">X_noisy</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">N_noise_ixs</span><span class="p">,</span>
+                               <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">X_noisy</span><span class="p">[</span><span class="n">noise_ixs</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">noise_ixs</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+  <span class="n">X_noisy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X_noisy</span><span class="p">,</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+  <span class="k">return</span> <span class="n">X_noisy</span>
+
+
+<span class="k">def</span> <span class="nf">change_of_basis</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Projects data onto a new basis.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    X (numpy array of floats) : Data matrix each column corresponding to a</span>
+<span class="sd">                                different random variable</span>
+<span class="sd">    W (numpy array of floats) : new orthonormal basis columns correspond to</span>
+<span class="sd">                                basis vectors</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    (numpy array of floats)   : Data matrix expressed in new basis</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">Y</span>
+
+
+<span class="k">def</span> <span class="nf">get_sample_cov_matrix</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Returns the sample covariance matrix of data X.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    X (numpy array of floats) : Data matrix each column corresponds to a</span>
+<span class="sd">                                different random variable</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    (numpy array of floats)   : Covariance matrix</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+  <span class="n">X</span> <span class="o">=</span> <span class="n">X</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="n">cov_matrix</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">cov_matrix</span>
+
+
+<span class="k">def</span> <span class="nf">sort_evals_descending</span><span class="p">(</span><span class="n">evals</span><span class="p">,</span> <span class="n">evectors</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Sorts eigenvalues and eigenvectors in decreasing order. Also aligns first two</span>
+<span class="sd">  eigenvectors to be in first two quadrants (if 2D).</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    evals (numpy array of floats)    :   Vector of eigenvalues</span>
+<span class="sd">    evectors (numpy array of floats) :   Corresponding matrix of eigenvectors</span>
+<span class="sd">                                         each column corresponds to a different</span>
+<span class="sd">                                         eigenvalue</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    (numpy array of floats)          : Vector of eigenvalues after sorting</span>
+<span class="sd">    (numpy array of floats)          : Matrix of eigenvectors after sorting</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">evals</span><span class="p">))</span>
+  <span class="n">evals</span> <span class="o">=</span> <span class="n">evals</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+  <span class="n">evectors</span> <span class="o">=</span> <span class="n">evectors</span><span class="p">[:,</span> <span class="n">index</span><span class="p">]</span>
+  <span class="k">if</span> <span class="n">evals</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">evectors</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+                           <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])))</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:</span>
+      <span class="n">evectors</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">evectors</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">evectors</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+                           <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])))</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:</span>
+      <span class="n">evectors</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">evectors</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+  <span class="k">return</span> <span class="n">evals</span><span class="p">,</span> <span class="n">evectors</span>
+
+
+<span class="k">def</span> <span class="nf">pca</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Performs PCA on multivariate data. Eigenvalues are sorted in decreasing order</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">     X (numpy array of floats) :   Data matrix each column corresponds to a</span>
+<span class="sd">                                   different random variable</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    (numpy array of floats)    : Data projected onto the new basis</span>
+<span class="sd">    (numpy array of floats)    : Vector of eigenvalues</span>
+<span class="sd">    (numpy array of floats)    : Corresponding matrix of eigenvectors</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">X</span> <span class="o">=</span> <span class="n">X</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="n">cov_matrix</span> <span class="o">=</span> <span class="n">get_sample_cov_matrix</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+  <span class="n">evals</span><span class="p">,</span> <span class="n">evectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">cov_matrix</span><span class="p">)</span>
+  <span class="n">evals</span><span class="p">,</span> <span class="n">evectors</span> <span class="o">=</span> <span class="n">sort_evals_descending</span><span class="p">(</span><span class="n">evals</span><span class="p">,</span> <span class="n">evectors</span><span class="p">)</span>
+  <span class="n">score</span> <span class="o">=</span> <span class="n">change_of_basis</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">evectors</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">score</span><span class="p">,</span> <span class="n">evectors</span><span class="p">,</span> <span class="n">evals</span>
+
+
+<span class="k">def</span> <span class="nf">plot_eigenvalues</span><span class="p">(</span><span class="n">evals</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Plots eigenvalues.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">     (numpy array of floats) : Vector of eigenvalues</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Nothing.</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">evals</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">evals</span><span class="p">,</span> <span class="s1">&#39;o-k&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Component&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Eigenvalue&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Scree plot&#39;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">limit</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-1-perform-pca-on-mnist">
+<h1>Section 1: Perform PCA on MNIST<a class="headerlink" href="#section-1-perform-pca-on-mnist" title="Permalink to this headline">¶</a></h1>
+<p>The MNIST dataset consists of a 70,000 images of individual handwritten digits. Each image is a 28x28 pixel grayscale image. For convenience, each 28x28 pixel image is often unravelled into a single 784 (=28*28) element vector, so that the whole dataset is represented as a 70,000 x 784 matrix. Each row represents a different image, and each column represents a different pixel.</p>
+<p>Enter the following cell to load the MNIST dataset and plot the first nine images.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;mnist_784&#39;</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">data</span>
+<span class="n">plot_MNIST_sample</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The MNIST dataset has an extrinsic dimensionality of 784, much higher than the 2-dimensional examples used in the previous tutorials! To make sense of this data, we’ll use dimensionality reduction. But first, we need to determine the intrinsic dimensionality <span class="math notranslate nohighlight">\(K\)</span> of the data. One way to do this is to look for an “elbow” in the scree plot, to determine which eigenvalues are signficant.</p>
+<div class="section" id="exercise-1-scree-plot-of-mnist">
+<h2>Exercise 1: Scree plot of MNIST<a class="headerlink" href="#exercise-1-scree-plot-of-mnist" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise you will examine the scree plot in the MNIST dataset.</p>
+<p><strong>Steps:</strong></p>
+<ul class="simple">
+<li><p>Perform PCA on the dataset and examine the scree plot.</p></li>
+<li><p>When do the eigenvalues appear (by eye) to reach zero? (<strong>Hint:</strong> use <code class="docutils literal notranslate"><span class="pre">plt.xlim</span></code> to zoom into a section of the plot).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">pca</span><span class="p">)</span>
+<span class="n">help</span><span class="p">(</span><span class="n">plot_eigenvalues</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#################################################</span>
+<span class="c1">## TO DO for students: perform PCA and plot the eigenvalues</span>
+<span class="c1">#################################################</span>
+
+<span class="c1"># perform PCA</span>
+<span class="c1"># score, evectors, evals = ...</span>
+<span class="c1"># plot the eigenvalues</span>
+<span class="c1"># plot_eigenvalues(evals, limit=False)</span>
+<span class="c1"># plt.xlim(...)  # limit x-axis up to 100 for zooming</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to_remove solution</span>
+<span class="c1"># perform PCA</span>
+<span class="n">score</span><span class="p">,</span> <span class="n">evectors</span><span class="p">,</span> <span class="n">evals</span> <span class="o">=</span> <span class="n">pca</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># plot the eigenvalues</span>
+<span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">xkcd</span><span class="p">():</span>
+  <span class="n">plot_eigenvalues</span><span class="p">(</span><span class="n">evals</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>  <span class="c1"># limit x-axis up to 100 for zooming</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-2-calculate-the-variance-explained">
+<h1>Section 2: Calculate the variance explained<a class="headerlink" href="#section-2-calculate-the-variance-explained" title="Permalink to this headline">¶</a></h1>
+<p>The scree plot suggests that most of the eigenvalues are near zero, with fewer than 100 having large values. Another common way to determine the intrinsic dimensionality is by considering the variance explained. This can be examined with a cumulative plot of the fraction of the total variance explained by the top <span class="math notranslate nohighlight">\(K\)</span> components, i.e.,</p>
+<p>\begin{equation}
+\text{var explained} = \frac{\sum_{i=1}^K \lambda_i}{\sum_{i=1}^N \lambda_i}
+\end{equation}</p>
+<p>The intrinsic dimensionality is often quantified by the <span class="math notranslate nohighlight">\(K\)</span> necessary to explain a large proportion of the total variance of the data (often a defined threshold, e.g., 90%).</p>
+<div class="section" id="exercise-2-plot-the-explained-variance">
+<h2>Exercise 2: Plot the explained variance<a class="headerlink" href="#exercise-2-plot-the-explained-variance" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise you will plot the explained variance.</p>
+<p><strong>Steps:</strong></p>
+<ul class="simple">
+<li><p>Fill in the function below to calculate the fraction variance explained as a function of the number of principal componenets. <strong>Hint:</strong> use <code class="docutils literal notranslate"><span class="pre">np.cumsum</span></code>.</p></li>
+<li><p>Plot the variance explained using <code class="docutils literal notranslate"><span class="pre">plot_variance_explained</span></code>.</p></li>
+</ul>
+<p><strong>Questions:</strong></p>
+<ul class="simple">
+<li><p>How many principal components are required to explain 90% of the variance?</p></li>
+<li><p>How does the intrinsic dimensionality of this dataset compare to its extrinsic dimensionality?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">plot_variance_explained</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_variance_explained</span><span class="p">(</span><span class="n">evals</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Calculates variance explained from the eigenvalues.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    evals (numpy array of floats) : Vector of eigenvalues</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    (numpy array of floats)       : Vector of variance explained</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1">#################################################</span>
+  <span class="c1">## TO DO for students: calculate the explained variance using the equation</span>
+  <span class="c1">## from Section 2.</span>
+  <span class="c1"># Comment once you&#39;ve filled in the function</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student excercise: calculate explaine variance!&quot;</span><span class="p">)</span>
+  <span class="c1">#################################################</span>
+
+  <span class="c1"># cumulatively sum the eigenvalues</span>
+  <span class="n">csum</span> <span class="o">=</span> <span class="o">...</span>
+  <span class="c1"># normalize by the sum of eigenvalues</span>
+  <span class="n">variance_explained</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="k">return</span> <span class="n">variance_explained</span>
+
+
+<span class="c1">#################################################</span>
+<span class="c1">## TO DO for students: call the function and plot the variance explained</span>
+<span class="c1">#################################################</span>
+
+<span class="c1"># calculate the variance explained</span>
+<span class="n">variance_explained</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># Uncomment to plot the variance explained</span>
+<span class="c1"># plot_variance_explained(variance_explained)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to_remove solution</span>
+<span class="k">def</span> <span class="nf">get_variance_explained</span><span class="p">(</span><span class="n">evals</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Plots eigenvalues.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    (numpy array of floats) : Vector of eigenvalues</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Nothing.</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># cumulatively sum the eigenvalues</span>
+  <span class="n">csum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">evals</span><span class="p">)</span>
+  <span class="c1"># normalize by the sum of eigenvalues</span>
+  <span class="n">variance_explained</span> <span class="o">=</span> <span class="n">csum</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">evals</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">variance_explained</span>
+
+
+<span class="c1"># calculate the variance explained</span>
+<span class="n">variance_explained</span> <span class="o">=</span> <span class="n">get_variance_explained</span><span class="p">(</span><span class="n">evals</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">xkcd</span><span class="p">():</span>
+  <span class="n">plot_variance_explained</span><span class="p">(</span><span class="n">variance_explained</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-3-reconstruct-data-with-different-numbers-of-pcs">
+<h1>Section 3: Reconstruct data with different numbers of PCs<a class="headerlink" href="#section-3-reconstruct-data-with-different-numbers-of-pcs" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Video 2: Data Reconstruction</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ZCUhW26AdBQ&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we have seen that the top 100 or so principal components of the data can explain most of the variance. We can use this fact to perform <em>dimensionality reduction</em>, i.e., by storing the data using only 100 components rather than the samples of all 784 pixels. Remarkably, we will be able to reconstruct much of the structure of the data using only the top 100 components. To see this, recall that to perform PCA we projected the data <span class="math notranslate nohighlight">\(\bf X\)</span> onto the eigenvectors of the covariance matrix:
+\begin{equation}
+\bf S = X W
+\end{equation}
+Since <span class="math notranslate nohighlight">\(\bf W\)</span> is an orthogonal matrix, <span class="math notranslate nohighlight">\({\bf W}^{-1} = {\bf W}^T\)</span>. So by multiplying by <span class="math notranslate nohighlight">\({\bf W}^T\)</span> on each side we can rewrite this equation as<br />
+\begin{equation}
+{\bf X = S W}^T.
+\end{equation}
+This now gives us a way to reconstruct the data matrix from the scores and loadings. To reconstruct the data from a low-dimensional approximation, we just have to truncate these matrices.  Let’s call <span class="math notranslate nohighlight">\({\bf S}_{1:K}\)</span> and <span class="math notranslate nohighlight">\({\bf W}_{1:K}\)</span> as keeping only the first <span class="math notranslate nohighlight">\(K\)</span> columns of this matrix. Then our reconstruction is:
+\begin{equation}
+{\bf \hat X = S}<em>{1:K} ({\bf W}</em>{1:K})^T.
+\end{equation}</p>
+<div class="section" id="exercise-3-data-reconstruction">
+<h2>Exercise 3: Data reconstruction<a class="headerlink" href="#exercise-3-data-reconstruction" title="Permalink to this headline">¶</a></h2>
+<p>Fill in the function below to reconstruct the data using different numbers of principal components.</p>
+<p><strong>Steps:</strong></p>
+<ul class="simple">
+<li><p>Fill in the following function to reconstruct the data based on the weights and scores. Don’t forget to add the mean!</p></li>
+<li><p>Make sure your function works by reconstructing the data with all <span class="math notranslate nohighlight">\(K=784\)</span> components. The two images should look identical.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">plot_MNIST_reconstruction</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reconstruct_data</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">evectors</span><span class="p">,</span> <span class="n">X_mean</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Reconstruct the data based on the top K components.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    score (numpy array of floats)    : Score matrix</span>
+<span class="sd">    evectors (numpy array of floats) : Matrix of eigenvectors</span>
+<span class="sd">    X_mean (numpy array of floats)   : Vector corresponding to data mean</span>
+<span class="sd">    K (scalar)                       : Number of components to include</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    (numpy array of floats)          : Matrix of reconstructed data</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1">#################################################</span>
+  <span class="c1">## TO DO for students: Reconstruct the original data in X_reconstructed</span>
+  <span class="c1"># Comment once you&#39;ve filled in the function</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student excercise: reconstructing data function!&quot;</span><span class="p">)</span>
+  <span class="c1">#################################################</span>
+
+  <span class="c1"># Reconstruct the data from the score and eigenvectors</span>
+  <span class="c1"># Don&#39;t forget to add the mean!!</span>
+  <span class="n">X_reconstructed</span> <span class="o">=</span>  <span class="o">...</span>
+
+  <span class="k">return</span> <span class="n">X_reconstructed</span>
+
+
+<span class="n">K</span> <span class="o">=</span> <span class="mi">784</span>
+
+<span class="c1">#################################################</span>
+<span class="c1">## TO DO for students: Calculate the mean and call the function, then plot</span>
+<span class="c1">## the original and the recostructed data</span>
+<span class="c1">#################################################</span>
+
+<span class="c1"># Reconstruct the data based on all components</span>
+<span class="n">X_mean</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">X_reconstructed</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># Plot the data and reconstruction</span>
+<span class="c1"># plot_MNIST_reconstruction(X, X_reconstructed)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to_remove solution</span>
+<span class="k">def</span> <span class="nf">reconstruct_data</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">evectors</span><span class="p">,</span> <span class="n">X_mean</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Reconstruct the data based on the top K components.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    score (numpy array of floats)    : Score matrix</span>
+<span class="sd">    evectors (numpy array of floats) : Matrix of eigenvectors</span>
+<span class="sd">    X_mean (numpy array of floats)   : Vector corresponding to data mean</span>
+<span class="sd">    K (scalar)                       : Number of components to include</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    (numpy array of floats)          : Matrix of reconstructed data</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># Reconstruct the data from the score and eigenvectors</span>
+  <span class="c1"># Don&#39;t forget to add the mean!!</span>
+  <span class="n">X_reconstructed</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">score</span><span class="p">[:,</span> <span class="p">:</span><span class="n">K</span><span class="p">],</span> <span class="n">evectors</span><span class="p">[:,</span> <span class="p">:</span><span class="n">K</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">X_mean</span>
+
+  <span class="k">return</span> <span class="n">X_reconstructed</span>
+
+
+<span class="n">K</span> <span class="o">=</span> <span class="mi">784</span>
+
+<span class="c1"># Reconstruct the data based on all components</span>
+<span class="n">X_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">X_reconstructed</span> <span class="o">=</span> <span class="n">reconstruct_data</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">evectors</span><span class="p">,</span> <span class="n">X_mean</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+
+<span class="c1"># Plot the data and reconstruction</span>
+<span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">xkcd</span><span class="p">():</span>
+  <span class="n">plot_MNIST_reconstruction</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X_reconstructed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="interactive-demo-reconstruct-the-data-matrix-using-different-numbers-of-pcs">
+<h2>Interactive Demo: Reconstruct the data matrix using different numbers of PCs<a class="headerlink" href="#interactive-demo-reconstruct-the-data-matrix-using-different-numbers-of-pcs" title="Permalink to this headline">¶</a></h2>
+<p>Now run the code below and experiment with the slider to reconstruct the data matrix using different numbers of principal components.</p>
+<p><strong>Steps</strong></p>
+<ul class="simple">
+<li><p>How many principal components are necessary to reconstruct the numbers (by eye)? How does this relate to the intrinsic dimensionality of the data?</p></li>
+<li><p>Do you see any information in the data with only a single principal component?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
+
+<span class="c1"># @markdown Make sure you execute this cell to enable the widget!</span>
+
+
+<span class="k">def</span> <span class="nf">refresh</span><span class="p">(</span><span class="n">K</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+  <span class="n">X_reconstructed</span> <span class="o">=</span> <span class="n">reconstruct_data</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">evectors</span><span class="p">,</span> <span class="n">X_mean</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+  <span class="n">plot_MNIST_reconstruction</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X_reconstructed</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Reconstructed, K=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">K</span><span class="p">))</span>
+
+
+<span class="n">_</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span><span class="n">refresh</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-4-visualization-of-the-weights">
+<h2>Exercise 4: Visualization of the weights<a class="headerlink" href="#exercise-4-visualization-of-the-weights" title="Permalink to this headline">¶</a></h2>
+<p>Next, let’s take a closer look at the first principal component by visualizing its corresponding weights.</p>
+<p><strong>Steps:</strong></p>
+<ul class="simple">
+<li><p>Enter <code class="docutils literal notranslate"><span class="pre">plot_MNIST_weights</span></code> to visualize the weights of the first basis vector.</p></li>
+<li><p>What structure do you see? Which pixels have a strong positive weighting? Which have a strong negative weighting? What kinds of images would this basis vector differentiate?</p></li>
+<li><p>Try visualizing the second and third basis vectors. Do you see any structure? What about the 100th basis vector? 500th? 700th?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">plot_MNIST_weights</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#################################################</span>
+<span class="c1">## TO DO for students: plot the weights calling the plot_MNIST_weights function</span>
+<span class="c1">#################################################</span>
+
+<span class="c1"># Plot the weights of the first principal component</span>
+<span class="c1"># plot_MNIST_weights(...)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to_remove solution</span>
+<span class="c1"># Plot the weights of the first principal component</span>
+<span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">xkcd</span><span class="p">():</span>
+  <span class="n">plot_MNIST_weights</span><span class="p">(</span><span class="n">evectors</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>In this tutorial, we learned how to use PCA for dimensionality reduction by selecting the top principal components. This can be useful as the intrinsic dimensionality (<span class="math notranslate nohighlight">\(K\)</span>) is often less than the extrinsic dimensionality (<span class="math notranslate nohighlight">\(N\)</span>) in neural data. <span class="math notranslate nohighlight">\(K\)</span> can be inferred by choosing the number of eigenvalues necessary to capture some fraction of the variance.</p></li>
+<li><p>We also learned how to reconstruct an approximation of the original data using the top <span class="math notranslate nohighlight">\(K\)</span> principal components. In fact, an alternate formulation of PCA is to find the <span class="math notranslate nohighlight">\(K\)</span> dimensional space that minimizes the reconstruction error.</p></li>
+<li><p>Noise tends to inflate the apparent intrinsic dimensionality, however the higher components reflect noise rather than new structure in the data. PCA can be used for denoising data by removing noisy higher components.</p></li>
+<li><p>In MNIST, the weights corresponding to the first principal component appear to discriminate between a 0 and 1. We will discuss the implications of this for data visualization in the following tutorial.</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="bonus-examine-denoising-using-pca">
+<h1>Bonus: Examine denoising using PCA<a class="headerlink" href="#bonus-examine-denoising-using-pca" title="Permalink to this headline">¶</a></h1>
+<p>In this lecture, we saw that PCA finds an optimal low-dimensional basis to minimize the reconstruction error. Because of this property, PCA can be useful for denoising corrupted samples of the data.</p>
+<div class="section" id="exercise-5-add-noise-to-the-data">
+<h2>Exercise 5: Add noise to the data<a class="headerlink" href="#exercise-5-add-noise-to-the-data" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise you will add salt-and-pepper noise to the original data and see how that affects the eigenvalues.</p>
+<p><strong>Steps:</strong></p>
+<ul class="simple">
+<li><p>Use the function <code class="docutils literal notranslate"><span class="pre">add_noise</span></code> to add noise to 20% of the pixels.</p></li>
+<li><p>Then, perform PCA and plot the variance explained. How many principal components are required to explain 90% of the variance? How does this compare to the original data?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">add_noise</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###################################################################</span>
+<span class="c1"># Insert your code here to:</span>
+<span class="c1"># Add noise to the data</span>
+<span class="c1"># Plot noise-corrupted data</span>
+<span class="c1"># Perform PCA on the noisy data</span>
+<span class="c1"># Calculate and plot the variance explained</span>
+<span class="c1">###################################################################</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>  <span class="c1"># set random seed</span>
+<span class="n">X_noisy</span> <span class="o">=</span> <span class="o">...</span>
+<span class="c1"># score_noisy, evectors_noisy, evals_noisy = ...</span>
+<span class="c1"># variance_explained_noisy = ...</span>
+<span class="c1"># plot_MNIST_sample(X_noisy)</span>
+<span class="c1"># plot_variance_explained(variance_explained_noisy)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to_remove solution</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>  <span class="c1"># set random seed</span>
+<span class="n">X_noisy</span> <span class="o">=</span> <span class="n">add_noise</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">score_noisy</span><span class="p">,</span> <span class="n">evectors_noisy</span><span class="p">,</span> <span class="n">evals_noisy</span> <span class="o">=</span> <span class="n">pca</span><span class="p">(</span><span class="n">X_noisy</span><span class="p">)</span>
+<span class="n">variance_explained_noisy</span> <span class="o">=</span> <span class="n">get_variance_explained</span><span class="p">(</span><span class="n">evals_noisy</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">xkcd</span><span class="p">():</span>
+  <span class="n">plot_MNIST_sample</span><span class="p">(</span><span class="n">X_noisy</span><span class="p">)</span>
+  <span class="n">plot_variance_explained</span><span class="p">(</span><span class="n">variance_explained_noisy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-6-denoising">
+<h2>Exercise 6: Denoising<a class="headerlink" href="#exercise-6-denoising" title="Permalink to this headline">¶</a></h2>
+<p>Next, use PCA to perform denoising by projecting the noise-corrupted data onto the basis vectors found from the original dataset. By taking the top K components of this projection, we can reduce noise in dimensions orthogonal to the K-dimensional latent space.</p>
+<p><strong>Steps:</strong></p>
+<ul class="simple">
+<li><p>Subtract the mean of the noise-corrupted data.</p></li>
+<li><p>Project the data onto the basis found with the original dataset (<code class="docutils literal notranslate"><span class="pre">evectors</span></code>, not <code class="docutils literal notranslate"><span class="pre">evectors_noisy</span></code>) and take the top <span class="math notranslate nohighlight">\(K\)</span> components.</p></li>
+<li><p>Reconstruct the data as normal, using the top 50 components.</p></li>
+<li><p>Play around with the amount of noise and K to build intuition.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###################################################################</span>
+<span class="c1"># Insert your code here to:</span>
+<span class="c1"># Subtract the mean of the noise-corrupted data</span>
+<span class="c1"># Project onto the original basis vectors evectors</span>
+<span class="c1"># Reconstruct the data using the top 50 components</span>
+<span class="c1"># Plot the result</span>
+<span class="c1">###################################################################</span>
+
+<span class="n">X_noisy_mean</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">projX_noisy</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">X_reconstructed</span> <span class="o">=</span> <span class="o">...</span>
+<span class="c1"># plot_MNIST_reconstruction(X_noisy, X_reconstructed)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to_remove solution</span>
+
+<span class="n">X_noisy_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X_noisy</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">projX_noisy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">X_noisy</span> <span class="o">-</span> <span class="n">X_noisy_mean</span><span class="p">,</span> <span class="n">evectors</span><span class="p">)</span>
+<span class="n">X_reconstructed</span> <span class="o">=</span> <span class="n">reconstruct_data</span><span class="p">(</span><span class="n">projX_noisy</span><span class="p">,</span> <span class="n">evectors</span><span class="p">,</span> <span class="n">X_noisy_mean</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">xkcd</span><span class="p">():</span>
+  <span class="n">plot_MNIST_reconstruction</span><span class="p">(</span><span class="n">X_noisy</span><span class="p">,</span> <span class="n">X_reconstructed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./W1D5_DimensionalityReduction"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="W1D5_Tutorial2.html" title="previous page">Tutorial 2: Principal Component Analysis</a>
+    <a class='right-next' id="next-link" href="W1D5_Tutorial4.html" title="next page">Tutorial 4:  Nonlinear Dimensionality Reduction</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Neuromatch<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

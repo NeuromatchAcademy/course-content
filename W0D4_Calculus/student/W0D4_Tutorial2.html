@@ -1,0 +1,1892 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 2: Differential Equations &#8212; Neuromatch Computational Neuroscience</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial 3: Numerical Methods" href="W0D4_Tutorial3.html" />
+    <link rel="prev" title="Tutorial 1: Basics of Differential and Integral Calculus" href="W0D4_Tutorial1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/nma-logo-square-4xp.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Pre-reqs Refresher
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D1_PythonWorkshop1/intro_text.html">
+   Python Workshop 1 (W0D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
+     Tutorial: LIF Neuron - Part I
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D2_PythonWorkshop2/intro_text.html">
+   Python Workshop 2 (W0D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
+     Neuromatch Academy: Week 0, Day 2, Tutorial 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D3_LinearAlgebra/intro_text.html">
+   Linear Algebra (W0D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
+     Tutorial 1: Vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
+     Tutorial 2: Matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
+     Bonus Tutorial: Discrete Dynamical Systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../intro_text.html">
+   Calculus (W0D4)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="W0D4_Tutorial1.html">
+     Tutorial 1: Basics of Differential and Integral Calculus
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tutorial 2: Differential Equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W0D4_Tutorial3.html">
+     Tutorial 3: Numerical Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D5_Statistics/intro_text.html">
+   Statistics (W0D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
+     Tutorial 1: Probability Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
+     Tutorial 2: Statistical Inference
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Intro to Modeling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D1_ModelTypes/intro_text.html">
+   Model Types (W1D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
+     Tutorial 1: “What” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
+     Tutorial 2: “How” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
+     Tutorial 3: “Why” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/outro_vid.html">
+     Intro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D2_ModelingPractice/intro_text.html">
+   Modeling Practice (W1D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
+     Tutorial: Framing the Question
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D3_ModelFitting/intro_text.html">
+   Model Fitting (W1D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
+     Tutorial 1: Linear regression with MSE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
+     Tutorial 2: Linear regression with MLE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
+     Tutorial 3: Confidence intervals and bootstrapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
+     Tutorial 4: Multiple linear regression and polynomial regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
+     Tutorial 5: Model Selection: Bias-variance trade-off
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
+     Tutorial 6: Model Selection: Cross-validation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D4_MachineLearning/intro_text.html">
+   Machine Learning (W1D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial1.html">
+     Tutorial 1: GLMs for Encoding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial2.html">
+     Tutorial 2: Classifiers and regularizers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D5_DimensionalityReduction/intro_text.html">
+   Dimensionality Reduction (W1D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
+     Tutorial 1: Geometric view of data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
+     Tutorial 2: Principal Component Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
+     Tutorial 3: Dimensionality Reduction &amp; Reconstruction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
+     Tutorial 4:  Nonlinear Dimensionality Reduction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D1_DeepLearning/intro_text.html">
+   Deep Learning (W2D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
+     Tutorial 1: Decoding Neural Responses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
+     Tutorial 2: Convolutional Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
+     Tutorial 2: Building and Evaluating Normative Encoding Models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dynamical Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D2_LinearSystems/intro_text.html">
+   Linear Systems (W2D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
+     Tutorial 1: Linear dynamical systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
+     Tutorial 2: Markov Processes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
+     Tutorial 3: Combining determinism and stochasticity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
+     Tutorial 4: Autoregressive models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D3_RealNeurons/intro_text.html">
+   Real Neurons (W2D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial1.html">
+     Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial2.html">
+     Tutorial 2: Effects of Input Correlation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial3.html">
+     Tutorial 3: Synaptic transmission - Models of static and dynamic synapses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial4.html">
+     Tutorial 4: Spike-timing dependent plasticity (STDP)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D4_DynamicNetworks/intro_text.html">
+   Dynamic Networks (W2D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
+     Tutorial 1: Neural Rate Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
+     Tutorial 2: Wilson-Cowan Model
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Stochastic Processes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D1_BayesianDecisions/intro_text.html">
+   Bayesian Decisions (W3D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
+     Tutorial 1: Bayes with a binary hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
+     Tutorial 2: Bayesian inference and decisions with continuous hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
+     Bonus Tutorial:Fitting to data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D2_HiddenDynamics/intro_text.html">
+   Hidden Dynamics (W3D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
+     Tutorial 1: Sequential Probability Ratio Test
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
+     Tutorial 2: Hidden Markov Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
+     Tutorial 3: 1D Kalman Filter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
+     Tutorial 4: 2D Kalman Filter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D3_OptimalControl/intro_text.html">
+   Optimal Control (W3D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
+     Neuromatch Academy: Week 3, Day 3, Tutorial 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
+     Tutorial 2: Optimal Control for Continuous State
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D4_ReinforcementLearning/intro_text.html">
+   Reinforcement Learning (W3D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
+     Tutorial 1: Learning to Predict
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
+     Tutorial 2: Learning to Act: Multi-Armed Bandits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
+     Tutorial 3: Learning to Act: Q-Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
+     Tutorial 4: From Reinforcement Learning to Planning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D5_NetworkCausality/intro_text.html">
+   Network Causality (W3D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
+     Tutorial 1: Interventions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
+     Tutorial 2: Correlations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
+     Tutorial 3: Simultaneous fitting/regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
+     Tutorial 4: Instrumental Variables
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/W0D4_Calculus/student/W0D4_Tutorial2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/W0D4_Calculus/student/W0D4_Tutorial2.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial 2: Differential Equations
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial-objectives">
+   Tutorial Objectives
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-1-population-differential-equation">
+   Section 1: Population Differential Equation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#coding-exercise-1-plot-the-change-in-population">
+     Coding Exercise 1: Plot the Change in Population
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#think-1-linear-differential-equations-and-the-population-equation">
+     Think! 1: Linear Differential Equations and the Population Equation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-1-1-exact-solution-of-the-population-equation">
+     Section 1.1: Exact Solution of the Population Equation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#section-1-1-1-initial-condition">
+       Section 1.1.1: Initial Condition
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#section-1-1-2-exact-solution">
+       Section 1.1.2: Exact Solution
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#coding-exercise-1-1-2-exact-solution-of-the-population-equation">
+         Coding Exercise 1.1.2: Exact Solution of the Population Equation
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-1-2-parameters-birth-rate-alpha">
+     Section 1.2: Parameters (Birth Rate
+     <span class="math notranslate nohighlight">
+      \(\alpha\)
+     </span>
+     )
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interactive-demo-1-2-interactive-parameter-change">
+     Interactive Demo 1.2:  Interactive Parameter Change
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#think-1-2-how-do-changing-parameters-of-the-population-equation-affect-the-outcome">
+       Think! 1.2: How do changing parameters of the Population Equation affect the outcome?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#secton-1-3-population-differential-equation-summary">
+     Secton 1.3: Population Differential Equation Summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-2-the-leaky-integrate-and-fire-model">
+   Section 2: The Leaky Integrate and Fire Model
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-2-1-lif-without-input">
+     Section 2.1: LIF without Input
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#coding-exercise-2-1-lif-without-input">
+       Coding Exercise 2.1: LIF without Input
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#think-2-1-effect-on-membrane-potential-v-on-the-lif-model">
+       Think! 2.1: Effect on Membrane Potential
+       <span class="math notranslate nohighlight">
+        \(V\)
+       </span>
+       on the LIF Model
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#section-2-1-1-exact-solution-of-the-lif-model-without-input">
+       Section 2.1.1: Exact Solution of the LIF model without Input
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#interactive-demo-2-1-1-initial-condition-v-reset">
+         Interactive Demo 2.1.1: Initial Condition
+         <span class="math notranslate nohighlight">
+          \(V_{reset}\)
+         </span>
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#think-2-1-1-effect-of-v-reset-on-the-solution">
+         Think! 2.1.1: Effect of
+         <span class="math notranslate nohighlight">
+          \(V_{reset}\)
+         </span>
+         on the solution
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-2-2-lif-with-input">
+     Section 2.2: LIF with Input
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interactive-demo-2-2-the-impact-of-input">
+       Interactive Demo 2.2: The Impact of Input
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#think-2-2-effect-of-increasing-input">
+       Think! 2.2: Effect of increasing Input
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#section-2-2-1-lif-exact-solution">
+       Section 2.2.1: LIF Exact Solution
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#coding-exercise-2-2-1-lif-exact-solution">
+         Coding Exercise 2.2.1: LIF Exact Solution
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-2-3-maths-is-one-thing-but-biology-matters">
+     Section 2.3: Maths is one thing, but biology matters
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interactive-demo-2-3-1-listen-to-the-spikes">
+       Interactive Demo 2.3.1: Listen to the Spikes
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interactive-demo-2-3-2-input-on-spikes">
+       Interactive Demo 2.3.2: Input on Spikes
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#think-2-3-is-the-model-biologically-valid">
+       Think! 2.3: Is the model biologically valid?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-2-4-firing-rate-as-a-function-of-input">
+     Section 2.4 Firing Rate as a function of Input
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary-of-lif-model">
+     Summary of LIF model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#take-home-message">
+   Take Home Message
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#links-to-neuromatch-days">
+   Links to Neuromatch Days
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bibliography">
+   Bibliography
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#supplemental-popular-reading-list">
+     Supplemental Popular Reading List
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#popular-podcast">
+     Popular Podcast
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W0D4_Calculus/student/W0D4_Tutorial2.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="tutorial-2-differential-equations">
+<h1>Tutorial 2: Differential Equations<a class="headerlink" href="#tutorial-2-differential-equations" title="Permalink to this headline">¶</a></h1>
+<p><strong>Week 0, Day 4: Calculus</strong></p>
+<p><strong>By Neuromatch Academy</strong></p>
+<p><strong>Content creators:</strong> John S Butler, Arvind Kumar</p>
+<p><strong>Content reviewers:</strong></p>
+<p><strong>Production editors:</strong></p>
+</div>
+<hr class="docutils" />
+<div class="section" id="tutorial-objectives">
+<h1>Tutorial Objectives<a class="headerlink" href="#tutorial-objectives" title="Permalink to this headline">¶</a></h1>
+<p>A great deal of neuroscience can be modelled using differential equations, from gating channels to single neurons to a network of neurons to blood flow, to behaviour. A simple way to think about differential equations is they are equations that describe how something changes.</p>
+<p>The most famous of these in neuroscience is the Nobel Prize winning Hodgkin Huxley equation, which describes a neuron by modelling the gating of each axon. But we will not start there; we will start a few steps back.</p>
+<p>Differential Equations are mathematical equations that describe how something like population or a neuron changes over time. The reason why differential equations are so useful is they can generalise a process such that one equation can be used to describe many different outcomes.
+The general form of a first order differential equation is:</p>
+<p>\begin{align*}
+\frac{d}{dt}y(t)&amp;=f(t,y(t))\
+\end{align*}</p>
+<p>which can be read as “the change in a process <span class="math notranslate nohighlight">\(y\)</span> over time <span class="math notranslate nohighlight">\(t\)</span> is a function <span class="math notranslate nohighlight">\(f\)</span> of time <span class="math notranslate nohighlight">\(t\)</span> and itself <span class="math notranslate nohighlight">\(y\)</span>”. This might initially seem like a paradox as you are using a process <span class="math notranslate nohighlight">\(y\)</span> you want to know about to describe itself, a bit like the MC Escher drawing of two hands painting <a class="reference external" href="https://en.wikipedia.org/wiki/Drawing_Hands">each other</a>. But that is the beauty of mathematics - this can be solved some of time, and when it cannot be solved exactly we can use numerical methods to estimate the answer (see next tutorial).</p>
+<p>In this tutorial, we will see how <strong>differential equations are motivated by observations of physical responses.</strong> We will break down the population differential equation, then the integrate and fire model, which leads nicely into raster plots and frequency-current curves to rate models.</p>
+<p><strong>Steps:</strong></p>
+<ul class="simple">
+<li><p>Get an intuitive understanding of a linear population differential equation (humans, not neurons)</p></li>
+<li><p>Visualize the relationship between the change in population and the population</p></li>
+<li><p>Breakdown the Leaky Integrate and Fire (LIF) differential equation</p></li>
+<li><p>Code the exact solution of an LIF for a constant input</p></li>
+<li><p>Visualize and listen to the response of the LIF for different inputs</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@markdown Tutorial Slides</span>
+<span class="c1"># you should link the slides for all tutorial videos here (we will store pdfs on osf)</span>
+
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe src=&quot;&quot; frameborder=&quot;0&quot; width=&quot;960&quot; height=&quot;569&quot; allowfullscreen=&quot;true&quot; mozallowfullscreen=&quot;true&quot; webkitallowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Figure Settings</span>
+<span class="kn">import</span> <span class="nn">IPython.display</span> <span class="k">as</span> <span class="nn">ipd</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">gridspec</span>
+
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>  <span class="c1"># interactive display</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+
+<span class="c1"># use NMA plot style</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;</span><span class="p">)</span>
+<span class="n">my_layout</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Plotting Functions</span>
+
+<span class="k">def</span> <span class="nf">plot_dPdt</span><span class="p">(</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">3</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Plots change in population over time</span>
+<span class="sd">    Args:</span>
+<span class="sd">      alpha: Birth Rate</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      A figure two panel figure</span>
+<span class="sd">      left panel: change in population as a function of population</span>
+<span class="sd">      right panel: membrane potential as a function of time</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">xkcd</span><span class="p">():</span>
+    <span class="n">time</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span> <span class="p">,</span><span class="mf">0.01</span><span class="p">)</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+    <span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1">## dpdt as a fucntion of p</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="n">time</span><span class="p">),</span> <span class="n">alpha</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="n">time</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Population $p(t)$ (millions)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\frac</span><span class="si">{d}{dt}</span><span class="s1">p(t)=\alpha p(t)$&#39;</span><span class="p">)</span>
+
+    <span class="c1">## p exact solution</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="n">time</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Population $p(t)$ (millions)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (years)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">plot_V_no_input</span><span class="p">(</span><span class="n">V_reset</span><span class="o">=-</span><span class="mi">75</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Args:</span>
+<span class="sd">      V_reset: Reset Potential</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      A figure two panel figure</span>
+<span class="sd">      left panel: change in membrane potential as a function of membrane potential</span>
+<span class="sd">      right panel: membrane potential as a function of time</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">E_L</span><span class="o">=-</span><span class="mi">75</span>
+  <span class="n">tau_m</span><span class="o">=</span><span class="mi">10</span>
+  <span class="n">t</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)</span>
+  <span class="n">V</span><span class="o">=</span> <span class="n">E_L</span><span class="o">+</span><span class="p">(</span><span class="n">V_reset</span><span class="o">-</span><span class="n">E_L</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="n">tau_m</span><span class="p">)</span>
+  <span class="n">V_range</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">dVdt</span><span class="o">=-</span><span class="p">(</span><span class="n">V_range</span><span class="o">-</span><span class="n">E_L</span><span class="p">)</span><span class="o">/</span><span class="n">tau_m</span>
+
+  <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">xkcd</span><span class="p">():</span>
+    <span class="n">time</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">V_range</span><span class="p">,</span><span class="n">dVdt</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">min</span><span class="p">(</span><span class="n">V_range</span><span class="p">),</span><span class="nb">max</span><span class="p">(</span><span class="n">V_range</span><span class="p">),</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="o">-</span><span class="mi">75</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">dVdt</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">dVdt</span><span class="p">),</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">V_reset</span><span class="p">,</span><span class="o">-</span><span class="p">(</span><span class="n">V_reset</span> <span class="o">-</span> <span class="n">E_L</span><span class="p">)</span><span class="o">/</span><span class="n">tau_m</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$V_</span><span class="si">{reset}</span><span class="s1">$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Positive&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Negative&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">E_L</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">dVdt</span><span class="p">),</span> <span class="sa">r</span><span class="s1">&#39;$E_L$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Membrane Potential V (mV)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\frac</span><span class="si">{dV}{dt}</span><span class="s1">=\frac{-(V(t)-E_L)}{\tau_m}$&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">V</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">V_reset</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Membrane Potential $V(t)$ (mV)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (ms)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">95</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">])</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1">## LIF PLOT</span>
+<span class="k">def</span> <span class="nf">plot_IF</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">Spike_time</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Args:</span>
+<span class="sd">      t  : time</span>
+<span class="sd">      V  : membrane Voltage</span>
+<span class="sd">      I  : Input</span>
+<span class="sd">      Spike_time : Spike_times</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      figure with three panels</span>
+<span class="sd">      top panel: Input as a function of time</span>
+<span class="sd">      middle panel: membrane potential as a function of time</span>
+<span class="sd">      bottom panel: Raster plot</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">xkcd</span><span class="p">():</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>  <span class="n">height_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># PLOT OF INPUT</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$I_e(nA)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">I</span><span class="p">,</span><span class="nb">min</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="nb">max</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+
+    <span class="c1"># PLOT OF ACTIVITY</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">V</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$V(t)$(mV)&#39;</span><span class="p">)</span>
+
+    <span class="c1"># PLOT OF SPIKES</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Spike&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Spike_time</span><span class="p">,</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Spike_time</span><span class="p">)),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time(ms)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="c1">##    Plotting the differential Equation</span>
+<span class="k">def</span> <span class="nf">plot_dVdt</span><span class="p">(</span><span class="n">I</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Args:</span>
+<span class="sd">      I  : Input Current</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      figure of change in membrane potential as a function of membrane potential</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">xkcd</span><span class="p">():</span>
+    <span class="n">E_L</span> <span class="o">=</span> <span class="o">-</span><span class="mi">75</span>
+    <span class="n">tau_m</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">85</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">g_L</span> <span class="o">=</span> <span class="mf">10.</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">V</span><span class="p">,(</span><span class="o">-</span><span class="p">(</span><span class="n">V</span><span class="o">-</span><span class="n">E_L</span><span class="p">)</span> <span class="o">+</span> <span class="n">I</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="n">tau_m</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">V</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">V</span><span class="p">),</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;V (mV)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\frac</span><span class="si">{dV}{dt}</span><span class="s1">$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Helper Functions</span>
+
+<span class="c1">## EXACT SOLUTION OF LIF</span>
+<span class="k">def</span> <span class="nf">Exact_Integrate_and_Fire</span><span class="p">(</span><span class="n">I</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Args:</span>
+<span class="sd">      I  : Input Current</span>
+<span class="sd">      t : time</span>
+<span class="sd">    Returns:</span>
+<span class="sd">      Spike : Spike Count</span>
+<span class="sd">      Spike_time : Spike time</span>
+<span class="sd">      V_exact : Exact membrane potential</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">Spike</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">tau_m</span> <span class="o">=</span> <span class="mi">10</span>
+  <span class="n">R</span> <span class="o">=</span> <span class="mi">10</span>
+  <span class="n">t_isi</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">V_reset</span> <span class="o">=</span> <span class="n">E_L</span> <span class="o">=</span> <span class="o">-</span><span class="mi">75</span>
+  <span class="n">V_exact</span> <span class="o">=</span> <span class="n">V_reset</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+  <span class="n">V_th</span> <span class="o">=</span> <span class="o">-</span><span class="mi">50</span>
+  <span class="n">Spike_time</span> <span class="o">=</span> <span class="p">[]</span>
+
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)):</span>
+
+    <span class="n">V_exact</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">E_L</span> <span class="o">+</span> <span class="n">R</span><span class="o">*</span><span class="n">I</span> <span class="o">+</span> <span class="p">(</span><span class="n">V_reset</span> <span class="o">-</span> <span class="n">E_L</span> <span class="o">-</span> <span class="n">R</span><span class="o">*</span><span class="n">I</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">t_isi</span><span class="p">)</span><span class="o">/</span><span class="n">tau_m</span><span class="p">)</span>
+
+    <span class="c1"># Threshold Reset</span>
+    <span class="k">if</span> <span class="n">V_exact</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">V_th</span><span class="p">:</span>
+        <span class="n">V_exact</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">V_exact</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">V_reset</span>
+        <span class="n">t_isi</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">Spike</span> <span class="o">=</span> <span class="n">Spike</span><span class="o">+</span><span class="mi">1</span>
+        <span class="n">Spike_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Spike_time</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+  <span class="k">return</span> <span class="n">Spike</span><span class="p">,</span> <span class="n">Spike_time</span><span class="p">,</span> <span class="n">V_exact</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-1-population-differential-equation">
+<h1>Section 1: Population Differential Equation<a class="headerlink" href="#section-1-population-differential-equation" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 1: Differential Equations Introduction</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;nWKgnouNzGY&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To get an intuitive feel of a differential equations, we will start with a population differential equation, which models the change in population [1], that is human population not neurons, we will get to neurons later. Mathematically it is written like:
+\begin{align*}
+\
+\frac{d}{dt},p(t) &amp;= \alpha p(t),\
+\end{align*}</p>
+<p>where <span class="math notranslate nohighlight">\(p(t)\)</span> is the population of the world and <span class="math notranslate nohighlight">\(\alpha\)</span> is a parameter representing birth rate.</p>
+<p>Another way of thinking about the models is that the equation
+\begin{align*}
+\
+\frac{d}{dt},p(t) &amp;= \alpha p(t),\
+\text{can be written as:}\
+\text{“Change in Population”} &amp;= \text{ “Birth rate times Current population.”}
+\end{align*}</p>
+<p>The equation is saying something reasonable maybe not the perfect model but a good start.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 2: The Population Equation</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;yaQdEayD9Nw&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="coding-exercise-1-plot-the-change-in-population">
+<h2>Coding Exercise 1: Plot the Change in Population<a class="headerlink" href="#coding-exercise-1-plot-the-change-in-population" title="Permalink to this headline">¶</a></h2>
+<p>Let’s investigate what the rate of change of population looks like as a function of the current population.</p>
+<p>Write Python code to calculate the change in population <code class="docutils literal notranslate"><span class="pre">dpdt</span></code> with an <code class="docutils literal notranslate"><span class="pre">alpha=0.3</span></code> as a function of population <code class="docutils literal notranslate"><span class="pre">p</span></code>.  Uncomment the plot line and interpret the plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+
+
+<span class="c1">########################################################################</span>
+<span class="c1">## TODO for students: calculate the dp/dt</span>
+<span class="c1">## Complete line of code</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Calculate the dp/dt&quot;</span><span class="p">)</span>
+<span class="c1">########################################################################</span>
+
+<span class="n">dpdt</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1">## Uncomment to plot answer</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="c1">#plt.plot(p, dpdt)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Population $p(t)$ (millions)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\frac</span><span class="si">{d}{dt}</span><span class="s1">p(t)=\alpha p(t)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D4_Calculus/solutions/W0D4_Tutorial2_Solution_9953ed40.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=416 height=272 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D4_Calculus/static/W0D4_Tutorial2_Solution_9953ed40_0.png>
+</div>
+<div class="section" id="think-1-linear-differential-equations-and-the-population-equation">
+<h2>Think! 1: Linear Differential Equations and the Population Equation<a class="headerlink" href="#think-1-linear-differential-equations-and-the-population-equation" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Why is the population differential equation is known as a linear differential equation?</p></li>
+<li><p>How does population size affect the rate of change of the population?</p></li>
+</ol>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D4_Calculus/solutions/W0D4_Tutorial2_Solution_d65c50d6.py"><em>Click for solution</em></a></p>
+</div>
+<div class="section" id="section-1-1-exact-solution-of-the-population-equation">
+<h2>Section 1.1: Exact Solution of the Population Equation<a class="headerlink" href="#section-1-1-exact-solution-of-the-population-equation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="section-1-1-1-initial-condition">
+<h3>Section 1.1.1: Initial Condition<a class="headerlink" href="#section-1-1-1-initial-condition" title="Permalink to this headline">¶</a></h3>
+<p>The linear population differential equation is known as an initial value differential equation because we need an initial population value to solve it, so here we will set our initial population to:</p>
+<p>\begin{align*}
+&amp;p(0)=1.\
+\end{align*}</p>
+<p>Different initial conditions will lead to different answers, but they will not change the differential equation. This is one of the strengths of a differential equation.</p>
+</div>
+<div class="section" id="section-1-1-2-exact-solution">
+<h3>Section 1.1.2: Exact Solution<a class="headerlink" href="#section-1-1-2-exact-solution" title="Permalink to this headline">¶</a></h3>
+<p>To calculate the exact solution of a differential equation, we must integrate both sides and use some mathematical tricks - the harder the equation the more obscure the trick.</p>
+<p>Given the linear population equation
+\begin{align*}
+\frac{d}{dt},p(t) &amp;= \alpha p(t),\
+p(0)=1,\
+\end{align*}
+has the exact solution:
+\begin{align*}
+p(t)&amp;=e^{\alpha t}.\
+\end{align*}</p>
+<p>The exact solution written in words is:</p>
+<p>\begin{align*}
+\text{“Population”}&amp;=\text{“grows/declines exponentially as a function time and birth rate”}.\
+\end{align*}</p>
+<p>Most differential equations do not have a known exact solution, so in the next tutorial on numerical methods we will show how the solution can be estimated.</p>
+<p>A small aside: a good deal of progress in mathematics was due to mathematicians writing taunting letters to each other saying they had a trick that could solve something better than everyone else. So do not worry too much about the tricks.</p>
+<div class="section" id="coding-exercise-1-1-2-exact-solution-of-the-population-equation">
+<h4>Coding Exercise 1.1.2: Exact Solution of the Population Equation<a class="headerlink" href="#coding-exercise-1-1-2-exact-solution-of-the-population-equation" title="Permalink to this headline">¶</a></h4>
+<p>Let’s consider the population differential equation with a birth rate <span class="math notranslate nohighlight">\(\alpha=0.3\)</span>:</p>
+<p>\begin{align*}
+\frac{d}{dt},p(t) = 0.3 p(t),\
+\text{with the initial condition}\
+p(0)=1.\
+\end{align*}</p>
+<p>It has an exact solution
+\begin{align*}
+\
+p(t)=e^{0.3 t}.
+\end{align*}</p>
+<p>Code and plot the exact solution of the population differential equation <span class="math notranslate nohighlight">\(p(t)\)</span> for <span class="math notranslate nohighlight">\(\alpha=0.3\)</span> for the time period <span class="math notranslate nohighlight">\(t=0\)</span> to <span class="math notranslate nohighlight">\(t=10\)</span>.</p>
+<p>Use the function <code class="docutils literal notranslate"><span class="pre">np.exp()</span></code> for the exponential.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span> <span class="c1"># Time from 0 to 10 years in 0.1 steps</span>
+
+<span class="c1">########################################################################</span>
+<span class="c1">## TODO for students: calculate the exact solution of p</span>
+<span class="c1"># Fill out function and remove</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Calculate the exact solution of p&quot;</span><span class="p">)</span>
+<span class="c1">########################################################################</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1">## Uncomment to plot answer</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="c1">#plt.plot(t, p)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Population (millions)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (years)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D4_Calculus/solutions/W0D4_Tutorial2_Solution_359be293.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=416 height=272 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D4_Calculus/static/W0D4_Tutorial2_Solution_359be293_0.png>
+</div>
+</div>
+</div>
+<div class="section" id="section-1-2-parameters-birth-rate-alpha">
+<h2>Section 1.2: Parameters (Birth Rate <span class="math notranslate nohighlight">\(\alpha\)</span>)<a class="headerlink" href="#section-1-2-parameters-birth-rate-alpha" title="Permalink to this headline">¶</a></h2>
+<p>One of the goals when design a differential equation is to make it generalisable. For example, so that the differential equation will give reasonable solutions for different countries with different birth rates <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+</div>
+<div class="section" id="interactive-demo-1-2-interactive-parameter-change">
+<h2>Interactive Demo 1.2:  Interactive Parameter Change<a class="headerlink" href="#interactive-demo-1-2-interactive-parameter-change" title="Permalink to this headline">¶</a></h2>
+<p>Play with the widget to see the relationship between <span class="math notranslate nohighlight">\(\alpha\)</span> and the population differential equation as a function of population (left-hand side), and the population solution as a function of time(right-hand side). Pay close attention to the transision point from positive to negative.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @markdown Make sure you execute this cell to enable the widget!</span>
+<span class="n">my_layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s1">&#39;450px&#39;</span>
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">1.</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">step</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">my_layout</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">Pop_widget</span><span class="p">(</span><span class="n">alpha</span><span class="p">):</span>
+  <span class="n">plot_dPdt</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="think-1-2-how-do-changing-parameters-of-the-population-equation-affect-the-outcome">
+<h3>Think! 1.2: How do changing parameters of the Population Equation affect the outcome?<a class="headerlink" href="#think-1-2-how-do-changing-parameters-of-the-population-equation-affect-the-outcome" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>What happens when <span class="math notranslate nohighlight">\(\alpha &lt; 0\)</span>?</p></li>
+<li><p>What happens when <span class="math notranslate nohighlight">\(\alpha &gt; 0\)</span>?</p></li>
+<li><p>What happens when <span class="math notranslate nohighlight">\(\alpha = 0\)</span>?</p></li>
+</ol>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D4_Calculus/solutions/W0D4_Tutorial2_Solution_93be2531.py"><em>Click for solution</em></a></p>
+</div>
+</div>
+<div class="section" id="secton-1-3-population-differential-equation-summary">
+<h2>Secton 1.3: Population Differential Equation Summary<a class="headerlink" href="#secton-1-3-population-differential-equation-summary" title="Permalink to this headline">¶</a></h2>
+<p>The population differential equation is an over-simplification and has some very obvious limitations:</p>
+<ol class="simple">
+<li><p>Population growth is not exponential as there are limited number of resources so the population will level out at some point.</p></li>
+<li><p>It does not include any external factors on the populations like weather, predators and preys.</p></li>
+</ol>
+<p>These kind of limitations can be addressed by extending the model.</p>
+<p>While it might not seem that the population equation has direct relevance to neuroscience a similar equation is used to describe the accumulation of evidence for decision making known as the Drift Diffusion Model which you will see in more detail in the Linear System day in Neuromatch (W2D2).</p>
+<p>Another differential equation that is similar to the population equation is the Leaky Integrate and Fire Model which we will explore below.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-2-the-leaky-integrate-and-fire-model">
+<h1>Section 2: The Leaky Integrate and Fire Model<a class="headerlink" href="#section-2-the-leaky-integrate-and-fire-model" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 3: Leaky Integrate and Fire Model</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;htYJ84aVK3s&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The Leaky Integrate and Fire Model is a linear differential equation that describes the membrane potential (<span class="math notranslate nohighlight">\(V\)</span>) of a single neuron which was proposed by Louis Édouard Lapicque in 1907 [2].</p>
+<p>The subthreshold membrane potential dynamics of a LIF neuron is described by
+\begin{align}
+\tau_m\frac{dV}{dt} = -(V-E_L) + R_mI,
+\end{align}</p>
+<p>where <span class="math notranslate nohighlight">\(\tau_m\)</span> is the time constant, <span class="math notranslate nohighlight">\(V\)</span> is the membrane potential,  <span class="math notranslate nohighlight">\(E_L\)</span> is the resting potential, <span class="math notranslate nohighlight">\(R_m\)</span> is membrance resistance, and <span class="math notranslate nohighlight">\(I\)</span> is the external input current.</p>
+<p>In the next few sections, we will break down the equation and then build it back up to get an intuitive feel of the different facets of the differential equation.</p>
+<div class="section" id="section-2-1-lif-without-input">
+<h2>Section 2.1: LIF without Input<a class="headerlink" href="#section-2-1-lif-without-input" title="Permalink to this headline">¶</a></h2>
+<p>First, we will simplify the equation by removing the input, which gives the equation</p>
+<p>\begin{align}
+\tau_m\frac{dV}{dt} &amp;= -V+E_L,\
+\end{align}</p>
+<p>which can be written in words as:</p>
+<p>\begin{align}
+\begin{matrix}\text{“Time constant multiplied by the} \ \text{change in membrane potential”}\end{matrix}&amp;=\begin{matrix}\text{“Minus Current} \ \text{membrane potential”} \end{matrix}+
+\begin{matrix}\text{“resting potential”}\end{matrix}.\
+\end{align}</p>
+<p>The equation can be re-arranged to look even more like the population equation:</p>
+<p>\begin{align}
+\frac{dV}{dt} &amp;= \frac{-(V-E_L)}{\tau_m}.\
+\end{align}</p>
+<div class="section" id="coding-exercise-2-1-lif-without-input">
+<h3>Coding Exercise 2.1: LIF without Input<a class="headerlink" href="#coding-exercise-2-1-lif-without-input" title="Permalink to this headline">¶</a></h3>
+<p>Code the right hand side <code class="docutils literal notranslate"><span class="pre">dVdt</span></code> of the differential equation,
+\begin{align}
+\frac{dV}{dt} &amp;= \frac{-(V-E_L)}{\tau_m},\
+\end{align}
+with the parameters set as:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_L</span> <span class="pre">=</span> <span class="pre">-75</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">V_reset</span> <span class="pre">=</span> <span class="pre">-50</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tau_m</span> <span class="pre">=</span> <span class="pre">10</span></code></p></li>
+</ul>
+<p>and uncommment the code to plot for ‘dVdt’ as a function of <span class="math notranslate nohighlight">\(V\)</span> between -90 and 0.</p>
+<p>Take note of where the curve of <code class="docutils literal notranslate"><span class="pre">dVdt</span></code> cuts the dashed line indicating <code class="docutils literal notranslate"><span class="pre">dVdt</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameter definition</span>
+<span class="n">E_L</span> <span class="o">=</span> <span class="o">-</span><span class="mi">75</span>
+<span class="n">tau_m</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># Range of Values of V</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">########################################################################</span>
+<span class="c1">## TODO for students: Complete line of code for the dVdt</span>
+<span class="c1"># Fill out function and remove</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Complete line of code for the dVdt&quot;</span><span class="p">)</span>
+<span class="c1">########################################################################</span>
+
+<span class="n">dVdt</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># Uncomment code below to plot</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="c1"># plt.plot(V, dVdt)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="o">-</span><span class="mi">75</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">dVdt</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">dVdt</span><span class="p">),</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">E_L</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">dVdt</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$E_L$&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">V</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">V</span><span class="p">),</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Positive&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Negative&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$V(t)$ (mV)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\frac</span><span class="si">{dV}{dt}</span><span class="s1">=\frac{-(V-E_L)}{\tau_m}$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D4_Calculus/solutions/W0D4_Tutorial2_Solution_802f7e01.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=416 height=270 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D4_Calculus/static/W0D4_Tutorial2_Solution_802f7e01_0.png>
+</div>
+<div class="section" id="think-2-1-effect-on-membrane-potential-v-on-the-lif-model">
+<h3>Think! 2.1: Effect on Membrane Potential <span class="math notranslate nohighlight">\(V\)</span> on the LIF Model<a class="headerlink" href="#think-2-1-effect-on-membrane-potential-v-on-the-lif-model" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>What is the effect on <span class="math notranslate nohighlight">\(\frac{dV}{dt}\)</span> when <span class="math notranslate nohighlight">\(V&gt;-75\)</span> mV?</p></li>
+<li><p>What is the effect on <span class="math notranslate nohighlight">\(\frac{dV}{dt}\)</span> when <span class="math notranslate nohighlight">\(V&lt;-75\)</span> mV</p></li>
+<li><p>What is the effect on <span class="math notranslate nohighlight">\(\frac{dV}{dt}\)</span> when <span class="math notranslate nohighlight">\(V=-75\)</span> mV?</p></li>
+</ol>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D4_Calculus/solutions/W0D4_Tutorial2_Solution_fe6aea6f.py"><em>Click for solution</em></a></p>
+</div>
+<div class="section" id="section-2-1-1-exact-solution-of-the-lif-model-without-input">
+<h3>Section 2.1.1: Exact Solution of the LIF model without Input<a class="headerlink" href="#section-2-1-1-exact-solution-of-the-lif-model-without-input" title="Permalink to this headline">¶</a></h3>
+<p>Similar to the population equation, we need an initial membrane potential at time <span class="math notranslate nohighlight">\(0\)</span> to solve the LIF model.</p>
+<p>With this equation
+\begin{align}
+\frac{dV}{dt} &amp;= \frac{-(V-E_L)}{\tau_m},\
+V(0)&amp;=V_{reset},
+\end{align}
+where is <span class="math notranslate nohighlight">\(V_{reset}\)</span> is called the reset potential.</p>
+<p>The LIF model has the exact solution:
+\begin{align*}
+V(t)=&amp;\ E_L+(V_{reset}-E_L)e^{\frac{-t}{\tau_m}}\
+\text{ which can be written as: }\
+\begin{matrix}\text{“Current membrane} \ \text{potential}”\end{matrix}=&amp;\text{“Resting potential”}+\begin{matrix}\text{“Reset potential minus resting potential} \ \text{times exponential with rate one over time constant.”}\end{matrix}\
+\end{align*}</p>
+<div class="section" id="interactive-demo-2-1-1-initial-condition-v-reset">
+<h4>Interactive Demo 2.1.1: Initial Condition <span class="math notranslate nohighlight">\(V_{reset}\)</span><a class="headerlink" href="#interactive-demo-2-1-1-initial-condition-v-reset" title="Permalink to this headline">¶</a></h4>
+<p>This exercise is to get an intuitive feel of how the different initial conditions <span class="math notranslate nohighlight">\(V_{reset}\)</span> impact the differential equation of the LIF and the exact soluation for the equation:</p>
+<p>\begin{align}
+\frac{dV}{dt} &amp;= \frac{-(V-E_L)}{\tau_m},\
+\end{align}
+with the parameters set as:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_L</span> <span class="pre">=</span> <span class="pre">-75,</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tau_m</span> <span class="pre">=</span> <span class="pre">10.</span></code></p></li>
+</ul>
+<p>The panel on the left-hand side plot the change in membrane potential <span class="math notranslate nohighlight">\(\frac{dV}{dt}\)</span> is a function of membrane potential <span class="math notranslate nohighlight">\(V\)</span> and right-hand side panel plots the exact solution <span class="math notranslate nohighlight">\(V\)</span> as a function of time <span class="math notranslate nohighlight">\(t,\)</span> the green dot in both panels is the reset potential <span class="math notranslate nohighlight">\(V_{reset}\)</span>.</p>
+<p>Pay close attention to when <span class="math notranslate nohighlight">\(V_{reset}=E_L=-75\)</span>mV.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@markdown Make sure you execute this cell to enable the widget!</span>
+<span class="n">my_layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s1">&#39;450px&#39;</span>
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span>
+  <span class="n">V_reset</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="o">-</span><span class="mf">77.</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">91.</span><span class="p">,</span> <span class="nb">max</span><span class="o">=-</span><span class="mf">61.</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                              <span class="n">layout</span><span class="o">=</span><span class="n">my_layout</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">V_reset_widget</span><span class="p">(</span><span class="n">V_reset</span><span class="p">):</span>
+  <span class="n">plot_V_no_input</span><span class="p">(</span><span class="n">V_reset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="think-2-1-1-effect-of-v-reset-on-the-solution">
+<h4>Think! 2.1.1: Effect of <span class="math notranslate nohighlight">\(V_{reset}\)</span> on the solution<a class="headerlink" href="#think-2-1-1-effect-of-v-reset-on-the-solution" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>How does the solution look with initial values of <span class="math notranslate nohighlight">\(V_{reset} &lt; -75\)</span>?</p></li>
+<li><p>How does the solution look with initial values of <span class="math notranslate nohighlight">\(V_{reset} &gt; -75\)</span>?</p></li>
+<li><p>How does the solution look with initial values of <span class="math notranslate nohighlight">\(V_{reset} = -75\)</span>?</p></li>
+</ol>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D4_Calculus/solutions/W0D4_Tutorial2_Solution_b51f53ba.py"><em>Click for solution</em></a></p>
+</div>
+</div>
+</div>
+<div class="section" id="section-2-2-lif-with-input">
+<h2>Section 2.2: LIF with Input<a class="headerlink" href="#section-2-2-lif-with-input" title="Permalink to this headline">¶</a></h2>
+<p>We will re-introduce the input <span class="math notranslate nohighlight">\(I\)</span> and membrane resistance <span class="math notranslate nohighlight">\(R_m\)</span> giving the original equation:</p>
+<p>\begin{align}
+\tau_m\frac{dV}{dt} = -(V-E_L) + \color{blue}{R_mI},
+\end{align}</p>
+<p>the input can be other neurons or sensory information.</p>
+<div class="section" id="interactive-demo-2-2-the-impact-of-input">
+<h3>Interactive Demo 2.2: The Impact of Input<a class="headerlink" href="#interactive-demo-2-2-the-impact-of-input" title="Permalink to this headline">¶</a></h3>
+<p>The interactive plot below mainpulates <span class="math notranslate nohighlight">\(I\)</span> in the differential equation.
+With increasing input what would you expect to happen to the solution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @markdown Make sure you execute this cell to enable the widget!</span>
+<span class="n">my_layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s1">&#39;450px&#39;</span>
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span>
+  <span class="n">I</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">20.</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                <span class="n">layout</span><span class="o">=</span><span class="n">my_layout</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">Pop_widget</span><span class="p">(</span><span class="n">I</span><span class="p">):</span>
+  <span class="n">plot_dVdt</span><span class="p">(</span><span class="n">I</span><span class="o">=</span><span class="n">I</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="think-2-2-effect-of-increasing-input">
+<h3>Think! 2.2: Effect of increasing Input<a class="headerlink" href="#think-2-2-effect-of-increasing-input" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>As <span class="math notranslate nohighlight">\(I\)</span> increases, less and less of <span class="math notranslate nohighlight">\(\frac{dV}{dt}\)</span> is below 0. How would this impact the solution?</p></li>
+</ol>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D4_Calculus/solutions/W0D4_Tutorial2_Solution_1cf3706d.py"><em>Click for solution</em></a></p>
+</div>
+<div class="section" id="section-2-2-1-lif-exact-solution">
+<h3>Section 2.2.1: LIF Exact Solution<a class="headerlink" href="#section-2-2-1-lif-exact-solution" title="Permalink to this headline">¶</a></h3>
+<p>The LIF with a constant input is a linear differential equation has a known exact solution:
+\begin{align*}
+V(t)=&amp;\ E_L+R_mI+(V_{reset}-E_L-R_mI)e^{\frac{-t}{\tau_m}}\
+\text{which is written as:}\
+\begin{matrix}\text{“Current membrane} \ \text{potential”}\end{matrix}=&amp;\text{“Resting potential”}+\begin{matrix}\text{“Reset potential minus resting potential} \ \text{times exponential with rate one over time constant.” }\end{matrix}\
+\end{align*}</p>
+<div class="section" id="coding-exercise-2-2-1-lif-exact-solution">
+<h4>Coding Exercise 2.2.1: LIF Exact Solution<a class="headerlink" href="#coding-exercise-2-2-1-lif-exact-solution" title="Permalink to this headline">¶</a></h4>
+<p>Code the exact solution <code class="docutils literal notranslate"><span class="pre">V</span></code>:
+$<span class="math notranslate nohighlight">\(
+V(t)= E_L+RI+(V_{reset}-E_L-RI)e^{\frac{-t}{\tau_m}},\\
+\)</span>$
+with the parameters set as:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">V_reset</span> <span class="pre">=</span> <span class="pre">-75,</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_L</span> <span class="pre">=</span> <span class="pre">-75,</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tau_m</span> <span class="pre">=</span> <span class="pre">10,</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">R_m</span> <span class="pre">=</span> <span class="pre">10,</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">=</span> <span class="pre">10,</span></code>
+of the LIF model and uncomment the code to plot the result.</p></li>
+</ul>
+<p>Ask yourself, does the result make biological sense?
+If not, what would you change?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">t_rest</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">tau_m</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">R_m</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">V_reset</span> <span class="o">=</span> <span class="n">E_L</span> <span class="o">=</span> <span class="o">-</span><span class="mi">75</span>
+
+<span class="n">I</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1">########################################################################</span>
+<span class="c1">## TODO for students: Complete line of code for the exact Solution V</span>
+<span class="c1"># Fill out function and remove</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Complete line of code for the exact Solution V&quot;</span><span class="p">)</span>
+<span class="c1">########################################################################</span>
+
+<span class="n">V</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># Uncomment below to plot the result</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="c1">#plt.plot(t,V)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;V (mV)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (ms)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D4_Calculus/solutions/W0D4_Tutorial2_Solution_2172448c.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=416 height=272 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D4_Calculus/static/W0D4_Tutorial2_Solution_2172448c_0.png>
+</div>
+</div>
+</div>
+<div class="section" id="section-2-3-maths-is-one-thing-but-biology-matters">
+<h2>Section 2.3: Maths is one thing, but biology matters<a class="headerlink" href="#section-2-3-maths-is-one-thing-but-biology-matters" title="Permalink to this headline">¶</a></h2>
+<p>While the mathematics of the exact solution is exact, it is not biologically valid as neurons spike and defintely do not plateau at a very positive value.</p>
+<p>To model the firing of a spike, we must have a threshold voltage <span class="math notranslate nohighlight">\(V_{th}\)</span> such that if the voltage <span class="math notranslate nohighlight">\(V(t)\)</span> goes above it, the neuron spikes
+$<span class="math notranslate nohighlight">\(V(t)&gt;V_{th}.\)</span><span class="math notranslate nohighlight">\(
+We must record the time of spike \)</span>t_{isi}<span class="math notranslate nohighlight">\(  and count the number of spikes
+\)</span><span class="math notranslate nohighlight">\(t_{isi}=t, \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(𝑆𝑝𝑖𝑘𝑒=𝑆𝑝𝑖𝑘𝑒+1.\)</span><span class="math notranslate nohighlight">\(
+Then reset the membrane voltage \)</span>V(t)<span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(V(t_{isi} )=V_{Reset}.\)</span>$</p>
+<p>To take into account the spike the exact solution becomes:
+\begin{align*}
+V(t)=&amp;\ E_L+R_mI+(V_{reset}-E_L-R_mI)e^{\frac{-(t-t_{isi})}{\tau_m}},&amp;\qquad V(t)&lt;V_{th} \
+V(t)=&amp;V_{reset},&amp;\qquad V(t)&gt;V_{th}\
+Spike=&amp;Spike+1,&amp;\
+t_{isi}=&amp;t,\
+\end{align*}
+while this does make the neuron spike, it introduces a discontinuity which is not as elegant mathematically as it could be, but it gets results so that is good.</p>
+<div class="section" id="interactive-demo-2-3-1-listen-to-the-spikes">
+<h3>Interactive Demo 2.3.1: Listen to the Spikes<a class="headerlink" href="#interactive-demo-2-3-1-listen-to-the-spikes" title="Permalink to this headline">¶</a></h3>
+<p>This exercise show the relationship between firing rate and the Input for exact solution <code class="docutils literal notranslate"><span class="pre">V</span></code> of the LIF:
+$<span class="math notranslate nohighlight">\(
+V(t)=\ E_L+R_mI+(V_{reset}-E_L-R_mI)e^{\frac{-(t-t_{isi})}{\tau_m}},
+\)</span>$
+with the parameters set as:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">V_reset</span> <span class="pre">=</span> <span class="pre">-75,</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_L</span> <span class="pre">=</span> <span class="pre">-75,</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tau_m</span> <span class="pre">=</span> <span class="pre">10,</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">R_m</span> <span class="pre">=</span> <span class="pre">10.</span></code></p></li>
+</ul>
+<p>Below is a figure with with three panels;</p>
+<ul class="simple">
+<li><p>the top panel is the input, <span class="math notranslate nohighlight">\(I,\)</span></p></li>
+<li><p>the middle panel is the membrane potential <span class="math notranslate nohighlight">\(V(t)\)</span> to illustrative the spike <span class="math notranslate nohighlight">\(V(t)\)</span> is set to <span class="math notranslate nohighlight">\(0\)</span> and then reset to <span class="math notranslate nohighlight">\(-75\)</span> mV,</p></li>
+<li><p>the bottom panel is the raster plot with each dot indicating a spike.</p></li>
+</ul>
+<p>As electrophysiologist normally listen to spikes when conducting experiments, so listen to the music of different firing rates by changing the input value <span class="math notranslate nohighlight">\(I.\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @markdown Make sure you execute this cell to be able to hear the neuron</span>
+<span class="n">I</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">Spike</span><span class="p">,</span> <span class="n">Spike_time</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">Exact_Integrate_and_Fire</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="n">plot_IF</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">Spike_time</span><span class="p">)</span>
+<span class="n">ipd</span><span class="o">.</span><span class="n">Audio</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">V</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="interactive-demo-2-3-2-input-on-spikes">
+<h3>Interactive Demo 2.3.2: Input on Spikes<a class="headerlink" href="#interactive-demo-2-3-2-input-on-spikes" title="Permalink to this headline">¶</a></h3>
+<p>Manipulate the input into the LIF to see the impact of input on the firing pattern (rate).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @markdown Make sure you execute this cell to enable the widget!</span>
+<span class="n">my_layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s1">&#39;450px&#39;</span>
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span>
+  <span class="n">I</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">4.</span><span class="p">,</span> <span class="n">step</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span>
+                              <span class="n">layout</span><span class="o">=</span><span class="n">my_layout</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">Pop_widget</span><span class="p">(</span><span class="n">I</span><span class="p">):</span>
+  <span class="n">Spike</span><span class="p">,</span> <span class="n">Spike_time</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">Exact_Integrate_and_Fire</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+  <span class="n">plot_IF</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">Spike_time</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="think-2-3-is-the-model-biologically-valid">
+<h3>Think! 2.3: Is the model biologically valid?<a class="headerlink" href="#think-2-3-is-the-model-biologically-valid" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>What is the effect of <span class="math notranslate nohighlight">\(I\)</span> on spiking?</p></li>
+<li><p>Is this biologically valid?</p></li>
+</ol>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D4_Calculus/solutions/W0D4_Tutorial2_Solution_5101cefd.py"><em>Click for solution</em></a></p>
+</div>
+</div>
+<div class="section" id="section-2-4-firing-rate-as-a-function-of-input">
+<h2>Section 2.4 Firing Rate as a function of Input<a class="headerlink" href="#section-2-4-firing-rate-as-a-function-of-input" title="Permalink to this headline">¶</a></h2>
+<p>The firing frequency of a neuron plotted as a fucntion of current is called an input-output curve (F–I curve). It is also known as a transfer function, which you came accross in the previous tutorial. This function is one of the starting points for the rate model, which extends from modelling single neurons to collections of neurons.</p>
+<p>By fitting this to a function, we can start to generalise the firing pattern of many neurons, which can be used to build rate models which is discussed later in Neuromatch.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @markdown *Execture this cell to visualize the FI curve*</span>
+<span class="n">I_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">Spike_rate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">I_range</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">I</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">I_range</span><span class="p">):</span>
+  <span class="n">Spike_rate</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Exact_Integrate_and_Fire</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">xkcd</span><span class="p">():</span>
+  <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">I_range</span><span class="p">,</span><span class="n">Spike_rate</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Input Current (nA)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Spikes per Second (Hz)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="summary-of-lif-model">
+<h2>Summary of LIF model<a class="headerlink" href="#summary-of-lif-model" title="Permalink to this headline">¶</a></h2>
+<p>The LIF model is a very nice differential equation to start with in computational neuroscience as it has been used as a building block for many papers that simulate neuronal response.</p>
+<p><strong>Strenghts of LIF model:</strong></p>
+<ul class="simple">
+<li><p>Has an exact solution;</p></li>
+<li><p>Easy to interpret;</p></li>
+<li><p>Great to build network of neurons.</p></li>
+</ul>
+<p><strong>Weaknesses of the LIF model:</strong></p>
+<ul class="simple">
+<li><p>Spiking is a discontinuity;</p></li>
+<li><p>Abstraction from biology;</p></li>
+<li><p>Cannot generate different spiking patterns.</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="take-home-message">
+<h1>Take Home Message<a class="headerlink" href="#take-home-message" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 4: Take Home Message and Outro</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;TcKWdBD3jcA&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this tutorial, we have have seen two differential equations, the population differential equations and the leaky integrate and fire model.</p>
+<p>We learned about:</p>
+<ul class="simple">
+<li><p>The motivation for differential equations.</p></li>
+<li><p>An intuitive relationship between the solution and the form of the differential equation.</p></li>
+<li><p>How different parameters of the differential equation impact the solution.</p></li>
+<li><p>The strengths and limitations of the simple differential equations.</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="links-to-neuromatch-days">
+<h1>Links to Neuromatch Days<a class="headerlink" href="#links-to-neuromatch-days" title="Permalink to this headline">¶</a></h1>
+<p>Differential equations turn up in a number of different Neuromatch days:</p>
+<ul class="simple">
+<li><p>The LIF model is discussed in more details in Model Types (Week 1 Day 1) and Real Neurons (Week 2 Day 3).</p></li>
+<li><p>Drift Diffusion model which is a differential equation for decision making is discussed in Linear Systems (Week 2 Day 2).</p></li>
+<li><p>Systems of differential equations are discussed in Linear Systems (Week 2 Day 2) and Dynamic Networks (Week 2 Day 4).</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p>Lotka, A. L, (1920)   Analytical note on certain rhythmic  relations inorganic  systems.Proceedings of the National Academy of Sciences,6(7):410–415,1920.</p></li>
+<li><p>Brunel N, van Rossum MC. Lapicque’s 1907 paper: from frogs to integrate-and-fire. Biol Cybern. 2007 Dec;97(5-6):337-9. doi: 10.1007/s00422-007-0190-0. Epub 2007 Oct 30. PMID: 17968583.</p></li>
+</ol>
+</div>
+<div class="section" id="bibliography">
+<h1>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p>Dayan, P., &amp; Abbott, L. F. (2001). Theoretical neuroscience: computational and mathematical modeling of neural systems. Computational Neuroscience Series.</p></li>
+<li><p>Strogatz, S. Nonlinear dynamics and chaos: with applications to physics, biology, chemistry, and engineering (studies in nonlinearity), Westview Press; 2 edition (29 July 2014)</p></li>
+</ol>
+<div class="section" id="supplemental-popular-reading-list">
+<h2>Supplemental Popular Reading List<a class="headerlink" href="#supplemental-popular-reading-list" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Lindsay, G. (2021). Models of the Mind: How Physics, Engineering and Mathematics Have Shaped Our Understanding of the Brain. Bloomsbury Publishing.</p></li>
+<li><p>Strogatz, S. (2004). Sync: The emerging science of spontaneous order. Penguin UK.</p></li>
+</ol>
+</div>
+<div class="section" id="popular-podcast">
+<h2>Popular Podcast<a class="headerlink" href="#popular-podcast" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Strogatz, S. (Host). (2020-), Joy of X  <a class="reference external" href="https://www.quantamagazine.org/tag/the-joy-of-x/">https://www.quantamagazine.org/tag/the-joy-of-x/</a> Quanta Magazine</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./W0D4_Calculus/student"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="W0D4_Tutorial1.html" title="previous page">Tutorial 1: Basics of Differential and Integral Calculus</a>
+    <a class='right-next' id="next-link" href="W0D4_Tutorial3.html" title="next page">Tutorial 3: Numerical Methods</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Neuromatch<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

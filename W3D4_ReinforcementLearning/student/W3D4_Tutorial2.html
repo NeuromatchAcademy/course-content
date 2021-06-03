@@ -1,0 +1,1311 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 2: Learning to Act: Multi-Armed Bandits &#8212; Neuromatch Computational Neuroscience</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial 3: Learning to Act: Q-Learning" href="W3D4_Tutorial3.html" />
+    <link rel="prev" title="Tutorial 1: Learning to Predict" href="W3D4_Tutorial1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/nma-logo-square-4xp.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Pre-reqs Refresher
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D1_PythonWorkshop1/intro_text.html">
+   Python Workshop 1 (W0D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
+     Tutorial: LIF Neuron - Part I
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D2_PythonWorkshop2/intro_text.html">
+   Python Workshop 2 (W0D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
+     Neuromatch Academy: Week 0, Day 2, Tutorial 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D3_LinearAlgebra/intro_text.html">
+   Linear Algebra (W0D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
+     Tutorial 1: Vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
+     Tutorial 2: Matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
+     Bonus Tutorial: Discrete Dynamical Systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D4_Calculus/intro_text.html">
+   Calculus (W0D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
+     Tutorial 1: Basics of Differential and Integral Calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
+     Tutorial 2: Differential Equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
+     Tutorial 3: Numerical Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D5_Statistics/intro_text.html">
+   Statistics (W0D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
+     Tutorial 1: Probability Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
+     Tutorial 2: Statistical Inference
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Intro to Modeling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D1_ModelTypes/intro_text.html">
+   Model Types (W1D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
+     Tutorial 1: “What” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
+     Tutorial 2: “How” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
+     Tutorial 3: “Why” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/outro_vid.html">
+     Intro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D2_ModelingPractice/intro_text.html">
+   Modeling Practice (W1D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
+     Tutorial: Framing the Question
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D3_ModelFitting/intro_text.html">
+   Model Fitting (W1D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
+     Tutorial 1: Linear regression with MSE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
+     Tutorial 2: Linear regression with MLE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
+     Tutorial 3: Confidence intervals and bootstrapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
+     Tutorial 4: Multiple linear regression and polynomial regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
+     Tutorial 5: Model Selection: Bias-variance trade-off
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
+     Tutorial 6: Model Selection: Cross-validation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D4_MachineLearning/intro_text.html">
+   Machine Learning (W1D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial1.html">
+     Tutorial 1: GLMs for Encoding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial2.html">
+     Tutorial 2: Classifiers and regularizers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D5_DimensionalityReduction/intro_text.html">
+   Dimensionality Reduction (W1D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
+     Tutorial 1: Geometric view of data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
+     Tutorial 2: Principal Component Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
+     Tutorial 3: Dimensionality Reduction &amp; Reconstruction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
+     Tutorial 4:  Nonlinear Dimensionality Reduction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D1_DeepLearning/intro_text.html">
+   Deep Learning (W2D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
+     Tutorial 1: Decoding Neural Responses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
+     Tutorial 2: Convolutional Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
+     Tutorial 2: Building and Evaluating Normative Encoding Models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dynamical Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D2_LinearSystems/intro_text.html">
+   Linear Systems (W2D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
+     Tutorial 1: Linear dynamical systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
+     Tutorial 2: Markov Processes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
+     Tutorial 3: Combining determinism and stochasticity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
+     Tutorial 4: Autoregressive models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D3_RealNeurons/intro_text.html">
+   Real Neurons (W2D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial1.html">
+     Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial2.html">
+     Tutorial 2: Effects of Input Correlation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial3.html">
+     Tutorial 3: Synaptic transmission - Models of static and dynamic synapses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial4.html">
+     Tutorial 4: Spike-timing dependent plasticity (STDP)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D4_DynamicNetworks/intro_text.html">
+   Dynamic Networks (W2D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
+     Tutorial 1: Neural Rate Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
+     Tutorial 2: Wilson-Cowan Model
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Stochastic Processes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D1_BayesianDecisions/intro_text.html">
+   Bayesian Decisions (W3D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
+     Tutorial 1: Bayes with a binary hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
+     Tutorial 2: Bayesian inference and decisions with continuous hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
+     Bonus Tutorial:Fitting to data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D2_HiddenDynamics/intro_text.html">
+   Hidden Dynamics (W3D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
+     Tutorial 1: Sequential Probability Ratio Test
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
+     Tutorial 2: Hidden Markov Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
+     Tutorial 3: 1D Kalman Filter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
+     Tutorial 4: 2D Kalman Filter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D3_OptimalControl/intro_text.html">
+   Optimal Control (W3D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
+     Neuromatch Academy: Week 3, Day 3, Tutorial 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
+     Tutorial 2: Optimal Control for Continuous State
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../intro_text.html">
+   Reinforcement Learning (W3D4)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="W3D4_Tutorial1.html">
+     Tutorial 1: Learning to Predict
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tutorial 2: Learning to Act: Multi-Armed Bandits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W3D4_Tutorial3.html">
+     Tutorial 3: Learning to Act: Q-Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W3D4_Tutorial4.html">
+     Tutorial 4: From Reinforcement Learning to Planning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D5_NetworkCausality/intro_text.html">
+   Network Causality (W3D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
+     Tutorial 1: Interventions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
+     Tutorial 2: Correlations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
+     Tutorial 3: Simultaneous fitting/regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
+     Tutorial 4: Instrumental Variables
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/W3D4_ReinforcementLearning/student/W3D4_Tutorial2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/W3D4_ReinforcementLearning/student/W3D4_Tutorial2.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial 2: Learning to Act: Multi-Armed Bandits
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial-objectives">
+   Tutorial Objectives
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-1-multi-armed-bandits">
+   Section 1: Multi-Armed Bandits
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-2-choosing-an-action">
+   Section 2: Choosing an Action
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-2-1-the-exploitation-exploration-dilemma">
+     Section 2.1: The Exploitation-Exploration Dilemma
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-1-implement-epsilon-greedy">
+       Exercise 1: Implement Epsilon-Greedy
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interactive-demo-changing-epsilon">
+       Interactive Demo: Changing Epsilon
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-3-learning-from-rewards">
+   Section 3: Learning from Rewards
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2-updating-action-values">
+     Exercise 2: Updating Action Values
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-4-solving-multi-armed-bandits">
+   Section 4: Solving Multi-Armed Bandits
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interactive-demo-changing-epsilon-and-alpha">
+     Interactive Demo: Changing Epsilon and Alpha
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D5_ReinforcementLearning/student/W2D5_Tutorial2.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="tutorial-2-learning-to-act-multi-armed-bandits">
+<h1>Tutorial 2: Learning to Act: Multi-Armed Bandits<a class="headerlink" href="#tutorial-2-learning-to-act-multi-armed-bandits" title="Permalink to this headline">¶</a></h1>
+<p><strong>Week 3, Day 4: Reinforcement Learning</strong></p>
+<p><strong>By Neuromatch Academy</strong>
+<strong>Content creators:</strong> Marcelo Mattar and Eric DeWitt with help from Byron Galbraith</p>
+<p><strong>Content reviewers:</strong> Matt Krause and Michael Waskom</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="tutorial-objectives">
+<h1>Tutorial Objectives<a class="headerlink" href="#tutorial-objectives" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial you will use ‘bandits’ to understand the fundementals of how a policy interacts with the learning algorithm in reinforcement learning.</p>
+<ul class="simple">
+<li><p>You will understand the fundemental tradeoff between exploration and exploitation in a policy.</p></li>
+<li><p>You will understand how the learning rate interacts with exploration to find the best available action.</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Figure settings</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>       <span class="c1"># interactive display</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Helper functions</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_choices</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">choice_fn</span><span class="p">,</span> <span class="n">n_steps</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">rng_seed</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+  <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">rng_seed</span><span class="p">)</span>
+  <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">):</span>
+    <span class="n">action</span> <span class="o">=</span> <span class="n">choice_fn</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)</span>
+    <span class="n">counts</span><span class="p">[</span><span class="n">action</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+  <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)),</span> <span class="n">counts</span><span class="o">/</span><span class="n">n_steps</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">% c</span><span class="s1">hosen&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;action&#39;</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">xticks</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)))</span>
+
+
+<span class="k">def</span> <span class="nf">plot_multi_armed_bandit_results</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
+  <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+  <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;rewards&#39;</span><span class="p">])</span>
+  <span class="n">ax1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Total Reward: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;rewards&#39;</span><span class="p">])</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+          <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;reward&#39;</span><span class="p">)</span>
+  <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;qs&#39;</span><span class="p">])</span>
+  <span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+  <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">])))</span>
+  <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;latent&#39;</span><span class="p">)</span>
+  <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;qs&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;learned&#39;</span><span class="p">)</span>
+  <span class="n">ax3</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;action&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+  <span class="n">ax3</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">plot_parameter_performance</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">fixed</span><span class="p">,</span> <span class="n">trial_rewards</span><span class="p">,</span> <span class="n">trial_optimal</span><span class="p">):</span>
+  <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+  <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">trial_rewards</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+  <span class="n">ax1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Average Reward (</span><span class="si">{</span><span class="n">fixed</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;reward&#39;</span><span class="p">)</span>
+  <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+  <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">trial_optimal</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+  <span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Performance (</span><span class="si">{</span><span class="n">fixed</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">% o</span><span class="s1">ptimal&#39;</span><span class="p">)</span>
+  <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-1-multi-armed-bandits">
+<h1>Section 1: Multi-Armed Bandits<a class="headerlink" href="#section-1-multi-armed-bandits" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 1: Multi-Armed Bandits</span>
+<span class="c1"># Insert the ID of the corresponding youtube video</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;kdiXr1zsfo0&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Consider the following learning problem. You are faced repeatedly with a choice among <span class="math notranslate nohighlight">\(k\)</span> different options, or actions. After each choice you receive a reward signal in the form of a numerical value, where the larger value is the better. Your objective is to maximize the expected total reward over some time period, for example, over 1000 action selections, or time steps.</p>
+<p>This is the original form of the k-armed bandit problem. This name derives from the colloquial name for a slot machine, the “one-armed bandit”, because it has the one lever to pull, and it is often rigged to take more money than it pays out over time. The multi-armed bandit extension is to imagine, for instance, that you are faced with multiple slot machines that you can play, but only one at a time. Which machine should you play, i.e. which arm should you pull, which action should you take, at any given time to maximize your total payout.</p>
+<img alt="MultiArmedBandit" width="625" height="269" src="https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/W2D5_ReinforcementLearning/static/W2D5_Tutorial2_MultiarmedBandit.png?raw=true">
+<p>While there are many different levels of sophistication and assumptions in how the rewards are determined, for simplicity’s sake we will assume that each action results in a reward drawn from a fixed Gaussian distribution with unknown mean and unit variance. This problem setting is referred to as the <em>environment</em>, and goal is to find the arm with the highest mean value.</p>
+<p>We will solve this <em>optimization problem</em> with an <em>agent</em>, in this case an algorithm that takes in rewards and returns actions.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-2-choosing-an-action">
+<h1>Section 2: Choosing an Action<a class="headerlink" href="#section-2-choosing-an-action" title="Permalink to this headline">¶</a></h1>
+<p>The first thing our agent needs to be able to do is choose which arm to pull. The strategy for choosing actions based on our expectations is called a <em>policy</em> (often denoted <span class="math notranslate nohighlight">\(\pi\)</span>). We could have a random policy – just pick an arm at random each time – though this doesn’t seem likely to be capable of optimizing our reward. We want some intentionality, and to do that we need a way of describing our beliefs about the arms’ reward potential. We do this with an action-value function</p>
+<p>\begin{align}
+q(a) = \mathbb{E} [r_{t} | a_{t} = a]
+\end{align}</p>
+<p>where the value <span class="math notranslate nohighlight">\(q\)</span> for taking action <span class="math notranslate nohighlight">\(a \in A\)</span> at time <span class="math notranslate nohighlight">\(t\)</span> is equal to the expected value of the reward <span class="math notranslate nohighlight">\(r_t\)</span> given that we took action <span class="math notranslate nohighlight">\(a\)</span> at that time. In practice, this is often represented as an array of values, where each action’s value is a different element in the array.</p>
+<p>Great, now that we have a way to describe our beliefs about the values each action should return, let’s come up with a policy.</p>
+<p>An obvious choice would be to take the action with the highest expected value. This is referred to as the <em>greedy</em> policy</p>
+<p>\begin{align}
+a_{t} = \text{argmax}<em>{a} ; q</em>{t} (a)
+\end{align}</p>
+<p>where our choice action is the one that maximizes the current value function.</p>
+<p>So far so good, but it can’t be this easy. And, in fact, the greedy policy does have a fatal flaw: it easily gets trapped in local maxima. It never explores to see what it hasn’t seen before if one option is already better than the others. This leads us to a fundamental challenge in coming up with effective polices.</p>
+<div class="section" id="section-2-1-the-exploitation-exploration-dilemma">
+<h2>Section 2.1: The Exploitation-Exploration Dilemma<a class="headerlink" href="#section-2-1-the-exploitation-exploration-dilemma" title="Permalink to this headline">¶</a></h2>
+<p>If we never try anything new, if we always stick to the safe bet, we don’t know what we are missing. Sometimes we aren’t missing much of anything, and regret not sticking with our preferred choice, yet other times we stumble upon something new that was way better than we thought.</p>
+<p>This is the exploitation-exploration dilemma: do you go with you best choice now, or risk the less certain option with the hope of finding something better. Too much exploration, however, means you may end up with a sub-optimal reward once it’s time to stop.</p>
+<p>In order to avoid getting stuck in local minima while also maximizing reward, effective policies need some way to balance between these two aims.</p>
+<p>A simple extension to our greedy policy is to add some randomness. For instance, a coin flip – heads we take the best choice now, tails we pick one at random. This is referred to as the <span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy policy:</p>
+<p>\begin{align}
+P (a_{t} = a) =
+\begin{cases}
+1 - \epsilon + \epsilon/N    &amp; \quad \text{if } a_{t} = \text{argmax}<em>{a} ; q</em>{t} (a) \
+\epsilon/N        &amp; \quad \text{else}
+\end{cases}
+\end{align}</p>
+<p>which is to say that with probability 1 - <span class="math notranslate nohighlight">\(\epsilon\)</span> for <span class="math notranslate nohighlight">\(\epsilon \in [0,1]\)</span> we select the greedy choice, and otherwise we select an action at random (including the greedy option).</p>
+<p>Despite its relative simplicity, the epsilon-greedy policy is quite effective, which leads to its general popularity.</p>
+<div class="section" id="exercise-1-implement-epsilon-greedy">
+<h3>Exercise 1: Implement Epsilon-Greedy<a class="headerlink" href="#exercise-1-implement-epsilon-greedy" title="Permalink to this headline">¶</a></h3>
+<p>In this exercise you will implement the epsilon-greedy algorithm for deciding which action to take from a set of possible actions given their value function and a probability <span class="math notranslate nohighlight">\(\epsilon\)</span> of simply chosing one at random.</p>
+<p>TIP: You may find <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.random.html"><code class="docutils literal notranslate"><span class="pre">np.random.random</span></code></a>, <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.choice.html"><code class="docutils literal notranslate"><span class="pre">np.random.choice</span></code></a>, and <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.argmax.html"><code class="docutils literal notranslate"><span class="pre">np.argmax</span></code></a> useful here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">epsilon_greedy</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Epsilon-greedy policy: selects the maximum value action with probabilty</span>
+<span class="sd">  (1-epsilon) and selects randomly with epsilon probability.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    q (ndarray): an array of action values</span>
+<span class="sd">    epsilon (float): probability of selecting an action randomly</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    int: the chosen action</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1">#####################################################################</span>
+  <span class="c1">## TODO for students: implement the epsilon greedy decision algorithm</span>
+  <span class="c1"># Fill out function and remove</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student excercise: implement the epsilon greedy decision algorithm&quot;</span><span class="p">)</span>
+  <span class="c1">#####################################################################</span>
+  <span class="c1"># write a boolean expression that determines if we should take the best action</span>
+  <span class="n">be_greedy</span> <span class="o">=</span> <span class="o">...</span>
+  <span class="k">if</span> <span class="n">be_greedy</span><span class="p">:</span>
+    <span class="c1"># write an expression for selecting the best action from the action values</span>
+    <span class="n">action</span> <span class="o">=</span> <span class="o">...</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="c1"># write an expression for selecting a random action</span>
+    <span class="n">action</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="k">return</span> <span class="n">action</span>
+
+
+<span class="c1"># Uncomment once the epsilon_greedy function is complete</span>
+<span class="c1"># q = [-2, 5, 0, 1]</span>
+<span class="c1"># epsilon = 0.1</span>
+<span class="c1"># plot_choices(q, epsilon, epsilon_greedy)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W3D4_ReinforcementLearning/solutions/W3D4_Tutorial2_Solution_6f3c3877.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=558 height=414 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W3D4_ReinforcementLearning/static/W3D4_Tutorial2_Solution_6f3c3877_0.png>
+<p>This is what we should expect, that the action with the largest value (action 1) is selected about (1-<span class="math notranslate nohighlight">\(\epsilon\)</span>) of the time, or 90% for <span class="math notranslate nohighlight">\(\epsilon = 0.1\)</span>, and the remaining 10% is split evenly amongst the other options. Use the demo below to explore how changing <span class="math notranslate nohighlight">\(\epsilon\)</span> affects the distribution of selected actions.</p>
+</div>
+<div class="section" id="interactive-demo-changing-epsilon">
+<h3>Interactive Demo: Changing Epsilon<a class="headerlink" href="#interactive-demo-changing-epsilon" title="Permalink to this headline">¶</a></h3>
+<p>Epsilon is our one parameter for balancing exploitation and exploration.  Given a set of values <span class="math notranslate nohighlight">\(q = [-2, 5, 0, 1]\)</span>, use the widget below to see how changing <span class="math notranslate nohighlight">\(\epsilon\)</span> influences our selection of the max value 5 (action = 1) vs the others.</p>
+<p>At the extremes of its range (0 and 1), the <span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy policy reproduces two other policies. What are they?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+
+<span class="c1">#@markdown Make sure you execute this cell to enable the widget!</span>
+
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.0</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">explore_epilson_values</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+  <span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+  <span class="n">plot_choices</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">epsilon_greedy</span><span class="p">,</span> <span class="n">rng_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W3D4_ReinforcementLearning/solutions/W3D4_Tutorial2_Solution_457741c9.py"><em>Click for solution</em></a></p>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-3-learning-from-rewards">
+<h1>Section 3: Learning from Rewards<a class="headerlink" href="#section-3-learning-from-rewards" title="Permalink to this headline">¶</a></h1>
+<p>Now that we have a policy for deciding what to do, how do we learn from our actions?</p>
+<p>One way to do this is just keep a record of every result we ever got and use the averages for each action. If we have a potentially very long running episode, the computational cost of keeping all these values and recomputing the mean over and over again isn’t ideal. Instead we can use a streaming mean calculation, which looks like this:</p>
+<p>\begin{align}
+q_{t+1}(a) \leftarrow q_{t}(a) + \frac{1}{n_t} (r_{t} - q_{t}(a))
+\end{align}</p>
+<p>where our action-value function <span class="math notranslate nohighlight">\(q_t(a)\)</span> is the mean of the rewards seen so far, <span class="math notranslate nohighlight">\(n_t\)</span> is the number of actions taken by time <span class="math notranslate nohighlight">\(t\)</span>, and <span class="math notranslate nohighlight">\(r_t\)</span> is the reward just received for taking action <span class="math notranslate nohighlight">\(a\)</span>.</p>
+<p>This still requires us to remember how many actions we’ve taken, so let’s generalize this a bit further and replace the action total with a general parameter <span class="math notranslate nohighlight">\(\alpha\)</span>, which we will call the learning rate</p>
+<p>\begin{align}
+q_{t+1}(a) \leftarrow q_{t}(a) + \alpha (r_{t} - q_{t}(a)).
+\end{align}</p>
+<div class="section" id="exercise-2-updating-action-values">
+<h2>Exercise 2: Updating Action Values<a class="headerlink" href="#exercise-2-updating-action-values" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise you will implement the action-value update rule above. The function will take in the action-value function represented as an array <code class="docutils literal notranslate"><span class="pre">q</span></code>, the action taken, the reward received, and the learning rate, <code class="docutils literal notranslate"><span class="pre">alpha</span></code>. The function will return the updated value for the selection action.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_action_value</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Compute the updated action value given the learning rate and observed</span>
+<span class="sd">  reward.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    q (ndarray): an array of action values</span>
+<span class="sd">    action (int): the action taken</span>
+<span class="sd">    reward (float): the reward received for taking the action</span>
+<span class="sd">    alpha (float): the learning rate</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    float: the updated value for the selected action</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1">#####################################################</span>
+  <span class="c1">## TODO for students: compute the action value update</span>
+  <span class="c1"># Fill out function and remove</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student excercise: compute the action value update&quot;</span><span class="p">)</span>
+  <span class="c1">#####################################################</span>
+  <span class="c1"># write an expression for the updated action value</span>
+  <span class="n">value</span> <span class="o">=</span> <span class="o">...</span>
+  <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="c1"># Uncomment once the update_action_value function is complete</span>
+<span class="c1"># q = [-2, 5, 0, 1]</span>
+<span class="c1"># action = 2</span>
+<span class="c1"># print(f&quot;Original q({action}) value = {q[action]}&quot;)</span>
+<span class="c1"># q[action] = update_action_value(q, 2, 10, 0.01)</span>
+<span class="c1"># print(f&quot;Updated q({action}) value = {q[action]}&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W3D4_ReinforcementLearning/solutions/W3D4_Tutorial2_Solution_17416ac1.py"><em>Click for solution</em></a></p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-4-solving-multi-armed-bandits">
+<h1>Section 4: Solving Multi-Armed Bandits<a class="headerlink" href="#section-4-solving-multi-armed-bandits" title="Permalink to this headline">¶</a></h1>
+<p>Now that we have both a policy and a learning rule, we can combine these to solve our original multi-armed bandit task. Recall that we have some number of arms that give rewards drawn from Gaussian distributions with unknown mean and unit variance, and our goal is to find the arm with the highest mean.</p>
+<p>First, let’s see how we will simulate this environment by reading through the annotated code below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multi_armed_bandit</span><span class="p">(</span><span class="n">n_arms</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; A Gaussian multi-armed bandit using an epsilon-greedy policy. For each</span>
+<span class="sd">  action, rewards are randomly sampled from normal distribution, with a mean</span>
+<span class="sd">  associated with that arm and unit variance.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    n_arms (int): number of arms or actions</span>
+<span class="sd">    epsilon (float): probability of selecting an action randomly</span>
+<span class="sd">    alpha (float): the learning rate</span>
+<span class="sd">    n_steps (int): number of steps to evaluate</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    dict: a dictionary containing the action values, actions, and rewards from</span>
+<span class="sd">    the evaluation along with the true arm parameters mu and the optimality of</span>
+<span class="sd">    the chosen actions.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># Gaussian bandit parameters</span>
+  <span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n_arms</span><span class="p">)</span>
+
+  <span class="c1"># evaluation and reporting state</span>
+  <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_arms</span><span class="p">)</span>
+  <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_steps</span><span class="p">,</span> <span class="n">n_arms</span><span class="p">))</span>
+  <span class="n">rewards</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_steps</span><span class="p">)</span>
+  <span class="n">actions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_steps</span><span class="p">)</span>
+  <span class="n">optimal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_steps</span><span class="p">)</span>
+
+  <span class="c1"># run the bandit</span>
+  <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">):</span>
+    <span class="c1"># choose an action</span>
+    <span class="n">action</span> <span class="o">=</span> <span class="n">epsilon_greedy</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)</span>
+    <span class="n">actions</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">action</span>
+
+    <span class="c1"># copmute rewards for all actions</span>
+    <span class="n">all_rewards</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
+    <span class="c1"># observe the reward for the chosen action</span>
+    <span class="n">reward</span> <span class="o">=</span> <span class="n">all_rewards</span><span class="p">[</span><span class="n">action</span><span class="p">]</span>
+    <span class="n">rewards</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">reward</span>
+    <span class="c1"># was it the best possible choice?</span>
+    <span class="n">optimal_action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">all_rewards</span><span class="p">)</span>
+    <span class="n">optimal</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">action</span> <span class="o">==</span> <span class="n">optimal_action</span>
+
+    <span class="c1"># update the action value</span>
+    <span class="n">q</span><span class="p">[</span><span class="n">action</span><span class="p">]</span> <span class="o">=</span> <span class="n">update_action_value</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+    <span class="n">qs</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">q</span>
+
+  <span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s1">&#39;qs&#39;</span><span class="p">:</span> <span class="n">qs</span><span class="p">,</span>
+      <span class="s1">&#39;actions&#39;</span><span class="p">:</span> <span class="n">actions</span><span class="p">,</span>
+      <span class="s1">&#39;rewards&#39;</span><span class="p">:</span> <span class="n">rewards</span><span class="p">,</span>
+      <span class="s1">&#39;mu&#39;</span><span class="p">:</span> <span class="n">mu</span><span class="p">,</span>
+      <span class="s1">&#39;optimal&#39;</span><span class="p">:</span> <span class="n">optimal</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">results</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use our multi-armed bandit method to evaluate how our epsilon-greedy policy and learning rule perform at solving the task. First we will set our environment to have 10 arms and our agent parameters to <span class="math notranslate nohighlight">\(\epsilon=0.1\)</span> and <span class="math notranslate nohighlight">\(\alpha=0.01\)</span>. In order to get a good sense of the agent’s performance, we will run the episode for 1000 steps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set for reproducibility, comment out / change seed value for different results</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">n_arms</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">n_steps</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">multi_armed_bandit</span><span class="p">(</span><span class="n">n_arms</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;rewards&#39;</span><span class="p">])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Observed Reward ($\epsilon$=</span><span class="si">{</span><span class="n">epsilon</span><span class="si">}</span><span class="s1">, $</span><span class="se">\\</span><span class="s1">alpha$=</span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span>
+        <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;reward&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;qs&#39;</span><span class="p">])</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Action Values ($\epsilon$=</span><span class="si">{</span><span class="n">epsilon</span><span class="si">}</span><span class="s1">, $</span><span class="se">\\</span><span class="s1">alpha$=</span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span>
+        <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_arms</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Alright, we got some rewards that are kind of all over the place, but the agent seemed to settle in on the first arm as the preferred choice of action relatively quickly. Let’s see how well we did at recovering the true means of the Gaussian random variables behind the arms.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mu&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;latent&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;qs&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;learned&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;$\epsilon$=</span><span class="si">{</span><span class="n">epsilon</span><span class="si">}</span><span class="s1">, $</span><span class="se">\\</span><span class="s1">alpha$=</span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+       <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;action&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Well, we seem to have found a very good estimate for action 0, but most of the others are not great. In fact, we can see the effect of the local maxima trap at work – the greedy part of our algorithm locked onto action 0, which is actually the 2nd best choice to action 6. Since these are the means of Gaussian random variables, we can see that the overlap between the two would be quite high, so even if we did explore action 6, we may draw a sample that is still lower than our estimate for action 0.</p>
+<p>However, this was just one choice of parameters. Perhaps there is a better combination?</p>
+<div class="section" id="interactive-demo-changing-epsilon-and-alpha">
+<h2>Interactive Demo: Changing Epsilon and Alpha<a class="headerlink" href="#interactive-demo-changing-epsilon-and-alpha" title="Permalink to this headline">¶</a></h2>
+<p>Use the widget below to explore how varying the values of <span class="math notranslate nohighlight">\(\epsilon\)</span> (exploitation-exploration tradeoff), <span class="math notranslate nohighlight">\(\alpha\)</span> (learning rate), and even the number of actions <span class="math notranslate nohighlight">\(k\)</span>, changes the behavior of our agent.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+
+<span class="c1">#@markdown Make sure you execute this cell to enable the widget!</span>
+
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact_manual</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">15</span><span class="p">),</span>
+                         <span class="n">epsilon</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
+                         <span class="n">alpha</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatLogSlider</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mi">3</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">explore_bandit_parameters</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.001</span><span class="p">):</span>
+  <span class="n">results</span> <span class="o">=</span> <span class="n">multi_armed_bandit</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+  <span class="n">plot_multi_armed_bandit_results</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>While we can see how changing the epsilon and alpha values impact the agent’s behavior, this doesn’t give as a great sense of which combination is optimal. Due to the stochastic nature of both our rewards and our policy, a single trial run isn’t sufficient to give us this information. Let’s run mulitple trials and compare the average performance.</p>
+<p>First we will look at differet values for <span class="math notranslate nohighlight">\(\epsilon \in [0.0, 0.1, 0.2]\)</span> to a fixed <span class="math notranslate nohighlight">\(\alpha=0.1\)</span>. We will run 200 trials as a nice balance between speed and accuracy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set for reproducibility, comment out / change seed value for different results</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">epsilons</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">n_trials</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">trial_rewards</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">epsilons</span><span class="p">),</span> <span class="n">n_trials</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">))</span>
+<span class="n">trial_optimal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">epsilons</span><span class="p">),</span> <span class="n">n_trials</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">epsilon</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">epsilons</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_trials</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">multi_armed_bandit</span><span class="p">(</span><span class="n">n_arms</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
+    <span class="n">trial_rewards</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;rewards&#39;</span><span class="p">]</span>
+    <span class="n">trial_optimal</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;optimal&#39;</span><span class="p">]</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;$\epsilon$=</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">epsilons</span><span class="p">]</span>
+<span class="n">fixed</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">alpha$=</span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="n">plot_parameter_performance</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">fixed</span><span class="p">,</span> <span class="n">trial_rewards</span><span class="p">,</span> <span class="n">trial_optimal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>On the left we have plotted the average reward over time, and we see that while <span class="math notranslate nohighlight">\(\epsilon=0\)</span> (the greedy policy) does well initially, <span class="math notranslate nohighlight">\(\epsilon=0.1\)</span> starts to do slightly better in the long run, while <span class="math notranslate nohighlight">\(\epsilon=0.2\)</span> does the worst. Looking on the right, we see the percentage of times the optimal action (the best possible choice at time <span class="math notranslate nohighlight">\(t\)</span>) was taken, and here again we see a similar pattern of <span class="math notranslate nohighlight">\(\epsilon=0.1\)</span> starting out a bit slower but eventually having a slight edge in the longer run.</p>
+<p>We can also do the same for the learning rates. We will evaluate <span class="math notranslate nohighlight">\(\alpha \in [0.01, 0.1, 1.0]\)</span> to a fixed <span class="math notranslate nohighlight">\(\epsilon=0.1\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set for reproducibility, comment out / change seed value for different results</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">alphas</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="n">n_trials</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">trial_rewards</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">epsilons</span><span class="p">),</span> <span class="n">n_trials</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">))</span>
+<span class="n">trial_optimal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">epsilons</span><span class="p">),</span> <span class="n">n_trials</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">alphas</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_trials</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">multi_armed_bandit</span><span class="p">(</span><span class="n">n_arms</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
+    <span class="n">trial_rewards</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;rewards&#39;</span><span class="p">]</span>
+    <span class="n">trial_optimal</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;optimal&#39;</span><span class="p">]</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">alpha$=</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alphas</span><span class="p">]</span>
+<span class="n">fixed</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;$\epsilon$=</span><span class="si">{</span><span class="n">epsilon</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="n">plot_parameter_performance</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">fixed</span><span class="p">,</span> <span class="n">trial_rewards</span><span class="p">,</span> <span class="n">trial_optimal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Again we see a balance between an effective learning rate. <span class="math notranslate nohighlight">\(\alpha=0.01\)</span> is too weak to quickly incorporate good values, while <span class="math notranslate nohighlight">\(\alpha=1\)</span> is too strong likely resulting in high variance in values due to the Gaussian nature of the rewards.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial you implemented both the epsilon-greedy descision algorithm and a learning rule for solving a multi-armed bandit scenario. You saw how balancing exploitation and exploration in action selection is crtical in finding optimal solutions. You also saw how choosing an appropriate learning rate determines how well an agent can generalize the information they receive from rewards.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./W3D4_ReinforcementLearning/student"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="W3D4_Tutorial1.html" title="previous page">Tutorial 1: Learning to Predict</a>
+    <a class='right-next' id="next-link" href="W3D4_Tutorial3.html" title="next page">Tutorial 3: Learning to Act: Q-Learning</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Neuromatch<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

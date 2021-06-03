@@ -1,0 +1,1878 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neuromatch Academy: Week 3, Day 3, Tutorial 1 &#8212; Neuromatch Computational Neuroscience</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial 2: Optimal Control for Continuous State" href="W3D3_Tutorial2.html" />
+    <link rel="prev" title="W3D3 - Optimal Control" href="../intro_text.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/nma-logo-square-4xp.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Pre-reqs Refresher
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D1_PythonWorkshop1/intro_text.html">
+   Python Workshop 1 (W0D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
+     Tutorial: LIF Neuron - Part I
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D2_PythonWorkshop2/intro_text.html">
+   Python Workshop 2 (W0D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
+     Neuromatch Academy: Week 0, Day 2, Tutorial 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D3_LinearAlgebra/intro_text.html">
+   Linear Algebra (W0D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
+     Tutorial 1: Vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
+     Tutorial 2: Matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
+     Bonus Tutorial: Discrete Dynamical Systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D4_Calculus/intro_text.html">
+   Calculus (W0D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
+     Tutorial 1: Basics of Differential and Integral Calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
+     Tutorial 2: Differential Equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
+     Tutorial 3: Numerical Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D5_Statistics/intro_text.html">
+   Statistics (W0D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
+     Tutorial 1: Probability Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
+     Tutorial 2: Statistical Inference
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Intro to Modeling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D1_ModelTypes/intro_text.html">
+   Model Types (W1D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
+     Tutorial 1: “What” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
+     Tutorial 2: “How” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
+     Tutorial 3: “Why” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/outro_vid.html">
+     Intro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D2_ModelingPractice/intro_text.html">
+   Modeling Practice (W1D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
+     Tutorial: Framing the Question
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D3_ModelFitting/intro_text.html">
+   Model Fitting (W1D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
+     Tutorial 1: Linear regression with MSE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
+     Tutorial 2: Linear regression with MLE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
+     Tutorial 3: Confidence intervals and bootstrapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
+     Tutorial 4: Multiple linear regression and polynomial regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
+     Tutorial 5: Model Selection: Bias-variance trade-off
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
+     Tutorial 6: Model Selection: Cross-validation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D4_MachineLearning/intro_text.html">
+   Machine Learning (W1D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial1.html">
+     Tutorial 1: GLMs for Encoding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial2.html">
+     Tutorial 2: Classifiers and regularizers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D5_DimensionalityReduction/intro_text.html">
+   Dimensionality Reduction (W1D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
+     Tutorial 1: Geometric view of data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
+     Tutorial 2: Principal Component Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
+     Tutorial 3: Dimensionality Reduction &amp; Reconstruction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
+     Tutorial 4:  Nonlinear Dimensionality Reduction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D1_DeepLearning/intro_text.html">
+   Deep Learning (W2D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
+     Tutorial 1: Decoding Neural Responses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
+     Tutorial 2: Convolutional Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
+     Tutorial 2: Building and Evaluating Normative Encoding Models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dynamical Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D2_LinearSystems/intro_text.html">
+   Linear Systems (W2D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
+     Tutorial 1: Linear dynamical systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
+     Tutorial 2: Markov Processes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
+     Tutorial 3: Combining determinism and stochasticity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
+     Tutorial 4: Autoregressive models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D3_RealNeurons/intro_text.html">
+   Real Neurons (W2D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial1.html">
+     Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial2.html">
+     Tutorial 2: Effects of Input Correlation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial3.html">
+     Tutorial 3: Synaptic transmission - Models of static and dynamic synapses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial4.html">
+     Tutorial 4: Spike-timing dependent plasticity (STDP)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D4_DynamicNetworks/intro_text.html">
+   Dynamic Networks (W2D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
+     Tutorial 1: Neural Rate Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
+     Tutorial 2: Wilson-Cowan Model
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Stochastic Processes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D1_BayesianDecisions/intro_text.html">
+   Bayesian Decisions (W3D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
+     Tutorial 1: Bayes with a binary hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
+     Tutorial 2: Bayesian inference and decisions with continuous hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
+     Bonus Tutorial:Fitting to data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D2_HiddenDynamics/intro_text.html">
+   Hidden Dynamics (W3D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
+     Tutorial 1: Sequential Probability Ratio Test
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
+     Tutorial 2: Hidden Markov Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
+     Tutorial 3: 1D Kalman Filter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
+     Tutorial 4: 2D Kalman Filter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../intro_text.html">
+   Optimal Control (W3D3)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Neuromatch Academy: Week 3, Day 3, Tutorial 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W3D3_Tutorial2.html">
+     Tutorial 2: Optimal Control for Continuous State
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D4_ReinforcementLearning/intro_text.html">
+   Reinforcement Learning (W3D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
+     Tutorial 1: Learning to Predict
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
+     Tutorial 2: Learning to Act: Multi-Armed Bandits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
+     Tutorial 3: Learning to Act: Q-Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
+     Tutorial 4: From Reinforcement Learning to Planning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D5_NetworkCausality/intro_text.html">
+   Network Causality (W3D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
+     Tutorial 1: Interventions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
+     Tutorial 2: Correlations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
+     Tutorial 3: Simultaneous fitting/regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
+     Tutorial 4: Instrumental Variables
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/W3D3_OptimalControl/student/W3D3_Tutorial1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/W3D3_OptimalControl/student/W3D3_Tutorial1.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Neuromatch Academy: Week 3, Day 3, Tutorial 1
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimal-control-for-discrete-states-and-actions">
+   Optimal Control for Discrete States and Actions
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial-objectives">
+   Tutorial Objectives
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-1-dynamics-of-fishing">
+   Section 1: Dynamics of Fishing
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introduction">
+     Introduction
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1-1">
+     Exercise 1.1
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1-2">
+     Exercise 1.2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-2-catch-some-fish-on-each-side">
+   Section 2: Catch some fish on each side
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2">
+     Exercise 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-3-belief-dynamics-and-belief-distributions">
+   Section 3: Belief dynamics and belief distributions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3-1-plot-belief-dynamics-and-belief-distributions">
+     Exercise 3.1: Plot belief dynamics and belief distributions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#excercise-3-1-1-belief-update-optional">
+       Excercise 3.1.1 Belief Update (Optional)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3-2-task-dynamics-following-a-lazy-policy">
+     Exercise 3.2: Task dynamics following a
+     <strong>
+      lazy
+     </strong>
+     policy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-4-implementing-threshold-policy">
+   Section 4: Implementing threshold policy
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-4-dynamics-following-a-threshold-based-policy">
+     Exercise 4: dynamics following a
+     <strong>
+      threshold-based
+     </strong>
+     policy.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-5-implementing-value-function">
+   Section 5: Implementing Value function
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-5">
+     Exercise 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-6-optional-different-task-different-optimal-policy">
+   Section 6 (Optional): Different task, different optimal policy
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-6">
+     Exercise 6
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D4_OptimalControl/student/W2D4_Tutorial1.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="neuromatch-academy-week-3-day-3-tutorial-1">
+<h1>Neuromatch Academy: Week 3, Day 3, Tutorial 1<a class="headerlink" href="#neuromatch-academy-week-3-day-3-tutorial-1" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="optimal-control-for-discrete-states-and-actions">
+<h1>Optimal Control for Discrete States and Actions<a class="headerlink" href="#optimal-control-for-discrete-states-and-actions" title="Permalink to this headline">¶</a></h1>
+<p><strong>Content creators:</strong> Zhengwei Wu, Shreya Saxena, Xaq Pitkow</p>
+<p><strong>Content reviewers:</strong> Karolina Stosio, Roozbeh Farhoodi, Saeed Salehi, Spiros Chavlis, Matt Krause and Michael Waskom</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="tutorial-objectives">
+<h1>Tutorial Objectives<a class="headerlink" href="#tutorial-objectives" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial, we will implement a binary control task: a Partially Observable Markov Decision Process (POMDP) that describes fishing. The agent (you) seeks reward from two fishing sites without directly observing where the school of fish is (a group of fish is called a school!). This makes the world a Hidden Markov Model. Based on when and where you catch fish, you keep updating your belief about the fish location, <em>i.e.</em> the posterior of the fish given past observations. You should control your position to get the most fish while minimizing the cost of switching sides.</p>
+<p>You’ve already learned about stochastic dynamics, latent states, and measurements. Now we introduce you to the new concepts of <strong>control, utility, and policy</strong>.</p>
+<hr class="docutils" />
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>Please execute the cells below to initialize the notebook environment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">inv</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">isclose</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Figure Settings</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">fixed</span><span class="p">,</span> <span class="n">HBox</span><span class="p">,</span> <span class="n">Layout</span><span class="p">,</span> <span class="n">VBox</span><span class="p">,</span> <span class="n">interactive</span><span class="p">,</span> <span class="n">Label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Helper functions</span>
+
+<span class="n">binomial</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span>
+
+
+<span class="k">class</span> <span class="nc">ExcerciseError</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">):</span>
+  <span class="k">pass</span>
+
+
+<span class="k">def</span> <span class="nf">test_policy_threshold</span><span class="p">():</span>
+  <span class="n">well_done</span> <span class="o">=</span> <span class="kc">True</span>
+  <span class="k">for</span> <span class="n">loc</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
+    <span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.4</span>
+    <span class="n">belief</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="o">.</span><span class="mi">3</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">policy_threshold</span><span class="p">(</span><span class="n">threshold</span><span class="p">,</span> <span class="n">belief</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;switch&quot;</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="n">ExcerciseError</span><span class="p">(</span><span class="s2">&quot;&#39;policy_threshold&#39; function is not correctly implemented!&quot;</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">loc</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+    <span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.6</span>
+    <span class="n">belief</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">.</span><span class="mi">7</span><span class="p">,</span> <span class="o">.</span><span class="mi">8</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">policy_threshold</span><span class="p">(</span><span class="n">threshold</span><span class="p">,</span> <span class="n">belief</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;stay&quot;</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="n">ExcerciseError</span><span class="p">(</span><span class="s2">&quot;&#39;policy_threshold&#39; function is not correctly implemented!&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Well Done!&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_value_function</span><span class="p">():</span>
+  <span class="n">measurement</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+  <span class="n">act</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;switch&quot;</span><span class="p">,</span> <span class="s2">&quot;stay&quot;</span><span class="p">,</span> <span class="s2">&quot;switch&quot;</span><span class="p">,</span> <span class="s2">&quot;stay&quot;</span><span class="p">,</span> <span class="s2">&quot;stay&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;stay&quot;</span><span class="p">,</span> <span class="s2">&quot;switch&quot;</span><span class="p">,</span> <span class="s2">&quot;switch&quot;</span><span class="p">,</span> <span class="s2">&quot;stay&quot;</span><span class="p">,</span> <span class="s2">&quot;stay&quot;</span><span class="p">])</span>
+  <span class="n">cost_sw</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">isclose</span><span class="p">(</span><span class="n">value_function</span><span class="p">(</span><span class="n">measurement</span><span class="p">,</span> <span class="n">act</span><span class="p">,</span> <span class="n">cost_sw</span><span class="p">),</span> <span class="o">.</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="n">ExcerciseError</span><span class="p">(</span><span class="s2">&quot;&#39;value_function&#39; function is not correctly implemented!&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Well Done!&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plot_fish</span><span class="p">(</span><span class="n">fish_state</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Plot the fish dynamics</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">T</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fish_state</span><span class="p">)</span>
+
+  <span class="n">showlen</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+  <span class="n">startT</span> <span class="o">=</span> <span class="mi">0</span>
+
+  <span class="n">endT</span> <span class="o">=</span> <span class="n">startT</span> <span class="o">+</span> <span class="n">showlen</span>
+  <span class="n">showT</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">startT</span><span class="p">,</span> <span class="n">endT</span><span class="p">)</span>
+  <span class="n">time_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">showlen</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">ax</span><span class="p">:</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">))</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">-</span> <span class="n">fish_state</span><span class="p">[</span><span class="n">showT</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Fish state&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">360</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_label_coords</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">showlen</span><span class="p">,</span> <span class="n">showlen</span><span class="p">])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">showlen</span><span class="p">])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+  <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">()]</span>
+  <span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Right&#39;</span>
+  <span class="n">labels</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Left&#39;</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plot_measurement</span><span class="p">(</span><span class="n">measurement</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Plot the measurements</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">T</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">measurement</span><span class="p">)</span>
+
+  <span class="n">showlen</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+  <span class="n">startT</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">endT</span> <span class="o">=</span> <span class="n">startT</span> <span class="o">+</span> <span class="n">showlen</span>
+  <span class="n">showT</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">startT</span><span class="p">,</span> <span class="n">endT</span><span class="p">)</span>
+  <span class="n">time_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">showlen</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">ax</span><span class="p">:</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">))</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">measurement</span><span class="p">[</span><span class="n">showT</span><span class="p">],</span> <span class="s1">&#39;r*&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Measurement&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">360</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_label_coords</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">showlen</span><span class="p">,</span> <span class="n">showlen</span><span class="p">])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">showlen</span><span class="p">])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-.</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">&#39;no fish&#39;</span><span class="p">,</span> <span class="s1">&#39;caught fish&#39;</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">plot_act_loc</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">act</span><span class="p">,</span> <span class="n">ax_loc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Plot the action and location of 200 time points</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">T</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">act</span><span class="p">)</span>
+
+  <span class="n">showlen</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+  <span class="n">startT</span> <span class="o">=</span> <span class="mi">0</span>
+
+  <span class="n">endT</span> <span class="o">=</span> <span class="n">startT</span> <span class="o">+</span> <span class="n">showlen</span>
+  <span class="n">showT</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">startT</span><span class="p">,</span> <span class="n">endT</span><span class="p">)</span>
+  <span class="n">time_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">showlen</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">ax_loc</span><span class="p">:</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax_loc</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">))</span>
+
+  <span class="n">act_int</span> <span class="o">=</span> <span class="p">(</span><span class="n">act</span> <span class="o">==</span> <span class="s2">&quot;switch&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+  <span class="n">ax_loc</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">-</span><span class="n">loc</span><span class="p">[</span><span class="n">showT</span><span class="p">],</span> <span class="s1">&#39;g.-&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+  <span class="n">ax_loc</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">act_int</span><span class="p">[</span><span class="n">showT</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;rv&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+              <span class="n">label</span><span class="o">=</span><span class="s1">&#39;switch&#39;</span><span class="p">)</span>
+  <span class="n">ax_loc</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+  <span class="n">ax_loc</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Your state&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">360</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+  <span class="n">ax_loc</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+  <span class="n">ax_loc</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">showlen</span><span class="p">])</span>
+  <span class="n">ax_loc</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span>
+  <span class="n">ax_loc</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+  <span class="n">ax_loc</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">showlen</span><span class="p">,</span> <span class="n">showlen</span><span class="p">])</span>
+  <span class="n">ax_loc</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+  <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ax_loc</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">()]</span>
+  <span class="n">labels</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Left&#39;</span>
+  <span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Right&#39;</span>
+  <span class="n">ax_loc</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plot_belief</span><span class="p">(</span><span class="n">belief</span><span class="p">,</span> <span class="n">ax1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">choose_policy</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Plot the belief dynamics of 200 time points</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">T</span> <span class="o">=</span> <span class="n">belief</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+  <span class="n">showlen</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+  <span class="n">startT</span> <span class="o">=</span> <span class="mi">0</span>
+
+  <span class="n">endT</span> <span class="o">=</span> <span class="n">startT</span> <span class="o">+</span> <span class="n">showlen</span>
+  <span class="n">showT</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">startT</span><span class="p">,</span> <span class="n">endT</span><span class="p">)</span>
+  <span class="n">time_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">showlen</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">ax1</span><span class="p">:</span>
+      <span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">))</span>
+
+  <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">belief</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">showT</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+  <span class="n">ax1</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_label_coords</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+  <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">360</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+  <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Belief on </span><span class="se">\n</span><span class="s1"> left&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">360</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+  <span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+  <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">showlen</span><span class="p">])</span>
+  <span class="n">ax1</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+  <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span>
+  <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">showlen</span><span class="p">,</span> <span class="n">showlen</span><span class="p">])</span>
+
+  <span class="k">if</span> <span class="n">choose_policy</span> <span class="o">==</span> <span class="s2">&quot;threshold&quot;</span><span class="p">:</span>
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_range</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">time_range</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_range</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">time_range</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="s1">&#39;c--&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="n">threshold</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">threshold</span><span class="p">])</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ax2</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">()]</span>
+    <span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;threshold to switch </span><span class="se">\n</span><span class="s1"> from left to right&#39;</span>
+    <span class="n">labels</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;threshold to switch </span><span class="se">\n</span><span class="s1"> from right to left&#39;</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plot_dynamics</span><span class="p">(</span><span class="n">belief</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">act</span><span class="p">,</span> <span class="n">meas</span><span class="p">,</span> <span class="n">fish_state</span><span class="p">,</span> <span class="n">choose_policy</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Plot the dynamics of 200 time points</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">choose_policy</span> <span class="o">==</span> <span class="s1">&#39;threshold&#39;</span><span class="p">:</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="p">[</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax_loc</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax_bel</span><span class="p">]</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+    <span class="n">plot_fish</span><span class="p">(</span><span class="n">fish_state</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax0</span><span class="p">)</span>
+    <span class="n">plot_belief</span><span class="p">(</span><span class="n">belief</span><span class="p">,</span> <span class="n">ax1</span><span class="o">=</span><span class="n">ax_bel</span><span class="p">)</span>
+    <span class="n">plot_measurement</span><span class="p">(</span><span class="n">meas</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+    <span class="n">plot_act_loc</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">act</span><span class="p">,</span> <span class="n">ax_loc</span><span class="o">=</span><span class="n">ax_loc</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="p">[</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax_bel</span><span class="p">]</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+    <span class="n">plot_fish</span><span class="p">(</span><span class="n">fish_state</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax0</span><span class="p">)</span>
+    <span class="n">plot_belief</span><span class="p">(</span><span class="n">belief</span><span class="p">,</span> <span class="n">ax1</span><span class="o">=</span><span class="n">ax_bel</span><span class="p">)</span>
+    <span class="n">plot_measurement</span><span class="p">(</span><span class="n">meas</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">belief_histogram</span><span class="p">(</span><span class="n">belief</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Plot the histogram of belief states</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">belief</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;belief&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">plot_value_threshold</span><span class="p">(</span><span class="n">cost_sw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">p_stay</span><span class="o">=.</span><span class="mi">95</span><span class="p">,</span>
+                         <span class="n">high_rew_p</span><span class="o">=.</span><span class="mi">4</span><span class="p">,</span> <span class="n">low_rew_p</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="o">=.</span><span class="mi">05</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Helper function to plot the value function and threshold</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">p_stay</span><span class="p">,</span> <span class="n">high_rew_p</span><span class="p">,</span> <span class="n">low_rew_p</span><span class="p">,</span> <span class="n">_</span><span class="p">]</span>
+
+  <span class="n">threshold_array</span><span class="p">,</span> <span class="n">value_array</span> <span class="o">=</span> <span class="n">value_threshold</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">cost_sw</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+  <span class="n">yrange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">value_array</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">value_array</span><span class="p">)</span>
+
+  <span class="n">fig_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">threshold_array</span><span class="p">,</span> <span class="n">value_array</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">value_array</span><span class="p">)</span> <span class="o">-</span> <span class="n">yrange</span> <span class="o">*</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">value_array</span><span class="p">)</span> <span class="o">+</span> <span class="n">yrange</span> <span class="o">*</span> <span class="o">.</span><span class="mi">1</span><span class="p">])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;threshold vs value with switching cost c = </span><span class="si">{</span><span class="n">cost_sw</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+               <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;threshold&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-1-dynamics-of-fishing">
+<h1>Section 1: Dynamics of Fishing<a class="headerlink" href="#section-1-dynamics-of-fishing" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 1: Gone fishing</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;3oIwUFpolVA&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>There are two locations for the fish and you (Left and Right). If you’re on the same side as the fish, you’ll catch more, with probabilty <span class="math notranslate nohighlight">\(q_{\rm high}\)</span> per discrete time step. Otherwise you may still catch fish with probability <span class="math notranslate nohighlight">\(q_{\rm low}\)</span>. One fish is worth 1 “point”.</p>
+<p>The fish location <span class="math notranslate nohighlight">\(s^{\rm fish}\)</span> is latent. The only information you get about the fish location is when you catch one. Secretly at each time step, the fish may switch sides with a certain probability <span class="math notranslate nohighlight">\(p_{\rm sw} = 1 - p_{\rm stay}\)</span>.</p>
+<p>You are in control of your own location. You may stay on your current side with no cost, or switch to the other side and incur an action cost <span class="math notranslate nohighlight">\(C\)</span> (again, in units of fish).</p>
+<p>You select controls or actions by following a <strong>policy</strong>. This defines what to do in any situation. Here the situation is specified by your location and your belief <span class="math notranslate nohighlight">\(b_t\)</span> about the fish location. For optimal control we assume that this belief is the posterior probability over the current fish location, given all the past measurements. We only need one number for this, since the fish are either on the left or the right. So we write</p>
+<div class="math notranslate nohighlight">
+\[b_t = p(s^{\rm fish}_t = {\rm Right}\  |\  m_{0:t}, a_{0:t-1})\]</div>
+<p>where <span class="math notranslate nohighlight">\(m\)</span> are the measurements, and <span class="math notranslate nohighlight">\(a\)</span> are the controls or actions (stay or switch).</p>
+<p>Ultimately we will parameterize the policy by a simple threshold on beliefs. (This happens to be optimal if you pick the right threshold!) When your belief that fish are on your current side falls below a threshold <span class="math notranslate nohighlight">\(\theta\)</span>, you switch to the other side.</p>
+<p>Your <strong>overall goals</strong> in this tutorial are:</p>
+<ol class="simple">
+<li><p>Measure when fish are caught, first if the school of fish doesn’t move.</p></li>
+<li><p>For moving fish, plot their dynamics and your belief about it based on your measurements.</p></li>
+<li><p>Compute the value for a given control policy.</p></li>
+<li><p>Find the optimal policy for controlling your position.</p></li>
+</ol>
+</div>
+<div class="section" id="exercise-1-1">
+<h2>Exercise 1.1<a class="headerlink" href="#exercise-1-1" title="Permalink to this headline">¶</a></h2>
+<p>Evaluate the following methods implemented in <code class="docutils literal notranslate"><span class="pre">binaryHMM</span></code> class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># class for the binary HMM task</span>
+
+<span class="k">class</span> <span class="nc">binaryHMM</span><span class="p">():</span>
+
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">fish_initial</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">loc_initial</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">fish_initial</span> <span class="o">=</span> <span class="n">fish_initial</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">loc_initial</span> <span class="o">=</span> <span class="n">loc_initial</span>
+
+  <span class="k">def</span> <span class="nf">fish_state_telegraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fish_past</span><span class="p">,</span> <span class="n">p_stay</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    fish state update according to telegraph process</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      fish_past (int): the fish location (-1 for left side, 1 for right side)</span>
+<span class="sd">      p_stay : the probability that the state of a certain site stays the same</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      fish_new (int): updated fish location</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># we use logical operation XOR (denoted by ^ in python)</span>
+    <span class="n">fish_new</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">p_stay</span><span class="p">))</span> <span class="o">^</span> <span class="p">((</span><span class="n">fish_past</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">fish_new</span> <span class="o">=</span> <span class="n">fish_new</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">fish_new</span>
+
+
+  <span class="k">def</span> <span class="nf">fish_dynamics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    fish state dynamics according to telegraph process</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      fish_state (numpy array of int)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">T</span><span class="p">,</span> <span class="n">p_stay</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span>
+    <span class="n">fish_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>  <span class="c1"># -1: left side ; 1: right side</span>
+
+    <span class="c1"># initialization</span>
+    <span class="n">fish_state</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fish_initial</span>
+
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+        <span class="n">fish_state</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fish_state_telegraph</span><span class="p">(</span><span class="n">fish_state</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">p_stay</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">fish_state</span>
+
+  <span class="k">def</span> <span class="nf">generate_process_lazy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    fish dynamics and measurements if you always stay in the intial location</span>
+<span class="sd">    without changing sides</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      fish_state (numpy array of int): locations of the fish</span>
+<span class="sd">      loc (numpy array of int): left or right site, -1 for left, and 1 for right</span>
+<span class="sd">      measurement (numpy array of binary): whether a reward is obtained</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">T</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">high_rew_p</span><span class="p">,</span> <span class="n">low_rew_p</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span>
+    <span class="n">rew_p_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">low_rew_p</span><span class="p">,</span> <span class="n">high_rew_p</span><span class="p">])</span>
+
+    <span class="n">fish_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fish_dynamics</span><span class="p">()</span>
+    <span class="n">loc</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>            <span class="c1"># -1: left side, 1: right side</span>
+    <span class="n">measurement</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>     <span class="c1"># 0: no food, 1: get food</span>
+
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+      <span class="n">loc</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc_initial</span>
+      <span class="c1"># new measurement</span>
+      <span class="n">measurement</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">rew_p_vector</span><span class="p">[(</span><span class="n">fish_state</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">loc</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">fish_state</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">measurement</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-1-2">
+<h2>Exercise 1.2<a class="headerlink" href="#exercise-1-2" title="Permalink to this headline">¶</a></h2>
+<p>Run the following code to see the dynamics of the fish as they follow the telegraph process.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_ex_1</span><span class="p">(</span><span class="n">p_stay</span><span class="o">=.</span><span class="mi">95</span><span class="p">,</span> <span class="n">high_rew_p</span><span class="o">=.</span><span class="mi">4</span><span class="p">,</span> <span class="n">low_rew_p</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    p_stay: probability fish stay</span>
+<span class="sd">    high_rew_p: p(catch fish) when you&#39;re on their side</span>
+<span class="sd">    low_rew_p : p(catch fish) when you&#39;re on other side</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">p_stay</span><span class="p">,</span> <span class="n">high_rew_p</span><span class="p">,</span> <span class="n">low_rew_p</span><span class="p">,</span> <span class="n">_</span><span class="p">]</span>
+
+  <span class="c1">#### initial condition for fish [fish_initial] and you [loc_initial] ####</span>
+  <span class="n">binaryHMM_test</span> <span class="o">=</span> <span class="n">binaryHMM</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">fish_initial</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">loc_initial</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+  <span class="n">fish_state</span> <span class="o">=</span> <span class="n">binaryHMM_test</span><span class="o">.</span><span class="n">fish_dynamics</span><span class="p">()</span>
+  <span class="n">plot_fish</span><span class="p">(</span><span class="n">fish_state</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@markdown Make sure you execute this cell to enable the widget!</span>
+
+<span class="n">widget</span><span class="o">=</span><span class="n">interactive</span><span class="p">(</span><span class="n">update_ex_1</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;manual&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+                <span class="n">high_rew_p</span><span class="o">=</span><span class="n">fixed</span><span class="p">(</span><span class="o">.</span><span class="mi">4</span><span class="p">),</span>
+                <span class="n">low_rew_p</span><span class="o">=</span><span class="n">fixed</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">),</span>
+                <span class="n">p_stay</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">001</span><span class="p">),</span>
+                <span class="n">T</span><span class="o">=</span><span class="n">fixed</span><span class="p">(</span><span class="mi">200</span><span class="p">))</span>
+
+<span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Run Simulation&#39;</span>
+<span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">button_color</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span>
+<span class="n">controls</span> <span class="o">=</span> <span class="n">HBox</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">flex_flow</span><span class="o">=</span><span class="s1">&#39;row wrap&#39;</span><span class="p">))</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">VBox</span><span class="p">([</span><span class="n">controls</span><span class="p">,</span> <span class="n">output</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-2-catch-some-fish-on-each-side">
+<h1>Section 2: Catch some fish on each side<a class="headerlink" href="#section-2-catch-some-fish-on-each-side" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 2: Catch some fish</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;1-Wionllt9U&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-2">
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
+<p>Now set <span class="math notranslate nohighlight">\(p_{\rm stay} = 1\)</span> so that the state of the two sites are fixed, and we can directly see the chances of catching fish on each side. The variable <code class="docutils literal notranslate"><span class="pre">fish_initial</span></code> indicates the initial side of the fish, and <code class="docutils literal notranslate"><span class="pre">loc_initial</span></code> indicates your initial location. They each take value <span class="math notranslate nohighlight">\(-1\)</span> for left and <span class="math notranslate nohighlight">\(1\)</span> for right.</p>
+<p><strong>Instructions:</strong></p>
+<ol class="simple">
+<li><p>set the two locations (<code class="docutils literal notranslate"><span class="pre">fish_initial</span></code> and <code class="docutils literal notranslate"><span class="pre">loc_initial</span></code>) to be the <em>same</em>, and measure when you catch fish.</p></li>
+<li><p>set the two locations (<code class="docutils literal notranslate"><span class="pre">fish_initial</span></code> and <code class="docutils literal notranslate"><span class="pre">loc_initial</span></code>) to be the <em>different</em>, and measure when you catch fish.</p></li>
+<li><p>visually compare the measurements from 1 and 2.</p></li>
+<li><p>Finally, you can also play around with <code class="docutils literal notranslate"><span class="pre">high_rew_p</span></code> (high reward probability) and <code class="docutils literal notranslate"><span class="pre">low_rew_p</span></code> (low reward probability) sliders.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_ex_2</span><span class="p">(</span><span class="n">p_stay</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">high_rew_p</span><span class="o">=.</span><span class="mi">6</span><span class="p">,</span> <span class="n">low_rew_p</span><span class="o">=.</span><span class="mi">05</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    p_stay: probability fish stay</span>
+<span class="sd">    high_rew_p: p(catch fish) when you&#39;re on their side</span>
+<span class="sd">    low_rew_p : p(catch fish) when you&#39;re on other side</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">p_stay</span><span class="p">,</span> <span class="n">high_rew_p</span><span class="p">,</span> <span class="n">low_rew_p</span><span class="p">,</span> <span class="n">_</span><span class="p">]</span>
+
+  <span class="c1">#### initial condition for fish [fish_initial] and you [loc_initial] ####</span>
+  <span class="n">binaryHMM_test</span> <span class="o">=</span> <span class="n">binaryHMM</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">fish_initial</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">loc_initial</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+  <span class="n">fish_state</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">measurement</span> <span class="o">=</span> <span class="n">binaryHMM_test</span><span class="o">.</span><span class="n">generate_process_lazy</span><span class="p">()</span>
+  <span class="n">plot_measurement</span><span class="p">(</span><span class="n">measurement</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@markdown Make sure you execute this cell to enable the widget!</span>
+
+<span class="n">widget</span><span class="o">=</span><span class="n">interactive</span><span class="p">(</span><span class="n">update_ex_2</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;manual&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+                <span class="n">high_rew_p</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">001</span><span class="p">),</span>
+                <span class="n">low_rew_p</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">001</span><span class="p">),</span>
+                <span class="n">p_stay</span><span class="o">=</span><span class="n">fixed</span><span class="p">(</span><span class="mf">1.</span><span class="p">),</span>
+                <span class="n">T</span><span class="o">=</span><span class="n">fixed</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+
+<span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Run Simulation&#39;</span>
+<span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">button_color</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span>
+<span class="n">controls</span> <span class="o">=</span> <span class="n">HBox</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">flex_flow</span><span class="o">=</span><span class="s1">&#39;row wrap&#39;</span><span class="p">))</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">VBox</span><span class="p">([</span><span class="n">controls</span><span class="p">,</span> <span class="n">output</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-3-belief-dynamics-and-belief-distributions">
+<h1>Section 3: Belief dynamics and belief distributions<a class="headerlink" href="#section-3-belief-dynamics-and-belief-distributions" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 3: Where are the fish?</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;wCzVnnd4bmg&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-3-1-plot-belief-dynamics-and-belief-distributions">
+<h2>Exercise 3.1: Plot belief dynamics and belief distributions<a class="headerlink" href="#exercise-3-1-plot-belief-dynamics-and-belief-distributions" title="Permalink to this headline">¶</a></h2>
+<p>We have provided a class for the binary task, with the agent always staying at one side following a lazy policy function <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">policy_lazy(belief,</span> <span class="pre">loc)</span></code> that we provided. Now in this exercise, you will extend the module to generate the real dynamics, including beliefs and a moving agent. With the generated data, we will see how beliefs change over time, and how often different beliefs happen.</p>
+<p>For convenience, your belief at time <em>t</em> is actually a 2-dimensional vector. The first element is the belief that the fish are on the left, and the second element is the belief the fish are on the right. At every time, these elements sum to <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>We will first check the dynamics with lazy policy, and then explore the case with a threshold-based policy.</p>
+<p><strong>Instructions:</strong>
+Evaluate the cells below to setup the lazy policy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">binaryHMM_belief</span><span class="p">(</span><span class="n">binaryHMM</span><span class="p">):</span>
+
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">fish_initial</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">loc_initial</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">choose_policy</span> <span class="o">=</span> <span class="s1">&#39;threshold&#39;</span><span class="p">):</span>
+    <span class="n">binaryHMM</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">fish_initial</span><span class="p">,</span> <span class="n">loc_initial</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">choose_policy</span> <span class="o">=</span> <span class="n">choose_policy</span>
+
+  <span class="k">def</span> <span class="nf">generate_process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    fish dynamics and measurements based on the choosen policy</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      belief (numpy array of float): belief on the states of the two sites</span>
+<span class="sd">      act (numpy array of string): actions over time</span>
+<span class="sd">      loc (numpy array of int): left or right site</span>
+<span class="sd">      measurement (numpy array of binary): whether a reward is obtained</span>
+<span class="sd">      fish_state (numpy array of int): fish locations</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">T</span><span class="p">,</span> <span class="n">p_stay</span><span class="p">,</span> <span class="n">high_rew_p</span><span class="p">,</span> <span class="n">low_rew_p</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span>
+    <span class="n">fish_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fish_dynamics</span><span class="p">()</span>     <span class="c1"># -1: left side; 1: right side</span>
+    <span class="n">loc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>                <span class="c1"># -1: left side, 1: right side</span>
+    <span class="n">measurement</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>        <span class="c1"># 0: no food, 1: get food</span>
+    <span class="n">act</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;object&#39;</span><span class="p">)</span>     <span class="c1"># &quot;stay&quot;, or &quot;switch&quot;</span>
+    <span class="n">belief</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">T</span><span class="p">),</span> <span class="nb">float</span><span class="p">)</span>      <span class="c1"># the probability that the fish is on the left (1st element)</span>
+                                          <span class="c1"># or on the right (2nd element),</span>
+                                          <span class="c1"># the beliefs on the two boxes sum up to be 1</span>
+
+    <span class="n">rew_prob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">low_rew_p</span><span class="p">,</span> <span class="n">high_rew_p</span><span class="p">])</span>
+
+    <span class="c1"># initialization</span>
+    <span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">measurement</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">belief_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">belief</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">belief_0</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">belief_0</span><span class="p">])</span>
+    <span class="n">act</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">policy</span><span class="p">(</span><span class="n">threshold</span><span class="p">,</span> <span class="n">belief</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">act</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;stay&quot;</span><span class="p">:</span>
+        <span class="n">loc</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">loc</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">loc</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="n">loc</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+
+      <span class="c1"># new measurement</span>
+      <span class="n">measurement</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">rew_prob</span><span class="p">[(</span><span class="n">fish_state</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">loc</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1</span><span class="p">])</span>
+      <span class="n">belief</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">belief_update</span><span class="p">(</span><span class="n">belief</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="p">,</span> <span class="n">loc</span><span class="p">[</span><span class="n">t</span><span class="p">],</span>
+                                        <span class="n">measurement</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">p_stay</span><span class="p">,</span>
+                                        <span class="n">high_rew_p</span><span class="p">,</span> <span class="n">low_rew_p</span><span class="p">)</span>
+      <span class="n">belief</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">belief</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span>
+
+      <span class="n">act</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">policy</span><span class="p">(</span><span class="n">threshold</span><span class="p">,</span> <span class="n">belief</span><span class="p">[:,</span> <span class="n">t</span><span class="p">],</span> <span class="n">loc</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">belief</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">act</span><span class="p">,</span> <span class="n">measurement</span><span class="p">,</span> <span class="n">fish_state</span>
+
+  <span class="k">def</span> <span class="nf">policy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">belief</span><span class="p">,</span> <span class="n">loc</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    chooses policy based on whether it is lazy policy</span>
+<span class="sd">        or a threshold-based policy</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      threshold (float): the threshold of belief on the current site,</span>
+<span class="sd">          when the belief is lower than the threshold, switch side</span>
+<span class="sd">      belief (numpy array of float): the belief on the two sites</span>
+<span class="sd">      loc (int) : the location of the agent</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      act (string): &quot;stay&quot; or &quot;switch&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">choose_policy</span> <span class="o">==</span> <span class="s2">&quot;threshold&quot;</span><span class="p">:</span>
+      <span class="n">act</span> <span class="o">=</span> <span class="n">policy_threshold</span><span class="p">(</span><span class="n">threshold</span><span class="p">,</span> <span class="n">belief</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">choose_policy</span> <span class="o">==</span> <span class="s2">&quot;lazy&quot;</span><span class="p">:</span>
+      <span class="n">act</span> <span class="o">=</span> <span class="n">policy_lazy</span><span class="p">(</span><span class="n">belief</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">act</span>
+
+  <span class="k">def</span> <span class="nf">belief_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">belief_past</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">measurement</span><span class="p">,</span> <span class="n">p_stay</span><span class="p">,</span>
+                    <span class="n">high_rew_p</span><span class="p">,</span> <span class="n">low_rew_p</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    using PAST belief on the LEFT box, CURRENT location and</span>
+<span class="sd">        and measurement to update belief</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rew_prob_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span> <span class="o">-</span> <span class="n">high_rew_p</span><span class="p">,</span> <span class="n">high_rew_p</span><span class="p">],</span>
+                                <span class="p">[</span><span class="mi">1</span> <span class="o">-</span> <span class="n">low_rew_p</span><span class="p">,</span> <span class="n">low_rew_p</span><span class="p">]])</span>
+
+    <span class="c1"># update belief posterior, p(s[t] | measurement(0-t), act(0-t-1))</span>
+    <span class="n">belief_0</span> <span class="o">=</span> <span class="p">(</span><span class="n">belief_past</span> <span class="o">*</span> <span class="n">p_stay</span>  <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">belief_past</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_stay</span><span class="p">))</span> <span class="o">*</span>\
+                            <span class="n">rew_prob_matrix</span><span class="p">[(</span><span class="n">loc</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">measurement</span><span class="p">]</span>
+    <span class="n">belief_1</span> <span class="o">=</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">belief_past</span><span class="p">)</span> <span class="o">*</span> <span class="n">p_stay</span> <span class="o">+</span> <span class="n">belief_past</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_stay</span><span class="p">))</span> <span class="o">*</span>\
+                            <span class="n">rew_prob_matrix</span><span class="p">[</span><span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">loc</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">measurement</span><span class="p">]</span>
+
+    <span class="n">belief_0</span> <span class="o">=</span> <span class="n">belief_0</span> <span class="o">/</span> <span class="p">(</span><span class="n">belief_0</span> <span class="o">+</span> <span class="n">belief_1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">belief_0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">policy_lazy</span><span class="p">(</span><span class="n">belief</span><span class="p">,</span> <span class="n">loc</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  This function is a lazy policy where stay is also taken</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">act</span> <span class="o">=</span> <span class="s2">&quot;stay&quot;</span>
+
+  <span class="k">return</span> <span class="n">act</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="excercise-3-1-1-belief-update-optional">
+<h3>Excercise 3.1.1 Belief Update (Optional)<a class="headerlink" href="#excercise-3-1-1-belief-update-optional" title="Permalink to this headline">¶</a></h3>
+<p>The belief update function is provided in the <code class="docutils literal notranslate"><span class="pre">binaryHMM_belief</span></code> class in the above excercise. One optional excercise is to write your own code for the belief update based on the past belief <code class="docutils literal notranslate"><span class="pre">belief_past</span></code>, your location <code class="docutils literal notranslate"><span class="pre">loc</span></code>, the observation <code class="docutils literal notranslate"><span class="pre">measurement</span></code>, and the probability that fish stays on one side <code class="docutils literal notranslate"><span class="pre">p_stay</span></code>.</p>
+<p>You should only do this if you still have time after Exercise 3.2.</p>
+</div>
+</div>
+<div class="section" id="exercise-3-2-task-dynamics-following-a-lazy-policy">
+<h2>Exercise 3.2: Task dynamics following a <strong>lazy</strong> policy<a class="headerlink" href="#exercise-3-2-task-dynamics-following-a-lazy-policy" title="Permalink to this headline">¶</a></h2>
+<p>The parameter for policy <code class="docutils literal notranslate"><span class="pre">choose_policy</span></code> can be either “<em>lazy</em>” or “<em>threshold</em>”. In the following example, use the lazy policy.</p>
+<p><strong>Instructions:</strong></p>
+<ul class="simple">
+<li><p>With the class defined above, we have created an object of <code class="docutils literal notranslate"><span class="pre">binaryHMM_belief</span></code> given parameters of the dynamics, <em>params</em>, and a parameter for policy.</p></li>
+<li><p>Run the dynamics and explain the time series of the beliefs you see.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_ex_3</span><span class="p">(</span><span class="n">p_stay</span><span class="o">=.</span><span class="mi">98</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> <span class="n">high_rew_p</span><span class="o">=.</span><span class="mi">4</span><span class="p">,</span> <span class="n">low_rew_p</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    p_stay: probability fish stay</span>
+<span class="sd">    high_rew_p: p(catch fish) when you&#39;re on their side</span>
+<span class="sd">    low_rew_p : p(catch fish) when you&#39;re on other side</span>
+<span class="sd">    threshold: threshold of belief below which switching is taken</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">p_stay</span><span class="p">,</span> <span class="n">high_rew_p</span><span class="p">,</span> <span class="n">low_rew_p</span><span class="p">,</span> <span class="n">threshold</span><span class="p">]</span>
+
+  <span class="c1">#### initial condition for fish [fish_initial] and you [loc_initial] ####</span>
+  <span class="n">binaryHMM_test</span> <span class="o">=</span> <span class="n">binaryHMM_belief</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">choose_policy</span><span class="o">=</span><span class="s2">&quot;lazy&quot;</span><span class="p">,</span>
+                                    <span class="n">fish_initial</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">loc_initial</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+  <span class="n">belief</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">act</span><span class="p">,</span> <span class="n">measurement</span><span class="p">,</span> <span class="n">fish_state</span> <span class="o">=</span> <span class="n">binaryHMM_test</span><span class="o">.</span><span class="n">generate_process</span><span class="p">()</span>
+  <span class="n">plot_dynamics</span><span class="p">(</span><span class="n">belief</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">act</span><span class="p">,</span> <span class="n">measurement</span><span class="p">,</span> <span class="n">fish_state</span><span class="p">,</span>
+                <span class="n">binaryHMM_test</span><span class="o">.</span><span class="n">choose_policy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@markdown Make sure you execute this cell to enable the widget!</span>
+
+<span class="n">widget</span><span class="o">=</span><span class="n">interactive</span><span class="p">(</span><span class="n">update_ex_3</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;manual&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+                <span class="n">high_rew_p</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">001</span><span class="p">),</span>
+                <span class="n">low_rew_p</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">001</span><span class="p">),</span>
+                <span class="n">p_stay</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">001</span><span class="p">),</span>
+                <span class="n">T</span><span class="o">=</span><span class="n">fixed</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span>
+                <span class="n">threshold</span><span class="o">=</span><span class="n">fixed</span><span class="p">(</span><span class="o">.</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Run Simulation&#39;</span>
+<span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">button_color</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span>
+<span class="n">controls</span> <span class="o">=</span> <span class="n">HBox</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">flex_flow</span><span class="o">=</span><span class="s1">&#39;row wrap&#39;</span><span class="p">))</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">VBox</span><span class="p">([</span><span class="n">controls</span><span class="p">,</span> <span class="n">output</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-4-implementing-threshold-policy">
+<h1>Section 4: Implementing threshold policy<a class="headerlink" href="#section-4-implementing-threshold-policy" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 4: How should you act?</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;G3fNz23IDUg&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-4-dynamics-following-a-threshold-based-policy">
+<h2>Exercise 4: dynamics following a <strong>threshold-based</strong> policy.<a class="headerlink" href="#exercise-4-dynamics-following-a-threshold-based-policy" title="Permalink to this headline">¶</a></h2>
+<p><strong>Instructions:</strong></p>
+<ul class="simple">
+<li><p>You need to code a new policy <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">policy_threshold(threshold,</span> <span class="pre">belief,</span> <span class="pre">loc)</span></code>. The policy takes three inputs: your belief about the fish state, your location (“Left” or “Right”), and a belief <em>threshold</em>: when your belief that you are on the same side as the fish drops below this threshold, you choose to switch; otherwise you stay.</p></li>
+<li><p>You should return an action for each time <em>t</em>, which takes the value of “stay” or “switch”.</p></li>
+<li><p>After you complete the code for the policy based on threshold, create an object of <code class="docutils literal notranslate"><span class="pre">binaryHMM_belief</span></code> and set the policy parameter to be <code class="docutils literal notranslate"><span class="pre">choose_policy</span> <span class="pre">=</span> <span class="pre">threshold</span></code>.</p></li>
+<li><p>We have provided an example of the parameters. You should play with the parameters to see the various dynamics.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">policy_threshold</span><span class="p">(</span><span class="n">threshold</span><span class="p">,</span> <span class="n">belief</span><span class="p">,</span> <span class="n">loc</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  chooses whether to switch side based on whether the belief</span>
+<span class="sd">      on the current site drops below the threshold</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    threshold (float): the threshold of belief on the current site,</span>
+<span class="sd">                        when the belief is lower than the threshold, switch side</span>
+<span class="sd">    belief (numpy array of float, 2-dimensional): the belief on the</span>
+<span class="sd">                                                  two sites at a certain time</span>
+<span class="sd">    loc (int) : the location of the agent at a certain time</span>
+<span class="sd">                -1 for left side, 1 for right side</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    act (string): &quot;stay&quot; or &quot;switch&quot;</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1">############################################################################</span>
+  <span class="c1">## Insert code to:</span>
+  <span class="c1">## generate actions (Stay or Switch) for current belief and location</span>
+  <span class="c1">##</span>
+  <span class="c1">## Belief is a 2d vector: first element = Prob(fish on Left | measurements)</span>
+  <span class="c1">##                       second element = Prob(fish on Right  | measurements)</span>
+  <span class="c1">## Returns &quot;switch&quot; if Belief that fish are in your current location &lt; threshold</span>
+  <span class="c1">##         &quot;stay&quot; otherwise</span>
+  <span class="c1">##</span>
+  <span class="c1">## Hint: use loc value to determine which row of belief you need to use</span>
+  <span class="c1">##       see the docstring for more information about loc</span>
+  <span class="c1">##</span>
+  <span class="c1">## complete the function and remove</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: Please complete &lt;act&gt;&quot;</span><span class="p">)</span>
+  <span class="c1">############################################################################</span>
+  <span class="c1"># Write the if statement</span>
+  <span class="k">if</span> <span class="o">...</span><span class="p">:</span>
+    <span class="c1"># action below threshold</span>
+    <span class="n">act</span> <span class="o">=</span> <span class="o">...</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="c1"># action above threshold</span>
+    <span class="n">act</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="k">return</span> <span class="n">act</span>
+
+
+<span class="c1"># uncomment the line below to test your function</span>
+<span class="c1"># test_policy_threshold()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W3D3_OptimalControl/solutions/W3D3_Tutorial1_Solution_d61b596a.py"><em>Click for solution</em></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_ex_4</span><span class="p">(</span><span class="n">p_stay</span><span class="o">=.</span><span class="mi">98</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> <span class="n">high_rew_p</span><span class="o">=.</span><span class="mi">4</span><span class="p">,</span> <span class="n">low_rew_p</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    p_stay: probability fish stay</span>
+<span class="sd">    high_rew_p: p(catch fish) when you&#39;re on their side</span>
+<span class="sd">    low_rew_p : p(catch fish) when you&#39;re on other side</span>
+<span class="sd">    threshold: threshold of belief below which switching is taken</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">p_stay</span><span class="p">,</span> <span class="n">high_rew_p</span><span class="p">,</span> <span class="n">low_rew_p</span><span class="p">,</span> <span class="n">threshold</span><span class="p">]</span>
+
+  <span class="c1">#### initial condition for fish [fish_initial] and you [loc_initial] ####</span>
+  <span class="n">binaryHMM_test</span> <span class="o">=</span> <span class="n">binaryHMM_belief</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">fish_initial</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">loc_initial</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+                                    <span class="n">choose_policy</span><span class="o">=</span><span class="s2">&quot;threshold&quot;</span><span class="p">)</span>
+
+  <span class="n">belief</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">act</span><span class="p">,</span> <span class="n">measurement</span><span class="p">,</span> <span class="n">fish_state</span> <span class="o">=</span> <span class="n">binaryHMM_test</span><span class="o">.</span><span class="n">generate_process</span><span class="p">()</span>
+  <span class="n">plot_dynamics</span><span class="p">(</span><span class="n">belief</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">act</span><span class="p">,</span> <span class="n">measurement</span><span class="p">,</span>
+                <span class="n">fish_state</span><span class="p">,</span> <span class="n">binaryHMM_test</span><span class="o">.</span><span class="n">choose_policy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@markdown Make sure you execute this cell to enable the widget!</span>
+
+<span class="n">widget</span><span class="o">=</span><span class="n">interactive</span><span class="p">(</span><span class="n">update_ex_4</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;manual&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+                <span class="n">high_rew_p</span><span class="o">=</span><span class="n">fixed</span><span class="p">(</span><span class="o">.</span><span class="mi">4</span><span class="p">),</span>
+                <span class="n">low_rew_p</span><span class="o">=</span><span class="n">fixed</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">),</span>
+                <span class="n">p_stay</span><span class="o">=</span><span class="n">fixed</span><span class="p">(</span><span class="o">.</span><span class="mi">95</span><span class="p">),</span>
+                <span class="n">T</span><span class="o">=</span><span class="n">fixed</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span>
+                <span class="n">threshold</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">001</span><span class="p">))</span>
+
+<span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Run Simulation&#39;</span>
+<span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">button_color</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span>
+<span class="n">controls</span> <span class="o">=</span> <span class="n">HBox</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">flex_flow</span><span class="o">=</span><span class="s1">&#39;row wrap&#39;</span><span class="p">))</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">VBox</span><span class="p">([</span><span class="n">controls</span><span class="p">,</span> <span class="n">output</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-5-implementing-value-function">
+<h1>Section 5: Implementing Value function<a class="headerlink" href="#section-5-implementing-value-function" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 5: Evaluate policy</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;aJhffROC74w&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-5">
+<h2>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h2>
+<p>Now we have generated behavior for a policy parameterized by a threshold. While it seems clear that this is at least better than being lazy, we want to know how good it is. For that, we will calculate a <em>value function</em>. We will use this value to compare different policies, and maximize the amount of fish we catch while minimizing our effort.</p>
+<p>Specifically, here the value is total expected utility per unit time.</p>
+<div class="math notranslate nohighlight">
+\[V(\theta) = \frac{1}{T}\left(\sum_t U_s(s_t) + U_a(a_t)\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(U_s(s_t)\)</span> is the instantaneous utility (reward) from the site, and <span class="math notranslate nohighlight">\(U_a(a_t)\)</span> is the utility (negative cost) for the chosen action. Here, the action cost is 0 if you stay, and <code class="docutils literal notranslate"><span class="pre">cost_sw</span></code> if you switch.</p>
+<p>We could take this average mathematically over the probabilities of rewards and actions. More simply, we get the same answer by simply averaging the <em>actual</em> rewards and costs over a long time, so that’s what you should do.</p>
+<p><strong>Instructions</strong></p>
+<ul class="simple">
+<li><p>Fill in the function <code class="docutils literal notranslate"><span class="pre">value_function(measurement,</span> <span class="pre">act,</span> <span class="pre">cost_sw)</span></code> given a sequence of measurements, actions, and the cost of switching.</p></li>
+<li><p>Visually find the threshold that yields the highest total value. We have provided code for plotting value versus threshold. The threshold <span class="math notranslate nohighlight">\(\theta^*\)</span> with the highest value gives the optimal policy for controlling where you should fish.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">value_function</span><span class="p">(</span><span class="n">measurement</span><span class="p">,</span> <span class="n">act</span><span class="p">,</span> <span class="n">cost_sw</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  value function</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    act (numpy array of string): length T with each element</span>
+<span class="sd">                                  taking value &quot;stay&quot; or &quot;switch&quot;</span>
+<span class="sd">    cost_sw (float): the cost of switching side</span>
+<span class="sd">    measurement (numpy array of binary): whether a reward is obtained</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    value (float): expected utility per unit time</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">act_int</span> <span class="o">=</span> <span class="p">(</span><span class="n">act</span> <span class="o">==</span> <span class="s2">&quot;switch&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+  <span class="n">T</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">measurement</span><span class="p">)</span>
+  <span class="c1">############################################################################</span>
+  <span class="c1">## Insert your code here to:</span>
+  <span class="c1">##        compute the value function = rate of catching fish - costs</span>
+  <span class="c1">##</span>
+  <span class="c1">## complete the function and remove</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: Please complete &lt;value&gt;&quot;</span><span class="p">)</span>
+  <span class="c1">############################################################################</span>
+  <span class="c1"># Calculate the value function</span>
+  <span class="n">value</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="k">return</span> <span class="n">value</span>
+
+<span class="c1"># uncomment the line below to test your function</span>
+<span class="c1"># test_value_function()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W3D3_OptimalControl/solutions/W3D3_Tutorial1_Solution_205c2a7d.py"><em>Click for solution</em></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Brute force search for optimal policy: loop over thresholds and compute value for each.</span>
+<span class="c1"># This function is needed for the second exercise.</span>
+
+
+<span class="k">def</span> <span class="nf">value_threshold</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">cost_sw</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+  <span class="n">threshold_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span> <span class="o">+</span> <span class="n">step</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+  <span class="n">value_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">threshold_array</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+  <span class="n">T</span><span class="p">,</span> <span class="n">p_stay</span><span class="p">,</span> <span class="n">high_rew_p</span><span class="p">,</span> <span class="n">low_rew_p</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">params</span>
+
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">threshold_array</span><span class="p">)):</span>
+    <span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+    <span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">p_stay</span><span class="p">,</span> <span class="n">high_rew_p</span><span class="p">,</span> <span class="n">low_rew_p</span><span class="p">,</span> <span class="n">threshold</span><span class="p">]</span>
+    <span class="n">binaryHMM_test</span> <span class="o">=</span> <span class="n">binaryHMM_belief</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">choose_policy</span><span class="o">=</span><span class="s2">&quot;threshold&quot;</span><span class="p">)</span>
+    <span class="n">belief</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">act</span><span class="p">,</span> <span class="n">measurement</span><span class="p">,</span> <span class="n">fish_state</span> <span class="o">=</span> <span class="n">binaryHMM_test</span><span class="o">.</span><span class="n">generate_process</span><span class="p">()</span>
+
+    <span class="n">value_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">value_function</span><span class="p">(</span><span class="n">measurement</span><span class="p">,</span> <span class="n">act</span><span class="p">,</span> <span class="n">cost_sw</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">threshold_array</span><span class="p">,</span> <span class="n">value_array</span>
+
+
+<span class="n">plot_value_threshold</span><span class="p">(</span><span class="n">cost_sw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">p_stay</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">high_rew_p</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">low_rew_p</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-6-optional-different-task-different-optimal-policy">
+<h1>Section 6 (Optional): Different task, different optimal policy<a class="headerlink" href="#section-6-optional-different-task-different-optimal-policy" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 6: Sensitivity of optimal policy</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;wd8IVsKoEfA&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-6">
+<h2>Exercise 6<a class="headerlink" href="#exercise-6" title="Permalink to this headline">¶</a></h2>
+<p>This is a thinking exercise.</p>
+<p><strong>Instructions:</strong>
+After plotting value versus threshold, adjust various task parameters using the sliders below, and observe how the optimal threshold moves with</p>
+<ul class="simple">
+<li><p>switching cost (<code class="docutils literal notranslate"><span class="pre">cost_sw</span></code>)</p></li>
+<li><p>fish dynamics (<code class="docutils literal notranslate"><span class="pre">p_switch</span></code>)</p></li>
+<li><p>probability of catching fish on each side, <code class="docutils literal notranslate"><span class="pre">low_rew_p</span></code> and <code class="docutils literal notranslate"><span class="pre">high_rew_p</span></code></p></li>
+</ul>
+<p>Can you explain why the optimal threshold changes with these parameters?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+
+<span class="c1">#@markdown Make sure you execute this cell to enable the widget!</span>
+
+<span class="n">widget</span><span class="o">=</span><span class="n">interactive</span><span class="p">(</span><span class="n">plot_value_threshold</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;manual&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+                   <span class="n">T</span><span class="o">=</span><span class="n">fixed</span><span class="p">(</span><span class="mi">10000</span><span class="p">),</span>
+                   <span class="n">p_stay</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">),</span>
+                   <span class="n">high_rew_p</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">),</span>
+                   <span class="n">low_rew_p</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">),</span>
+                   <span class="n">cost_sw</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">),</span>
+                   <span class="n">step</span><span class="o">=</span><span class="n">fixed</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+
+<span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Run Simulation&#39;</span>
+<span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">button_color</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span>
+<span class="n">controls</span> <span class="o">=</span> <span class="n">HBox</span><span class="p">(</span><span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">flex_flow</span><span class="o">=</span><span class="s1">&#39;row wrap&#39;</span><span class="p">))</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">VBox</span><span class="p">([</span><span class="n">controls</span><span class="p">,</span> <span class="n">output</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Questions:</strong></p>
+<p>EXPLAIN why the optimal threshold changes for:</p>
+<ul class="simple">
+<li><p>lower switching cost?</p></li>
+<li><p>faster fish dynamics?</p></li>
+<li><p>rarer fish?</p></li>
+</ul>
+<p>Note that it may require long simulations to see subtle changes in values of different policies, so look for coarse trends first.</p>
+<p><strong>Answers:</strong></p>
+<ul class="simple">
+<li><p>High switching cost means that you should be more certain that the other side is better before committing to change sides. This means that beliefs must fall below a threshold before acting. Conversely, a lower switching cost allows you more flexibility to switch at less stringent thresholds. In the limit of <em>zero</em> switching cost, you should always switch whenever you think the other side is better, even if it’s just 51%, and even if you switch every time step.</p></li>
+<li><p>Faster fish dynamics (lower <code class="docutils literal notranslate"><span class="pre">p_stay</span></code>) also promotes faster switching, because you cannot plan as far into the future. In that case you must base your decisions on more immediate evidence, but since you still pay the same switching cost that cost is a higher fraction of your predictable rewards. And thus you should be more conservative, and switch only when you are more confident.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">high_rew_p</span></code> and/or <code class="docutils literal notranslate"><span class="pre">low_rew_p</span></code> decreases, your predictions become less reliable, again encouraging you to require more confidence before committing to a switch.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 7: From discrete to continuous control</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;ndCMgdjv9Gg&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./W3D3_OptimalControl/student"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../intro_text.html" title="previous page">W3D3 - Optimal Control</a>
+    <a class='right-next' id="next-link" href="W3D3_Tutorial2.html" title="next page">Tutorial 2: Optimal Control for Continuous State</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Neuromatch<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -1,0 +1,1838 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 1: Neural Rate Models &#8212; Neuromatch Computational Neuroscience</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial 2: Wilson-Cowan Model" href="W2D4_Tutorial2.html" />
+    <link rel="prev" title="W2D4 - Dynamic Networks" href="../intro_text.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/nma-logo-square-4xp.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Pre-reqs Refresher
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D1_PythonWorkshop1/intro_text.html">
+   Python Workshop 1 (W0D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
+     Tutorial: LIF Neuron - Part I
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D2_PythonWorkshop2/intro_text.html">
+   Python Workshop 2 (W0D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
+     Neuromatch Academy: Week 0, Day 2, Tutorial 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D3_LinearAlgebra/intro_text.html">
+   Linear Algebra (W0D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
+     Tutorial 1: Vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
+     Tutorial 2: Matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
+     Bonus Tutorial: Discrete Dynamical Systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D4_Calculus/intro_text.html">
+   Calculus (W0D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
+     Tutorial 1: Basics of Differential and Integral Calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
+     Tutorial 2: Differential Equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
+     Tutorial 3: Numerical Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D5_Statistics/intro_text.html">
+   Statistics (W0D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
+     Tutorial 1: Probability Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
+     Tutorial 2: Statistical Inference
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Intro to Modeling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D1_ModelTypes/intro_text.html">
+   Model Types (W1D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
+     Tutorial 1: “What” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
+     Tutorial 2: “How” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
+     Tutorial 3: “Why” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/outro_vid.html">
+     Intro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D2_ModelingPractice/intro_text.html">
+   Modeling Practice (W1D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
+     Tutorial: Framing the Question
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D3_ModelFitting/intro_text.html">
+   Model Fitting (W1D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
+     Tutorial 1: Linear regression with MSE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
+     Tutorial 2: Linear regression with MLE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
+     Tutorial 3: Confidence intervals and bootstrapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
+     Tutorial 4: Multiple linear regression and polynomial regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
+     Tutorial 5: Model Selection: Bias-variance trade-off
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
+     Tutorial 6: Model Selection: Cross-validation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D4_MachineLearning/intro_text.html">
+   Machine Learning (W1D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial1.html">
+     Tutorial 1: GLMs for Encoding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial2.html">
+     Tutorial 2: Classifiers and regularizers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D5_DimensionalityReduction/intro_text.html">
+   Dimensionality Reduction (W1D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
+     Tutorial 1: Geometric view of data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
+     Tutorial 2: Principal Component Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
+     Tutorial 3: Dimensionality Reduction &amp; Reconstruction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
+     Tutorial 4:  Nonlinear Dimensionality Reduction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D1_DeepLearning/intro_text.html">
+   Deep Learning (W2D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
+     Tutorial 1: Decoding Neural Responses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
+     Tutorial 2: Convolutional Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
+     Tutorial 2: Building and Evaluating Normative Encoding Models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dynamical Systems
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D2_LinearSystems/intro_text.html">
+   Linear Systems (W2D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
+     Tutorial 1: Linear dynamical systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
+     Tutorial 2: Markov Processes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
+     Tutorial 3: Combining determinism and stochasticity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
+     Tutorial 4: Autoregressive models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D3_RealNeurons/intro_text.html">
+   Real Neurons (W2D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial1.html">
+     Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial2.html">
+     Tutorial 2: Effects of Input Correlation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial3.html">
+     Tutorial 3: Synaptic transmission - Models of static and dynamic synapses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial4.html">
+     Tutorial 4: Spike-timing dependent plasticity (STDP)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../intro_text.html">
+   Dynamic Networks (W2D4)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tutorial 1: Neural Rate Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W2D4_Tutorial2.html">
+     Tutorial 2: Wilson-Cowan Model
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Stochastic Processes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D1_BayesianDecisions/intro_text.html">
+   Bayesian Decisions (W3D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
+     Tutorial 1: Bayes with a binary hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
+     Tutorial 2: Bayesian inference and decisions with continuous hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
+     Bonus Tutorial:Fitting to data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D2_HiddenDynamics/intro_text.html">
+   Hidden Dynamics (W3D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
+     Tutorial 1: Sequential Probability Ratio Test
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
+     Tutorial 2: Hidden Markov Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
+     Tutorial 3: 1D Kalman Filter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
+     Tutorial 4: 2D Kalman Filter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D3_OptimalControl/intro_text.html">
+   Optimal Control (W3D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
+     Neuromatch Academy: Week 3, Day 3, Tutorial 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
+     Tutorial 2: Optimal Control for Continuous State
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D4_ReinforcementLearning/intro_text.html">
+   Reinforcement Learning (W3D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
+     Tutorial 1: Learning to Predict
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
+     Tutorial 2: Learning to Act: Multi-Armed Bandits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
+     Tutorial 3: Learning to Act: Q-Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
+     Tutorial 4: From Reinforcement Learning to Planning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D5_NetworkCausality/intro_text.html">
+   Network Causality (W3D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
+     Tutorial 1: Interventions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
+     Tutorial 2: Correlations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
+     Tutorial 3: Simultaneous fitting/regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
+     Tutorial 4: Instrumental Variables
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/W2D4_DynamicNetworks/student/W2D4_Tutorial1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/W2D4_DynamicNetworks/student/W2D4_Tutorial1.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial 1: Neural Rate Models
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial-objectives">
+   Tutorial Objectives
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-1-neuronal-network-dynamics">
+   Section 1: Neuronal network dynamics
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-1-1-dynamics-of-a-single-excitatory-population">
+     Section 1.1: Dynamics of a single excitatory population
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-1-2-f-i-curves">
+     Section 1.2: F-I curves
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-1-implement-f-i-curve">
+       Exercise 1: Implement F-I curve
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interactive-demo-parameter-exploration-of-f-i-curve">
+       Interactive Demo: Parameter exploration of F-I curve
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-1-3-simulation-scheme-of-e-dynamics">
+     Section 1.3: Simulation scheme of E dynamics
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interactive-demo-parameter-exploration-of-single-population-dynamics">
+       Interactive Demo: Parameter Exploration of single population dynamics
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#think">
+     Think!
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-2-fixed-points-of-the-single-population-system">
+   Section 2: Fixed points of the single population system
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2-visualization-of-the-fixed-points">
+     Exercise 2: Visualization of the fixed points
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3-fixed-point-calculation">
+     Exercise 3: Fixed point calculation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interactive-demo-fixed-points-as-a-function-of-recurrent-and-external-inputs">
+     Interactive Demo: fixed points as a function of recurrent and external inputs.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus-1-stability-of-a-fixed-point">
+   Bonus 1: Stability of a fixed point
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#initial-values-and-trajectories">
+     Initial values and trajectories
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interactive-demo-dynamics-as-a-function-of-the-initial-value">
+     Interactive Demo: dynamics as a function of the initial value
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stability-analysis-via-linearization-of-the-dynamics">
+       Stability analysis via linearization of the dynamics
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#compute-the-stability-of-equation-1">
+       Compute the stability of Equation
+       <span class="math notranslate nohighlight">
+        \(1\)
+       </span>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-4-compute-df">
+     Exercise 4: Compute
+     <span class="math notranslate nohighlight">
+      \(dF\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-5-compute-eigenvalues">
+     Exercise 5: Compute eigenvalues
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Think!
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus-2-noisy-input-drives-the-transition-between-two-stable-states">
+   Bonus 2: Noisy input drives the transition between two stable states
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ornstein-uhlenbeck-ou-process">
+     Ornstein-Uhlenbeck (OU) process
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-up-down-transition">
+     Example: Up-Down transition
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W3D2_DynamicNetworks/student/W3D2_Tutorial1.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="tutorial-1-neural-rate-models">
+<h1>Tutorial 1: Neural Rate Models<a class="headerlink" href="#tutorial-1-neural-rate-models" title="Permalink to this headline">¶</a></h1>
+<p><strong>Week 2, Day 4: Dynamic Networks</strong></p>
+<p><strong>By Neuromatch Academy</strong>
+<strong>Content creators:</strong> Qinglong Gu, Songtin Li, Arvind Kumar, John Murray, Julijana Gjorgjieva</p>
+<p><strong>Content reviewers:</strong>  Maryam Vaziri-Pashkam, Ella Batty, Lorenzo Fontolan, Richard Gao, Spiros Chavlis, Michael Waskom</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="tutorial-objectives">
+<h1>Tutorial Objectives<a class="headerlink" href="#tutorial-objectives" title="Permalink to this headline">¶</a></h1>
+<p>The brain is a complex system, not because it is composed of a large number of diverse types of neurons, but mainly because of how neurons are connected to each other. The brain is indeed a network of highly specialized neuronal networks.</p>
+<p>The activity of a neural network constantly evolves in time. For this reason, neurons can be modeled as dynamical systems. The dynamical system approach is only one of the many modeling approaches that computational neuroscientists have developed (other points of view include information processing,  statistical models, etc.).</p>
+<p>How the dynamics of neuronal networks affect the representation and processing of information in the brain is an open question. However, signatures of altered brain dynamics present in many brain diseases (e.g., in epilepsy or Parkinson’s disease) tell us that it is crucial to study network activity dynamics if we want to understand the brain.</p>
+<p>In this tutorial, we will simulate and study one of the simplest models of biological neuronal networks. Instead of modeling and simulating individual excitatory neurons (e.g., LIF models that you implemented yesterday), we will treat them as a single homogeneous population and approximate their dynamics using a single one-dimensional equation describing the evolution of their average spiking rate in time.</p>
+<p>In this tutorial, we will learn how to build a firing rate model of a single population of excitatory neurons.</p>
+<p><strong>Steps:</strong></p>
+<ul class="simple">
+<li><p>Write the equation for the firing rate dynamics of a 1D excitatory population.</p></li>
+<li><p>Visualize the response of the population as a function of parameters such as threshold level and gain, using the frequency-current (F-I) curve.</p></li>
+<li><p>Numerically simulate the dynamics of the excitatory population and find the fixed points of the system.</p></li>
+<li><p>Investigate the stability of the fixed points by linearizing the dynamics around them.</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.optimize</span> <span class="k">as</span> <span class="nn">opt</span>       <span class="c1"># root-finding algorithm</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Figure Settings</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>       <span class="c1"># interactive display</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Helper functions</span>
+
+
+<span class="k">def</span> <span class="nf">plot_fI</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>  <span class="c1"># plot the figure</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x (a.u.)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;F(x)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">plot_dr_r</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">drdt</span><span class="p">,</span> <span class="n">x_fps</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">drdt</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="mf">0.</span> <span class="o">*</span> <span class="n">r</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">x_fps</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fps</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x_fps</span><span class="p">),</span> <span class="s2">&quot;ko&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$r$&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\frac</span><span class="si">{dr}{dt}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plot_dFdt</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dFdt</span><span class="p">):</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dFdt</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x (a.u.)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;dF(x)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-1-neuronal-network-dynamics">
+<h1>Section 1: Neuronal network dynamics<a class="headerlink" href="#section-1-neuronal-network-dynamics" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Video 1: Dynamic networks</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;p848349hPyw&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="section-1-1-dynamics-of-a-single-excitatory-population">
+<h2>Section 1.1: Dynamics of a single excitatory population<a class="headerlink" href="#section-1-1-dynamics-of-a-single-excitatory-population" title="Permalink to this headline">¶</a></h2>
+<p>Individual neurons respond by spiking. When we average the spikes of neurons in a population, we can define the average firing activity of the population. In this model, we are interested in how the population-averaged firing varies as a function of time and network parameters. Mathematically, we can describe the firing rate dynamic as:</p>
+<p>\begin{align}
+\tau \frac{dr}{dt} &amp;= -r + F(w\cdot r + I_{\text{ext}})  \quad\qquad (1)
+\end{align}</p>
+<p><span class="math notranslate nohighlight">\(r(t)\)</span> represents the average firing rate of the excitatory population at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\tau\)</span> controls the timescale of the evolution of the average firing rate, <span class="math notranslate nohighlight">\(w\)</span> denotes the strength (synaptic weight) of the recurrent input to the population, <span class="math notranslate nohighlight">\(I_{\text{ext}}\)</span> represents the external input, and the transfer function <span class="math notranslate nohighlight">\(F(\cdot)\)</span> (which can be related to f-I curve of individual neurons described in the next sections) represents the population activation function in response to all received inputs.</p>
+<p>To start building the model, please execute the cell below to initialize the simulation parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @markdown *Execute this cell to set default parameters for a single excitatory population model*</span>
+
+
+<span class="k">def</span> <span class="nf">default_pars_single</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="n">pars</span> <span class="o">=</span> <span class="p">{}</span>
+
+  <span class="c1"># Excitatory parameters</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;tau&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>     <span class="c1"># Timescale of the E population [ms]</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.2</span>      <span class="c1"># Gain of the E population</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.8</span>  <span class="c1"># Threshold of the E population</span>
+
+  <span class="c1"># Connection strength</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.</span>  <span class="c1"># E to E, we first set it to 0</span>
+
+  <span class="c1"># External input</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;I_ext&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.</span>
+
+  <span class="c1"># simulation parameters</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">20.</span>       <span class="c1"># Total duration of simulation [ms]</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">1</span>       <span class="c1"># Simulation time step [ms]</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;r_init&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.2</span>  <span class="c1"># Initial value of E</span>
+
+  <span class="c1"># External parameters if any</span>
+  <span class="n">pars</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+  <span class="c1"># Vector of discretized time points [ms]</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">],</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">])</span>
+
+  <span class="k">return</span> <span class="n">pars</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can now use:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pars</span> <span class="pre">=</span> <span class="pre">default_pars_single()</span></code> to get all the parameters, and then you can execute <code class="docutils literal notranslate"><span class="pre">print(pars)</span></code> to check these parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pars</span> <span class="pre">=</span> <span class="pre">default_pars_single(T=T_sim,</span> <span class="pre">dt=time_step)</span></code> to set new simulation time and time step</p></li>
+<li><p>To update an existing parameter dictionary, use <code class="docutils literal notranslate"><span class="pre">pars['New_para']</span> <span class="pre">=</span> <span class="pre">value</span></code></p></li>
+</ul>
+<p>Because <code class="docutils literal notranslate"><span class="pre">pars</span></code> is a dictionary, it can be passed to a function that requires individual parameters as arguments using <code class="docutils literal notranslate"><span class="pre">my_func(**pars)</span></code> syntax.</p>
+</div>
+<div class="section" id="section-1-2-f-i-curves">
+<h2>Section 1.2: F-I curves<a class="headerlink" href="#section-1-2-f-i-curves" title="Permalink to this headline">¶</a></h2>
+<p>In electrophysiology, a neuron is often characterized by its spike rate output in response to input currents. This is often called the <strong>F-I</strong> curve, denoting the output spike frequency (<strong>F</strong>) in response to different injected currents (<strong>I</strong>). We estimated this for an LIF neuron in yesterday’s tutorial.</p>
+<p>The transfer function <span class="math notranslate nohighlight">\(F(\cdot)\)</span> in Equation <span class="math notranslate nohighlight">\(1\)</span> represents the gain of the population as a function of the total input. The gain is often modeled as a sigmoidal function, i.e., more input drive leads to a nonlinear increase in the population firing rate. The output firing rate will eventually saturate for high input values.</p>
+<p>A sigmoidal <span class="math notranslate nohighlight">\(F(\cdot)\)</span> is parameterized by its gain <span class="math notranslate nohighlight">\(a\)</span> and threshold <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[ F(x;a,\theta) = \frac{1}{1+\text{e}^{-a(x-\theta)}} - \frac{1}{1+\text{e}^{a\theta}}  \quad(2)\]</div>
+<p>The argument <span class="math notranslate nohighlight">\(x\)</span> represents the input to the population. Note that the second term is chosen so that <span class="math notranslate nohighlight">\(F(0;a,\theta)=0\)</span>.</p>
+<p>Many other transfer functions (generally monotonic) can be also used. Examples are the rectified linear function <span class="math notranslate nohighlight">\(ReLU(x)\)</span> or the hyperbolic tangent <span class="math notranslate nohighlight">\(tanh(x)\)</span>.</p>
+<div class="section" id="exercise-1-implement-f-i-curve">
+<h3>Exercise 1: Implement F-I curve<a class="headerlink" href="#exercise-1-implement-f-i-curve" title="Permalink to this headline">¶</a></h3>
+<p>Let’s first investigate the activation functions before simulating the dynamics of the entire population.</p>
+<p>In this exercise, you will implement a sigmoidal <strong>F-I</strong> curve or transfer function <span class="math notranslate nohighlight">\(F(x)\)</span>, with gain <span class="math notranslate nohighlight">\(a\)</span> and threshold level <span class="math notranslate nohighlight">\(\theta\)</span> as parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Population activation function.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x (float): the population input</span>
+<span class="sd">    a (float): the gain of the function</span>
+<span class="sd">    theta (float): the threshold of the function</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    float: the population activation response F(x) for input x</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1">#################################################</span>
+  <span class="c1">## TODO for students: compute f = F(x) ##</span>
+  <span class="c1"># Fill out function and remove</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student excercise: implement the f-I function&quot;</span><span class="p">)</span>
+  <span class="c1">#################################################</span>
+
+  <span class="c1"># Define the sigmoidal transfer function f = F(x)</span>
+  <span class="n">f</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="k">return</span> <span class="n">f</span>
+
+
+<span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars_single</span><span class="p">()</span>  <span class="c1"># get default parameters</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">)</span>      <span class="c1"># set the range of input</span>
+
+<span class="c1"># Uncomment below to test your function</span>
+<span class="c1"># f = F(x, pars[&#39;a&#39;], pars[&#39;theta&#39;])</span>
+<span class="c1"># plot_fI(x, f)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D4_DynamicNetworks/solutions/W2D4_Tutorial1_Solution_45ddc05f.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=416 height=272 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D4_DynamicNetworks/static/W2D4_Tutorial1_Solution_45ddc05f_0.png>
+</div>
+<div class="section" id="interactive-demo-parameter-exploration-of-f-i-curve">
+<h3>Interactive Demo: Parameter exploration of F-I curve<a class="headerlink" href="#interactive-demo-parameter-exploration-of-f-i-curve" title="Permalink to this headline">¶</a></h3>
+<p>Here’s an interactive demo that shows how the F-I curve changes for different values of the gain and threshold parameters. How do the gain and threshold parameters affect the F-I curve?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
+
+<span class="c1"># @markdown Make sure you execute this cell to enable the widget!</span>
+
+
+<span class="k">def</span> <span class="nf">interactive_plot_FI</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Population activation function.</span>
+
+<span class="sd">  Expecxts:</span>
+<span class="sd">    a     : the gain of the function</span>
+<span class="sd">    theta : the threshold of the function</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    plot the F-I curve with give parameters</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># set the range of input</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">theta</span><span class="p">),</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x (a.u.)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;F(x)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="n">_</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span><span class="n">interactive_plot_FI</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span> <span class="n">theta</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D4_DynamicNetworks/solutions/W2D4_Tutorial1_Solution_1c0165d7.py"><em>Click for solution</em></a></p>
+</div>
+</div>
+<div class="section" id="section-1-3-simulation-scheme-of-e-dynamics">
+<h2>Section 1.3: Simulation scheme of E dynamics<a class="headerlink" href="#section-1-3-simulation-scheme-of-e-dynamics" title="Permalink to this headline">¶</a></h2>
+<p>Because <span class="math notranslate nohighlight">\(F(\cdot)\)</span> is a nonlinear function, the exact solution of Equation <span class="math notranslate nohighlight">\(1\)</span> can not be determined via analytical methods. Therefore, numerical methods must be used to find the solution. In practice, the derivative on the left-hand side of Equation <span class="math notranslate nohighlight">\(1\)</span> can be approximated using the Euler method on a time-grid of stepsize <span class="math notranslate nohighlight">\(\Delta t\)</span>:</p>
+<p>\begin{align}
+&amp;\frac{dr}{dt} \approx \frac{r[k+1]-r[k]}{\Delta t}
+\end{align}
+where <span class="math notranslate nohighlight">\(r[k] = r(k\Delta t)\)</span>.</p>
+<p>Thus,</p>
+<div class="math notranslate nohighlight">
+\[\Delta r[k] = \frac{\Delta t}{\tau}[-r[k] + F(w\cdot r[k] + I_{\text{ext}}[k];a,\theta)]\]</div>
+<p>Hence, Equation (1) is updated at each time step by:</p>
+<div class="math notranslate nohighlight">
+\[r[k+1] = r[k] + \Delta r[k]\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @markdown *Execute this cell to enable the single population rate model simulator: `simulate_single`*</span>
+
+
+<span class="k">def</span> <span class="nf">simulate_single</span><span class="p">(</span><span class="n">pars</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Simulate an excitatory population of neurons</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    pars   : Parameter dictionary</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    rE     : Activity of excitatory population (array)</span>
+
+<span class="sd">  Example:</span>
+<span class="sd">    pars = default_pars_single()</span>
+<span class="sd">    r = simulate_single(pars)</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># Set parameters</span>
+  <span class="n">tau</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">theta</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;tau&#39;</span><span class="p">],</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">],</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">]</span>
+  <span class="n">w</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span>
+  <span class="n">I_ext</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;I_ext&#39;</span><span class="p">]</span>
+  <span class="n">r_init</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;r_init&#39;</span><span class="p">]</span>
+  <span class="n">dt</span><span class="p">,</span> <span class="n">range_t</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">],</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">]</span>
+  <span class="n">Lt</span> <span class="o">=</span> <span class="n">range_t</span><span class="o">.</span><span class="n">size</span>
+
+  <span class="c1"># Initialize activity</span>
+  <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Lt</span><span class="p">)</span>
+  <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">r_init</span>
+  <span class="n">I_ext</span> <span class="o">=</span> <span class="n">I_ext</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">Lt</span><span class="p">)</span>
+
+  <span class="c1"># Update the E activity</span>
+  <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Lt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+      <span class="n">dr</span> <span class="o">=</span> <span class="n">dt</span> <span class="o">/</span> <span class="n">tau</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">F</span><span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">I_ext</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">a</span><span class="p">,</span> <span class="n">theta</span><span class="p">))</span>
+      <span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">dr</span>
+
+  <span class="k">return</span> <span class="n">r</span>
+
+<span class="n">help</span><span class="p">(</span><span class="n">simulate_single</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="interactive-demo-parameter-exploration-of-single-population-dynamics">
+<h3>Interactive Demo: Parameter Exploration of single population dynamics<a class="headerlink" href="#interactive-demo-parameter-exploration-of-single-population-dynamics" title="Permalink to this headline">¶</a></h3>
+<p>Note that <span class="math notranslate nohighlight">\(w=0\)</span>, as in the default setting, means no recurrent input to the neuron population in Equation (1). Hence, the dynamics are entirely determined by the external input <span class="math notranslate nohighlight">\(I_{\text{ext}}\)</span>. Explore these dynamics in this interactive demo.</p>
+<p>How does <span class="math notranslate nohighlight">\(r_{\text{sim}}(t)\)</span> change with different <span class="math notranslate nohighlight">\(I_{\text{ext}}\)</span> values? How does it change with different <span class="math notranslate nohighlight">\(\tau\)</span> values? Investigate the relationship between <span class="math notranslate nohighlight">\(F(I_{\text{ext}}; a, \theta)\)</span> and the steady value of <span class="math notranslate nohighlight">\(r(t)\)</span>.</p>
+<p>Note that, <span class="math notranslate nohighlight">\(r_{\rm ana}(t)\)</span> denotes the analytical solution - you will learn how this is computed in the next section.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
+
+<span class="c1"># @markdown Make sure you execute this cell to enable the widget!</span>
+
+<span class="c1"># get default parameters</span>
+<span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars_single</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mf">20.</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">Myplot_E_diffI_difftau</span><span class="p">(</span><span class="n">I_ext</span><span class="p">,</span> <span class="n">tau</span><span class="p">):</span>
+  <span class="c1"># set external input and time constant</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;I_ext&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">I_ext</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;tau&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tau</span>
+
+  <span class="c1"># simulation</span>
+  <span class="n">r</span> <span class="o">=</span> <span class="n">simulate_single</span><span class="p">(</span><span class="n">pars</span><span class="p">)</span>
+
+  <span class="c1"># Analytical Solution</span>
+  <span class="n">r_ana</span> <span class="o">=</span> <span class="p">(</span><span class="n">pars</span><span class="p">[</span><span class="s1">&#39;r_init&#39;</span><span class="p">]</span>
+           <span class="o">+</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">I_ext</span><span class="p">,</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">],</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">])</span>
+           <span class="o">-</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;r_init&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;tau&#39;</span><span class="p">])))</span>
+
+  <span class="c1"># plot</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">],</span> <span class="n">r</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$r_{\mathrm</span><span class="si">{sim}</span><span class="s1">}$(t)&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+           <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">],</span> <span class="n">r_ana</span><span class="p">,</span> <span class="s1">&#39;b--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">dashes</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+           <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$r_{\mathrm</span><span class="si">{ana}</span><span class="s1">}$(t)&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">],</span>
+           <span class="n">F</span><span class="p">(</span><span class="n">I_ext</span><span class="p">,</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">],</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">),</span>
+           <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$F(I_{\mathrm</span><span class="si">{ext}</span><span class="s1">})$&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t (ms)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">16.</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Activity r(t)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">16.</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="n">_</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span><span class="n">Myplot_E_diffI_difftau</span><span class="p">,</span> <span class="n">I_ext</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">),</span>
+                     <span class="n">tau</span><span class="o">=</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D4_DynamicNetworks/solutions/W2D4_Tutorial1_Solution_65dee3e7.py"><em>Click for solution</em></a></p>
+</div>
+</div>
+<div class="section" id="think">
+<h2>Think!<a class="headerlink" href="#think" title="Permalink to this headline">¶</a></h2>
+<p>Above, we have numerically solved a system driven by a positive input. Yet, <span class="math notranslate nohighlight">\(r_E(t)\)</span> either decays to zero or reaches a fixed non-zero value.</p>
+<ul class="simple">
+<li><p>Why doesn’t the solution of the system “explode” in a finite time? In other words, what guarantees that <span class="math notranslate nohighlight">\(r_E\)</span>(t) stays finite?</p></li>
+<li><p>Which parameter would you change in order to increase the maximum value of the response?</p></li>
+</ul>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D4_DynamicNetworks/solutions/W2D4_Tutorial1_Solution_5a95a98e.py"><em>Click for solution</em></a></p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-2-fixed-points-of-the-single-population-system">
+<h1>Section 2: Fixed points of the single population system<a class="headerlink" href="#section-2-fixed-points-of-the-single-population-system" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Video 2: Fixed point</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;Ox3ELd1UFyo&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you varied the two parameters in the last Interactive Demo, you noticed that, while at first the system output quickly changes, with time, it reaches its maximum/minimum value and does not change anymore. The value eventually reached by the system is called the <strong>steady state</strong> of the system, or the <strong>fixed point</strong>. Essentially, in the steady states the derivative with respect to time of the activity (<span class="math notranslate nohighlight">\(r\)</span>) is zero, i.e. <span class="math notranslate nohighlight">\(\displaystyle \frac{dr}{dt}=0\)</span>.</p>
+<p>We can find that the steady state of the Equation. (1) by setting <span class="math notranslate nohighlight">\(\displaystyle{\frac{dr}{dt}=0}\)</span> and solve for <span class="math notranslate nohighlight">\(r\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[-r_{\text{steady}} + F(w\cdot r_{\text{steady}} + I_{\text{ext}};a,\theta) = 0, \qquad (3)\]</div>
+<p>When it exists, the solution of Equation. (3) defines a <strong>fixed point</strong> of the dynamical system in Equation (1). Note that if <span class="math notranslate nohighlight">\(F(x)\)</span> is nonlinear, it is not always possible to find an analytical solution, but the solution can be found via numerical simulations, as we will do later.</p>
+<p>From the Interactive Demo, one could also notice that the value of <span class="math notranslate nohighlight">\(\tau\)</span> influences how quickly the activity will converge to the steady state from its initial value.</p>
+<p>In the specific case of <span class="math notranslate nohighlight">\(w=0\)</span>, we can also analytically compute  the solution of Equation (1) (i.e., the thick blue dashed line) and deduce the role of <span class="math notranslate nohighlight">\(\tau\)</span> in determining the convergence to the fixed point:</p>
+<p>$<span class="math notranslate nohighlight">\(\displaystyle{r(t) = \big{[}F(I_{\text{ext}};a,\theta) -r(t=0)\big{]} (1-\text{e}^{-\frac{t}{\tau}})} + r(t=0)\)</span>$ \</p>
+<p>We can now numerically calculate the fixed point with a root finding algorithm.</p>
+<div class="section" id="exercise-2-visualization-of-the-fixed-points">
+<h2>Exercise 2: Visualization of the fixed points<a class="headerlink" href="#exercise-2-visualization-of-the-fixed-points" title="Permalink to this headline">¶</a></h2>
+<p>When it is not possible to find the solution for Equation (3) analytically, a graphical approach can be taken. To that end, it is useful to plot <span class="math notranslate nohighlight">\(\displaystyle{\frac{dr}{dt}}\)</span> as a function of <span class="math notranslate nohighlight">\(r\)</span>. The values of <span class="math notranslate nohighlight">\(r\)</span> for which the plotted function crosses zero on the y axis correspond to fixed points.</p>
+<p>Here, let us, for example, set <span class="math notranslate nohighlight">\(w=5.0\)</span> and <span class="math notranslate nohighlight">\(I^{\text{ext}}=0.5\)</span>. From Equation (1), you can obtain</p>
+<div class="math notranslate nohighlight">
+\[\frac{dr}{dt} = [-r + F(w\cdot r + I^{\text{ext}})]\,/\,\tau \]</div>
+<p>Then, plot the <span class="math notranslate nohighlight">\(dr/dt\)</span> as a function of <span class="math notranslate nohighlight">\(r\)</span>, and check for the presence of fixed points.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_drdt</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">I_ext</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="o">**</span><span class="n">other_pars</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Given parameters, compute dr/dt as a function of r.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    r (1D array) : Average firing rate of the excitatory population</span>
+<span class="sd">    I_ext, w, a, theta, tau (numbers): Simulation parameters to use</span>
+<span class="sd">    other_pars : Other simulation parameters are unused by this function</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">    drdt function for each value of r</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1">#########################################################################</span>
+  <span class="c1"># TODO compute drdt and disable the error</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Finish the compute_drdt function&quot;</span><span class="p">)</span>
+  <span class="c1">#########################################################################</span>
+
+  <span class="c1"># Calculate drdt</span>
+  <span class="n">drdt</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="k">return</span> <span class="n">drdt</span>
+
+
+<span class="c1"># Define a vector of r values and the simulation parameters</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars_single</span><span class="p">(</span><span class="n">I_ext</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Uncomment to test your function</span>
+<span class="c1"># drdt = compute_drdt(r, **pars)</span>
+<span class="c1"># plot_dr_r(r, drdt)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D4_DynamicNetworks/solutions/W2D4_Tutorial1_Solution_c5280901.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=558 height=413 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D4_DynamicNetworks/static/W2D4_Tutorial1_Solution_c5280901_0.png>
+</div>
+<div class="section" id="exercise-3-fixed-point-calculation">
+<h2>Exercise 3: Fixed point calculation<a class="headerlink" href="#exercise-3-fixed-point-calculation" title="Permalink to this headline">¶</a></h2>
+<p>We will now find the fixed points numerically. To do so, we need to specif initial values (<span class="math notranslate nohighlight">\(r_{\text{guess}}\)</span>) for the root-finding algorithm to start from. From the line <span class="math notranslate nohighlight">\(\displaystyle{\frac{dr}{dt}}\)</span> plotted above in Exercise 2, initial values can be chosen as a set of values close to where the line crosses zero on the y axis (real fixed point).</p>
+<p>The next cell defines three helper functions that we will use:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">my_fp_single(r_guess,</span> <span class="pre">**pars)</span></code> uses a root-finding algorithm to locate a fixed point near a given initial value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">check_fp_single(x_fp,</span> <span class="pre">**pars)</span></code>, verifies that the values of <span class="math notranslate nohighlight">\(r_{\rm fp}\)</span> for which <span class="math notranslate nohighlight">\(\displaystyle{\frac{dr}{dt}} = 0\)</span> are the true fixed points</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">my_fp_finder(r_guess_vector,</span> <span class="pre">**pars)</span></code> accepts an array of initial values and finds the same number of fixed points, using the above two functions</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @markdown *Execute this cell to enable the fixed point functions*</span>
+
+<span class="k">def</span> <span class="nf">my_fp_single</span><span class="p">(</span><span class="n">r_guess</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">I_ext</span><span class="p">,</span> <span class="o">**</span><span class="n">other_pars</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Calculate the fixed point through drE/dt=0</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    r_guess  : Initial value used for scipy.optimize function</span>
+<span class="sd">    a, theta, w, I_ext : simulation parameters</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    x_fp    : value of fixed point</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># define the right hand of E dynamics</span>
+  <span class="k">def</span> <span class="nf">my_WCr</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">drdt</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">+</span> <span class="n">F</span><span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">r</span> <span class="o">+</span> <span class="n">I_ext</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">theta</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">drdt</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">y</span>
+
+  <span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">r_guess</span><span class="p">)</span>
+  <span class="n">x_fp</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">root</span><span class="p">(</span><span class="n">my_WCr</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+  <span class="k">return</span> <span class="n">x_fp</span>
+
+
+<span class="k">def</span> <span class="nf">check_fp_single</span><span class="p">(</span><span class="n">x_fp</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">I_ext</span><span class="p">,</span> <span class="n">mytol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="o">**</span><span class="n">other_pars</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   Verify |dr/dt| &lt; mytol</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    fp      : value of fixed point</span>
+<span class="sd">    a, theta, w, I_ext: simulation parameters</span>
+<span class="sd">    mytol   : tolerance, default as 10^{-4}</span>
+
+<span class="sd">  Returns :</span>
+<span class="sd">    Whether it is a correct fixed point: True/False</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># calculate Equation(3)</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">x_fp</span> <span class="o">-</span> <span class="n">F</span><span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">x_fp</span> <span class="o">+</span> <span class="n">I_ext</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
+
+  <span class="c1"># Here we set tolerance as 10^{-4}</span>
+  <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">mytol</span>
+
+
+<span class="k">def</span> <span class="nf">my_fp_finder</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">r_guess_vector</span><span class="p">,</span> <span class="n">mytol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Calculate the fixed point(s) through drE/dt=0</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    pars    : Parameter dictionary</span>
+<span class="sd">    r_guess_vector  : Initial values used for scipy.optimize function</span>
+<span class="sd">    mytol   : tolerance for checking fixed point, default as 10^{-4}</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    x_fps   : values of fixed points</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">x_fps</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">correct_fps</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">r_guess</span> <span class="ow">in</span> <span class="n">r_guess_vector</span><span class="p">:</span>
+    <span class="n">x_fp</span> <span class="o">=</span> <span class="n">my_fp_single</span><span class="p">(</span><span class="n">r_guess</span><span class="p">,</span> <span class="o">**</span><span class="n">pars</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">check_fp_single</span><span class="p">(</span><span class="n">x_fp</span><span class="p">,</span> <span class="o">**</span><span class="n">pars</span><span class="p">,</span> <span class="n">mytol</span><span class="o">=</span><span class="n">mytol</span><span class="p">):</span>
+      <span class="n">x_fps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_fp</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">x_fps</span>
+
+<span class="n">help</span><span class="p">(</span><span class="n">my_fp_finder</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars_single</span><span class="p">(</span><span class="n">I_ext</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">drdt</span> <span class="o">=</span> <span class="n">compute_drdt</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="o">**</span><span class="n">pars</span><span class="p">)</span>
+
+<span class="c1">#############################################################################</span>
+<span class="c1"># TODO for students:</span>
+<span class="c1"># Define initial values close to the intersections of drdt and y=0</span>
+<span class="c1"># (How many initial values? Hint: How many times do the two lines intersect?)</span>
+<span class="c1"># Calculate the fixed point with these initial values and plot them</span>
+<span class="c1">#############################################################################</span>
+<span class="n">r_guess_vector</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+
+<span class="c1"># Uncomment to test your values</span>
+<span class="c1"># x_fps = my_fp_finder(pars, r_guess_vector)</span>
+<span class="c1"># plot_dr_r(r, drdt, x_fps)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D4_DynamicNetworks/solutions/W2D4_Tutorial1_Solution_0637b6bf.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=558 height=413 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D4_DynamicNetworks/static/W2D4_Tutorial1_Solution_0637b6bf_0.png>
+</div>
+<div class="section" id="interactive-demo-fixed-points-as-a-function-of-recurrent-and-external-inputs">
+<h2>Interactive Demo: fixed points as a function of recurrent and external inputs.<a class="headerlink" href="#interactive-demo-fixed-points-as-a-function-of-recurrent-and-external-inputs" title="Permalink to this headline">¶</a></h2>
+<p>You can now explore how the previous plot changes when the recurrent coupling <span class="math notranslate nohighlight">\(w\)</span> and the external input <span class="math notranslate nohighlight">\(I_{\text{ext}}\)</span> take different values. How does the number of fixed points change?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
+
+<span class="c1"># @markdown Make sure you execute this cell to enable the widget!</span>
+
+
+<span class="k">def</span> <span class="nf">plot_intersection_single</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">I_ext</span><span class="p">):</span>
+  <span class="c1"># set your parameters</span>
+  <span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars_single</span><span class="p">(</span><span class="n">w</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">I_ext</span><span class="o">=</span><span class="n">I_ext</span><span class="p">)</span>
+
+  <span class="c1"># find fixed points</span>
+  <span class="n">r_init_vector</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">4</span><span class="p">,</span> <span class="o">.</span><span class="mi">9</span><span class="p">]</span>
+  <span class="n">x_fps</span> <span class="o">=</span> <span class="n">my_fp_finder</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">r_init_vector</span><span class="p">)</span>
+
+  <span class="c1"># plot</span>
+  <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+  <span class="n">drdt</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">+</span> <span class="n">F</span><span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">r</span> <span class="o">+</span> <span class="n">I_ext</span><span class="p">,</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">],</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">]))</span> <span class="o">/</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;tau&#39;</span><span class="p">]</span>
+
+  <span class="n">plot_dr_r</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">drdt</span><span class="p">,</span> <span class="n">x_fps</span><span class="p">)</span>
+
+<span class="n">_</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span><span class="n">plot_intersection_single</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span>
+                     <span class="n">I_ext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D4_DynamicNetworks/solutions/W2D4_Tutorial1_Solution_20486792.py"><em>Click for solution</em></a></p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<p>In this tutorial, we have investigated the dynamics of a rate-based single population of neurons.</p>
+<p>We learned about:</p>
+<ul class="simple">
+<li><p>The effect of the input parameters and the time constant of the network on the dynamics of the population.</p></li>
+<li><p>How to find the fixed point(s) of the system.</p></li>
+</ul>
+<p>Next, we have two Bonus, but important concepts in dynamical system analysis and simulation. If you have time left, watch the next video and proceed to solve the exercises. You will learn:</p>
+<ul class="simple">
+<li><p>How to determine the stability of a fixed point by linearizing the system.</p></li>
+<li><p>How to add realistic inputs to our model.</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="bonus-1-stability-of-a-fixed-point">
+<h1>Bonus 1: Stability of a fixed point<a class="headerlink" href="#bonus-1-stability-of-a-fixed-point" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Video 3: Stability of fixed points</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;KKMlWWU83Jg&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="initial-values-and-trajectories">
+<h2>Initial values and trajectories<a class="headerlink" href="#initial-values-and-trajectories" title="Permalink to this headline">¶</a></h2>
+<p>Here, let us first set <span class="math notranslate nohighlight">\(w=5.0\)</span> and <span class="math notranslate nohighlight">\(I_{\text{ext}}=0.5\)</span>, and investigate the dynamics of <span class="math notranslate nohighlight">\(r(t)\)</span> starting with different initial values <span class="math notranslate nohighlight">\(r(0) \equiv r_{\text{init}}\)</span>. We will plot the trajectories of <span class="math notranslate nohighlight">\(r(t)\)</span> with <span class="math notranslate nohighlight">\(r_{\text{init}} = 0.0, 0.1, 0.2,..., 0.9\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @markdown Execute this cell to see the trajectories!</span>
+
+<span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars_single</span><span class="p">()</span>
+<span class="n">pars</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="n">pars</span><span class="p">[</span><span class="s1">&#39;I_ext&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">ie</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;r_init&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">ie</span>  <span class="c1"># set the initial value</span>
+  <span class="n">r</span> <span class="o">=</span> <span class="n">simulate_single</span><span class="p">(</span><span class="n">pars</span><span class="p">)</span>  <span class="c1"># run the simulation</span>
+
+  <span class="c1"># plot the activity with given initial</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">],</span> <span class="n">r</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">ie</span><span class="p">,</span>
+           <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;r$_{\mathrm</span><span class="si">{init}</span><span class="s1">}$=</span><span class="si">%.1f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">ie</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t (ms)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Two steady states?&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$r$(t)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="p">[</span><span class="mf">1.01</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.06</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="interactive-demo-dynamics-as-a-function-of-the-initial-value">
+<h2>Interactive Demo: dynamics as a function of the initial value<a class="headerlink" href="#interactive-demo-dynamics-as-a-function-of-the-initial-value" title="Permalink to this headline">¶</a></h2>
+<p>Let’s now set <span class="math notranslate nohighlight">\(r_{\rm init}\)</span> to a value of your choice in this demo. How does the solution change? What do you observe?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
+
+<span class="c1"># @markdown Make sure you execute this cell to enable the widget!</span>
+
+<span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars_single</span><span class="p">(</span><span class="n">w</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">I_ext</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_single_diffEinit</span><span class="p">(</span><span class="n">r_init</span><span class="p">):</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;r_init&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">r_init</span>
+  <span class="n">r</span> <span class="o">=</span> <span class="n">simulate_single</span><span class="p">(</span><span class="n">pars</span><span class="p">)</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">],</span> <span class="n">r</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t (ms)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$r(t)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="n">_</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span><span class="n">plot_single_diffEinit</span><span class="p">,</span> <span class="n">r_init</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D4_DynamicNetworks/solutions/W2D4_Tutorial1_Solution_4d2de6a0.py"><em>Click for solution</em></a></p>
+<div class="section" id="stability-analysis-via-linearization-of-the-dynamics">
+<h3>Stability analysis via linearization of the dynamics<a class="headerlink" href="#stability-analysis-via-linearization-of-the-dynamics" title="Permalink to this headline">¶</a></h3>
+<p>Just like Equation <span class="math notranslate nohighlight">\(1\)</span> in the case (<span class="math notranslate nohighlight">\(w=0\)</span>) discussed above, a generic linear system
+$<span class="math notranslate nohighlight">\(\frac{dx}{dt} = \lambda (x - b),\)</span><span class="math notranslate nohighlight">\( 
+has a fixed point for \)</span>x=b<span class="math notranslate nohighlight">\(. The analytical solution of such a system can be found to be:
+\)</span><span class="math notranslate nohighlight">\(x(t) = b + \big{(} x(0) - b \big{)} \text{e}^{\lambda t}.\)</span><span class="math notranslate nohighlight">\( 
+Now consider a small perturbation of the activity around the fixed point: \)</span>x(0) = b+ \epsilon<span class="math notranslate nohighlight">\(, where \)</span>|\epsilon| \ll 1<span class="math notranslate nohighlight">\(. Will the perturbation \)</span>\epsilon(t)<span class="math notranslate nohighlight">\( grow with time or will it decay to the fixed point? The evolution of the perturbation with time can be written, using the analytical solution for \)</span>x(t)<span class="math notranslate nohighlight">\(, as:
+ \)</span><span class="math notranslate nohighlight">\(\epsilon (t) = x(t) - b = \epsilon \text{e}^{\lambda t}\)</span>$</p>
+<ul class="simple">
+<li><p>if <span class="math notranslate nohighlight">\(\lambda &lt; 0\)</span>, <span class="math notranslate nohighlight">\(\epsilon(t)\)</span> decays to zero, <span class="math notranslate nohighlight">\(x(t)\)</span> will still converge to <span class="math notranslate nohighlight">\(b\)</span> and the fixed point is “<strong>stable</strong>”.</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>, <span class="math notranslate nohighlight">\(\epsilon(t)\)</span> grows with time, <span class="math notranslate nohighlight">\(x(t)\)</span> will leave the fixed point <span class="math notranslate nohighlight">\(b\)</span> exponentially, and the fixed point is, therefore, “<strong>unstable</strong>” .</p></li>
+</ul>
+</div>
+<div class="section" id="compute-the-stability-of-equation-1">
+<h3>Compute the stability of Equation <span class="math notranslate nohighlight">\(1\)</span><a class="headerlink" href="#compute-the-stability-of-equation-1" title="Permalink to this headline">¶</a></h3>
+<p>Similar to what we did in the linear system above, in order to determine the stability of a fixed point <span class="math notranslate nohighlight">\(r^{*}\)</span> of the excitatory population dynamics, we perturb Equation (1) around <span class="math notranslate nohighlight">\(r^{*}\)</span> by <span class="math notranslate nohighlight">\(\epsilon\)</span>, i.e. <span class="math notranslate nohighlight">\(r = r^{*} + \epsilon\)</span>. We can plug in Equation (1) and obtain the equation determining the time evolution of the perturbation <span class="math notranslate nohighlight">\(\epsilon(t)\)</span>:</p>
+<p>\begin{align}
+\tau \frac{d\epsilon}{dt} \approx -\epsilon + w F’(w\cdot r^{*} + I_{\text{ext}};a,\theta) \epsilon
+\end{align}</p>
+<p>where <span class="math notranslate nohighlight">\(F'(\cdot)\)</span> is the derivative of the transfer function <span class="math notranslate nohighlight">\(F(\cdot)\)</span>. We can rewrite the above equation as:</p>
+<p>\begin{align}
+\frac{d\epsilon}{dt} \approx \frac{\epsilon}{\tau }[-1 + w F’(w\cdot r^* + I_{\text{ext}};a,\theta)]
+\end{align}</p>
+<p>That is, as in the linear system above, the value of</p>
+<div class="math notranslate nohighlight">
+\[\lambda = [-1+ wF'(w\cdot r^* + I_{\text{ext}};a,\theta)]/\tau \qquad (4)\]</div>
+<p>determines whether the perturbation will grow or decay to zero, i.e., <span class="math notranslate nohighlight">\(\lambda\)</span> defines the stability of the fixed point. This value is called the <strong>eigenvalue</strong> of the dynamical system.</p>
+</div>
+</div>
+<div class="section" id="exercise-4-compute-df">
+<h2>Exercise 4: Compute <span class="math notranslate nohighlight">\(dF\)</span><a class="headerlink" href="#exercise-4-compute-df" title="Permalink to this headline">¶</a></h2>
+<p>The derivative of the sigmoid transfer function is:
+\begin{align}
+\frac{dF}{dx} &amp; = \frac{d}{dx} (1+\exp{-a(x-\theta)})^{-1}  \
+&amp; = a\exp{-a(x-\theta)} (1+\exp{-a(x-\theta)})^{-2}. \qquad (5)
+\end{align}</p>
+<p>Let’s now find the expression for the derivative <span class="math notranslate nohighlight">\(\displaystyle{\frac{dF}{dx}}\)</span> in the following cell and plot it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dF</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Population activation function.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x     : the population input</span>
+<span class="sd">    a     : the gain of the function</span>
+<span class="sd">    theta : the threshold of the function</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    dFdx  : the population activation response F(x) for input x</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1">###########################################################################</span>
+  <span class="c1"># TODO for students: compute dFdx ##</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student excercise: compute the deravitive of F&quot;</span><span class="p">)</span>
+  <span class="c1">###########################################################################</span>
+
+  <span class="c1"># Calculate the population activation</span>
+  <span class="n">dFdx</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="k">return</span> <span class="n">dFdx</span>
+
+
+<span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars_single</span><span class="p">()</span>  <span class="c1"># get default parameters</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">)</span>      <span class="c1"># set the range of input</span>
+
+<span class="c1"># Uncomment below to test your function</span>
+<span class="c1"># df = dF(x, pars[&#39;a&#39;], pars[&#39;theta&#39;])</span>
+<span class="c1"># plot_dFdt(x, df)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D4_DynamicNetworks/solutions/W2D4_Tutorial1_Solution_ce2e3bc5.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=560 height=416 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D4_DynamicNetworks/static/W2D4_Tutorial1_Solution_ce2e3bc5_0.png>
+</div>
+<div class="section" id="exercise-5-compute-eigenvalues">
+<h2>Exercise 5: Compute eigenvalues<a class="headerlink" href="#exercise-5-compute-eigenvalues" title="Permalink to this headline">¶</a></h2>
+<p>As discussed above, for the case with <span class="math notranslate nohighlight">\(w=5.0\)</span> and <span class="math notranslate nohighlight">\(I_{\text{ext}}=0.5\)</span>, the system displays <strong>three</strong> fixed points. However, when we simulated the dynamics and varied the initial conditions <span class="math notranslate nohighlight">\(r_{\rm init}\)</span>, we could only obtain <strong>two</strong> steady states. In this exercise, we will now check the stability of each of the three fixed points by calculating the corresponding eigenvalues with the function <code class="docutils literal notranslate"><span class="pre">eig_single</span></code>. Check the sign of each eigenvalue (i.e., stability of each fixed point). How many of the fixed points are stable?</p>
+<p>Note that the expression of the eigenvalue at fixed point <span class="math notranslate nohighlight">\(r^*\)</span>
+$<span class="math notranslate nohighlight">\(\lambda = [-1+ wF'(w\cdot r^* + I_{\text{ext}};a,\theta)]/\tau\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">eig_single</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">I_ext</span><span class="p">,</span> <span class="o">**</span><span class="n">other_pars</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Args:</span>
+<span class="sd">    fp   : fixed point r_fp</span>
+<span class="sd">    tau, a, theta, w, I_ext : Simulation parameters</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    eig : eigevalue of the linearized system</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1">#####################################################################</span>
+  <span class="c1">## TODO for students: compute eigenvalue and disable the error</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student excercise: compute the eigenvalue&quot;</span><span class="p">)</span>
+  <span class="c1">######################################################################</span>
+  <span class="c1"># Compute the eigenvalue</span>
+  <span class="n">eig</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="k">return</span> <span class="n">eig</span>
+
+
+<span class="c1"># Find the eigenvalues for all fixed points of Exercise 2</span>
+<span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars_single</span><span class="p">(</span><span class="n">w</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">I_ext</span><span class="o">=.</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">r_guess_vector</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">4</span><span class="p">,</span> <span class="o">.</span><span class="mi">9</span><span class="p">]</span>
+<span class="n">x_fp</span> <span class="o">=</span> <span class="n">my_fp_finder</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">r_guess_vector</span><span class="p">)</span>
+
+<span class="c1"># Uncomment below lines after completing the eig_single function.</span>
+
+<span class="c1"># for fp in x_fp:</span>
+<span class="c1">#   eig_fp = eig_single(fp, **pars)</span>
+<span class="c1">#   print(f&#39;Fixed point1 at {fp:.3f} with Eigenvalue={eig_fp:.3f}&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>SAMPLE OUTPUT</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span> <span class="n">point1</span> <span class="n">at</span> <span class="mf">0.042</span> <span class="k">with</span> <span class="n">Eigenvalue</span><span class="o">=-</span><span class="mf">0.583</span>
+<span class="n">Fixed</span> <span class="n">point2</span> <span class="n">at</span> <span class="mf">0.447</span> <span class="k">with</span> <span class="n">Eigenvalue</span><span class="o">=</span><span class="mf">0.498</span>
+<span class="n">Fixed</span> <span class="n">point3</span> <span class="n">at</span> <span class="mf">0.900</span> <span class="k">with</span> <span class="n">Eigenvalue</span><span class="o">=-</span><span class="mf">0.626</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D4_DynamicNetworks/solutions/W2D4_Tutorial1_Solution_e285f60d.py"><em>Click for solution</em></a></p>
+</div>
+<div class="section" id="id1">
+<h2>Think!<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Throughout the tutorial, we have assumed <span class="math notranslate nohighlight">\(w&gt; 0 \)</span>, i.e., we considered a single population of <strong>excitatory</strong> neurons. What do you think will be the behavior of a population of inhibitory neurons, i.e., where <span class="math notranslate nohighlight">\(w&gt; 0\)</span> is replaced by <span class="math notranslate nohighlight">\(w&lt; 0\)</span>?</p>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D4_DynamicNetworks/solutions/W2D4_Tutorial1_Solution_579bc9c9.py"><em>Click for solution</em></a></p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="bonus-2-noisy-input-drives-the-transition-between-two-stable-states">
+<h1>Bonus 2: Noisy input drives the transition between two stable states<a class="headerlink" href="#bonus-2-noisy-input-drives-the-transition-between-two-stable-states" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ornstein-uhlenbeck-ou-process">
+<h2>Ornstein-Uhlenbeck (OU) process<a class="headerlink" href="#ornstein-uhlenbeck-ou-process" title="Permalink to this headline">¶</a></h2>
+<p>As discussed in several previous tutorials, the OU process is usually used to generate a noisy input into the neuron. The OU input <span class="math notranslate nohighlight">\(\eta(t)\)</span> follows:</p>
+<div class="math notranslate nohighlight">
+\[\tau_\eta \frac{d}{dt}\eta(t) = -\eta (t) + \sigma_\eta\sqrt{2\tau_\eta}\xi(t)\]</div>
+<p>Execute the following function <code class="docutils literal notranslate"><span class="pre">my_OU(pars,</span> <span class="pre">sig,</span> <span class="pre">myseed=False)</span></code> to generate an OU process.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title OU process `my_OU(pars, sig, myseed=False)`</span>
+
+<span class="c1"># @markdown Make sure you execute this cell to visualize the noise!</span>
+
+
+<span class="k">def</span> <span class="nf">my_OU</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">myseed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  A functions that generates Ornstein-Uhlenback process</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    pars       : parameter dictionary</span>
+<span class="sd">    sig        : noise amplitute</span>
+<span class="sd">    myseed     : random seed. int or boolean</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    I          : Ornstein-Uhlenbeck input current</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># Retrieve simulation parameters</span>
+  <span class="n">dt</span><span class="p">,</span> <span class="n">range_t</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">],</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">]</span>
+  <span class="n">Lt</span> <span class="o">=</span> <span class="n">range_t</span><span class="o">.</span><span class="n">size</span>
+  <span class="n">tau_ou</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;tau_ou&#39;</span><span class="p">]</span>  <span class="c1"># [ms]</span>
+
+  <span class="c1"># set random seed</span>
+  <span class="k">if</span> <span class="n">myseed</span><span class="p">:</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">myseed</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">()</span>
+
+  <span class="c1"># Initialize</span>
+  <span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">Lt</span><span class="p">)</span>
+  <span class="n">I_ou</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Lt</span><span class="p">)</span>
+  <span class="n">I_ou</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">noise</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">sig</span>
+
+  <span class="c1"># generate OU</span>
+  <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Lt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">I_ou</span><span class="p">[</span><span class="n">it</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">I_ou</span><span class="p">[</span><span class="n">it</span><span class="p">]</span>
+                    <span class="o">+</span> <span class="n">dt</span> <span class="o">/</span> <span class="n">tau_ou</span> <span class="o">*</span> <span class="p">(</span><span class="mf">0.</span> <span class="o">-</span> <span class="n">I_ou</span><span class="p">[</span><span class="n">it</span><span class="p">])</span>
+                    <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">/</span> <span class="n">tau_ou</span><span class="p">)</span> <span class="o">*</span> <span class="n">sig</span> <span class="o">*</span> <span class="n">noise</span><span class="p">[</span><span class="n">it</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+
+  <span class="k">return</span> <span class="n">I_ou</span>
+
+
+<span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars_single</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">pars</span><span class="p">[</span><span class="s1">&#39;tau_ou&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>  <span class="c1"># [ms]</span>
+<span class="n">sig_ou</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">I_ou</span> <span class="o">=</span> <span class="n">my_OU</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">sig</span><span class="o">=</span><span class="n">sig_ou</span><span class="p">,</span> <span class="n">myseed</span><span class="o">=</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">],</span> <span class="n">I_ou</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t (ms)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$I_{\mathrm</span><span class="si">{OU}</span><span class="s1">}$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="example-up-down-transition">
+<h2>Example: Up-Down transition<a class="headerlink" href="#example-up-down-transition" title="Permalink to this headline">¶</a></h2>
+<p>In the presence of two or more fixed points, noisy inputs can drive a transition between the fixed points! Here, we stimulate an E population for 1,000 ms applying OU inputs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Simulation of an E population with OU inputs</span>
+
+<span class="c1"># @markdown Make sure you execute this cell to spot the Up-Down states!</span>
+
+<span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars_single</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">pars</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="n">sig_ou</span> <span class="o">=</span> <span class="mf">0.7</span>
+<span class="n">pars</span><span class="p">[</span><span class="s1">&#39;tau_ou&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>  <span class="c1"># [ms]</span>
+<span class="n">pars</span><span class="p">[</span><span class="s1">&#39;I_ext&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.56</span> <span class="o">+</span> <span class="n">my_OU</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">sig</span><span class="o">=</span><span class="n">sig_ou</span><span class="p">,</span> <span class="n">myseed</span><span class="o">=</span><span class="mi">2020</span><span class="p">)</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">simulate_single</span><span class="p">(</span><span class="n">pars</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">],</span> <span class="n">r</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t (ms)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$r(t)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./W2D4_DynamicNetworks/student"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../intro_text.html" title="previous page">W2D4 - Dynamic Networks</a>
+    <a class='right-next' id="next-link" href="W2D4_Tutorial2.html" title="next page">Tutorial 2: Wilson-Cowan Model</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Neuromatch<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
