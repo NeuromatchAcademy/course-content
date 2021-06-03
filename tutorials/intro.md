@@ -1,1 +1,3 @@
-# NMA 2021
+# Introduction
+
+Welcome to the Neuromatch computational neuroscience course!
