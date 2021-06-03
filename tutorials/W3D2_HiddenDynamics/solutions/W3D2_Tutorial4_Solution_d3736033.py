@@ -4,13 +4,13 @@ def sample_lds(n_timesteps, params, seed=0):
 
   Args:
   n_timesteps (int): the number of time steps to simulate
-  params (dict): a dictionary of model paramters: (F, Q, H, R, mu_0, sigma_0)
+  params (dict): a dictionary of model paramters: (D, Q, H, R, mu_0, sigma_0)
   seed (int): a random seed to use for reproducibility checks
 
   Returns:
   ndarray, ndarray: the generated state and observation data
   """
-  n_dim_state = params['F'].shape[0]
+  n_dim_state = params['D'].shape[0]
   n_dim_obs = params['H'].shape[0]
 
   # set seed
@@ -18,7 +18,7 @@ def sample_lds(n_timesteps, params, seed=0):
 
   # precompute random samples from the provided covariance matrices
   # mean defaults to 0
-  zi = stats.multivariate_normal(cov=params['Q']).rvs(n_timesteps)
+  mi = stats.multivariate_normal(cov=params['Q']).rvs(n_timesteps)
   eta = stats.multivariate_normal(cov=params['R']).rvs(n_timesteps)
 
   # initialize state and observation arrays
@@ -32,7 +32,7 @@ def sample_lds(n_timesteps, params, seed=0):
       state[t] = stats.multivariate_normal(mean=params['mu_0'],
                                            cov=params['sigma_0']).rvs(1)
     else:
-      state[t] = params['F'] @ state[t-1] + zi[t]
+      state[t] = params['D'] @ state[t-1] + mi[t]
 
     # write the expression for computing the observation
     obs[t] = params['H'] @ state[t] + eta[t]

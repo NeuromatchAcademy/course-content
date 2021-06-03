@@ -1,11 +1,10 @@
+
 def one_step_update(model, posterior_tm1, Y_t):
   """Given a HMM model, calculate the one-time-step updates to the posterior.
-
   Args:
     model (GaussianHMM instance): the HMM
     posterior_tm1 (numpy array): Posterior at `t-1`
     Y_t (numpy array): Observation at `t`
-
     Returns:
     posterior_t (numpy array): Posterior at `t`
   """
@@ -20,7 +19,7 @@ switch_prob = 0.1
 noise_level = 0.5
 nsample = 50
 T = 160
-model = create_model(switch_prob, noise_level)
+model = create_HMM(switch_prob, noise_level)
 
 posterior_list = []
 for i in range(nsample):

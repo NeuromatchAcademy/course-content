@@ -1,11 +1,9 @@
 def m_step(gamma, xi, dt):
   """Calculate the M-step updates for the HMM spiking model.
-
   Args:
     gamma ():       Number of epochs of EM to run
     xi (numpy 3d array): Tensor of recordings, has shape (n_trials, T, C)
     dt (float):         Duration of a time bin
-
   Returns:
     psi_new (numpy vector): Updated initial probabilities for each state
     A_new (numpy matrix):   Updated transition matrix, A[i,j] represents the

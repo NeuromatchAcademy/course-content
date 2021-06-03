@@ -4,18 +4,18 @@ def kalman_smooth(data, params):
 
   Args:
     data (ndarray): a sequence of osbervations of shape(n_timesteps, n_dim_obs)
-    params (dict): a dictionary of model paramters: (F, Q, H, R, mu_0, sigma_0)
+    params (dict): a dictionary of model paramters: (D, Q, H, R, mu_0, sigma_0)
 
   Returns:
     ndarray, ndarray: the smoothed system means and noise covariance values
   """
   # pulled out of the params dict for convenience
-  F = params['F']
+  D= params['D']
   Q = params['Q']
   H = params['H']
   R = params['R']
 
-  n_dim_state = F.shape[0]
+  n_dim_state = D.shape[0]
   n_dim_obs = H.shape[0]
 
   # first run the forward pass to get the filtered means and covariances
@@ -29,12 +29,12 @@ def kalman_smooth(data, params):
 
   # smooth the data
   for t in reversed(range(len(data)-1)):
-    sigma_pred = F @ sigma[t] @ F.T + Q  # sigma_pred at t+1
+    sigma_pred = D@ sigma[t] @ D.T + Q  # sigma_pred at t+1
 
     # write the expression to compute the Kalman gain for the backward process
-    J = sigma[t] @ F.T @ np.linalg.inv(sigma_pred)
+    J = sigma[t] @ D.T @ np.linalg.inv(sigma_pred)
     # write the expression to compute the smoothed state mean estimate
-    mu_hat[t] = mu[t] + J @ (mu_hat[t+1] - F @ mu[t])
+    mu_hat[t] = mu[t] + J @ (mu_hat[t+1] - D@ mu[t])
     # write the expression to compute the smoothed state noise covariance estimate
     sigma_hat[t] = sigma[t] + J @ (sigma_hat[t+1] - sigma_pred) @ J.T
 
