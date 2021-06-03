@@ -4,7 +4,7 @@ switch_prob = 0.1
 log10_noise_level = -1
 
 # Build model
-model = create_model(switch_prob=switch_prob,
+model = create_HMM(switch_prob=switch_prob,
                      noise_level=10.**log10_noise_level,
                      startprob=[0.5, 0.5])
 observations, states = model.sample(nstep)
