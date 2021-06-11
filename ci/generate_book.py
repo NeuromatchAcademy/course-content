@@ -2,7 +2,7 @@ import yaml
 
 
 def main():
-    with open('tutorials/materials.yml') as fh:
+    with open('materials.yml') as fh:
         materials = yaml.load(fh, Loader=yaml.FullLoader)
     
     toc = {'Pre-reqs Refresher': {'part': 'Pre-reqs Refresher', 'chapters': []},
@@ -13,7 +13,7 @@ def main():
     
     for m in materials:
         directory = f"{m['day']}_{''.join(m['name'].split())}"
-        chapter = {'file': f"{directory}/intro_text.md",
+        chapter = {'file': f"tutorials/{directory}/intro_text.md",
                    'title': f"{m['name']} ({m['day']})",
                    'sections': []}
         print(m['day'])
@@ -23,7 +23,7 @@ def main():
 
         # Add tutorials
         for i in range(m['tutorials']):
-            directory = f"{m['day']}_{''.join(m['name'].split())}"
+            directory = f"tutorials/{m['day']}_{''.join(m['name'].split())}"
             notebook = f"{m['day']}_Tutorial{i+1}.ipynb"
             chapter['sections'].append({'file': f"{directory}/student/{notebook}"})
 
@@ -37,7 +37,7 @@ def main():
     for key in toc.keys():
         toc_list.append(toc[key])
 
-    with open('tutorials/_toc.yml', 'w') as fh:
+    with open('_toc.yml', 'w') as fh:
         yaml.dump(toc_list, fh)
 
 
