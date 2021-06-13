@@ -22,36 +22,33 @@ Group projects are offered for the *interactive track* only and will be running 
 
 # Course outline
 
-* [Week 0](#week-0)
-    * [Python Workshop Part 1]
-    * [Python Workshop Part 2]
-    * [Linear Algebra]() 
-    * [Calculus]() 
-    * [Probability & Statistics]() 
-* [Week 1](#week-1)
-    * [Mon, July 5: Model Types]
-    * [Tue, July 6: Modeling Practice]
-    * [Wed, July 7: Model Fitting]
-    * [Thu, July 8: Generalized Linear Models]
-    * [Fri, July 9: Dimensionality Reduction]
+* Week 0
+    * Python Workshop Part 1
+    * Python Workshop Part 2
+    * Linear Algebra
+    * Calculus
+    * Probability & Statistics 
     
- * [Professional Development]
+* Week 1
+    * Mon, July 5: Model Types
+    * Tue, July 6: Modeling Practice
+    * Wed, July 7: Model Fitting
+    * Thu, July 8: Generalized Linear Models
+    * Fri, July 9: Dimensionality Reduction
+     
+* Week 2
+    * Mon, July 12: Deep Learning
+    * Tue, July 13: Linear Systems
+    * Wed, July 14: Biological Neuron Models
+    * Thu, July 15: Dynamic Networks
+    * Fri, July 16: Project day!
     
-* [Week 2](#week-2)
-    * [Mon, July 12: Deep Learning]
-    * [Tue, July 13: Linear Systems]
-    * [Wed, July 14: Biological Neuron Models]
-    * [Thu, July 15: Dynamic Networks]
-    * [Fri, July 16: Project day!]
-    
- * [Professional Development]
- 
-* [Week 3](#week-3)
-    * [Mon, July 27: Bayesian Decisions]
-    * [Tue, July 28: Hidden Dynamics]
-    * [Wed, July 29: Optimal Control]
-    * [Thu, July 30: Reinforcement Learning]
-    * [Fri, July 31: Network Causality]
+* Week 3
+    * Mon, July 27: Bayesian Decisions
+    * Tue, July 28: Hidden Dynamics
+    * Wed, July 29: Optimal Control
+    * Thu, July 30: Reinforcement Learning
+    * Fri, July 31: Network Causality
 
 
 ----
