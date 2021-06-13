@@ -6,7 +6,7 @@
 
 **Objectives**: Introduce traditional and emerging computational neuroscience tools, their complementarity, and what they can tell us about the brain. A main focus is on modeling choices, model creation, model evaluation and understanding how they relate to biological questions.
 
-**Day structure**: Opening keynote, 3h15min lecture/live Q&A/tutorial modules, 40min group discussion, 55min interpretation lecture (Outro) + live Q&As (what did we learn today, what does it mean, underlying philosophy). There will also be many networking activities (professional development sessions, yoga, social hangouts etc)! Details below.
+**Day structure**: Opening keynote, 3h15min lecture/live Q&A/tutorial modules, 40min group discussion, 55min interpretation lecture (Outro) + several live Q&As (what did we learn today, what does it mean, underlying philosophy). There will also be many networking activities (professional development sessions, yoga, social hangouts etc)! Details below.
 
 **Note for visitors from China**: This repository contains many links to YouTube and Google Colab. We have a version of the repository with those same videos posted on bilibili, and the Google Colab links replaced with links to Aliyun. Please visit the [China Accessible Neuromatch Course-Content](https://github.com/erlichlab/course-content/)
 
