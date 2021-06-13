@@ -44,11 +44,11 @@ Group projects are offered for the *interactive track* only and will be running 
     * Fri, July 16: Project day!
     
 * Week 3
-    * Mon, July 27: Bayesian Decisions
-    * Tue, July 28: Hidden Dynamics
-    * Wed, July 29: Optimal Control
-    * Thu, July 30: Reinforcement Learning
-    * Fri, July 31: Network Causality
+    * Mon, July 19: Bayesian Decisions
+    * Tue, July 20: Hidden Dynamics
+    * Wed, July 21: Optimal Control
+    * Thu, July 22: Reinforcement Learning
+    * Fri, July 23: Network Causality
 
 
 ----
