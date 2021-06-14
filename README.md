@@ -22,12 +22,12 @@ Group projects are offered for the *interactive track* only and will be running 
 
 # Course outline
 
-* Week 0
-    * Python Workshop Part 1
-    * Python Workshop Part 2
-    * Linear Algebra
-    * Calculus
-    * Probability & Statistics 
+* Week 0 (Optional)
+    * Asynchronous: Python Workshop Part 1
+    * Asynchronous: Python Workshop Part 2
+    * Wed, June 30th: Linear Algebra
+    * Thus, July 1st:Calculus
+    * Fri, July 2nd: Probability & Statistics 
     
 * Week 1
     * Mon, July 5: Model Types
