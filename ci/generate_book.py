@@ -5,7 +5,7 @@ from jinja2 import Template
 
 
 def main():
-    with open('materials.yml') as fh:
+    with open('tutorials/materials.yml') as fh:
         materials = yaml.load(fh, Loader=yaml.FullLoader)
 
     toc = {'Pre-reqs Refresher': {'part': 'Pre-reqs Refresher', 'chapters': []},
@@ -41,7 +41,7 @@ def main():
     for key in toc.keys():
         toc_list.append(toc[key])
 
-    with open('_toc.yml', 'w') as fh:
+    with open('book/_toc.yml', 'w') as fh:
         yaml.dump(toc_list, fh)
 
 

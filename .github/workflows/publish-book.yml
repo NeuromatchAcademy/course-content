@@ -1,0 +1,48 @@
+name: publish-book
+
+on:
+  push:
+    branches: master
+
+# This job installs dependencies, build the book, and pushes it to `gh-pages`
+jobs:
+  build-and-deploy-book:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install jupyter-book==0.10.2 ghp-import
+
+      - name: Build the book
+        run: |
+          python ci/generate_book.py
+          ln -s ../tutorials book/tutorials
+          jupyter-book build book
+
+      - name: Commit book
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          ghp-import -n -m "Update course book" book/_build/html
+          git checkout gh-pages
+
+      - name: Publish to gh-pages
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          force: true
