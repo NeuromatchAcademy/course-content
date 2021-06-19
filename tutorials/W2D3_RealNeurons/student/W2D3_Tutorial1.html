@@ -1,0 +1,2006 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model &#8212; Neuromatch Computational Neuroscience</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Tutorial 2: Effects of Input Correlation" href="W2D3_Tutorial2.html" />
+    <link rel="prev" title="Intro Video" href="../intro_vid.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      <img src="../../../_static/nma-logo-square-4xp.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Pre-reqs Refresher
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D1_PythonWorkshop1/intro_text.html">
+   Python Workshop 1 (W0D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
+     Tutorial: LIF Neuron - Part I
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D2_PythonWorkshop2/intro_text.html">
+   Python Workshop 2 (W0D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
+     Tutorial 1: LIF Neuron Part II
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D3_LinearAlgebra/intro_text.html">
+   Linear Algebra (W0D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
+     Tutorial 1: Vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
+     Tutorial 2: Matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
+     Bonus Tutorial: Discrete Dynamical Systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D4_Calculus/intro_text.html">
+   Calculus (W0D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
+     Tutorial 1: Basics of Differential and Integral Calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
+     Tutorial 2: Differential Equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
+     Tutorial 3: Numerical Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D5_Statistics/intro_text.html">
+   Statistics (W0D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
+     Neuromatch Academy: Precourse Week, Day 5, Tutorial 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
+     Tutorial 2: Statistical Inference
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Intro to Modeling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D1_ModelTypes/intro_text.html">
+   Model Types (W1D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
+     Tutorial 1: “What” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
+     Tutorial 2: “How” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
+     Tutorial 3: “Why” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D2_ModelingPractice/intro_text.html">
+   Modeling Practice (W1D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
+     Tutorial: Framing the Question
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D3_ModelFitting/intro_text.html">
+   Model Fitting (W1D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
+     Tutorial 1: Linear regression with MSE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
+     Tutorial 2: Linear regression with MLE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
+     Tutorial 3: Confidence intervals and bootstrapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
+     Tutorial 4: Multiple linear regression and polynomial regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
+     Tutorial 5: Model Selection: Bias-variance trade-off
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
+     Tutorial 6: Model Selection: Cross-validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D4_MachineLearning/intro_text.html">
+   Machine Learning (W1D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial1.html">
+     Tutorial 1: GLMs for Encoding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial2.html">
+     Tutorial 2: Classifiers and regularizers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D5_DimensionalityReduction/intro_text.html">
+   Dimensionality Reduction (W1D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
+     Tutorial 1: Geometric view of data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
+     Tutorial 2: Principal Component Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
+     Tutorial 3: Dimensionality Reduction &amp; Reconstruction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
+     Tutorial 4:  Nonlinear Dimensionality Reduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D1_DeepLearning/intro_text.html">
+   Deep Learning (W2D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
+     Tutorial 1: Decoding Neural Responses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
+     Tutorial 2: Convolutional Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
+     Tutorial 2: Building and Evaluating Normative Encoding Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dynamical Systems
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D2_LinearSystems/intro_text.html">
+   Linear Systems (W2D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
+     Tutorial 1: Linear dynamical systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
+     Tutorial 2: Markov Processes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
+     Tutorial 3: Combining determinism and stochasticity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
+     Tutorial 4: Autoregressive models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../intro_text.html">
+   Real Neurons (W2D3)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W2D3_Tutorial2.html">
+     Tutorial 2: Effects of Input Correlation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W2D3_Tutorial3.html">
+     Tutorial 3: Synaptic transmission - Models of static and dynamic synapses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W2D3_Tutorial4.html">
+     Tutorial 4: Spike-timing dependent plasticity (STDP)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D4_DynamicNetworks/intro_text.html">
+   Dynamic Networks (W2D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
+     Tutorial 1: Neural Rate Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
+     Tutorial 2: Wilson-Cowan Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Stochastic Processes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D1_BayesianDecisions/intro_text.html">
+   Bayesian Decisions (W3D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
+     Tutorial 1: Bayes with a binary hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
+     Tutorial 2: Bayesian inference and decisions with continuous hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
+     Bonus Tutorial:Fitting to data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D2_HiddenDynamics/intro_text.html">
+   Hidden Dynamics (W3D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
+     Tutorial 1: Sequential Probability Ratio Test
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
+     Tutorial 2: Hidden Markov Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
+     Tutorial 3: 1D Kalman Filter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
+     Tutorial 4: 2D Kalman Filter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D3_OptimalControl/intro_text.html">
+   Optimal Control (W3D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
+     Tutorial 1: Optimal Control for Discrete States
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
+     Tutorial 2: Optimal Control for Continuous State
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D4_ReinforcementLearning/intro_text.html">
+   Reinforcement Learning (W3D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
+     Tutorial 1: Learning to Predict
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
+     Tutorial 2: Learning to Act: Multi-Armed Bandits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
+     Tutorial 3: Learning to Act: Q-Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
+     Tutorial 4: From Reinforcement Learning to Planning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D5_NetworkCausality/intro_text.html">
+   Network Causality (W3D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
+     Tutorial 1: Interventions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
+     Tutorial 2: Correlations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
+     Tutorial 3: Simultaneous fitting/regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
+     Tutorial 4: Instrumental Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/tutorials/W2D3_RealNeurons/student/W2D3_Tutorial1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/tutorials/W2D3_RealNeurons/student/W2D3_Tutorial1.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial-objectives">
+   Tutorial Objectives
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-1-the-leaky-integrate-and-fire-lif-model">
+   Section 1: The Leaky Integrate-and-Fire (LIF) model
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementation-of-an-lif-neuron-model">
+     Implementation of an LIF neuron model
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1-python-code-to-simulate-the-lif-neuron">
+     Exercise 1: Python code to simulate the LIF neuron
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-2-response-of-an-lif-model-to-different-types-of-input-currents">
+   Section 2: Response of an LIF model to different types of input currents
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-2-1-direct-current-dc">
+     Section 2.1: Direct current (DC)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#lif-neuron-driven-by-constant-current">
+       LIF neuron driven by constant current
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interactive-demo-parameter-exploration-of-dc-input-amplitude">
+       Interactive Demo: Parameter exploration of DC input amplitude
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-2-2-gaussian-white-noise-gwn-current">
+     Section 2.2: Gaussian white noise (GWN) current
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-2-lif-neuron-driven-by-gwn">
+       Exercise 2: LIF neuron driven by GWN
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interactive-demo-lif-neuron-explorer-for-noisy-input">
+       Interactive Demo: LIF neuron Explorer for noisy input
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#think">
+     Think!
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-3-firing-rate-and-spike-time-irregularity">
+   Section 3: Firing rate and spike time irregularity
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interactive-demo-f-i-explorer-for-different-sig-gwn">
+     Interactive Demo: F-I Explorer for different
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sig_gwn
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-3-compute-cv-isi-values">
+       Exercise 3: Compute
+       <span class="math notranslate nohighlight">
+        \(CV_{ISI}\)
+       </span>
+       values
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interactive-demo-spike-irregularity-explorer-for-different-sig-gwn">
+     Interactive Demo: Spike irregularity explorer for different
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sig_gwn
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#try-to-answer-the-following">
+       Try to answer the following:
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-4-generation-of-poisson-type-spike-trains">
+   Section 4: Generation of Poisson type spike trains
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus-1-orenstein-uhlenbeck-process">
+   Bonus 1: Orenstein-Uhlenbeck Process
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ornstein-uhlenbeck-ou-current">
+     Ornstein-Uhlenbeck (OU) current
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interactive-demo-lif-explorer-with-ou-input">
+       Interactive Demo: LIF Explorer with OU input
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Think!
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus-2-generalized-integrate-and-fire-models">
+   Bonus 2: Generalized Integrate-and-Fire models
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D3_RealNeurons/student/W2D3_Tutorial1.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="tutorial-1-the-leaky-integrate-and-fire-lif-neuron-model">
+<h1>Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model<a class="headerlink" href="#tutorial-1-the-leaky-integrate-and-fire-lif-neuron-model" title="Permalink to this headline">¶</a></h1>
+<p><strong>Week 2, Day 3, Tutorial 1</strong></p>
+<p><strong>By Neuromatch Academy</strong></p>
+<p><strong>Content creators:</strong> Qinglong Gu, Songtin Li, John Murray, Richard Naud, Arvind Kumar</p>
+<p><strong>Content reviewers:</strong>  Maryam Vaziri-Pashkam, Ella Batty, Lorenzo Fontolan, Richard Gao, Matthew Krause, Spiros Chavlis, Michael Waskom</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="tutorial-objectives">
+<h1>Tutorial Objectives<a class="headerlink" href="#tutorial-objectives" title="Permalink to this headline">¶</a></h1>
+<p>This is Tutorial 1 of a series on implementing realistic neuron models. In this tutorial, we will build up a leaky integrate-and-fire (LIF) neuron model and study its dynamics in response to various types of inputs. In particular, we are going to write a few lines of code to:</p>
+<ul class="simple">
+<li><p>simulate the LIF neuron model</p></li>
+<li><p>drive the LIF neuron with external inputs, such as direct currents, Gaussian white noise, and Poisson spike trains, etc.</p></li>
+<li><p>study how different inputs affect the  LIF neuron’s output (firing rate and spike time irregularity)</p></li>
+</ul>
+<p>Here, we will especially emphasize identifying conditions (input statistics) under which a neuron can spike at low firing rates and in an irregular manner. The reason for focusing on this is that in most cases, neocortical neurons spike in an irregular manner.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Figure Settings</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>  <span class="c1"># interactive display</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="c1"># use NMA plot style</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;</span><span class="p">)</span>
+<span class="n">my_layout</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Helper functions</span>
+
+
+<span class="k">def</span> <span class="nf">plot_volt_trace</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">sp</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Plot trajetory of membrane potential for a single neuron</span>
+
+<span class="sd">  Expects:</span>
+<span class="sd">  pars   : parameter dictionary</span>
+<span class="sd">  v      : volt trajetory</span>
+<span class="sd">  sp     : spike train</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">  figure of the membrane potential trajetory for a single neuron</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">V_th</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;V_th&#39;</span><span class="p">]</span>
+  <span class="n">dt</span><span class="p">,</span> <span class="n">range_t</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">],</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">]</span>
+  <span class="k">if</span> <span class="n">sp</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+    <span class="n">sp_num</span> <span class="o">=</span> <span class="p">(</span><span class="n">sp</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">v</span><span class="p">[</span><span class="n">sp_num</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">20</span>  <span class="c1"># draw nicer spikes</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">],</span> <span class="n">v</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">V_th</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;V (mV)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Membrane</span><span class="se">\n</span><span class="s1">potential&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;Threshold V$_{\mathrm</span><span class="si">{th}</span><span class="s1">}$&#39;</span><span class="p">],</span>
+             <span class="n">loc</span><span class="o">=</span><span class="p">[</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">])</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">plot_GWN</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">I_GWN</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Args:</span>
+<span class="sd">    pars  : parameter dictionary</span>
+<span class="sd">    I_GWN : Gaussian white noise input</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    figure of the gaussian white noise input</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">][::</span><span class="mi">3</span><span class="p">],</span> <span class="n">I_GWN</span><span class="p">[::</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$I_</span><span class="si">{GWN}</span><span class="s1">$ (pA)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+  <span class="n">plot_volt_trace</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">sp</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">my_hists</span><span class="p">(</span><span class="n">isi1</span><span class="p">,</span> <span class="n">isi2</span><span class="p">,</span> <span class="n">cv1</span><span class="p">,</span> <span class="n">cv2</span><span class="p">,</span> <span class="n">sigma1</span><span class="p">,</span> <span class="n">sigma2</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Args:</span>
+<span class="sd">    isi1 : vector with inter-spike intervals</span>
+<span class="sd">    isi2 : vector with inter-spike intervals</span>
+<span class="sd">    cv1  : coefficient of variation for isi1</span>
+<span class="sd">    cv2  : coefficient of variation for isi2</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    figure with two histograms, isi1, isi2</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+  <span class="n">my_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">isi1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">my_bins</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;ISI (ms)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\sigma_</span><span class="si">{GWN}</span><span class="s1">=$</span><span class="si">%.1f</span><span class="s1">, CV$_{\mathrm</span><span class="si">{isi}</span><span class="s1">}$=</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sigma1</span><span class="p">,</span> <span class="n">cv1</span><span class="p">))</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">isi2</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">my_bins</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;ISI (ms)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\sigma_</span><span class="si">{GWN}</span><span class="s1">=$</span><span class="si">%.1f</span><span class="s1">, CV$_{\mathrm</span><span class="si">{isi}</span><span class="s1">}$=</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sigma2</span><span class="p">,</span> <span class="n">cv2</span><span class="p">))</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="c1"># the function plot the raster of the Poisson spike train</span>
+<span class="k">def</span> <span class="nf">my_raster_Poisson</span><span class="p">(</span><span class="n">range_t</span><span class="p">,</span> <span class="n">spike_train</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Generates poisson trains</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    range_t     : time sequence</span>
+<span class="sd">    spike_train : binary spike trains, with shape (N, Lt)</span>
+<span class="sd">    n           : number of Poisson trains plot</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Raster plot of the spike train</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># find the number of all the spike trains</span>
+  <span class="n">N</span> <span class="o">=</span> <span class="n">spike_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+  <span class="c1"># n should smaller than N:</span>
+  <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="n">N</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The number n exceeds the size of spike trains&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The number n is set to be the size of spike trains&#39;</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">N</span>
+
+  <span class="c1"># plot rater</span>
+  <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">spike_train</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.</span><span class="p">:</span>
+      <span class="n">t_sp</span> <span class="o">=</span> <span class="n">range_t</span><span class="p">[</span><span class="n">spike_train</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">]</span>  <span class="c1"># spike times</span>
+      <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sp</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t_sp</span><span class="p">)),</span> <span class="s1">&#39;k|&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">markeredgewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">range_t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">range_t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">])</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Neuron ID&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-1-the-leaky-integrate-and-fire-lif-model">
+<h1>Section 1: The Leaky Integrate-and-Fire (LIF) model<a class="headerlink" href="#section-1-the-leaky-integrate-and-fire-lif-model" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 1: Reduced Neuron Models</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;rSExvwCVRYg&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="implementation-of-an-lif-neuron-model">
+<h2>Implementation of an LIF neuron model<a class="headerlink" href="#implementation-of-an-lif-neuron-model" title="Permalink to this headline">¶</a></h2>
+<p>Now, it’s your turn to implement one of the simplest mathematical model of a neuron: the leaky integrate-and-fire (LIF) model. The basic idea of LIF neuron was proposed in 1907 by Louis Édouard Lapicque, long before we understood the electrophysiology of a neuron (see a translation of <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/17968583/">Lapicque’s paper</a> ). More details of the model can be found in the book <a class="reference external" href="http://www.gatsby.ucl.ac.uk/~dayan/book/"><strong>Theoretical neuroscience</strong></a> by Peter Dayan and Laurence F. Abbott.</p>
+<p>The subthreshold membrane potential dynamics of a LIF neuron is described by</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2ad67569-32de-439e-8563-204999f5abe4">
+<span class="eqno">(116)<a class="headerlink" href="#equation-2ad67569-32de-439e-8563-204999f5abe4" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+C_m\frac{dV}{dt} = -g_L(V-E_L) + I,\quad (1)
+\end{eqnarray}\]</div>
+<p>where <span class="math notranslate nohighlight">\(C_m\)</span> is the membrane capacitance, <span class="math notranslate nohighlight">\(V\)</span> is the membrane potential, <span class="math notranslate nohighlight">\(g_L\)</span> is the leak conductance (<span class="math notranslate nohighlight">\(g_L = 1/R\)</span>, the inverse of the leak resistance <span class="math notranslate nohighlight">\(R\)</span> mentioned in previous tutorials), <span class="math notranslate nohighlight">\(E_L\)</span> is the resting potential, and <span class="math notranslate nohighlight">\(I\)</span> is the external input current.</p>
+<p>Dividing both sides of the above equation by <span class="math notranslate nohighlight">\(g_L\)</span> gives</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e9903c55-9c5b-4a8f-9354-b6f4077f53aa">
+<span class="eqno">(117)<a class="headerlink" href="#equation-e9903c55-9c5b-4a8f-9354-b6f4077f53aa" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\tau_m\frac{dV}{dt} = -(V-E_L) + \frac{I}{g_L}\,,\quad (2)
+\end{align}\]</div>
+<p>where the <span class="math notranslate nohighlight">\(\tau_m\)</span> is membrane time constant and is defined as <span class="math notranslate nohighlight">\(\tau_m=C_m/g_L\)</span>.</p>
+<p>You might wonder why dividing capacitance by conductance gives units of time! Find out yourself why this is true.</p>
+<p>Below, we will use Eqn.(2) to simulate LIF neuron dynamics.</p>
+<p>If <span class="math notranslate nohighlight">\(I\)</span> is sufficiently strong such that <span class="math notranslate nohighlight">\(V\)</span> reaches a certain threshold value <span class="math notranslate nohighlight">\(V_{\rm th}\)</span>, <span class="math notranslate nohighlight">\(V\)</span> is reset to a reset potential <span class="math notranslate nohighlight">\(V_{\rm reset}&lt; V_{\rm th}\)</span>, and voltage is clamped to <span class="math notranslate nohighlight">\(V_{\rm reset}\)</span> for <span class="math notranslate nohighlight">\(\tau_{\rm ref}\)</span> ms, mimicking the refractoriness of the neuron during an action potential:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-df2f0946-d46e-4ff2-bcae-00ae17283969">
+<span class="eqno">(118)<a class="headerlink" href="#equation-df2f0946-d46e-4ff2-bcae-00ae17283969" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+\mathrm{if}\quad V(t_{\text{sp}})\geq V_{\rm th}&amp;:&amp; V(t)=V_{\rm reset} \text{  for } t\in(t_{\text{sp}}, t_{\text{sp}} + \tau_{\text{ref}}]
+\end{eqnarray}\]</div>
+<p>where <span class="math notranslate nohighlight">\(t_{\rm sp}\)</span> is the spike time when <span class="math notranslate nohighlight">\(V(t)\)</span> just exceeded <span class="math notranslate nohighlight">\(V_{\rm th}\)</span>.</p>
+<p>(<strong>Note</strong>: in the lecture slides, <span class="math notranslate nohighlight">\(\theta\)</span> corresponds to the threshold voltage <span class="math notranslate nohighlight">\(V_{th}\)</span>, and <span class="math notranslate nohighlight">\(\Delta\)</span> corresponds to the refractory time <span class="math notranslate nohighlight">\(\tau_{\rm ref}\)</span>.)</p>
+<p>Thus, the LIF model captures the facts that a neuron:</p>
+<ul class="simple">
+<li><p>performs spatial and temporal integration of synaptic inputs</p></li>
+<li><p>generates a spike when the voltage reaches a certain threshold</p></li>
+<li><p>goes refractory during the action potential</p></li>
+<li><p>has a leaky membrane</p></li>
+</ul>
+<p>The LIF model assumes that the spatial and temporal integration of inputs is linear. Also, membrane potential dynamics close to the spike threshold are much slower in LIF neurons than in real neurons.</p>
+</div>
+<div class="section" id="exercise-1-python-code-to-simulate-the-lif-neuron">
+<h2>Exercise 1: Python code to simulate the LIF neuron<a class="headerlink" href="#exercise-1-python-code-to-simulate-the-lif-neuron" title="Permalink to this headline">¶</a></h2>
+<p>We now write Python code to calculate Eqn. (2) and simulate the LIF neuron dynamics. We will use the Euler method, which you saw in the linear systems case last week,  to numerically integrate Eq 2.</p>
+<p>The cell below initializes a dictionary that stores parameters of the LIF neuron model and the simulation scheme. You can use <code class="docutils literal notranslate"><span class="pre">pars=default_pars(T=simulation_time,</span> <span class="pre">dt=time_step)</span></code> to get the parameters (you can try to print the dictionary <code class="docutils literal notranslate"><span class="pre">pars</span></code>). Note that, <code class="docutils literal notranslate"><span class="pre">simulation_time</span></code> and <code class="docutils literal notranslate"><span class="pre">time_step</span></code> have the unit <code class="docutils literal notranslate"><span class="pre">ms</span></code>. In addition, you can add the value to a new parameter by <code class="docutils literal notranslate"><span class="pre">pars['New_param']</span> <span class="pre">=</span> <span class="pre">value</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
+
+<span class="c1"># @markdown Execute this code to initialize the default parameters</span>
+
+
+<span class="k">def</span> <span class="nf">default_pars</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="n">pars</span> <span class="o">=</span> <span class="p">{}</span>
+
+  <span class="c1"># typical neuron parameters#</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;V_th&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">55.</span>     <span class="c1"># spike threshold [mV]</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;V_reset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">75.</span>  <span class="c1"># reset potential [mV]</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;tau_m&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.</span>     <span class="c1"># membrane time constant [ms]</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;g_L&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.</span>       <span class="c1"># leak conductance [nS]</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;V_init&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">75.</span>   <span class="c1"># initial potential [mV]</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;E_L&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">75.</span>      <span class="c1"># leak reversal potential [mV]</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;tref&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.</span>       <span class="c1"># refractory time (ms)</span>
+
+  <span class="c1"># simulation parameters #</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">400.</span>  <span class="c1"># Total duration of simulation [ms]</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.1</span>   <span class="c1"># Simulation time step [ms]</span>
+
+  <span class="c1"># external parameters if any #</span>
+  <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+    <span class="n">pars</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">],</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">])</span>  <span class="c1"># Vector of discretized time points [ms]</span>
+
+  <span class="k">return</span> <span class="n">pars</span>
+
+
+<span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The cell below defines the function to simulate the LIF neuron when receiving external current inputs. You can use <code class="docutils literal notranslate"><span class="pre">v,</span> <span class="pre">sp</span> <span class="pre">=</span> <span class="pre">run_LIF(pars,</span> <span class="pre">Iinj)</span></code> to get the membrane potential (<code class="docutils literal notranslate"><span class="pre">v</span></code>) and spike train (<code class="docutils literal notranslate"><span class="pre">sp</span></code>) given the dictionary <code class="docutils literal notranslate"><span class="pre">pars</span></code> and input current <code class="docutils literal notranslate"><span class="pre">Iinj</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_LIF</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">Iinj</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Simulate the LIF dynamics with external input current</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    pars       : parameter dictionary</span>
+<span class="sd">    Iinj       : input current [pA]. The injected current here can be a value</span>
+<span class="sd">                 or an array</span>
+<span class="sd">    stop       : boolean. If True, use a current pulse</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    rec_v      : membrane potential</span>
+<span class="sd">    rec_sp     : spike times</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># Set parameters</span>
+  <span class="n">V_th</span><span class="p">,</span> <span class="n">V_reset</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;V_th&#39;</span><span class="p">],</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;V_reset&#39;</span><span class="p">]</span>
+  <span class="n">tau_m</span><span class="p">,</span> <span class="n">g_L</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;tau_m&#39;</span><span class="p">],</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;g_L&#39;</span><span class="p">]</span>
+  <span class="n">V_init</span><span class="p">,</span> <span class="n">E_L</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;V_init&#39;</span><span class="p">],</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;E_L&#39;</span><span class="p">]</span>
+  <span class="n">dt</span><span class="p">,</span> <span class="n">range_t</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">],</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">]</span>
+  <span class="n">Lt</span> <span class="o">=</span> <span class="n">range_t</span><span class="o">.</span><span class="n">size</span>
+  <span class="n">tref</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;tref&#39;</span><span class="p">]</span>
+
+  <span class="c1"># Initialize voltage and current</span>
+  <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Lt</span><span class="p">)</span>
+  <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">V_init</span>
+  <span class="n">Iinj</span> <span class="o">=</span> <span class="n">Iinj</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">Lt</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">stop</span><span class="p">:</span>  <span class="c1"># set end of current to 0 if current pulse</span>
+    <span class="n">Iinj</span><span class="p">[:</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Iinj</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1000</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Iinj</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Iinj</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">:]</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">tr</span> <span class="o">=</span> <span class="mf">0.</span>  <span class="c1"># the count for refractory duration</span>
+
+  <span class="c1"># Simulate the LIF dynamics</span>
+  <span class="n">rec_spikes</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># record spike times</span>
+  <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Lt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">tr</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># check for refractoriness</span>
+      <span class="n">v</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">V_reset</span>
+      <span class="n">tr</span> <span class="o">=</span> <span class="n">tr</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">v</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">V_th</span><span class="p">:</span>  <span class="c1"># reset voltage and record spike event</span>
+      <span class="n">rec_spikes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+      <span class="n">v</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">V_reset</span>
+      <span class="n">tr</span> <span class="o">=</span> <span class="n">tref</span> <span class="o">/</span> <span class="n">dt</span>
+
+    <span class="c1">########################################################################</span>
+    <span class="c1">## TODO for students: compute the membrane potential v, spike train sp #</span>
+    <span class="c1"># Fill out function and remove</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Student Exercise: calculate the dv/dt and the update step!&#39;</span><span class="p">)</span>
+    <span class="c1">########################################################################</span>
+    <span class="c1"># calculate the increment of the membrane potential</span>
+    <span class="n">dv</span> <span class="o">=</span> <span class="o">...</span>
+
+    <span class="c1"># update the membrane potential</span>
+    <span class="n">v</span><span class="p">[</span><span class="n">it</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="n">rec_spikes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rec_spikes</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+
+  <span class="k">return</span> <span class="n">v</span><span class="p">,</span> <span class="n">rec_spikes</span>
+
+
+<span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="c1"># Uncomment below to test your function</span>
+<span class="c1"># v, sp = run_LIF(pars, Iinj=100, stop=True)</span>
+<span class="c1"># plot_volt_trace(pars, v, sp)</span>
+<span class="c1"># plt.ylim([-80, -60])</span>
+<span class="c1"># plt.show()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D3_RealNeurons/solutions/W2D3_Tutorial1_Solution_7a9c48e8.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=555 height=416 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D3_RealNeurons/static/W2D3_Tutorial1_Solution_7a9c48e8_0.png>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-2-response-of-an-lif-model-to-different-types-of-input-currents">
+<h1>Section 2: Response of an LIF model to different types of input currents<a class="headerlink" href="#section-2-response-of-an-lif-model-to-different-types-of-input-currents" title="Permalink to this headline">¶</a></h1>
+<p>In the following section, we will learn how to inject direct current and white noise to study the response of an LIF neuron.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 2: Response of the LIF neuron to different inputs</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;preNGdab7Kk&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="section-2-1-direct-current-dc">
+<h2>Section 2.1: Direct current (DC)<a class="headerlink" href="#section-2-1-direct-current-dc" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="lif-neuron-driven-by-constant-current">
+<h3>LIF neuron driven by constant current<a class="headerlink" href="#lif-neuron-driven-by-constant-current" title="Permalink to this headline">¶</a></h3>
+<p>Investigate the voltage response of the LIF neuron when receiving a DC input of 300 pA by <code class="docutils literal notranslate"><span class="pre">run_LIF</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># get the parameters</span>
+
+<span class="c1"># Run the model to obtain v and sp</span>
+<span class="n">v</span><span class="p">,</span> <span class="n">sp</span> <span class="o">=</span> <span class="n">run_LIF</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">Iinj</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="n">plot_volt_trace</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">sp</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the plot above, you see the membrane potential of an LIF neuron. You may notice that the neuron generates a spike. But this is just a cosmetic spike only for illustration purposes. In an LIF neuron, we only need to keep track of times when the neuron hit the threshold so the postsynaptic neurons can be informed of the spike.</p>
+</div>
+<div class="section" id="interactive-demo-parameter-exploration-of-dc-input-amplitude">
+<h3>Interactive Demo: Parameter exploration of DC input amplitude<a class="headerlink" href="#interactive-demo-parameter-exploration-of-dc-input-amplitude" title="Permalink to this headline">¶</a></h3>
+<p>Here’s an interactive demo that shows how the LIF neuron behavior changes for DC input with different amplitudes.</p>
+<p>How much DC is needed to reach the threshold (rheobase current)? How does the membrane time constant affect the frequency of the neuron?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
+<span class="c1"># @markdown Make sure you execute this cell to enable the widget!</span>
+<span class="n">my_layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s1">&#39;450px&#39;</span>
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span>
+    <span class="n">I_dc</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="mf">50.</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">300.</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span>
+                               <span class="n">layout</span><span class="o">=</span><span class="n">my_layout</span><span class="p">),</span>
+    <span class="n">tau_m</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">20.</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span>
+                                <span class="n">layout</span><span class="o">=</span><span class="n">my_layout</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">diff_DC</span><span class="p">(</span><span class="n">I_dc</span><span class="o">=</span><span class="mf">200.</span><span class="p">,</span> <span class="n">tau_m</span><span class="o">=</span><span class="mf">10.</span><span class="p">):</span>
+  <span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mf">100.</span><span class="p">)</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;tau_m&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tau_m</span>
+  <span class="n">v</span><span class="p">,</span> <span class="n">sp</span> <span class="o">=</span> <span class="n">run_LIF</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">Iinj</span><span class="o">=</span><span class="n">I_dc</span><span class="p">)</span>
+  <span class="n">plot_volt_trace</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">sp</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D3_RealNeurons/solutions/W2D3_Tutorial1_Solution_1058324c.py"><em>Click for solution</em></a></p>
+</div>
+</div>
+<div class="section" id="section-2-2-gaussian-white-noise-gwn-current">
+<h2>Section 2.2: Gaussian white noise (GWN) current<a class="headerlink" href="#section-2-2-gaussian-white-noise-gwn-current" title="Permalink to this headline">¶</a></h2>
+<p>Given the noisy nature of neuronal activity <em>in vivo</em>, neurons usually receive complex, time-varying inputs.</p>
+<p>To mimic this, we will now investigate the neuronal response when the LIF neuron receives Gaussian white noise <span class="math notranslate nohighlight">\(\xi(t)\)</span> with mean</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d0412d31-9992-42da-b378-841252ac9d06">
+<span class="eqno">(119)<a class="headerlink" href="#equation-d0412d31-9992-42da-b378-841252ac9d06" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+E[\xi(t)]=\mu=0,
+\end{eqnarray}\]</div>
+<p>and autocovariance</p>
+<div class="amsmath math notranslate nohighlight" id="equation-795e1c77-8ea2-4285-8667-aab8025ed19d">
+<span class="eqno">(120)<a class="headerlink" href="#equation-795e1c77-8ea2-4285-8667-aab8025ed19d" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+E[\xi(t)\xi(t+\tau)]=\sigma_\xi^2 \delta(\tau)
+\end{eqnarray}\]</div>
+<p>Note that the GWN has zero mean, that is, it describes only the fluctuations of the input received by a neuron. We can thus modify our definition of GWN to have a nonzero mean value <span class="math notranslate nohighlight">\(\mu\)</span> that equals the DC input, since this is the average input into the cell. The cell below defines the modified gaussian white noise currents with nonzero mean <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+<span class="c1">#@markdown Execute this cell to get function to generate GWN</span>
+
+<span class="k">def</span> <span class="nf">my_GWN</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">myseed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Function that generates Gaussian white noise input</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    pars       : parameter dictionary</span>
+<span class="sd">    mu         : noise baseline (mean)</span>
+<span class="sd">    sig        : noise amplitute (standard deviation)</span>
+<span class="sd">    myseed     : random seed. int or boolean</span>
+<span class="sd">                 the same seed will give the same</span>
+<span class="sd">                 random number sequence</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    I          : Gaussian white noise input</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># Retrieve simulation parameters</span>
+  <span class="n">dt</span><span class="p">,</span> <span class="n">range_t</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">],</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">]</span>
+  <span class="n">Lt</span> <span class="o">=</span> <span class="n">range_t</span><span class="o">.</span><span class="n">size</span>
+
+  <span class="c1"># set random seed</span>
+  <span class="c1"># you can fix the seed of the random number generator so that the results</span>
+  <span class="c1"># are reliable however, when you want to generate multiple realization</span>
+  <span class="c1"># make sure that you change the seed for each new realization.</span>
+  <span class="k">if</span> <span class="n">myseed</span><span class="p">:</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">myseed</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">()</span>
+
+  <span class="c1"># generate GWN</span>
+  <span class="c1"># we divide here by 1000 to convert units to sec.</span>
+  <span class="n">I_gwn</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">sig</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">Lt</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dt</span> <span class="o">/</span> <span class="mf">1000.</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">I_gwn</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-2-lif-neuron-driven-by-gwn">
+<h3>Exercise 2: LIF neuron driven by GWN<a class="headerlink" href="#exercise-2-lif-neuron-driven-by-gwn" title="Permalink to this headline">¶</a></h3>
+<p>You can generate a noisy input with <code class="docutils literal notranslate"><span class="pre">my_GWN(pars,</span> <span class="pre">mu,</span> <span class="pre">sig,</span> <span class="pre">myseed=False)</span></code>. Here, <span class="math notranslate nohighlight">\(\mu=250\)</span> and <span class="math notranslate nohighlight">\(\sigma=5\)</span>. Note that fixing the value of the random seed (e.g., <code class="docutils literal notranslate"><span class="pre">myseed=2020</span></code>) will allow you to obtain the same result every time you run this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mf">100.</span><span class="p">)</span>
+<span class="n">sig_gwn</span> <span class="o">=</span> <span class="mf">5.</span>
+<span class="n">mu_gwn</span> <span class="o">=</span> <span class="mf">250.</span>
+<span class="c1">#######################################################</span>
+<span class="c1">## TODO for students: compute the noisy input I_GWN   #</span>
+<span class="c1"># and then compute v, sp with inject I_GWN into LIF   #</span>
+<span class="c1">#######################################################</span>
+
+<span class="c1"># Calculate the GWN current</span>
+<span class="c1"># I_GWN = my_GWN(pars, ..., ..., myseed=2020)</span>
+
+<span class="c1"># Run the model and calculate the v and the sp</span>
+<span class="c1"># v, sp = run_LIF(pars, ...)</span>
+
+<span class="c1"># Uncomment these lines after obtaining v, sp</span>
+<span class="c1"># plot_GWN(pars, I_GWN)</span>
+<span class="c1"># plt.show()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D3_RealNeurons/solutions/W2D3_Tutorial1_Solution_14e10901.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=848 height=272 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D3_RealNeurons/static/W2D3_Tutorial1_Solution_14e10901_0.png>
+</div>
+<div class="section" id="interactive-demo-lif-neuron-explorer-for-noisy-input">
+<h3>Interactive Demo: LIF neuron Explorer for noisy input<a class="headerlink" href="#interactive-demo-lif-neuron-explorer-for-noisy-input" title="Permalink to this headline">¶</a></h3>
+<p>The mean of the GWN is the amplitude of DC. Indeed, when <span class="math notranslate nohighlight">\(\sigma = 0\)</span>, GWN is just a DC.</p>
+<p>So the question arises how does <span class="math notranslate nohighlight">\(\sigma\)</span> of the GWN affect the spiking behavior of the neuron. For instance we may want to know</p>
+<ul class="simple">
+<li><p>how does the minimum input (i.e. <span class="math notranslate nohighlight">\(\mu\)</span>) needed to make a neuron spike change with increase in <span class="math notranslate nohighlight">\(\sigma\)</span></p></li>
+<li><p>how does the spike regularity change with increase in <span class="math notranslate nohighlight">\(\sigma\)</span></p></li>
+</ul>
+<p>To get an intuition about these questions you can use the following interactive demo that shows how the LIF neuron behavior changes for noisy input with different amplitudes (the mean <span class="math notranslate nohighlight">\(\mu\)</span>) and fluctuation sizes (<span class="math notranslate nohighlight">\(\sigma\)</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
+
+<span class="c1"># @markdown Make sure you execute this cell to enable the widget!</span>
+
+<span class="n">my_layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s1">&#39;450px&#39;</span>
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span>
+    <span class="n">mu_gwn</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="mf">200.</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">100.</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">300.</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">5.</span><span class="p">,</span>
+                               <span class="n">layout</span><span class="o">=</span><span class="n">my_layout</span><span class="p">),</span>
+    <span class="n">sig_gwn</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">5.</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span>
+                                <span class="n">layout</span><span class="o">=</span><span class="n">my_layout</span><span class="p">)</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">diff_GWN_to_LIF</span><span class="p">(</span><span class="n">mu_gwn</span><span class="p">,</span> <span class="n">sig_gwn</span><span class="p">):</span>
+  <span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mf">100.</span><span class="p">)</span>
+  <span class="n">I_GWN</span> <span class="o">=</span> <span class="n">my_GWN</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu_gwn</span><span class="p">,</span> <span class="n">sig</span><span class="o">=</span><span class="n">sig_gwn</span><span class="p">)</span>
+  <span class="n">v</span><span class="p">,</span> <span class="n">sp</span> <span class="o">=</span> <span class="n">run_LIF</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">Iinj</span><span class="o">=</span><span class="n">I_GWN</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">][::</span><span class="mi">3</span><span class="p">],</span> <span class="n">I_GWN</span><span class="p">[::</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$I_</span><span class="si">{GWN}</span><span class="s1">$ (pA)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+  <span class="n">plot_volt_trace</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">sp</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D3_RealNeurons/solutions/W2D3_Tutorial1_Solution_030b7368.py"><em>Click for solution</em></a></p>
+</div>
+</div>
+<div class="section" id="think">
+<h2>Think!<a class="headerlink" href="#think" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>As we increase the input average (<span class="math notranslate nohighlight">\(\mu\)</span>) or the input fluctuation (<span class="math notranslate nohighlight">\(\sigma\)</span>), the spike count changes. How much can we increase the spike count, and what might be the relationship between GWN mean/std or DC value and spike count?</p></li>
+<li><p>We have seen above that when we inject DC, the neuron spikes in a regular manner (clock like), and this regularity is reduced when GWN is injected. The question is, how irregular can we make the neurons spiking by changing the parameters of the GWN?</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-3-firing-rate-and-spike-time-irregularity">
+<h1>Section 3: Firing rate and spike time irregularity<a class="headerlink" href="#section-3-firing-rate-and-spike-time-irregularity" title="Permalink to this headline">¶</a></h1>
+<p>When we plot the output firing rate as a function of GWN mean or DC value, it is called the input-output transfer function of the neuron (so simply F-I curve).</p>
+<p>Spike regularity can be quantified as the <strong>coefficient of variation (CV) of the inter-spike-interval (ISI)</strong>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d93a6e4a-a4b7-49a1-833e-914d3b6457cf">
+<span class="eqno">(121)<a class="headerlink" href="#equation-d93a6e4a-a4b7-49a1-833e-914d3b6457cf" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\text{CV}_{\text{ISI}} = \frac{std(\text{ISI})}{mean(\text{ISI})}
+\end{align}\]</div>
+<p>A Poisson train is an example of high irregularity, in which <span class="math notranslate nohighlight">\(\textbf{CV}_{\textbf{ISI}} \textbf{= 1}\)</span>. And for a clocklike (regular) process we have <span class="math notranslate nohighlight">\(\textbf{CV}_{\textbf{ISI}} \textbf{= 0}\)</span> because of <strong>std(ISI)=0</strong>.</p>
+<div class="section" id="interactive-demo-f-i-explorer-for-different-sig-gwn">
+<h2>Interactive Demo: F-I Explorer for different <code class="docutils literal notranslate"><span class="pre">sig_gwn</span></code><a class="headerlink" href="#interactive-demo-f-i-explorer-for-different-sig-gwn" title="Permalink to this headline">¶</a></h2>
+<p>How does the F-I curve of the LIF neuron change as we increase the <span class="math notranslate nohighlight">\(\sigma\)</span> of the GWN? We can already expect that the F-I curve will be stochastic and the results will vary from one trial to another. But will there be any other change compared to the F-I curved measured using DC?</p>
+<p>Here’s an interactive demo that shows how the F-I curve of a LIF neuron changes for different levels of fluctuation <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
+
+<span class="c1"># @markdown Make sure you execute this cell to enable the widget!</span>
+
+
+<span class="n">my_layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s1">&#39;450px&#39;</span>
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span>
+    <span class="n">sig_gwn</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">6.</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                                <span class="n">layout</span><span class="o">=</span><span class="n">my_layout</span><span class="p">)</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">diff_std_affect_fI</span><span class="p">(</span><span class="n">sig_gwn</span><span class="p">):</span>
+  <span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mf">1000.</span><span class="p">)</span>
+  <span class="n">I_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">100.</span><span class="p">,</span> <span class="mf">400.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">)</span>
+  <span class="n">spk_count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">I_mean</span><span class="p">))</span>
+  <span class="n">spk_count_dc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">I_mean</span><span class="p">))</span>
+
+  <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">I_mean</span><span class="p">)):</span>
+      <span class="n">I_GWN</span> <span class="o">=</span> <span class="n">my_GWN</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">I_mean</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">sig</span><span class="o">=</span><span class="n">sig_gwn</span><span class="p">,</span> <span class="n">myseed</span><span class="o">=</span><span class="mi">2020</span><span class="p">)</span>
+      <span class="n">v</span><span class="p">,</span> <span class="n">rec_spikes</span> <span class="o">=</span> <span class="n">run_LIF</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">Iinj</span><span class="o">=</span><span class="n">I_GWN</span><span class="p">)</span>
+      <span class="n">v_dc</span><span class="p">,</span> <span class="n">rec_sp_dc</span> <span class="o">=</span> <span class="n">run_LIF</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">Iinj</span><span class="o">=</span><span class="n">I_mean</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+      <span class="n">spk_count</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rec_spikes</span><span class="p">)</span>
+      <span class="n">spk_count_dc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rec_sp_dc</span><span class="p">)</span>
+
+  <span class="c1"># Plot the F-I curve i.e. Output firing rate as a function of input mean.</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">I_mean</span><span class="p">,</span> <span class="n">spk_count</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span>
+           <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\sigma_{\mathrm</span><span class="si">{GWN}</span><span class="s1">}=</span><span class="si">%.2f</span><span class="s1">$&#39;</span> <span class="o">%</span> <span class="n">sig_gwn</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">I_mean</span><span class="p">,</span> <span class="n">spk_count_dc</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dashes</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+           <span class="n">label</span><span class="o">=</span><span class="s1">&#39;DC input&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Spike count&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Average injected current (pA)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D3_RealNeurons/solutions/W2D3_Tutorial1_Solution_0125b1f6.py"><em>Click for solution</em></a></p>
+<div class="section" id="exercise-3-compute-cv-isi-values">
+<h3>Exercise 3: Compute <span class="math notranslate nohighlight">\(CV_{ISI}\)</span> values<a class="headerlink" href="#exercise-3-compute-cv-isi-values" title="Permalink to this headline">¶</a></h3>
+<p>As shown above, the F-I curve becomes smoother while increasing the amplitude of the fluctuation (<span class="math notranslate nohighlight">\(\sigma\)</span>). In addition, the fluctuation can also change the irregularity of the spikes. Let’s investigate the effect of <span class="math notranslate nohighlight">\(\mu=250\)</span> with <span class="math notranslate nohighlight">\(\sigma=0.5\)</span> vs <span class="math notranslate nohighlight">\(\sigma=3\)</span>.</p>
+<p>Fill in the code below to compute ISI, then plot the histogram of the ISI and compute the <span class="math notranslate nohighlight">\(CV_{ISI}\)</span>. Note that, you can use <code class="docutils literal notranslate"><span class="pre">np.diff</span></code> to calculate ISI.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">isi_cv_LIF</span><span class="p">(</span><span class="n">spike_times</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Calculates the inter-spike intervals (isi) and</span>
+<span class="sd">  the coefficient of variation (cv) for a given spike_train</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    spike_times : (n, ) vector with the spike times (ndarray)</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    isi         : (n-1,) vector with the inter-spike intervals (ms)</span>
+<span class="sd">    cv          : coefficient of variation of isi (float)</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1">########################################################################</span>
+  <span class="c1">## TODO for students: compute the membrane potential v, spike train sp #</span>
+  <span class="c1"># Fill out function and remove</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Student Exercise: calculate the isi and the cv!&#39;</span><span class="p">)</span>
+  <span class="c1">########################################################################</span>
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">spike_times</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="c1"># Compute isi</span>
+    <span class="n">isi</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="c1"># Compute cv</span>
+    <span class="n">cv</span> <span class="o">=</span> <span class="o">...</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">isi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">cv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+  <span class="k">return</span> <span class="n">isi</span><span class="p">,</span> <span class="n">cv</span>
+
+
+<span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mf">1000.</span><span class="p">)</span>
+<span class="n">mu_gwn</span> <span class="o">=</span> <span class="mi">250</span>
+<span class="n">sig_gwn1</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">sig_gwn2</span> <span class="o">=</span> <span class="mf">3.0</span>
+
+<span class="n">I_GWN1</span> <span class="o">=</span> <span class="n">my_GWN</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu_gwn</span><span class="p">,</span> <span class="n">sig</span><span class="o">=</span><span class="n">sig_gwn1</span><span class="p">,</span> <span class="n">myseed</span><span class="o">=</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">sp1</span> <span class="o">=</span> <span class="n">run_LIF</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">Iinj</span><span class="o">=</span><span class="n">I_GWN1</span><span class="p">)</span>
+
+<span class="n">I_GWN2</span> <span class="o">=</span> <span class="n">my_GWN</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu_gwn</span><span class="p">,</span> <span class="n">sig</span><span class="o">=</span><span class="n">sig_gwn2</span><span class="p">,</span> <span class="n">myseed</span><span class="o">=</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">sp2</span> <span class="o">=</span> <span class="n">run_LIF</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">Iinj</span><span class="o">=</span><span class="n">I_GWN2</span><span class="p">)</span>
+
+<span class="c1"># Uncomment to check your function</span>
+<span class="c1"># isi1, cv1 = isi_cv_LIF(sp1)</span>
+<span class="c1"># isi2, cv2 = isi_cv_LIF(sp2)</span>
+
+<span class="c1"># my_hists(isi1, isi2, cv1, cv2, sig_gwn1, sig_gwn2)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D3_RealNeurons/solutions/W2D3_Tutorial1_Solution_d3653711.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=776 height=272 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D3_RealNeurons/static/W2D3_Tutorial1_Solution_d3653711_0.png>
+</div>
+</div>
+<div class="section" id="interactive-demo-spike-irregularity-explorer-for-different-sig-gwn">
+<h2>Interactive Demo: Spike irregularity explorer for different <code class="docutils literal notranslate"><span class="pre">sig_gwn</span></code><a class="headerlink" href="#interactive-demo-spike-irregularity-explorer-for-different-sig-gwn" title="Permalink to this headline">¶</a></h2>
+<p>In the above illustration, we see that the CV of inter-spike-interval (ISI) distribution depends on <span class="math notranslate nohighlight">\(\sigma\)</span> of GWN. What about the mean of GWN, should that also affect the CV<span class="math notranslate nohighlight">\(_{\rm ISI}\)</span>? If yes, how? Does the efficacy of <span class="math notranslate nohighlight">\(\sigma\)</span> in increasing the CV<span class="math notranslate nohighlight">\(_{\rm ISI}\)</span> depend on <span class="math notranslate nohighlight">\(\mu\)</span>?</p>
+<p>In the following interactive demo, you will examine how different levels of fluctuation <span class="math notranslate nohighlight">\(\sigma\)</span> affect the CVs for different average injected currents (<span class="math notranslate nohighlight">\(\mu\)</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+
+<span class="c1">#@markdown Make sure you execute this cell to enable the widget!</span>
+
+<span class="n">my_layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s1">&#39;450px&#39;</span>
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span>
+    <span class="n">sig_gwn</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span>
+                                <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">my_layout</span><span class="p">)</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">diff_std_affect_fI</span><span class="p">(</span><span class="n">sig_gwn</span><span class="p">):</span>
+  <span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mf">1000.</span><span class="p">)</span>
+  <span class="n">I_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">100.</span><span class="p">,</span> <span class="mf">400.</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+  <span class="n">spk_count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">I_mean</span><span class="p">))</span>
+  <span class="n">cv_isi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">I_mean</span><span class="p">))</span>
+
+  <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">I_mean</span><span class="p">)):</span>
+    <span class="n">I_GWN</span> <span class="o">=</span> <span class="n">my_GWN</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">I_mean</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">sig</span><span class="o">=</span><span class="n">sig_gwn</span><span class="p">)</span>
+    <span class="n">v</span><span class="p">,</span> <span class="n">rec_spikes</span> <span class="o">=</span> <span class="n">run_LIF</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">Iinj</span><span class="o">=</span><span class="n">I_GWN</span><span class="p">)</span>
+    <span class="n">spk_count</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rec_spikes</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rec_spikes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+      <span class="n">isi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">rec_spikes</span><span class="p">)</span>
+      <span class="n">cv_isi</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">isi</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">isi</span><span class="p">)</span>
+
+  <span class="c1"># Plot the F-I curve i.e. Output firing rate as a function of input mean.</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">I_mean</span><span class="p">[</span><span class="n">spk_count</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">],</span> <span class="n">cv_isi</span><span class="p">[</span><span class="n">spk_count</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">],</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Average injected current (pA)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Spike irregularity ($\mathrm</span><span class="si">{CV}</span><span class="s1">_\mathrm</span><span class="si">{ISI}</span><span class="s1">$)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="try-to-answer-the-following">
+<h3>Try to answer the following:<a class="headerlink" href="#try-to-answer-the-following" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Does the standard deviation of the injected current affect the F-I curve in any qualitative manner?</p></li>
+<li><p>Why does increasing the mean of GWN reduce the <span class="math notranslate nohighlight">\(CV_{ISI}\)</span>?</p></li>
+<li><p>If you plot spike count (or rate) vs. <span class="math notranslate nohighlight">\(CV_{ISI}\)</span>, should there be a relationship between the two? Try out yourself.</p></li>
+</ul>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D3_RealNeurons/solutions/W2D3_Tutorial1_Solution_c6f1c4a2.py"><em>Click for solution</em></a></p>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-4-generation-of-poisson-type-spike-trains">
+<h1>Section 4: Generation of Poisson type spike trains<a class="headerlink" href="#section-4-generation-of-poisson-type-spike-trains" title="Permalink to this headline">¶</a></h1>
+<p><em>In the next tutorials, we will often use Poisson type spike train to explore properties of neurons and synapses. Therefore, it is good to know how to generate Poisson type spike trains.</em></p>
+<p>Mathematically, a spike train is a Point Process. One of the simplest models of a sequence of presynaptic pulse inputs is the Poisson process. We know that given temporal integration and refractoriness, neurons cannot behave as a Poisson Process, and Gamma Process gives a better approximation (<em>find out what might be the difference in the two processes</em>).
+Here, however, we will assume that the incoming spikes are following Poisson statistics. A question arises about how to simulate a Poisson process. The generation of the Poisson process can be realized by at least two following ways:</p>
+<ul class="simple">
+<li><p>By definition, for a Poisson process with rate <span class="math notranslate nohighlight">\(\lambda\)</span>, the probability of finding one event in the time window with a sufficiently small length <span class="math notranslate nohighlight">\(\Delta t\)</span> is <span class="math notranslate nohighlight">\(P(N = 1) = \lambda \Delta t\)</span>. Therefore, in each time window, we generate a uniformly distributed random variable <span class="math notranslate nohighlight">\(r \in [0,1]\)</span> and generate a Poisson event when <span class="math notranslate nohighlight">\(r &lt;\lambda \Delta t\)</span>. This method allows us to generate Poisson distributed spikes in an online manner.</p></li>
+<li><p>The interval <span class="math notranslate nohighlight">\(t_{k+1}-t_{k}\)</span> between two Poisson events with rate <span class="math notranslate nohighlight">\(\lambda\)</span> follows the exponential distribution, i.e., <span class="math notranslate nohighlight">\(P(t_{k+1}-t_{k}&lt;t) = 1 - e^{\lambda t}\)</span>. Therefore, we only need to generate a set of exponentially distributed variables <span class="math notranslate nohighlight">\(\{s_k\}\)</span> to obtain the timing of Poisson events <span class="math notranslate nohighlight">\(t_{k+1}=t_{k}+s_{k}\)</span>. In this method, we need to generate all future spikes at once.</p></li>
+</ul>
+<p>Below, we use the first method in a function <code class="docutils literal notranslate"><span class="pre">Poisson_generator</span></code>, which takes arguments <code class="docutils literal notranslate"><span class="pre">(pars,</span> <span class="pre">rate,</span> <span class="pre">n,</span> <span class="pre">myseed)</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
+<span class="c1"># @markdown Execute this cell to get a Poisson_generator function</span>
+
+
+<span class="k">def</span> <span class="nf">Poisson_generator</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">myseed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Generates poisson trains</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    pars            : parameter dictionary</span>
+<span class="sd">    rate            : noise amplitute [Hz]</span>
+<span class="sd">    n               : number of Poisson trains</span>
+<span class="sd">    myseed          : random seed. int or boolean</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    pre_spike_train : spike train matrix, ith row represents whether</span>
+<span class="sd">                      there is a spike in ith spike train over time</span>
+<span class="sd">                      (1 if spike, 0 otherwise)</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># Retrieve simulation parameters</span>
+  <span class="n">dt</span><span class="p">,</span> <span class="n">range_t</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">],</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">]</span>
+  <span class="n">Lt</span> <span class="o">=</span> <span class="n">range_t</span><span class="o">.</span><span class="n">size</span>
+
+  <span class="c1"># set random seed</span>
+  <span class="k">if</span> <span class="n">myseed</span><span class="p">:</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">myseed</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">()</span>
+
+  <span class="c1"># generate uniformly distributed random variables</span>
+  <span class="n">u_rand</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">Lt</span><span class="p">)</span>
+
+  <span class="c1"># generate Poisson train</span>
+  <span class="n">poisson_train</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">*</span> <span class="p">(</span><span class="n">u_rand</span> <span class="o">&lt;</span> <span class="n">rate</span> <span class="o">*</span> <span class="p">(</span><span class="n">dt</span> <span class="o">/</span> <span class="mf">1000.</span><span class="p">))</span>
+
+  <span class="k">return</span> <span class="n">poisson_train</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we can use Poisson_generator to mimic presynaptic spike trains</span>
+<span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars</span><span class="p">()</span>
+<span class="n">pre_spike_train</span> <span class="o">=</span> <span class="n">Poisson_generator</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">myseed</span><span class="o">=</span><span class="mi">2020</span><span class="p">)</span>
+<span class="n">my_raster_Poisson</span><span class="p">(</span><span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">],</span> <span class="n">pre_spike_train</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>How do we make sure that the above spike trains are following Poisson statistics?
+A Poisson process must have the following properties:</p>
+<ul class="simple">
+<li><p>The ratio of the mean and variance of spike count is 1</p></li>
+<li><p>Inter-spike-intervals are exponentially distributed</p></li>
+<li><p>Spike times are irregular i.e. <span class="math notranslate nohighlight">\(CV_{\rm ISI} = 1\)</span></p></li>
+<li><p>Adjacent spike intervals are independent of each other.</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<p>Congratulations! You’ve just built a leaky integrate-and-fire (LIF) neuron model from scratch, and studied its dynamics in response to various types of inputs, having:</p>
+<ul class="simple">
+<li><p>simulated the LIF neuron model</p></li>
+<li><p>driven the LIF neuron with external inputs, such as direct current, Gaussian white noise, and Poisson spike trains, etc.</p></li>
+<li><p>studied how different inputs affect the  LIF neuron’s output (firing rate and spike time irregularity),</p></li>
+</ul>
+<p>with a special focus on low rate and irregular firing regime to mimc real cortical neurons. The next tutorial will look at how spiking statistics may be influenced by a neuron’s input statistics.</p>
+<p>However, if you have extra time, follow the section below to explore a different type of noise input.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="bonus-1-orenstein-uhlenbeck-process">
+<h1>Bonus 1: Orenstein-Uhlenbeck Process<a class="headerlink" href="#bonus-1-orenstein-uhlenbeck-process" title="Permalink to this headline">¶</a></h1>
+<p>When a neuron receives spiking input, the synaptic current is Shot Noise – which is a kind of colored noise and the spectrum of the noise determined by the synaptic kernel time constant. That is, a neuron is driven by <strong>colored noise</strong> and not GWN.</p>
+<p>We can model colored noise using the Ohrenstein-Uhlenbeck process - filtered white noise.</p>
+<div class="section" id="ornstein-uhlenbeck-ou-current">
+<h2>Ornstein-Uhlenbeck (OU) current<a class="headerlink" href="#ornstein-uhlenbeck-ou-current" title="Permalink to this headline">¶</a></h2>
+<p>We next study if the input current is temporally correlated and is modeled as an Ornstein-Uhlenbeck process <span class="math notranslate nohighlight">\(\eta(t)\)</span>, i.e., low-pass filtered GWN with a time constant <span class="math notranslate nohighlight">\(\tau_{\eta}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\tau_\eta \frac{d}{dt}\eta(t) = \mu-\eta(t) + \sigma_\eta\sqrt{2\tau_\eta}\xi(t).\]</div>
+<p><strong>Hint:</strong> An OU process as defined above has</p>
+<div class="math notranslate nohighlight">
+\[E[\eta(t)]=\mu\]</div>
+<p>and autocovariance</p>
+<div class="math notranslate nohighlight">
+\[[\eta(t)\eta(t+\tau)]=\sigma_\eta^2e^{-|t-\tau|/\tau_\eta},\]</div>
+<p>which can be used to check your code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title `my_OU(pars, mu, sig, myseed)`</span>
+<span class="c1"># @markdown Ececute this cell to enable the OU process</span>
+
+
+<span class="k">def</span> <span class="nf">my_OU</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">myseed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Function that produces Ornstein-Uhlenbeck input</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    pars       : parameter dictionary</span>
+<span class="sd">    sig        : noise amplitute</span>
+<span class="sd">    myseed     : random seed. int or boolean</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    I_ou       : Ornstein-Uhlenbeck input current</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># Retrieve simulation parameters</span>
+  <span class="n">dt</span><span class="p">,</span> <span class="n">range_t</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">],</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">]</span>
+  <span class="n">Lt</span> <span class="o">=</span> <span class="n">range_t</span><span class="o">.</span><span class="n">size</span>
+  <span class="n">tau_ou</span> <span class="o">=</span> <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;tau_ou&#39;</span><span class="p">]</span>  <span class="c1"># [ms]</span>
+
+  <span class="c1"># set random seed</span>
+  <span class="k">if</span> <span class="n">myseed</span><span class="p">:</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">myseed</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">()</span>
+
+  <span class="c1"># Initialize</span>
+  <span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">Lt</span><span class="p">)</span>
+  <span class="n">I_ou</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Lt</span><span class="p">)</span>
+  <span class="n">I_ou</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">noise</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">sig</span>
+
+  <span class="c1"># generate OU</span>
+  <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Lt</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">I_ou</span><span class="p">[</span><span class="n">it</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">I_ou</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">dt</span> <span class="o">/</span> <span class="n">tau_ou</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">mu</span> <span class="o">-</span> <span class="n">I_ou</span><span class="p">[</span><span class="n">it</span><span class="p">])</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">/</span> <span class="n">tau_ou</span><span class="p">)</span> <span class="o">*</span> <span class="n">sig</span> <span class="o">*</span> <span class="n">noise</span><span class="p">[</span><span class="n">it</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+  <span class="k">return</span> <span class="n">I_ou</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="interactive-demo-lif-explorer-with-ou-input">
+<h3>Interactive Demo: LIF Explorer with OU input<a class="headerlink" href="#interactive-demo-lif-explorer-with-ou-input" title="Permalink to this headline">¶</a></h3>
+<p>In the following, we will check how a neuron responds to a noisy current that follows the statistics of an OU process.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
+
+<span class="c1"># @markdown Remember to enable the widget by running the cell!</span>
+
+<span class="n">my_layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s1">&#39;450px&#39;</span>
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span>
+  <span class="n">tau_ou</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">5.</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">20.</span><span class="p">,</span>
+                             <span class="n">step</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">my_layout</span><span class="p">),</span>
+  <span class="n">sig_ou</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">5.</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">40.</span><span class="p">,</span>
+                             <span class="n">step</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">my_layout</span><span class="p">),</span>
+  <span class="n">mu_ou</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="mf">190.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">180.</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">220.</span><span class="p">,</span>
+                            <span class="n">step</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">my_layout</span><span class="p">)</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">LIF_with_OU</span><span class="p">(</span><span class="n">tau_ou</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span> <span class="n">sig_ou</span><span class="o">=</span><span class="mf">40.</span><span class="p">,</span> <span class="n">mu_ou</span><span class="o">=</span><span class="mf">200.</span><span class="p">):</span>
+  <span class="n">pars</span> <span class="o">=</span> <span class="n">default_pars</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mf">1000.</span><span class="p">)</span>
+  <span class="n">pars</span><span class="p">[</span><span class="s1">&#39;tau_ou&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tau_ou</span>  <span class="c1"># [ms]</span>
+
+  <span class="n">I_ou</span> <span class="o">=</span> <span class="n">my_OU</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">mu_ou</span><span class="p">,</span> <span class="n">sig_ou</span><span class="p">)</span>
+
+  <span class="n">v</span><span class="p">,</span> <span class="n">sp</span> <span class="o">=</span> <span class="n">run_LIF</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">Iinj</span><span class="o">=</span><span class="n">I_ou</span><span class="p">)</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pars</span><span class="p">[</span><span class="s1">&#39;range_t&#39;</span><span class="p">],</span> <span class="n">I_ou</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (ms)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$I_{\mathrm</span><span class="si">{OU}</span><span class="s1">}$ (pA)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+  <span class="n">plot_volt_trace</span><span class="p">(</span><span class="n">pars</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">sp</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Think!<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>How does the OU type input change neuron responsiveness?</p></li>
+<li><p>What do you think will happen to the spike pattern and rate if you increased or decreased the time constant of the OU process?</p></li>
+</ul>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D3_RealNeurons/solutions/W2D3_Tutorial1_Solution_fc553243.py"><em>Click for solution</em></a></p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="bonus-2-generalized-integrate-and-fire-models">
+<h1>Bonus 2: Generalized Integrate-and-Fire models<a class="headerlink" href="#bonus-2-generalized-integrate-and-fire-models" title="Permalink to this headline">¶</a></h1>
+<p>LIF model is not the only abstraction of real neurons. If you want to learn about more realistic types of neuronal models, watch the Bonus Video!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 3 (Bonus): Extensions to Integrate-and-Fire models</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;G0b6wLhuQxE&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/W2D3_RealNeurons/student"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../intro_vid.html" title="previous page">Intro Video</a>
+    <a class='right-next' id="next-link" href="W2D3_Tutorial2.html" title="next page">Tutorial 2: Effects of Input Correlation</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Neuromatch<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

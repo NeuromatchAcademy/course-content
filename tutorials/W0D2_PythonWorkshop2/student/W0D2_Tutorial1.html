@@ -1,0 +1,1927 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 1: LIF Neuron Part II &#8212; Neuromatch Computational Neuroscience</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="W0D3 - Linear Algebra" href="../../W0D3_LinearAlgebra/intro_text.html" />
+    <link rel="prev" title="W0D2 - Python Workshop 2" href="../intro_text.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      <img src="../../../_static/nma-logo-square-4xp.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Pre-reqs Refresher
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D1_PythonWorkshop1/intro_text.html">
+   Python Workshop 1 (W0D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
+     Tutorial: LIF Neuron - Part I
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../intro_text.html">
+   Python Workshop 2 (W0D2)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tutorial 1: LIF Neuron Part II
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D3_LinearAlgebra/intro_text.html">
+   Linear Algebra (W0D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
+     Tutorial 1: Vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
+     Tutorial 2: Matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
+     Bonus Tutorial: Discrete Dynamical Systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D4_Calculus/intro_text.html">
+   Calculus (W0D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
+     Tutorial 1: Basics of Differential and Integral Calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
+     Tutorial 2: Differential Equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
+     Tutorial 3: Numerical Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D5_Statistics/intro_text.html">
+   Statistics (W0D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
+     Neuromatch Academy: Precourse Week, Day 5, Tutorial 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
+     Tutorial 2: Statistical Inference
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Intro to Modeling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D1_ModelTypes/intro_text.html">
+   Model Types (W1D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
+     Tutorial 1: “What” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
+     Tutorial 2: “How” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
+     Tutorial 3: “Why” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D2_ModelingPractice/intro_text.html">
+   Modeling Practice (W1D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
+     Tutorial: Framing the Question
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D3_ModelFitting/intro_text.html">
+   Model Fitting (W1D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
+     Tutorial 1: Linear regression with MSE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
+     Tutorial 2: Linear regression with MLE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
+     Tutorial 3: Confidence intervals and bootstrapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
+     Tutorial 4: Multiple linear regression and polynomial regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
+     Tutorial 5: Model Selection: Bias-variance trade-off
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
+     Tutorial 6: Model Selection: Cross-validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D4_MachineLearning/intro_text.html">
+   Machine Learning (W1D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial1.html">
+     Tutorial 1: GLMs for Encoding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial2.html">
+     Tutorial 2: Classifiers and regularizers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D5_DimensionalityReduction/intro_text.html">
+   Dimensionality Reduction (W1D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
+     Tutorial 1: Geometric view of data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
+     Tutorial 2: Principal Component Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
+     Tutorial 3: Dimensionality Reduction &amp; Reconstruction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
+     Tutorial 4:  Nonlinear Dimensionality Reduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D1_DeepLearning/intro_text.html">
+   Deep Learning (W2D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
+     Tutorial 1: Decoding Neural Responses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
+     Tutorial 2: Convolutional Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
+     Tutorial 2: Building and Evaluating Normative Encoding Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dynamical Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D2_LinearSystems/intro_text.html">
+   Linear Systems (W2D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
+     Tutorial 1: Linear dynamical systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
+     Tutorial 2: Markov Processes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
+     Tutorial 3: Combining determinism and stochasticity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
+     Tutorial 4: Autoregressive models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D3_RealNeurons/intro_text.html">
+   Real Neurons (W2D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial1.html">
+     Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial2.html">
+     Tutorial 2: Effects of Input Correlation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial3.html">
+     Tutorial 3: Synaptic transmission - Models of static and dynamic synapses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial4.html">
+     Tutorial 4: Spike-timing dependent plasticity (STDP)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D4_DynamicNetworks/intro_text.html">
+   Dynamic Networks (W2D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
+     Tutorial 1: Neural Rate Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
+     Tutorial 2: Wilson-Cowan Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Stochastic Processes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D1_BayesianDecisions/intro_text.html">
+   Bayesian Decisions (W3D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
+     Tutorial 1: Bayes with a binary hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
+     Tutorial 2: Bayesian inference and decisions with continuous hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
+     Bonus Tutorial:Fitting to data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D2_HiddenDynamics/intro_text.html">
+   Hidden Dynamics (W3D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
+     Tutorial 1: Sequential Probability Ratio Test
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
+     Tutorial 2: Hidden Markov Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
+     Tutorial 3: 1D Kalman Filter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
+     Tutorial 4: 2D Kalman Filter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D3_OptimalControl/intro_text.html">
+   Optimal Control (W3D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
+     Tutorial 1: Optimal Control for Discrete States
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
+     Tutorial 2: Optimal Control for Continuous State
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D4_ReinforcementLearning/intro_text.html">
+   Reinforcement Learning (W3D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
+     Tutorial 1: Learning to Predict
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
+     Tutorial 2: Learning to Act: Multi-Armed Bandits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
+     Tutorial 3: Learning to Act: Q-Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
+     Tutorial 4: From Reinforcement Learning to Planning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D5_NetworkCausality/intro_text.html">
+   Network Causality (W3D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
+     Tutorial 1: Interventions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
+     Tutorial 2: Correlations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
+     Tutorial 3: Simultaneous fitting/regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
+     Tutorial 4: Instrumental Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/tutorials/W0D2_PythonWorkshop2/student/W0D2_Tutorial1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/tutorials/W0D2_PythonWorkshop2/student/W0D2_Tutorial1.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial 1: LIF Neuron Part II
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tutorial-objectives">
+     Tutorial objectives
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sample-histogram">
+   Sample histogram
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1">
+     Exercise 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduce-spikes">
+   Introduce spikes
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2">
+     Exercise 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#boolean-indexes">
+   Boolean indexes
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3">
+     Exercise 3
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-4">
+     Exercise 4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#refractory-period">
+   Refractory period
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-5">
+     Exercise 5
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#random-refractory-period">
+     Random refractory period
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-functions">
+   Using functions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-6">
+     Exercise 6
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-classes">
+   Using classes
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-7">
+     Exercise 7
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W0D2_PythonWorkshop2/student/W0D2_Tutorial1.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="tutorial-1-lif-neuron-part-ii">
+<h1>Tutorial 1: LIF Neuron Part II<a class="headerlink" href="#tutorial-1-lif-neuron-part-ii" title="Permalink to this headline">¶</a></h1>
+<p><strong>Week 0, Day 2: Python Workshop 2</strong></p>
+<p><strong>By Neuromatch Academy</strong></p>
+<p><strong>Content creators:</strong> Marco Brigham and the <a class="reference external" href="https://www.ccnss.org/">CCNSS</a> team</p>
+<p><strong>Content reviewers:</strong> Michael Waskom, Karolina Stosio, Spiros Chavlis</p>
+<hr class="docutils" />
+<div class="section" id="tutorial-objectives">
+<h2>Tutorial objectives<a class="headerlink" href="#tutorial-objectives" title="Permalink to this headline">¶</a></h2>
+<p>We learned basic Python and NumPy concepts in the previous tutorial. These new and efficient coding techniques can be applied repeatedly in tutorials from the NMA course, and elsewhere. Please keep them in mind!</p>
+<p> </p>
+<p>In this tutorial, we’ll introduce spikes in our LIF neuron and evaluate the refractory period’s effect in spiking dynamics!</p>
+<p> </p>
+<p>Please remember that strengthening your “Python” leg will help you advance your “Neuro” leg. Alright, let’s go for our second walk!</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import libraries</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Figure settings</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Helper functions</span>
+
+<span class="n">t_max</span> <span class="o">=</span> <span class="mf">150e-3</span>   <span class="c1"># second</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">1e-3</span>        <span class="c1"># second</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="mf">20e-3</span>      <span class="c1"># second</span>
+<span class="n">el</span> <span class="o">=</span> <span class="o">-</span><span class="mf">60e-3</span>      <span class="c1"># milivolt</span>
+<span class="n">vr</span> <span class="o">=</span> <span class="o">-</span><span class="mf">70e-3</span>      <span class="c1"># milivolt</span>
+<span class="n">vth</span> <span class="o">=</span> <span class="o">-</span><span class="mf">50e-3</span>     <span class="c1"># milivolt</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mf">100e6</span>        <span class="c1"># ohm</span>
+<span class="n">i_mean</span> <span class="o">=</span> <span class="mf">25e-11</span>  <span class="c1"># ampere</span>
+
+
+<span class="k">def</span> <span class="nf">plot_all</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">raster</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">spikes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">spikes_mean</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Plots Time evolution for</span>
+<span class="sd">  (1) multiple realizations of membrane potential</span>
+<span class="sd">  (2) spikes</span>
+<span class="sd">  (3) mean spike rate (optional)</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    t_range (numpy array of floats)</span>
+<span class="sd">        range of time steps for the plots of shape (time steps)</span>
+
+<span class="sd">    v (numpy array of floats)</span>
+<span class="sd">        membrane potential values of shape (neurons, time steps)</span>
+
+<span class="sd">    raster (numpy array of floats)</span>
+<span class="sd">        spike raster of shape (neurons, time steps)</span>
+
+<span class="sd">    spikes (dictionary of lists)</span>
+<span class="sd">        list with spike times indexed by neuron number</span>
+
+<span class="sd">    spikes_mean (numpy array of floats)</span>
+<span class="sd">        Mean spike rate for spikes as dictionary</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Nothing.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">v_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+  <span class="n">fig_w</span><span class="p">,</span> <span class="n">fig_h</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">fig_w</span><span class="p">,</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">fig_h</span><span class="p">))</span>
+
+  <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">v_mean</span><span class="p">,</span> <span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$V_m$ (V)&#39;</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">raster</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">spikes_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">raster</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">raster</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+      <span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">spikes</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+      <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">times</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;neuron&#39;</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">spikes_mean</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">spikes_mean</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;rate (Hz)&#39;</span><span class="p">)</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="sample-histogram">
+<h1>Sample histogram<a class="headerlink" href="#sample-histogram" title="Permalink to this headline">¶</a></h1>
+<p><img alt="histogram statistics" src="https://github.com/mpbrigham/colaboratory-figures/raw/master/nma/python-for-nma/histogram_statistics.png" /></p>
+<p>Another important statistic is the sample <a class="reference external" href="https://en.wikipedia.org/wiki/Histogram">histogram</a>. For our LIF neuron it provides an approximate representation of the distribution of membrane potential <span class="math notranslate nohighlight">\(V_m(t)\)</span> at time <span class="math notranslate nohighlight">\(t=t_k\in[0,t_{max}]\)</span>. For <span class="math notranslate nohighlight">\(N\)</span> realizations <span class="math notranslate nohighlight">\(V\left(t_k\right)\)</span> and <span class="math notranslate nohighlight">\(J\)</span> bins is given by:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\\
+N = \sum_{j=1}^{J} m_j\\
+\\
+\end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(m_j\)</span> is a function that counts the number of samples <span class="math notranslate nohighlight">\(V\left(t_k\right)\)</span> that fall into bin <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Video: Sample histogram</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;71f1J98zj80&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
+<p>Plot an histogram of <span class="math notranslate nohighlight">\(J=50\)</span> bins of <span class="math notranslate nohighlight">\(N=10000\)</span> realizations of <span class="math notranslate nohighlight">\(V(t)\)</span> for <span class="math notranslate nohighlight">\(t=t_{max}/10\)</span> and <span class="math notranslate nohighlight">\(t=t_{max}\)</span>.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">plt.hist(data,</span> <span class="pre">nbins)</span></code> plots an histogram of <code class="docutils literal notranslate"><span class="pre">data</span></code> in <code class="docutils literal notranslate"><span class="pre">nbins</span></code> bins. The argument <code class="docutils literal notranslate"><span class="pre">label</span></code> defines a label for <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code> adds all labels to the plot.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>plt.hist(data, bins, label=&#39;my data&#39;)
+plt.legend()
+plt.show()
+</pre></div>
+</div>
+<p>The parameters <code class="docutils literal notranslate"><span class="pre">histtype='stepfilled'</span></code> and <code class="docutils literal notranslate"><span class="pre">linewidth=0</span></code> may improve histogram appearance (depending on taste). You can read more about <a class="reference external" href="https://matplotlib.org/gallery/statistics/histogram_histtypes.html">different histtype settings</a>.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">plt.hist</span></code> returns the <code class="docutils literal notranslate"><span class="pre">pdf</span></code>, <code class="docutils literal notranslate"><span class="pre">bins</span></code>, and <code class="docutils literal notranslate"><span class="pre">patches</span></code> with the histogram bins, the edges of the bins, and the individual patches used to create the histogram.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pdf, bins, patches = plt.hist(data, bins)
+</pre></div>
+</div>
+<p>We’ll make a small correction in the definition of <code class="docutils literal notranslate"><span class="pre">t_range</span></code> to ensure increments of <code class="docutils literal notranslate"><span class="pre">dt</span></code> by using <code class="docutils literal notranslate"><span class="pre">np.arange</span></code> instead of <code class="docutils literal notranslate"><span class="pre">np.linspace</span></code>. (Why is it needed?)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>numpy.arange(start, stop, step)
+</pre></div>
+</div>
+<p><strong>Suggestions</strong></p>
+<ul class="simple">
+<li><p>Plot the 1st histogram after running up to <span class="math notranslate nohighlight">\(t=t_{max}/10\)</span></p></li>
+<li><p>Plot the 2nd histogram at <span class="math notranslate nohighlight">\(t=t_{max}\)</span></p></li>
+<li><p>Add labels to identify the time of each histogram</p></li>
+<li><p>Plot each histogram with parameters <code class="docutils literal notranslate"><span class="pre">histtype='stepfilled'</span></code> and <code class="docutils literal notranslate"><span class="pre">linewidth=0</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set random number generator</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+
+<span class="c1"># initialize t_range, step_end, n, v_n, syn and nbins</span>
+<span class="n">t_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">step_end</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_range</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">v_n</span> <span class="o">=</span> <span class="n">el</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="n">n</span><span class="p">,</span> <span class="n">step_end</span><span class="p">])</span>
+<span class="n">syn</span> <span class="o">=</span> <span class="n">i_mean</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="p">(</span><span class="n">t_max</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">([</span><span class="n">n</span><span class="p">,</span> <span class="n">step_end</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">nbins</span> <span class="o">=</span> <span class="mi">32</span>
+
+<span class="c1"># loop time steps</span>
+<span class="k">for</span> <span class="n">step</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">t_range</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">step</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+    <span class="k">continue</span>
+
+  <span class="n">v_n</span><span class="p">[:,</span> <span class="n">step</span><span class="p">]</span> <span class="o">=</span>  <span class="n">v_n</span><span class="p">[:,</span> <span class="n">step</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">dt</span> <span class="o">/</span> <span class="n">tau</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">el</span> <span class="o">-</span> <span class="n">v_n</span><span class="p">[:,</span> <span class="n">step</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">r</span> <span class="o">*</span> <span class="n">syn</span><span class="p">[:,</span> <span class="n">step</span><span class="p">])</span>
+
+<span class="c1"># initialize the figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$V_m$ (V)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Complete these lines and uncomment</span>
+<span class="c1"># plt.hist(...)</span>
+<span class="c1"># plt.hist(...)</span>
+<span class="c1"># plt.legend()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D2_PythonWorkshop2/solutions/W0D2_Tutorial1_Solution_a9562633.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=560 height=415 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D2_PythonWorkshop2/static/W0D2_Tutorial1_Solution_a9562633_0.png>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="introduce-spikes">
+<h1>Introduce spikes<a class="headerlink" href="#introduce-spikes" title="Permalink to this headline">¶</a></h1>
+<p>A spike takes place whenever <span class="math notranslate nohighlight">\(V(t)\)</span> crosses <span class="math notranslate nohighlight">\(V_{th}\)</span>. In that case, a spike is recorded and <span class="math notranslate nohighlight">\(V(t)\)</span> resets to <span class="math notranslate nohighlight">\(V_{reset}\)</span> value. This is summarized in the <em>reset condition</em>:
+$<span class="math notranslate nohighlight">\(V(t) = V_{reset}\quad \text{ if } V(t)\geq V_{th}\)</span>$</p>
+<p>For more information about spikes or action potentials see <a class="reference external" href="https://en.wikipedia.org/wiki/Action_potential">here</a> and <a class="reference external" href="https://www.khanacademy.org/test-prep/mcat/organ-systems/neuron-membrane-potentials/a/neuron-action-potentials-the-creation-of-a-brain-signal">here</a>.</p>
+<p><img alt="spikes cartoon" src="https://github.com/mpbrigham/colaboratory-figures/raw/master/nma/python-for-nma/spikes_carton.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Video: Spikes</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;nvpHtzuZggg&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-2">
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
+<p>Insert the reset condition, and collect the spike times of each realization in a dictionary variable <code class="docutils literal notranslate"><span class="pre">spikes</span></code>, with <span class="math notranslate nohighlight">\(N=500\)</span>.</p>
+<p>We’ve used <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> for plotting lines and also for plotting dots at <code class="docutils literal notranslate"><span class="pre">(x,y)</span></code> coordinates, which is a <a class="reference external" href="https://en.wikipedia.org/wiki/Scatter_plot">scatter plot</a>. From here on, we’ll use use <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> for plotting lines and for scatter plots: <code class="docutils literal notranslate"><span class="pre">plt.scatter</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A <em>raster plot</em> represents spikes from multiple neurons by plotting dots at spike times from neuron <code class="docutils literal notranslate"><span class="pre">j</span></code> at plot height <code class="docutils literal notranslate"><span class="pre">j</span></code>, i.e.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span> <span class="n">j</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">spike_times</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><img alt="spikes plot" src="https://github.com/mpbrigham/colaboratory-figures/raw/master/nma/python-for-nma/spikes_plot.png" /></p>
+<p>In this exercise, we use <code class="docutils literal notranslate"><span class="pre">plt.subplot</span></code> for multiple plots in the same figure. These plots can share the same <code class="docutils literal notranslate"><span class="pre">x</span></code> or <code class="docutils literal notranslate"><span class="pre">y</span></code> axis by specifying the parameter <code class="docutils literal notranslate"><span class="pre">sharex</span></code> or <code class="docutils literal notranslate"><span class="pre">sharey</span></code>. Add <code class="docutils literal notranslate"><span class="pre">plt.tight_layout()</span></code> at the end to automatically adjust subplot parameters to fit the figure area better. Please see the example below for a row of two plots sharing axis <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialize the figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="c1"># collect axis of 1st figure in ax1</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">my_data_left</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;ylabel&#39;</span><span class="p">)</span>
+
+<span class="c1"># share axis x with 1st figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">my_data_right</span><span class="p">)</span>
+
+<span class="c1"># automatically adjust subplot parameters to figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Suggestions</strong></p>
+<ul class="simple">
+<li><p>At each time step loop all neurons to:</p>
+<ul>
+<li><p>Reset <span class="math notranslate nohighlight">\(V_n(t)\)</span> to <span class="math notranslate nohighlight">\(V_{reset}\)</span> if <span class="math notranslate nohighlight">\(V_n(t)\geq V_{th}\)</span></p></li>
+<li><p>Collect spike times in dictionary <code class="docutils literal notranslate"><span class="pre">spikes</span></code> indexed by neuron number</p></li>
+<li><p>Add spike count to numpy array <code class="docutils literal notranslate"><span class="pre">spikes_n</span></code></p></li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">plt.subplot(3,</span> <span class="pre">1,</span> <span class="pre">2)</span></code> loop each neuron to collect and plot spike times</p></li>
+<li><p>Plot realizations and sample mean in <code class="docutils literal notranslate"><span class="pre">plt.subplot(3,</span> <span class="pre">1,</span> <span class="pre">1)</span></code>, and mean spiking rate in <code class="docutils literal notranslate"><span class="pre">plt.subplot(3,</span> <span class="pre">1,</span> <span class="pre">3)</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set random number generator</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+
+<span class="c1"># initialize step_end, t_range, n, v_n and syn</span>
+<span class="n">t_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">step_end</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_range</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">v_n</span> <span class="o">=</span> <span class="n">el</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="n">n</span><span class="p">,</span> <span class="n">step_end</span><span class="p">])</span>
+<span class="n">syn</span> <span class="o">=</span> <span class="n">i_mean</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="p">(</span><span class="n">t_max</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">([</span><span class="n">n</span><span class="p">,</span> <span class="n">step_end</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># initialize spikes and spikes_n</span>
+<span class="n">spikes</span> <span class="o">=</span> <span class="p">{</span><span class="n">j</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)}</span>
+<span class="n">spikes_n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">step_end</span><span class="p">])</span>
+
+<span class="c1">#################################################</span>
+<span class="c1">## TODO for students: fill in blanks below ##</span>
+<span class="c1"># Fill out function and remove</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: fill in blanks below&quot;</span><span class="p">)</span>
+<span class="c1">#################################################</span>
+
+<span class="c1"># loop time steps</span>
+<span class="k">for</span> <span class="n">step</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">t_range</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">step</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+    <span class="k">continue</span>
+
+  <span class="n">v_n</span><span class="p">[:,</span> <span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="n">v_n</span><span class="p">[:,</span> <span class="n">step</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">dt</span> <span class="o">/</span> <span class="n">tau</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">el</span> <span class="o">-</span> <span class="n">v_n</span><span class="p">[:,</span> <span class="n">step</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">r</span><span class="o">*</span><span class="n">syn</span><span class="p">[:,</span> <span class="n">step</span><span class="p">])</span>
+
+  <span class="c1"># collect spike times and reset to resting potential</span>
+  <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">v_n</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">step</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">vth</span><span class="p">:</span>
+      <span class="n">v_n</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+      <span class="n">spikes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="o">...</span>
+      <span class="n">spikes_n</span><span class="p">[</span><span class="n">step</span><span class="p">]</span> <span class="o">+=</span> <span class="o">...</span>
+
+<span class="c1"># collect mean Vm and mean spiking rate</span>
+<span class="n">v_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">v_n</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">spikes_mean</span> <span class="o">=</span>  <span class="n">spikes_n</span> <span class="o">/</span> <span class="n">n</span>
+
+<span class="c1"># initialize the figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="c1"># collect axis of 1st figure in ax1</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">v_n</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">v_mean</span><span class="p">,</span> <span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$V_m$ (V)&#39;</span><span class="p">)</span>
+
+<span class="c1"># share xaxis with 1st figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+<span class="c1"># for each neuron j: collect spike times and plot them at height j</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+  <span class="n">times</span> <span class="o">=</span> <span class="o">...</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;neuron&#39;</span><span class="p">)</span>
+
+<span class="c1"># share xaxis with 1st figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">spikes_mean</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;rate (Hz)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D2_PythonWorkshop2/solutions/W0D2_Tutorial1_Solution_a56bd3d0.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=560 height=416 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D2_PythonWorkshop2/static/W0D2_Tutorial1_Solution_a56bd3d0_0.png>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="boolean-indexes">
+<h1>Boolean indexes<a class="headerlink" href="#boolean-indexes" title="Permalink to this headline">¶</a></h1>
+<p>Numpy arrays can be indexed by boolean arrays to select a subset of elements (also works with lists of booleans).</p>
+<p>The boolean array itself can be initiated by a condition, as shown in the example below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">&gt;=</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="o">--&gt;</span> <span class="p">[</span><span class="kc">False</span>  <span class="kc">True</span>  <span class="kc">True</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">b</span><span class="p">])</span>
+<span class="o">--&gt;</span> <span class="p">[</span><span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">a</span><span class="o">&gt;=</span><span class="mi">2</span><span class="p">])</span>
+<span class="o">--&gt;</span> <span class="p">[</span><span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video: Boolean indexes</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;dFPgO5wnyLc&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-3">
+<h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h2>
+<p>We can avoid looping all neurons in each time step by identifying with boolean arrays the indexes of neurons that spiked in the previous step.</p>
+<p>In the example below, <code class="docutils literal notranslate"><span class="pre">v_rest</span></code> is a boolean numpy array with <code class="docutils literal notranslate"><span class="pre">True</span></code> in each index of <code class="docutils literal notranslate"><span class="pre">v_n</span></code> with value <code class="docutils literal notranslate"><span class="pre">vr</span></code> at time index <code class="docutils literal notranslate"><span class="pre">step</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>v_rest = (v_n[:,step] == vr)
+print(v_n[v_rest,step])
+
+--&gt; [vr, ..., vr]
+</pre></div>
+</div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">np.where</span></code> returns indexes of boolean arrays with <code class="docutils literal notranslate"><span class="pre">True</span></code> values.</p>
+<p>You may use the helper function <code class="docutils literal notranslate"><span class="pre">plot_all</span></code> that implements the figure from the previous exercise.</p>
+<p><strong>Suggestions</strong></p>
+<ul class="simple">
+<li><p>At each time step:</p>
+<ul>
+<li><p>Initialize boolean numpy array <code class="docutils literal notranslate"><span class="pre">spiked</span></code> with <span class="math notranslate nohighlight">\(V_n(t)\geq V_{th}\)</span></p></li>
+<li><p>Set to <code class="docutils literal notranslate"><span class="pre">vr</span></code> indexes of <code class="docutils literal notranslate"><span class="pre">v_n</span></code> using <code class="docutils literal notranslate"><span class="pre">spiked</span></code></p></li>
+<li><p>Obtain indexes of spiking neurons using <code class="docutils literal notranslate"><span class="pre">np.where(spiked)[0]</span></code></p></li>
+<li><p>Collect spike times in dictionary <code class="docutils literal notranslate"><span class="pre">spikes</span></code> and spike count in numpy array <code class="docutils literal notranslate"><span class="pre">spikes_n</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Helper function(s)</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">plot_all</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set random number generator</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+
+<span class="c1"># initialize step_end, t_range, n, v_n and syn</span>
+<span class="n">t_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">step_end</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_range</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">v_n</span> <span class="o">=</span> <span class="n">el</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">step_end</span><span class="p">])</span>
+<span class="n">syn</span> <span class="o">=</span> <span class="n">i_mean</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.1</span><span class="o">*</span><span class="p">(</span><span class="n">t_max</span><span class="o">/</span><span class="n">dt</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">step_end</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># initialize spikes and spikes_n</span>
+<span class="n">spikes</span> <span class="o">=</span> <span class="p">{</span><span class="n">j</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)}</span>
+<span class="n">spikes_n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">step_end</span><span class="p">])</span>
+
+<span class="c1">#################################################</span>
+<span class="c1">## TODO for students: fill in blanks below ##</span>
+<span class="c1"># Fill out function and remove</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: fill in blanks below&quot;</span><span class="p">)</span>
+<span class="c1">#################################################</span>
+
+<span class="c1"># loop time steps</span>
+<span class="k">for</span> <span class="n">step</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">t_range</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">step</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+    <span class="k">continue</span>
+
+  <span class="n">v_n</span><span class="p">[:,</span><span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="n">v_n</span><span class="p">[:,</span><span class="n">step</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dt</span><span class="o">/</span><span class="n">tau</span> <span class="o">*</span> <span class="p">(</span><span class="n">el</span> <span class="o">-</span> <span class="n">v_n</span><span class="p">[:,</span><span class="n">step</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">r</span><span class="o">*</span><span class="n">syn</span><span class="p">[:,</span><span class="n">step</span><span class="p">])</span>
+
+  <span class="c1"># collect neurons that spiked and reset to resting potential</span>
+  <span class="n">spiked</span> <span class="o">=</span> <span class="o">...</span>
+  <span class="n">v_n</span><span class="p">[</span><span class="n">spiked</span><span class="p">,</span><span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="c1"># collect spike times</span>
+  <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">spiked</span><span class="p">)[</span><span class="mi">0</span><span class="p">]:</span>
+    <span class="n">spikes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="o">...</span>
+    <span class="n">spikes_n</span><span class="p">[</span><span class="n">step</span><span class="p">]</span> <span class="o">+=</span> <span class="o">...</span>
+
+<span class="c1"># collect mean spiking rate</span>
+<span class="n">spikes_mean</span> <span class="o">=</span> <span class="n">spikes_n</span> <span class="o">/</span> <span class="n">n</span>
+
+<span class="c1"># plot multiple realizations of Vm, spikes and mean spike rate</span>
+<span class="n">plot_all</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">v_n</span><span class="p">,</span> <span class="n">spikes</span><span class="o">=</span><span class="n">spikes</span><span class="p">,</span> <span class="n">spikes_mean</span><span class="o">=</span><span class="n">spikes_mean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D2_PythonWorkshop2/solutions/W0D2_Tutorial1_Solution_af1e115b.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=560 height=632 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D2_PythonWorkshop2/static/W0D2_Tutorial1_Solution_af1e115b_0.png>
+</div>
+<div class="section" id="exercise-4">
+<h2>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h2>
+<p>A <em>binary raster plot</em> represents spike times as <code class="docutils literal notranslate"><span class="pre">1</span></code>s in a binary grid initialized with <code class="docutils literal notranslate"><span class="pre">0</span></code>s. We start with a numpy array <code class="docutils literal notranslate"><span class="pre">raster</span></code> of zeros with shape <code class="docutils literal notranslate"><span class="pre">(neurons,</span> <span class="pre">time</span> <span class="pre">steps)</span></code>, and represent a spike from neuron <code class="docutils literal notranslate"><span class="pre">5</span></code> at time step <code class="docutils literal notranslate"><span class="pre">20</span></code> as <code class="docutils literal notranslate"><span class="pre">raster(5,20)=1</span></code>, for example.</p>
+<p>The <em>binary raster plot</em> is much more efficient than the previous method by plotting the numpy array <code class="docutils literal notranslate"><span class="pre">raster</span></code> as an image:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">raster</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Suggestions</strong></p>
+<ul class="simple">
+<li><p>At each time step:</p>
+<ul>
+<li><p>Initialize boolean numpy array <code class="docutils literal notranslate"><span class="pre">spiked</span></code> with <span class="math notranslate nohighlight">\(V_n(t)\geq V_{th}\)</span></p></li>
+<li><p>Set to <code class="docutils literal notranslate"><span class="pre">vr</span></code> indexes of <code class="docutils literal notranslate"><span class="pre">v_n</span></code> using <code class="docutils literal notranslate"><span class="pre">spiked</span></code></p></li>
+<li><p>Set to <code class="docutils literal notranslate"><span class="pre">1</span></code> indexes of numpy array <code class="docutils literal notranslate"><span class="pre">raster</span></code> using <code class="docutils literal notranslate"><span class="pre">spiked</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set random number generator</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+
+<span class="c1"># initialize step_end, t_range, n, v_n and syn</span>
+<span class="n">t_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">step_end</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_range</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">v_n</span> <span class="o">=</span> <span class="n">el</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">step_end</span><span class="p">])</span>
+<span class="n">syn</span> <span class="o">=</span> <span class="n">i_mean</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.1</span><span class="o">*</span><span class="p">(</span><span class="n">t_max</span><span class="o">/</span><span class="n">dt</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">step_end</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># initialize binary numpy array for raster plot</span>
+<span class="n">raster</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">step_end</span><span class="p">])</span>
+
+<span class="c1"># loop time steps</span>
+<span class="k">for</span> <span class="n">step</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">t_range</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">step</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+    <span class="k">continue</span>
+
+  <span class="n">v_n</span><span class="p">[:,</span><span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="n">v_n</span><span class="p">[:,</span><span class="n">step</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dt</span><span class="o">/</span><span class="n">tau</span> <span class="o">*</span> <span class="p">(</span><span class="n">el</span> <span class="o">-</span> <span class="n">v_n</span><span class="p">[:,</span><span class="n">step</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">r</span><span class="o">*</span><span class="n">syn</span><span class="p">[:,</span><span class="n">step</span><span class="p">])</span>
+
+  <span class="c1"># boolean array spiked indexes neurons with v&gt;=vth</span>
+  <span class="n">spiked</span> <span class="o">=</span> <span class="o">...</span>
+  <span class="c1"># Complete these lines and uncomment</span>
+  <span class="c1"># v_n[spiked,step] = ...</span>
+  <span class="c1"># raster[spiked,step] = ...</span>
+
+<span class="c1"># plot multiple realizations of Vm, spikes and mean spike rate</span>
+<span class="n">plot_all</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">v_n</span><span class="p">,</span> <span class="n">raster</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D2_PythonWorkshop2/solutions/W0D2_Tutorial1_Solution_bc4fc660.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=560 height=632 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D2_PythonWorkshop2/static/W0D2_Tutorial1_Solution_bc4fc660_0.png>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="refractory-period">
+<h1>Refractory period<a class="headerlink" href="#refractory-period" title="Permalink to this headline">¶</a></h1>
+<p>The absolute refractory period is a time interval in the order of a few milliseconds during which synaptic input will not lead to a 2nd spike, no matter how strong. This effect is due to the biophysics of the neuron membrane channels, and you can read more about absolute and relative refractory period <a class="reference external" href="https://content.byui.edu/file/a236934c-3c60-4fe9-90aa-d343b3e3a640/1/module5/readings/refractory_periods.html">here</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Refractory_period_(physiology)">here</a>.</p>
+<p><img alt="refractory period plot" src="https://github.com/mpbrigham/colaboratory-figures/raw/master/nma/python-for-nma/refractory_period.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video: Refractory period</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;DOoftC0JU2k&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-5">
+<h2>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h2>
+<p>Investigate the effect of (absolute) refractory period <span class="math notranslate nohighlight">\(t_{ref}\)</span> on the evolution of output rate <span class="math notranslate nohighlight">\(\lambda(t)\)</span>. Add refractory period <span class="math notranslate nohighlight">\(t_{ref}=10\)</span> ms after each spike, during which <span class="math notranslate nohighlight">\(V(t)\)</span> is clamped to <span class="math notranslate nohighlight">\(V_{reset}\)</span>.</p>
+<p>Experiment increasingly higher values of refractory period <span class="math notranslate nohighlight">\(t_{ref}\)</span></p>
+<p><strong>Suggestions</strong></p>
+<ul class="simple">
+<li><p>At each time step:</p>
+<ul>
+<li><p>Manage spike times as in the previous exercise</p></li>
+<li><p>Update numpy array <code class="docutils literal notranslate"><span class="pre">last_spike</span></code> with time <code class="docutils literal notranslate"><span class="pre">t</span></code> for spiking neurons</p></li>
+<li><p>Initialize boolean numpy array <code class="docutils literal notranslate"><span class="pre">clamped</span></code> using <code class="docutils literal notranslate"><span class="pre">last_spike</span></code>, <code class="docutils literal notranslate"><span class="pre">t</span></code> and <code class="docutils literal notranslate"><span class="pre">t_ref</span></code></p></li>
+<li><p>Reset to <code class="docutils literal notranslate"><span class="pre">vr</span></code> clamped neurons using <code class="docutils literal notranslate"><span class="pre">clamped</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set random number generator</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+
+<span class="c1"># initialize step_end, t_range, n, v_n, syn and raster</span>
+<span class="n">t_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">step_end</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_range</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">v_n</span> <span class="o">=</span> <span class="n">el</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">step_end</span><span class="p">])</span>
+<span class="n">syn</span> <span class="o">=</span> <span class="n">i_mean</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.1</span><span class="o">*</span><span class="p">(</span><span class="n">t_max</span><span class="o">/</span><span class="n">dt</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">step_end</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">raster</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">step_end</span><span class="p">])</span>
+
+<span class="c1"># initialize t_ref and last_spike</span>
+<span class="n">t_ref</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">last_spike</span> <span class="o">=</span> <span class="o">-</span><span class="n">t_ref</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="n">n</span><span class="p">])</span>
+
+<span class="c1"># loop time steps</span>
+<span class="k">for</span> <span class="n">step</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">t_range</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">step</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+    <span class="k">continue</span>
+
+  <span class="n">v_n</span><span class="p">[:,</span><span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="n">v_n</span><span class="p">[:,</span><span class="n">step</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dt</span><span class="o">/</span><span class="n">tau</span> <span class="o">*</span> <span class="p">(</span><span class="n">el</span> <span class="o">-</span> <span class="n">v_n</span><span class="p">[:,</span><span class="n">step</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">r</span><span class="o">*</span><span class="n">syn</span><span class="p">[:,</span><span class="n">step</span><span class="p">])</span>
+
+  <span class="c1"># boolean array spiked indexes neurons with v&gt;=vth</span>
+  <span class="n">spiked</span> <span class="o">=</span> <span class="p">(</span><span class="n">v_n</span><span class="p">[:,</span><span class="n">step</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">vth</span><span class="p">)</span>
+  <span class="n">v_n</span><span class="p">[</span><span class="n">spiked</span><span class="p">,</span><span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="n">vr</span>
+  <span class="n">raster</span><span class="p">[</span><span class="n">spiked</span><span class="p">,</span><span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+
+  <span class="c1"># boolean array clamped indexes refractory neurons</span>
+  <span class="n">clamped</span> <span class="o">=</span> <span class="o">...</span>
+  <span class="c1"># Complete these lines and uncomment</span>
+  <span class="c1"># v_n[clamped,step] = ...</span>
+  <span class="c1"># last_spike[spiked] = ...</span>
+
+<span class="c1"># plot multiple realizations of Vm, spikes and mean spike rate</span>
+<span class="n">plot_all</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">v_n</span><span class="p">,</span> <span class="n">raster</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D2_PythonWorkshop2/solutions/W0D2_Tutorial1_Solution_1ca67e4a.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=560 height=632 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D2_PythonWorkshop2/static/W0D2_Tutorial1_Solution_1ca67e4a_0.png>
+</div>
+<div class="section" id="random-refractory-period">
+<h2>Random refractory period<a class="headerlink" href="#random-refractory-period" title="Permalink to this headline">¶</a></h2>
+<p>Investigate the effect of random refractory period <span class="math notranslate nohighlight">\(t_{ref}\)</span> with
+<span class="math notranslate nohighlight">\(t_{ref} = \mu + \sigma\,\mathcal{N}\)</span>, where <span class="math notranslate nohighlight">\(\mathcal{N}\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">normal distribution</a>, <span class="math notranslate nohighlight">\(\mu=0.01\)</span> and <span class="math notranslate nohighlight">\(\sigma=0.007\)</span>.</p>
+<p>Refractory period samples <code class="docutils literal notranslate"><span class="pre">t_ref</span></code> of size <code class="docutils literal notranslate"><span class="pre">n</span></code> is initialized with <code class="docutils literal notranslate"><span class="pre">np.random.normal</span></code>. Remember to clip negative values to <code class="docutils literal notranslate"><span class="pre">0</span></code> with boolean indexes. (Why?)</p>
+<p>What is the effect of different <span class="math notranslate nohighlight">\(\sigma\)</span> values?</p>
+<p><strong>Instructions</strong></p>
+<ul class="simple">
+<li><p>Please execute the cell below</p></li>
+<li><p>Vary values of <span class="math notranslate nohighlight">\(\sigma\)</span> and observe changes</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Interactive demo: Parameter exploration</span>
+
+<span class="k">def</span> <span class="nf">random_ref_period</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+  <span class="c1"># set random number generator</span>
+  <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+
+  <span class="c1"># initialize step_end, t_range, n, v_n, syn and raster</span>
+  <span class="n">t_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+  <span class="n">step_end</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_range</span><span class="p">)</span>
+  <span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
+  <span class="n">v_n</span> <span class="o">=</span> <span class="n">el</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">step_end</span><span class="p">])</span>
+  <span class="n">syn</span> <span class="o">=</span> <span class="n">i_mean</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.1</span><span class="o">*</span><span class="p">(</span><span class="n">t_max</span><span class="o">/</span><span class="n">dt</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">step_end</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+  <span class="n">raster</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">step_end</span><span class="p">])</span>
+
+  <span class="c1"># initialize t_ref and last_spike</span>
+  <span class="n">t_ref</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">sigma</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+  <span class="n">t_ref</span><span class="p">[</span><span class="n">t_ref</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">last_spike</span> <span class="o">=</span> <span class="o">-</span><span class="n">t_ref</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="n">n</span><span class="p">])</span>
+
+  <span class="c1"># loop time steps</span>
+  <span class="k">for</span> <span class="n">step</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">t_range</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">step</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+      <span class="k">continue</span>
+
+    <span class="n">v_n</span><span class="p">[:,</span><span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="n">v_n</span><span class="p">[:,</span><span class="n">step</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dt</span><span class="o">/</span><span class="n">tau</span> <span class="o">*</span> <span class="p">(</span><span class="n">el</span> <span class="o">-</span> <span class="n">v_n</span><span class="p">[:,</span><span class="n">step</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">r</span><span class="o">*</span><span class="n">syn</span><span class="p">[:,</span><span class="n">step</span><span class="p">])</span>
+
+    <span class="c1"># boolean array spiked indexes neurons with v&gt;=vth</span>
+    <span class="n">spiked</span> <span class="o">=</span> <span class="p">(</span><span class="n">v_n</span><span class="p">[:,</span><span class="n">step</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">vth</span><span class="p">)</span>
+    <span class="n">v_n</span><span class="p">[</span><span class="n">spiked</span><span class="p">,</span><span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="n">vr</span>
+    <span class="n">raster</span><span class="p">[</span><span class="n">spiked</span><span class="p">,</span><span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+
+    <span class="c1"># boolean array clamped indexes refractory neurons</span>
+    <span class="n">clamped</span> <span class="o">=</span> <span class="p">(</span><span class="n">last_spike</span> <span class="o">+</span> <span class="n">t_ref</span> <span class="o">&gt;</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">v_n</span><span class="p">[</span><span class="n">clamped</span><span class="p">,</span><span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="n">vr</span>
+    <span class="n">last_spike</span><span class="p">[</span><span class="n">spiked</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span>
+
+  <span class="c1"># plot multiple realizations of Vm, spikes and mean spike rate</span>
+  <span class="n">plot_all</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">v_n</span><span class="p">,</span> <span class="n">raster</span><span class="p">)</span>
+
+  <span class="c1"># plot histogram of t_ref</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">t_ref</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;stepfilled&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$t_</span><span class="si">{ref}</span><span class="s1">$ (s)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">_</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span><span class="n">random_ref_period</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span> \
+                              <span class="n">sigma</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="using-functions">
+<h1>Using functions<a class="headerlink" href="#using-functions" title="Permalink to this headline">¶</a></h1>
+<p>Running key parts of your code inside functions improves your coding narrative by making it clearer and more flexible to future changes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Video: Functions</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;0An_NnVWY_Q&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-6">
+<h2>Exercise 6<a class="headerlink" href="#exercise-6" title="Permalink to this headline">¶</a></h2>
+<p>Re-organize part of the code from the previous exercise with functions.</p>
+<p><strong>Suggestions</strong></p>
+<ul class="simple">
+<li><p>Complete the function <code class="docutils literal notranslate"><span class="pre">spike_clamp()</span></code> to update <span class="math notranslate nohighlight">\(V(t)\)</span> and deal with spiking and refractoriness</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ode_step</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Evolves membrane potential by one step of discrete time integration</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    v (numpy array of floats)</span>
+<span class="sd">      membrane potential at previous time step of shape (neurons)</span>
+
+<span class="sd">    v (numpy array of floats)</span>
+<span class="sd">      synaptic input at current time step of shape (neurons)</span>
+
+<span class="sd">    dt (float)</span>
+<span class="sd">      time step increment</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    v (numpy array of floats)</span>
+<span class="sd">      membrane potential at current time step of shape (neurons)</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">v</span> <span class="o">=</span> <span class="n">v</span> <span class="o">+</span> <span class="n">dt</span><span class="o">/</span><span class="n">tau</span> <span class="o">*</span> <span class="p">(</span><span class="n">el</span> <span class="o">-</span> <span class="n">v</span> <span class="o">+</span> <span class="n">r</span><span class="o">*</span><span class="n">i</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">v</span>
+
+<span class="k">def</span> <span class="nf">spike_clamp</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">delta_spike</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Resets membrane potential of neurons if v&gt;= vth</span>
+<span class="sd">  and clamps to vr if interval of time since last spike &lt; t_ref</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    v (numpy array of floats)</span>
+<span class="sd">      membrane potential of shape (neurons)</span>
+
+<span class="sd">    delta_spike (numpy array of floats)</span>
+<span class="sd">      interval of time since last spike of shape (neurons)</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    v (numpy array of floats)</span>
+<span class="sd">      membrane potential of shape (neurons)</span>
+<span class="sd">    spiked (numpy array of floats)</span>
+<span class="sd">      boolean array of neurons that spiked  of shape (neurons)</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1">####################################################</span>
+  <span class="c1">## TODO for students: compute the mean squared error</span>
+  <span class="c1"># Fill out function and remove</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: complete the function&quot;</span><span class="p">)</span>
+  <span class="c1">####################################################</span>
+  <span class="c1"># boolean array spiked indexes neurons with v&gt;=vth</span>
+  <span class="n">spiked</span> <span class="o">=</span> <span class="o">...</span>
+  <span class="n">v</span><span class="p">[</span><span class="n">spiked</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="c1"># boolean array clamped indexes refractory neurons</span>
+  <span class="n">clamped</span> <span class="o">=</span> <span class="o">...</span>
+  <span class="n">v</span><span class="p">[</span><span class="n">clamped</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="k">return</span> <span class="n">v</span><span class="p">,</span> <span class="n">spiked</span>
+
+<span class="c1"># set random number generator</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+
+<span class="c1"># initialize step_end, t_range, n, v_n, syn and raster</span>
+<span class="n">t_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">step_end</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_range</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">v_n</span> <span class="o">=</span> <span class="n">el</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">step_end</span><span class="p">])</span>
+<span class="n">syn</span> <span class="o">=</span> <span class="n">i_mean</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.1</span><span class="o">*</span><span class="p">(</span><span class="n">t_max</span><span class="o">/</span><span class="n">dt</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">step_end</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">raster</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">step_end</span><span class="p">])</span>
+
+<span class="c1"># initialize t_ref and last_spike</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.007</span>
+<span class="n">t_ref</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">sigma</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">t_ref</span><span class="p">[</span><span class="n">t_ref</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># initialize t_ref and last_spike</span>
+<span class="n">last_spike</span> <span class="o">=</span> <span class="o">-</span><span class="n">t_ref</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="n">n</span><span class="p">])</span>
+
+<span class="c1"># loop time steps</span>
+<span class="k">for</span> <span class="n">step</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">t_range</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">step</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+    <span class="k">continue</span>
+
+  <span class="n">v_n</span><span class="p">[:,</span><span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="n">ode_step</span><span class="p">(</span><span class="n">v_n</span><span class="p">[:,</span><span class="n">step</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">syn</span><span class="p">[:,</span><span class="n">step</span><span class="p">],</span> <span class="n">dt</span><span class="p">)</span>
+  <span class="c1"># Complete the`spike_clamp` function above and uncomment</span>
+  <span class="n">v_n</span><span class="p">[:,</span><span class="n">step</span><span class="p">],</span> <span class="n">spiked</span> <span class="o">=</span> <span class="n">spike_clamp</span><span class="p">(</span><span class="n">v_n</span><span class="p">[:,</span><span class="n">step</span><span class="p">],</span> <span class="n">t</span> <span class="o">-</span> <span class="n">last_spike</span><span class="p">)</span>
+
+  <span class="c1"># update raster and last_spike</span>
+  <span class="n">raster</span><span class="p">[</span><span class="n">spiked</span><span class="p">,</span><span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+  <span class="n">last_spike</span><span class="p">[</span><span class="n">spiked</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span>
+
+<span class="c1"># plot multiple realizations of Vm, spikes and mean spike rate</span>
+<span class="n">plot_all</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">v_n</span><span class="p">,</span> <span class="n">raster</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D2_PythonWorkshop2/solutions/W0D2_Tutorial1_Solution_80589e38.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=560 height=632 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D2_PythonWorkshop2/static/W0D2_Tutorial1_Solution_80589e38_0.png>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="using-classes">
+<h1>Using classes<a class="headerlink" href="#using-classes" title="Permalink to this headline">¶</a></h1>
+<p>Using classes helps with code reuse and reliability. Well-designed classes are like black boxes in that they receive inputs and provide expected outputs. The details of how the class processes inputs and produces outputs are unimportant.</p>
+<p>See additional details here: <a class="reference external" href="https://en.wikibooks.org/wiki/A_Beginner%27s_Python_Tutorial/Classes">A Beginner’s Python Tutorial/Classes</a></p>
+<p><em>Attributes</em> are variables internal to the class, and <em>methods</em> are functions internal to the class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Video: Classes</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;4YNpMpVW2qs&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-7">
+<h2>Exercise 7<a class="headerlink" href="#exercise-7" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise we’ll practice with Python classes by implementing <code class="docutils literal notranslate"><span class="pre">LIFNeurons</span></code>, a class that evolves and keeps state of multiple realizations of LIF neurons.</p>
+<p>Several attributes are used to keep state of our neurons:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">v</span>             <span class="n">current</span> <span class="n">membrane</span> <span class="n">potential</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">spiked</span>        <span class="n">neurons</span> <span class="n">that</span> <span class="n">spiked</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">last_spike</span>    <span class="n">last</span> <span class="n">spike</span> <span class="n">time</span> <span class="n">of</span> <span class="n">each</span> <span class="n">neuron</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">t</span>             <span class="n">running</span> <span class="n">time</span> <span class="n">of</span> <span class="n">the</span> <span class="n">simulation</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">steps</span>         <span class="n">simulation</span> <span class="n">step</span>
+</pre></div>
+</div>
+<p>There is a single method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">ode_step</span><span class="p">()</span>    <span class="n">performs</span> <span class="n">single</span> <span class="n">step</span> <span class="n">discrete</span> <span class="n">time</span> <span class="n">integration</span>
+                   <span class="k">for</span> <span class="n">provided</span> <span class="n">synaptic</span> <span class="n">current</span> <span class="ow">and</span> <span class="n">dt</span>
+</pre></div>
+</div>
+<p><strong>Suggestions</strong></p>
+<ul class="simple">
+<li><p>Complete the spike and clamp part of method <code class="docutils literal notranslate"><span class="pre">self.ode_step</span></code> (should be similar to function <code class="docutils literal notranslate"><span class="pre">spike_and_clamp</span></code> seen before)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># simulation class</span>
+<span class="k">class</span> <span class="nc">LIFNeurons</span><span class="p">:</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Keeps track of membrane potential for multiple realizations of LIF neuron,</span>
+<span class="sd">  and performs single step discrete time integration.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">t_ref_mu</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">t_ref_sigma</span><span class="o">=</span><span class="mf">0.002</span><span class="p">,</span>
+               <span class="n">tau</span><span class="o">=</span><span class="mf">20e-3</span><span class="p">,</span> <span class="n">el</span><span class="o">=-</span><span class="mf">60e-3</span><span class="p">,</span> <span class="n">vr</span><span class="o">=-</span><span class="mf">70e-3</span><span class="p">,</span> <span class="n">vth</span><span class="o">=-</span><span class="mf">50e-3</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">100e6</span><span class="p">):</span>
+
+    <span class="c1"># neuron count</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span>
+
+    <span class="c1"># neuron parameters</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">tau</span> <span class="o">=</span> <span class="n">tau</span>        <span class="c1"># second</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">el</span> <span class="o">=</span> <span class="n">el</span>          <span class="c1"># milivolt</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">vr</span> <span class="o">=</span> <span class="n">vr</span>          <span class="c1"># milivolt</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">vth</span> <span class="o">=</span> <span class="n">vth</span>        <span class="c1"># milivolt</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">r</span>            <span class="c1"># ohm</span>
+
+    <span class="c1"># initializes refractory period distribution</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">t_ref_mu</span> <span class="o">=</span> <span class="n">t_ref_mu</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">t_ref_sigma</span> <span class="o">=</span> <span class="n">t_ref_sigma</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">t_ref</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_ref_mu</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_ref_sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">t_ref</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">t_ref</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># state variables</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">el</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">spiked</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vth</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">last_spike</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">t_ref</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">steps</span> <span class="o">=</span> <span class="mi">0</span>
+
+
+  <span class="k">def</span> <span class="nf">ode_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+
+    <span class="c1"># update running time and steps</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">+=</span> <span class="n">dt</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">steps</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># one step of discrete time integration of dt</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">tau</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">el</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span>
+    <span class="c1">####################################################</span>
+    <span class="c1">## TODO for students: complete the `ode_step` method</span>
+    <span class="c1"># Fill out function and remove</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: complete the method&quot;</span><span class="p">)</span>
+    <span class="c1">####################################################</span>
+    <span class="c1"># spike and clamp</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">spiked</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">spiked</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">last_spike</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">spiked</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="n">clamped</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">clamped</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">last_spike</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">spiked</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+
+
+<span class="c1"># set random number generator</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+
+<span class="c1"># initialize step_end, t_range, n, v_n, syn and raster</span>
+<span class="n">t_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">step_end</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_range</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">v_n</span> <span class="o">=</span> <span class="n">el</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">step_end</span><span class="p">])</span>
+<span class="n">syn</span> <span class="o">=</span> <span class="n">i_mean</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.1</span><span class="o">*</span><span class="p">(</span><span class="n">t_max</span><span class="o">/</span><span class="n">dt</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">step_end</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">raster</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">step_end</span><span class="p">])</span>
+
+<span class="c1"># initialize neurons</span>
+<span class="n">neurons</span> <span class="o">=</span> <span class="n">LIFNeurons</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># loop time steps</span>
+<span class="k">for</span> <span class="n">step</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">t_range</span><span class="p">):</span>
+  <span class="n">neurons</span><span class="o">.</span><span class="n">ode_step</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">syn</span><span class="p">[:,</span><span class="n">step</span><span class="p">])</span>
+
+  <span class="c1"># log v_n and spike history</span>
+  <span class="n">v_n</span><span class="p">[:,</span><span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="n">neurons</span><span class="o">.</span><span class="n">v</span>
+  <span class="n">raster</span><span class="p">[</span><span class="n">neurons</span><span class="o">.</span><span class="n">spiked</span><span class="p">,</span> <span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+
+<span class="c1"># report running time and steps</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Ran for </span><span class="si">{</span><span class="n">neurons</span><span class="o">.</span><span class="n">t</span><span class="si">:</span><span class="s1">.3</span><span class="si">}</span><span class="s1">s in </span><span class="si">{</span><span class="n">neurons</span><span class="o">.</span><span class="n">steps</span><span class="si">}</span><span class="s1"> steps.&#39;</span><span class="p">)</span>
+
+<span class="c1"># plot multiple realizations of Vm, spikes and mean spike rate</span>
+<span class="n">plot_all</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">v_n</span><span class="p">,</span> <span class="n">raster</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D2_PythonWorkshop2/solutions/W0D2_Tutorial1_Solution_86dc40ee.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=560 height=632 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D2_PythonWorkshop2/static/W0D2_Tutorial1_Solution_86dc40ee_1.png>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/W0D2_PythonWorkshop2/student"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../intro_text.html" title="previous page">W0D2 - Python Workshop 2</a>
+    <a class='right-next' id="next-link" href="../../W0D3_LinearAlgebra/intro_text.html" title="next page">W0D3 - Linear Algebra</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Neuromatch<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -1,0 +1,1768 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 2: Statistical Inference &#8212; Neuromatch Computational Neuroscience</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="W1D1 - Model Types" href="../../W1D1_ModelTypes/intro_text.html" />
+    <link rel="prev" title="Neuromatch Academy: Precourse Week, Day 5, Tutorial 1" href="W0D5_Tutorial1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      <img src="../../../_static/nma-logo-square-4xp.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Pre-reqs Refresher
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D1_PythonWorkshop1/intro_text.html">
+   Python Workshop 1 (W0D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
+     Tutorial: LIF Neuron - Part I
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D2_PythonWorkshop2/intro_text.html">
+   Python Workshop 2 (W0D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
+     Tutorial 1: LIF Neuron Part II
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D3_LinearAlgebra/intro_text.html">
+   Linear Algebra (W0D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
+     Tutorial 1: Vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
+     Tutorial 2: Matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
+     Bonus Tutorial: Discrete Dynamical Systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D4_Calculus/intro_text.html">
+   Calculus (W0D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
+     Tutorial 1: Basics of Differential and Integral Calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
+     Tutorial 2: Differential Equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
+     Tutorial 3: Numerical Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../intro_text.html">
+   Statistics (W0D5)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="W0D5_Tutorial1.html">
+     Neuromatch Academy: Precourse Week, Day 5, Tutorial 1
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tutorial 2: Statistical Inference
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Intro to Modeling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D1_ModelTypes/intro_text.html">
+   Model Types (W1D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
+     Tutorial 1: “What” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
+     Tutorial 2: “How” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
+     Tutorial 3: “Why” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D2_ModelingPractice/intro_text.html">
+   Modeling Practice (W1D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
+     Tutorial: Framing the Question
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D3_ModelFitting/intro_text.html">
+   Model Fitting (W1D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
+     Tutorial 1: Linear regression with MSE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
+     Tutorial 2: Linear regression with MLE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
+     Tutorial 3: Confidence intervals and bootstrapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
+     Tutorial 4: Multiple linear regression and polynomial regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
+     Tutorial 5: Model Selection: Bias-variance trade-off
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
+     Tutorial 6: Model Selection: Cross-validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D4_MachineLearning/intro_text.html">
+   Machine Learning (W1D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial1.html">
+     Tutorial 1: GLMs for Encoding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial2.html">
+     Tutorial 2: Classifiers and regularizers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D5_DimensionalityReduction/intro_text.html">
+   Dimensionality Reduction (W1D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
+     Tutorial 1: Geometric view of data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
+     Tutorial 2: Principal Component Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
+     Tutorial 3: Dimensionality Reduction &amp; Reconstruction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
+     Tutorial 4:  Nonlinear Dimensionality Reduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D1_DeepLearning/intro_text.html">
+   Deep Learning (W2D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
+     Tutorial 1: Decoding Neural Responses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
+     Tutorial 2: Convolutional Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
+     Tutorial 2: Building and Evaluating Normative Encoding Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dynamical Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D2_LinearSystems/intro_text.html">
+   Linear Systems (W2D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
+     Tutorial 1: Linear dynamical systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
+     Tutorial 2: Markov Processes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
+     Tutorial 3: Combining determinism and stochasticity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
+     Tutorial 4: Autoregressive models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D3_RealNeurons/intro_text.html">
+   Real Neurons (W2D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial1.html">
+     Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial2.html">
+     Tutorial 2: Effects of Input Correlation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial3.html">
+     Tutorial 3: Synaptic transmission - Models of static and dynamic synapses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial4.html">
+     Tutorial 4: Spike-timing dependent plasticity (STDP)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D4_DynamicNetworks/intro_text.html">
+   Dynamic Networks (W2D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
+     Tutorial 1: Neural Rate Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
+     Tutorial 2: Wilson-Cowan Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Stochastic Processes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D1_BayesianDecisions/intro_text.html">
+   Bayesian Decisions (W3D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
+     Tutorial 1: Bayes with a binary hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
+     Tutorial 2: Bayesian inference and decisions with continuous hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
+     Bonus Tutorial:Fitting to data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D2_HiddenDynamics/intro_text.html">
+   Hidden Dynamics (W3D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
+     Tutorial 1: Sequential Probability Ratio Test
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
+     Tutorial 2: Hidden Markov Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
+     Tutorial 3: 1D Kalman Filter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
+     Tutorial 4: 2D Kalman Filter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D3_OptimalControl/intro_text.html">
+   Optimal Control (W3D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
+     Tutorial 1: Optimal Control for Discrete States
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
+     Tutorial 2: Optimal Control for Continuous State
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D4_ReinforcementLearning/intro_text.html">
+   Reinforcement Learning (W3D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
+     Tutorial 1: Learning to Predict
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
+     Tutorial 2: Learning to Act: Multi-Armed Bandits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
+     Tutorial 3: Learning to Act: Q-Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
+     Tutorial 4: From Reinforcement Learning to Planning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D5_NetworkCausality/intro_text.html">
+   Network Causality (W3D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
+     Tutorial 1: Interventions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
+     Tutorial 2: Correlations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
+     Tutorial 3: Simultaneous fitting/regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
+     Tutorial 4: Instrumental Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/tutorials/W0D5_Statistics/student/W0D5_Tutorial2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/tutorials/W0D5_Statistics/student/W0D5_Tutorial2.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial 2: Statistical Inference
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-1-statistical-inference-and-likelihood">
+   Section 1: Statistical Inference and Likelihood
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1a-likelihood-mean-and-variance">
+     Exercise 1A: Likelihood, mean and variance
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interactive-demo-maximum-likelihood-inference">
+     Interactive Demo: Maximum likelihood inference
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1b-maximum-likelihood-estimation">
+     Exercise 1B: Maximum Likelihood Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-2-bayesian-inference">
+   Section 2: Bayesian Inference
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2a-performing-bayesian-inference">
+     Exercise 2A: Performing Bayesian inference
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#think-2a-bayesian-brains">
+     Think! 2A: Bayesian Brains
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2b-finding-the-posterior-computationally">
+     Exercise 2B: Finding the posterior computationally
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus">
+   Bonus
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extra-exercise-bayes-net">
+     Extra exercise: Bayes Net
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#think-bonus-causality-in-the-brain">
+     Think! Bonus: Causality in the Brain
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W0D5_Statistics/student/W0D5_Tutorial2.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="tutorial-2-statistical-inference">
+<h1>Tutorial 2: Statistical Inference<a class="headerlink" href="#tutorial-2-statistical-inference" title="Permalink to this headline">¶</a></h1>
+<p><strong>Week 0, Day 5: Statistics</strong></p>
+<p><strong>By Neuromatch Academy</strong></p>
+<p><strong>Content creators:</strong> Ulrik Beierholm</p>
+<p>If an editor really did a lot of content creation add “with help from Name Surname” to the above</p>
+<p><strong>Content reviewers:</strong> Ethan Cheng, Manisha Sinha</p>
+<p>Name Surname, Name Surname. This includes both reviewers and editors. Add reviewers first then editors (paper-like seniority :) ).</p>
+<hr class="docutils" />
+<p>#Tutorial Objectives</p>
+<p>This tutorial builds on Tutorial 1 by explaining how to do inference through inverting the generative process.</p>
+<p>By completing the exercises in this tutorial, you should:</p>
+<ul class="simple">
+<li><p>understand what the likelihood function is, and have some intuition of why it is important</p></li>
+<li><p>know how to summarise the Gaussian distribution using mean and variance</p></li>
+<li><p>know how to maximise a likelihood function</p></li>
+<li><p>be able to do simple inference in both classical and Bayesian ways</p></li>
+<li><p>(Optional) understand how Bayes Net can be used to model causal relationships</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@markdown Tutorial slides (to be added)</span>
+<span class="c1"># you should link the slides for all tutorial videos here (we will store pdfs on osf)</span>
+
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe src=&quot;https://mfr.ca-1.osf.io/render?url=https://osf.io/kaq2x/?direct%26mode=render</span><span class="si">%26a</span><span class="s1">ction=download%26mode=render&quot; frameborder=&quot;0&quot; width=&quot;960&quot; height=&quot;569&quot; allowfullscreen=&quot;true&quot; mozallowfullscreen=&quot;true&quot; webkitallowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<p>Make sure to run this before you get started</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">default_rng</span>   <span class="c1"># a default random number generator</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>  <span class="c1"># the normal probability distribution</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Figure settings</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>       <span class="c1"># interactive display</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">fixed</span><span class="p">,</span> <span class="n">HBox</span><span class="p">,</span> <span class="n">Layout</span><span class="p">,</span> <span class="n">VBox</span><span class="p">,</span> <span class="n">interactive</span><span class="p">,</span> <span class="n">Label</span><span class="p">,</span> <span class="n">interact_manual</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="c1"># plt.style.use(&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/NMA2020/nma.mplstyle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Plotting &amp; Helper functions</span>
+
+<span class="k">def</span> <span class="nf">plot_hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">figtitle</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">num_bins</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Plot the given data as a histogram.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      data (ndarray): array with data to plot as histogram</span>
+<span class="sd">      xlabel (str): label of x-axis</span>
+<span class="sd">      figtitle (str): title of histogram plot (default is no title)</span>
+<span class="sd">      num_bins (int): number of bins for histogram (default is 10)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      count (ndarray): number of samples in each histogram bin</span>
+<span class="sd">      bins (ndarray): center of each histogram bin</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">num_bins</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">count</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">num_bins</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">count</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>  <span class="c1"># 10 bins default</span>
+  <span class="k">if</span> <span class="n">figtitle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">figtitle</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+  <span class="k">return</span> <span class="n">count</span><span class="p">,</span> <span class="n">bins</span>
+
+<span class="k">def</span> <span class="nf">plot_gaussian_samples_true</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">xspace</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Plot a histogram of the data samples on the same plot as the gaussian</span>
+<span class="sd">  distribution specified by the give mu and sigma values.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      samples (ndarray): data samples for gaussian distribution</span>
+<span class="sd">      xspace (ndarray): x values to sample from normal distribution</span>
+<span class="sd">      mu (scalar): mean parameter of normal distribution</span>
+<span class="sd">      sigma (scalar): variance parameter of normal distribution</span>
+<span class="sd">      xlabel (str): the label of the x-axis of the histogram</span>
+<span class="sd">      ylabel (str): the label of the y-axis of the histogram</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      Nothing.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
+  <span class="c1"># num_samples = samples.shape[0]</span>
+
+  <span class="n">count</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># probability density function</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xspace</span><span class="p">,</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">xspace</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span><span class="s1">&#39;r-&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">plot_likelihoods</span><span class="p">(</span><span class="n">likelihoods</span><span class="p">,</span> <span class="n">mean_vals</span><span class="p">,</span> <span class="n">variance_vals</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Plot the likelihood values on a heatmap plot where the x and y axes match</span>
+<span class="sd">  the mean and variance parameter values the likelihoods were computed for.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      likelihoods (ndarray): array of computed likelihood values</span>
+<span class="sd">      mean_vals (ndarray): array of mean parameter values for which the</span>
+<span class="sd">                            likelihood was computed</span>
+<span class="sd">      variance_vals (ndarray): array of variance parameter values for which the</span>
+<span class="sd">                            likelihood was computed</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      Nothing.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+  <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">likelihoods</span><span class="p">)</span>
+
+  <span class="n">cbar</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+  <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;log likelihood&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=-</span><span class="mi">90</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">)</span>
+
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mean_vals</span><span class="p">)))</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">variance_vals</span><span class="p">)))</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">mean_vals</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">variance_vals</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Mean&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Variance&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">posterior_plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">likelihood</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">posterior_pointwise</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Plots normalized Gaussian distributions and posterior.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x (numpy array of floats):         points at which the likelihood has been evaluated</span>
+<span class="sd">        auditory (numpy array of floats):  normalized probabilities for auditory likelihood evaluated at each `x`</span>
+<span class="sd">        visual (numpy array of floats):    normalized probabilities for visual likelihood evaluated at each `x`</span>
+<span class="sd">        posterior (numpy array of floats): normalized probabilities for the posterior evaluated at each `x`</span>
+<span class="sd">        ax: Axis in which to plot. If None, create new axis.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Nothing.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">likelihood</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">likelihood</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">prior</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">prior</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">posterior_pointwise</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">posterior_pointwise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="s1">&#39;-C1&#39;</span><span class="p">,</span> <span class="n">LineWidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Auditory&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">prior</span><span class="p">,</span> <span class="s1">&#39;-C0&#39;</span><span class="p">,</span> <span class="n">LineWidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Visual&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">posterior_pointwise</span><span class="p">,</span> <span class="s1">&#39;-C2&#39;</span><span class="p">,</span> <span class="n">LineWidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Posterior&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Orientation (Degrees)&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+  <span class="k">return</span> <span class="n">ax</span>
+
+<span class="k">def</span> <span class="nf">plot_classical_vs_bayesian_normal</span><span class="p">(</span><span class="n">num_points</span><span class="p">,</span> <span class="n">mu_classic</span><span class="p">,</span> <span class="n">var_classic</span><span class="p">,</span>
+                                      <span class="n">mu_bayes</span><span class="p">,</span> <span class="n">var_bayes</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Helper function to plot optimal normal distribution parameters for varying</span>
+<span class="sd">  observed sample sizes using both classic and Bayesian inference methods.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      num_points (int): max observed sample size to perform inference with</span>
+<span class="sd">      mu_classic (ndarray): estimated mean parameter for each observed sample size</span>
+<span class="sd">                                using classic inference method</span>
+<span class="sd">      var_classic (ndarray): estimated variance parameter for each observed sample size</span>
+<span class="sd">                                using classic inference method</span>
+<span class="sd">      mu_bayes (ndarray): estimated mean parameter for each observed sample size</span>
+<span class="sd">                                using Bayesian inference method</span>
+<span class="sd">      var_bayes (ndarray): estimated variance parameter for each observed sample size</span>
+<span class="sd">                                using Bayesian inference method</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      Nothing.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">xspace</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_points</span><span class="p">,</span> <span class="n">num_points</span><span class="p">)</span>
+  <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;n data points&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;mu&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xspace</span><span class="p">,</span> <span class="n">mu_classic</span><span class="p">,</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Classical&quot;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xspace</span><span class="p">,</span> <span class="n">mu_bayes</span><span class="p">,</span><span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Bayes&quot;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+  <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;n data points&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;sigma^2&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xspace</span><span class="p">,</span> <span class="n">var_classic</span><span class="p">,</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Classical&quot;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xspace</span><span class="p">,</span> <span class="n">var_bayes</span><span class="p">,</span><span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Bayes&quot;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-1-statistical-inference-and-likelihood">
+<h1>Section 1: Statistical Inference and Likelihood<a class="headerlink" href="#section-1-statistical-inference-and-likelihood" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 4: Inference</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;765S2XKYoJ8&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A generative model (such as the Gaussian distribution from the previous tutorial) allows us to make prediction about outcomes.</p>
+<p>However, after we observe <span class="math notranslate nohighlight">\(n\)</span> data points, we can also evaluate our model (and any of its associated parameters) by calculating the <strong>likelihood</strong> of our model having generated each of those data points <span class="math notranslate nohighlight">\(x_i\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[P(x_i|\mu,\sigma)=\mathcal{N}(x_i,\mu,\sigma)\]</div>
+<p>For all data points <span class="math notranslate nohighlight">\(\mathbf{x}=(x_1, x_2, x_3, ...x_n) \)</span> we can then calculate the likelihood for the whole dataset by computing the product of the likelihood for each single data point.</p>
+<div class="math notranslate nohighlight">
+\[P(\mathbf{x}|\mu,\sigma)=\prod_{i=1}^n \mathcal{N}(x_i,\mu,\sigma)\]</div>
+<p>As a function of the parameters (when the data points <span class="math notranslate nohighlight">\(x\)</span> are fixed), this is referred to as the <strong>likelihood function</strong>, <span class="math notranslate nohighlight">\(L(\mu,\sigma)\)</span>.</p>
+<p>In the last tutorial we reviewed how the data was generated given the selected parameters of the generative process. If we do not know the parameters <span class="math notranslate nohighlight">\(\mu\)</span>, <span class="math notranslate nohighlight">\(\sigma\)</span> that generated the data, we can ask which parameter values (given our model) gives the best (highest) likelihood.</p>
+<div class="section" id="exercise-1a-likelihood-mean-and-variance">
+<h2>Exercise 1A: Likelihood, mean and variance<a class="headerlink" href="#exercise-1a-likelihood-mean-and-variance" title="Permalink to this headline">¶</a></h2>
+<p>We can use the likelihood to find the set of parameters that are most likely to have generated the data (given the model we are using). That is, we want to infer the parameters that gave rise to the data we observed. We will try a couple of ways of doing statistical inference.</p>
+<p>In the following exercise, we will sample from the Gaussian distribution (again), plot a histogram and the Gaussian probability density function, and calculate some statistics from the samples.</p>
+<p>Specifically we will calculate:</p>
+<ul class="simple">
+<li><p>Likelihood</p></li>
+<li><p>Mean</p></li>
+<li><p>Standard deviation</p></li>
+</ul>
+<p>Statistical moments are defined based on the expectations. The first moment is the expected value, i.e. the mean, the second moment is the expected squared value, i.e. variance, and so on.</p>
+<p>The special thing about the Gaussian is that mean and standard deviation of the random sample can effectively approximate the two parameters of a Gaussian, <span class="math notranslate nohighlight">\(\mu, \sigma\)</span>.</p>
+<p>Hence using the sample mean, <span class="math notranslate nohighlight">\(\bar{x}=\frac{1}{n}\sum_i x_i\)</span>, and variance, <span class="math notranslate nohighlight">\(\bar{\sigma}^2=\frac{1}{n} \sum_i (x_i-\bar{x})^2 \)</span> should give us the best/maximum likelihood, <span class="math notranslate nohighlight">\(L(\bar{x},\bar{\sigma}^2)\)</span>.</p>
+<p>Let’s see if that actually works. If we search through different combinations of <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> values, do the sample mean and variance values give us the maximum likelihood (of observing our data)?</p>
+<p>You need to modify two lines below to generate the data from a normal distribution <span class="math notranslate nohighlight">\(N(5, 1)\)</span>, and plot the theoretical distribution. Note that we are reusing functions from tutorial 1, so review that tutorial if needed. Then you will use this random sample to calculate the likelihood for a variety of potential mean and variance parameter values. For this tutorial we have chosen a variance parameter of 1, meaning the standard deviation is also 1 in this case. Most of our functions take the standard deviation sigma as a parameter, so we will write <span class="math notranslate nohighlight">\(\sigma = 1\)</span>.</p>
+<p>(Note that in practice computing the sample variance like this $<span class="math notranslate nohighlight">\(\bar{\sigma}^2=\frac{1}{(n-1)} \sum_i (x_i-\bar{x})^2 \)</span>$ is actually better, take a look at any statistics textbook for an explanation of this.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_normal_samples</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Generates a desired number of samples from a normal distribution,</span>
+<span class="sd">  Normal(mu, sigma).</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    mu (scalar): mean parameter of the normal distribution</span>
+<span class="sd">    sigma (scalar): standard deviation parameter of the normal distribution</span>
+<span class="sd">    num_samples (int): number of samples drawn from normal distribution</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    sampled_values (ndarray): a array of shape (samples, ) containing the samples</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">random_num_generator</span> <span class="o">=</span> <span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+  <span class="n">sampled_values</span> <span class="o">=</span> <span class="n">random_num_generator</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">sampled_values</span>
+
+<span class="k">def</span> <span class="nf">compute_likelihoods_normal</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean_vals</span><span class="p">,</span> <span class="n">variance_vals</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Computes the log-likelihood values given a observed data sample x, and</span>
+<span class="sd">  potential mean and variance values for a normal distribution</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      x (ndarray): 1-D array with all the observed data</span>
+<span class="sd">      mean_vals (ndarray): 1-D array with all potential mean values to</span>
+<span class="sd">                              compute the likelihood function for</span>
+<span class="sd">      variance_vales (ndarray): 1-D array with all potential variance values to</span>
+<span class="sd">                              compute the likelihood function for</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      likelihood (ndarray): 2-D array of shape (number of mean_vals,</span>
+<span class="sd">                              number of variance_vals) for which the likelihood</span>
+<span class="sd">                              of the observed data was computed</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># Initialise likelihood collection array</span>
+  <span class="n">likelihood</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">mean_vals</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">variance_vals</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+  <span class="c1"># Compute the likelihood for observing the gvien data x assuming</span>
+  <span class="c1"># each combination of mean and variance values</span>
+  <span class="k">for</span> <span class="n">idxMean</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mean_vals</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">idxVar</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">variance_vals</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+      <span class="n">likelihood</span><span class="p">[</span><span class="n">idxVar</span><span class="p">,</span><span class="n">idxMean</span><span class="p">]</span><span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean_vals</span><span class="p">[</span><span class="n">idxMean</span><span class="p">],</span>
+                                              <span class="n">variance_vals</span><span class="p">[</span><span class="n">idxVar</span><span class="p">])))</span>
+
+  <span class="k">return</span> <span class="n">likelihood</span>
+
+<span class="c1">###################################################################</span>
+<span class="c1">## TODO for students: Generate 1000 random samples from a normal distribution</span>
+<span class="c1">## with mu = 5 and sigma = 1</span>
+<span class="c1"># Fill out the following then remove</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: need to generate samples&quot;</span><span class="p">)</span>
+<span class="c1">###################################################################</span>
+
+<span class="c1"># Generate data</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># since variance = 1, sigma = 1</span>
+<span class="n">x</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># You can calculate mean and variance through either numpy or scipy</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the sample mean as estimated by numpy: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the sample standard deviation as estimated by numpy: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<span class="c1"># or</span>
+<span class="n">meanX</span><span class="p">,</span> <span class="n">varX</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">stats</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the sample mean as estimated by scipy: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">meanX</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the sample standard deviation as estimated by scipy: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">varX</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+<span class="c1">###################################################################</span>
+<span class="c1">## TODO for students: Use the given function to compute the likelihood for</span>
+<span class="c1">## a variety of mean and variance values</span>
+<span class="c1"># Fill out the following then remove</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: need to compute likelihoods&quot;</span><span class="p">)</span>
+<span class="c1">###################################################################</span>
+
+<span class="c1"># Let&#39;s look through possible mean and variance values for the highest likelihood</span>
+<span class="c1"># using the compute_likelihood function</span>
+<span class="n">meanTest</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c1"># potential mean values to try</span>
+<span class="n">varTest</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="c1"># potential variance values to try</span>
+<span class="n">likelihoods</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># Uncomment once you&#39;ve generated the samples and compute likelihoods</span>
+<span class="c1"># xspace = np.linspace(0, 10, 100)</span>
+<span class="c1"># plot_gaussian_samples_true(x, xspace, mu, sigma, &quot;x&quot;, &quot;Count&quot;)</span>
+<span class="c1"># plot_likelihoods(likelihoods, meanTest, varTest)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D5_Statistics/solutions/W0D5_Tutorial2_Solution_7687f6b1.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=560 height=416 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D5_Statistics/static/W0D5_Tutorial2_Solution_7687f6b1_1.png>
+<img alt='Solution hint' align='left' width=534 height=414 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D5_Statistics/static/W0D5_Tutorial2_Solution_7687f6b1_2.png>
+<p>The top figure shows hopefully a nice fit between the histogram and the distribution that generated the data. So far so good.</p>
+<p>Underneath you should see the sample mean and variance values, which are close to the true values (that we happen to know here).</p>
+<p>In the heatmap we should be able to see that the mean and variance parameters values yielding the highest likelihood (yellow) corresponds to (roughly) the combination of the calculated sample mean and variance from the dataset.
+But it can be hard to see from such a rough <strong>grid-search</strong> simulation, as it is only as precise as the resolution of the grid we are searching.</p>
+<p>Implicitly, by looking for the parameters that give the highest likelihood, we have been searching for the <strong>maximum likelihood</strong> estimate.
+$<span class="math notranslate nohighlight">\((\hat{\mu},\hat{\sigma})=argmax_{\mu,\sigma}L(\mu,\sigma)=argmax_{\mu,\sigma} \prod_{i=1}^n \mathcal{N}(x_i,\mu,\sigma)\)</span>$.</p>
+<p>For a simple Gaussian this can actually be done analytically (you have likely already done so yourself), using the statistical moments: mean and standard deviation (variance).</p>
+<p>In next section we will look at other ways of inferring such parameter variables.</p>
+</div>
+<div class="section" id="interactive-demo-maximum-likelihood-inference">
+<h2>Interactive Demo: Maximum likelihood inference<a class="headerlink" href="#interactive-demo-maximum-likelihood-inference" title="Permalink to this headline">¶</a></h2>
+<p>We want to do inference on this data set, i.e. we want to infer the parameters that most likely gave rise to the data given our model. Intuitively that means that we want as good as possible a fit between the observed data and the probability distribution function with the best inferred parameters.</p>
+<p>For now, just try to see how well you can fit the probability distribution to the data by using the demo sliders to control the mean and standard deviation parameters of the distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+
+<span class="c1">#@markdown Make sure you execute this cell to enable the widget and fit by hand!</span>
+<span class="n">vals</span> <span class="o">=</span> <span class="n">generate_normal_samples</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">plotFnc</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">):</span>
+  <span class="c1">#prepare to plot</span>
+  <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;probability&#39;</span><span class="p">)</span>
+  <span class="n">loglikelihood</span><span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">)))</span>
+
+  <span class="c1">#calculate histogram</span>
+  <span class="n">count</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">ignored</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+  <span class="c1">#plot</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">),</span><span class="s1">&#39;r-&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The log-likelihood for the selected parameters is: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">loglikelihood</span><span class="p">))</span>
+
+<span class="c1">#interact(plotFnc, mu=5.0, sigma=2.1);</span>
+<span class="c1">#interact(plotFnc, mu=widgets.IntSlider(min=0.0, max=10.0, step=1, value=4.0),sigma=widgets.IntSlider(min=0.1, max=10.0, step=1, value=4.0));</span>
+<span class="n">interact</span><span class="p">(</span><span class="n">plotFnc</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span><span class="n">sigma</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Did you notice the number below the plot? That is the summed log-likelihood, which increases (becomes less negative) as the fit improves. The log-likelihood should be greatest when <span class="math notranslate nohighlight">\(\mu\)</span> = 5 and <span class="math notranslate nohighlight">\(\sigma\)</span> = 1.</p>
+<p>Building upon what we did in the previous exercise, we want to see if we can do inference on observed data in a bit more principled way.</p>
+</div>
+<div class="section" id="exercise-1b-maximum-likelihood-estimation">
+<h2>Exercise 1B: Maximum Likelihood Estimation<a class="headerlink" href="#exercise-1b-maximum-likelihood-estimation" title="Permalink to this headline">¶</a></h2>
+<p>Let’s again assume that we have a data set, <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, assumed to be generated by a normal distribution (we actually generate it ourselves in line 1, so we know how it was generated!).
+We want to maximise the likelihood of the parameters <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma^2\)</span>. We can do so using a couple of tricks:</p>
+<ul class="simple">
+<li><p>Using a log transform will not change the maximum of the function, but will allow us to work with very small numbers that could lead to problems with machine precision.</p></li>
+<li><p>Maximising a function is the same as minimising the negative of a function, allowing us to use the minimize optimisation provided by scipy.</p></li>
+</ul>
+<p>In the code below, insert the missing line (see the <code class="docutils literal notranslate"><span class="pre">compute_likelihoods_normal</span></code> function from previous exercise), with the mean as theta[0] and variance as theta[1].</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Generate 1000 random samples from a Gaussian distribution</span>
+<span class="n">dataX</span> <span class="o">=</span> <span class="n">generate_normal_samples</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># We define the function to optimise, the negative log likelihood</span>
+<span class="k">def</span> <span class="nf">negLogLike</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Function for computing the negative log-likelihood given the observed data</span>
+<span class="sd">  and given parameter values stored in theta.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      dataX (ndarray): array with observed data points</span>
+<span class="sd">      theta (ndarray): normal distribution parameters (mean is theta[0],</span>
+<span class="sd">                            variance is theta[1])</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      Calculated negative Log Likelihood value!</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1">###################################################################</span>
+  <span class="c1">## TODO for students: Compute the negative log-likelihood value for the</span>
+  <span class="c1">## given observed data values and parameters (theta)</span>
+  <span class="c1"># Fill out the following then remove</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: need to compute the negative </span><span class="se">\</span>
+<span class="s2">                                log-likelihood value&quot;</span><span class="p">)</span>
+  <span class="c1">###################################################################</span>
+  <span class="k">return</span> <span class="o">...</span>
+
+<span class="c1"># Define bounds, var has to be positive</span>
+<span class="n">bnds</span> <span class="o">=</span> <span class="p">((</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+
+<span class="c1"># Optimize with scipy!</span>
+<span class="c1"># Uncomment once function above is implemented</span>
+<span class="c1"># optimal_parameters = sp.optimize.minimize(negLogLike, (2, 2), bounds = bnds)</span>
+<span class="c1"># print(&quot;The optimal mean estimate is: &quot; + str(optimal_parameters.x[0]))</span>
+<span class="c1"># print(&quot;The optimal variance estimate is: &quot; + str(optimal_parameters.x[1]))</span>
+
+<span class="c1"># optimal_parameters contains a lot of information about the optimization,</span>
+<span class="c1"># but we mostly want the mean and variance</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D5_Statistics/solutions/W0D5_Tutorial2_Solution_29984e0b.py"><em>Click for solution</em></a></p>
+<p>These are the approximations of the parameters that maximise the likelihood (<span class="math notranslate nohighlight">\(\mu\)</span> ~ 5.281 and <span class="math notranslate nohighlight">\(\sigma\)</span> ~ 1.170)</p>
+<p>Compare these values to the first and second moment (sample mean and variance) from the previous exercise, as well as to the true values (which we only know because we generated the numbers!). Consider the relationship discussed about statistical moments and maximising likelihood.</p>
+<p>Go back to the previous exercise and modify the mean and standard deviation values used to generate the observed data <span class="math notranslate nohighlight">\(x\)</span>, and verify that the values still work out.</p>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D5_Statistics/solutions/W0D5_Tutorial2_Solution_b0145e28.py"><em>Click for solution</em></a></p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-2-bayesian-inference">
+<h1>Section 2: Bayesian Inference<a class="headerlink" href="#section-2-bayesian-inference" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 5: Bayes</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;12tk5FsVMBQ&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For Bayesian inference we do not focus on the likelihood function <span class="math notranslate nohighlight">\(L(y)=P(x|y)\)</span>, but instead focus on the posterior distribution:</p>
+<div class="math notranslate nohighlight">
+\[P(y|x)=\frac{P(x|y)P(y)}{P(x)}\]</div>
+<p>which is composed of the likelihood function <span class="math notranslate nohighlight">\(P(x|y)\)</span>, the prior <span class="math notranslate nohighlight">\(P(y)\)</span> and a normalising term <span class="math notranslate nohighlight">\(P(x)\)</span> (which we will ignore for now).</p>
+<p>While there are other advantages to using Bayesian inference (such as the ability to derive Bayesian Nets, see optional bonus task below), we will first mostly focus on the role of the prior in inference.</p>
+<div class="section" id="exercise-2a-performing-bayesian-inference">
+<h2>Exercise 2A: Performing Bayesian inference<a class="headerlink" href="#exercise-2a-performing-bayesian-inference" title="Permalink to this headline">¶</a></h2>
+<p>In the above sections we performed inference using maximum likelihood, i.e. finding the parameters that maximised the likelihood of a set of parameters, given the model and data.</p>
+<p>We will now repeat the inference process, but with an added Bayesian prior, and compare it to the classical inference process we did before (Section 1). When using conjugate priors we can just update the parameter values of the distributions (here Gaussian distributions).</p>
+<p>For the prior we start by guessing a mean of 6 (mean of observed data points 5 and 7) and variance of 1 (variance of 5 and 7). This is a simplified way of applying a prior, that allows us to just add these 2 values (pseudo-data) to the real data.</p>
+<p>In the code below, complete the missing lines.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">classic_vs_bayesian_normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">num_points</span><span class="p">,</span> <span class="n">prior</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Compute both classical and Bayesian inference processes over the range of</span>
+<span class="sd">  data sample sizes (num_points) for a normal distribution with parameters</span>
+<span class="sd">  mu, sigma for comparison.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    mu (scalar): the mean parameter of the normal distribution</span>
+<span class="sd">    sigma (scalar): the standard deviation parameter of the normal distribution</span>
+<span class="sd">    num_points (int): max number of points to use for inference</span>
+<span class="sd">    prior (ndarray): prior data points for Bayesian inference</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    mean_classic (ndarray): estimate mean parameter via classic inference</span>
+<span class="sd">    var_classic (ndarray): estimate variance parameter via classic inference</span>
+<span class="sd">    mean_bayes (ndarray): estimate mean parameter via Bayesian inference</span>
+<span class="sd">    var_bayes (ndarray): estimate variance parameter via Bayesian inference</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># Initialize the classical and Bayesian inference arrays that will estimate</span>
+  <span class="c1"># the normal parameters given a certain number of randomly sampled data points</span>
+  <span class="n">mean_classic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_points</span><span class="p">)</span>
+  <span class="n">var_classic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_points</span><span class="p">)</span>
+
+  <span class="n">mean_bayes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_points</span><span class="p">)</span>
+  <span class="n">var_bayes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_points</span><span class="p">)</span>
+
+  <span class="k">for</span> <span class="n">nData</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_points</span><span class="p">):</span>
+
+    <span class="c1">###################################################################</span>
+    <span class="c1">## TODO for students: Complete classical inference for increasingly</span>
+    <span class="c1">## larger sets of random data points</span>
+    <span class="c1"># Fill out the following then remove</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: need to code classical inference&quot;</span><span class="p">)</span>
+    <span class="c1">###################################################################</span>
+
+    <span class="c1"># Randomly sample nData + 1 number of points</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="c1"># Compute the mean of those points and set the corresponding array entry to this value</span>
+    <span class="n">mean_classic</span><span class="p">[</span><span class="n">nData</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="c1"># Compute the variance of those points and set the corresponding array entry to this value</span>
+    <span class="n">var_classic</span><span class="p">[</span><span class="n">nData</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+
+    <span class="c1"># Bayesian inference with the given prior is performed below for you</span>
+    <span class="n">xsupp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">prior</span><span class="p">))</span>
+    <span class="n">mean_bayes</span><span class="p">[</span><span class="n">nData</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">xsupp</span><span class="p">)</span>
+    <span class="n">var_bayes</span><span class="p">[</span><span class="n">nData</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">xsupp</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">mean_classic</span><span class="p">,</span> <span class="n">var_classic</span><span class="p">,</span> <span class="n">mean_bayes</span><span class="p">,</span> <span class="n">var_bayes</span>
+
+<span class="c1"># Set normal distribution parameters, mu and sigma</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Set the prior to be two new data points, 5 and 7, and print the mean and variance</span>
+<span class="n">prior</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The mean of the data comprising the prior is: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prior</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The variance of the data comprising the prior is: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">prior</span><span class="p">)))</span>
+
+<span class="c1"># Uncomment once the function above is completed</span>
+<span class="c1"># mean_classic, var_classic, mean_bayes, var_bayes = classic_vs_bayesian_normal(mu, sigma, 30, prior)</span>
+<span class="c1"># plot_classical_vs_bayesian_normal(30, mean_classic, var_classic, mean_bayes, var_bayes)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D5_Statistics/solutions/W0D5_Tutorial2_Solution_4cfc70ca.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=560 height=416 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D5_Statistics/static/W0D5_Tutorial2_Solution_4cfc70ca_1.png>
+<img alt='Solution hint' align='left' width=560 height=416 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D5_Statistics/static/W0D5_Tutorial2_Solution_4cfc70ca_2.png>
+<p>Hopefully you can see that the blue line stays a little closer to the true values (<span class="math notranslate nohighlight">\(\mu=5\)</span>, <span class="math notranslate nohighlight">\(\sigma^2=1\)</span>). Having a simple prior in the Bayesian inference process (blue) helps to regularise the inference of the mean and variance parameters when you have very little data, but has little effect with large data. You can see that as the number of data points (x-axis) increases, both inference processes (blue and red lines) get closer and closer together, i.e. their estimates for the true parameters converge as sample size increases.</p>
+</div>
+<div class="section" id="think-2a-bayesian-brains">
+<h2>Think! 2A: Bayesian Brains<a class="headerlink" href="#think-2a-bayesian-brains" title="Permalink to this headline">¶</a></h2>
+<p>It should be clear how Bayesian inference can help you when doing data analysis. But consider whether the brain might be able to benefit from this too. If the brain needs to make inferences about the world, would it be useful to do regularisation on the input?</p>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D5_Statistics/solutions/W0D5_Tutorial2_Solution_daa12602.py"><em>Click for solution</em></a></p>
+</div>
+<div class="section" id="exercise-2b-finding-the-posterior-computationally">
+<h2>Exercise 2B: Finding the posterior computationally<a class="headerlink" href="#exercise-2b-finding-the-posterior-computationally" title="Permalink to this headline">¶</a></h2>
+<p><em><strong>(Exercise moved  from NMA2020 Bayes day, all credit to original creators!)</strong></em></p>
+<p>Imagine an experiment where participants estimate the location of a noise-emitting object. To estimate its position, the participants can use two sources of information:</p>
+<ol class="simple">
+<li><p>new noisy auditory information (the likelihood)</p></li>
+<li><p>prior visual expectations of where the stimulus is likely to come from (visual prior).</p></li>
+</ol>
+<p>The auditory and visual information are both noisy, so participants will combine these sources of information to better estimate the position of the object.</p>
+<p>We will use Gaussian distributions to represent the auditory likelihood (in red), and a Gaussian visual prior (expectations - in blue). Using Bayes rule, you will combine them into a posterior distribution that summarizes the probability that the object is in each possible location.</p>
+<p>We have provided you with a ready-to-use plotting function, and a code skeleton.</p>
+<ul class="simple">
+<li><p>You can use <code class="docutils literal notranslate"><span class="pre">my_gaussian</span></code> from Tutorial 1 (also included below), to generate an auditory likelihood with parameters <span class="math notranslate nohighlight">\(\mu\)</span> = 3 and <span class="math notranslate nohighlight">\(\sigma\)</span> = 1.5</p></li>
+<li><p>Generate a visual prior with parameters <span class="math notranslate nohighlight">\(\mu\)</span> = -1 and <span class="math notranslate nohighlight">\(\sigma\)</span> = 1.5</p></li>
+<li><p>Calculate the posterior using pointwise multiplication of the likelihood and prior. Don’t forget to normalize so the posterior adds up to 1</p></li>
+<li><p>Plot the likelihood, prior and posterior using the predefined function <code class="docutils literal notranslate"><span class="pre">posterior_plot</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_gaussian</span><span class="p">(</span><span class="n">x_points</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Returns normalized Gaussian estimated at points `x_points`, with parameters:</span>
+<span class="sd">  mean `mu` and standard deviation `sigma`</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">      x_points (ndarray of floats): points at which the gaussian is evaluated</span>
+<span class="sd">      mu (scalar): mean of the Gaussian</span>
+<span class="sd">      sigma (scalar): standard deviation of the gaussian</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">      (numpy array of floats) : normalized Gaussian evaluated at `x`</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">px</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x_points</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+  <span class="c1"># as we are doing numerical integration we may have to remember to normalise</span>
+  <span class="c1"># taking into account the stepsize (0.1)</span>
+  <span class="n">px</span> <span class="o">=</span> <span class="n">px</span><span class="o">/</span><span class="p">(</span><span class="mf">0.1</span><span class="o">*</span><span class="nb">sum</span><span class="p">(</span><span class="n">px</span><span class="p">))</span>
+  <span class="k">return</span> <span class="n">px</span>
+
+<span class="k">def</span> <span class="nf">compute_posterior_pointwise</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Compute the posterior probability distribution point-by-point using Bayes</span>
+<span class="sd">  Rule.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      prior (ndarray): probability distribution of prior</span>
+<span class="sd">      likelihood (ndarray): probability distribution of likelihood</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      posterior (ndarray): probability distribution of posterior</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1">##############################################################################</span>
+  <span class="c1"># TODO for students: Write code to compute the posterior from the prior and</span>
+  <span class="c1"># likelihood via pointwise multiplication. (You may assume both are defined</span>
+  <span class="c1"># over the same x-axis)</span>
+  <span class="c1">#</span>
+  <span class="c1"># Comment out the line below to test your solution</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Finish the simulation code first&quot;</span><span class="p">)</span>
+  <span class="c1">##############################################################################</span>
+
+  <span class="n">posterior</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="k">return</span> <span class="n">posterior</span>
+
+<span class="k">def</span> <span class="nf">localization_simulation</span><span class="p">(</span><span class="n">mu_auditory</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">sigma_auditory</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span>
+                            <span class="n">mu_visual</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">sigma_visual</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Perform a sound localization simulation with an auditory prior.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      mu_auditory (float): mean parameter value for auditory prior</span>
+<span class="sd">      sigma_auditory (float): standard deviation parameter value for auditory</span>
+<span class="sd">                                prior</span>
+<span class="sd">      mu_visual (float): mean parameter value for visual likelihood distribution</span>
+<span class="sd">      sigma_visual (float): standard deviation parameter value for visual</span>
+<span class="sd">                                likelihood distribution</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      x (ndarray): range of values for which to compute probabilities</span>
+<span class="sd">      auditory (ndarray): probability distribution of the auditory prior</span>
+<span class="sd">      visual (ndarray): probability distribution of the visual likelihood</span>
+<span class="sd">      posterior_pointwise (ndarray): posterior probability distribution</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1">##############################################################################</span>
+  <span class="c1">## Using the x variable below,</span>
+  <span class="c1">##      create a gaussian called &#39;auditory&#39; with mean 3, and std 1.5</span>
+  <span class="c1">##      create a gaussian called &#39;visual&#39; with mean -1, and std 1.5</span>
+  <span class="c1">#</span>
+  <span class="c1">#</span>
+  <span class="c1">## Comment out the line below to test your solution</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Finish the simulation code first&quot;</span><span class="p">)</span>
+  <span class="c1">###############################################################################</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+
+  <span class="n">auditory</span> <span class="o">=</span> <span class="o">...</span>
+  <span class="n">visual</span> <span class="o">=</span> <span class="o">...</span>
+  <span class="n">posterior</span> <span class="o">=</span> <span class="n">compute_posterior_pointwise</span><span class="p">(</span><span class="n">auditory</span><span class="p">,</span> <span class="n">visual</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">auditory</span><span class="p">,</span> <span class="n">visual</span><span class="p">,</span> <span class="n">posterior</span>
+
+
+<span class="c1"># Uncomment the lines below to plot the results</span>
+<span class="c1"># x, auditory, visual, posterior_pointwise = localization_simulation()</span>
+<span class="c1"># _ = posterior_plot(x, auditory, visual, posterior_pointwise)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D5_Statistics/solutions/W0D5_Tutorial2_Solution_ab4b98de.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=560 height=416 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D5_Statistics/static/W0D5_Tutorial2_Solution_ab4b98de_1.png>
+<p>Combining the the visual and auditory information could help the brain get a better estimate of the location of an audio-visual object, with lower variance. For this specific example we did not use a Bayesian prior for simplicity, although it would be a good idea in a practical modeling study.</p>
+<p><strong>Main course preview:</strong> On Week 3 Day 1 (W3D1) there will be a whole day devoted to examining whether the brain uses Bayesian inference. Is the brain Bayesian?!</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 6: Outro</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span> <span class="s2">&quot;BL5qNdZS-XQ&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Having done the different exercises you should now:</p>
+<ul class="simple">
+<li><p>understand what the likelihood function is, and have some intuition of why it is important</p></li>
+<li><p>know how to summarise the Gaussian distribution using mean and variance</p></li>
+<li><p>know how to maximise a likelihood function</p></li>
+<li><p>be able to do simple inference in both classical and Bayesian ways</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="bonus">
+<h1>Bonus<a class="headerlink" href="#bonus" title="Permalink to this headline">¶</a></h1>
+<p>For more reading on these topics see:
+Textbook</p>
+<div class="section" id="extra-exercise-bayes-net">
+<h2>Extra exercise: Bayes Net<a class="headerlink" href="#extra-exercise-bayes-net" title="Permalink to this headline">¶</a></h2>
+<p>If you have the time, here is another extra exercise.</p>
+<p>Bayes Net, or Bayesian Belief Networks, provide a way to make inferences about multiple levels of information, which would be very difficult to do in a classical frequentist paradigm.</p>
+<p>We can encapsulate our knowledge about causal relationships and use this to make inferences about hidden properties.</p>
+<p>We will try a simple example of a Bayesian Net (aka belief network). Imagine that you have a house with an unreliable sprinkler system installed for watering the grass. This is set to water the grass independently of whether it has rained that day. We have three variables, rain (<span class="math notranslate nohighlight">\(r\)</span>), sprinklers (<span class="math notranslate nohighlight">\(s\)</span>) and wet grass (<span class="math notranslate nohighlight">\(w\)</span>). Each of these can be true (1) or false (0). See the graphical model representing the relationship between the variables.</p>
+<p>![image.png](data:image/png;base64,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)</p>
+<p>There is a table below describing all the relationships between <span class="math notranslate nohighlight">\(w, r\)</span>, and s$.</p>
+<p>Obviously the grass is more likely to be wet if either the sprinklers were on or it was raining. On any given day the sprinklers have probability 0.25 of being on, <span class="math notranslate nohighlight">\(P(s = 1) = 0.25\)</span>, while there is a probability 0.1 of rain, <span class="math notranslate nohighlight">\(P (r = 1) = 0.1\)</span>. The table then lists the conditional probabilities for the given being wet, given a rain and sprinkler condition for that day.</p>
+<p>\begin{array}{|l |  l || ll |} \hline
+r &amp;s&amp;P(w=0|r,s) &amp;P(w=1|r,s)$\ \hline
+0&amp; 0  &amp;0.999 &amp;0.001\
+0&amp; 1 &amp;0.1&amp; 0.9\
+1&amp; 0 &amp;0.01 &amp;0.99\
+1&amp; 1&amp; 0.001 &amp;0.999\ \hline
+\end{array}</p>
+<p>You come home and find that the the grass is wet, what is the probability the sprinklers were on today (you do not know if it was raining)?</p>
+<p>We can start by writing out the joint probability:
+<span class="math notranslate nohighlight">\(P(r,w,s)=P(w|r,s)P(r)P(s)\)</span></p>
+<p>The conditional probability is then:</p>
+<p><span class="math notranslate nohighlight">\(
+P(s|w)=\frac{\sum_{r} P(w|s,r)P(s)  P(r)}{P(w)}=\frac{P(s) \sum_{r} P(w|s,r) P(r)}{P(w)}
+\)</span></p>
+<p>Note that we are summing over all possible conditions for <span class="math notranslate nohighlight">\(r\)</span> as we do not know if it was raining. Specifically, we want to know the probability of sprinklers having been on given the wet grass, <span class="math notranslate nohighlight">\(P(s=1|w=1)\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(
+P(s=1|w=1)=\frac{P(s = 1)( P(w = 1|s = 1, r = 1) P(r = 1)+ P(w = 1|s = 1,r = 0)  P(r = 0))}{P(w = 1)} 
+\)</span></p>
+<p>where</p>
+<div class="amsmath math notranslate nohighlight" id="equation-202d6b4e-a964-4940-a64b-f4621de11052">
+<span class="eqno">(30)<a class="headerlink" href="#equation-202d6b4e-a964-4940-a64b-f4621de11052" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+P(w=1)=P(s=1)( P(w=1|s=1,r=1 ) P(r=1) &amp;+ P(w=1|s=1,r=0)  P(r=0))\\
++P(s=0)( P(w=1|s=0,r=1 )  P(r=1) &amp;+ P(w=1|s=0,r=0)  P(r=0))\\
+\end{eqnarray}\]</div>
+<p>This code has been written out below, you just need to insert the right numbers from the table.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##############################################################################</span>
+<span class="c1"># TODO for student: Write code to insert the correct conditional probabilities</span>
+<span class="c1"># from the table; see the comments to match variable with table entry.</span>
+<span class="c1"># Comment out the line below to test your solution</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Finish the simulation code first&quot;</span><span class="p">)</span>
+<span class="c1">##############################################################################</span>
+
+<span class="n">Pw1r1s1</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># the probability of wet grass given rain and sprinklers on</span>
+<span class="n">Pw1r1s0</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># the probability of wet grass given rain and sprinklers off</span>
+<span class="n">Pw1r0s1</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># the probability of wet grass given no rain and sprinklers on</span>
+<span class="n">Pw1r0s0</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># the probability of wet grass given no rain and sprinklers off</span>
+<span class="n">Ps</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># the probability of the sprinkler being on</span>
+<span class="n">Pr</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># the probability of rain that day</span>
+
+
+<span class="c1"># Uncomment once variables are assigned above</span>
+<span class="c1"># A= Ps * (Pw1r1s1 * Pr + (Pw1r0s1) * (1 - Pr))</span>
+<span class="c1"># B= (1 - Ps) * (Pw1r1s0 *Pr + (Pw1r0s0) * (1 - Pr))</span>
+<span class="c1"># print(&quot;Given that the grass is wet, the probability the sprinkler was on is: &quot; +</span>
+<span class="c1">#       str(A/(A + B)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D5_Statistics/solutions/W0D5_Tutorial2_Solution_204db048.py"><em>Click for solution</em></a></p>
+<p>The probability you should get is about 0.7522.</p>
+<p>Your neighbour now tells you that it was indeed
+raining today, <span class="math notranslate nohighlight">\(P (r = 1) = 1\)</span>, so what is now the probability the sprinklers were on? Try changing the numbers above.</p>
+</div>
+<div class="section" id="think-bonus-causality-in-the-brain">
+<h2>Think! Bonus: Causality in the Brain<a class="headerlink" href="#think-bonus-causality-in-the-brain" title="Permalink to this headline">¶</a></h2>
+<p>In a causal stucture this is the correct way to calculate the probabilities. Do you think this is how the brain solves such problems? Would it be different for task involving novel stimuli (e.g. for someone with no previous exposure to sprinklers), as opposed to common stimuli?</p>
+<p><strong>Main course preview:</strong> On W3D5 we will discuss causality further!</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/W0D5_Statistics/student"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="W0D5_Tutorial1.html" title="previous page">Neuromatch Academy: Precourse Week, Day 5, Tutorial 1</a>
+    <a class='right-next' id="next-link" href="../../W1D1_ModelTypes/intro_text.html" title="next page">W1D1 - Model Types</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Neuromatch<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

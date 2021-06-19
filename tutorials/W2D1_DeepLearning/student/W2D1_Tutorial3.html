@@ -1,0 +1,2135 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 2: Building and Evaluating Normative Encoding Models &#8212; Neuromatch Computational Neuroscience</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Outro Video" href="../outro_vid.html" />
+    <link rel="prev" title="Tutorial 2: Convolutional Neural Networks" href="W2D1_Tutorial2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      <img src="../../../_static/nma-logo-square-4xp.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Pre-reqs Refresher
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D1_PythonWorkshop1/intro_text.html">
+   Python Workshop 1 (W0D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
+     Tutorial: LIF Neuron - Part I
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D2_PythonWorkshop2/intro_text.html">
+   Python Workshop 2 (W0D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
+     Tutorial 1: LIF Neuron Part II
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D3_LinearAlgebra/intro_text.html">
+   Linear Algebra (W0D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
+     Tutorial 1: Vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
+     Tutorial 2: Matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
+     Bonus Tutorial: Discrete Dynamical Systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D4_Calculus/intro_text.html">
+   Calculus (W0D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
+     Tutorial 1: Basics of Differential and Integral Calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
+     Tutorial 2: Differential Equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
+     Tutorial 3: Numerical Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D5_Statistics/intro_text.html">
+   Statistics (W0D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
+     Neuromatch Academy: Precourse Week, Day 5, Tutorial 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
+     Tutorial 2: Statistical Inference
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Intro to Modeling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D1_ModelTypes/intro_text.html">
+   Model Types (W1D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
+     Tutorial 1: “What” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
+     Tutorial 2: “How” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
+     Tutorial 3: “Why” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D2_ModelingPractice/intro_text.html">
+   Modeling Practice (W1D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
+     Tutorial: Framing the Question
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D3_ModelFitting/intro_text.html">
+   Model Fitting (W1D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
+     Tutorial 1: Linear regression with MSE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
+     Tutorial 2: Linear regression with MLE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
+     Tutorial 3: Confidence intervals and bootstrapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
+     Tutorial 4: Multiple linear regression and polynomial regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
+     Tutorial 5: Model Selection: Bias-variance trade-off
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
+     Tutorial 6: Model Selection: Cross-validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D4_MachineLearning/intro_text.html">
+   Machine Learning (W1D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial1.html">
+     Tutorial 1: GLMs for Encoding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial2.html">
+     Tutorial 2: Classifiers and regularizers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D5_DimensionalityReduction/intro_text.html">
+   Dimensionality Reduction (W1D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
+     Tutorial 1: Geometric view of data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
+     Tutorial 2: Principal Component Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
+     Tutorial 3: Dimensionality Reduction &amp; Reconstruction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
+     Tutorial 4:  Nonlinear Dimensionality Reduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../intro_text.html">
+   Deep Learning (W2D1)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W2D1_Tutorial1.html">
+     Tutorial 1: Decoding Neural Responses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W2D1_Tutorial2.html">
+     Tutorial 2: Convolutional Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tutorial 2: Building and Evaluating Normative Encoding Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dynamical Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D2_LinearSystems/intro_text.html">
+   Linear Systems (W2D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
+     Tutorial 1: Linear dynamical systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
+     Tutorial 2: Markov Processes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
+     Tutorial 3: Combining determinism and stochasticity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
+     Tutorial 4: Autoregressive models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D3_RealNeurons/intro_text.html">
+   Real Neurons (W2D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial1.html">
+     Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial2.html">
+     Tutorial 2: Effects of Input Correlation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial3.html">
+     Tutorial 3: Synaptic transmission - Models of static and dynamic synapses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial4.html">
+     Tutorial 4: Spike-timing dependent plasticity (STDP)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D4_DynamicNetworks/intro_text.html">
+   Dynamic Networks (W2D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
+     Tutorial 1: Neural Rate Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
+     Tutorial 2: Wilson-Cowan Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Stochastic Processes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D1_BayesianDecisions/intro_text.html">
+   Bayesian Decisions (W3D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
+     Tutorial 1: Bayes with a binary hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
+     Tutorial 2: Bayesian inference and decisions with continuous hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
+     Bonus Tutorial:Fitting to data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D2_HiddenDynamics/intro_text.html">
+   Hidden Dynamics (W3D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
+     Tutorial 1: Sequential Probability Ratio Test
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
+     Tutorial 2: Hidden Markov Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
+     Tutorial 3: 1D Kalman Filter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
+     Tutorial 4: 2D Kalman Filter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D3_OptimalControl/intro_text.html">
+   Optimal Control (W3D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
+     Tutorial 1: Optimal Control for Discrete States
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
+     Tutorial 2: Optimal Control for Continuous State
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D4_ReinforcementLearning/intro_text.html">
+   Reinforcement Learning (W3D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
+     Tutorial 1: Learning to Predict
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
+     Tutorial 2: Learning to Act: Multi-Armed Bandits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
+     Tutorial 3: Learning to Act: Q-Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
+     Tutorial 4: From Reinforcement Learning to Planning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D5_NetworkCausality/intro_text.html">
+   Network Causality (W3D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
+     Tutorial 1: Interventions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
+     Tutorial 2: Correlations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
+     Tutorial 3: Simultaneous fitting/regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
+     Tutorial 4: Instrumental Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/tutorials/W2D1_DeepLearning/student/W2D1_Tutorial3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/tutorials/W2D1_DeepLearning/student/W2D1_Tutorial3.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial 2: Building and Evaluating Normative Encoding Models
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-1-setting-up-deep-network-and-neural-data">
+   Section 1: Setting up deep network and neural data
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-1-1-orientation-discrimination-task">
+     Section 1.1: Orientation discrimination task
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-1-2-a-deep-network-model-of-orientation-discrimination">
+     Section 1.2: A deep network model of orientation discrimination
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-1-3-load-data">
+     Section 1.3: Load data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-2-quantitative-comparisons-of-cnns-and-neural-activity">
+   Section 2: Quantitative comparisons of CNNs and neural activity
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-2-1-representational-dissimilarity-matrix-rdm">
+     Section 2.1: Representational dissimilarity matrix (RDM)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#coding-exercise-2-1-compute-rdms">
+       Coding Exercise 2.1: Compute RDMs
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-2-2-determing-representation-similarity">
+     Section 2.2: Determing representation similarity
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#coding-exercise-2-2-correlate-rdms">
+       Coding Exercise 2.2: Correlate RDMs
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-2-3-further-understanding-rdms">
+     Section 2.3: Further understanding RDMs
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#coding-exercise-2-3-plot-rows-of-rdm">
+       Coding Exercise 2.3: Plot rows of RDM
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-3-qualitative-comparisons-of-cnns-and-neural-activity">
+   Section 3: Qualitative comparisons of CNNs and neural activity
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-3-1-tuning-curves">
+     Section 3.1: Tuning curves
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-3-2-dimensionality-reduction-of-representations">
+     Section 3.2: Dimensionality reduction of representations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#think-3-2-visualizing-reduced-dimensionality-representations">
+       Think! 3.2: Visualizing reduced dimensionality representations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus">
+   Bonus
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bonus-section-1-building-cnn-s-with-pytorch">
+     Bonus Section 1: Building CNN’s with PyTorch
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bonus-section-1-1-fully-connected-layers">
+       Bonus Section 1.1: Fully connected layers
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bonus-section-1-2-convolutional-layers">
+       Bonus Section 1.2: Convolutional layers
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bonus-section-1-3-max-pooling-layers">
+       Bonus Section 1.3: Max pooling layers
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bonus-section-2-orientation-discrimination-as-a-binary-classification-problem">
+     Bonus Section 2: Orientation discrimination as a binary classification problem
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bonus-section-3-rdm-z-score-explanation">
+     Bonus Section 3: RDM Z-Score Explanation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D1_DeepLearning/student/W2D1_Tutorial3.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="tutorial-2-building-and-evaluating-normative-encoding-models">
+<h1>Tutorial 2: Building and Evaluating Normative Encoding Models<a class="headerlink" href="#tutorial-2-building-and-evaluating-normative-encoding-models" title="Permalink to this headline">¶</a></h1>
+<p><strong>Week 2, Day 1: Deep Learning</strong></p>
+<p><strong>By Neuromatch Academy</strong></p>
+<p><strong>Content creators</strong>: Jorge A. Menendez, Yalda Mohsenzadeh, Carsen Stringer</p>
+<p><strong>Conent reviewers</strong>: Roozbeh Farhoodi, Madineh Sarvestani, Kshitij Dwivedi, Spiros Chavlis, Ella Batty, Michael Waskom</p>
+<hr class="docutils" />
+<p>#Tutorial Objectives</p>
+<p>In this tutorial, we’ll be using deep learning to build an encoding model of the visual system, and then compare its internal representations to those observed in neural data.</p>
+<p>Importantly, the encoding model we’ll use here is different from the encoding models used in Tutorial 2. Its parameters won’t be directly optimized to fit the neural data. Instead, we will optimize its parameters to solve a particular visual task that we know the brain can solve. We therefore refer to it as a “normative” encoding model, since it is optimized for a specific behavioral task.</p>
+<p>To then evaluate whether this normative encoding model is actually a good model of the brain, we’ll analyze its internal representations and compare them to the representations observed in mouse primary visual cortex. Since we understand exactly what the encoding model’s representations are optimized to do, any similarities will hopefully shed light on why the representations in the brain look the way they do.</p>
+<p>More concretely, our goal will be learn how to:</p>
+<ul class="simple">
+<li><p>Visualize and analyze the internal representations of a deep network</p></li>
+<li><p>Quantify the similarity between distributed representations in a model and neural representations observed in recordings, using Representational Similarity Analysis (RSA)</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<p><strong>Don’t forget to execute the hidden cells below!</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">zscore</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span><span class="p">,</span> <span class="n">optim</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Data retrieval and loading</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;W3D4_stringer_oribinned1.npz&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://osf.io/683xc/download&quot;</span>
+<span class="n">expected_md5</span> <span class="o">=</span> <span class="s2">&quot;436599dfd8ebe6019f066c38aed20580&quot;</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+  <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;!!! Failed to download data !!!&quot;</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="n">requests</span><span class="o">.</span><span class="n">codes</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;!!! Failed to download data !!!&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span> <span class="o">!=</span> <span class="n">expected_md5</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;!!! Data download appears corrupted !!!&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fid</span><span class="p">:</span>
+        <span class="n">fid</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Figure Settings</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format=&#39;retina&#39;
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Plotting Functions</span>
+
+<span class="k">def</span> <span class="nf">show_stimulus</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Visualize a stimulus&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_corr_matrix</span><span class="p">(</span><span class="n">rdm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Plot dissimilarity matrix</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    rdm (numpy array): n_stimuli x n_stimuli representational dissimilarity</span>
+<span class="sd">      matrix</span>
+<span class="sd">    ax (matplotlib axes): axes onto which to plot</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    nothing</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+  <span class="n">image</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rdm</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+  <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;dissimilarity&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plot_multiple_rdm</span><span class="p">(</span><span class="n">rdm_dict</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Draw multiple subplots for each RDM in rdm_dict.&quot;&quot;&quot;</span>
+  <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">rdm_dict</span><span class="p">),</span>
+                          <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">resp_dict</span><span class="p">),</span> <span class="mf">3.5</span><span class="p">))</span>
+
+  <span class="c1"># Compute RDM&#39;s for each set of responses and plot</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">rdm</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">rdm_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+
+    <span class="c1"># Uncomment to test your function</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">plot_corr_matrix</span><span class="p">(</span><span class="n">rdm</span><span class="p">,</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plot_rdm_rdm_correlations</span><span class="p">(</span><span class="n">rdm_sim</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Draw a bar plot showing between-RDM correlations.&quot;&quot;&quot;</span>
+  <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">rdm_sim</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">rdm_sim</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Deep network model layer&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Correlation of model layer RDM</span><span class="se">\n</span><span class="s1">with mouse V1 RDM&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Helper Functions</span>
+
+<span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">data_name</span><span class="o">=</span><span class="n">fname</span><span class="p">,</span> <span class="n">bin_width</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Load mouse V1 data from Stringer et al. (2019)</span>
+
+<span class="sd">  Data from study reported in this preprint:</span>
+<span class="sd">  https://www.biorxiv.org/content/10.1101/679324v2.abstract</span>
+
+<span class="sd">  These data comprise time-averaged responses of ~20,000 neurons</span>
+<span class="sd">  to ~4,000 stimulus gratings of different orientations, recorded</span>
+<span class="sd">  through Calcium imaginge. The responses have been normalized by</span>
+<span class="sd">  spontanous levels of activity and then z-scored over stimuli, so</span>
+<span class="sd">  expect negative numbers. They have also been binned and averaged</span>
+<span class="sd">  to each degree of orientation.</span>
+
+<span class="sd">  This function returns the relevant data (neural responses and</span>
+<span class="sd">  stimulus orientations) in a torch.Tensor of data type torch.float32</span>
+<span class="sd">  in order to match the default data type for nn.Parameters in</span>
+<span class="sd">  Google Colab.</span>
+
+<span class="sd">  This function will actually average responses to stimuli with orientations</span>
+<span class="sd">  falling within bins specified by the bin_width argument. This helps</span>
+<span class="sd">  produce individual neural &quot;responses&quot; with smoother and more</span>
+<span class="sd">  interpretable tuning curves.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    bin_width (float): size of stimulus bins over which to average neural</span>
+<span class="sd">      responses</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    resp (torch.Tensor): n_stimuli x n_neurons matrix of neural responses,</span>
+<span class="sd">        each row contains the responses of each neuron to a given stimulus.</span>
+<span class="sd">        As mentioned above, neural &quot;response&quot; is actually an average over</span>
+<span class="sd">        responses to stimuli with similar angles falling within specified bins.</span>
+<span class="sd">    stimuli: (torch.Tensor): n_stimuli x 1 column vector with orientation</span>
+<span class="sd">        of each stimulus, in degrees. This is actually the mean orientation</span>
+<span class="sd">        of all stimuli in each bin.</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">dobj</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="o">**</span><span class="n">dobj</span><span class="p">)</span>
+  <span class="n">resp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;resp&#39;</span><span class="p">]</span>
+  <span class="n">stimuli</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;stimuli&#39;</span><span class="p">]</span>
+
+  <span class="k">if</span> <span class="n">bin_width</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="c1"># Bin neural responses and stimuli</span>
+    <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">stimuli</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span> <span class="o">+</span> <span class="n">bin_width</span><span class="p">,</span> <span class="n">bin_width</span><span class="p">))</span>
+    <span class="n">stimuli_binned</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">stimuli</span><span class="p">[</span><span class="n">bins</span> <span class="o">==</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">bins</span><span class="p">)])</span>
+    <span class="n">resp_binned</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">resp</span><span class="p">[</span><span class="n">bins</span> <span class="o">==</span> <span class="n">i</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">bins</span><span class="p">)])</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">resp_binned</span> <span class="o">=</span> <span class="n">resp</span>
+    <span class="n">stimuli_binned</span> <span class="o">=</span> <span class="n">stimuli</span>
+
+  <span class="c1"># only use stimuli &lt;= 180</span>
+  <span class="n">resp_binned</span> <span class="o">=</span> <span class="n">resp_binned</span><span class="p">[</span><span class="n">stimuli_binned</span> <span class="o">&lt;=</span> <span class="mi">180</span><span class="p">]</span>
+  <span class="n">stimuli_binned</span> <span class="o">=</span> <span class="n">stimuli_binned</span><span class="p">[</span><span class="n">stimuli_binned</span> <span class="o">&lt;=</span> <span class="mi">180</span><span class="p">]</span>
+
+  <span class="n">stimuli_binned</span> <span class="o">-=</span> <span class="mi">90</span>  <span class="c1"># 0 means vertical, -ve means tilted left, +ve means tilted right</span>
+
+  <span class="c1"># Return as torch.Tensor</span>
+  <span class="n">resp_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">resp_binned</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+  <span class="n">stimuli_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">stimuli_binned</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># add singleton dimension to make a column vector</span>
+
+  <span class="k">return</span> <span class="n">resp_tensor</span><span class="p">,</span> <span class="n">stimuli_tensor</span>
+
+<span class="k">def</span> <span class="nf">grating</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">sf</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">28</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">patch</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Generate oriented grating stimulus</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    angle (float): orientation of grating (angle from vertical), in degrees</span>
+<span class="sd">    sf (float): controls spatial frequency of the grating</span>
+<span class="sd">    res (float): resolution of image. Smaller values will make the image</span>
+<span class="sd">      smaller in terms of pixels. res=1.0 corresponds to 640 x 480 pixels.</span>
+<span class="sd">    patch (boolean): set to True to make the grating a localized</span>
+<span class="sd">      patch on the left side of the image. If False, then the</span>
+<span class="sd">      grating occupies the full image.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    torch.Tensor: (res * 480) x (res * 640) pixel oriented grating image</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>  <span class="c1"># transform to radians</span>
+
+  <span class="n">wpix</span><span class="p">,</span> <span class="n">hpix</span> <span class="o">=</span> <span class="mi">640</span><span class="p">,</span> <span class="mi">480</span>  <span class="c1"># width and height of image in pixels for res=1.0</span>
+
+  <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">sf</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">wpix</span> <span class="o">*</span> <span class="n">res</span><span class="p">)</span> <span class="o">/</span> <span class="n">res</span><span class="p">,</span> <span class="n">sf</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hpix</span> <span class="o">*</span> <span class="n">res</span><span class="p">)</span> <span class="o">/</span> <span class="n">res</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">patch</span><span class="p">:</span>
+    <span class="n">gratings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">xx</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span> <span class="o">+</span> <span class="mf">.1</span><span class="p">)</span> <span class="o">+</span> <span class="n">yy</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span> <span class="o">+</span> <span class="mf">.1</span><span class="p">))</span>  <span class="c1"># phase shift to make it better fit within patch</span>
+    <span class="n">gratings</span><span class="p">[</span><span class="n">gratings</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">gratings</span><span class="p">[</span><span class="n">gratings</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">xcent</span> <span class="o">=</span> <span class="n">gratings</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">.75</span>
+    <span class="n">ycent</span> <span class="o">=</span> <span class="n">gratings</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">xxc</span><span class="p">,</span> <span class="n">yyc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">gratings</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">gratings</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">icirc</span> <span class="o">=</span> <span class="p">((</span><span class="n">xxc</span> <span class="o">-</span> <span class="n">xcent</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">yyc</span> <span class="o">-</span> <span class="n">ycent</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span> <span class="o">&lt;</span> <span class="n">wpix</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">res</span>
+    <span class="n">gratings</span><span class="p">[</span><span class="o">~</span><span class="n">icirc</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">gratings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">xx</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">+</span> <span class="n">yy</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">))</span>
+    <span class="n">gratings</span><span class="p">[</span><span class="n">gratings</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">gratings</span><span class="p">[</span><span class="n">gratings</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+  <span class="c1"># Return torch tensor</span>
+  <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">gratings</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">CNN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Deep convolutional network with one convolutional + pooling layer followed</span>
+<span class="sd">  by one fully connected layer</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    h_in (int): height of input image, in pixels (i.e. number of rows)</span>
+<span class="sd">    w_in (int): width of input image, in pixels (i.e. number of columns)</span>
+
+<span class="sd">  Attributes:</span>
+<span class="sd">    conv (nn.Conv2d): filter weights of convolutional layer</span>
+<span class="sd">    pool (nn.MaxPool2d): max pooling layer</span>
+<span class="sd">    dims (tuple of ints): dimensions of output from pool layer</span>
+<span class="sd">    fc (nn.Linear): weights and biases of fully connected layer</span>
+<span class="sd">    out (nn.Linear): weights and biases of output layer</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">h_in</span><span class="p">,</span> <span class="n">w_in</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="n">C_in</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># input stimuli have only 1 input channel</span>
+    <span class="n">C_out</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># number of output channels (i.e. of convolutional kernels to convolve the input with)</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># size of each convolutional kernel</span>
+    <span class="n">Kpool</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># size of patches over which to pool</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">C_in</span><span class="p">,</span> <span class="n">C_out</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="n">K</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># add padding to ensure that each channel has same dimensionality as input</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pool</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">Kpool</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">dims</span> <span class="o">=</span> <span class="p">(</span><span class="n">C_out</span><span class="p">,</span> <span class="n">h_in</span> <span class="o">//</span> <span class="n">Kpool</span><span class="p">,</span> <span class="n">w_in</span> <span class="o">//</span> <span class="n">Kpool</span><span class="p">)</span>  <span class="c1"># dimensions of pool layer output</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># flattened pool output --&gt; 10D representation</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">out</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 10D representation --&gt; scalar</span>
+
+  <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Classify grating stimulus as tilted right or left</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      x (torch.Tensor): p x 48 x 64 tensor with pixel grayscale values for</span>
+<span class="sd">          each of p stimulus images.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      torch.Tensor: p x 1 tensor with network outputs for each input provided</span>
+<span class="sd">          in x. Each output should be interpreted as the probability of the</span>
+<span class="sd">          corresponding stimulus being tilted right.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># p x 1 x 48 x 64, add a singleton dimension for the single stimulus channel</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># output of convolutional layer</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># output of pooling layer</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">))</span>  <span class="c1"># flatten pooling layer outputs into a vector</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># output of fully connected layer</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># network output</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+
+<span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">train_data</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">n_epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">.99</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Run stochastic gradient descent on binary cross-entropy loss for a given</span>
+<span class="sd">  deep network (cf. appendix for details)</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    net (nn.Module): deep network whose parameters to optimize with SGD</span>
+<span class="sd">    train_data (torch.Tensor): n_train x h x w tensor with stimulus gratings</span>
+<span class="sd">    train_labels (torch.Tensor): n_train x 1 tensor with true tilt of each</span>
+<span class="sd">      stimulus grating in train_data, i.e. 1. for right, 0. for left</span>
+<span class="sd">    n_epochs (int): number of times to run SGD through whole training data set</span>
+<span class="sd">    batch_size (int): number of training data samples in each mini-batch</span>
+<span class="sd">    learning_rate (float): learning rate to use for SGD updates</span>
+<span class="sd">    momentum (float): momentum parameter for SGD updates</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># Initialize binary cross-entropy loss function</span>
+  <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BCELoss</span><span class="p">()</span>
+
+  <span class="c1"># Initialize SGD optimizer with momentum</span>
+  <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="n">momentum</span><span class="p">)</span>
+
+  <span class="c1"># Placeholder to save loss at each iteration</span>
+  <span class="n">track_loss</span> <span class="o">=</span> <span class="p">[]</span>
+
+  <span class="c1"># Loop over epochs</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">):</span>
+
+    <span class="c1"># Split up training data into random non-overlapping mini-batches</span>
+    <span class="n">ishuffle</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randperm</span><span class="p">(</span><span class="n">train_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># random ordering of training data</span>
+    <span class="n">minibatch_data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">train_data</span><span class="p">[</span><span class="n">ishuffle</span><span class="p">],</span> <span class="n">batch_size</span><span class="p">)</span>  <span class="c1"># split train_data into minibatches</span>
+    <span class="n">minibatch_labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">train_labels</span><span class="p">[</span><span class="n">ishuffle</span><span class="p">],</span> <span class="n">batch_size</span><span class="p">)</span>  <span class="c1"># split train_labels into minibatches</span>
+
+    <span class="c1"># Loop over mini-batches</span>
+    <span class="k">for</span> <span class="n">stimuli</span><span class="p">,</span> <span class="n">tilt</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">minibatch_data</span><span class="p">,</span> <span class="n">minibatch_labels</span><span class="p">):</span>
+
+      <span class="c1"># Evaluate loss and update network weights</span>
+      <span class="n">out</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">stimuli</span><span class="p">)</span>  <span class="c1"># predicted probability of tilt right</span>
+      <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">tilt</span><span class="p">)</span>  <span class="c1"># evaluate loss</span>
+      <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>  <span class="c1"># clear gradients</span>
+      <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>  <span class="c1"># compute gradients</span>
+      <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>  <span class="c1"># update weights</span>
+
+      <span class="c1"># Keep track of loss at each iteration</span>
+      <span class="n">track_loss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+
+    <span class="c1"># Track progress</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_epochs</span> <span class="o">//</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;epoch </span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s1"> | loss on last mini-batch: </span><span class="si">{</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s1"> .2e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;training done!&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_hidden_activity</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">stimuli</span><span class="p">,</span> <span class="n">layer_labels</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Retrieve internal representations of network</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    net (nn.Module): deep network</span>
+<span class="sd">    stimuli (torch.Tensor): p x 48 x 64 tensor with stimuli for which to</span>
+<span class="sd">      compute and retrieve internal representations</span>
+<span class="sd">    layer_labels (list): list of strings with labels of each layer for which</span>
+<span class="sd">      to return its internal representations</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    dict: internal representations at each layer of the network, in</span>
+<span class="sd">      numpy arrays. The keys of this dict are the strings in layer_labels.</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># Placeholder</span>
+  <span class="n">hidden_activity</span> <span class="o">=</span> <span class="p">{}</span>
+
+  <span class="c1"># Attach &#39;hooks&#39; to each layer of the network to store hidden</span>
+  <span class="c1"># representations in hidden_activity</span>
+  <span class="k">def</span> <span class="nf">hook</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+    <span class="n">module_label</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">_modules</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">([</span><span class="n">module</span> <span class="o">==</span> <span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">net</span><span class="o">.</span><span class="n">_modules</span><span class="o">.</span><span class="n">values</span><span class="p">()])[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+    <span class="k">if</span> <span class="n">module_label</span> <span class="ow">in</span> <span class="n">layer_labels</span><span class="p">:</span>  <span class="c1"># ignore output layer</span>
+      <span class="n">hidden_activity</span><span class="p">[</span><span class="n">module_label</span><span class="p">]</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">stimuli</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+  <span class="n">hooks</span> <span class="o">=</span> <span class="p">[</span><span class="n">layer</span><span class="o">.</span><span class="n">register_forward_hook</span><span class="p">(</span><span class="n">hook</span><span class="p">)</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">net</span><span class="o">.</span><span class="n">children</span><span class="p">()]</span>
+
+  <span class="c1"># Run stimuli through the network</span>
+  <span class="n">pred</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">stimuli</span><span class="p">)</span>
+
+  <span class="c1"># Remove the hooks</span>
+  <span class="p">[</span><span class="n">h</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hooks</span><span class="p">]</span>
+
+  <span class="k">return</span> <span class="n">hidden_activity</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-1-setting-up-deep-network-and-neural-data">
+<h1>Section 1: Setting up deep network and neural data<a class="headerlink" href="#section-1-setting-up-deep-network-and-neural-data" title="Permalink to this headline">¶</a></h1>
+<p>In the future sections, we will compare the activity in a deep network, specifically in a CNN, with neural activity. First, we need to understand the task we are using (Section 1.1), train our deep network (Section 1.2), and load in neural data (Section 1.3).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 1: Deep convolutional network for orientation discrimination</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;KlXtKJCpV4I&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="section-1-1-orientation-discrimination-task">
+<h2>Section 1.1: Orientation discrimination task<a class="headerlink" href="#section-1-1-orientation-discrimination-task" title="Permalink to this headline">¶</a></h2>
+<p>We will build our normative encoding model by optimizing its parameters to solve an orientation discrimination task.</p>
+<p>The task is to tell whether a given grating stimulus is tilted to the “right” or “left”; that is, whether its angle relative to the vertical is positive or negative, respectively. We show example stimuli below, which were constructed using the helper function <code class="docutils literal notranslate"><span class="pre">grating()</span></code>.</p>
+<p>Note that this is a task that we know many mammalian visual systems are capable of solving. It is therefore conceivable that the representations in a deep network model optimized for this task might resemble those in the brain. To test this hypothesis, we will compare the representations of our optimized encoding model to neural activity recorded in response to these very same stimuli, courtesy of <a class="reference external" href="https://www.biorxiv.org/content/10.1101/679324v2.abstract">Stringer et al 2019</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+<span class="c1">#@markdown Execute this cell to plot example stimuli</span>
+
+<span class="n">orientations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">n_col</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">orientations</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_col</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">h</span> <span class="o">*</span> <span class="n">n_col</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+
+<span class="n">h</span><span class="p">,</span> <span class="n">w</span>  <span class="o">=</span> <span class="n">grating</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># height and width of stimulus</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;stimulus size: </span><span class="si">%i</span><span class="s1"> x </span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ori</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">orientations</span><span class="p">):</span>
+  <span class="n">stimulus</span> <span class="o">=</span> <span class="n">grating</span><span class="p">(</span><span class="n">ori</span><span class="p">)</span>
+  <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ori</span><span class="si">:</span><span class="s1"> .0f</span><span class="si">}</span><span class="s1">$^o$&#39;</span><span class="p">)</span>
+  <span class="n">show_stimulus</span><span class="p">(</span><span class="n">stimulus</span><span class="p">,</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="section-1-2-a-deep-network-model-of-orientation-discrimination">
+<h2>Section 1.2: A deep network model of orientation discrimination<a class="headerlink" href="#section-1-2-a-deep-network-model-of-orientation-discrimination" title="Permalink to this headline">¶</a></h2>
+<p>Our goal is to build a model that solves the orientation discrimination task outlined above. The model should take as input a stimulus image and output the probability of that stimulus being tilted right.</p>
+<p>To do this, we will use a <strong>convolutional neural network (CNN)</strong>, which is the type of network we saw in Tutorial 2. Here, we will use a CNN that performs <em>two-dimensional</em> convolutions on the raw stimulus image (which is a 2D matrix of pixels), rather than <em>one-dimensional</em> convolutions on a categorical 1D vector representation of the stimulus. CNNs are commonly used for image processing.</p>
+<p>The particular CNN we will use here has two layers:</p>
+<ol class="simple">
+<li><p>a <em>convolutional layer</em>, which convolves the images with a set of filters</p></li>
+<li><p>a <em>fully connected layer</em>, which transforms the output of this convolution into a 10-dimensional representation</p></li>
+</ol>
+<p>Finally, a set of output weights transforms this 10-dimensional representation into a single scalar <span class="math notranslate nohighlight">\(p\)</span>, denoting the predicted probability of the input stimulus being tilted right.</p>
+<p align="center">
+  <img src="https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/static/conv-network.png?raw=true" width="450" />
+</p>
+<p>See Bonus Section 1 for in-depth instructions for how to code up such a network in PyTorch. For now, however, we’ll leave these details aside and focus on training this network and analyzing its internal representations.</p>
+<p>Run the next cell to train such a network to solve this task. After initializing our CNN model, it builds a dataset of oriented grating stimuli to use for training it. These are then passed into a function called <code class="docutils literal notranslate"><span class="pre">train()</span></code> that uses SGD to optimize the model’s parameters, taking similar arguments as the <code class="docutils literal notranslate"><span class="pre">train()</span></code> function we wrote in Tutorial 1.</p>
+<p>Note that it may take ~30 seconds for the training to complete.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set random seeds for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Initialize CNN model</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">CNN</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+
+<span class="c1"># Build training set to train it on</span>
+<span class="n">n_train</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># size of training set</span>
+
+<span class="c1"># sample n_train random orientations between -90 and +90 degrees</span>
+<span class="n">ori</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n_train</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="mi">180</span>
+
+<span class="c1"># build orientated grating stimuli</span>
+<span class="n">stimuli</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">grating</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ori</span><span class="p">])</span>
+
+<span class="c1"># stimulus tilt: 1. if tilted right, 0. if tilted left, as a column vector</span>
+<span class="n">tilt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">ori</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Train model</span>
+<span class="n">train</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">stimuli</span><span class="p">,</span> <span class="n">tilt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="section-1-3-load-data">
+<h2>Section 1.3: Load data<a class="headerlink" href="#section-1-3-load-data" title="Permalink to this headline">¶</a></h2>
+<p>In the next cell, we provide code for loading in some data from <a class="reference external" href="https://www.biorxiv.org/content/10.1101/679324v2.abstract">this paper</a>, which contains the responses of about ~20,000 neurons in mouse primary visual cortex to grating stimuli like those used to train our network (this is the same data used in Tutorial 1). These data are stored in two variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">resp_v1</span></code> is a matrix where each row contains the responses of all neurons to a single stimulus.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ori</span></code> is a vector with the orientations of each stimulus, in degrees. As in the above convention, negative angles denote stimuli tilted to the left and positive angles denote stimuli tilted to the right.</p></li>
+</ul>
+<p>We will then extract our deep CNN model’s representations of these same stimuli (i.e. oriented gratings with the orientations in <code class="docutils literal notranslate"><span class="pre">ori</span></code>). We will run the same stimuli through our CNN model and use the helper function <code class="docutils literal notranslate"><span class="pre">get_hidden_activity()</span></code> to store the model’s internal representations. The output of this function is a Python <code class="docutils literal notranslate"><span class="pre">dict</span></code>, which contains a matrix of population responses (just like <code class="docutils literal notranslate"><span class="pre">resp_v1</span></code>) for each layer of the network specified by the <code class="docutils literal notranslate"><span class="pre">layer_labels</span></code> argument. We’ll focus on looking at the representations in</p>
+<ul class="simple">
+<li><p>the output of the first convolutional layer, stored in the model as <code class="docutils literal notranslate"><span class="pre">'pool'</span></code> (see Bonus Section 1 for the details of the CNN architecture to understand why it’s called this way)</p></li>
+<li><p>the 10-dimensional output of the fully connected layer, stored in the model as <code class="docutils literal notranslate"><span class="pre">'fc'</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load mouse V1 data</span>
+<span class="n">resp_v1</span><span class="p">,</span> <span class="n">ori</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">()</span>
+
+<span class="c1"># Extract model internal representations of each stimulus in the V1 data</span>
+<span class="c1"># construct grating stimuli for each orientation presented in the V1 data</span>
+<span class="n">stimuli</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">grating</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">item</span><span class="p">())</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">ori</span><span class="p">])</span>
+<span class="n">layer_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pool&#39;</span><span class="p">,</span> <span class="s1">&#39;fc&#39;</span><span class="p">]</span>
+<span class="n">resp_model</span> <span class="o">=</span> <span class="n">get_hidden_activity</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">stimuli</span><span class="p">,</span> <span class="n">layer_labels</span><span class="p">)</span>
+
+<span class="c1"># Aggregate all responses into one dict</span>
+<span class="n">resp_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">resp_dict</span><span class="p">[</span><span class="s1">&#39;V1 data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">resp_v1</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">resp_model</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+  <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;model</span><span class="se">\n</span><span class="s2">&#39;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&#39; layer&quot;</span>
+  <span class="n">resp_dict</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-2-quantitative-comparisons-of-cnns-and-neural-activity">
+<h1>Section 2: Quantitative comparisons of CNNs and neural activity<a class="headerlink" href="#section-2-quantitative-comparisons-of-cnns-and-neural-activity" title="Permalink to this headline">¶</a></h1>
+<p>Let’s now analyze the internal representations of our deep CNN model of orientation discrimination and compare them to population responses in mouse primary visual cortex.</p>
+<p>In this section, we’ll try to quantitatively compare CNN and primary visual cortex representations. In the next section, we will visualize their representations and get some intuition for their structure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 2: Quantitative comparisons of CNNs and neural activity</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;2Jbk7jFBvbU&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We noticed above some similarities and differences between the population responses in mouse primary visual cortex and in different layers in our model. Let’s now try to quantify this.</p>
+<p>To do this, we’ll use a technique called <a class="reference external" href="https://www.frontiersin.org/articles/10.3389/neuro.06.004.2008/full?utm_source=FWEB&amp;utm_medium=NBLOG&amp;utm_campaign=ECO_10YA_top-research"><strong>Representational Similarity Analysis</strong></a>. The idea is to look at the similarity structure between representations of different stimuli. We can say that a brain area and a model use a similar representational scheme if stimuli that are represented (dis)similarly in the brain are represented (dis)similarly in the model as well.</p>
+<div class="section" id="section-2-1-representational-dissimilarity-matrix-rdm">
+<h2>Section 2.1: Representational dissimilarity matrix (RDM)<a class="headerlink" href="#section-2-1-representational-dissimilarity-matrix-rdm" title="Permalink to this headline">¶</a></h2>
+<p>To quantify this, we begin by computing the <strong>representational dissimilarity matrix (RDM)</strong> for the mouse V1 data and each model layer. This matrix, which we’ll call <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>, is computed as one minus the correlation coefficients between population responses to each stimulus. We can  efficiently compute this by using the <span class="math notranslate nohighlight">\(z\)</span>-scored responses (see Bonus Section 3 for explanation). In particular, the full matrix can be computed as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8605be9c-3d8a-4c48-aa4f-cf66c36072ce">
+<span class="eqno">(106)<a class="headerlink" href="#equation-8605be9c-3d8a-4c48-aa4f-cf66c36072ce" title="Permalink to this equation">¶</a></span>\[\begin{gather}
+  \mathbf{M} = 1 - \frac{1}{N} \mathbf{ZZ}^T \\
+\end{gather}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{Z}\)</span> is the z-scored responses and N is the number of neurons (or units).</p>
+<div class="section" id="coding-exercise-2-1-compute-rdms">
+<h3>Coding Exercise 2.1: Compute RDMs<a class="headerlink" href="#coding-exercise-2-1-compute-rdms" title="Permalink to this headline">¶</a></h3>
+<p>Complete the function <code class="docutils literal notranslate"><span class="pre">RDM()</span></code> for computing the RDM for a given set of population responses to each stimulus. Use the above formula in terms of <span class="math notranslate nohighlight">\(z\)</span>-scored population responses. You can use the helper function <code class="docutils literal notranslate"><span class="pre">zscore()</span></code> to compute the matrix of <span class="math notranslate nohighlight">\(z\)</span>-scored responses.</p>
+<p>The subsequent cell uses this function to plot the RDM of the population responses in the V1 data and in each layer of our model CNN.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">RDM</span><span class="p">(</span><span class="n">resp</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Compute the representational dissimilarity matrix (RDM)</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    resp (ndarray): S x N matrix with population responses to</span>
+<span class="sd">      each stimulus in each row</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    ndarray: S x S representational dissimilarity matrix</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1">#########################################################</span>
+  <span class="c1">## TO DO for students: compute representational dissimilarity matrix</span>
+  <span class="c1"># Fill out function and remove</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: complete function RDM&quot;</span><span class="p">)</span>
+  <span class="c1">#########################################################</span>
+
+  <span class="c1"># z-score responses to each stimulus</span>
+  <span class="n">zresp</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="c1"># Compute RDM</span>
+  <span class="n">RDM</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="k">return</span> <span class="n">RDM</span>
+
+
+<span class="c1"># Compute RDMs</span>
+<span class="n">rdm_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">label</span><span class="p">:</span> <span class="n">RDM</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span> <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">resp</span> <span class="ow">in</span> <span class="n">resp_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+<span class="c1"># Plot RDMs</span>
+<span class="n">plot_multiple_rdm</span><span class="p">(</span><span class="n">rdm_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D1_DeepLearning/solutions/W2D1_Tutorial3_Solution_6005c785.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=827 height=235 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D1_DeepLearning/static/W2D1_Tutorial3_Solution_6005c785_0.png>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 3: Coding Exercise 2.1 solution discussion</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;otzR-KXDjus&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="section-2-2-determing-representation-similarity">
+<h2>Section 2.2: Determing representation similarity<a class="headerlink" href="#section-2-2-determing-representation-similarity" title="Permalink to this headline">¶</a></h2>
+<p>To quantify how similar the representations are, we can simply correlate their dissimilarity matrices. For this, we’ll again use the correlation coefficient. Note that dissimilarity matrices are symmetric (<span class="math notranslate nohighlight">\(M_{ss'} = M_{s's}\)</span>), so we should only use the off-diagonal terms on one side of the diagonal when computing this correlation to avoid overcounting. Moreover, we should leave out the diagonal terms, which are always equal to 0, so will always be perfectly correlated across any pair of RDM’s.</p>
+<div class="section" id="coding-exercise-2-2-correlate-rdms">
+<h3>Coding Exercise 2.2: Correlate RDMs<a class="headerlink" href="#coding-exercise-2-2-correlate-rdms" title="Permalink to this headline">¶</a></h3>
+<p>Complete the function <code class="docutils literal notranslate"><span class="pre">correlate_rdms()</span></code> below that computes this correlation. The code for extracting the off-diagonal terms is provided.</p>
+<p>We will then use function to compute the correlation between the RDM’s for each layer of our model CNN and that of the V1 data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">correlate_rdms</span><span class="p">(</span><span class="n">rdm1</span><span class="p">,</span> <span class="n">rdm2</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Correlate off-diagonal elements of two RDM&#39;s</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    rdm1 (np.ndarray): S x S representational dissimilarity matrix</span>
+<span class="sd">    rdm2 (np.ndarray): S x S representational dissimilarity matrix to</span>
+<span class="sd">      correlate with rdm1</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    float: correlation coefficient between the off-diagonal elements</span>
+<span class="sd">      of rdm1 and rdm2</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># Extract off-diagonal elements of each RDM</span>
+  <span class="n">ioffdiag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu_indices</span><span class="p">(</span><span class="n">rdm1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># indices of off-diagonal elements</span>
+  <span class="n">rdm1_offdiag</span> <span class="o">=</span> <span class="n">rdm1</span><span class="p">[</span><span class="n">ioffdiag</span><span class="p">]</span>
+  <span class="n">rdm2_offdiag</span> <span class="o">=</span> <span class="n">rdm2</span><span class="p">[</span><span class="n">ioffdiag</span><span class="p">]</span>
+
+  <span class="c1">#########################################################</span>
+  <span class="c1">## TO DO for students: compute correlation coefficient</span>
+  <span class="c1"># Fill out function and remove</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: complete correlate rdms&quot;</span><span class="p">)</span>
+  <span class="c1">#########################################################</span>
+  <span class="n">corr_coef</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="o">...</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+
+  <span class="k">return</span> <span class="n">corr_coef</span>
+
+
+<span class="c1"># Split RDMs into V1 responses and model responses</span>
+<span class="n">rdm_model</span> <span class="o">=</span> <span class="n">rdm_dict</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">rdm_v1</span> <span class="o">=</span> <span class="n">rdm_model</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;V1 data&#39;</span><span class="p">)</span>
+
+<span class="c1"># Correlate off-diagonal terms of dissimilarity matrices</span>
+<span class="c1"># Uncomment below to test your function</span>
+<span class="c1"># rdm_sim = {label: correlate_rdms(rdm_v1, rdm) for label, rdm in rdm_model.items()}</span>
+<span class="c1"># plot_rdm_rdm_correlations(rdm_sim)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D1_DeepLearning/solutions/W2D1_Tutorial3_Solution_ec39c647.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=558 height=413 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D1_DeepLearning/static/W2D1_Tutorial3_Solution_ec39c647_0.png>
+<p>According to this metric, which layer’s representations most resemble those in the data? Does this agree with your intuitions from exercise 3?</p>
+</div>
+</div>
+<div class="section" id="section-2-3-further-understanding-rdms">
+<h2>Section 2.3: Further understanding RDMs<a class="headerlink" href="#section-2-3-further-understanding-rdms" title="Permalink to this headline">¶</a></h2>
+<p>To better understand how these correlations in RDM’s arise, we can try plotting individual rows of the RDM matrix. The resulting curves show the similarity of the responses to each stimulus with that to one specific stimulus.</p>
+<div class="section" id="coding-exercise-2-3-plot-rows-of-rdm">
+<h3>Coding Exercise 2.3: Plot rows of RDM<a class="headerlink" href="#coding-exercise-2-3-plot-rows-of-rdm" title="Permalink to this headline">¶</a></h3>
+<p>Complete the <code class="docutils literal notranslate"><span class="pre">plot_rdm_rows()</span></code> function below for plotting the rows of the model and data RDM’s. We will then plot a few specified rows. Do these curves explain the correlation (or lack thereof) in RDM’s you saw in the previous exercise?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_rdm_rows</span><span class="p">(</span><span class="n">ori_list</span><span class="p">,</span> <span class="n">rdm_dict</span><span class="p">,</span> <span class="n">rdm_oris</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Plot the dissimilarity of response to each stimulus with response to one</span>
+<span class="sd">  specific stimulus</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    ori_list (list of float): plot dissimilarity with response to stimulus with</span>
+<span class="sd">      orientations closest to each value in this list</span>
+<span class="sd">    rdm_dict (dict): RDM&#39;s from which to extract dissimilarities</span>
+<span class="sd">    rdm_oris (np.ndarray): orientations corresponding to each row/column of RDMs</span>
+<span class="sd">    in rdm_dict</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">n_col</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ori_list</span><span class="p">)</span>
+  <span class="n">f</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_col</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">n_col</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+  <span class="c1"># Get index of orientation closest to ori_plot</span>
+  <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">ori_plot</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span> <span class="n">ori_list</span><span class="p">):</span>
+    <span class="n">iori</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">rdm_oris</span> <span class="o">-</span> <span class="n">ori_plot</span><span class="p">))</span>
+
+    <span class="c1">######################################################################</span>
+    <span class="c1"># TODO: plot dissimilarity curves in each RDM and remove the error</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: complete plot_rdm_rows&quot;</span><span class="p">)</span>
+    <span class="c1">######################################################################</span>
+
+    <span class="c1"># Plot dissimilarity curves in each RDM</span>
+    <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">rdm</span> <span class="ow">in</span> <span class="n">rdm_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+      <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="c1"># Draw vertical line at stimulus we are plotting dissimilarity w.r.t.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">rdm_oris</span><span class="p">[</span><span class="n">iori</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;.7&quot;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Label axes</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Dissimilarity with response</span><span class="se">\n</span><span class="s1">to </span><span class="si">{</span><span class="n">ori_plot</span><span class="si">:</span><span class="s1"> .0f</span><span class="si">}</span><span class="s1">$^o$ stimulus&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Stimulus orientation ($^o$)&#39;</span><span class="p">)</span>
+
+  <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Dissimilarity&#39;</span><span class="p">)</span>
+  <span class="n">axs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+
+<span class="n">ori_list</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">75</span><span class="p">,</span> <span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">75</span><span class="p">]</span>
+
+<span class="c1"># Uncomment to test your function</span>
+<span class="c1"># plot_rdm_rows(ori_list, rdm_dict, ori)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D1_DeepLearning/solutions/W2D1_Tutorial3_Solution_42c2b339.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=1134 height=270 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D1_DeepLearning/static/W2D1_Tutorial3_Solution_42c2b339_1.png>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-3-qualitative-comparisons-of-cnns-and-neural-activity">
+<h1>Section 3: Qualitative comparisons of CNNs and neural activity<a class="headerlink" href="#section-3-qualitative-comparisons-of-cnns-and-neural-activity" title="Permalink to this headline">¶</a></h1>
+<p>To visualize the representations in the data and in each of these model layers, we’ll use two classic techniques from systems neuroscience:</p>
+<ol class="simple">
+<li><p><strong>tuning curves</strong>: plotting the response of single neurons (or units, in the case of the deep network) as a function of the stimulus orientation</p></li>
+<li><p><strong>dimensionality reduction</strong>: plotting full population responses to each stimulus in two dimensions via dimensionality reduction. We’ll use the non-linear dimensionality reduction technique t-SNE for this.</p></li>
+</ol>
+<div class="section" id="section-3-1-tuning-curves">
+<h2>Section 3.1: Tuning curves<a class="headerlink" href="#section-3-1-tuning-curves" title="Permalink to this headline">¶</a></h2>
+<p>Below, we show some example tuning curves for different neurons and units in the CNN we trained above. How are the single neuron responses similar/different between the model and the data? Try running this cell multiple times to get an idea of shared properties in the tuning curves of the neurons within each population.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+<span class="c1">#@markdown Execute this cell to visualize tuning curves</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">resp_dict</span><span class="p">),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">resp_dict</span><span class="p">)</span> <span class="o">*</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">resp</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">resp_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+
+  <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> responses&#39;</span> <span class="o">%</span> <span class="n">label</span><span class="p">)</span>
+
+  <span class="c1"># Pick three random neurons whose tuning curves to plot</span>
+  <span class="n">ineurons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+  <span class="c1"># Plot tuning curves of ineurons</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ori</span><span class="p">,</span> <span class="n">resp</span><span class="p">[:,</span> <span class="n">ineurons</span><span class="p">])</span>
+
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;stimulus orientation&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;neural response&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="section-3-2-dimensionality-reduction-of-representations">
+<h2>Section 3.2: Dimensionality reduction of representations<a class="headerlink" href="#section-3-2-dimensionality-reduction-of-representations" title="Permalink to this headline">¶</a></h2>
+<p>We can visualize a dimensionality-reduced version of the internal representations of the mouse primary visual cortex or CNN internal representations in order to potentially uncover informative structure. Here, we use PCA to reduce the dimensionality to 20 dimensions, and then use tSNE to further reduce dimensionality to 2 dimensions. We use the first step of PCA so that tSNE runs faster.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_resp_lowd</span><span class="p">(</span><span class="n">resp_dict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Plot a low-dimensional representation of each dataset in resp_dict.&quot;&quot;&quot;</span>
+    <span class="n">n_col</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">resp_dict</span><span class="p">)</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_col</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">4.5</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">resp_dict</span><span class="p">),</span> <span class="mf">4.5</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">resp</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">resp_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+
+      <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+      <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> responses&#39;</span> <span class="o">%</span> <span class="n">label</span><span class="p">)</span>
+
+      <span class="c1"># First do PCA to reduce dimensionality to 20 dimensions so that tSNE is faster</span>
+      <span class="n">resp_lowd</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">resp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
+
+      <span class="c1"># Then do tSNE to reduce dimensionality to 2 dimensions</span>
+      <span class="n">resp_lowd</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">resp_lowd</span><span class="p">)</span>
+
+      <span class="c1"># Plot dimensionality-reduced population responses &#39;resp_lowd&#39;</span>
+      <span class="c1"># on 2D axes, with each point colored by stimulus orientation</span>
+      <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">resp_lowd</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">resp_lowd</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+      <span class="n">pts</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">ori</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;twilight&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">90</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+      <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Stimulus orientation&#39;</span><span class="p">)</span>
+
+      <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Dimension 1&#39;</span><span class="p">)</span>
+      <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Dimension 2&#39;</span><span class="p">)</span>
+      <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+      <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+
+<span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">xkcd</span><span class="p">():</span>
+  <span class="n">plot_resp_lowd</span><span class="p">(</span><span class="n">resp_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="think-3-2-visualizing-reduced-dimensionality-representations">
+<h3>Think! 3.2: Visualizing reduced dimensionality representations<a class="headerlink" href="#think-3-2-visualizing-reduced-dimensionality-representations" title="Permalink to this headline">¶</a></h3>
+<p>Interpret the figure above. Why do these representations look the way they do? Here are a few specific questions to think about:</p>
+<ul class="simple">
+<li><p>How are the population responses similar/different between the model and the data? Can you explain these population-level responses from the single neuron responses seen in the previous exercise, or vice-versa?</p></li>
+<li><p>How do the representations in the different layers of the model differ, and how does this relate to the orientation discrimination task the model was optimized for?</p></li>
+<li><p>Which layer of our deep network encoding model most closely resembles the V1 data?</p></li>
+</ul>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D1_DeepLearning/solutions/W2D1_Tutorial3_Solution_ff17ff9e.py"><em>Click for solution</em></a></p>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook, we learned</p>
+<ul class="simple">
+<li><p>how to use deep learning to build a normative encoding model of the visual system</p></li>
+<li><p>how to use RSA to evaluate how the model’s representations match to those in the brain</p></li>
+</ul>
+<p>Our approach was to optimize a deep convolutional network to solve an orientation discrimination task. But note that many other approaches could have been taken.</p>
+<p>Firstly, there are many other “normative” ways to solve this orientation discrimination task. We could have used different neural network architectures, or even used a completely different algorithm that didn’t involve a neural network at all, but instead used other kinds of image transformations (e.g. Fourier transforms). Neural network approaches, however, are special in that they explicitly uses abstract distributed representations to compute, which feels a lot closer to the kinds of algorithms the brain uses. <em>Convolutional</em> neural networks in particular are well-suited for building normative models of the visual system.</p>
+<p>Secondly, our choice of visual task was mostly arbitrary. For example, we could have trained our network to directly estimate the orientation of the stimulus, rather than just discriminating between two classes of tilt. Or, we could have trained the network to perform a more naturalistic task, such as recognizing the rotation of an arbitrary image. Or we could try a task like object recognition. Is this something that mice compute in their visual cortex?</p>
+<p>Training on different tasks could lead to different representations of the oriented grating stimuli, which might match the observed V1 representations better or worse.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="bonus">
+<h1>Bonus<a class="headerlink" href="#bonus" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="bonus-section-1-building-cnn-s-with-pytorch">
+<h2>Bonus Section 1: Building CNN’s with PyTorch<a class="headerlink" href="#bonus-section-1-building-cnn-s-with-pytorch" title="Permalink to this headline">¶</a></h2>
+<p>Here we walk through building the different types of layers in a CNN using PyTorch, culminating in the CNN model used above.</p>
+<div class="section" id="bonus-section-1-1-fully-connected-layers">
+<h3>Bonus Section 1.1: Fully connected layers<a class="headerlink" href="#bonus-section-1-1-fully-connected-layers" title="Permalink to this headline">¶</a></h3>
+<p>In a fully connected layer, each unit computes a weighted sum over all the input units and applies a non-linear function to this weighted sum. You have used such layers many times already in parts 1 and 2. As you have already seen, these are implemented in PyTorch using the <code class="docutils literal notranslate"><span class="pre">nn.Linear</span></code> class.</p>
+<p>See the next cell for code for constructing a deep network with one fully connected layer that will classify an input image as being tilted left or right. Specifically, its output is the predicted probability of the input image being tilted right. To ensure that its output is a probability (i.e. a number between 0 and 1), we use a sigmoid activation function to squash the output into this range (implemented with <code class="docutils literal notranslate"><span class="pre">torch.sigmoid()</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FC</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Deep network with one fully connected layer</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      h_in (int): height of input image, in pixels (i.e. number of rows)</span>
+<span class="sd">      w_in (int): width of input image, in pixels (i.e. number of columns)</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">      fc (nn.Linear): weights and biases of fully connected layer</span>
+<span class="sd">      out (nn.Linear): weights and biases of output layer</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">h_in</span><span class="p">,</span> <span class="n">w_in</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">dims</span> <span class="o">=</span> <span class="n">h_in</span> <span class="o">*</span> <span class="n">w_in</span>  <span class="c1"># dimensions of flattened input</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># flattened input image --&gt; 10D representation</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">out</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 10D representation --&gt; scalar</span>
+
+  <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Classify grating stimulus as tilted right or left</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      x (torch.Tensor): p x 48 x 64 tensor with pixel grayscale values for</span>
+<span class="sd">          each of p stimulus images.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      torch.Tensor: p x 1 tensor with network outputs for each input provided</span>
+<span class="sd">          in x. Each output should be interpreted as the probability of the</span>
+<span class="sd">          corresponding stimulus being tilted right.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span>  <span class="c1"># flatten each input image into a vector</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># output of fully connected layer</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># network output</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="bonus-section-1-2-convolutional-layers">
+<h3>Bonus Section 1.2: Convolutional layers<a class="headerlink" href="#bonus-section-1-2-convolutional-layers" title="Permalink to this headline">¶</a></h3>
+<p>In a convolutional layer, each unit computes a weighted sum over a two-dimensional <span class="math notranslate nohighlight">\(K \times K\)</span> patch of inputs. As we saw in part 2, the units are arranged in <strong>channels</strong> (see figure below), whereby units in the same channel compute the same weighted sum over different parts of the input, using the weights of that channel’s <strong>convolutional filter (or kernel)</strong>. The output of a convolutional layer is thus a three-dimensional tensor of shape <span class="math notranslate nohighlight">\(C^{out} \times H \times W\)</span>, where <span class="math notranslate nohighlight">\(C^{out}\)</span> is the number of channels (i.e. the number of convolutional filters/kernels), and <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(W\)</span> are the height and width of the input.</p>
+  <p align="center">
+    <img src="https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/static/convnet.png?raw=true" width="350" />
+  </p>
+<p>Such layers can be implemented in Python using the PyTorch class `nn.Conv2d as we saw in tutorial 2 (documentation <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Conv2d.html">here</a>).</p>
+<p>See the next cell for code incorporating a convolutional layer with 8 convolutional filters of size 5 <span class="math notranslate nohighlight">\(\times\)</span> 5 into our above fully connected network. Note that we have to flatten the multi-channel output in order to pass it on to the fully connected layer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ConvFC</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Deep network with one convolutional layer and one fully connected layer</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    h_in (int): height of input image, in pixels (i.e. number of rows)</span>
+<span class="sd">    w_in (int): width of input image, in pixels (i.e. number of columns)</span>
+
+<span class="sd">  Attributes:</span>
+<span class="sd">    conv (nn.Conv2d): filter weights of convolutional layer</span>
+<span class="sd">    dims (tuple of ints): dimensions of output from conv layer</span>
+<span class="sd">    fc (nn.Linear): weights and biases of fully connected layer</span>
+<span class="sd">    out (nn.Linear): weights and biases of output layer</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">h_in</span><span class="p">,</span> <span class="n">w_in</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="n">C_in</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># input stimuli have only 1 input channel</span>
+    <span class="n">C_out</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># number of output channels (i.e. of convolutional kernels to convolve the input with)</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># size of each convolutional kernel (should be odd number for the padding to work as expected)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">C_in</span><span class="p">,</span> <span class="n">C_out</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="n">K</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># add padding to ensure that each channel has same dimensionality as input</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">dims</span> <span class="o">=</span> <span class="p">(</span><span class="n">C_out</span><span class="p">,</span> <span class="n">h_in</span><span class="p">,</span> <span class="n">C_out</span><span class="p">)</span>  <span class="c1"># dimensions of conv layer output</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># flattened conv output --&gt; 10D representation</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">out</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 10D representation --&gt; scalar</span>
+
+  <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Classify grating stimulus as tilted right or left</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      x (torch.Tensor): p x 48 x 64 tensor with pixel grayscale values for</span>
+<span class="sd">          each of p stimulus images.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      torch.Tensor: p x 1 tensor with network outputs for each input provided</span>
+<span class="sd">          in x. Each output should be interpreted as the probability of the</span>
+<span class="sd">          corresponding stimulus being tilted right.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># p x 1 x 48 x 64, add a singleton dimension for the single stimulus channel</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># output of convolutional layer</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">))</span>  <span class="c1"># flatten convolutional layer outputs into a vector</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># output of fully connected layer</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># network output</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="bonus-section-1-3-max-pooling-layers">
+<h3>Bonus Section 1.3: Max pooling layers<a class="headerlink" href="#bonus-section-1-3-max-pooling-layers" title="Permalink to this headline">¶</a></h3>
+<p>In a max pooling layer, each unit computes the maximum over a small two-dimensional <span class="math notranslate nohighlight">\(K^{pool} \times K^{pool}\)</span> patch of inputs. Given a multi-channel input of dimensions <span class="math notranslate nohighlight">\(C \times H \times W\)</span>, the output of a max pooling layer has dimensions <span class="math notranslate nohighlight">\(C \times H^{out} \times W^{out}\)</span>, where:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-88990d81-7e3c-422a-a2f1-2db02759db8e">
+<span class="eqno">(107)<a class="headerlink" href="#equation-88990d81-7e3c-422a-a2f1-2db02759db8e" title="Permalink to this equation">¶</a></span>\[\begin{align}
+  H^{out} &amp;= \left\lfloor \frac{H}{K^{pool}} \right\rfloor\\
+  W^{out} &amp;= \left\lfloor \frac{W}{K^{pool}} \right\rfloor
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lfloor\cdot\rfloor\)</span> denotes rounding down to the nearest integer below (i.e. floor division <code class="docutils literal notranslate"><span class="pre">//</span></code> in Python).</p>
+<p>Max pooling layers can be implemented with the PyTorch <code class="docutils literal notranslate"><span class="pre">nn.MaxPool2d</span></code> class, which takes as a single argument the size <span class="math notranslate nohighlight">\(K^{pool}\)</span> of the pooling patch. See the next cell for an example, which builds upon the previous example by adding in a max pooling layer just after the convolutional layer. Note again that we need to calculate the dimensions of its output in order to set the dimensions of the subsequent fully connected layer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PoolConvFC</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Deep network with one convolutional layer followed by a max pooling layer</span>
+<span class="sd">  and one fully connected layer</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    h_in (int): height of input image, in pixels (i.e. number of rows)</span>
+<span class="sd">    w_in (int): width of input image, in pixels (i.e. number of columns)</span>
+
+<span class="sd">  Attributes:</span>
+<span class="sd">    conv (nn.Conv2d): filter weights of convolutional layer</span>
+<span class="sd">    pool (nn.MaxPool2d): max pooling layer</span>
+<span class="sd">    dims (tuple of ints): dimensions of output from pool layer</span>
+<span class="sd">    fc (nn.Linear): weights and biases of fully connected layer</span>
+<span class="sd">    out (nn.Linear): weights and biases of output layer</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">h_in</span><span class="p">,</span> <span class="n">w_in</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="n">C_in</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># input stimuli have only 1 input channel</span>
+    <span class="n">C_out</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># number of output channels (i.e. of convolutional kernels to convolve the input with)</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># size of each convolutional kernel</span>
+    <span class="n">Kpool</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># size of patches over which to pool</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">C_in</span><span class="p">,</span> <span class="n">C_out</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="n">K</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># add padding to ensure that each channel has same dimensionality as input</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pool</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">Kpool</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">dims</span> <span class="o">=</span> <span class="p">(</span><span class="n">C_out</span><span class="p">,</span> <span class="n">h_in</span> <span class="o">//</span> <span class="n">Kpool</span><span class="p">,</span> <span class="n">w_in</span> <span class="o">//</span> <span class="n">Kpool</span><span class="p">)</span>  <span class="c1"># dimensions of pool layer output</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># flattened pool output --&gt; 10D representation</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">out</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 10D representation --&gt; scalar</span>
+
+  <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Classify grating stimulus as tilted right or left</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      x (torch.Tensor): p x 48 x 64 tensor with pixel grayscale values for</span>
+<span class="sd">          each of p stimulus images.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      torch.Tensor: p x 1 tensor with network outputs for each input provided</span>
+<span class="sd">          in x. Each output should be interpreted as the probability of the</span>
+<span class="sd">          corresponding stimulus being tilted right.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># p x 1 x 48 x 64, add a singleton dimension for the single stimulus channel</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># output of convolutional layer</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># output of pooling layer</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">))</span>  <span class="c1"># flatten pooling layer outputs into a vector</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># output of fully connected layer</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># network output</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This pooling layer completes the CNN model trained above to perform orientation discrimination. We can think of this architecture as having two primary layers:</p>
+<ol class="simple">
+<li><p>a convolutional + pooling layer</p></li>
+<li><p>a fully connected layer</p></li>
+</ol>
+<p>We group together the convolution and pooling layers into one, as they really form one full unit of convolutional processing, where each patch of the image is passed through a convolutional filter and pooled with neighboring patches. It is standar practice to follow up any convolutional layer with a pooling layer, so they are generally treated as a single block of processing.</p>
+</div>
+</div>
+<div class="section" id="bonus-section-2-orientation-discrimination-as-a-binary-classification-problem">
+<h2>Bonus Section 2: Orientation discrimination as a binary classification problem<a class="headerlink" href="#bonus-section-2-orientation-discrimination-as-a-binary-classification-problem" title="Permalink to this headline">¶</a></h2>
+<p>What loss function should we minimize to optimize orientation discrimination performance? We first note that the orientation discrimination task is a <strong>binary classification problem</strong>, where the goal is to classify a given stimulus into one of two classes: being tilted left or being tilted right.</p>
+<p>Our goal is thus to output a high probability of the stimulus being tilted right (i.e. large <span class="math notranslate nohighlight">\(p\)</span>) whenever the stimulus is tilted right, and a high probability of the stimulus being tilted left (i.e. large <span class="math notranslate nohighlight">\(1-p \Leftrightarrow\)</span> small <span class="math notranslate nohighlight">\(p\)</span>) whenever the stimulus is tilted left.</p>
+<p>Let <span class="math notranslate nohighlight">\(\tilde{y}^{(n)}\)</span> be the label of the <span class="math notranslate nohighlight">\(n\)</span>th stimulus in the mini-batch, indicating its true tilt:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-058a44f1-17d9-4101-965d-9fbaae8faaae">
+<span class="eqno">(108)<a class="headerlink" href="#equation-058a44f1-17d9-4101-965d-9fbaae8faaae" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+  \tilde{y}^{(n)} =
+  \begin{cases}
+    1 &amp;\text{if stimulus }n\text{ is tilted right} \\
+    0 &amp;\text{if stimulus }n\text{ is tilted left}
+  \end{cases}
+\end{equation}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(p^{(n)}\)</span> be the predicted probability of that stimulus being tilted right assigned by our network. Note that that <span class="math notranslate nohighlight">\(1-p^{(n)}\)</span> is the predicted probability of that stimulus being tilted left. We’d now like to modify the parameters so as to maximize the predicted probability of the true class <span class="math notranslate nohighlight">\(\tilde{y}^{(n)}\)</span>. One way to formalize this is as maximizing the <em>log</em> probability</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b230293e-871c-4d57-b9c6-bd115bbf434d">
+<span class="eqno">(109)<a class="headerlink" href="#equation-b230293e-871c-4d57-b9c6-bd115bbf434d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+  \log \left( \text{predicted probability of stimulus } n \text{ being of class } \tilde{y}^{(n)}\right) &amp;= 
+  \begin{cases}
+    \log p^{(n)} &amp;\text{if }\tilde{y}^{(n)} = 1 \\
+    \log (1 - p^{(n)}) &amp;\text{if }\tilde{y}^{(n)} = 0
+  \end{cases}
+  \\
+  &amp;= \tilde{y}^{(n)} \log p^{(n)} + (1 - \tilde{y}^{(n)})\log(1 - p^{(n)})
+\end{align}\]</div>
+<p>You should recognize this expression as the log likelihood of the Bernoulli distribution under the predicted probability <span class="math notranslate nohighlight">\(p^{(n)}\)</span>. This is the same quantity that is maximized in logistic regression, where the predicted probability <span class="math notranslate nohighlight">\(p^{(n)}\)</span> is just a simple linear sum of its inputs (rather than a complicated non-linear operation, like in the deep networks used here).</p>
+<p>To turn this into a loss function, we simply multiply it by -1, resulting in the so-called <strong>binary cross-entropy</strong>, or <strong>negative log likelihood</strong>. Summing over <span class="math notranslate nohighlight">\(P\)</span> samples in a batch, the binary cross entropy loss is given by</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5b908617-e909-4f11-859e-5d364d1a5951">
+<span class="eqno">(110)<a class="headerlink" href="#equation-5b908617-e909-4f11-859e-5d364d1a5951" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+  L = -\sum_{n=1}^P \tilde{y}^{(n)} \log p^{(n)} + (1 - \tilde{y}^{(n)})\log(1 - p^{(n)})
+\end{equation}\]</div>
+<p>The binary cross-entropy loss can be implemented in PyTorch using the <code class="docutils literal notranslate"><span class="pre">nn.BCELoss()</span></code> loss function (cf. <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.BCELoss.html">documentation</a>).</p>
+<p>Feel free to check out the code used to optimize the CNN in the <code class="docutils literal notranslate"><span class="pre">train()</span></code> function defined in the hidden cell of helper functions at the top of the notebook. Because the CNN’s used here have lots of parameters, we have to use two tricks that we didn’t use in the previous parts of this tutorial:</p>
+<ol class="simple">
+<li><p>We have to use <em>stochastic</em> gradient descent (SGD), rather than just gradient descent (GD).</p></li>
+<li><p>We have to use <a class="reference external" href="https://distill.pub/2017/momentum/">momentum</a> in our SGD updates. This is easily incorporated into our PyTorch implementation by just setting the <code class="docutils literal notranslate"><span class="pre">momentum</span></code> argument of the built-in <code class="docutils literal notranslate"><span class="pre">optim.SGD</span></code> optimizer.</p></li>
+</ol>
+</div>
+<div class="section" id="bonus-section-3-rdm-z-score-explanation">
+<h2>Bonus Section 3: RDM Z-Score Explanation<a class="headerlink" href="#bonus-section-3-rdm-z-score-explanation" title="Permalink to this headline">¶</a></h2>
+<p>If <span class="math notranslate nohighlight">\(r^{(s)}_i\)</span> is the response of the <span class="math notranslate nohighlight">\(i\)</span>th neuron to the <span class="math notranslate nohighlight">\(s\)</span>th stimulus, then</p>
+<div class="amsmath math notranslate nohighlight" id="equation-aa61d811-1830-4719-8793-9b65fcc17d6f">
+<span class="eqno">(111)<a class="headerlink" href="#equation-aa61d811-1830-4719-8793-9b65fcc17d6f" title="Permalink to this equation">¶</a></span>\[\begin{gather}
+  M_{ss'} = 1 - \frac{\text{Cov}\left[ r_i^{(s)}, r_i^{(s')} \right]}{\sqrt{\text{Var}\left[ r_i^{(s)} \right] \text{Var}\left[ r_i^{(s')} \right]}} = 1 - \frac{\sum_{i=1}^N (r_i^{(s)} - \bar{r}^{(s)})(r_i^{(s')} - \bar{r}^{(s')}) }{\sqrt{\sum_{i=1}^N \left( r_i^{(s)} - \bar{r}^{(s)} \right)^2 \sum_{i=1}^N \left( r_i^{(s')} - \bar{r}^{(s')} \right)^2 }} \\
+  \bar{r}^{(s)} = \frac{1}{N} \sum_{i=1}^N r_i^{(s)}
+\end{gather}\]</div>
+<p>This can be computed efficiently by using the <span class="math notranslate nohighlight">\(z\)</span>-scored responses</p>
+<div class="amsmath math notranslate nohighlight" id="equation-95a74701-ded5-4e88-9a38-3d076a8c1ea6">
+<span class="eqno">(112)<a class="headerlink" href="#equation-95a74701-ded5-4e88-9a38-3d076a8c1ea6" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+  z_i^{(s)} = \frac{r_i^{(s)} - \bar{r}^{(s)}}{\sqrt{\frac{1}{N}\sum_{i=1}^N \left( r_i^{(s)} - \bar{r}^{(s)} \right)^2}} \Rightarrow M_{ss'} = 1 - \frac{1}{N}\sum_{i=1}^N z_i^{(s)}z_i^{(s')}
+\end{equation}\]</div>
+<p>such that the full matrix can be computed through the matrix multiplication</p>
+<div class="amsmath math notranslate nohighlight" id="equation-866351d4-cef4-4ea4-b7a4-80733b9e7e77">
+<span class="eqno">(113)<a class="headerlink" href="#equation-866351d4-cef4-4ea4-b7a4-80733b9e7e77" title="Permalink to this equation">¶</a></span>\[\begin{gather}
+  \mathbf{M} = 1 - \frac{1}{N} \mathbf{ZZ}^T \\
+  \mathbf{Z} = 
+  \begin{bmatrix}
+    z_1^{(1)} &amp; z_2^{(1)} &amp; \ldots &amp; z_N^{(1)} \\
+    z_1^{(2)} &amp; z_2^{(2)} &amp; \ldots &amp; z_N^{(2)} \\
+    \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+    z_1^{(S)} &amp; z_2^{(S)} &amp; \ldots &amp; z_N^{(S)}
+  \end{bmatrix}
+\end{gather}\]</div>
+<p>where <span class="math notranslate nohighlight">\(S\)</span> is the total number of stimuli. Note that <span class="math notranslate nohighlight">\(\mathbf{Z}\)</span> is an <span class="math notranslate nohighlight">\(S \times N\)</span> matrix, and <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> is an <span class="math notranslate nohighlight">\(S \times S\)</span> matrix.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/W2D1_DeepLearning/student"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="W2D1_Tutorial2.html" title="previous page">Tutorial 2: Convolutional Neural Networks</a>
+    <a class='right-next' id="next-link" href="../outro_vid.html" title="next page">Outro Video</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Neuromatch<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

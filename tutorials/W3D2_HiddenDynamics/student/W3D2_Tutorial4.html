@@ -1,0 +1,1912 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 4: 2D Kalman Filter &#8212; Neuromatch Computational Neuroscience</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Outro Video" href="../outro_vid.html" />
+    <link rel="prev" title="Tutorial 3: 1D Kalman Filter" href="W3D2_Tutorial3.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      <img src="../../../_static/nma-logo-square-4xp.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Pre-reqs Refresher
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D1_PythonWorkshop1/intro_text.html">
+   Python Workshop 1 (W0D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
+     Tutorial: LIF Neuron - Part I
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D2_PythonWorkshop2/intro_text.html">
+   Python Workshop 2 (W0D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
+     Tutorial 1: LIF Neuron Part II
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D3_LinearAlgebra/intro_text.html">
+   Linear Algebra (W0D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
+     Tutorial 1: Vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
+     Tutorial 2: Matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
+     Bonus Tutorial: Discrete Dynamical Systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D4_Calculus/intro_text.html">
+   Calculus (W0D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
+     Tutorial 1: Basics of Differential and Integral Calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
+     Tutorial 2: Differential Equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
+     Tutorial 3: Numerical Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D5_Statistics/intro_text.html">
+   Statistics (W0D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
+     Neuromatch Academy: Precourse Week, Day 5, Tutorial 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
+     Tutorial 2: Statistical Inference
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Intro to Modeling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D1_ModelTypes/intro_text.html">
+   Model Types (W1D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
+     Tutorial 1: “What” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
+     Tutorial 2: “How” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
+     Tutorial 3: “Why” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D2_ModelingPractice/intro_text.html">
+   Modeling Practice (W1D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
+     Tutorial: Framing the Question
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D3_ModelFitting/intro_text.html">
+   Model Fitting (W1D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
+     Tutorial 1: Linear regression with MSE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
+     Tutorial 2: Linear regression with MLE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
+     Tutorial 3: Confidence intervals and bootstrapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
+     Tutorial 4: Multiple linear regression and polynomial regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
+     Tutorial 5: Model Selection: Bias-variance trade-off
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
+     Tutorial 6: Model Selection: Cross-validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D4_MachineLearning/intro_text.html">
+   Machine Learning (W1D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial1.html">
+     Tutorial 1: GLMs for Encoding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/student/W1D4_Tutorial2.html">
+     Tutorial 2: Classifiers and regularizers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_MachineLearning/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D5_DimensionalityReduction/intro_text.html">
+   Dimensionality Reduction (W1D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
+     Tutorial 1: Geometric view of data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
+     Tutorial 2: Principal Component Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
+     Tutorial 3: Dimensionality Reduction &amp; Reconstruction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
+     Tutorial 4:  Nonlinear Dimensionality Reduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D1_DeepLearning/intro_text.html">
+   Deep Learning (W2D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
+     Tutorial 1: Decoding Neural Responses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
+     Tutorial 2: Convolutional Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
+     Tutorial 2: Building and Evaluating Normative Encoding Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dynamical Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D2_LinearSystems/intro_text.html">
+   Linear Systems (W2D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
+     Tutorial 1: Linear dynamical systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
+     Tutorial 2: Markov Processes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
+     Tutorial 3: Combining determinism and stochasticity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
+     Tutorial 4: Autoregressive models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D3_RealNeurons/intro_text.html">
+   Real Neurons (W2D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial1.html">
+     Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial2.html">
+     Tutorial 2: Effects of Input Correlation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial3.html">
+     Tutorial 3: Synaptic transmission - Models of static and dynamic synapses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/student/W2D3_Tutorial4.html">
+     Tutorial 4: Spike-timing dependent plasticity (STDP)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_RealNeurons/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D4_DynamicNetworks/intro_text.html">
+   Dynamic Networks (W2D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
+     Tutorial 1: Neural Rate Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
+     Tutorial 2: Wilson-Cowan Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Stochastic Processes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D1_BayesianDecisions/intro_text.html">
+   Bayesian Decisions (W3D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
+     Tutorial 1: Bayes with a binary hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
+     Tutorial 2: Bayesian inference and decisions with continuous hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
+     Bonus Tutorial:Fitting to data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../intro_text.html">
+   Hidden Dynamics (W3D2)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W3D2_Tutorial1.html">
+     Tutorial 1: Sequential Probability Ratio Test
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W3D2_Tutorial2.html">
+     Tutorial 2: Hidden Markov Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W3D2_Tutorial3.html">
+     Tutorial 3: 1D Kalman Filter
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tutorial 4: 2D Kalman Filter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D3_OptimalControl/intro_text.html">
+   Optimal Control (W3D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
+     Tutorial 1: Optimal Control for Discrete States
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
+     Tutorial 2: Optimal Control for Continuous State
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D4_ReinforcementLearning/intro_text.html">
+   Reinforcement Learning (W3D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
+     Tutorial 1: Learning to Predict
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
+     Tutorial 2: Learning to Act: Multi-Armed Bandits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
+     Tutorial 3: Learning to Act: Q-Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
+     Tutorial 4: From Reinforcement Learning to Planning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D5_NetworkCausality/intro_text.html">
+   Network Causality (W3D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/intro_vid.html">
+     Intro Video
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
+     Tutorial 1: Interventions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
+     Tutorial 2: Correlations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
+     Tutorial 3: Simultaneous fitting/regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
+     Tutorial 4: Instrumental Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D5_NetworkCausality/outro_vid.html">
+     Outro Video
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/tutorials/W3D2_HiddenDynamics/student/W3D2_Tutorial4.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/tutorials/W3D2_HiddenDynamics/student/W3D2_Tutorial4.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial 4: 2D Kalman Filter
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial-objectives">
+   Tutorial Objectives
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-1-linear-dynamical-system-lds">
+   Section 1: Linear Dynamical System (LDS)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kalman-filter-definitions">
+     Kalman filter definitions:
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-1-1-sampling-from-a-latent-linear-dynamical-system">
+     Section 1.1: Sampling from a latent linear dynamical system
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-1-sampling-from-a-linear-dynamical-system">
+       Exercise 1: Sampling from a linear dynamical system
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interactive-demo-adjusting-system-dynamics">
+       Interactive Demo: Adjusting System Dynamics
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-2-kalman-filtering">
+   Section 2: Kalman Filtering
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2-implement-kalman-filtering">
+     Exercise 2: Implement Kalman filtering
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-3-fitting-eye-gaze-data">
+   Section 3: Fitting Eye Gaze Data
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interactive-demo-tracking-eye-gaze">
+     Interactive Demo: Tracking Eye Gaze
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#section-3-1-fitting-data-with-pykalman">
+     Section 3.1: Fitting data with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pykalman
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discussion-questions">
+     Discussion questions:
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#handling-eye-blinks">
+     Handling Eye Blinks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus">
+   Bonus
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#review-on-gaussian-joint-marginal-and-conditional-distributions">
+     Review on Gaussian joint, marginal and conditional distributions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kalman-smoothing">
+     Kalman Smoothing
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-3-implement-kalman-smoothing">
+       Exercise 3: Implement Kalman smoothing
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-expectation-maximization-em-algorithm">
+     The Expectation-Maximization (EM) Algorithm
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#expectation-step">
+       Expectation step
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#maximization-step">
+       Maximization step
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-m-step-for-a-lds">
+       The M-step for a LDS
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W3D2_HiddenDynamics/student/W3D2_Tutorial4.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="section" id="tutorial-4-2d-kalman-filter">
+<h1>Tutorial 4: 2D Kalman Filter<a class="headerlink" href="#tutorial-4-2d-kalman-filter" title="Permalink to this headline">¶</a></h1>
+<p><strong>Week 3, Day 2: Hidden Dynamics</strong></p>
+<p><strong>By Neuromatch Academy</strong></p>
+<p><strong>Content creators:</strong> Caroline Haimerl and Byron Galbraith</p>
+<p><strong>Content reviewers:</strong> Jesse Livezey, Matt Krause, Michael Waskom, and Xaq Pitkow</p>
+<p><strong>Useful reference:</strong></p>
+<ul class="simple">
+<li><p>Roweis, Ghahramani (1998): A unifying review of linear Gaussian Models</p></li>
+<li><p>Bishop (2006): Pattern Recognition and Machine Learning</p></li>
+</ul>
+<p><strong>Acknowledgement</strong></p>
+<p>This tutorial is in part based on code originally created by Caroline Haimerl for Dr. Cristina Savin’s <em>Probabilistic Time Series</em> class at the Center for Data Science, New York University</p>
+<p>We will edit the above video to end at 2:20</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 1: Introduction</span>
+<span class="c1"># Insert the ID of the corresponding youtube video</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;6f_51L3i5aQ&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="tutorial-objectives">
+<h1>Tutorial Objectives<a class="headerlink" href="#tutorial-objectives" title="Permalink to this headline">¶</a></h1>
+<p>In the previous tutorials we got an intuition for the Kalman filter in one dimension. In this tutorial, we will examine the 2D Kalman filter and more of its mathematical foundations.</p>
+<p>In this tutorial, you will:</p>
+<ul class="simple">
+<li><p>Review linear dynamical systems</p></li>
+<li><p>Implement the Kalman filter</p></li>
+<li><p>Explore how the Kalman filter can be used to smooth data from an eye-tracking experiment</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>conda install -c conda-forge ipywidgets --yes
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>conda install numpy matplotlib scipy requests --yes
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install PyKalman (https://pykalman.github.io/)</span>
+<span class="o">!</span>pip install pykalman --quiet
+
+<span class="c1"># Imports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pykalman</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Figure settings</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>       <span class="c1"># interactive display</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Data retrieval and loading</span>
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;W2D3_mit_eyetracking_2009.npz&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://osf.io/jfk8w/download&quot;</span>
+<span class="n">expected_md5</span> <span class="o">=</span> <span class="s2">&quot;20c7bc4a6f61f49450997e381cf5e0dd&quot;</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+  <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;!!! Failed to download data !!!&quot;</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="n">requests</span><span class="o">.</span><span class="n">codes</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;!!! Failed to download data !!!&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span> <span class="o">!=</span> <span class="n">expected_md5</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;!!! Data download appears corrupted !!!&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fid</span><span class="p">:</span>
+        <span class="n">fid</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">load_eyetracking_data</span><span class="p">(</span><span class="n">data_fname</span><span class="o">=</span><span class="n">fname</span><span class="p">):</span>
+
+  <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data_fname</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">dobj</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="o">**</span><span class="n">dobj</span><span class="p">)</span>
+
+  <span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">stim</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;JPG&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">stim</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;stimuli&#39;</span><span class="p">]]</span>
+  <span class="n">subjects</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;subjects&#39;</span><span class="p">]</span>
+
+  <span class="k">return</span> <span class="n">subjects</span><span class="p">,</span> <span class="n">images</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Helper functions</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plot_kalman</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">observation</span><span class="p">,</span> <span class="n">estimate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;filter&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span>
+                <span class="n">title</span><span class="o">=</span><span class="s1">&#39;LDS&#39;</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">axes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+      <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">state</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">state</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;true latent&#39;</span><span class="p">)</span>
+      <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">observation</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">observation</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;k.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">axes</span>
+
+    <span class="k">if</span> <span class="n">estimate</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">estimate</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">estimate</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;X position&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Y position&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">estimate</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">state</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">observation</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;.k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;dim 1&#39;</span><span class="p">)</span>
+      <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">state</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">observation</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;dim 2&#39;</span><span class="p">)</span>
+      <span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;correlation&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;latent&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;measured&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">state</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">estimate</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+               <span class="n">label</span><span class="o">=</span><span class="s1">&#39;latent dim 1&#39;</span><span class="p">)</span>
+      <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">state</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">estimate</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+               <span class="n">label</span><span class="o">=</span><span class="s1">&#39;latent dim 2&#39;</span><span class="p">)</span>
+      <span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;correlation&#39;</span><span class="p">,</span>
+              <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;real latent&#39;</span><span class="p">,</span>
+              <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;estimated latent&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span>
+
+
+<span class="k">def</span> <span class="nf">plot_gaze_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">img</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># overlay gaze on stimulus</span>
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+    <span class="n">xlim</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">ylim</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">img</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+        <span class="n">ylim</span> <span class="o">=</span> <span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">xlim</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="n">xlim</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">ylim</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ax</span>
+
+
+<span class="k">def</span> <span class="nf">plot_kf_state</span><span class="p">(</span><span class="n">kf</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="n">mu_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">kf</span><span class="o">.</span><span class="n">n_dim_state</span><span class="p">)</span>
+    <span class="n">mu_0</span><span class="p">[:</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">kf</span><span class="o">.</span><span class="n">initial_state_mean</span> <span class="o">=</span> <span class="n">mu_0</span>
+
+    <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">kf</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mu</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">mu</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;limegreen&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">mu</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">mu</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;&gt;&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">mu</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">mu</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-1-linear-dynamical-system-lds">
+<h1>Section 1: Linear Dynamical System (LDS)<a class="headerlink" href="#section-1-linear-dynamical-system-lds" title="Permalink to this headline">¶</a></h1>
+<p>The below video will be edited to 0:33 - 1:09, and then 2:01 - 3:32</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 2: Linear Dynamical Systems</span>
+<span class="c1"># Insert the ID of the corresponding youtube video</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;2SWh639YgEg&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="kalman-filter-definitions">
+<h2>Kalman filter definitions:<a class="headerlink" href="#kalman-filter-definitions" title="Permalink to this headline">¶</a></h2>
+<p>The latent state <span class="math notranslate nohighlight">\(s_t\)</span> evolves as a stochastic linear dynamical system in discrete time, with a dynamics matrix <span class="math notranslate nohighlight">\(D\)</span>:
+$<span class="math notranslate nohighlight">\(s_t = Ds_{t-1}+w_t\)</span>$</p>
+<p>Just as in the HMM, the structure is a Markov chain where the state at time point <span class="math notranslate nohighlight">\(t\)</span> is conditionally independent of previous states given the state at time point <span class="math notranslate nohighlight">\(t-1\)</span>.</p>
+<p>Sensory measurements <span class="math notranslate nohighlight">\(m_t\)</span> (observations) are noisy linear projections of the latent state:
+$<span class="math notranslate nohighlight">\(m_t = Hs_{t}+\eta_t\)</span>$</p>
+<p>Both states and measurements have Gaussian variability, often called noise: ‘process noise’ <span class="math notranslate nohighlight">\(w_t\)</span> for the states, and ‘measurement’ or ‘observation noise’ <span class="math notranslate nohighlight">\(\eta_t\)</span> for the measurements. The initial state is also Gaussian distributed. These quantites have means and covariances:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-49540f5d-40d4-4d0a-81ff-7e249f32bd42">
+<span class="eqno">(173)<a class="headerlink" href="#equation-49540f5d-40d4-4d0a-81ff-7e249f32bd42" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+w_t &amp; \sim &amp; \mathcal{N}(0, Q) \\
+\eta_t &amp; \sim &amp; \mathcal{N}(0, R) \\
+s_0 &amp; \sim &amp; \mathcal{N}(\mu_0, \Sigma_0)
+\end{eqnarray}\]</div>
+<p>As a consequence, <span class="math notranslate nohighlight">\(s_t\)</span>, <span class="math notranslate nohighlight">\(m_t\)</span> and their joint distributions are Gaussian. This makes all of the math analytically tractable using linear algebra, so we can easily compute the marginal and conditional distributions we will use for inferring the current state given the entire history of measurements.</p>
+<p><em><strong>Please note</strong>: we are trying to create uniform notation across tutorials. In some videos created in 2020, measurements <span class="math notranslate nohighlight">\(m_t\)</span> were denoted <span class="math notranslate nohighlight">\(y_t\)</span>, and the Dynamics matrix <span class="math notranslate nohighlight">\(D\)</span> was denoted <span class="math notranslate nohighlight">\(F\)</span>. We apologize for any confusion!</em></p>
+</div>
+<div class="section" id="section-1-1-sampling-from-a-latent-linear-dynamical-system">
+<h2>Section 1.1: Sampling from a latent linear dynamical system<a class="headerlink" href="#section-1-1-sampling-from-a-latent-linear-dynamical-system" title="Permalink to this headline">¶</a></h2>
+<p>The first thing we will investigate is how to generate timecourse samples from a linear dynamical system given its parameters. We will start by defining the following system:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># task dimensions</span>
+<span class="n">n_dim_state</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">n_dim_obs</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># initialize model parameters</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="mf">0.9</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_dim_state</span><span class="p">),</span>  <span class="c1"># state transition matrix</span>
+  <span class="s1">&#39;Q&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_dim_obs</span><span class="p">),</span>  <span class="c1"># state noise covariance</span>
+  <span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_dim_state</span><span class="p">),</span>  <span class="c1"># observation matrix</span>
+  <span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_dim_obs</span><span class="p">),</span>  <span class="c1"># observation noise covariance</span>
+  <span class="s1">&#39;mu_0&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_dim_state</span><span class="p">),</span>  <span class="c1"># initial state mean</span>
+  <span class="s1">&#39;sigma_0&#39;</span><span class="p">:</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_dim_state</span><span class="p">),</span>  <span class="c1"># initial state noise covariance</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Coding note</strong>: We used a parameter dictionary <code class="docutils literal notranslate"><span class="pre">params</span></code> above. As the number of parameters we need to provide to our functions increases, it can be beneficial to condense them into a data structure like this to clean up the number of inputs we pass in. The trade-off is that we have to know what is in our data structure to use those values, rather than looking at the function signature directly.</p>
+<div class="section" id="exercise-1-sampling-from-a-linear-dynamical-system">
+<h3>Exercise 1: Sampling from a linear dynamical system<a class="headerlink" href="#exercise-1-sampling-from-a-linear-dynamical-system" title="Permalink to this headline">¶</a></h3>
+<p>In this exercise you will implement the dynamics functions of a linear dynamical system to sample both a latent space trajectory (given parameters set above) and noisy measurements.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sample_lds</span><span class="p">(</span><span class="n">n_timesteps</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Generate samples from a Linear Dynamical System specified by the provided</span>
+<span class="sd">  parameters.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">  n_timesteps (int): the number of time steps to simulate</span>
+<span class="sd">  params (dict): a dictionary of model paramters: (D, Q, H, R, mu_0, sigma_0)</span>
+<span class="sd">  seed (int): a random seed to use for reproducibility checks</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">  ndarray, ndarray: the generated state and observation data</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">n_dim_state</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">n_dim_obs</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+  <span class="c1"># set seed</span>
+  <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+  <span class="c1"># precompute random samples from the provided covariance matrices</span>
+  <span class="c1"># mean defaults to 0</span>
+  <span class="n">mi</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">cov</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;Q&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">n_timesteps</span><span class="p">)</span>
+  <span class="n">eta</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">cov</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">n_timesteps</span><span class="p">)</span>
+
+  <span class="c1"># initialize state and observation arrays</span>
+  <span class="n">state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_timesteps</span><span class="p">,</span> <span class="n">n_dim_state</span><span class="p">))</span>
+  <span class="n">obs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_timesteps</span><span class="p">,</span> <span class="n">n_dim_obs</span><span class="p">))</span>
+
+  <span class="c1">###################################################################</span>
+  <span class="c1">## TODO for students: compute the next state and observation values</span>
+  <span class="c1"># Fill out function and remove</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student excercise: compute the next state and observation values&quot;</span><span class="p">)</span>
+  <span class="c1">###################################################################</span>
+
+  <span class="c1"># simulate the system</span>
+  <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_timesteps</span><span class="p">):</span>
+    <span class="c1"># write the expressions for computing state values given the time step</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="n">state</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">state</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+
+    <span class="c1"># write the expression for computing the observation</span>
+    <span class="n">obs</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="k">return</span> <span class="n">state</span><span class="p">,</span> <span class="n">obs</span>
+
+
+<span class="c1"># Uncomment below to test your function</span>
+<span class="c1"># state, obs = sample_lds(100, params)</span>
+<span class="c1"># print(&#39;sample at t=3 &#39;, state[3])</span>
+<span class="c1"># plot_kalman(state, obs, title=&#39;sample&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W3D2_HiddenDynamics/solutions/W3D2_Tutorial4_Solution_d3736033.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=1133 height=414 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W3D2_HiddenDynamics/static/W3D2_Tutorial4_Solution_d3736033_1.png>
+</div>
+<div class="section" id="interactive-demo-adjusting-system-dynamics">
+<h3>Interactive Demo: Adjusting System Dynamics<a class="headerlink" href="#interactive-demo-adjusting-system-dynamics" title="Permalink to this headline">¶</a></h3>
+<p>To test your understanding of the parameters of a linear dynamical system, think about what you would expect if you made the following changes:</p>
+<ol class="simple">
+<li><p>Reduce observation noise <span class="math notranslate nohighlight">\(R\)</span></p></li>
+<li><p>Increase respective temporal dynamics <span class="math notranslate nohighlight">\(D\)</span></p></li>
+</ol>
+<p>Use the interactive widget below to vary the values of <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(D\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+
+<span class="c1">#@markdown Make sure you execute this cell to enable the widget!</span>
+
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span><span class="n">R</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatLogSlider</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+                  <span class="n">D</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">.01</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">explore_dynamics</span><span class="p">(</span><span class="n">R</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">D</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="n">D</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_dim_state</span><span class="p">),</span>  <span class="c1"># state transition matrix</span>
+    <span class="s1">&#39;Q&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_dim_obs</span><span class="p">),</span>  <span class="c1"># state noise covariance</span>
+    <span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_dim_state</span><span class="p">),</span>  <span class="c1"># observation matrix</span>
+    <span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="n">R</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_dim_obs</span><span class="p">),</span>  <span class="c1"># observation noise covariance</span>
+    <span class="s1">&#39;mu_0&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_dim_state</span><span class="p">),</span>  <span class="c1"># initial state mean,</span>
+    <span class="s1">&#39;sigma_0&#39;</span><span class="p">:</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_dim_state</span><span class="p">),</span>  <span class="c1"># initial state noise covariance</span>
+    <span class="p">}</span>
+
+    <span class="n">state</span><span class="p">,</span> <span class="n">obs</span> <span class="o">=</span> <span class="n">sample_lds</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+    <span class="n">plot_kalman</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-2-kalman-filtering">
+<h1>Section 2: Kalman Filtering<a class="headerlink" href="#section-2-kalman-filtering" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 3: Kalman Filtering</span>
+<span class="c1"># Insert the ID of the corresponding youtube video</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;VboZOV9QMOI&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>VIDEO TO BE RE-RECORDED</strong> to improve notation and explanation, using the Information form of the Gaussians for combining likelihood with prior</p>
+<p>We want to infer the latent state variable <span class="math notranslate nohighlight">\(s_t\)</span> given the measured (observed) variable <span class="math notranslate nohighlight">\(m_t\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[P(s_t|m_1, ..., m_t, m_{t+1}, ..., m_T)\sim \mathcal{N}(\hat{\mu}_t, \hat{\Sigma_t})\]</div>
+<p>First we obtain estimates of the latent state by running the filtering from <span class="math notranslate nohighlight">\(t=0,....T\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[s_t^{\rm pred}\sim \mathcal{N}(\hat{\mu}_t^{\rm pred},\hat{\Sigma}_t^{\rm pred})\]</div>
+<p>Where <span class="math notranslate nohighlight">\(\hat{\mu}_t^{\rm pred}\)</span> and <span class="math notranslate nohighlight">\(\hat{\Sigma}_t^{\rm pred}\)</span> are derived as follows:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3aa06377-9a00-4110-a612-0bc94a5b0833">
+<span class="eqno">(174)<a class="headerlink" href="#equation-3aa06377-9a00-4110-a612-0bc94a5b0833" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+\hat{\mu}_1^{\rm pred} &amp; = &amp; D\hat{\mu}_{0} \\
+\hat{\mu}_t^{\rm pred} &amp; = &amp; D\hat{\mu}_{t-1}
+\end{eqnarray}\]</div>
+<p>This is the prediction for <span class="math notranslate nohighlight">\(s_t\)</span> obtained simply by taking the expected value of <span class="math notranslate nohighlight">\(s_{t-1}\)</span> and projecting it forward one step using the transition matrix <span class="math notranslate nohighlight">\(D\)</span>.
+We do the same for the covariance, taking into account the noise covariance <span class="math notranslate nohighlight">\(Q\)</span> and the fact that scaling a variable by <span class="math notranslate nohighlight">\(D\)</span> scales its covariance <span class="math notranslate nohighlight">\(\Sigma\)</span> as <span class="math notranslate nohighlight">\(D\Sigma D^T\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-cdb740d7-c009-4c93-840a-7e24d52cb2c7">
+<span class="eqno">(175)<a class="headerlink" href="#equation-cdb740d7-c009-4c93-840a-7e24d52cb2c7" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+\hat{\Sigma}_0^{\rm pred} &amp; = &amp; D\hat{\Sigma}_{0}D^T+Q \\
+\hat{\Sigma}_t^{\rm pred} &amp; = &amp; D\hat{\Sigma}_{t-1}D^T+Q
+\end{eqnarray}\]</div>
+<p>We then use a Bayesian update from the newest measurements to obtain <span class="math notranslate nohighlight">\(\hat{\mu}_t^{\rm filter}\)</span> and <span class="math notranslate nohighlight">\(\hat{\Sigma}_t^{\rm filter}\)</span></p>
+<p>Project our prediction to observational space:
+$<span class="math notranslate nohighlight">\(m_t^{\rm pred}\sim \mathcal{N}(H\hat{\mu}_t^{\rm pred}, H\hat{\Sigma}_t^{\rm pred}H^T+R)\)</span>$</p>
+<p>update prediction by actual data:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9669fcc6-aa23-4bc3-afc6-45b9ba99eeb3">
+<span class="eqno">(176)<a class="headerlink" href="#equation-9669fcc6-aa23-4bc3-afc6-45b9ba99eeb3" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+s_t^{\rm filter} &amp; \sim &amp; \mathcal{N}(\hat{\mu}_t^{\rm filter}, \hat{\Sigma}_t^{\rm filter}) \\
+\hat{\mu}_t^{\rm filter} &amp; = &amp; \hat{\mu}_t^{\rm pred}+K_t(m_t-H\hat{\mu}_t^{\rm pred}) \\
+\hat{\Sigma}_t^{\rm filter} &amp; = &amp; (I-K_tH)\hat{\Sigma}_t^{\rm pred}
+\end{eqnarray}\]</div>
+<p>Kalman gain matrix:
+$<span class="math notranslate nohighlight">\(K_t=\hat{\Sigma}_t^{\rm pred}H^T(H\hat{\Sigma}_t^{\rm pred}H^T+R)^{-1}\)</span>$</p>
+<p>We use the latent-only prediction to project it to the observational space and compute a correction proportional to the error <span class="math notranslate nohighlight">\(m_t-HDz_{t-1}\)</span> between prediction and data. The coefficient of this correction is the Kalman gain matrix.</p>
+<p><strong>Interpretations</strong></p>
+<p>If measurement noise is small and dynamics are fast, then estimation will depend mostly on currently observed data.
+If the measurement noise is large, then the Kalman filter uses past observations as well, combining them as long as the underlying state is at least somewhat predictable.</p>
+<p>In order to explore the impact of filtering, we will use the following noisy oscillatory system:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># task dimensions</span>
+<span class="n">n_dim_state</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">n_dim_obs</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">T</span><span class="o">=</span><span class="mi">100</span>
+
+<span class="c1"># initialize model parameters</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">20.</span><span class="p">)</span><span class="o">**</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">.9</span><span class="p">]]),</span>  <span class="c1"># state transition matrix</span>
+  <span class="s1">&#39;Q&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_dim_obs</span><span class="p">),</span>                               <span class="c1"># state noise covariance</span>
+  <span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_dim_state</span><span class="p">),</span>                             <span class="c1"># observation matrix</span>
+  <span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_dim_obs</span><span class="p">),</span>                      <span class="c1"># observation noise covariance</span>
+  <span class="s1">&#39;mu_0&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_dim_state</span><span class="p">),</span>                        <span class="c1"># initial state mean</span>
+  <span class="s1">&#39;sigma_0&#39;</span><span class="p">:</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_dim_state</span><span class="p">),</span>                 <span class="c1"># initial state noise covariance</span>
+<span class="p">}</span>
+
+<span class="n">state</span><span class="p">,</span> <span class="n">obs</span> <span class="o">=</span> <span class="n">sample_lds</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+<span class="n">plot_kalman</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-2-implement-kalman-filtering">
+<h2>Exercise 2: Implement Kalman filtering<a class="headerlink" href="#exercise-2-implement-kalman-filtering" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise you will implement the Kalman filter (forward) process. Your focus will be on writing the expressions for the Kalman gain, filter mean, and filter covariance at each time step (refer to the equations above).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kalman_filter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Perform Kalman filtering (forward pass) on the data given the provided</span>
+<span class="sd">  system parameters.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    data (ndarray): a sequence of osbervations of shape(n_timesteps, n_dim_obs)</span>
+<span class="sd">    params (dict): a dictionary of model paramters: (D, Q, H, R, mu_0, sigma_0)</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    ndarray, ndarray: the filtered system means and noise covariance values</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># pulled out of the params dict for convenience</span>
+  <span class="n">D</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">]</span>
+  <span class="n">Q</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;Q&#39;</span><span class="p">]</span>
+  <span class="n">H</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">]</span>
+  <span class="n">R</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">]</span>
+
+  <span class="n">n_dim_state</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">n_dim_obs</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_dim_state</span><span class="p">)</span>  <span class="c1"># identity matrix</span>
+
+  <span class="c1"># state tracking arrays</span>
+  <span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">n_dim_state</span><span class="p">))</span>
+  <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">n_dim_state</span><span class="p">,</span> <span class="n">n_dim_state</span><span class="p">))</span>
+
+  <span class="c1"># filter the data</span>
+  <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="n">mu_pred</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;mu_0&#39;</span><span class="p">]</span>
+      <span class="n">sigma_pred</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;sigma_0&#39;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">mu_pred</span> <span class="o">=</span> <span class="n">D</span> <span class="o">@</span> <span class="n">mu</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+      <span class="n">sigma_pred</span> <span class="o">=</span> <span class="n">D</span> <span class="o">@</span> <span class="n">sigma</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">@</span> <span class="n">D</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">Q</span>
+
+    <span class="c1">###########################################################################</span>
+    <span class="c1">## TODO for students: compute the filtered state mean and covariance values</span>
+    <span class="c1"># Fill out function and remove</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student excercise: compute the filtered state mean and covariance values&quot;</span><span class="p">)</span>
+    <span class="c1">###########################################################################</span>
+    <span class="c1"># write the expression for computing the Kalman gain</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="c1"># write the expression for computing the filtered state mean</span>
+    <span class="n">mu</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="c1"># write the expression for computing the filtered state noise covariance</span>
+    <span class="n">sigma</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="k">return</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span>
+
+
+<span class="c1"># Uncomment below to test your function</span>
+<span class="c1"># filtered_state_means, filtered_state_covariances = kalman_filter(obs, params)</span>
+<span class="c1"># plot_kalman(state, obs, filtered_state_means, title=&quot;my kf-filter&quot;,</span>
+<span class="c1">#             color=&#39;r&#39;, label=&#39;my kf-filter&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W3D2_HiddenDynamics/solutions/W3D2_Tutorial4_Solution_ceb931e6.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=1134 height=414 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W3D2_HiddenDynamics/static/W3D2_Tutorial4_Solution_ceb931e6_0.png>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="section-3-fitting-eye-gaze-data">
+<h1>Section 3: Fitting Eye Gaze Data<a class="headerlink" href="#section-3-fitting-eye-gaze-data" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 4: Fitting Eye Gaze Data</span>
+<span class="c1"># Insert the ID of the corresponding youtube video</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;M7OuXmVWHGI&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tracking eye gaze is used in both experimental and user interface applications. Getting an accurate estimation of where someone is looking on a screen in pixel coordinates can be challenging, however, due to the various sources of noise inherent in obtaining these measurements. A main source of noise is the general accuracy of the eye tracker device itself and how well it maintains calibration over time. Changes in ambient light or subject position can further reduce accuracy of the sensor. Eye blinks introduce a different form of noise as interruptions in the data stream which also need to be addressed.</p>
+<p>Fortunately we have a candidate solution for handling noisy eye gaze data in the Kalman filter we just learned about. Let’s look at how we can apply these methods to a small subset of data taken from the <a class="reference external" href="http://people.csail.mit.edu/tjudd/WherePeopleLook/index.html">MIT Eyetracking Database</a> [<a class="reference external" href="http://people.csail.mit.edu/tjudd/WherePeopleLook/Docs/wherepeoplelook.pdf">Judd et al. 2009</a>]. This data was collected as part of an effort to model <a class="reference external" href="http://www.scholarpedia.org/article/Visual_salience">visual saliency</a> – given an image, can we predict where a person is most likely going to look.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load eyetracking data</span>
+<span class="n">subjects</span><span class="p">,</span> <span class="n">images</span> <span class="o">=</span> <span class="n">load_eyetracking_data</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="interactive-demo-tracking-eye-gaze">
+<h2>Interactive Demo: Tracking Eye Gaze<a class="headerlink" href="#interactive-demo-tracking-eye-gaze" title="Permalink to this headline">¶</a></h2>
+<p>We have three stimulus images and five different subjects’ gaze data. Each subject fixated in the center of the screen before the image appeared, then had a few seconds to freely look around. You can use the widget below to see how different subjects visually scanned the presented image. A subject ID of -1 will show the stimulus images without any overlayed gaze trace.</p>
+<p>Note that the images are rescaled below for display purposes, they were in their original aspect ratio during the task itself.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+
+<span class="c1">#@markdown Make sure you execute this cell to enable the widget!</span>
+
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span><span class="n">subject_id</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
+                  <span class="n">image_id</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">plot_subject_trace</span><span class="p">(</span><span class="n">subject_id</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">image_id</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">subject_id</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+    <span class="n">subject</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">subject</span> <span class="o">=</span> <span class="n">subjects</span><span class="p">[</span><span class="n">subject_id</span><span class="p">]</span>
+  <span class="n">data</span> <span class="o">=</span> <span class="n">subject</span><span class="p">[</span><span class="n">image_id</span><span class="p">]</span>
+  <span class="n">img</span> <span class="o">=</span> <span class="n">images</span><span class="p">[</span><span class="n">image_id</span><span class="p">]</span>
+
+  <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="section-3-1-fitting-data-with-pykalman">
+<h2>Section 3.1: Fitting data with <code class="docutils literal notranslate"><span class="pre">pykalman</span></code><a class="headerlink" href="#section-3-1-fitting-data-with-pykalman" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have data, we’d like to use Kalman filtering to give us a better estimate of the true gaze. Up until this point we’ve known the parameters of our LDS, but here we need to estimate them from data directly. We will use the <code class="docutils literal notranslate"><span class="pre">pykalman</span></code> package to handle this estimation using the EM algorithm, a useful and influential learning algorithm described briefly in the bonus material.</p>
+<p>Before exploring fitting models with <code class="docutils literal notranslate"><span class="pre">pykalman</span></code> it’s worth pointing out some naming conventions used by the library:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+D&amp;: \texttt{transition_matrices} &amp; 
+Q &amp;: \texttt{transition_covariance}\\
+H &amp;:\texttt{observation_matrices} &amp;
+R &amp;:\texttt{observation_covariance}\\
+\mu_0 &amp;: \texttt{initial_state_mean} &amp; \Sigma_0 &amp;: \texttt{initial_state_covariance}
+\end{align}
+\end{split}\]</div>
+<p>The first thing we need to do is provide a guess at the dimensionality of the latent state. Let’s start by assuming the dynamics line-up directly with the observation data (pixel x,y-coordinates), and so we have a state dimension of 2.</p>
+<p>We also need to decide which parameters we want the EM algorithm to fit. In this case, we will let the EM algorithm discover the dynamics parameters i.e. the <span class="math notranslate nohighlight">\(D\)</span>, <span class="math notranslate nohighlight">\(Q\)</span>, <span class="math notranslate nohighlight">\(H\)</span>, and <span class="math notranslate nohighlight">\(R\)</span> matrices.</p>
+<p>We set up our <code class="docutils literal notranslate"><span class="pre">pykalman</span></code> <code class="docutils literal notranslate"><span class="pre">KalmanFilter</span></code> object with these settings using the code below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set up our KalmanFilter object and tell it which parameters we want to</span>
+<span class="c1"># estimate</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">n_dim_obs</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">n_dim_state</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">kf</span> <span class="o">=</span> <span class="n">pykalman</span><span class="o">.</span><span class="n">KalmanFilter</span><span class="p">(</span>
+  <span class="n">n_dim_state</span><span class="o">=</span><span class="n">n_dim_state</span><span class="p">,</span>
+  <span class="n">n_dim_obs</span><span class="o">=</span><span class="n">n_dim_obs</span><span class="p">,</span>
+  <span class="n">em_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;transition_matrices&#39;</span><span class="p">,</span> <span class="s1">&#39;transition_covariance&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;observation_matrices&#39;</span><span class="p">,</span> <span class="s1">&#39;observation_covariance&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because we know from the reported experimental design that subjects fixated in the center of the screen right before the image appears, we can set the initial starting state estimate <span class="math notranslate nohighlight">\(\mu_0\)</span> as being the center pixel of the stimulus image (the first data point in this sample dataset) with a correspondingly low initial noise covariance <span class="math notranslate nohighlight">\(\Sigma_0\)</span>. Once we have everything set, it’s time to fit some data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Choose a subject and stimulus image</span>
+<span class="n">subject_id</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">image_id</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">subjects</span><span class="p">[</span><span class="n">subject_id</span><span class="p">][</span><span class="n">image_id</span><span class="p">]</span>
+
+<span class="c1"># Provide the initial states</span>
+<span class="n">kf</span><span class="o">.</span><span class="n">initial_state_mean</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">kf</span><span class="o">.</span><span class="n">initial_state_covariance</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_dim_state</span><span class="p">)</span>
+
+<span class="c1"># Estimate the parameters from data using the EM algorithm</span>
+<span class="n">kf</span><span class="o">.</span><span class="n">em</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;D=</span><span class="se">\n</span><span class="si">{</span><span class="n">kf</span><span class="o">.</span><span class="n">transition_matrices</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Q =</span><span class="se">\n</span><span class="si">{</span><span class="n">kf</span><span class="o">.</span><span class="n">transition_covariance</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;H =</span><span class="se">\n</span><span class="si">{</span><span class="n">kf</span><span class="o">.</span><span class="n">observation_matrices</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;R =</span><span class="se">\n</span><span class="si">{</span><span class="n">kf</span><span class="o">.</span><span class="n">observation_covariance</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that the EM algorithm has found fits for the various dynamics parameters. One thing you will note is that both the state and observation matrices are close to the identity matrix, which means the x- and y-coordinate dynamics are independent of each other and primarily impacted by the noise covariances.</p>
+<p>We can now use this model to smooth the observed data from the subject. In addition to the source image, we can also see how this model will work with the gaze recorded by the same subject on the other images as well, or even with different subjects.</p>
+<p>Below are the three stimulus images overlayed with recorded gaze in magenta and smoothed state from the filter in green, with gaze begin (orange triangle) and gaze end (orange square) markers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
+
+<span class="c1">#@markdown Make sure you execute this cell to enable the widget!</span>
+
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span><span class="n">subject_id</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">plot_smoothed_traces</span><span class="p">(</span><span class="n">subject_id</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+  <span class="n">subject</span> <span class="o">=</span> <span class="n">subjects</span><span class="p">[</span><span class="n">subject_id</span><span class="p">]</span>
+  <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+  <span class="k">for</span> <span class="n">data</span><span class="p">,</span> <span class="n">img</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">images</span><span class="p">,</span> <span class="n">axes</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plot_gaze_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">img</span><span class="o">=</span><span class="n">img</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">plot_kf_state</span><span class="p">(</span><span class="n">kf</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="discussion-questions">
+<h2>Discussion questions:<a class="headerlink" href="#discussion-questions" title="Permalink to this headline">¶</a></h2>
+<p>Why do you think one trace from one subject was sufficient to provide a decent fit across all subjects? If you were to go back and change the subject_id and/or image_id for when we fit the data using EM, do you think the fits would be different?</p>
+<p>We don’t think the eye is exactly following a linear dynamical system. Nonetheless that is what we assumed for this exercise when we applied a Kalman filter. Despite the mismatch, these algorithms do perform well. Discuss what differences we might find between the true and assumed processes. What mistakes might be likely consequences of these differences?</p>
+<p>Finally, recall that the original task was to use this data to help devlop models of visual salience. While our Kalman filter is able to provide smooth estimates of observed gaze data, it’s not telling us anything about <em>why</em> the gaze is going in a certain direction. In fact, if we sample data from our parameters and plot them, we get what amounts to a random walk.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kf_state</span><span class="p">,</span> <span class="n">kf_data</span> <span class="o">=</span> <span class="n">kf</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_gaze_data</span><span class="p">(</span><span class="n">kf_data</span><span class="p">,</span> <span class="n">img</span><span class="o">=</span><span class="n">images</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">plot_kf_state</span><span class="p">(</span><span class="n">kf</span><span class="p">,</span> <span class="n">kf_data</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This should not be surprising, as we have given the model no other observed data beyond the pixels at which gaze was detected. We expect there is some other aspect driving the latent state of where to look next other than just the previous fixation location.</p>
+<p>In summary, while the Kalman filter is a good option for smoothing the gaze trajectory itself, especially if using a lower-quality eye tracker or in noisy environmental conditions, a linear dynamical system may not be the right way to approach the much more challenging task of modeling visual saliency.</p>
+</div>
+<div class="section" id="handling-eye-blinks">
+<h2>Handling Eye Blinks<a class="headerlink" href="#handling-eye-blinks" title="Permalink to this headline">¶</a></h2>
+<p>In the MIT Eyetracking Database, raw tracking data includes times when the subject blinked. The way this is represented in the data stream is via negative pixel coordinate values.</p>
+<p>We could try to mitigate these samples by simply deleting them from the stream, though this introduces other issues. For instance, if each sample corresponds to a fixed time step, and you arbitrarily remove some samples, the integrity of that consistent timestep between samples is lost. It’s sometimes better to flag data as missing rather than to pretend it was never there at all, especially with time series data.</p>
+<p>Another solution is to used masked arrays. In <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, a <a class="reference external" href="https://numpy.org/doc/stable/reference/maskedarray.generic.html#what-is-a-masked-array">masked array</a> is an <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> with an additional embedded boolean masking array that indicates which elements should be masked. When computation is performed on the array, the masked elements are ignored. Both <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">pykalman</span></code> work with masked arrays, and, in fact, this is the approach taken with the data we explore in this notebook.</p>
+<p>In preparing the dataset for this noteook, the original dataset was preprocessed to set all gaze data as masked arrays, with the mask enabled for any pixel with a negative x or y coordinate.</p>
+</div>
+</div>
+<div class="section" id="bonus">
+<h1>Bonus<a class="headerlink" href="#bonus" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="review-on-gaussian-joint-marginal-and-conditional-distributions">
+<h2>Review on Gaussian joint, marginal and conditional distributions<a class="headerlink" href="#review-on-gaussian-joint-marginal-and-conditional-distributions" title="Permalink to this headline">¶</a></h2>
+<p>Assume</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d06f938b-cb86-4bec-b3c6-fd4c18764ac9">
+<span class="eqno">(177)<a class="headerlink" href="#equation-d06f938b-cb86-4bec-b3c6-fd4c18764ac9" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+z &amp; = &amp; \begin{bmatrix}x \\y\end{bmatrix}\sim N\left(\begin{bmatrix}a \\b\end{bmatrix}, \begin{bmatrix}A &amp; C \\C^T &amp; B\end{bmatrix}\right)
+\end{eqnarray}\]</div>
+<p>then the marginal distributions are</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8d47486a-e932-4568-ba03-eb55da66b504">
+<span class="eqno">(178)<a class="headerlink" href="#equation-8d47486a-e932-4568-ba03-eb55da66b504" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+x &amp; \sim &amp; \mathcal{N}(a, A) \\
+y &amp; \sim &amp; \mathcal{N}(b,B)
+\end{eqnarray}\]</div>
+<p>and the conditional distributions are</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c6e3a164-69c4-4a64-88e9-0e845ebb6688">
+<span class="eqno">(179)<a class="headerlink" href="#equation-c6e3a164-69c4-4a64-88e9-0e845ebb6688" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+x|y &amp; \sim &amp; \mathcal{N}(a+CB^{-1}(y-b), A-CB^{-1}C^T) \\
+y|x &amp; \sim &amp; \mathcal{N}(b+C^TA^{-1}(x-a), B-C^TA^{-1}C)
+\end{eqnarray}\]</div>
+<p><em>important take away: given the joint Gaussian distribution we can derive the conditionals</em></p>
+</div>
+<div class="section" id="kalman-smoothing">
+<h2>Kalman Smoothing<a class="headerlink" href="#kalman-smoothing" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 5: Kalman Smoothing and the EM Algorithm</span>
+<span class="c1"># Insert the ID of the corresponding youtube video</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4Ar2mYz1Nms&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="n">video</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Obtain estimates by propagating from <span class="math notranslate nohighlight">\(y_T\)</span> back to <span class="math notranslate nohighlight">\(y_0\)</span> using results of forward pass (<span class="math notranslate nohighlight">\(\hat{\mu}_t^{\rm filter}, \hat{\Sigma}_t^{\rm filter}, P_t=\hat{\Sigma}_{t+1}^{\rm pred}\)</span>)</p>
+<div class="amsmath math notranslate nohighlight" id="equation-dabc75ab-28d6-4f38-8a7c-6923a96483df">
+<span class="eqno">(180)<a class="headerlink" href="#equation-dabc75ab-28d6-4f38-8a7c-6923a96483df" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+s_t &amp; \sim &amp; \mathcal{N}(\hat{\mu}_t^{\rm smooth}, \hat{\Sigma}_t^{\rm smooth}) \\
+\hat{\mu}_t^{\rm smooth} &amp; = &amp; \hat{\mu}_t^{\rm filter}+J_t(\hat{\mu}_{t+1}^{\rm smooth}-D\hat{\mu}_t^{\rm filter}) \\
+\hat{\Sigma}_t^{\rm smooth} &amp; = &amp; \hat{\Sigma}_t^{\rm filter}+J_t(\hat{\Sigma}_{t+1}^{\rm smooth}-P_t)J_t^T \\
+J_t &amp; = &amp; \hat{\Sigma}_t^{\rm filter}D^T P_t^{-1}
+\end{eqnarray}\]</div>
+<p>This gives us the final estimate for <span class="math notranslate nohighlight">\(z_t\)</span>.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d0d5b04e-4e0a-419f-8108-69be6f13b66f">
+<span class="eqno">(181)<a class="headerlink" href="#equation-d0d5b04e-4e0a-419f-8108-69be6f13b66f" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+\hat{\mu}_t &amp; = &amp; \hat{\mu}_t^{\rm smooth} \\
+\hat{\Sigma}_t &amp; = &amp; \hat{\Sigma}_t^{\rm smooth}
+\end{eqnarray}\]</div>
+<div class="section" id="exercise-3-implement-kalman-smoothing">
+<h3>Exercise 3: Implement Kalman smoothing<a class="headerlink" href="#exercise-3-implement-kalman-smoothing" title="Permalink to this headline">¶</a></h3>
+<p>In this exercise you will implement the Kalman smoothing (backward) process. Again you will focus on writing the expressions for computing the smoothed mean, smoothed covariance, and <span class="math notranslate nohighlight">\(J_t\)</span> values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kalman_smooth</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Perform Kalman smoothing (backward pass) on the data given the provided</span>
+<span class="sd">  system parameters.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    data (ndarray): a sequence of osbervations of shape(n_timesteps, n_dim_obs)</span>
+<span class="sd">    params (dict): a dictionary of model paramters: (D, Q, H, R, mu_0, sigma_0)</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    ndarray, ndarray: the smoothed system means and noise covariance values</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># pulled out of the params dict for convenience</span>
+  <span class="n">D</span><span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">]</span>
+  <span class="n">Q</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;Q&#39;</span><span class="p">]</span>
+  <span class="n">H</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">]</span>
+  <span class="n">R</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">]</span>
+
+  <span class="n">n_dim_state</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">n_dim_obs</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+  <span class="c1"># first run the forward pass to get the filtered means and covariances</span>
+  <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">kalman_filter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+  <span class="c1"># initialize state mean and covariance estimates</span>
+  <span class="n">mu_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
+  <span class="n">sigma_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
+  <span class="n">mu_hat</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">mu</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+  <span class="n">sigma_hat</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+  <span class="c1"># smooth the data</span>
+  <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)):</span>
+    <span class="n">sigma_pred</span> <span class="o">=</span> <span class="n">D</span><span class="o">@</span> <span class="n">sigma</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">@</span> <span class="n">D</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">Q</span>  <span class="c1"># sigma_pred at t+1</span>
+    <span class="c1">###########################################################################</span>
+    <span class="c1">## TODO for students: compute the smoothed state mean and covariance values</span>
+    <span class="c1"># Fill out function and remove</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student excercise: compute the smoothed state mean and covariance values&quot;</span><span class="p">)</span>
+    <span class="c1">###########################################################################</span>
+
+    <span class="c1"># write the expression to compute the Kalman gain for the backward process</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="c1"># write the expression to compute the smoothed state mean estimate</span>
+    <span class="n">mu_hat</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="c1"># write the expression to compute the smoothed state noise covariance estimate</span>
+    <span class="n">sigma_hat</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+
+  <span class="k">return</span> <span class="n">mu_hat</span><span class="p">,</span> <span class="n">sigma_hat</span>
+
+
+<span class="c1"># Uncomment once the kalman_smooth function is complete</span>
+<span class="c1"># smoothed_state_means, smoothed_state_covariances = kalman_smooth(obs, params)</span>
+<span class="c1"># axes = plot_kalman(state, obs, filtered_state_means, color=&quot;r&quot;,</span>
+<span class="c1">#                    label=&quot;my kf-filter&quot;)</span>
+<span class="c1"># plot_kalman(state, obs, smoothed_state_means, color=&quot;b&quot;,</span>
+<span class="c1">#             label=&quot;my kf-smoothed&quot;, axes=axes)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W3D2_HiddenDynamics/solutions/W3D2_Tutorial4_Solution_bed5fceb.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img alt='Solution hint' align='left' width=1134 height=414 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W3D2_HiddenDynamics/static/W3D2_Tutorial4_Solution_bed5fceb_0.png>
+<p><strong>Forward vs Backward</strong></p>
+<p>Now that we have implementations for both, let’s compare their peformance by computing the MSE between the filtered (forward) and smoothed (backward) estimated states and the true latent state.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Filtered MSE: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">state</span> <span class="o">-</span> <span class="n">filtered_state_means</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Smoothed MSE: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">state</span> <span class="o">-</span> <span class="n">smoothed_state_means</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, the smoothed estimate is clearly superior to the filtered one. This makes sense as the forward pass uses only the past measurements, whereas the backward pass can use future measurement too, correcting the forward pass estimates given all the data we’ve collected.</p>
+<p>So why would you ever use Kalman filtering alone, without smoothing? As Kalman filtering only depends on already observed data (i.e. the past) it can be run in a streaming, or on-line, setting. Kalman smoothing relies on future data as it were, and as such can only be applied in a batch, or off-line, setting. So use Kalman filtering if you need real-time corrections and Kalman smoothing if you are considering already-collected data.</p>
+<p>This online case is typically what the brain faces.</p>
+</div>
+</div>
+<div class="section" id="the-expectation-maximization-em-algorithm">
+<h2>The Expectation-Maximization (EM) Algorithm<a class="headerlink" href="#the-expectation-maximization-em-algorithm" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>want to maximize <span class="math notranslate nohighlight">\(\log p(m|\theta)\)</span></p></li>
+<li><p>need to marginalize out latent state <em>(which is not tractable)</em></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[p(m|\theta)=\int p(m,s|\theta)dz\]</div>
+<ul class="simple">
+<li><p>add a probability distribution <span class="math notranslate nohighlight">\(q(s)\)</span> which will approximate the latent state distribution</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\log p(m|\theta)\int_s q(s)dz\]</div>
+<ul class="simple">
+<li><p>can be rewritten as</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}(q,\theta)+KL\left(q(s)||p(s|m),\theta\right)\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathcal{L}(q,\theta)\)</span> contains the joint distribution of <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(s\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(KL(q||p)\)</span> contains the conditional distribution of <span class="math notranslate nohighlight">\(s|m\)</span></p></li>
+</ul>
+<div class="section" id="expectation-step">
+<h3>Expectation step<a class="headerlink" href="#expectation-step" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>parameters are kept fixed</p></li>
+<li><p>find a good approximation <span class="math notranslate nohighlight">\(q(s)\)</span>: maximize lower bound <span class="math notranslate nohighlight">\(\mathcal{L}(q,\theta)\)</span> with respect to <span class="math notranslate nohighlight">\(q(s)\)</span></p></li>
+<li><p>(already implemented Kalman filter+smoother)</p></li>
+</ul>
+</div>
+<div class="section" id="maximization-step">
+<h3>Maximization step<a class="headerlink" href="#maximization-step" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>keep distribution <span class="math notranslate nohighlight">\(q(s)\)</span> fixed</p></li>
+<li><p>change parameters to maximize the lower bound <span class="math notranslate nohighlight">\(\mathcal{L}(q,\theta)\)</span></p></li>
+</ul>
+<p>As mentioned, we have already effectively solved for the E-Step with our Kalman filter and smoother. The M-step requires further derivation, which is covered in the Appendix. Rather than having you implement the M-Step yourselves, let’s instead turn to using a library that has already implemented EM for exploring some experimental data from cognitive neuroscience.</p>
+</div>
+<div class="section" id="the-m-step-for-a-lds">
+<h3>The M-step for a LDS<a class="headerlink" href="#the-m-step-for-a-lds" title="Permalink to this headline">¶</a></h3>
+<p><em>(see Bishop, chapter 13.3.2 Learning in LDS)</em>
+Update parameters of the probability distribution</p>
+<p><em>For the updates in the M-step we will need the following posterior marginals obtained from the Kalman smoothing results</em> <span class="math notranslate nohighlight">\(\hat{\mu}_t^{\rm smooth}, \hat{\Sigma}_t^{\rm smooth}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray}
+E(s_t) &amp;=&amp; \hat{\mu}_t \\
+E(s_ts_{t-1}^T) &amp;=&amp; J_{t-1}\hat{\Sigma}_t+\hat{\mu}_t\hat{\mu}_{t-1}^T\\
+E(s_ts_{t}^T) &amp;=&amp; \hat{\Sigma}_t+\hat{\mu}_t\hat{\mu}_{t}^T
+\end{eqnarray}
+\end{split}\]</div>
+<p><strong>Update parameters</strong></p>
+<p>Initial parameters
+$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-65ce9cbe-fa23-43b5-9996-28ba8aef5e06">
+<span class="eqno">(182)<a class="headerlink" href="#equation-65ce9cbe-fa23-43b5-9996-28ba8aef5e06" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+\mu_0^{\rm new}&amp;=&amp; E(s_0)\\
+Q_0^{\rm new} &amp;=&amp; E(s_0s_0^T)-E(s_0)E(s_0^T) \\
+\end{eqnarray}\]</div>
+<div class="math notranslate nohighlight">
+\[Hidden (latent) state parameters
+\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-19510f79-27d1-419d-9371-6222e69abe53">
+<span class="eqno">(183)<a class="headerlink" href="#equation-19510f79-27d1-419d-9371-6222e69abe53" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+D^{\rm new} &amp;=&amp; \left(\sum_{t=2}^N E(s_ts_{t-1}^T)\right)\left(\sum_{t=2}^N E(s_{t-1}s_{t-1}^T)\right)^{-1} \\
+Q^{\rm new} &amp;=&amp; \frac{1}{T-1} \sum_{t=2}^N E\big(s_ts_t^T\big) - D^{\rm new}E\big(s_{t-1}s_{t}^T\big) - E\big(s_ts_{t-1}^T\big)D^{\rm new}+D^{\rm new}E\big(s_{t-1}s_{t-1}^T\big)\big(D^{\rm new}\big)^{T}\\
+\end{eqnarray}\]</div>
+<div class="math notranslate nohighlight">
+\[Observable (measured) space parameters
+$$H^{\rm new}=\left(\sum_{t=1}^N y_t E(s_t^T)\right)\left(\sum_{t=1}^N E(s_t s_t^T)\right)^{-1}\]</div>
+<div class="math notranslate nohighlight">
+\[R^{\rm new}=\frac{1}{T}\sum_{t=1}^Ny_ty_t^T-H^{\rm new}E(s_t)y_t^T-y_tE(s_t^T)H^{\rm new}+H^{\rm new}E(s_ts_t^T)H_{\rm new}\]</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/W3D2_HiddenDynamics/student"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="W3D2_Tutorial3.html" title="previous page">Tutorial 3: 1D Kalman Filter</a>
+    <a class='right-next' id="next-link" href="../outro_vid.html" title="next page">Outro Video</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Neuromatch<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
