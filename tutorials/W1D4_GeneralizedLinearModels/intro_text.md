@@ -1,4 +1,4 @@
-# Machine Learning (GLMs)
+# Generalized Linear Models
 
 Hi folks, welcome to the ‘GLM’ day, the highlight of neuromatch (really)! 
 We will talk about generalized linear models, GLMs. The great thing about GLMs is that they provide a simple and elegant framework which unifies a number of useful ML algorithms, and allow you to tackle a wide range of data analysis questions in neuroscience.  Think of them as the Swiss Army Knife of Machine Learning algorithms. 
