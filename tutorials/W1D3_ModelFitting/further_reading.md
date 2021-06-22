@@ -1,7 +1,4 @@
-# Model Fitting 
-## Suggested further readings 
-
-&nbsp;
+# Suggested further readings 
 
 ### Generic tips on model fitting in neuroscience: 
 
@@ -30,7 +27,4 @@ Acerbi, L., & Ma, W. J. (2017). Practical Bayesian Optimization for Model Fittin
 ### Research example developed in outro:
 
 Wei, K., & K rding, K. (2009). Relevance of error: What drives motor adaptation? Journal of Neurophysiology, 101(2), 655–664. https://doi.org/10.1152/jn.90545.2008
-
-
-&nbsp;
 

@@ -1,8 +1,4 @@
-# Generalized Linear Models
-
-## Suggested further readings
-
-&nbsp;
+# Suggested further readings
 
 McCullagh, P., & Nelder, J. A. (1989). Generalized linear models. Chapman & Hall.
 

@@ -1,6 +1,4 @@
-# Dimensionality Reduction
-## Suggested further readings
-&nbsp;
+# Suggested further readings
 
 ### Principal component analysis (PCA):
 
@@ -31,4 +29,3 @@ Sadtler et al. (2014) Neural constraints on learning. Nature https://www.nature.
 
 Golub et al. (2018) Learning by neural reassociation. Nature Neuroscience https://www.nature.com/articles/s41593-018-0095-3
 
-&bnsp

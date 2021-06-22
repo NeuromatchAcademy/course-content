@@ -1,6 +1,4 @@
-# Optimal Control
-## Suggested further readings
-&nbsp;
+# Suggested further readings
 
 ### Overview
 
@@ -60,5 +58,3 @@ making during foraging. Proc Natl Acad Sci USA 115:E10476-E10485.
 
 Yoon T, Jaleel A, Ahmed AA, Shadmehr R (2020) Saccade vigor and the subjective economic
 value of visual stimuli. J Neurophysiol 123:2161-2172.
-
-&nbsp;

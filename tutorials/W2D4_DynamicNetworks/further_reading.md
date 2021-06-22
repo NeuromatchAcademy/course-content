@@ -1,6 +1,5 @@
-# Dynamic Networks
-## Suggested further readings
-&nbsp;
+# Suggested further readings
+
 
 ### Phase plane analysis
 
@@ -60,4 +59,3 @@ Brunel N, Wang XJ. What determines the frequency of fast network oscillations wi
 discharges? I. Synaptic dynamics and excitation-inhibition balance. Journal of neurophysiology. 2003
 Jul;90(1):415-30.
 
-&nbsp;

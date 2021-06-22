@@ -1,6 +1,4 @@
-# Reinforcement Learning
-## Suggested further readings
-&nbsp;
+# Suggested further readings
 
 ### Overview
 
@@ -35,5 +33,3 @@ S. (2015). Human-level control through deep reinforcement learning. nature, 518(
 Silver, D., Huang, A., Maddison, C. J., Guez, A., Sifre, L., Van Den Driessche, G., ... &
 Dieleman, S. (2016). Mastering the game of Go with deep neural networks and tree search.
 nature, 529(7587), 484-489.
-
-&nbsp;

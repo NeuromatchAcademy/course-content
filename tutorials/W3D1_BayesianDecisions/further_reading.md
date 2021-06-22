@@ -1,7 +1,4 @@
-# Bayesian Decisions
-## Suggested further readings
-
-&nbsp;
+# Suggested further readings
 
 There are a number of different logical positions in which treatments of Bayesian statistics started
 that are relevant to NMA.
@@ -43,5 +40,3 @@ Oxford University Press, 2011
 This book contains a good treatment of Bayesian approaches to the analysis of neural data:
 Kass, Robert E., Uri T. Eden, and Emery N. Brown. Analysis of neural data . Vol. 491. New York:
 Springer, 2014.
-
-&nbsp;

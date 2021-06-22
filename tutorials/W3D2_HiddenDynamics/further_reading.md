@@ -1,6 +1,5 @@
-# Hidden Dynamics
-## Suggested further readings
-&nbsp;
+# Suggested further readings
+
 
 ### Hidden Markov Models
 
@@ -23,4 +22,3 @@ But things might be more complicated! Zoltowski, et al., Discrete Stepping and N
 
 Chen and Gupta, EM Demystified: An Expectation-Maximization Tutorial https://vannevar.ece.uw.edu/techsite/papers/documents/UWEETR-2010-0002.pdf
 
-&nbsp;

@@ -1,6 +1,4 @@
-# Network Causality
-## Suggested further readings
-&nbsp;
+# Suggested further readings
 
 First, there are a number of different perspectives on causality from multiple communities.
 Highly recommendable are:
@@ -79,5 +77,3 @@ the Royal Statistical Society, 78 , 947-1012. doi: 10.1111/rssb.12167
 
 Kass, Robert E., Uri T. Eden, and Emery N. Brown. Analysis of neural data . Vol. 491.
 New York: Springer, 2014.-> Another Kass book that focuses on data analysis.
-
-&nbsp;

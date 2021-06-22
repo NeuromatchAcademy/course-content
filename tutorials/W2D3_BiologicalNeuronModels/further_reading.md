@@ -1,6 +1,4 @@
-# Biological Neuron Models
-## Suggested further readings
-&nbsp;
+# Suggested further readings
 
 ### Text book:
 
@@ -79,6 +77,3 @@ timing, synaptic strength, and postsynaptic cell type. Journal of neuroscience. 
 
 Abbott LF, Nelson SB. Synaptic plasticity: taming the beast. Nature neuroscience. 2000
 Nov;3(11):1178-83.
-
-&nbsp;
-

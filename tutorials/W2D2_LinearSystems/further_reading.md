@@ -1,6 +1,4 @@
-# Linear Systems
-## Suggested further readings
-&nbsp;
+# Suggested further readings
 
 ### Further reading on linear dynamical systems models in neuroscience:
 
@@ -134,5 +132,3 @@ for higher-performance neural prostheses. Journal of Neurophysiology. 102:1315-1
 Yu BM, Cunningham JP, Santhanam G, Ryu SI, Shenoy KV, Sahani M (2009) Gaussian-process factor
 analysis for low-dimensional single-trial analysis of neural population activity. Journal of Neurophysiology.
 102:614-635.
-
-&nbsp;

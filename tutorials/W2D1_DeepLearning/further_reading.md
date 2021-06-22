@@ -1,6 +1,5 @@
-# Deep Learning
-## Suggested further readings
-&nbsp;
+# Suggested further readings
+
 
 ### Pytorch - papers: 
 automatic differentiation library; some tutorials https://openreview.net/pdf?id=BJJsrmfCZ
@@ -92,4 +91,3 @@ Spoerer, C. J., Kietzmann, T. C., Mehrer, J., Charest, I., & Kriegeskorte, N. (2
 
 Chambers, C., Seethapathi, N., Saluja, R., Loeb, H., Pierce, S., Bogen, D., Prosser, L., Johnson, M.J. and Kording, K.P. (2019). Computer vision to automatically assess infant neuromotor risk. BioRxiv, 756262.
 
-&nbsp;

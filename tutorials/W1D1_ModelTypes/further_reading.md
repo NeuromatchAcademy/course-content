@@ -1,7 +1,4 @@
-# Model Types
-## Suggested further readings 
-
-&nbsp;
+# Suggested further readings 
 
 Bassett, D. S., Zurn, P., & Gold, J. I. (2018). On the nature and use of models in network neuroscience. Nature Reviews. Neuroscience. https://doi.org/10.1038/s41583-018-0038-8 
 
@@ -58,7 +55,6 @@ Trappenberg, Thomas. 2010. Fundamentals of Computational Neuroscience. Oxford Un
 
 Wilson, Robert C., and Anne Ge Collins. 2019. “Ten Simple Rules for the Computational Modeling of Behavioral Data.” eLife 8 (November). https://doi.org/10.7554/eLife.49547. 
 
-&nbsp;
 
  
 
