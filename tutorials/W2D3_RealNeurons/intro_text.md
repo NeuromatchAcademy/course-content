@@ -1,8 +1,7 @@
-# W2D3 - Real Neurons
+# Real Neurons
 
-Paragraph 1. A very brief paragraph overviewing the day
-
-Paragraph 2. High level overview of how this content fits in the field of comp neuro/course, how it builds on previous days, how it will connect to future days. This can be pretty broad and brief. 
-
-Paragraph 3. A couple examples of what sorts of research questions the content is useful for. Again, this is very basic and introductory so no details necessary. 
-
+Today you will learn about a few interesting properties of biological neurons and synapses. In his intro lecture Upi Bhalla will start with an overview of the complexity of the neurons and synapses in the brain. He will also introduce a mathematical description of action potential generation and propagation by which neurons communicate with each other. Then, in a series of short tutorials Richard Naud will introduce simple neuron and synapse models. These tutorials will give you insights about how neurons may generate irregular spike patterns and synchronize their activity. In the first tutorial you will learn about the input-output transfer function of the leaky integrate and fire neuron model. In the second tutorial you will use this model to understand how statistics of inputs affects transfer of synchrony. In the third tutorial you will explore the short-term dynamics of synapses which means that synaptic weight is dependent on the recent history of spiking activity of the pre-synaptic neurons. In the fourth tutorial, you will learn about spike timing dependent plasticity and explore how synchrony in the input may shape the synaptic weight distribution. Finally, in the outro lecture Yiota Poirazi will explain how the simplified description of neurons can be expanded to include more biological complexity. She will provide evidence of how dendritic morphology may expand the computational repertoire of individual neurons.
+ 
+The models we use in today’s lecture fall in the category of how models (W1D1). You will use several concepts from linear systems (W2D2). The insights developed in these tutorials will be useful to understand the dynamics of neural networks (W3D4). Moreover, you will learn about the origin of statistics of neuronal activity which will be useful for several tutorials. For example, the understanding of synchrony will be very useful in appreciating the problem of causality (W3D5).
+ 
+Neuron and synapse models are essential building blocks of mechanistic models of brain function and dysfunction. One of the common questions in neuroscience is to identify the causes of changes in the statistics of spiking activity patterns. Whether these changes are caused by changes in neuron/synapse properties or by a change in the input or by a combination of both? With the contents of this tutorial, you should have a framework to think about which changes in spike patterns are due to neuron/synapse or input changes.
