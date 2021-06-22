@@ -40,6 +40,10 @@ def main():
         # Generate outro video page
         chapter = generate_page(m, f"{m['day']}_{''.join(m['name'].split())}", chapter, "Outro")
 
+        # Add further reading page
+        chapter['sections'].append({'file': f"{directory}/further_reading.md"})
+
+        # Add chapter
         toc[part]['chapters'].append(chapter)
 
     # Turn toc into list
