@@ -14,12 +14,17 @@ def main():
         print(m['day'])
         directory = f"{m['day']}_{''.join(m['name'].split())}"
 
-        # Generate intro video page
-        generate_page(m, directory, "Intro")
+        # # Generate intro video page
+        # generate_page(m, directory, "Intro")
+        #
+        # # Add colab metadata/link/hidden cells
+        # format_to_colab(m, directory, "Intro")
+
+        # Generate outro video page
+        generate_page(m, directory, "Outro")
 
         # Add colab metadata/link/hidden cells
-        format_to_colab(m, directory, "Intro")
-
+        format_to_colab(m, directory, "Outro")
 
 def convert_video_url_to_id(url):
     if 'youtube' in url:
@@ -35,20 +40,39 @@ def convert_video_url_to_id(url):
 
 def generate_page(info, directory, file_type):
     if file_type.lower() in info:
-        with open(os.path.join("ci", "resources", f"{file_type.lower()}_template.ipynb"), encoding="utf-8") as f:
+        if file_type.lower() == 'outro' and f"{file_type.lower()}_2" in info:
+            template_file = os.path.join("ci", "resources", f"two_{file_type.lower()}_template.ipynb")
+        else:
+            template_file = os.path.join("ci", "resources", f"{file_type.lower()}_template.ipynb")
+        with open(template_file, encoding="utf-8") as f:
             template_string = f.read()
             template = Template(template_string)
             for slides in info['slides']:
                 if slides['title'] == file_type:
-                    prepared_template_string = template.render(playlist = info['playlist'],
-                                                               youtube_id=convert_video_url_to_id(
-                                                                   info[file_type.lower()]),
-                                                               bilibili_id=convert_video_url_to_id(
-                                                                   info[f"{file_type.lower()}_bilibili"]),
-                                                               slides_link=slides['link'],
-                                                               directory_path=f"tutorials/{directory}",
-                                                               day = info['day'],
-                                                               day_name = directory)
+                    if file_type.lower() == 'outro' and f"{file_type.lower()}_2" in info:
+                        prepared_template_string = template.render(playlist = info['playlist'],
+                                                                   youtube_id_1=convert_video_url_to_id(
+                                                                       info[file_type.lower()]),
+                                                                   bilibili_id_1=convert_video_url_to_id(
+                                                                       info[f"{file_type.lower()}_bilibili"]),
+                                                                   youtube_id_2=convert_video_url_to_id(
+                                                                       info[f"{file_type.lower()}_2"]),
+                                                                   bilibili_id_2=convert_video_url_to_id(
+                                                                       info[f"{file_type.lower()}_bilibili_2"]),
+                                                                   slides_link=slides['link'],
+                                                                   directory_path=f"tutorials/{directory}",
+                                                                   day = info['day'],
+                                                                   day_name = directory)
+                    else:
+                        prepared_template_string = template.render(playlist = info['playlist'],
+                                                                   youtube_id=convert_video_url_to_id(
+                                                                       info[file_type.lower()]),
+                                                                   bilibili_id=convert_video_url_to_id(
+                                                                       info[f"{file_type.lower()}_bilibili"]),
+                                                                   slides_link=slides['link'],
+                                                                   directory_path=f"tutorials/{directory}",
+                                                                   day = info['day'],
+                                                                   day_name = directory)
                     with open(f"tutorials/{directory}/{info['day']}_{file_type}.ipynb",
                               "w+") as intro_vid_file:
                         intro_vid_file.write(prepared_template_string)
