@@ -2,6 +2,9 @@ import os
 
 import yaml
 from jinja2 import Template
+import traceback
+import json
+from bs4 import BeautifulSoup
 
 
 def main():
@@ -30,10 +33,17 @@ def main():
             directory = f"tutorials/{m['day']}_{''.join(m['name'].split())}"
             notebook = f"{m['day']}_Tutorial{i + 1}.ipynb"
             chapter['sections'].append({'file': f"{directory}/student/{notebook}"})
+            # Pre process notebooks
+            notebook_file_path = f"{directory}/student/{notebook}"
+            pre_process_notebook(notebook_file_path)
 
         # Generate outro video page
         chapter = generate_page(m, f"{m['day']}_{''.join(m['name'].split())}", chapter, "Outro")
 
+        # Add further reading page
+        chapter['sections'].append({'file': f"{directory}/further_reading.md"})
+
+        # Add chapter
         toc[part]['chapters'].append(chapter)
 
     # Turn toc into list
@@ -67,6 +77,45 @@ def generate_page(info, directory, chapter, file_type):
                               "w+") as intro_vid_file:
                         intro_vid_file.write(prepared_template_string)
     return chapter
+
+
+def pre_process_notebook(file_path):
+    try:
+        with open(file_path, encoding="utf-8") as read_notebook:
+            content = json.load(read_notebook)
+        pre_processed_content = open_in_colab_new_tab(content)
+        pre_processed_content = link_hidden_cells(pre_processed_content)
+        with open(file_path, "w", encoding="utf-8") as write_notebook:
+            json.dump(pre_processed_content, write_notebook, indent=1, ensure_ascii=False)
+    except Exception:
+        print("Exception occurred while trying to pre_process file = {}. Skipping this file.".format(file_path))
+        traceback.print_exc()
+
+
+def open_in_colab_new_tab(content):
+    cells = content['cells']
+    parsed_html = BeautifulSoup(cells[0]['source'][0], "html.parser")
+    for anchor in parsed_html.findAll('a'):
+        # Open in new tab
+        anchor['target'] = '_blank'
+    cells[0]['source'][0] = str(parsed_html)
+    return content
+
+
+def link_hidden_cells(content):
+    cells = content['cells']
+    for cell in cells:
+        if "source" not in cell:
+            continue
+        source = cell['source'][0]
+        if source.startswith("#@title") or source.startswith("# @title"):
+            if 'metadata' not in cell:
+                cell['metadata'] = {}
+            if 'tags' not in cell['metadata']:
+                cell['metadata']['tags'] = []
+            if "hide-input" not in cell['metadata']['tags']:
+                cell['metadata']['tags'].append("hide-input")
+    return content
 
 
 if __name__ == '__main__':
