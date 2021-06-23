@@ -1180,8 +1180,8 @@
 <ul class="simple">
 <li><p>Return <span class="math notranslate nohighlight">\(G_{t}\)</span>: future cumulative reward, which can be written in arecursive form</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-726eb1fe-6fd1-4645-9b31-dc9cf741abca">
-<span class="eqno">(185)<a class="headerlink" href="#equation-726eb1fe-6fd1-4645-9b31-dc9cf741abca" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5867a16f-90e8-4d2f-9646-b51e696b396c">
+<span class="eqno">(185)<a class="headerlink" href="#equation-5867a16f-90e8-4d2f-9646-b51e696b396c" title="Permalink to this equation">¶</a></span>\[\begin{align}
 G_{t} &amp;= \sum \limits_{k = 0}^{\infty} \gamma^{k} r_{t+k+1} \\
 &amp;= r_{t+1} + \gamma G_{t+1}
 \end{align}\]</div>
@@ -1189,14 +1189,14 @@ G_{t} &amp;= \sum \limits_{k = 0}^{\infty} \gamma^{k} r_{t+k+1} \\
 <ul class="simple">
 <li><p>Value funtion <span class="math notranslate nohighlight">\(V_{\pi}(s_t=s)\)</span>: expecation of the return</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-64042f29-ef7f-4475-9761-e32a60c169ef">
-<span class="eqno">(186)<a class="headerlink" href="#equation-64042f29-ef7f-4475-9761-e32a60c169ef" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-14d55245-0e7e-4260-a3e2-9cc1cb2002f0">
+<span class="eqno">(186)<a class="headerlink" href="#equation-14d55245-0e7e-4260-a3e2-9cc1cb2002f0" title="Permalink to this equation">¶</a></span>\[\begin{align}
 V_{\pi}(s_t=s) &amp;= \mathbb{E} [ G_{t}\; | \; s_t=s, a_{t:\infty}\sim\pi] \\
 &amp; = \mathbb{E} [ r_{t+1} + \gamma G_{t+1}\; | \; s_t=s, a_{t:\infty}\sim\pi]
 \end{align}\]</div>
 <p>With an assumption of <strong>Markov process</strong>, we thus have:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-73dd61e8-c7ba-4526-abe2-181e0d3d00fa">
-<span class="eqno">(187)<a class="headerlink" href="#equation-73dd61e8-c7ba-4526-abe2-181e0d3d00fa" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-438edb72-09f6-4c50-aad5-17d6367a3805">
+<span class="eqno">(187)<a class="headerlink" href="#equation-438edb72-09f6-4c50-aad5-17d6367a3805" title="Permalink to this equation">¶</a></span>\[\begin{align}
 V_{\pi}(s_t=s) &amp;= \mathbb{E} [ r_{t+1} + \gamma V_{\pi}(s_{t+1})\; | \; s_t=s, a_{t:\infty}\sim\pi] \\
 &amp;= \sum_a \pi(a|s) \sum_{r, s'}p(s', r)(r + V_{\pi}(s_{t+1}=s'))
 \end{align}\]</div>
@@ -1204,15 +1204,15 @@ V_{\pi}(s_t=s) &amp;= \mathbb{E} [ r_{t+1} + \gamma V_{\pi}(s_{t+1})\; | \; s_t=
 <ul class="simple">
 <li><p>With a Markovian assumption, we can use <span class="math notranslate nohighlight">\(V(s_{t+1})\)</span> as an imperfect proxy for the true value <span class="math notranslate nohighlight">\(G_{t+1}\)</span> (Monte Carlo bootstrapping), and thus obtain the generalised equation to calculate TD-error:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-3e9c2bf6-b97b-485c-9324-b4d1e6e997e8">
-<span class="eqno">(188)<a class="headerlink" href="#equation-3e9c2bf6-b97b-485c-9324-b4d1e6e997e8" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-bc499c78-da3c-443c-b77d-37cacf687f32">
+<span class="eqno">(188)<a class="headerlink" href="#equation-bc499c78-da3c-443c-b77d-37cacf687f32" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \delta_{t} = r_{t+1} + \gamma V(s_{t+1}) - V(s_{t})
 \end{align}\]</div>
 <ul class="simple">
 <li><p>Value updated by using the learning rate constant <span class="math notranslate nohighlight">\(\alpha\)</span>:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-e67c2140-a6cf-4c6f-9229-b3c0c683a779">
-<span class="eqno">(189)<a class="headerlink" href="#equation-e67c2140-a6cf-4c6f-9229-b3c0c683a779" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-12387e04-1052-455b-ae69-b73932b4c157">
+<span class="eqno">(189)<a class="headerlink" href="#equation-12387e04-1052-455b-ae69-b73932b4c157" title="Permalink to this equation">¶</a></span>\[\begin{align}
 V(s_{t}) \leftarrow V(s_{t}) + \alpha \delta_{t}
 \end{align}\]</div>
 <p>(Reference: https://web.stanford.edu/group/pdplab/pdphandbook/handbookch10.html)</p>
@@ -1220,15 +1220,15 @@ V(s_{t}) \leftarrow V(s_{t}) + \alpha \delta_{t}
 <ul class="simple">
 <li><p>TD-error:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-145d0fa5-d2cc-488f-b2ef-00dbd4467299">
-<span class="eqno">(190)<a class="headerlink" href="#equation-145d0fa5-d2cc-488f-b2ef-00dbd4467299" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-37b14df3-32ab-4599-a790-f3aaa0202211">
+<span class="eqno">(190)<a class="headerlink" href="#equation-37b14df3-32ab-4599-a790-f3aaa0202211" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \delta_{t} = r_{t+1} + \gamma V(s_{t+1}) - V(s_{t})
 \end{align}\]</div>
 <ul class="simple">
 <li><p>Value updates:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-6a77db83-f69b-4eda-b73a-5f6512c5c0ed">
-<span class="eqno">(191)<a class="headerlink" href="#equation-6a77db83-f69b-4eda-b73a-5f6512c5c0ed" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ba4ff9f5-3d28-4371-8ac1-68a63566fb10">
+<span class="eqno">(191)<a class="headerlink" href="#equation-ba4ff9f5-3d28-4371-8ac1-68a63566fb10" title="Permalink to this equation">¶</a></span>\[\begin{align}
 V(s_{t}) \leftarrow V(s_{t}) + \alpha \delta_{t}
 \end{align}\]</div>
 <div class="section" id="exercise-1-td-learning-with-guaranteed-rewards">

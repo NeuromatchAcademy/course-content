@@ -1038,19 +1038,19 @@
 <p>In the previous tutorial we made the assumption that the data was drawn from a linear relationship with noise added, and found an effective approach for estimating model parameters based on minimizing the mean squared error.</p>
 <p>In that case we treated the noise as simply a nuisance, but what if we factored it directly into our model?</p>
 <p>Recall our linear model:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e98b19ab-e688-40f5-a088-b09a66f9b66a">
-<span class="eqno">(45)<a class="headerlink" href="#equation-e98b19ab-e688-40f5-a088-b09a66f9b66a" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a3d7a73d-3e20-43b7-b95c-88d4f25bfff8">
+<span class="eqno">(45)<a class="headerlink" href="#equation-a3d7a73d-3e20-43b7-b95c-88d4f25bfff8" title="Permalink to this equation">¶</a></span>\[\begin{align}
 y = \theta x + \epsilon.
 \end{align}\]</div>
 <p>The noise component <span class="math notranslate nohighlight">\(\epsilon\)</span> is often modeled as a random variable drawn from a Gaussian distribution (also called the normal distribution).</p>
 <p>The Gaussian distribution is described by its <a class="reference external" href="https://en.wikipedia.org/wiki/Probability_density_function">probability density function</a> (pdf)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-081e4c57-96c9-4539-9b11-66a76dd2a5ba">
-<span class="eqno">(46)<a class="headerlink" href="#equation-081e4c57-96c9-4539-9b11-66a76dd2a5ba" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7669e038-a622-4779-ae8a-7accafc8bffc">
+<span class="eqno">(46)<a class="headerlink" href="#equation-7669e038-a622-4779-ae8a-7accafc8bffc" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mathcal{N}(x; \mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{1}{2\sigma^2}(x-\mu)^2}
 \end{align}\]</div>
 <p>and is dependent on two parameters: the mean <span class="math notranslate nohighlight">\(\mu\)</span> and the variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. We often consider the noise signal to be Gaussian “white noise”, with zero mean and unit variance:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4289feeb-33c8-4f30-ae75-27ae18a482a5">
-<span class="eqno">(47)<a class="headerlink" href="#equation-4289feeb-33c8-4f30-ae75-27ae18a482a5" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2b946fe9-5d8c-4424-beca-821284fc35b3">
+<span class="eqno">(47)<a class="headerlink" href="#equation-2b946fe9-5d8c-4424-beca-821284fc35b3" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \epsilon \sim \mathcal{N}(0, 1).
 \end{align}\]</div>
 <div class="section" id="interactive-demo-gaussian-distribution-explorer">
@@ -1090,13 +1090,13 @@ y = \theta x + \epsilon.
 <div class="section" id="section-1-1-probabilistic-models">
 <h2>Section 1.1: Probabilistic Models<a class="headerlink" href="#section-1-1-probabilistic-models" title="Permalink to this headline">¶</a></h2>
 <p>Now that we have a model of our noise component <span class="math notranslate nohighlight">\(\epsilon\)</span> as random variable, how do we incorporate this back into our original linear model from before? Consider again our simplified model <span class="math notranslate nohighlight">\(y = \theta x + \epsilon\)</span> where the noise has zero mean and unit variance <span class="math notranslate nohighlight">\(\epsilon \sim \mathcal{N}(0, 1)\)</span>. We can now also treat <span class="math notranslate nohighlight">\(y\)</span> as a random variable drawn from a Gaussian distribution where <span class="math notranslate nohighlight">\(\mu = \theta x\)</span> and <span class="math notranslate nohighlight">\(\sigma^2 = 1\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e48266ef-f8aa-49fe-b9d2-6cbb5f8e92b2">
-<span class="eqno">(48)<a class="headerlink" href="#equation-e48266ef-f8aa-49fe-b9d2-6cbb5f8e92b2" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e72c2994-ea97-46a2-bc37-f84eb133839b">
+<span class="eqno">(48)<a class="headerlink" href="#equation-e72c2994-ea97-46a2-bc37-f84eb133839b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 y \sim \mathcal{N}(\theta x, 1)
 \end{align}\]</div>
 <p>which is to say that the probability of observing <span class="math notranslate nohighlight">\(y\)</span> given <span class="math notranslate nohighlight">\(x\)</span> and parameter <span class="math notranslate nohighlight">\(\theta\)</span> is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ab2f461d-9c18-4c34-bd78-5e539cd583c3">
-<span class="eqno">(49)<a class="headerlink" href="#equation-ab2f461d-9c18-4c34-bd78-5e539cd583c3" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1d545003-a35b-4731-99a8-f785329841ef">
+<span class="eqno">(49)<a class="headerlink" href="#equation-1d545003-a35b-4731-99a8-f785329841ef" title="Permalink to this equation">¶</a></span>\[\begin{align}
 p(y|x,\theta) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(y-\theta x)^2}
 \end{align}\]</div>
 <hr class="docutils" />
@@ -1150,8 +1150,8 @@ p(y|x,\theta) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(y-\theta x)^2}
 <div class="section" id="section-1-2-likelihood-estimation">
 <h2>Section 1.2: Likelihood Estimation<a class="headerlink" href="#section-1-2-likelihood-estimation" title="Permalink to this headline">¶</a></h2>
 <p>Now that we have our probabilistic model, we turn back to our original challenge of finding a good estimate for <span class="math notranslate nohighlight">\(\theta\)</span> that fits our data. Given the inherent uncertainty when dealing in probabilities, we talk about the <a class="reference external" href="https://en.wikipedia.org/wiki/Likelihood_function">likelihood</a> that some estimate <span class="math notranslate nohighlight">\(\hat \theta\)</span> fits our data. The likelihood function <span class="math notranslate nohighlight">\(\mathcal{L(\theta)}\)</span> is equal to the probability density function parameterized by that <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1ea86c86-7062-4712-8fac-c6e4c089dd6d">
-<span class="eqno">(50)<a class="headerlink" href="#equation-1ea86c86-7062-4712-8fac-c6e4c089dd6d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9a726102-a8d2-40ff-b953-0692ef5c70cd">
+<span class="eqno">(50)<a class="headerlink" href="#equation-9a726102-a8d2-40ff-b953-0692ef5c70cd" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mathcal{L}(\theta|x,y) = p(y|x,\theta) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{1}{2\sigma^2}(y-\theta x)^2}
 \end{align}\]</div>
 <div class="section" id="exercise-1-likelihood-function">
@@ -1196,14 +1196,14 @@ p(y|x,\theta) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(y-\theta x)^2}
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W1D3_ModelFitting/solutions/W1D3_Tutorial2_Solution_328a0c30.py"><em>Click for solution</em></a></p>
 <p>We should see that <span class="math notranslate nohighlight">\(\mathcal{L}(\theta=1.0|x=2.1,y=3.7) \approx 0.11\)</span>. So far so good, but how does this tell us how this estimate is better than any others?</p>
 <p>When dealing with a set of data points, as we are with our dataset, we are concerned with their joint probability – the likelihood that all data points are explained by our parameterization. Since we have assumed that the noise affects each output independently, we can factorize the likelihood, and write:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e61ea85a-4c43-444e-9f15-a43ca97c3d03">
-<span class="eqno">(51)<a class="headerlink" href="#equation-e61ea85a-4c43-444e-9f15-a43ca97c3d03" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b72fd178-e05f-4858-92c6-b3bae0b6d126">
+<span class="eqno">(51)<a class="headerlink" href="#equation-b72fd178-e05f-4858-92c6-b3bae0b6d126" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mathcal{L}(\theta|X,Y) = \prod_{i=1}^N \mathcal{L}(\theta|x_i,y_i),
 \end{align}\]</div>
 <p>where we have <span class="math notranslate nohighlight">\(N\)</span> data points <span class="math notranslate nohighlight">\(X = \{x_1,...,x_N\}\)</span> and <span class="math notranslate nohighlight">\(Y = \{y_1,...,y_N\}\)</span>.</p>
 <p>In practice, such a product can be numerically unstable. Indeed multiplying small values together can lead to <a class="reference external" href="https://en.wikipedia.org/wiki/Arithmetic_underflow">underflow</a>, the situation in which the digital representation of floating point number reaches its limit. This problem can be circumvented by taking the logarithm of the likelihood because the logarithm transforms products into sums:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-81b6b78a-80cc-4701-8b77-e1d83ef08d32">
-<span class="eqno">(52)<a class="headerlink" href="#equation-81b6b78a-80cc-4701-8b77-e1d83ef08d32" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-48ab2f36-ca37-42f3-9d99-83bf674da2bc">
+<span class="eqno">(52)<a class="headerlink" href="#equation-48ab2f36-ca37-42f3-9d99-83bf674da2bc" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \operatorname{log}\mathcal{L}(\theta|X,Y) = \sum_{i=1}^N \operatorname{log}\mathcal{L}(\theta|x_i,y_i)
 \end{align}\]</div>
 <p>We can take the sum of the log of the output of our <code class="docutils literal notranslate"><span class="pre">likelihood</span></code> method applied to the full dataset to get a better idea of how different <span class="math notranslate nohighlight">\(\hat\theta\)</span> compare. We can also plot the different distribution densities over our dataset and see how they line up qualitatively.</p>
@@ -1230,28 +1230,28 @@ p(y|x,\theta) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(y-\theta x)^2}
 <div class="section" id="section-1-3-finding-the-maximum-likelihood-estimator">
 <h2>Section 1.3: Finding the Maximum Likelihood Estimator<a class="headerlink" href="#section-1-3-finding-the-maximum-likelihood-estimator" title="Permalink to this headline">¶</a></h2>
 <p>We want to find the parameter value <span class="math notranslate nohighlight">\(\hat\theta\)</span> that makes our data set most likely:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c65d3dfb-1d10-479f-ba12-7ba4c85fdcdd">
-<span class="eqno">(53)<a class="headerlink" href="#equation-c65d3dfb-1d10-479f-ba12-7ba4c85fdcdd" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6c731e1f-19b1-4dc2-bade-ee7328e921f8">
+<span class="eqno">(53)<a class="headerlink" href="#equation-6c731e1f-19b1-4dc2-bade-ee7328e921f8" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat{\theta}_{\textrm{MLE}} = \underset{\theta}{\operatorname{argmax}} \mathcal{L}(\theta|X,Y) 
 \end{align}\]</div>
 <p>We discussed how taking the logarithm of the likelihood helps with numerical stability, the good thing is that it does so without changing the parameter value that maximizes the likelihood. Indeed, the <span class="math notranslate nohighlight">\(\textrm{log}()\)</span> function is <em>monotonically increasing</em>, which means that it preserves the order of its inputs. So we have:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b16fff61-21eb-4d8e-90db-85184716bb57">
-<span class="eqno">(54)<a class="headerlink" href="#equation-b16fff61-21eb-4d8e-90db-85184716bb57" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-39498a0d-63c4-4da8-955f-00cdd84606a0">
+<span class="eqno">(54)<a class="headerlink" href="#equation-39498a0d-63c4-4da8-955f-00cdd84606a0" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat{\theta}_{\textrm{MLE}} = \underset{\theta}{\operatorname{argmax}} \sum_{i=1}^m \textrm{log} \mathcal{L}(\theta|x_i,y_i) 
 \end{align}\]</div>
 <p>Now substituting our specific likelihood function and taking its logarithm, we get:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-20751ece-1206-47a9-908a-d55b1e16d6b1">
-<span class="eqno">(55)<a class="headerlink" href="#equation-20751ece-1206-47a9-908a-d55b1e16d6b1" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-428c8cb8-d89a-44c6-91c2-1cf6d42f94db">
+<span class="eqno">(55)<a class="headerlink" href="#equation-428c8cb8-d89a-44c6-91c2-1cf6d42f94db" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat{\theta}_{\textrm{MLE}} = \underset{\theta}{\operatorname{argmax}} [-\frac{N}{2} \operatorname{log} 2\pi\sigma^2 - \frac{1}{2\sigma^2}\sum_{i=1}^N (y_i-\theta x_i)^2].
 \end{align}\]</div>
 <p>Note that maximizing the log likelihood is the same as minimizing the negative log likelihood (in practice optimization routines are developed to solve minimization not maximization problems). Because of the convexity of this objective function, we can take the derivative of our negative log likelihhood, set it to 0, and solve - just like our solution to minimizing MSE.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d1a641e8-046a-463c-b2da-7c5ec27d043d">
-<span class="eqno">(56)<a class="headerlink" href="#equation-d1a641e8-046a-463c-b2da-7c5ec27d043d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b7fe837e-ec6f-45d2-ab22-5e1445b3ce1e">
+<span class="eqno">(56)<a class="headerlink" href="#equation-b7fe837e-ec6f-45d2-ab22-5e1445b3ce1e" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{\partial\operatorname{log}\mathcal{L}(\theta|x,y)}{\partial\theta}=\frac{1}{\sigma^2}\sum_{i=1}^N(y_i-\theta x_i)x_i = 0
 \end{align}\]</div>
 <p>This looks remarkably like the equation we had to solve for the optimal MSE estimator, and, in fact, we arrive to the exact same solution!</p>
-<div class="amsmath math notranslate nohighlight" id="equation-badd4d02-77c0-40a7-93c7-12d0cec660c6">
-<span class="eqno">(57)<a class="headerlink" href="#equation-badd4d02-77c0-40a7-93c7-12d0cec660c6" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-32f2cf5d-8ba6-44c0-8665-2c3a6bb53cc5">
+<span class="eqno">(57)<a class="headerlink" href="#equation-32f2cf5d-8ba6-44c0-8665-2c3a6bb53cc5" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat{\theta}_{\textrm{MLE}} = \hat{\theta}_{\textrm{MSE}} = \frac{\sum_{i=1}^N x_i y_i}{\sum_{i=1}^N x_i^2}
 \end{align}\]</div>
 <div class="cell docutils container">

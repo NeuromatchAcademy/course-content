@@ -1215,22 +1215,22 @@
 <h2>Implementation of an LIF neuron model<a class="headerlink" href="#implementation-of-an-lif-neuron-model" title="Permalink to this headline">¶</a></h2>
 <p>Now, it’s your turn to implement one of the simplest mathematical model of a neuron: the leaky integrate-and-fire (LIF) model. The basic idea of LIF neuron was proposed in 1907 by Louis Édouard Lapicque, long before we understood the electrophysiology of a neuron (see a translation of <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/17968583/">Lapicque’s paper</a> ). More details of the model can be found in the book <a class="reference external" href="http://www.gatsby.ucl.ac.uk/~dayan/book/"><strong>Theoretical neuroscience</strong></a> by Peter Dayan and Laurence F. Abbott.</p>
 <p>The subthreshold membrane potential dynamics of a LIF neuron is described by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2ad67569-32de-439e-8563-204999f5abe4">
-<span class="eqno">(116)<a class="headerlink" href="#equation-2ad67569-32de-439e-8563-204999f5abe4" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-508a508f-3afe-428d-9be9-508dcdca689a">
+<span class="eqno">(116)<a class="headerlink" href="#equation-508a508f-3afe-428d-9be9-508dcdca689a" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 C_m\frac{dV}{dt} = -g_L(V-E_L) + I,\quad (1)
 \end{eqnarray}\]</div>
 <p>where <span class="math notranslate nohighlight">\(C_m\)</span> is the membrane capacitance, <span class="math notranslate nohighlight">\(V\)</span> is the membrane potential, <span class="math notranslate nohighlight">\(g_L\)</span> is the leak conductance (<span class="math notranslate nohighlight">\(g_L = 1/R\)</span>, the inverse of the leak resistance <span class="math notranslate nohighlight">\(R\)</span> mentioned in previous tutorials), <span class="math notranslate nohighlight">\(E_L\)</span> is the resting potential, and <span class="math notranslate nohighlight">\(I\)</span> is the external input current.</p>
 <p>Dividing both sides of the above equation by <span class="math notranslate nohighlight">\(g_L\)</span> gives</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e9903c55-9c5b-4a8f-9354-b6f4077f53aa">
-<span class="eqno">(117)<a class="headerlink" href="#equation-e9903c55-9c5b-4a8f-9354-b6f4077f53aa" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fa3f732b-1472-45fa-bb85-6cda3b350bbe">
+<span class="eqno">(117)<a class="headerlink" href="#equation-fa3f732b-1472-45fa-bb85-6cda3b350bbe" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \tau_m\frac{dV}{dt} = -(V-E_L) + \frac{I}{g_L}\,,\quad (2)
 \end{align}\]</div>
 <p>where the <span class="math notranslate nohighlight">\(\tau_m\)</span> is membrane time constant and is defined as <span class="math notranslate nohighlight">\(\tau_m=C_m/g_L\)</span>.</p>
 <p>You might wonder why dividing capacitance by conductance gives units of time! Find out yourself why this is true.</p>
 <p>Below, we will use Eqn.(2) to simulate LIF neuron dynamics.</p>
 <p>If <span class="math notranslate nohighlight">\(I\)</span> is sufficiently strong such that <span class="math notranslate nohighlight">\(V\)</span> reaches a certain threshold value <span class="math notranslate nohighlight">\(V_{\rm th}\)</span>, <span class="math notranslate nohighlight">\(V\)</span> is reset to a reset potential <span class="math notranslate nohighlight">\(V_{\rm reset}&lt; V_{\rm th}\)</span>, and voltage is clamped to <span class="math notranslate nohighlight">\(V_{\rm reset}\)</span> for <span class="math notranslate nohighlight">\(\tau_{\rm ref}\)</span> ms, mimicking the refractoriness of the neuron during an action potential:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-df2f0946-d46e-4ff2-bcae-00ae17283969">
-<span class="eqno">(118)<a class="headerlink" href="#equation-df2f0946-d46e-4ff2-bcae-00ae17283969" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-90104d17-b6a2-4871-b236-a44bbe01fcc8">
+<span class="eqno">(118)<a class="headerlink" href="#equation-90104d17-b6a2-4871-b236-a44bbe01fcc8" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 \mathrm{if}\quad V(t_{\text{sp}})\geq V_{\rm th}&amp;:&amp; V(t)=V_{\rm reset} \text{  for } t\in(t_{\text{sp}}, t_{\text{sp}} + \tau_{\text{ref}}]
 \end{eqnarray}\]</div>
 <p>where <span class="math notranslate nohighlight">\(t_{\rm sp}\)</span> is the spike time when <span class="math notranslate nohighlight">\(V(t)\)</span> just exceeded <span class="math notranslate nohighlight">\(V_{\rm th}\)</span>.</p>
@@ -1430,13 +1430,13 @@ C_m\frac{dV}{dt} = -g_L(V-E_L) + I,\quad (1)
 <h2>Section 2.2: Gaussian white noise (GWN) current<a class="headerlink" href="#section-2-2-gaussian-white-noise-gwn-current" title="Permalink to this headline">¶</a></h2>
 <p>Given the noisy nature of neuronal activity <em>in vivo</em>, neurons usually receive complex, time-varying inputs.</p>
 <p>To mimic this, we will now investigate the neuronal response when the LIF neuron receives Gaussian white noise <span class="math notranslate nohighlight">\(\xi(t)\)</span> with mean</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d0412d31-9992-42da-b378-841252ac9d06">
-<span class="eqno">(119)<a class="headerlink" href="#equation-d0412d31-9992-42da-b378-841252ac9d06" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-94585fa6-12f3-4110-b534-cbfef5ee2ced">
+<span class="eqno">(119)<a class="headerlink" href="#equation-94585fa6-12f3-4110-b534-cbfef5ee2ced" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 E[\xi(t)]=\mu=0,
 \end{eqnarray}\]</div>
 <p>and autocovariance</p>
-<div class="amsmath math notranslate nohighlight" id="equation-795e1c77-8ea2-4285-8667-aab8025ed19d">
-<span class="eqno">(120)<a class="headerlink" href="#equation-795e1c77-8ea2-4285-8667-aab8025ed19d" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-9c2929db-5fb7-4f93-87c1-02158d0355ba">
+<span class="eqno">(120)<a class="headerlink" href="#equation-9c2929db-5fb7-4f93-87c1-02158d0355ba" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 E[\xi(t)\xi(t+\tau)]=\sigma_\xi^2 \delta(\tau)
 \end{eqnarray}\]</div>
 <p>Note that the GWN has zero mean, that is, it describes only the fluctuations of the input received by a neuron. We can thus modify our definition of GWN to have a nonzero mean value <span class="math notranslate nohighlight">\(\mu\)</span> that equals the DC input, since this is the average input into the cell. The cell below defines the modified gaussian white noise currents with nonzero mean <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
@@ -1570,8 +1570,8 @@ E[\xi(t)\xi(t+\tau)]=\sigma_\xi^2 \delta(\tau)
 <h1>Section 3: Firing rate and spike time irregularity<a class="headerlink" href="#section-3-firing-rate-and-spike-time-irregularity" title="Permalink to this headline">¶</a></h1>
 <p>When we plot the output firing rate as a function of GWN mean or DC value, it is called the input-output transfer function of the neuron (so simply F-I curve).</p>
 <p>Spike regularity can be quantified as the <strong>coefficient of variation (CV) of the inter-spike-interval (ISI)</strong>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d93a6e4a-a4b7-49a1-833e-914d3b6457cf">
-<span class="eqno">(121)<a class="headerlink" href="#equation-d93a6e4a-a4b7-49a1-833e-914d3b6457cf" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c5e7e8c8-e2a6-4d27-8952-c96fcd5aa36b">
+<span class="eqno">(121)<a class="headerlink" href="#equation-c5e7e8c8-e2a6-4d27-8952-c96fcd5aa36b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \text{CV}_{\text{ISI}} = \frac{std(\text{ISI})}{mean(\text{ISI})}
 \end{align}\]</div>
 <p>A Poisson train is an example of high irregularity, in which <span class="math notranslate nohighlight">\(\textbf{CV}_{\textbf{ISI}} \textbf{= 1}\)</span>. And for a clocklike (regular) process we have <span class="math notranslate nohighlight">\(\textbf{CV}_{\textbf{ISI}} \textbf{= 0}\)</span> because of <strong>std(ISI)=0</strong>.</p>

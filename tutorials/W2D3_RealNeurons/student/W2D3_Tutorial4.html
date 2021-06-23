@@ -1193,16 +1193,16 @@
 <div class="section" id="model-of-stdp">
 <h2>Model of STDP<a class="headerlink" href="#model-of-stdp" title="Permalink to this headline">¶</a></h2>
 <p>The phenomenology of STDP is generally described as a biphasic exponentially decaying function. That is, the instantaneous change in weights is given by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d950c164-ad9d-4a6c-9aec-9e4cf01dfa79">
-<span class="eqno">(132)<a class="headerlink" href="#equation-d950c164-ad9d-4a6c-9aec-9e4cf01dfa79" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-836a2e44-f4a4-4374-a4cf-d205b148ef8a">
+<span class="eqno">(132)<a class="headerlink" href="#equation-836a2e44-f4a4-4374-a4cf-d205b148ef8a" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 &amp; \Delta W &amp;=&amp; A_+ e^{ (t_{pre}-t_{post})/\tau_+}  &amp; \text{if} \hspace{5mm}  t_{post} &gt; t_{pre}&amp; \\
 &amp; \Delta W &amp;=&amp; -A_- e^{- (t_{pre}-t_{post})/\tau_-}   &amp;\text{if} \hspace{5mm} t_{post} &lt; t_{pre}&amp; \\
 \end{eqnarray}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Delta W\)</span> denotes the change in the synaptic weight, <span class="math notranslate nohighlight">\(A_+\)</span> and <span class="math notranslate nohighlight">\(A_-\)</span> determine the maxmimum amount of synaptic modification (which occurs when the timing difference between presynaptic and postsynaptic spikes is close to zero), <span class="math notranslate nohighlight">\(\tau_+\)</span> and <span class="math notranslate nohighlight">\(\tau_-\)</span> determine the ranges of pre-to-postsynaptic interspike intervals over which synaptic strengthening or weakening occurs. Thus, <span class="math notranslate nohighlight">\(\Delta W &gt; 0 \)</span> means that postsynaptic neuron spikes after the presynaptic neuron.</p>
 <p>This model captures the phenomena that repeated occurrences of presynaptic spikes within a few milliseconds <strong>before</strong> postsynaptic action potentials lead to long-term potentiation (LTP) of the synapse, whereas repeated occurrences of presynaptic spikes <strong>after</strong> the postsynaptic ones lead to long-term depression (LTD) of the same synapse.</p>
 <p>The latency between presynaptic and postsynaptic spike (<span class="math notranslate nohighlight">\(\Delta t\)</span>) is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c2b5c000-076a-441d-86eb-f3eafa436959">
-<span class="eqno">(133)<a class="headerlink" href="#equation-c2b5c000-076a-441d-86eb-f3eafa436959" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-7897062a-dcf1-4f39-85ee-e3ed2ed29c73">
+<span class="eqno">(133)<a class="headerlink" href="#equation-7897062a-dcf1-4f39-85ee-e3ed2ed29c73" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 \Delta t = t_{\rm pre} - t_{\rm post}
 \end{eqnarray}\]</div>
 <p>where <span class="math notranslate nohighlight">\(t_{\rm pre}\)</span> and <span class="math notranslate nohighlight">\(t_{\rm post}\)</span> are the timings of the presynaptic and postsynaptic spikes, respectively.</p>
@@ -1268,24 +1268,24 @@
 <h2>Keeping track of pre- and postsynaptic spikes<a class="headerlink" href="#keeping-track-of-pre-and-postsynaptic-spikes" title="Permalink to this headline">¶</a></h2>
 <p>Since a neuron will receive numerous presynaptic spike inputs, in order to implement STDP by taking into account different synapses, we first have to keep track of the pre- and postsynaptic spike times throughout the simulation.</p>
 <p>A convenient way to do this is to define the following equation for each postsynaptic neuron:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6ac06ece-0870-4e2e-a0dc-fba6c21d6b3c">
-<span class="eqno">(134)<a class="headerlink" href="#equation-6ac06ece-0870-4e2e-a0dc-fba6c21d6b3c" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-8480b202-1595-42aa-b5cf-ed6aa97d7412">
+<span class="eqno">(134)<a class="headerlink" href="#equation-8480b202-1595-42aa-b5cf-ed6aa97d7412" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 \tau_{-} \frac{dM}{dt} = -M
 \end{eqnarray}\]</div>
 <p>and whenever the postsynaptic neuron spikes,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d197a882-fea0-41c5-bcd6-3edcdbc4b429">
-<span class="eqno">(135)<a class="headerlink" href="#equation-d197a882-fea0-41c5-bcd6-3edcdbc4b429" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-299e82b4-3594-4255-b87a-6fffdf635e06">
+<span class="eqno">(135)<a class="headerlink" href="#equation-299e82b4-3594-4255-b87a-6fffdf635e06" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 M(t) = M(t) - A_{-}
 \end{eqnarray}\]</div>
 <p>This way <span class="math notranslate nohighlight">\(M(t)\)</span> tracks the number of postsynaptic spikes over the timescale <span class="math notranslate nohighlight">\(\tau_{-}\)</span>.</p>
 <p>Similarly, for each presynaptic neuron, we define:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2a45f63b-5ea5-4ef2-9697-f64daf71f5a3">
-<span class="eqno">(136)<a class="headerlink" href="#equation-2a45f63b-5ea5-4ef2-9697-f64daf71f5a3" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-c7a9e351-1c54-46b8-a77f-a7dca87507d7">
+<span class="eqno">(136)<a class="headerlink" href="#equation-c7a9e351-1c54-46b8-a77f-a7dca87507d7" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 \tau_{+} \frac{dP}{dt} = -P
 \end{eqnarray}\]</div>
 <p>and whenever there is spike on the presynaptic neuron,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-29f9e5ac-9da0-4aab-a774-f0158e3940d4">
-<span class="eqno">(137)<a class="headerlink" href="#equation-29f9e5ac-9da0-4aab-a774-f0158e3940d4" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-7673afd5-ee17-4f9c-88ae-e8dcbcc71ade">
+<span class="eqno">(137)<a class="headerlink" href="#equation-7673afd5-ee17-4f9c-88ae-e8dcbcc71ade" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 P(t) = P(t) + A_{+}
 \end{eqnarray}\]</div>
 <p>The variables <span class="math notranslate nohighlight">\(M(t)\)</span> and <span class="math notranslate nohighlight">\(P(t)\)</span> are very similar to the equations for the synaptic conductances, i.e., <span class="math notranslate nohighlight">\(g_{i}(t)\)</span>, except that they are used to keep track of pre- and postsynaptic spike times on a much longer timescale. Note that, <span class="math notranslate nohighlight">\(M(t)\)</span> is always negative, and <span class="math notranslate nohighlight">\(P(t)\)</span> is always positive. You can probably already guess that <span class="math notranslate nohighlight">\(M\)</span> is used to induce LTD and <span class="math notranslate nohighlight">\(P\)</span> to induce LTP because they are updated by <span class="math notranslate nohighlight">\(A_{-}\)</span> and <span class="math notranslate nohighlight">\(A_{+}\)</span>, respectively.</p>
@@ -1302,8 +1302,8 @@ P(t) = P(t) + A_{+}
 <p>Here, yet again, we use the Euler scheme, which has been introduced several times in the previous tutorials.</p>
 <p>Similar to the dynamics of the membrane potential in the LIF model, in a time step <span class="math notranslate nohighlight">\(dt\)</span>, <span class="math notranslate nohighlight">\(P(t)\)</span> will decrease by an amount of <span class="math notranslate nohighlight">\(\displaystyle{\frac{dt}{\tau_+}P(t)}\)</span>. Whereas, if a presynaptic spike arrives, <span class="math notranslate nohighlight">\(P(t)\)</span> will instantaneously increase by an amount of <span class="math notranslate nohighlight">\(A_+\)</span>. Therefore,</p>
 <p>\</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fb0cd87a-fd9d-4dd7-bb61-62409943bd1a">
-<span class="eqno">(138)<a class="headerlink" href="#equation-fb0cd87a-fd9d-4dd7-bb61-62409943bd1a" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-1954553c-0885-4fc0-a549-82c1690bd15c">
+<span class="eqno">(138)<a class="headerlink" href="#equation-1954553c-0885-4fc0-a549-82c1690bd15c" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 dP = -\displaystyle{\frac{dt}{\tau_+}P[t]} + A_+\cdot \text{sp_or_not}[t+dt]
 \end{eqnarray}\]</div>
 <p>\</p>
@@ -1366,8 +1366,8 @@ dP = -\displaystyle{\frac{dt}{\tau_+}P[t]} + A_+\cdot \text{sp_or_not}[t+dt]
 <ul>
 <li><p>When the <span class="math notranslate nohighlight">\(i_{th}\)</span> presynaptic neuron elicits a spike, its corresponding peak conductance is updated according to the following equation:</p>
 <p>\</p>
-<div class="amsmath math notranslate nohighlight" id="equation-185a07bc-463e-4023-894d-2171c0df7de0">
-<span class="eqno">(139)<a class="headerlink" href="#equation-185a07bc-463e-4023-894d-2171c0df7de0" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-d9b04957-4e0c-45b2-9eeb-0db2a7610d18">
+<span class="eqno">(139)<a class="headerlink" href="#equation-d9b04957-4e0c-45b2-9eeb-0db2a7610d18" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
   \bar g_i = \bar g_i + M(t)\bar g_{max}
   \end{eqnarray}\]</div>
 <p>\</p>
@@ -1375,8 +1375,8 @@ dP = -\displaystyle{\frac{dt}{\tau_+}P[t]} + A_+\cdot \text{sp_or_not}[t+dt]
 </li>
 <li><p>When the postsynaptic neuron spikes, the peak conductance of <strong>each</strong> synapse is updated according to:</p>
 <p>\</p>
-<div class="amsmath math notranslate nohighlight" id="equation-39f6e8b5-5a26-49c7-a3cc-f9b3067b0e95">
-<span class="eqno">(140)<a class="headerlink" href="#equation-39f6e8b5-5a26-49c7-a3cc-f9b3067b0e95" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-147e6eca-3879-4c88-9b32-0722b8afbcb3">
+<span class="eqno">(140)<a class="headerlink" href="#equation-147e6eca-3879-4c88-9b32-0722b8afbcb3" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
   \bar g_i = \bar g_i + P_i(t)\bar g_{max}, \forall i
   \end{eqnarray}\]</div>
 <p>\</p>
@@ -1389,15 +1389,15 @@ dP = -\displaystyle{\frac{dt}{\tau_+}P[t]} + A_+\cdot \text{sp_or_not}[t+dt]
 <p>In the following exercise, we connect <span class="math notranslate nohighlight">\(N\)</span> presynaptic neurons to a single postsynaptic neuron. We do not need to simulate the dynamics of each presynaptic neuron as we are only concerned about their spike times. So, we will generate <span class="math notranslate nohighlight">\(N\)</span> Poisson type spikes. Here, we will assume that all these inputs are excitatory.</p>
 <p>We need to simulate the dynamics of the postsynaptic neuron as we do not know its spike times. We model the postsynaptic neuron as an LIF neuron receiving only excitatory inputs.</p>
 <p>\</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f559f26f-0e00-48a8-8021-4af8c0306347">
-<span class="eqno">(141)<a class="headerlink" href="#equation-f559f26f-0e00-48a8-8021-4af8c0306347" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-b0d88a3a-b17f-4cac-90f0-37da09d7dfb1">
+<span class="eqno">(141)<a class="headerlink" href="#equation-b0d88a3a-b17f-4cac-90f0-37da09d7dfb1" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 \tau_m\frac{dV}{dt} = -(V-E_L) - g_E(t) (V(t)-E_E)\,
 \end{eqnarray}\]</div>
 <p>\</p>
 <p>where the total excitatory synaptic conductance  <span class="math notranslate nohighlight">\(g_{E}(t)\)</span>  is given by:</p>
 <p>\</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0d6c1c1b-112b-4f37-9fe5-3af9ae765b69">
-<span class="eqno">(142)<a class="headerlink" href="#equation-0d6c1c1b-112b-4f37-9fe5-3af9ae765b69" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-bb588ae7-dfc0-4fb9-81ab-546b017aa8df">
+<span class="eqno">(142)<a class="headerlink" href="#equation-bb588ae7-dfc0-4fb9-81ab-546b017aa8df" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 g_E(t) = \sum_{i=1}^{N} g_i(t) \,
 \end{eqnarray}\]</div>
 <p>\</p>

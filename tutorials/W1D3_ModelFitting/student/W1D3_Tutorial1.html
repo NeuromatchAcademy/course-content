@@ -1021,8 +1021,8 @@ parameter(s) being optimized.</p>
 <div class="math notranslate nohighlight">
 \[y_{n}= \theta x_{n}+\epsilon_{n}\]</div>
 <p>for some unknown slope parameter <span class="math notranslate nohighlight">\(\theta.\)</span> The least squares regression problem uses <strong>mean squared error (MSE)</strong> as its objective function, it aims to find the value of the parameter <span class="math notranslate nohighlight">\(\theta\)</span> by minimizing the average of squared errors:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1d36f0ef-ff3f-47ee-8019-b1666197175f">
-<span class="eqno">(40)<a class="headerlink" href="#equation-1d36f0ef-ff3f-47ee-8019-b1666197175f" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a9e4faf0-0b09-4cc1-888b-e67fe855cbd4">
+<span class="eqno">(40)<a class="headerlink" href="#equation-a9e4faf0-0b09-4cc1-888b-e67fe855cbd4" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \min _{\theta} \frac{1}{N}\sum_{n=1}^{N}\left(y_{n}-\theta x_{n}\right)^{2}
 \end{align}\]</div>
 <p>We will now explore how MSE is used in fitting a linear regression model to data. For illustrative purposes, we will create a simple synthetic dataset where we know the true underlying model. This will allow us to see how our estimation efforts compare in uncovering the real model (though in practice we rarely have this luxury).</p>
@@ -1186,8 +1186,8 @@ theta_hat of 1.5 has an MSE of 4.52</p>
 <h1>Section 2: Least-squares optimization<a class="headerlink" href="#section-2-least-squares-optimization" title="Permalink to this headline">¶</a></h1>
 <p>While the approach detailed above (computing MSE at various values of <span class="math notranslate nohighlight">\(\hat\theta\)</span>) quickly got us to a good estimate, it still relied on evaluating the MSE value across a grid of hand-specified values. If we didn’t pick a good range to begin with, or with enough granularity, we might miss the best possible estimator. Let’s go one step further, and instead of finding the minimum MSE from a set of candidate estimates, let’s solve for it analytically.</p>
 <p>We can do this by minimizing the cost function. Mean squared error is a convex objective function, therefore we can compute its minimum using calculus. Please see video or appendix for this derivation! After computing the minimum, we find that:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5631156c-279d-47ea-9fbe-87a2b3da3fab">
-<span class="eqno">(41)<a class="headerlink" href="#equation-5631156c-279d-47ea-9fbe-87a2b3da3fab" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ba5aafd8-9bbe-4053-b86a-19c56b14a1fd">
+<span class="eqno">(41)<a class="headerlink" href="#equation-ba5aafd8-9bbe-4053-b86a-19c56b14a1fd" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat\theta = \frac{\vec{x}^\top \vec{y}}{\vec{x}^\top \vec{x}}
 \end{align}\]</div>
 <p>This is known as solving the normal equations. For different ways of obtaining the solution, see the notes on <a class="reference external" href="https://www.cns.nyu.edu/~eero/NOTES/leastSquares.pdf">Least Squares Optimization</a> by Eero Simoncelli.</p>
@@ -1258,19 +1258,19 @@ theta_hat of 1.5 has an MSE of 4.52</p>
 <h2>Least Squares Optimization Derivation<a class="headerlink" href="#least-squares-optimization-derivation" title="Permalink to this headline">¶</a></h2>
 <p>We will outline here the derivation of the least squares solution.</p>
 <p>We first set the derivative of the error expression with respect to <span class="math notranslate nohighlight">\(\theta\)</span> equal to zero,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-df9633d5-bcf7-49fe-a650-64ddbb7479c9">
-<span class="eqno">(42)<a class="headerlink" href="#equation-df9633d5-bcf7-49fe-a650-64ddbb7479c9" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-082eed07-c9bf-47f4-88c1-c28ef607d9a1">
+<span class="eqno">(42)<a class="headerlink" href="#equation-082eed07-c9bf-47f4-88c1-c28ef607d9a1" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{d}{d\theta}\frac{1}{N}\sum_{i=1}^N(y_i - \theta x_i)^2 = 0 \\
 \frac{1}{N}\sum_{i=1}^N-2x_i(y_i - \theta x_i) = 0
 \end{align}\]</div>
 <p>where we used the chain rule. Now solving for <span class="math notranslate nohighlight">\(\theta\)</span>, we obtain an optimal value of:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-be400773-b228-468e-b48d-5dd1d69c40e0">
-<span class="eqno">(43)<a class="headerlink" href="#equation-be400773-b228-468e-b48d-5dd1d69c40e0" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d760450a-3475-41ee-a81a-1ce786fb8614">
+<span class="eqno">(43)<a class="headerlink" href="#equation-d760450a-3475-41ee-a81a-1ce786fb8614" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat\theta = \frac{\sum_{i=1}^N x_i y_i}{\sum_{i=1}^N x_i^2}
 \end{align}\]</div>
 <p>Which we can write in vector notation as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-09aaca0b-3a13-40d7-83a9-7ecba5df3de1">
-<span class="eqno">(44)<a class="headerlink" href="#equation-09aaca0b-3a13-40d7-83a9-7ecba5df3de1" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d95867a6-7e89-489e-801e-cc345c60725e">
+<span class="eqno">(44)<a class="headerlink" href="#equation-d95867a6-7e89-489e-801e-cc345c60725e" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat\theta = \frac{\vec{x}^\top \vec{y}}{\vec{x}^\top \vec{x}}
 \end{align}\]</div>
 <p>This is known as solving the <em>normal equations</em>. For different ways of obtaining the solution, see the notes on <a class="reference external" href="https://www.cns.nyu.edu/~eero/NOTES/leastSquares.pdf">Least Squares Optimization</a> by Eero Simoncelli.</p>
