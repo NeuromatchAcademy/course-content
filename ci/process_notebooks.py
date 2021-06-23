@@ -229,17 +229,23 @@ def extract_solutions(nb, nb_dir, nb_name):
                     w = img.width // (dpi_w // 72)
                     h = img.height // (dpi_h // 72)
 
-                    tag_args = " ".join([
+                   tag_args = " ".join([
                         "alt='Solution hint'",
-                        "align='left'",
+                        "align='center'",
                         f"width={w}",
                         f"height={h}",
                         f"src={url}",
                     ])
+
                     new_source += f"<img {tag_args}>\n\n"
+                    new_source += f"<br>" # adds newline after html image, fixing layout
 
             cell["source"] = new_source
             cell["cell_type"] = "markdown"
+            # Alternative way to generate full-width (large) solution figures
+            #cell_tags = cell.get('metadata', {}).get('tags', [])
+            #cell_tags.append("full-width")
+            #cell['metadata']['tags'] = cell_tags
             cell["metadata"]["colab_type"] = "text"
             if "outputID" in cell["metadata"]:
                 del cell["metadata"]["outputId"]
