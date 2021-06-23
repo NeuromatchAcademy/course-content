@@ -13,7 +13,7 @@
 4. In the **File** menu bar, select **Upload Notebook** option.
 ![Step 4](../tutorials/static/kaggle_step4.png)
 
-5. Next, select **Upload via external URL** option, and input the url of the notebook. For instance, if you wish you run [W2D1_Tutorial.ipynb](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/W2D1_DeepLearning/W2D1_Tutorial1.ipynb) get its corresponding link (https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/W2D1_DeepLearning/W2D1_Tutorial1.ipynb), and then select *Upload* button to import the notebook on Kaggle.
+5. Next, select **Upload via external URL** option, and input the url of the notebook. For instance, if you wish you run [W2D1_Tutorial.ipynb](https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/W2D1_DeepLearning/W2D1_Tutorial1.ipynb) get its corresponding link (https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/W2D1_DeepLearning/W2D1_Tutorial1.ipynb), and then select **Upload** button to import the notebook on Kaggle.
 ![Step 5](../tutorials/static/kaggle_step5.png)
 
 6. The last and final step but important **step** about how to leverage **GPU** accelerator in the kaggle kernel. To get access to the GPU, first time users have get their phone numbers verified. In order to have GPU access, on the left sidebar of the notebook under the settings panel, go to **Get phone verified** link and enter your credentials.
