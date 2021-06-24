@@ -5,7 +5,7 @@ from jinja2 import Template
 import traceback
 import json
 from bs4 import BeautifulSoup
-
+import nbformat
 
 def main():
     with open('tutorials/materials.yml') as fh:
@@ -67,10 +67,11 @@ def main():
 
 def pre_process_notebook(file_path):
     #try:
-    with open(file_path, encoding="utf-8") as read_notebook:
-        content = json.load(read_notebook)
+    with open(file_path) as f:
+        content = nbformat.read(f, nbformat.NO_CONVERT)
     pre_processed_content = open_in_colab_new_tab(content)
     pre_processed_content = link_hidden_cells(pre_processed_content)
+    pre_processed_content = hide_error_outputs(pre_processed_content)
     with open(file_path, "w", encoding="utf-8") as write_notebook:
         json.dump(pre_processed_content, write_notebook, indent=1, ensure_ascii=False)
     # except Exception:
@@ -80,11 +81,13 @@ def pre_process_notebook(file_path):
 
 def open_in_colab_new_tab(content):
     cells = content['cells']
-    parsed_html = BeautifulSoup(cells[0]['source'][0], "html.parser")
+    parsed_html = BeautifulSoup(cells[0]['source'].split('\n')[0], "html.parser")
     for anchor in parsed_html.findAll('a'):
         # Open in new tab
         anchor['target'] = '_blank'
-    cells[0]['source'][0] = str(parsed_html)
+    source_list = cells[0]['source'].split('\n')
+    source_list[0] = str(parsed_html)
+    cells[0]['source'] = '\n'.join(source_list)
     return content
 
 
@@ -97,7 +100,7 @@ def link_hidden_cells(content):
         updated_cell = updated_cells[i_updated_cell]
         if "source" not in cell:
             continue
-        source = cell['source'][0]
+        source = cell['source'].split('\n')[0]
 
         if source.startswith("#") and '@title' not in source:
             header_level = source.count('#')
@@ -130,6 +133,8 @@ def link_hidden_cells(content):
     content['cells'] = updated_cells
     return content
 
+def hide_error_outputs(content):
+    return content
 
 if __name__ == '__main__':
     main()
