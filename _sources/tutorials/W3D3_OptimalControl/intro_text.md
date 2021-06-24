@@ -1,7 +1,0 @@
-# Optimal Control
-
-Today you will learn about Optimal Control. Previously you used observations to draw inferences about a hidden state. Now you get to act. The Intro video teaches you about the formalism: you have a dynamic process that you get to act upon, and you choose your actions to maximize a utility function. The tutorials will continue to explore our two running examples, fishing and astrocat, for binary and gaussian variables. In the fishing example, you’ll use your Hidden Markov Models to figure out where the fish are, and then update your fishing location to catch the most fish. In the Astrocat example, you will learn to use the cat’s jetpack to keep the cat on target. Your core learning objective is to understand and implement algorithms to use your knowledge to select good actions. The Outro video talks about applications of these ideas to how you plan.
-
-Optimal Control combines ideas from the Hidden Dynamics lessons (which used Hidden Markov Models) with maximizing utility described in the Bayes day (which combined a posterior with a utility function). It also connects directly to later lessons in Reinforcement Learning, which learns how to control before you understand the world. In contrast, Optimal Control assumes that you already know how the world works.
-
-Optimal Control is a crucial model in motor neuroscience, because it provides a principled benchmark for how we expect an animal should move. It also is an important engineering method, used for brain-computer interfaces and clamping neurons to desired activity patterns.
