@@ -70,11 +70,13 @@ def pre_process_notebook(file_path):
     #try:
     with open(file_path) as f:
         content = nbformat.read(f, nbformat.NO_CONVERT)
+
     pre_processed_content = open_in_colab_new_tab(content)
+    #pre_processed_content = hide_error_outputs(pre_processed_content)
     pre_processed_content = link_hidden_cells(pre_processed_content)
-    pre_processed_content = hide_error_outputs(pre_processed_content)
+
     with open(file_path, "w", encoding="utf-8") as write_notebook:
-        json.dump(pre_processed_content, write_notebook, indent=1, ensure_ascii=False)
+        nbformat.write(pre_processed_content, write_notebook, version=nbformat.NO_CONVERT)
     # except Exception:
     #     print("Exception occurred while trying to pre_process file = {}. Skipping this file.".format(file_path))
     #     traceback.print_exc()
@@ -143,15 +145,18 @@ def hide_error_outputs(content):
     executor.preprocess(content, resources={})
 
     for cell in content['cells']:
-        check_for_error = any([cell['outputs'][i]['output_type']=='error' for i in range(len(cell['outputs']))])
-        if check_for_error:
-            if 'metadata' not in cell:
-                updated_cell['metadata'] = {}
-            if 'tags' not in cell['metadata']:
-                updated_cell['metadata']['tags'] = []
+        if 'output' in cell:
+            check_for_error = any([cell['outputs'][i]['output_type']=='error' for i in range(len(cell['outputs']))])
+            if check_for_error:
+                if 'metadata' not in cell:
+                    cell['metadata'] = {}
+                if 'tags' not in cell['metadata']:
+                    cell['metadata']['tags'] = []
 
-            if "remove-output" not in cell['metadata']['tags']:
-                updated_cell['metadata']['tags'].append("remove-output")
+                if "remove-output" not in cell['metadata']['tags']:
+                    cell['metadata']['tags'].append("remove-output")
+
+    return content
 
 
 if __name__ == '__main__':
