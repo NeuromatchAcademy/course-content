@@ -5,7 +5,7 @@ Run this script from the root of the github repository.
 """
 import os
 from glob import glob
-
+import yaml
 
 def main():
 
@@ -56,8 +56,8 @@ def main():
             "-",
             ("-".join(topic_words)).lower(),
         ])
-        if "W0" not in day_code:
-            day_anchors[day_code] = "#" + anchor
+
+        day_anchors[day_code] = "#" + anchor
 
         student_notebooks = get_student_links(notebooks)
 
@@ -71,23 +71,32 @@ def main():
         youtube_url = playlist_urls.get(day_code, None)
         if youtube_url is not None:
             course_readme_text.extend([
-                f"[YouTube Playlist]({youtube_url})"
+                f"[YouTube Playlist]({youtube_url})",
                 "",
             ])
 
+        # Add links to slides
         slide_links_by_topic = slide_urls.get(day_code, None)
         if slide_links_by_topic is not None:
             slide_links = [
                 f"[{topic}]({url})" for topic, url in slide_links_by_topic
             ]
+
             course_readme_text.extend([
                 "",
                 "Slides: " + " | ".join(slide_links),
                 "",
             ])
 
+        # Add badges for all notebooks
         course_readme_text.extend(write_badge_table(student_notebooks))
         course_readme_text.append("\n")
+
+        # Add further reading
+        further_reading_file = f"{day_path}/further_reading.md"
+        if os.path.exists(further_reading_file):
+            course_readme_text.extend([f"[Further Reading](https://github.com/NeuromatchAcademy/course-content/blob/master/{further_reading_file})"])
+            course_readme_text.append("\n")
 
         # Now make the day-specific README
         # with links to both instructor and student versions
@@ -134,21 +143,23 @@ def main():
 
 def load_youtube_playlist_urls():
     """Create a mapping from day code to youtube link based on text file."""
-    with open("tutorials/youtube_playlists.txt") as f:
-        lines = filter(bool, f.read().split("\n"))
-    return dict(tuple(line.split()) for line in lines)
+    with open('tutorials/materials.yml') as fh:
+        materials = yaml.load(fh, Loader=yaml.FullLoader)
+    days = [m['day'] for m in materials]
+    playlists = [m['playlist'] for m in materials]
+    return dict(zip(days, playlists))
 
 
 def load_slide_urls():
     """Create a hierarchical mapping to slide PDF urls based on text file."""
-    with open("tutorials/slide_links.txt") as f:
-        lines = filter(bool, f.read().split("\n"))
+    with open('tutorials/materials.yml') as fh:
+        materials = yaml.load(fh, Loader=yaml.FullLoader)
     slide_links = {}
-    for line in lines:
-        day, topic, url = line.split()
-        if day not in slide_links:
-            slide_links[day] = []
-        slide_links[day].append((topic, url))
+    for ind, day_dict in enumerate(materials):
+        if 'slides' in day_dict:
+            slide_links[day_dict['day']] = []
+            for slide_info in day_dict['slides']:
+                slide_links[day_dict['day']].append((slide_info['title'], slide_info['link']))
     return slide_links
 
 
@@ -161,14 +172,32 @@ def write_badge_table(notebooks):
         "| - | --- | ---- |",
     ]
 
-    # Add each row of the table
-    for i, local_path in enumerate(notebooks, 1):
+    # Add intro
+    intro_file = [name for name in notebooks if 'Intro' in name]
+    if len(intro_file) == 1:
+        colab_badge = make_colab_badge(intro_file[0])
+        nbviewer_badge = make_nbviewer_badge(intro_file[0])
+        table_text.append(
+            f"| Intro | {colab_badge} | {nbviewer_badge} |"
+        )
 
+    # Add tutorials
+    for i, local_path in enumerate([name for name in notebooks if 'Tutorial' in name], 1):
         colab_badge = make_colab_badge(local_path)
         nbviewer_badge = make_nbviewer_badge(local_path)
         table_text.append(
             f"| Tutorial {i} | {colab_badge} | {nbviewer_badge} |"
         )
+
+    # Add outro
+    outro_file = [name for name in notebooks if 'Outro' in name]
+    if len(outro_file) == 1:
+        colab_badge = make_colab_badge(outro_file[0])
+        nbviewer_badge = make_nbviewer_badge(outro_file[0])
+        table_text.append(
+            f"| Outro | {colab_badge} | {nbviewer_badge} |"
+        )
+
     table_text.append("\n")
 
     return table_text
@@ -178,8 +207,11 @@ def get_student_links(instructor_notebooks):
     """Convert a list of instructor notebook paths to student versions."""
     student_notebooks = []
     for instructor_nb in instructor_notebooks:
-        day_path, nb_fname = os.path.split(instructor_nb)
-        student_notebooks.append(f"{day_path}/student/{nb_fname}")
+        if 'Tutorial' in instructor_nb:
+            day_path, nb_fname = os.path.split(instructor_nb)
+            student_notebooks.append(f"{day_path}/student/{nb_fname}")
+        else:
+            student_notebooks.append(instructor_nb)
     return student_notebooks
 
 
