@@ -19,18 +19,25 @@ def main():
 
     for m in materials:
         directory = f"{m['day']}_{''.join(m['name'].split())}"
-        chapter = {'file': f"tutorials/{directory}/intro_text.md",
+
+        # Make temporary chapter title file
+        with open(f"tutorials/{directory}/chapter_title.md",
+                  "w+") as title_file:
+            title_file.write(f"# {m['name']}")
+
+        chapter = {'file': f"tutorials/{directory}/chapter_title.md",
                    'title': f"{m['name']} ({m['day']})",
                    'sections': []}
         print(m['day'])
         part = m['category']
+        directory = f"tutorials/{m['day']}_{''.join(m['name'].split())}"
 
         # Generate intro video page
-        chapter = generate_page(m, directory, chapter, "Intro")
+        if os.path.exists(f"{directory}/{m['day']}_Intro.ipynb"):
+            chapter['sections'].append({'file': f"{directory}/{m['day']}_Intro.ipynb"})
 
         # Add tutorials
         for i in range(m['tutorials']):
-            directory = f"tutorials/{m['day']}_{''.join(m['name'].split())}"
             notebook = f"{m['day']}_Tutorial{i + 1}.ipynb"
             chapter['sections'].append({'file': f"{directory}/student/{notebook}"})
             # Pre process notebooks
@@ -38,7 +45,8 @@ def main():
             pre_process_notebook(notebook_file_path)
 
         # Generate outro video page
-        chapter = generate_page(m, f"{m['day']}_{''.join(m['name'].split())}", chapter, "Outro")
+        if os.path.exists(f"{directory}/{m['day']}_Outro.ipynb"):
+            chapter['sections'].append({'file': f"{directory}/{m['day']}_Outro.ipynb"})
 
         # Add further reading page
         chapter['sections'].append({'file': f"{directory}/further_reading.md"})
