@@ -102,7 +102,7 @@ def link_hidden_cells(content):
         if source.startswith("#") and '@title' not in source:
             header_level = source.count('#')
 
-        if '#@title' in source or '#@markdown' in source:
+        if '@title' in source or '@markdown' in source:
             if 'metadata' not in cell:
                 updated_cell['metadata'] = {}
             if 'tags' not in cell['metadata']:
