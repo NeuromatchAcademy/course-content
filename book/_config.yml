@@ -5,7 +5,7 @@
 
 #######################################################################################
 # Book settings
-title                       : Neuromatch Computational Neuroscience  # The title of the book. Will be placed in the left navbar.
+title                       : "Neuromatch Academy: Computational Neuroscience"  # The title of the book. Will be placed in the left navbar.
 author                      : Neuromatch  # The author of the book
 copyright                   : "2021"  # Copyright year to be placed in the footer
 logo                        : nma-logo-square-4xp.jpg  # A path to the book logo
@@ -15,13 +15,13 @@ only_build_toc_files        : true
 #######################################################################################
 # Execution settings
 execute:
-  execute_notebooks         : off # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+  execute_notebooks         : force # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
   cache                     : ""    # A path to the jupyter cache that will be used to store execution artifacts. Defaults to `_build/.jupyter_cache/`
   exclude_patterns          : []    # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
   timeout                   : 30    # The maximum time (in seconds) each notebook cell is allowed to run.
   run_in_temp               : false # If `True`, then a temporary directory will be created and used as the command working directory (cwd),
                                     # otherwise the notebook's parent directory will be the cwd.
-  allow_errors              : false # If `False`, when a code cell raises an error the execution is stopped, otherwise all cells are always run.
+  allow_errors              : true # If `False`, when a code cell raises an error the execution is stopped, otherwise all cells are always run.
   stderr_output             : show  # One of 'show', 'remove', 'remove-warn', 'warn', 'error', 'severe'
 
 # Parse and render settings
@@ -31,15 +31,31 @@ parse:
     - dollarmath
 
 #######################################################################################
+# HTML-specific settings
+html:
+  favicon                   : nma-logo-square-4xp.jpg  # A path to a favicon image
+  use_edit_page_button      : false  # Whether to add an "edit this page" button to pages. If `true`, repository information in repository: must be filled in
+  use_repository_button     : true  # Whether to add a link to your repository button
+  use_issues_button         : true  # Whether to add an "open an issue" button
+  extra_navbar              : Powered by <a href="https://jupyterbook.org">Jupyter Book</a>  # Will be displayed underneath the left navbar.
+  extra_footer              : ""  # Will be displayed underneath the footer.
+  google_analytics_id       : ""  # A GA id that can be used to track book views.
+  home_page_in_navbar       : true  # Whether to include your home page in the left Navigation Bar
+  baseurl                   : ""  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
+  comments:
+    hypothesis              : false
+    utterances              : false
+
+#######################################################################################
 # Launch button settings
 launch_buttons:
   notebook_interface        : classic  # The interface interactive links will activate ["classic", "jupyterlab"]
   binderhub_url             : ""  # The URL of the BinderHub (e.g., https://mybinder.org)
   jupyterhub_url            : ""  # The URL of the JupyterHub (e.g., https://datahub.berkeley.edu)
   thebe                     : false  # Add a thebe button to pages (requires the repository to run on Binder)
-  colab_url                 : https://colab.research.google.com # The URL of Google Colab (https://colab.research.google.com)
+  colab_url                 : "" # The URL of Google Colab (https://colab.research.google.com)
 
 repository:
-  url                       : https://github.com/NeuromatchAcademy/course_content  # The URL to your book's repository
+  url                       : https://github.com/NeuromatchAcademy/course-content  # The URL to your book's repository
   path_to_book              : book  # A path to your book's folder, relative to the repository root.
   branch                    : master  # Which branch of the repository should be used when creating links
