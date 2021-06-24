@@ -2,9 +2,6 @@ name: tutorial-readme-pr
 on: 
   pull_request:
     branches: master
-    paths:
-      - tutorials/slide_links.txt
-      - tutorials/youtube_playlists.txt
 
 jobs:
 
@@ -24,6 +21,10 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.7
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
 
       - name: Update READMEs
         run: python ci/generate_tutorial_readmes.py
