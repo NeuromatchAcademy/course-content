@@ -67,30 +67,25 @@ def main():
 
 
 def pre_process_notebook(file_path):
-    #try:
-    with open(file_path) as f:
-        content = nbformat.read(f, nbformat.NO_CONVERT)
-
-    pre_processed_content = open_in_colab_new_tab(content)
-    #pre_processed_content = hide_error_outputs(pre_processed_content)
-    pre_processed_content = link_hidden_cells(pre_processed_content)
-
-    with open(file_path, "w", encoding="utf-8") as write_notebook:
-        nbformat.write(pre_processed_content, write_notebook, version=nbformat.NO_CONVERT)
-    # except Exception:
-    #     print("Exception occurred while trying to pre_process file = {}. Skipping this file.".format(file_path))
-    #     traceback.print_exc()
+    try:
+        with open(file_path, encoding="utf-8") as read_notebook:
+            content = json.load(read_notebook)
+        pre_processed_content = open_in_colab_new_tab(content)
+        pre_processed_content = link_hidden_cells(pre_processed_content)
+        with open(file_path, "w", encoding="utf-8") as write_notebook:
+            json.dump(pre_processed_content, write_notebook, indent=1, ensure_ascii=False)
+    except Exception:
+        print("Exception occurred while trying to pre_process file = {}. Skipping this file.".format(file_path))
+        traceback.print_exc()
 
 
 def open_in_colab_new_tab(content):
     cells = content['cells']
-    parsed_html = BeautifulSoup(cells[0]['source'].split('\n')[0], "html.parser")
+    parsed_html = BeautifulSoup(cells[0]['source'][0], "html.parser")
     for anchor in parsed_html.findAll('a'):
         # Open in new tab
         anchor['target'] = '_blank'
-    source_list = cells[0]['source'].split('\n')
-    source_list[0] = str(parsed_html)
-    cells[0]['source'] = '\n'.join(source_list)
+    cells[0]['source'][0] = str(parsed_html)
     return content
 
 
@@ -103,7 +98,7 @@ def link_hidden_cells(content):
         updated_cell = updated_cells[i_updated_cell]
         if "source" not in cell:
             continue
-        source = cell['source'].split('\n')[0]
+        source = cell['source'][0]
 
         if source.startswith("#") and '@title' not in source:
             header_level = source.count('#')
@@ -135,29 +130,6 @@ def link_hidden_cells(content):
 
     content['cells'] = updated_cells
     return content
-
-def hide_error_outputs(content):
-
-    # Execute notebook
-    exec_kws = {"timeout": 600, "allow_errors": True}
-    executor = ExecutePreprocessor(**exec_kws)
-
-    executor.preprocess(content, resources={})
-
-    for cell in content['cells']:
-        if 'output' in cell:
-            check_for_error = any([cell['outputs'][i]['output_type']=='error' for i in range(len(cell['outputs']))])
-            if check_for_error:
-                if 'metadata' not in cell:
-                    cell['metadata'] = {}
-                if 'tags' not in cell['metadata']:
-                    cell['metadata']['tags'] = []
-
-                if "remove-output" not in cell['metadata']['tags']:
-                    cell['metadata']['tags'].append("remove-output")
-
-    return content
-
 
 if __name__ == '__main__':
     main()
