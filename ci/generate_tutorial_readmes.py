@@ -30,8 +30,11 @@ def main():
     day_anchors = {}
 
     day_paths = sorted(glob("tutorials/W?D?_*"))
-    for day_path in day_paths:
 
+    # Manually add bonus day
+    day_paths.insert(day_paths.index('tutorials/W2D1_DeepLearning')+1, 'tutorials/Bonus_Autoencoders')
+    for day_path in day_paths:
+        print(day_path)
         day_name = os.path.split(day_path)[-1]
         day_code, topic_code = day_name.split("_")
 
