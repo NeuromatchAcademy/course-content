@@ -122,6 +122,7 @@ def link_hidden_cells(content):
                         'metadata': {},
                         'source': ['#'*(header_level + 1) + ' ' + source.split('@title')[1]]}
                     updated_cells.insert(i_updated_cell, header_cell)
+                    header_level += 1
                     i_updated_cell += 1
         i_updated_cell += 1
 
