@@ -6,6 +6,7 @@ import traceback
 import json
 from bs4 import BeautifulSoup
 import nbformat
+from nbconvert.preprocessors import ExecutePreprocessor
 
 def main():
     with open('tutorials/materials.yml') as fh:
@@ -134,7 +135,24 @@ def link_hidden_cells(content):
     return content
 
 def hide_error_outputs(content):
-    return content
+
+    # Execute notebook
+    exec_kws = {"timeout": 600, "allow_errors": True}
+    executor = ExecutePreprocessor(**exec_kws)
+
+    executor.preprocess(content, resources={})
+
+    for cell in content['cells']:
+        check_for_error = any([cell['outputs'][i]['output_type']=='error' for i in range(len(cell['outputs']))])
+        if check_for_error:
+            if 'metadata' not in cell:
+                updated_cell['metadata'] = {}
+            if 'tags' not in cell['metadata']:
+                updated_cell['metadata']['tags'] = []
+
+            if "remove-output" not in cell['metadata']['tags']:
+                updated_cell['metadata']['tags'].append("remove-output")
+
 
 if __name__ == '__main__':
     main()
