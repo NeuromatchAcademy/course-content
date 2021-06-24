@@ -32,21 +32,23 @@ def main():
         part = m['category']
         directory = f"tutorials/{m['day']}_{''.join(m['name'].split())}"
 
-        # Generate intro video page
-        if os.path.exists(f"{directory}/{m['day']}_Intro.ipynb"):
-            chapter['sections'].append({'file': f"{directory}/{m['day']}_Intro.ipynb"})
+        # Add intro video page
+        notebook_file_path = f"{directory}/{m['day']}_Intro.ipynb"
+        if os.path.exists(notebook_file_path):
+            chapter['sections'].append({'file': notebook_file_path})
+            pre_process_notebook(notebook_file_path)
 
         # Add tutorials
         for i in range(m['tutorials']):
-            notebook = f"{m['day']}_Tutorial{i + 1}.ipynb"
-            chapter['sections'].append({'file': f"{directory}/student/{notebook}"})
-            # Pre process notebooks
-            notebook_file_path = f"{directory}/student/{notebook}"
+            notebook_file_path = f"{directory}/student/{m['day']}_Tutorial{i + 1}.ipynb"
+            chapter['sections'].append({'file': notebook_file_path})
             pre_process_notebook(notebook_file_path)
 
-        # Generate outro video page
-        if os.path.exists(f"{directory}/{m['day']}_Outro.ipynb"):
-            chapter['sections'].append({'file': f"{directory}/{m['day']}_Outro.ipynb"})
+        # Add outro video page
+        notebook_file_path = f"{directory}/{m['day']}_Outro.ipynb"
+        if os.path.exists(notebook_file_path):
+            chapter['sections'].append({'file': notebook_file_path})
+            pre_process_notebook(notebook_file_path)
 
         # Add further reading page
         chapter['sections'].append({'file': f"{directory}/further_reading.md"})
