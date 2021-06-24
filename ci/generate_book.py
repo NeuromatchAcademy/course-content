@@ -71,6 +71,7 @@ def pre_process_notebook(file_path):
         with open(file_path, encoding="utf-8") as read_notebook:
             content = json.load(read_notebook)
         pre_processed_content = open_in_colab_new_tab(content)
+        pre_processed_content = change_video_widths(pre_processed_content)
         pre_processed_content = link_hidden_cells(pre_processed_content)
         with open(file_path, "w", encoding="utf-8") as write_notebook:
             json.dump(pre_processed_content, write_notebook, indent=1, ensure_ascii=False)
@@ -129,6 +130,27 @@ def link_hidden_cells(content):
         i_updated_cell += 1
 
     content['cells'] = updated_cells
+    return content
+
+def change_video_widths(content):
+
+    for cell in content['cells']:
+        if 'YouTubeVideo' in ''.join(cell['source']):
+
+            for ind in range(len(cell['source'])):
+                # Change sizes
+                cell['source'][ind] = cell['source'][ind].replace('854', '730')
+                cell['source'][ind] = cell['source'][ind].replace('480', '410')
+
+        # Put slides in ipywidget so they don't overlap margin
+        if len(cell['source']) > 1 and 'IFrame' in cell['source'][1]:
+            slide_link = ''.join(cell['source']).split('f"')[1].split(", width")[0][:-1]
+            cell['source'] = ['# @markdown\n',
+                              'from IPython.display import IFrame\n',
+                              'out = widgets.Output()\n',
+                              'with out:\n',
+                              f'    display(IFrame(src=f"{slide_link}", width=730, height=410))\n',
+                              'display(out)']
     return content
 
 if __name__ == '__main__':
