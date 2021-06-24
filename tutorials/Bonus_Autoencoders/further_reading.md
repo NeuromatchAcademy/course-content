@@ -1,6 +1,4 @@
-# Deep Learning II 
-## Suggested Futher Readings:
-&nbsp;
+# Suggested further readings
 
 ### Machine learning and deep learning:
 
@@ -101,4 +99,3 @@ An Uncertain Future: Forecasting from Static Images using Variational Autoencode
 Generating Sequences With Recurrent Neural Networks by Graves https://arxiv.org/abs/1308.0850 (also see Four Experiments in
 Handwriting with a Neural Network https://distill.pub/2016/handwriting) 
 
-&nbsp;
