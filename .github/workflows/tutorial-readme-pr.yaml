@@ -24,6 +24,15 @@ jobs:
         with:
           python-version: 3.7
 
+      - name: Install CI tools
+        run: |
+          BRANCH=`python -c 'import os, re; m = re.search(r"nmaci:([\w-]+)", os.environ["COMMIT_MESSAGE"]); print("main" if m is None else m.group(1))'`
+          wget https://github.com/NeuromatchAcademy/nmaci/archive/refs/heads/$BRANCH.tar.gz
+          tar -xzf $BRANCH.tar.gz
+          mv nmaci-$BRANCH/scripts/ ci/
+          rm -r nmaci-$BRANCH
+          echo ci/ >> .gitignore
+
       - name: Update READMEs
         run: python ci/generate_tutorial_readmes.py
 
