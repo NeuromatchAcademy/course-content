@@ -1119,15 +1119,15 @@
 <div class="section" id="section-2-choosing-an-action">
 <h1>Section 2: Choosing an Action<a class="headerlink" href="#section-2-choosing-an-action" title="Permalink to this headline">¶</a></h1>
 <p>The first thing our agent needs to be able to do is choose which arm to pull. The strategy for choosing actions based on our expectations is called a <em>policy</em> (often denoted <span class="math notranslate nohighlight">\(\pi\)</span>). We could have a random policy – just pick an arm at random each time – though this doesn’t seem likely to be capable of optimizing our reward. We want some intentionality, and to do that we need a way of describing our beliefs about the arms’ reward potential. We do this with an action-value function</p>
-<div class="amsmath math notranslate nohighlight" id="equation-32759e63-4bc8-4fd9-a93d-d35afd5ae595">
-<span class="eqno">(192)<a class="headerlink" href="#equation-32759e63-4bc8-4fd9-a93d-d35afd5ae595" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ed5ad002-a175-4670-bfad-af73122c2b14">
+<span class="eqno">(192)<a class="headerlink" href="#equation-ed5ad002-a175-4670-bfad-af73122c2b14" title="Permalink to this equation">¶</a></span>\[\begin{align}
 q(a) = \mathbb{E} [r_{t} | a_{t} = a]
 \end{align}\]</div>
 <p>where the value <span class="math notranslate nohighlight">\(q\)</span> for taking action <span class="math notranslate nohighlight">\(a \in A\)</span> at time <span class="math notranslate nohighlight">\(t\)</span> is equal to the expected value of the reward <span class="math notranslate nohighlight">\(r_t\)</span> given that we took action <span class="math notranslate nohighlight">\(a\)</span> at that time. In practice, this is often represented as an array of values, where each action’s value is a different element in the array.</p>
 <p>Great, now that we have a way to describe our beliefs about the values each action should return, let’s come up with a policy.</p>
 <p>An obvious choice would be to take the action with the highest expected value. This is referred to as the <em>greedy</em> policy</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3497f9b7-b669-44c9-9b55-4e664522e5e9">
-<span class="eqno">(193)<a class="headerlink" href="#equation-3497f9b7-b669-44c9-9b55-4e664522e5e9" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ab0d0873-e029-4ee2-83d8-ecee03245331">
+<span class="eqno">(193)<a class="headerlink" href="#equation-ab0d0873-e029-4ee2-83d8-ecee03245331" title="Permalink to this equation">¶</a></span>\[\begin{align}
 a_{t} = \text{argmax}_{a} \; q_{t} (a)
 \end{align}\]</div>
 <p>where our choice action is the one that maximizes the current value function.</p>
@@ -1138,8 +1138,8 @@ a_{t} = \text{argmax}_{a} \; q_{t} (a)
 <p>This is the exploitation-exploration dilemma: do you go with you best choice now, or risk the less certain option with the hope of finding something better. Too much exploration, however, means you may end up with a sub-optimal reward once it’s time to stop.</p>
 <p>In order to avoid getting stuck in local minima while also maximizing reward, effective policies need some way to balance between these two aims.</p>
 <p>A simple extension to our greedy policy is to add some randomness. For instance, a coin flip – heads we take the best choice now, tails we pick one at random. This is referred to as the <span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy policy:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-47a0b19e-45a3-4406-9a39-6617fb8e1350">
-<span class="eqno">(194)<a class="headerlink" href="#equation-47a0b19e-45a3-4406-9a39-6617fb8e1350" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9484110a-fead-4c9f-8d58-e1384de33f84">
+<span class="eqno">(194)<a class="headerlink" href="#equation-9484110a-fead-4c9f-8d58-e1384de33f84" title="Permalink to this equation">¶</a></span>\[\begin{align}
 P (a_{t} = a) = 
         \begin{cases}
         1 - \epsilon + \epsilon/N    &amp; \quad \text{if } a_{t} = \text{argmax}_{a} \; q_{t} (a) \\
@@ -1222,14 +1222,14 @@ P (a_{t} = a) =
 <h1>Section 3: Learning from Rewards<a class="headerlink" href="#section-3-learning-from-rewards" title="Permalink to this headline">¶</a></h1>
 <p>Now that we have a policy for deciding what to do, how do we learn from our actions?</p>
 <p>One way to do this is just keep a record of every result we ever got and use the averages for each action. If we have a potentially very long running episode, the computational cost of keeping all these values and recomputing the mean over and over again isn’t ideal. Instead we can use a streaming mean calculation, which looks like this:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1f4b40ad-b957-4411-9ec6-03e058040536">
-<span class="eqno">(195)<a class="headerlink" href="#equation-1f4b40ad-b957-4411-9ec6-03e058040536" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7e87249b-bd17-49b8-9928-88652135bc87">
+<span class="eqno">(195)<a class="headerlink" href="#equation-7e87249b-bd17-49b8-9928-88652135bc87" title="Permalink to this equation">¶</a></span>\[\begin{align}
 q_{t+1}(a) \leftarrow q_{t}(a) + \frac{1}{n_t} (r_{t} - q_{t}(a))
 \end{align}\]</div>
 <p>where our action-value function <span class="math notranslate nohighlight">\(q_t(a)\)</span> is the mean of the rewards seen so far, <span class="math notranslate nohighlight">\(n_t\)</span> is the number of actions taken by time <span class="math notranslate nohighlight">\(t\)</span>, and <span class="math notranslate nohighlight">\(r_t\)</span> is the reward just received for taking action <span class="math notranslate nohighlight">\(a\)</span>.</p>
 <p>This still requires us to remember how many actions we’ve taken, so let’s generalize this a bit further and replace the action total with a general parameter <span class="math notranslate nohighlight">\(\alpha\)</span>, which we will call the learning rate</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cbc5108e-ebf9-4da6-bcdc-c01d2312655e">
-<span class="eqno">(196)<a class="headerlink" href="#equation-cbc5108e-ebf9-4da6-bcdc-c01d2312655e" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-da0d8f5f-5884-4f9f-bd7d-5e2d52d97dd5">
+<span class="eqno">(196)<a class="headerlink" href="#equation-da0d8f5f-5884-4f9f-bd7d-5e2d52d97dd5" title="Permalink to this equation">¶</a></span>\[\begin{align}
 q_{t+1}(a) \leftarrow q_{t}(a) + \alpha (r_{t} - q_{t}(a)).
 \end{align}\]</div>
 <div class="section" id="exercise-2-updating-action-values">

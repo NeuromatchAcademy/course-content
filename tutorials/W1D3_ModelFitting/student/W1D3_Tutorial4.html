@@ -1093,37 +1093,37 @@
 <h1>Section 1: Multiple Linear Regression<a class="headerlink" href="#section-1-multiple-linear-regression" title="Permalink to this headline">¶</a></h1>
 <p>Now that we have considered the univariate case and how to produce confidence intervals for our estimator, we turn to the general linear regression case, where we can have more than one regressor, or feature, in our input.</p>
 <p>Recall that our original univariate linear model was given as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8ba999e0-fb4a-45f0-a6d7-3343e954602b">
-<span class="eqno">(58)<a class="headerlink" href="#equation-8ba999e0-fb4a-45f0-a6d7-3343e954602b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7a0a4e1f-76a9-43e1-b501-0037136b23bd">
+<span class="eqno">(58)<a class="headerlink" href="#equation-7a0a4e1f-76a9-43e1-b501-0037136b23bd" title="Permalink to this equation">¶</a></span>\[\begin{align}
 y = \theta x + \epsilon
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\theta\)</span> is the slope and <span class="math notranslate nohighlight">\(\epsilon\)</span> some noise. We can easily extend this to the multivariate scenario by adding another parameter for each additional feature</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5579fa67-9510-4e45-a6c4-d590ab3ee022">
-<span class="eqno">(59)<a class="headerlink" href="#equation-5579fa67-9510-4e45-a6c4-d590ab3ee022" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ae1dcdee-1780-40cc-9afc-07e48fcbc098">
+<span class="eqno">(59)<a class="headerlink" href="#equation-ae1dcdee-1780-40cc-9afc-07e48fcbc098" title="Permalink to this equation">¶</a></span>\[\begin{align}
 y = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + ... +\theta_d x_d + \epsilon
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\theta_0\)</span> is the intercept and <span class="math notranslate nohighlight">\(d\)</span> is the number of features (it is also the dimensionality of our input).</p>
 <p>We can condense this succinctly using vector notation for a single data point</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fee52918-5d94-4d59-bede-d8f1f3779e7d">
-<span class="eqno">(60)<a class="headerlink" href="#equation-fee52918-5d94-4d59-bede-d8f1f3779e7d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-01bbb688-7ede-4823-9bc5-2d90e270e237">
+<span class="eqno">(60)<a class="headerlink" href="#equation-01bbb688-7ede-4823-9bc5-2d90e270e237" title="Permalink to this equation">¶</a></span>\[\begin{align}
 y_i = \boldsymbol{\theta}^{\top}\mathbf{x}_i + \epsilon
 \end{align}\]</div>
 <p>and fully in matrix form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-276a1589-bf7e-40ee-a3ff-91a893356cb3">
-<span class="eqno">(61)<a class="headerlink" href="#equation-276a1589-bf7e-40ee-a3ff-91a893356cb3" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0bab7d63-c1dd-41b4-ab5b-1c01504c2077">
+<span class="eqno">(61)<a class="headerlink" href="#equation-0bab7d63-c1dd-41b4-ab5b-1c01504c2077" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mathbf{y} = \mathbf{X}\boldsymbol{\theta} + \mathbf{\epsilon}
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> is a vector of measurements, <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> is a matrix containing the feature values (columns) for each input sample (rows), and <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> is our parameter vector.</p>
 <p>This matrix <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> is often referred to as the “<a class="reference external" href="https://en.wikipedia.org/wiki/Design_matrix">design matrix</a>”.</p>
 <p>For this tutorial we will focus on the two-dimensional case (<span class="math notranslate nohighlight">\(d=2\)</span>), which allows us to easily visualize our results. As an example, think of a situation where a scientist records the spiking response of a retinal ganglion cell to patterns of light signals that vary in contrast and in orientation. Then contrast and orientation values can be used as features / regressors to predict the cells response.</p>
 <p>In this case our model can be writen as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5188b4cc-d5fc-4d53-bf4a-bc4b2480150d">
-<span class="eqno">(62)<a class="headerlink" href="#equation-5188b4cc-d5fc-4d53-bf4a-bc4b2480150d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7eac5eaf-dc7a-446c-9e00-07f99a7d5c90">
+<span class="eqno">(62)<a class="headerlink" href="#equation-7eac5eaf-dc7a-446c-9e00-07f99a7d5c90" title="Permalink to this equation">¶</a></span>\[\begin{align}
 y = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \epsilon
 \end{align}\]</div>
 <p>or in matrix form where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-62270c8c-11f4-4b12-a9bf-9893b6928ffc">
-<span class="eqno">(63)<a class="headerlink" href="#equation-62270c8c-11f4-4b12-a9bf-9893b6928ffc" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-caac8da4-2432-417e-b119-b29d9ee92192">
+<span class="eqno">(63)<a class="headerlink" href="#equation-caac8da4-2432-417e-b119-b29d9ee92192" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mathbf{X} = 
 \begin{bmatrix}
 1 &amp; x_{1,1} &amp; x_{1,2} \\
@@ -1175,13 +1175,13 @@ y = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \epsilon
 </div>
 </div>
 <p>Now that we have our dataset, we want to find an optimal vector of paramters <span class="math notranslate nohighlight">\(\boldsymbol{\hat\theta}\)</span>. Recall our analytic solution to minimizing MSE for a single regressor:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9590231d-7ddf-4593-abc3-8e643cd94ec8">
-<span class="eqno">(64)<a class="headerlink" href="#equation-9590231d-7ddf-4593-abc3-8e643cd94ec8" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-10a3b453-ec2c-441c-92c7-0c702c26cc11">
+<span class="eqno">(64)<a class="headerlink" href="#equation-10a3b453-ec2c-441c-92c7-0c702c26cc11" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat\theta = \frac{\sum_{i=1}^N x_i y_i}{\sum_{i=1}^N x_i^2}.
 \end{align}\]</div>
 <p>The same holds true for the multiple regressor case, only now expressed in matrix form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-77929c29-5a7e-41f5-a898-7f45dcfc4002">
-<span class="eqno">(65)<a class="headerlink" href="#equation-77929c29-5a7e-41f5-a898-7f45dcfc4002" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ed14ddc9-daa6-4e66-ad8c-e7160d0a4ae2">
+<span class="eqno">(65)<a class="headerlink" href="#equation-ed14ddc9-daa6-4e66-ad8c-e7160d0a4ae2" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \boldsymbol{\hat\theta} = (\mathbf{X}^\top\mathbf{X})^{-1}\mathbf{X}^\top\mathbf{y}.
 \end{align}\]</div>
 <p>This is called the <a class="reference external" href="https://en.wikipedia.org/wiki/Ordinary_least_squares">ordinary least squares</a> (OLS) estimator.</p>
