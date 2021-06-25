@@ -27,7 +27,6 @@
 
 ## W0D1 - Python Workshop1
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18M8aIPAL3n2q7D_AbbuPPtM)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W0D1_PythonWorkshop1/student/W0D1_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org//github/NeuromatchAcademy/course-content/blob/master/tutorials/W0D1_PythonWorkshop1/student/W0D1_Tutorial1.ipynb?flush_cache=true) |
@@ -37,7 +36,6 @@
 
 ## W0D2 - Python Workshop2
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18Oi40BY9HyzVlJFHxhph6Gy)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W0D2_PythonWorkshop2/student/W0D2_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org//github/NeuromatchAcademy/course-content/blob/master/tutorials/W0D2_PythonWorkshop2/student/W0D2_Tutorial1.ipynb?flush_cache=true) |
@@ -47,7 +45,6 @@
 
 ## W0D3 - Linear Algebra
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18Oz3lb0fo06k0cAWk54rsoE)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W0D3_LinearAlgebra/student/W0D3_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org//github/NeuromatchAcademy/course-content/blob/master/tutorials/W0D3_LinearAlgebra/student/W0D3_Tutorial1.ipynb?flush_cache=true) |
@@ -59,7 +56,6 @@
 
 ## W0D4 - Calculus
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18NTiaHYRylxN0gSm1PlQ15N)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W0D4_Calculus/student/W0D4_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org//github/NeuromatchAcademy/course-content/blob/master/tutorials/W0D4_Calculus/student/W0D4_Tutorial1.ipynb?flush_cache=true) |
@@ -71,7 +67,6 @@
 
 ## W0D5 - Statistics
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18MDDH09-kvRoU8XANuCJvGg)
 |   | Run | View |
 | - | --- | ---- |
 | Tutorial 1 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W0D5_Statistics/student/W0D5_Tutorial1.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org//github/NeuromatchAcademy/course-content/blob/master/tutorials/W0D5_Statistics/student/W0D5_Tutorial1.ipynb?flush_cache=true) |
@@ -82,7 +77,6 @@
 
 ## W1D1 - Model Types
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18ObAiSOZ42YBwOQIKNvspeI)
 
 Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/rbx2a/?direct%26mode=render%26action=download%26mode=render) | [Tutorials](https://mfr.ca-1.osf.io/render?url=https://osf.io/6dxwe/?direct%26mode=render%26action=download%26mode=render) | [Outro](https://mfr.ca-1.osf.io/render?url=https://osf.io/9hkg2/?direct%26mode=render%26action=download%26mode=render) | [Reading](https://mfr.ca-1.osf.io/render?url=https://osf.io/2esh5/?direct%26mode=render%26action=download%26mode=render) | [TA](https://mfr.ca-1.osf.io/render?url=https://osf.io/5vj73/?direct%26mode=render%26action=download%26mode=render)
 
@@ -102,7 +96,6 @@ Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/rbx2a/?direct%
 
 ## W1D2 - Modeling Practice
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18PxZse6mPHnxviOnp5bMs-g)
 
 Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/kmwus/?direct%26mode=render%26action=download%26mode=render) | [Tutorials](https://mfr.ca-1.osf.io/render?url=https://osf.io/kygfn/?direct%26mode=render%26action=download%26mode=render) | [Outro](https://mfr.ca-1.osf.io/render?url=https://osf.io/agrp6/?direct%26mode=render%26action=download%26mode=render) | [Reading](https://mfr.ca-1.osf.io/render?url=https://osf.io/2esh5/?direct%26mode=render%26action=download%26mode=render) | [TA](https://mfr.ca-1.osf.io/render?url=https://osf.io/v5emn/?direct%26mode=render%26action=download%26mode=render)
 
@@ -117,7 +110,6 @@ Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/kmwus/?direct%
 
 ## W1D3 - Model Fitting
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18MqTMnc_mMiuawnczEa8xm9)
 
 Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/sqcvz/?direct%26mode=render%26action=download%26mode=render) | [Tutorials](https://mfr.ca-1.osf.io/render?url=https://osf.io/2mkq4/?direct%26mode=render%26action=download%26mode=render) | [Outro](https://mfr.ca-1.osf.io/render?url=https://osf.io/xq4av/?direct%26mode=render%26action=download%26mode=render) | [Reading](https://mfr.ca-1.osf.io/render?url=https://osf.io/bea9f/?direct%26mode=render%26action=download%26mode=render)
 
@@ -140,7 +132,6 @@ Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/sqcvz/?direct%
 
 ## W1D4 - Generalized Linear Models
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18NQvqJOvyUxeaOwuEICnWB6)
 
 Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/qxfz9/?direct%26mode=render%26action=download%26mode=render) | [Tutorials](https://mfr.ca-1.osf.io/render?url=https://osf.io/upyjz/?direct%26mode=render%26action=download%26mode=render) | [Outro](https://mfr.ca-1.osf.io/render?url=https://osf.io/pzw7s/?direct%26mode=render%26action=download%26mode=render) | [Reading](https://mfr.ca-1.osf.io/render?url=https://osf.io/8sqhc/?direct%26mode=render%26action=download%26mode=render)
 
@@ -159,7 +150,6 @@ Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/qxfz9/?direct%
 
 ## W1D5 - Dimensionality Reduction
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18N0E0Bx-ZueacF2oRr5eEpU)
 
 Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/khbwu/?direct%26mode=render%26action=download%26mode=render) | [Tutorials](https://mfr.ca-1.osf.io/render?url=https://osf.io/kaq2x/?direct%26mode=render%26action=download%26mode=render) | [Outro](https://mfr.ca-1.osf.io/render?url=https://osf.io/763p2/?direct%26mode=render%26action=download%26mode=render) | [Reading](https://mfr.ca-1.osf.io/render?url=https://osf.io/sjqg5/?direct%26mode=render%26action=download%26mode=render)
 
@@ -180,7 +170,6 @@ Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/khbwu/?direct%
 
 ## W2D1 - Deep Learning
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18PZ2uw0p7G4EkzjzqP8l0Eg)
 
 Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/jw829/?direct%26mode=render%26action=download%26mode=render) | [Tutorials](https://mfr.ca-1.osf.io/render?url=https://osf.io/fsqhr/?direct%26mode=render%26action=download%26mode=render) | [Outro](https://mfr.ca-1.osf.io/render?url=https://osf.io/z5g93/?direct%26mode=render%26action=download%26mode=render) | [Reading](https://mfr.ca-1.osf.io/render?url=https://osf.io/w6dfq/?direct%26mode=render%26action=download%26mode=render)
 
@@ -200,7 +189,6 @@ Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/jw829/?direct%
 
 ## W2D2 - Linear Systems
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18NamPEHJnnljSC-4hWGvsJK)
 
 Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/vx5ny/?direct%26mode=render%26action=download%26mode=render) | [Tutorials](https://mfr.ca-1.osf.io/render?url=https://osf.io/snv4m/?direct%26mode=render%26action=download%26mode=render) | [Outro](https://mfr.ca-1.osf.io/render?url=https://osf.io/dx6je/?direct%26mode=render%26action=download%26mode=render) | [Reading](https://mfr.ca-1.osf.io/render?url=https://osf.io/dcrnj/?direct%26mode=render%26action=download%26mode=render)
 
@@ -221,7 +209,6 @@ Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/vx5ny/?direct%
 
 ## W2D3 - Biological Neuron Models
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18MCEdPJQ7gdnqP-Z0Tkmcjy)
 
 Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/gyfr2/?direct%26mode=render%26action=download%26mode=render) | [Tutorials](https://mfr.ca-1.osf.io/render?url=https://osf.io/8djsm/?direct%26mode=render%26action=download%26mode=render) | [Outro](https://mfr.ca-1.osf.io/render?url=https://osf.io/agpmt/?direct%26mode=render%26action=download%26mode=render) | [Reading](https://mfr.ca-1.osf.io/render?url=https://osf.io/cd5u8/?direct%26mode=render%26action=download%26mode=render)
 
@@ -242,7 +229,6 @@ Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/gyfr2/?direct%
 
 ## W2D4 - Dynamic Networks
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18PrZb52EVhNgrfPjLF0OPEJ)
 
 Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/mdve5/?direct%26mode=render%26action=download%26mode=render) | [Tutorials](https://mfr.ca-1.osf.io/render?url=https://osf.io/nvuty/?direct%26mode=render%26action=download%26mode=render) | [Outro](https://mfr.ca-1.osf.io/render?url=https://osf.io/6qtxn/?direct%26mode=render%26action=download%26mode=render) | [Reading](https://mfr.ca-1.osf.io/render?url=https://osf.io/zq94w/?direct%26mode=render%26action=download%26mode=render)
 
@@ -261,7 +247,6 @@ Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/mdve5/?direct%
 
 ## W3D1 - Bayesian Decisions
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18PTkIw6eezzVM0UmrBzwMok)
 
 Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/xam4w/?direct%26mode=render%26action=download%26mode=render) | [Tutorials](https://mfr.ca-1.osf.io/render?url=https://osf.io/sqnd5/?direct%26mode=render%26action=download%26mode=render) | [Outro](https://mfr.ca-1.osf.io/render?url=https://osf.io/cvbu7/?direct%26mode=render%26action=download%26mode=render) | [Reading](https://mfr.ca-1.osf.io/render?url=https://osf.io/3sqpy/?direct%26mode=render%26action=download%26mode=render)
 
@@ -281,7 +266,6 @@ Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/xam4w/?direct%
 
 ## W3D2 - Hidden Dynamics
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18NaQb7HyKp-O3Ag5JJ9MmXi)
 
 Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/8u92f/?direct%26mode=render%26action=download%26mode=render) | [Tutorials](https://mfr.ca-1.osf.io/render?url=https://osf.io/rh23s/?direct%26mode=render%26action=download%26mode=render) | [Outro](https://mfr.ca-1.osf.io/render?url=https://osf.io/nqcy3/?direct%26mode=render%26action=download%26mode=render) | [Reading](https://mfr.ca-1.osf.io/render?url=https://osf.io/4wpkf/?direct%26mode=render%26action=download%26mode=render)
 
@@ -302,7 +286,6 @@ Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/8u92f/?direct%
 
 ## W3D3 - Optimal Control
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18NSMbvuDS2WaXLWctg3QArY)
 
 Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/2uc6v/?direct%26mode=render%26action=download%26mode=render) | [Tutorials](https://mfr.ca-1.osf.io/render?url=https://osf.io/8j5rs/?direct%26mode=render%26action=download%26mode=render) | [Outro](https://mfr.ca-1.osf.io/render?url=https://osf.io/bs3ge/?direct%26mode=render%26action=download%26mode=render) | [Reading](https://mfr.ca-1.osf.io/render?url=https://osf.io/qrs39/?direct%26mode=render%26action=download%26mode=render)
 
@@ -321,7 +304,6 @@ Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/2uc6v/?direct%
 
 ## W3D4 - Reinforcement Learning
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18P7mSCMDbLiTMdo_7eRvdjl)
 
 Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/cpxqn/?direct%26mode=render%26action=download%26mode=render) | [Tutorials](https://mfr.ca-1.osf.io/render?url=https://osf.io/2jzdu/?direct%26mode=render%26action=download%26mode=render) | [Outro](https://mfr.ca-1.osf.io/render?url=https://osf.io/pmw8z/?direct%26mode=render%26action=download%26mode=render) | [Reading](https://mfr.ca-1.osf.io/render?url=https://osf.io/fvjwe/?direct%26mode=render%26action=download%26mode=render)
 
@@ -342,7 +324,6 @@ Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/cpxqn/?direct%
 
 ## W3D5 - Network Causality
 
-[YouTube Playlist](https://www.youtube.com/playlist?list=PLkBQOLLbi18P46LiVj6hCd4w1SLpVJo63)
 
 Slides: [Intro](https://mfr.ca-1.osf.io/render?url=https://osf.io/fsxkt/?direct%26mode=render%26action=download%26mode=render) | [Tutorials](https://mfr.ca-1.osf.io/render?url=https://osf.io/gp4m9/?direct%26mode=render%26action=download%26mode=render) | [Outro](https://mfr.ca-1.osf.io/render?url=https://osf.io/acxqf/?direct%26mode=render%26action=download%26mode=render) | [Reading](https://mfr.ca-1.osf.io/render?url=https://osf.io/5kbrs/?direct%26mode=render%26action=download%26mode=render)
 
