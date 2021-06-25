@@ -4,6 +4,11 @@ on:
   push:
     branches: master
 
+env:
+  NB_KERNEL: python
+  NMA_REPO: course-content
+  NMA_MAIN_BRANCH: master
+
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
   build-and-deploy-book:
@@ -22,6 +27,17 @@ jobs:
         with:
           python-version: 3.7
 
+      - name: Install CI tools
+        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
+        run: |
+          BRANCH=`python -c 'import os, re; m = re.search(r"nmaci:([\w-]+)", os.environ["COMMIT_MESSAGE"]); print("main" if m is None else m.group(1))'`
+          wget https://github.com/NeuromatchAcademy/nmaci/archive/refs/heads/$BRANCH.tar.gz
+          tar -xzf $BRANCH.tar.gz
+          pip install -r nmaci-$BRANCH/requirements.txt
+          mv nmaci-$BRANCH/scripts/ ci/
+          rm -r nmaci-$BRANCH
+          echo ci/ >> .gitignore
+
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
@@ -32,6 +48,7 @@ jobs:
           python ci/generate_book.py
           ln -s ../tutorials book/tutorials
           jupyter-book build book
+          python ci/parse_html_for_errors.py
 
       - name: Commit book
         run: |
