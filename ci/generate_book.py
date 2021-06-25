@@ -32,21 +32,16 @@ def main():
         part = m['category']
         directory = f"tutorials/{m['day']}_{''.join(m['name'].split())}"
 
-        # Add intro video page
-        notebook_file_path = f"{directory}/{m['day']}_Intro.ipynb"
-        if os.path.exists(notebook_file_path):
-            chapter['sections'].append({'file': notebook_file_path})
-            pre_process_notebook(notebook_file_path)
+        # Make list of notebook sections
+        notebook_list = []
+        notebook_list += [f"{directory}/{m['day']}_Intro.ipynb"] if os.path.exists(
+            f"{directory}/{m['day']}_Intro.ipynb") else []
+        notebook_list += [f"{directory}/student/{m['day']}_Tutorial{i + 1}.ipynb" for i in range(m['tutorials'])]
+        notebook_list += [f"{directory}/{m['day']}_Outro.ipynb"] if os.path.exists(
+            f"{directory}/{m['day']}_Outro.ipynb") else []
 
-        # Add tutorials
-        for i in range(m['tutorials']):
-            notebook_file_path = f"{directory}/student/{m['day']}_Tutorial{i + 1}.ipynb"
-            chapter['sections'].append({'file': notebook_file_path})
-            pre_process_notebook(notebook_file_path)
-
-        # Add outro video page
-        notebook_file_path = f"{directory}/{m['day']}_Outro.ipynb"
-        if os.path.exists(notebook_file_path):
+        # Add and process all notebooks
+        for notebook_file_path in notebook_list:
             chapter['sections'].append({'file': notebook_file_path})
             pre_process_notebook(notebook_file_path)
 
