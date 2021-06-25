@@ -6,6 +6,7 @@ on:
 
 env:
   NB_KERNEL: python
+  NMA_REPO: course-content
   NMA_MAIN_BRANCH: master
 
 jobs:
@@ -43,12 +44,6 @@ jobs:
           mv nmaci-$BRANCH/scripts/ ci/
           rm -r nmaci-$BRANCH
           echo ci/ >> .gitignore
-
-      - name: Install dependencies
-        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
-        run: |
-          python -m pip install --upgrade pip wheel
-          pip install -r requirements.txt
 
       - name: Install XKCD fonts
         if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
