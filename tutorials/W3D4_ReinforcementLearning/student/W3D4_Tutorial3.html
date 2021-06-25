@@ -1301,14 +1301,14 @@
 <h1>Section 2: Q-Learning<a class="headerlink" href="#section-2-q-learning" title="Permalink to this headline">¶</a></h1>
 <p>Now that we have our environment, how can we solve it?</p>
 <p>One of the most famous algorithms for estimating action values (aka Q-values) is the Temporal Differences (TD) <strong>control</strong> algorithm known as <em>Q-learning</em> (Watkins, 1989).</p>
-<div class="amsmath math notranslate nohighlight" id="equation-731a1b49-585d-415c-bbf5-7cdeeee12bd7">
-<span class="eqno">(197)<a class="headerlink" href="#equation-731a1b49-585d-415c-bbf5-7cdeeee12bd7" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-255de19b-5435-47ee-b7d2-9f6f47f09f8a">
+<span class="eqno">(197)<a class="headerlink" href="#equation-255de19b-5435-47ee-b7d2-9f6f47f09f8a" title="Permalink to this equation">¶</a></span>\[\begin{align}
 Q(s_t,a_t) \leftarrow Q(s_t,a_t) + \alpha \big(r_t + \gamma\max_\limits{a} Q(s_{t+1},a_{t+1}) - Q(s_t,a_t)\big)
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(Q(s,a)\)</span> is the value function for action <span class="math notranslate nohighlight">\(a\)</span> at state <span class="math notranslate nohighlight">\(s\)</span>, <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate, <span class="math notranslate nohighlight">\(r\)</span> is the reward, and <span class="math notranslate nohighlight">\(\gamma\)</span> is the temporal discount rate.</p>
 <p>The expression <span class="math notranslate nohighlight">\(r_t + \gamma\max_\limits{a} Q(s_{t+1},a_{t+1})\)</span> is referred to as the TD target while the full expression</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f1d28350-1157-40c7-a54e-f542271637ed">
-<span class="eqno">(198)<a class="headerlink" href="#equation-f1d28350-1157-40c7-a54e-f542271637ed" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e0c33772-0c85-405c-87e8-9b52868579e5">
+<span class="eqno">(198)<a class="headerlink" href="#equation-e0c33772-0c85-405c-87e8-9b52868579e5" title="Permalink to this equation">¶</a></span>\[\begin{align}
 r_t + \gamma\max_\limits{a} Q(s_{t+1},a_{t+1}) - Q(s_t,a_t),
 \end{align}\]</div>
 <p>i.e. the difference between the TD target and the current Q-value, is referred to as the TD error, or reward prediction error.</p>
@@ -1411,8 +1411,8 @@ r_t + \gamma\max_\limits{a} Q(s_{t+1},a_{t+1}) - Q(s_t,a_t),
 <div class="section" id="sarsa">
 <h2>SARSA<a class="headerlink" href="#sarsa" title="Permalink to this headline">¶</a></h2>
 <p>An alternative to Q-learning, the SARSA algorithm also estimates action values. However, rather than estimating the optimal (off-policy) values, SARSA estimates the <strong>on-policy</strong> action value, i.e. the cumulative future reward that would be obtained if the agent behaved according to its current beliefs.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d379a73d-cd12-4df8-ad64-10008f8728eb">
-<span class="eqno">(199)<a class="headerlink" href="#equation-d379a73d-cd12-4df8-ad64-10008f8728eb" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0bf0480d-6f12-41bc-b16e-39efd37f6c07">
+<span class="eqno">(199)<a class="headerlink" href="#equation-0bf0480d-6f12-41bc-b16e-39efd37f6c07" title="Permalink to this equation">¶</a></span>\[\begin{align}
 Q(s_t,a_t) \leftarrow Q(s_t,a_t) + \alpha \big(r_t + \gamma Q(s_{t+1},a_{t+1}) - Q(s_t,a_t)\big)
 \end{align}\]</div>
 <p>where, once again, <span class="math notranslate nohighlight">\(Q(s,a)\)</span> is the value function for action <span class="math notranslate nohighlight">\(a\)</span> at state <span class="math notranslate nohighlight">\(s\)</span>, <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate, <span class="math notranslate nohighlight">\(r\)</span> is the reward, and <span class="math notranslate nohighlight">\(\gamma\)</span> is the temporal discount rate.</p>

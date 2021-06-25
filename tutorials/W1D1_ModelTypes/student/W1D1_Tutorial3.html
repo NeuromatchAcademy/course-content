@@ -1097,8 +1097,8 @@
 <p>Neurons can only fire so often in a fixed period of time, as the act of emitting a spike consumes energy that is depleted and must eventually be replenished. To communicate effectively for downstream computation, the neuron would need to make good use of its limited spiking capability. This becomes an optimization problem:</p>
 <p>What is the optimal way for a neuron to fire in order to maximize its ability to communicate information?</p>
 <p>In order to explore this question, we first need to have a quantifiable measure for information. Shannon introduced the concept of entropy to do just that, and defined it as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-991e8369-ef9a-4c6f-b8b2-d5ce4d7807c6">
-<span class="eqno">(36)<a class="headerlink" href="#equation-991e8369-ef9a-4c6f-b8b2-d5ce4d7807c6" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-99c47320-3030-40fc-86ea-813c78697361">
+<span class="eqno">(36)<a class="headerlink" href="#equation-99c47320-3030-40fc-86ea-813c78697361" title="Permalink to this equation">¶</a></span>\[\begin{align}
   H_b(X) &amp;= -\sum_{x\in X} p(x) \log_b p(x)
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(H\)</span> is entropy measured in units of base <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(p(x)\)</span> is the probability of observing the event <span class="math notranslate nohighlight">\(x\)</span> from the set of all possible events in <span class="math notranslate nohighlight">\(X\)</span>. See the Appendix for a more detailed look at how this equation was derived.</p>
@@ -1225,8 +1225,8 @@
 <p><span class="math notranslate nohighlight">\(-(0.2 \log_2 0.2 + 0.8\log_2 0.8)\approx 0.72\)</span></p>
 <p>Try changing the definition of the number and weighting of peaks, and see how the entropy varies.</p>
 <p>If we split the probability mass among even more points, the entropy continues to increase. Let’s derive the general form for <span class="math notranslate nohighlight">\(N\)</span> points of equal mass, where <span class="math notranslate nohighlight">\(p_i=p=1/N\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c7c2ff40-e7fc-474d-8605-733badedcfcc">
-<span class="eqno">(37)<a class="headerlink" href="#equation-c7c2ff40-e7fc-474d-8605-733badedcfcc" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4dfba15e-5f38-420c-b105-81b3f8294ac0">
+<span class="eqno">(37)<a class="headerlink" href="#equation-4dfba15e-5f38-420c-b105-81b3f8294ac0" title="Permalink to this equation">¶</a></span>\[\begin{align}
  -\sum_i p_i \log_b p_i&amp;= -\sum_i^N \frac{1}{N} \log_b \frac{1}{N}\\
                        &amp;= -\log_b \frac{1}{N} \\
                        &amp;= \log_b N
@@ -1347,8 +1347,8 @@
 </div>
 <p>In the previous example we created the PMFs by hand to illustrate idealized scenarios. How would we compute them from data recorded from actual neurons?</p>
 <p>One way is to convert the ISI histograms we’ve previously computed into discrete probability distributions using the following equation:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-90803962-b9c3-4ec8-a3b1-06ca88eaca61">
-<span class="eqno">(38)<a class="headerlink" href="#equation-90803962-b9c3-4ec8-a3b1-06ca88eaca61" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-095f83e2-0408-4ed3-8fa5-f03b87d494aa">
+<span class="eqno">(38)<a class="headerlink" href="#equation-095f83e2-0408-4ed3-8fa5-f03b87d494aa" title="Permalink to this equation">¶</a></span>\[\begin{align}
 p_i = \frac{n_i}{\sum\nolimits_{i}n_i}
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(p_i\)</span> is the probability of an ISI falling within a particular interval <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(n_i\)</span> is the count of how many ISIs were observed in that interval.</p>
@@ -1501,8 +1501,8 @@ p_i = \frac{n_i}{\sum\nolimits_{i}n_i}
 </li>
 </ul>
 <p>There is a unique function (up to a linear scaling factor) which satisfies these 3 requirements:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8d491dcf-764a-4b73-b22c-beee81d1ea89">
-<span class="eqno">(39)<a class="headerlink" href="#equation-8d491dcf-764a-4b73-b22c-beee81d1ea89" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-03a443cd-2266-4a51-97de-cadf40fee675">
+<span class="eqno">(39)<a class="headerlink" href="#equation-03a443cd-2266-4a51-97de-cadf40fee675" title="Permalink to this equation">¶</a></span>\[\begin{align}
   H_b(X) &amp;= -\sum_{x\in X} p(x) \log_b p(x)
 \end{align}\]</div>
 <p>Where the base of the logarithm <span class="math notranslate nohighlight">\(b&gt;1\)</span> controls the units of entropy. The two most common cases are <span class="math notranslate nohighlight">\(b=2\)</span> for units of <em>bits</em>, and <span class="math notranslate nohighlight">\(b=e\)</span> for <em>nats</em>.</p>
