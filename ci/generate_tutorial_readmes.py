@@ -31,6 +31,7 @@ def main():
 
     day_paths = sorted(glob("tutorials/W?D?_*"))
     for day_path in day_paths:
+
         day_name = os.path.split(day_path)[-1]
         day_code, topic_code = day_name.split("_")
 
