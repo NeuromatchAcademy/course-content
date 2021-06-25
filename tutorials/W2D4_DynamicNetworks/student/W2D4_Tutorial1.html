@@ -1190,8 +1190,8 @@
 <div class="section" id="section-1-1-dynamics-of-a-single-excitatory-population">
 <h2>Section 1.1: Dynamics of a single excitatory population<a class="headerlink" href="#section-1-1-dynamics-of-a-single-excitatory-population" title="Permalink to this headline">¶</a></h2>
 <p>Individual neurons respond by spiking. When we average the spikes of neurons in a population, we can define the average firing activity of the population. In this model, we are interested in how the population-averaged firing varies as a function of time and network parameters. Mathematically, we can describe the firing rate dynamic as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0ef1f4df-003a-4fc7-8761-d67dcb771e55">
-<span class="eqno">(143)<a class="headerlink" href="#equation-0ef1f4df-003a-4fc7-8761-d67dcb771e55" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a74fb856-4de8-45a5-afc2-9a3bee1d7643">
+<span class="eqno">(143)<a class="headerlink" href="#equation-a74fb856-4de8-45a5-afc2-9a3bee1d7643" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \tau \frac{dr}{dt} &amp;= -r + F(w\cdot r + I_{\text{ext}})  \quad\qquad (1)
 \end{align}\]</div>
 <p><span class="math notranslate nohighlight">\(r(t)\)</span> represents the average firing rate of the excitatory population at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\tau\)</span> controls the timescale of the evolution of the average firing rate, <span class="math notranslate nohighlight">\(w\)</span> denotes the strength (synaptic weight) of the recurrent input to the population, <span class="math notranslate nohighlight">\(I_{\text{ext}}\)</span> represents the external input, and the transfer function <span class="math notranslate nohighlight">\(F(\cdot)\)</span> (which can be related to f-I curve of individual neurons described in the next sections) represents the population activation function in response to all received inputs.</p>
@@ -1334,8 +1334,8 @@
 <div class="section" id="section-1-3-simulation-scheme-of-e-dynamics">
 <h2>Section 1.3: Simulation scheme of E dynamics<a class="headerlink" href="#section-1-3-simulation-scheme-of-e-dynamics" title="Permalink to this headline">¶</a></h2>
 <p>Because <span class="math notranslate nohighlight">\(F(\cdot)\)</span> is a nonlinear function, the exact solution of Equation <span class="math notranslate nohighlight">\(1\)</span> can not be determined via analytical methods. Therefore, numerical methods must be used to find the solution. In practice, the derivative on the left-hand side of Equation <span class="math notranslate nohighlight">\(1\)</span> can be approximated using the Euler method on a time-grid of stepsize <span class="math notranslate nohighlight">\(\Delta t\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-303d262f-f30a-4564-8543-ae0884730a7b">
-<span class="eqno">(144)<a class="headerlink" href="#equation-303d262f-f30a-4564-8543-ae0884730a7b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a77fa9b0-6986-4be3-a864-82a84bc9b038">
+<span class="eqno">(144)<a class="headerlink" href="#equation-a77fa9b0-6986-4be3-a864-82a84bc9b038" title="Permalink to this equation">¶</a></span>\[\begin{align}
 &amp;\frac{dr}{dt} \approx \frac{r[k+1]-r[k]}{\Delta t} 
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(r[k] = r(k\Delta t)\)</span>.</p>
@@ -1768,13 +1768,13 @@ Now consider a small perturbation of the activity around the fixed point: \)</sp
 <div class="section" id="compute-the-stability-of-equation-1">
 <h3>Compute the stability of Equation <span class="math notranslate nohighlight">\(1\)</span><a class="headerlink" href="#compute-the-stability-of-equation-1" title="Permalink to this headline">¶</a></h3>
 <p>Similar to what we did in the linear system above, in order to determine the stability of a fixed point <span class="math notranslate nohighlight">\(r^{*}\)</span> of the excitatory population dynamics, we perturb Equation (1) around <span class="math notranslate nohighlight">\(r^{*}\)</span> by <span class="math notranslate nohighlight">\(\epsilon\)</span>, i.e. <span class="math notranslate nohighlight">\(r = r^{*} + \epsilon\)</span>. We can plug in Equation (1) and obtain the equation determining the time evolution of the perturbation <span class="math notranslate nohighlight">\(\epsilon(t)\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a8302bad-946c-46d4-84ff-941a7f847594">
-<span class="eqno">(145)<a class="headerlink" href="#equation-a8302bad-946c-46d4-84ff-941a7f847594" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f3052972-313d-4b46-9bba-63dfafff4b98">
+<span class="eqno">(145)<a class="headerlink" href="#equation-f3052972-313d-4b46-9bba-63dfafff4b98" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \tau \frac{d\epsilon}{dt} \approx -\epsilon + w F'(w\cdot r^{*} + I_{\text{ext}};a,\theta) \epsilon 
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(F'(\cdot)\)</span> is the derivative of the transfer function <span class="math notranslate nohighlight">\(F(\cdot)\)</span>. We can rewrite the above equation as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7e8d459b-5553-4f98-a0aa-4b3e529bec7c">
-<span class="eqno">(146)<a class="headerlink" href="#equation-7e8d459b-5553-4f98-a0aa-4b3e529bec7c" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-19520e56-36f9-4659-ab1c-8776b3a4240b">
+<span class="eqno">(146)<a class="headerlink" href="#equation-19520e56-36f9-4659-ab1c-8776b3a4240b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{d\epsilon}{dt} \approx \frac{\epsilon}{\tau }[-1 + w F'(w\cdot r^* + I_{\text{ext}};a,\theta)] 
 \end{align}\]</div>
 <p>That is, as in the linear system above, the value of</p>
@@ -1786,8 +1786,8 @@ Now consider a small perturbation of the activity around the fixed point: \)</sp
 <div class="section" id="exercise-4-compute-df">
 <h2>Exercise 4: Compute <span class="math notranslate nohighlight">\(dF\)</span><a class="headerlink" href="#exercise-4-compute-df" title="Permalink to this headline">¶</a></h2>
 <p>The derivative of the sigmoid transfer function is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-decb1f4c-5b1c-4d39-af08-3f32bc336182">
-<span class="eqno">(147)<a class="headerlink" href="#equation-decb1f4c-5b1c-4d39-af08-3f32bc336182" title="Permalink to this equation">¶</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-765f7489-a221-4f33-aaca-2b9ac85fbc7c">
+<span class="eqno">(147)<a class="headerlink" href="#equation-765f7489-a221-4f33-aaca-2b9ac85fbc7c" title="Permalink to this equation">¶</a></span>\[\begin{align} 
 \frac{dF}{dx} &amp; = \frac{d}{dx} (1+\exp\{-a(x-\theta)\})^{-1}  \\
 &amp; = a\exp\{-a(x-\theta)\} (1+\exp\{-a(x-\theta)\})^{-2}. \qquad (5)
 \end{align}\]</div>
