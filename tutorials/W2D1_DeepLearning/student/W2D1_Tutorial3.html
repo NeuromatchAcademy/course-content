@@ -2,1091 +2,1077 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tutorial 2: Building and Evaluating Normative Encoding Models &#8212; Neuromatch Computational Neuroscience</title>
-    
-  <link href="../../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
-
-    
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
-    
-      
-
-    
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
-
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/togglebutton.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tutorial 2: Building and Evaluating Normative Encoding Models — Neuromatch Academy: Computational Neuroscience</title>
+<link href="../../../_static/css/theme.css" rel="stylesheet"/>
+<link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet"/>
+<link href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../../_static/pygments.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/togglebutton.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/mystnb.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/sphinx-thebe.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" rel="stylesheet" type="text/css"/>
+<link as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js" rel="preload"/>
+<script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+<script src="../../../_static/jquery.js"></script>
+<script src="../../../_static/underscore.js"></script>
+<script src="../../../_static/doctools.js"></script>
+<script src="../../../_static/togglebutton.js"></script>
+<script src="../../../_static/clipboard.min.js"></script>
+<script src="../../../_static/copybutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+<script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+<script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Outro" href="../W2D1_Outro.html" />
-    <link rel="prev" title="Tutorial 2: Convolutional Neural Networks" href="W2D1_Tutorial2.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-    
-  </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
+<script async="async" src="../../../_static/sphinx-thebe.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+<link href="../../../_static/nma-logo-square-4xp.jpg" rel="shortcut icon">
+<link href="../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../search.html" rel="search" title="Search"/>
+<link href="../W2D1_Outro.html" rel="next" title="Outro"/>
+<link href="W2D1_Tutorial2.html" rel="prev" title="Tutorial 2: Convolutional Neural Networks"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</link></link></link></link></head>
+<body data-offset="80" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="container-fluid" id="banner"></div>
+<div class="container-xl">
+<div class="row">
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../../index.html">
-      
-      <img src="../../../_static/nma-logo-square-4xp.jpg" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../intro.html">
+<div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+<img alt="logo" class="logo" src="../../../_static/nma-logo-square-4xp.jpg"/>
+<h1 class="site-logo" id="site-title">Neuromatch Academy: Computational Neuroscience</h1>
+</a>
+</div><form action="../../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search this book..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search this book..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../../../intro.html">
    Introduction
   </a>
- </li>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Pre-reqs Refresher
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D1_PythonWorkshop1/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D1_PythonWorkshop1/chapter_title.html">
    Python Workshop 1 (W0D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox">
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
      Tutorial: LIF Neuron - Part I
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D2_PythonWorkshop2/chapter_title.html">
+</li>
+</ul>
+</input></li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D2_PythonWorkshop2/chapter_title.html">
    Python Workshop 2 (W0D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
      Tutorial 1: LIF Neuron Part II
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D3_LinearAlgebra/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/chapter_title.html">
    Linear Algebra (W0D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
      Tutorial 1: Vectors
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
      Tutorial 2: Matrices
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
      Bonus Tutorial: Discrete Dynamical Systems
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D4_Calculus/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D4_Calculus/chapter_title.html">
    Calculus (W0D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
      Tutorial 1: Basics of Differential and Integral Calculus
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
      Tutorial 2: Differential Equations
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
      Tutorial 3: Numerical Methods
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D5_Statistics/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D5_Statistics/chapter_title.html">
    Statistics (W0D5)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
      Neuromatch Academy: Precourse Week, Day 5, Tutorial 1
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
      Tutorial 2: Statistical Inference
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Intro to Modeling
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D1_ModelTypes/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D1_ModelTypes/chapter_title.html">
    Model Types (W1D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
      Tutorial 1: “What” models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
      Tutorial 2: “How” models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
      Tutorial 3: “Why” models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D2_ModelingPractice/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D2_ModelingPractice/chapter_title.html">
    Modeling Practice (W1D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
      Tutorial: Framing the Question
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Outro.html">
      Outro
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Machine Learning
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D3_ModelFitting/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D3_ModelFitting/chapter_title.html">
    Model Fitting (W1D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
      Tutorial 1: Linear regression with MSE
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
      Tutorial 2: Linear regression with MLE
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
      Tutorial 3: Confidence intervals and bootstrapping
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
      Tutorial 4: Multiple linear regression and polynomial regression
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
      Tutorial 5: Model Selection: Bias-variance trade-off
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
      Tutorial 6: Model Selection: Cross-validation
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/chapter_title.html">
    Generalized Linear Models (W1D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial1.html">
      Tutorial 1: GLMs for Encoding
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial2.html">
      Tutorial 2: Classifiers and regularizers
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D5_DimensionalityReduction/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/chapter_title.html">
    Dimensionality Reduction (W1D5)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+<label for="toctree-checkbox-10">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
      Tutorial 1: Geometric view of data
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
      Tutorial 2: Principal Component Analysis
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
      Tutorial 3: Dimensionality Reduction &amp; Reconstruction
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
      Tutorial 4:  Nonlinear Dimensionality Reduction
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children">
+<a class="reference internal" href="../chapter_title.html">
    Deep Learning (W2D1)
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../W2D1_Intro.html">
+<input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+<label for="toctree-checkbox-11">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul class="current">
+<li class="toctree-l2">
+<a class="reference internal" href="../W2D1_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="W2D1_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="W2D1_Tutorial1.html">
      Tutorial 1: Decoding Neural Responses
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="W2D1_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="W2D1_Tutorial2.html">
      Tutorial 2: Convolutional Neural Networks
     </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+</li>
+<li class="toctree-l2 current active">
+<a class="current reference internal" href="#">
      Tutorial 2: Building and Evaluating Normative Encoding Models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../W2D1_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../W2D1_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Dynamical Systems
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D2_LinearSystems/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D2_LinearSystems/chapter_title.html">
    Linear Systems (W2D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+<label for="toctree-checkbox-12">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
      Tutorial 1: Linear dynamical systems
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
      Tutorial 2: Markov Processes
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
      Tutorial 3: Combining determinism and stochasticity
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
      Tutorial 4: Autoregressive models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/chapter_title.html">
    Biological Neuron Models (W2D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+<label for="toctree-checkbox-13">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial1.html">
      Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial2.html">
      Tutorial 2: Effects of Input Correlation
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial3.html">
      Tutorial 3: Synaptic transmission - Models of static and dynamic synapses
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial4.html">
      Tutorial 4: Spike-timing dependent plasticity (STDP)
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D4_DynamicNetworks/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/chapter_title.html">
    Dynamic Networks (W2D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+<label for="toctree-checkbox-14">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
      Tutorial 1: Neural Rate Models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
      Tutorial 2: Wilson-Cowan Model
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Stochastic Processes
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D1_BayesianDecisions/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/chapter_title.html">
    Bayesian Decisions (W3D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-  <label for="toctree-checkbox-15">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+<label for="toctree-checkbox-15">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
      Tutorial 1: Bayes with a binary hidden state
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
      Tutorial 2: Bayesian inference and decisions with continuous hidden state
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
      Bonus Tutorial:Fitting to data
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D2_HiddenDynamics/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/chapter_title.html">
    Hidden Dynamics (W3D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
-  <label for="toctree-checkbox-16">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+<label for="toctree-checkbox-16">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
      Tutorial 1: Sequential Probability Ratio Test
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
      Tutorial 2: Hidden Markov Model
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
      Tutorial 3: 1D Kalman Filter
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
      Tutorial 4: 2D Kalman Filter
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D3_OptimalControl/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D3_OptimalControl/chapter_title.html">
    Optimal Control (W3D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
-  <label for="toctree-checkbox-17">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+<label for="toctree-checkbox-17">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
      Tutorial 1: Optimal Control for Discrete States
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
      Tutorial 2: Optimal Control for Continuous State
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D4_ReinforcementLearning/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/chapter_title.html">
    Reinforcement Learning (W3D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
-  <label for="toctree-checkbox-18">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+<label for="toctree-checkbox-18">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
      Tutorial 1: Learning to Predict
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
      Tutorial 2: Learning to Act: Multi-Armed Bandits
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
      Tutorial 3: Learning to Act: Q-Learning
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
      Tutorial 4: From Reinforcement Learning to Planning
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D5_NetworkCausality/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D5_NetworkCausality/chapter_title.html">
    Network Causality (W3D5)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-  <label for="toctree-checkbox-19">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+<label for="toctree-checkbox-19">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
      Tutorial 1: Interventions
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
      Tutorial 2: Correlations
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
      Tutorial 3: Simultaneous fitting/regression
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
      Tutorial 4: Instrumental Variables
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
+</li>
 </ul>
-
-    </div>
+</li>
+</ul>
+</div>
 </nav> <!-- To handle the deprecated key -->
-
 <div class="navbar_extra_footer">
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
 </div>
-
 </div>
-
-
-          
-
-
-          
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
+<div class="topbar container-xl fixed-top">
+<div class="topbar-contents row">
+<div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+<div class="col pl-md-4 topbar-main">
+<button aria-controls="site-navigation" aria-expanded="true" aria-label="Toggle navigation" class="navbar-toggler ml-0" data-placement="left" data-target=".site-navigation" data-toggle="tooltip" id="navbar-toggler" title="Toggle navigation" type="button">
+<i class="fas fa-bars"></i>
+<i class="fas fa-arrow-left"></i>
+<i class="fas fa-arrow-up"></i>
+</button>
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/tutorials/W2D1_DeepLearning/student/W2D1_Tutorial3.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
+<button aria-label="Download this page" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-download"></i></button>
+<div class="dropdown-buttons">
+<!-- ipynb file if we had a myst markdown file -->
+<!-- Download raw file -->
+<a class="dropdown-buttons" href="../../../_sources/tutorials/W2D1_DeepLearning/student/W2D1_Tutorial3.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.ipynb</button></a>
+<!-- Download PDF via print -->
+<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
 </div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
+</div>
+<!-- Source interaction buttons -->
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/tutorials/W2D1_DeepLearning/student/W2D1_Tutorial3.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../../../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
+<button aria-label="Connect with source repository" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fab fa-github"></i></button>
+<div class="dropdown-buttons sourcebuttons">
+<a class="repository-button" href="https://github.com/NeuromatchAcademy/course-content"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Source repository" type="button"><i class="fab fa-github"></i>repository</button></a>
+<a class="issues-button" href="https://github.com/NeuromatchAcademy/course-content/issues/new?title=Issue%20on%20page%20%2Ftutorials/W2D1_DeepLearning/student/W2D1_Tutorial3.html&amp;body=Your%20issue%20content%20here."><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Open an issue" type="button"><i class="fas fa-lightbulb"></i>open issue</button></a>
 </div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+</div>
+<!-- Full screen (wrap in <a> to have style consistency -->
+<a class="full-screen-button"><button aria-label="Fullscreen mode" class="btn btn-secondary topbarbtn" data-placement="bottom" data-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode" type="button"><i class="fas fa-expand"></i></button></a>
+<!-- Launch buttons -->
+</div>
+<!-- Table of contents -->
+<div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+<i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#">
    Tutorial 2: Building and Evaluating Normative Encoding Models
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#setup">
    Setup
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#section-1-setting-up-deep-network-and-neural-data">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#data-retrieval-and-loading">
+     Data retrieval and loading
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#figure-settings">
+     Figure Settings
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#plotting-functions">
+     Plotting Functions
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#helper-functions">
+     Helper Functions
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-1-setting-up-deep-network-and-neural-data">
    Section 1: Setting up deep network and neural data
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-1-1-orientation-discrimination-task">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-1-deep-convolutional-network-for-orientation-discrimination">
+     Video 1: Deep convolutional network for orientation discrimination
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-1-1-orientation-discrimination-task">
      Section 1.1: Orientation discrimination task
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-1-2-a-deep-network-model-of-orientation-discrimination">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id1">
+</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-1-2-a-deep-network-model-of-orientation-discrimination">
      Section 1.2: A deep network model of orientation discrimination
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-1-3-load-data">
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-1-3-load-data">
      Section 1.3: Load data
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#section-2-quantitative-comparisons-of-cnns-and-neural-activity">
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-2-quantitative-comparisons-of-cnns-and-neural-activity">
    Section 2: Quantitative comparisons of CNNs and neural activity
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-2-1-representational-dissimilarity-matrix-rdm">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-2-quantitative-comparisons-of-cnns-and-neural-activity">
+     Video 2: Quantitative comparisons of CNNs and neural activity
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-2-1-representational-dissimilarity-matrix-rdm">
      Section 2.1: Representational dissimilarity matrix (RDM)
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#coding-exercise-2-1-compute-rdms">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#coding-exercise-2-1-compute-rdms">
        Coding Exercise 2.1: Compute RDMs
       </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-2-2-determing-representation-similarity">
+<ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-3-coding-exercise-2-1-solution-discussion">
+         Video 3: Coding Exercise 2.1 solution discussion
+        </a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-2-2-determing-representation-similarity">
      Section 2.2: Determing representation similarity
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#coding-exercise-2-2-correlate-rdms">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#coding-exercise-2-2-correlate-rdms">
        Coding Exercise 2.2: Correlate RDMs
       </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-2-3-further-understanding-rdms">
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-2-3-further-understanding-rdms">
      Section 2.3: Further understanding RDMs
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#coding-exercise-2-3-plot-rows-of-rdm">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#coding-exercise-2-3-plot-rows-of-rdm">
        Coding Exercise 2.3: Plot rows of RDM
       </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#section-3-qualitative-comparisons-of-cnns-and-neural-activity">
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-qualitative-comparisons-of-cnns-and-neural-activity">
    Section 3: Qualitative comparisons of CNNs and neural activity
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-3-1-tuning-curves">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-1-tuning-curves">
      Section 3.1: Tuning curves
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-3-2-dimensionality-reduction-of-representations">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id2">
+</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-2-dimensionality-reduction-of-representations">
      Section 3.2: Dimensionality reduction of representations
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#think-3-2-visualizing-reduced-dimensionality-representations">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#think-3-2-visualizing-reduced-dimensionality-representations">
        Think! 3.2: Visualizing reduced dimensionality representations
       </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#summary">
    Summary
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bonus">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus">
    Bonus
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bonus-section-1-building-cnn-s-with-pytorch">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus-section-1-building-cnn-s-with-pytorch">
      Bonus Section 1: Building CNN’s with PyTorch
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bonus-section-1-1-fully-connected-layers">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus-section-1-1-fully-connected-layers">
        Bonus Section 1.1: Fully connected layers
       </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bonus-section-1-2-convolutional-layers">
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus-section-1-2-convolutional-layers">
        Bonus Section 1.2: Convolutional layers
       </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bonus-section-1-3-max-pooling-layers">
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus-section-1-3-max-pooling-layers">
        Bonus Section 1.3: Max pooling layers
       </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bonus-section-2-orientation-discrimination-as-a-binary-classification-problem">
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus-section-2-orientation-discrimination-as-a-binary-classification-problem">
      Bonus Section 2: Orientation discrimination as a binary classification problem
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bonus-section-3-rdm-z-score-explanation">
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus-section-3-rdm-z-score-explanation">
      Bonus Section 3: RDM Z-Score Explanation
     </a>
-   </li>
-  </ul>
- </li>
+</li>
 </ul>
-
-            </nav>
-        </div>
-    </div>
+</li>
+</ul>
+</nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
-                
-  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D1_DeepLearning/student/W2D1_Tutorial3.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></p>
+</div>
+</div>
+<div class="row" id="main-content">
+<div class="col-12 col-md-9 pl-md-3 pr-md-0">
+<div>
+<p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D1_DeepLearning/student/W2D1_Tutorial3.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></p>
 <div class="section" id="tutorial-2-building-and-evaluating-normative-encoding-models">
 <h1>Tutorial 2: Building and Evaluating Normative Encoding Models<a class="headerlink" href="#tutorial-2-building-and-evaluating-normative-encoding-models" title="Permalink to this headline">¶</a></h1>
 <p><strong>Week 2, Day 1: Deep Learning</strong></p>
 <p><strong>By Neuromatch Academy</strong></p>
 <p><strong>Content creators</strong>: Jorge A. Menendez, Yalda Mohsenzadeh, Carsen Stringer</p>
 <p><strong>Conent reviewers</strong>: Roozbeh Farhoodi, Madineh Sarvestani, Kshitij Dwivedi, Spiros Chavlis, Ella Batty, Michael Waskom</p>
-<hr class="docutils" />
+<hr class="docutils"/>
 <p>#Tutorial Objectives</p>
 <p>In this tutorial, we’ll be using deep learning to build an encoding model of the visual system, and then compare its internal representations to those observed in neural data.</p>
 <p>Importantly, the encoding model we’ll use here is different from the encoding models used in Tutorial 2. Its parameters won’t be directly optimized to fit the neural data. Instead, we will optimize its parameters to solve a particular visual task that we know the brain can solve. We therefore refer to it as a “normative” encoding model, since it is optimized for a specific behavioral task.</p>
@@ -1097,7 +1083,7 @@
 <li><p>Quantify the similarity between distributed representations in a model and neural representations observed in recordings, using Representational Similarity Analysis (RSA)</p></li>
 </ul>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="setup">
 <h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
 <p><strong>Don’t forget to execute the hidden cells below!</strong></p>
@@ -1115,6 +1101,8 @@
 </div>
 </div>
 </div>
+<div class="section" id="data-retrieval-and-loading">
+<h2>Data retrieval and loading<a class="headerlink" href="#data-retrieval-and-loading" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Data retrieval and loading</span>
@@ -1122,55 +1110,61 @@
 <span class="kn">import</span> <span class="nn">hashlib</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;W3D4_stringer_oribinned1.npz&quot;</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://osf.io/683xc/download&quot;</span>
-<span class="n">expected_md5</span> <span class="o">=</span> <span class="s2">&quot;436599dfd8ebe6019f066c38aed20580&quot;</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="s2">"W3D4_stringer_oribinned1.npz"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://osf.io/683xc/download"</span>
+<span class="n">expected_md5</span> <span class="o">=</span> <span class="s2">"436599dfd8ebe6019f066c38aed20580"</span>
 
 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
   <span class="k">try</span><span class="p">:</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
   <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;!!! Failed to download data !!!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"!!! Failed to download data !!!"</span><span class="p">)</span>
   <span class="k">else</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="n">requests</span><span class="o">.</span><span class="n">codes</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
-      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;!!! Failed to download data !!!&quot;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">"!!! Failed to download data !!!"</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span> <span class="o">!=</span> <span class="n">expected_md5</span><span class="p">:</span>
-      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;!!! Data download appears corrupted !!!&quot;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">"!!! Data download appears corrupted !!!"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-      <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fid</span><span class="p">:</span>
+      <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">fid</span><span class="p">:</span>
         <span class="n">fid</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="figure-settings">
+<h2>Figure Settings<a class="headerlink" href="#figure-settings" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Figure Settings</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format=&#39;retina&#39;
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;</span><span class="p">)</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format='retina'
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="plotting-functions">
+<h2>Plotting Functions<a class="headerlink" href="#plotting-functions" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Plotting Functions</span>
 
 <span class="k">def</span> <span class="nf">show_stimulus</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Visualize a stimulus&quot;&quot;&quot;</span>
+  <span class="sd">"""Visualize a stimulus"""</span>
   <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
   <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">'auto'</span><span class="p">)</span>
   <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
   <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'left'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'bottom'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">plot_corr_matrix</span><span class="p">(</span><span class="n">rdm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Plot dissimilarity matrix</span>
+  <span class="sd">"""Plot dissimilarity matrix</span>
 
 <span class="sd">  Args:</span>
 <span class="sd">    rdm (numpy array): n_stimuli x n_stimuli representational dissimilarity</span>
@@ -1180,21 +1174,21 @@
 <span class="sd">  Returns:</span>
 <span class="sd">    nothing</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
   <span class="n">image</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rdm</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
   <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
   <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
-  <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;dissimilarity&#39;</span><span class="p">)</span>
+  <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'dissimilarity'</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">plot_multiple_rdm</span><span class="p">(</span><span class="n">rdm_dict</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Draw multiple subplots for each RDM in rdm_dict.&quot;&quot;&quot;</span>
+  <span class="sd">"""Draw multiple subplots for each RDM in rdm_dict."""</span>
   <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">rdm_dict</span><span class="p">),</span>
                           <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">resp_dict</span><span class="p">),</span> <span class="mf">3.5</span><span class="p">))</span>
 
-  <span class="c1"># Compute RDM&#39;s for each set of responses and plot</span>
+  <span class="c1"># Compute RDM's for each set of responses and plot</span>
   <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">rdm</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">rdm_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
 
     <span class="c1"># Uncomment to test your function</span>
@@ -1203,21 +1197,24 @@
 
 
 <span class="k">def</span> <span class="nf">plot_rdm_rdm_correlations</span><span class="p">(</span><span class="n">rdm_sim</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Draw a bar plot showing between-RDM correlations.&quot;&quot;&quot;</span>
+  <span class="sd">"""Draw a bar plot showing between-RDM correlations."""</span>
   <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
   <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">rdm_sim</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">rdm_sim</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Deep network model layer&#39;</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Correlation of model layer RDM</span><span class="se">\n</span><span class="s1">with mouse V1 RDM&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Deep network model layer'</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Correlation of model layer RDM</span><span class="se">\n</span><span class="s1">with mouse V1 RDM'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="helper-functions">
+<h2>Helper Functions<a class="headerlink" href="#helper-functions" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Helper Functions</span>
 
 <span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">data_name</span><span class="o">=</span><span class="n">fname</span><span class="p">,</span> <span class="n">bin_width</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Load mouse V1 data from Stringer et al. (2019)</span>
+  <span class="sd">"""Load mouse V1 data from Stringer et al. (2019)</span>
 
 <span class="sd">  Data from study reported in this preprint:</span>
 <span class="sd">  https://www.biorxiv.org/content/10.1101/679324v2.abstract</span>
@@ -1236,7 +1233,7 @@
 
 <span class="sd">  This function will actually average responses to stimuli with orientations</span>
 <span class="sd">  falling within bins specified by the bin_width argument. This helps</span>
-<span class="sd">  produce individual neural &quot;responses&quot; with smoother and more</span>
+<span class="sd">  produce individual neural "responses" with smoother and more</span>
 <span class="sd">  interpretable tuning curves.</span>
 
 <span class="sd">  Args:</span>
@@ -1246,17 +1243,17 @@
 <span class="sd">  Returns:</span>
 <span class="sd">    resp (torch.Tensor): n_stimuli x n_neurons matrix of neural responses,</span>
 <span class="sd">        each row contains the responses of each neuron to a given stimulus.</span>
-<span class="sd">        As mentioned above, neural &quot;response&quot; is actually an average over</span>
+<span class="sd">        As mentioned above, neural "response" is actually an average over</span>
 <span class="sd">        responses to stimuli with similar angles falling within specified bins.</span>
 <span class="sd">    stimuli: (torch.Tensor): n_stimuli x 1 column vector with orientation</span>
 <span class="sd">        of each stimulus, in degrees. This is actually the mean orientation</span>
 <span class="sd">        of all stimuli in each bin.</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">dobj</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="o">**</span><span class="n">dobj</span><span class="p">)</span>
-  <span class="n">resp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;resp&#39;</span><span class="p">]</span>
-  <span class="n">stimuli</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;stimuli&#39;</span><span class="p">]</span>
+  <span class="n">resp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'resp'</span><span class="p">]</span>
+  <span class="n">stimuli</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'stimuli'</span><span class="p">]</span>
 
   <span class="k">if</span> <span class="n">bin_width</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
     <span class="c1"># Bin neural responses and stimuli</span>
@@ -1280,7 +1277,7 @@
   <span class="k">return</span> <span class="n">resp_tensor</span><span class="p">,</span> <span class="n">stimuli_tensor</span>
 
 <span class="k">def</span> <span class="nf">grating</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">sf</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">28</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">patch</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Generate oriented grating stimulus</span>
+  <span class="sd">"""Generate oriented grating stimulus</span>
 
 <span class="sd">  Args:</span>
 <span class="sd">    angle (float): orientation of grating (angle from vertical), in degrees</span>
@@ -1294,7 +1291,7 @@
 <span class="sd">  Returns:</span>
 <span class="sd">    torch.Tensor: (res * 480) x (res * 640) pixel oriented grating image</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
 
   <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>  <span class="c1"># transform to radians</span>
 
@@ -1322,7 +1319,7 @@
 
 
 <span class="k">class</span> <span class="nc">CNN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Deep convolutional network with one convolutional + pooling layer followed</span>
+  <span class="sd">"""Deep convolutional network with one convolutional + pooling layer followed</span>
 <span class="sd">  by one fully connected layer</span>
 
 <span class="sd">  Args:</span>
@@ -1336,7 +1333,7 @@
 <span class="sd">    fc (nn.Linear): weights and biases of fully connected layer</span>
 <span class="sd">    out (nn.Linear): weights and biases of output layer</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
 
   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">h_in</span><span class="p">,</span> <span class="n">w_in</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -1351,7 +1348,7 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">out</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 10D representation --&gt; scalar</span>
 
   <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Classify grating stimulus as tilted right or left</span>
+    <span class="sd">"""Classify grating stimulus as tilted right or left</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">      x (torch.Tensor): p x 48 x 64 tensor with pixel grayscale values for</span>
@@ -1362,7 +1359,7 @@
 <span class="sd">          in x. Each output should be interpreted as the probability of the</span>
 <span class="sd">          corresponding stimulus being tilted right.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># p x 1 x 48 x 64, add a singleton dimension for the single stimulus channel</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># output of convolutional layer</span>
     <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># output of pooling layer</span>
@@ -1373,7 +1370,7 @@
 
 
 <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">train_data</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">n_epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">.99</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Run stochastic gradient descent on binary cross-entropy loss for a given</span>
+  <span class="sd">"""Run stochastic gradient descent on binary cross-entropy loss for a given</span>
 <span class="sd">  deep network (cf. appendix for details)</span>
 
 <span class="sd">  Args:</span>
@@ -1386,7 +1383,7 @@
 <span class="sd">    learning_rate (float): learning rate to use for SGD updates</span>
 <span class="sd">    momentum (float): momentum parameter for SGD updates</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
 
   <span class="c1"># Initialize binary cross-entropy loss function</span>
   <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BCELoss</span><span class="p">()</span>
@@ -1420,13 +1417,13 @@
 
     <span class="c1"># Track progress</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_epochs</span> <span class="o">//</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;epoch </span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s1"> | loss on last mini-batch: </span><span class="si">{</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s1"> .2e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'epoch </span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s1"> | loss on last mini-batch: </span><span class="si">{</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s1"> .2e</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;training done!&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'training done!'</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">get_hidden_activity</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">stimuli</span><span class="p">,</span> <span class="n">layer_labels</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Retrieve internal representations of network</span>
+  <span class="sd">"""Retrieve internal representations of network</span>
 
 <span class="sd">  Args:</span>
 <span class="sd">    net (nn.Module): deep network</span>
@@ -1439,12 +1436,12 @@
 <span class="sd">    dict: internal representations at each layer of the network, in</span>
 <span class="sd">      numpy arrays. The keys of this dict are the strings in layer_labels.</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
 
   <span class="c1"># Placeholder</span>
   <span class="n">hidden_activity</span> <span class="o">=</span> <span class="p">{}</span>
 
-  <span class="c1"># Attach &#39;hooks&#39; to each layer of the network to store hidden</span>
+  <span class="c1"># Attach 'hooks' to each layer of the network to store hidden</span>
   <span class="c1"># representations in hidden_activity</span>
   <span class="k">def</span> <span class="nf">hook</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
     <span class="n">module_label</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">_modules</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">([</span><span class="n">module</span> <span class="o">==</span> <span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">net</span><span class="o">.</span><span class="n">_modules</span><span class="o">.</span><span class="n">values</span><span class="p">()])[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
@@ -1464,19 +1461,21 @@
 </div>
 </div>
 </div>
-<hr class="docutils" />
+</div>
+<hr class="docutils"/>
 <div class="section" id="section-1-setting-up-deep-network-and-neural-data">
 <h1>Section 1: Setting up deep network and neural data<a class="headerlink" href="#section-1-setting-up-deep-network-and-neural-data" title="Permalink to this headline">¶</a></h1>
 <p>In the future sections, we will compare the activity in a deep network, specifically in a CNN, with neural activity. First, we need to understand the task we are using (Section 1.1), train our deep network (Section 1.2), and load in neural data (Section 1.3).</p>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 1: Deep convolutional network for orientation discrimination</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
-<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;KlXtKJCpV4I&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="n">video</span>
+<div class="section" id="video-1-deep-convolutional-network-for-orientation-discrimination">
+<h2>Video 1: Deep convolutional network for orientation discrimination<a class="headerlink" href="#video-1-deep-convolutional-network-for-orientation-discrimination" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=KlXtKJCpV4I
 </pre></div>
 </div>
+<div class="output text_html">
+<iframe allowfullscreen="" frameborder="0" height="410" src="https://www.youtube.com/embed/KlXtKJCpV4I?fs=1" width="730"></iframe>
+</div></div>
 </div>
 </div>
 <div class="section" id="section-1-1-orientation-discrimination-task">
@@ -1484,6 +1483,8 @@
 <p>We will build our normative encoding model by optimizing its parameters to solve an orientation discrimination task.</p>
 <p>The task is to tell whether a given grating stimulus is tilted to the “right” or “left”; that is, whether its angle relative to the vertical is positive or negative, respectively. We show example stimuli below, which were constructed using the helper function <code class="docutils literal notranslate"><span class="pre">grating()</span></code>.</p>
 <p>Note that this is a task that we know many mammalian visual systems are capable of solving. It is therefore conceivable that the representations in a deep network model optimized for this task might resemble those in the brain. To test this hypothesis, we will compare the representations of our optimized encoding model to neural activity recorded in response to these very same stimuli, courtesy of <a class="reference external" href="https://www.biorxiv.org/content/10.1101/679324v2.abstract">Stringer et al 2019</a>.</p>
+<div class="section" id="id1">
+<h3><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
@@ -1496,13 +1497,20 @@
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_col</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">h</span> <span class="o">*</span> <span class="n">n_col</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
 
 <span class="n">h</span><span class="p">,</span> <span class="n">w</span>  <span class="o">=</span> <span class="n">grating</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># height and width of stimulus</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;stimulus size: </span><span class="si">%i</span><span class="s1"> x </span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'stimulus size: </span><span class="si">%i</span><span class="s1"> x </span><span class="si">%i</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ori</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">orientations</span><span class="p">):</span>
   <span class="n">stimulus</span> <span class="o">=</span> <span class="n">grating</span><span class="p">(</span><span class="n">ori</span><span class="p">)</span>
-  <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ori</span><span class="si">:</span><span class="s1"> .0f</span><span class="si">}</span><span class="s1">$^o$&#39;</span><span class="p">)</span>
+  <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">ori</span><span class="si">:</span><span class="s1"> .0f</span><span class="si">}</span><span class="s1">$^o$'</span><span class="p">)</span>
   <span class="n">show_stimulus</span><span class="p">(</span><span class="n">stimulus</span><span class="p">,</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>stimulus size: 48 x 64
+</pre></div>
+</div>
+<img alt="../../../_images/W2D1_Tutorial3_18_1.png" src="../../../_images/W2D1_Tutorial3_18_1.png"/>
 </div>
 </div>
 </div>
@@ -1518,7 +1526,7 @@
 </ol>
 <p>Finally, a set of output weights transforms this 10-dimensional representation into a single scalar <span class="math notranslate nohighlight">\(p\)</span>, denoting the predicted probability of the input stimulus being tilted right.</p>
 <p align="center">
-  <img src="https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/static/conv-network.png?raw=true" width="450" />
+<img src="https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/static/conv-network.png?raw=true" width="450"/>
 </p>
 <p>See Bonus Section 1 for in-depth instructions for how to code up such a network in PyTorch. For now, however, we’ll leave these details aside and focus on training this network and analyzing its internal representations.</p>
 <p>Run the next cell to train such a network to solve this task. After initializing our CNN model, it builds a dataset of oriented grating stimuli to use for training it. These are then passed into a function called <code class="docutils literal notranslate"><span class="pre">train()</span></code> that uses SGD to optimize the model’s parameters, taking similar arguments as the <code class="docutils literal notranslate"><span class="pre">train()</span></code> function we wrote in Tutorial 1.</p>
@@ -1526,6 +1534,25 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function train in module __main__:
+
+train(net, train_data, train_labels, n_epochs=20, batch_size=100, learning_rate=0.001, momentum=0.99)
+    Run stochastic gradient descent on binary cross-entropy loss for a given
+    deep network (cf. appendix for details)
+    
+    Args:
+      net (nn.Module): deep network whose parameters to optimize with SGD
+      train_data (torch.Tensor): n_train x h x w tensor with stimulus gratings
+      train_labels (torch.Tensor): n_train x 1 tensor with true tilt of each
+        stimulus grating in train_data, i.e. 1. for right, 0. for left
+      n_epochs (int): number of times to run SGD through whole training data set
+      batch_size (int): number of training data samples in each mini-batch
+      learning_rate (float): learning rate to use for SGD updates
+      momentum (float): momentum parameter for SGD updates
 </pre></div>
 </div>
 </div>
@@ -1556,6 +1583,28 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>epoch 4 | loss on last mini-batch:  2.35e-01
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>epoch 8 | loss on last mini-batch:  2.00e-03
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>epoch 12 | loss on last mini-batch:  6.20e-08
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>epoch 16 | loss on last mini-batch:  4.94e-04
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>epoch 20 | loss on last mini-batch:  3.96e-07
+training done!
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="section-1-3-load-data">
@@ -1578,14 +1627,14 @@
 <span class="c1"># Extract model internal representations of each stimulus in the V1 data</span>
 <span class="c1"># construct grating stimuli for each orientation presented in the V1 data</span>
 <span class="n">stimuli</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">grating</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">item</span><span class="p">())</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">ori</span><span class="p">])</span>
-<span class="n">layer_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pool&#39;</span><span class="p">,</span> <span class="s1">&#39;fc&#39;</span><span class="p">]</span>
+<span class="n">layer_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'pool'</span><span class="p">,</span> <span class="s1">'fc'</span><span class="p">]</span>
 <span class="n">resp_model</span> <span class="o">=</span> <span class="n">get_hidden_activity</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">stimuli</span><span class="p">,</span> <span class="n">layer_labels</span><span class="p">)</span>
 
 <span class="c1"># Aggregate all responses into one dict</span>
 <span class="n">resp_dict</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">resp_dict</span><span class="p">[</span><span class="s1">&#39;V1 data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">resp_v1</span>
+<span class="n">resp_dict</span><span class="p">[</span><span class="s1">'V1 data'</span><span class="p">]</span> <span class="o">=</span> <span class="n">resp_v1</span>
 <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">resp_model</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-  <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;model</span><span class="se">\n</span><span class="s2">&#39;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&#39; layer&quot;</span>
+  <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"model</span><span class="se">\n</span><span class="s2">'</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">' layer"</span>
   <span class="n">resp_dict</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
 </pre></div>
 </div>
@@ -1593,29 +1642,30 @@
 </div>
 </div>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="section-2-quantitative-comparisons-of-cnns-and-neural-activity">
 <h1>Section 2: Quantitative comparisons of CNNs and neural activity<a class="headerlink" href="#section-2-quantitative-comparisons-of-cnns-and-neural-activity" title="Permalink to this headline">¶</a></h1>
 <p>Let’s now analyze the internal representations of our deep CNN model of orientation discrimination and compare them to population responses in mouse primary visual cortex.</p>
 <p>In this section, we’ll try to quantitatively compare CNN and primary visual cortex representations. In the next section, we will visualize their representations and get some intuition for their structure.</p>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 2: Quantitative comparisons of CNNs and neural activity</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
-<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;2Jbk7jFBvbU&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="n">video</span>
+<div class="section" id="video-2-quantitative-comparisons-of-cnns-and-neural-activity">
+<h2>Video 2: Quantitative comparisons of CNNs and neural activity<a class="headerlink" href="#video-2-quantitative-comparisons-of-cnns-and-neural-activity" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=2Jbk7jFBvbU
 </pre></div>
 </div>
-</div>
+<div class="output text_html">
+<iframe allowfullscreen="" frameborder="0" height="410" src="https://www.youtube.com/embed/2Jbk7jFBvbU?fs=1" width="730"></iframe>
+</div></div>
 </div>
 <p>We noticed above some similarities and differences between the population responses in mouse primary visual cortex and in different layers in our model. Let’s now try to quantify this.</p>
 <p>To do this, we’ll use a technique called <a class="reference external" href="https://www.frontiersin.org/articles/10.3389/neuro.06.004.2008/full?utm_source=FWEB&amp;utm_medium=NBLOG&amp;utm_campaign=ECO_10YA_top-research"><strong>Representational Similarity Analysis</strong></a>. The idea is to look at the similarity structure between representations of different stimuli. We can say that a brain area and a model use a similar representational scheme if stimuli that are represented (dis)similarly in the brain are represented (dis)similarly in the model as well.</p>
+</div>
 <div class="section" id="section-2-1-representational-dissimilarity-matrix-rdm">
 <h2>Section 2.1: Representational dissimilarity matrix (RDM)<a class="headerlink" href="#section-2-1-representational-dissimilarity-matrix-rdm" title="Permalink to this headline">¶</a></h2>
 <p>To quantify this, we begin by computing the <strong>representational dissimilarity matrix (RDM)</strong> for the mouse V1 data and each model layer. This matrix, which we’ll call <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>, is computed as one minus the correlation coefficients between population responses to each stimulus. We can  efficiently compute this by using the <span class="math notranslate nohighlight">\(z\)</span>-scored responses (see Bonus Section 3 for explanation). In particular, the full matrix can be computed as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-67331d04-bb99-4fb8-a43d-79ac761fa4f4">
-<span class="eqno">(106)<a class="headerlink" href="#equation-67331d04-bb99-4fb8-a43d-79ac761fa4f4" title="Permalink to this equation">¶</a></span>\[\begin{gather}
+<div class="amsmath math notranslate nohighlight" id="equation-2ec5989b-15b1-4dc0-b30e-de67213c7384">
+<span class="eqno">(106)<a class="headerlink" href="#equation-2ec5989b-15b1-4dc0-b30e-de67213c7384" title="Permalink to this equation">¶</a></span>\[\begin{gather}
   \mathbf{M} = 1 - \frac{1}{N} \mathbf{ZZ}^T \\
 \end{gather}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{Z}\)</span> is the z-scored responses and N is the number of neurons (or units).</p>
@@ -1626,7 +1676,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">RDM</span><span class="p">(</span><span class="n">resp</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Compute the representational dissimilarity matrix (RDM)</span>
+  <span class="sd">"""Compute the representational dissimilarity matrix (RDM)</span>
 
 <span class="sd">  Args:</span>
 <span class="sd">    resp (ndarray): S x N matrix with population responses to</span>
@@ -1634,11 +1684,11 @@
 
 <span class="sd">  Returns:</span>
 <span class="sd">    ndarray: S x S representational dissimilarity matrix</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="c1">#########################################################</span>
   <span class="c1">## TO DO for students: compute representational dissimilarity matrix</span>
   <span class="c1"># Fill out function and remove</span>
-  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: complete function RDM&quot;</span><span class="p">)</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Student exercise: complete function RDM"</span><span class="p">)</span>
   <span class="c1">#########################################################</span>
 
   <span class="c1"># z-score responses to each stimulus</span>
@@ -1658,19 +1708,21 @@
 </pre></div>
 </div>
 </div>
+
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D1_DeepLearning/solutions/W2D1_Tutorial3_Solution_6005c785.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=827 height=235 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D1_DeepLearning/static/W2D1_Tutorial3_Solution_6005c785_0.png>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 3: Coding Exercise 2.1 solution discussion</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
-<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;otzR-KXDjus&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="n">video</span>
+<img align="left" alt="Solution hint" height="235" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D1_DeepLearning/static/W2D1_Tutorial3_Solution_6005c785_0.png" width="827"/>
+<div class="section" id="video-3-coding-exercise-2-1-solution-discussion">
+<h4>Video 3: Coding Exercise 2.1 solution discussion<a class="headerlink" href="#video-3-coding-exercise-2-1-solution-discussion" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=otzR-KXDjus
 </pre></div>
 </div>
+<div class="output text_html">
+<iframe allowfullscreen="" frameborder="0" height="410" src="https://www.youtube.com/embed/otzR-KXDjus?fs=1" width="730"></iframe>
+</div></div>
 </div>
 </div>
 </div>
@@ -1685,7 +1737,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">correlate_rdms</span><span class="p">(</span><span class="n">rdm1</span><span class="p">,</span> <span class="n">rdm2</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Correlate off-diagonal elements of two RDM&#39;s</span>
+  <span class="sd">"""Correlate off-diagonal elements of two RDM's</span>
 
 <span class="sd">  Args:</span>
 <span class="sd">    rdm1 (np.ndarray): S x S representational dissimilarity matrix</span>
@@ -1696,7 +1748,7 @@
 <span class="sd">    float: correlation coefficient between the off-diagonal elements</span>
 <span class="sd">      of rdm1 and rdm2</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
 
   <span class="c1"># Extract off-diagonal elements of each RDM</span>
   <span class="n">ioffdiag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu_indices</span><span class="p">(</span><span class="n">rdm1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># indices of off-diagonal elements</span>
@@ -1706,7 +1758,7 @@
   <span class="c1">#########################################################</span>
   <span class="c1">## TO DO for students: compute correlation coefficient</span>
   <span class="c1"># Fill out function and remove</span>
-  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: complete correlate rdms&quot;</span><span class="p">)</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Student exercise: complete correlate rdms"</span><span class="p">)</span>
   <span class="c1">#########################################################</span>
   <span class="n">corr_coef</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="o">...</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
 
@@ -1715,7 +1767,7 @@
 
 <span class="c1"># Split RDMs into V1 responses and model responses</span>
 <span class="n">rdm_model</span> <span class="o">=</span> <span class="n">rdm_dict</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">rdm_v1</span> <span class="o">=</span> <span class="n">rdm_model</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;V1 data&#39;</span><span class="p">)</span>
+<span class="n">rdm_v1</span> <span class="o">=</span> <span class="n">rdm_model</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">'V1 data'</span><span class="p">)</span>
 
 <span class="c1"># Correlate off-diagonal terms of dissimilarity matrices</span>
 <span class="c1"># Uncomment below to test your function</span>
@@ -1724,10 +1776,24 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">14</span><span class="o">-</span><span class="mi">7</span><span class="n">a144071acb5</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> 
+<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="c1"># Split RDMs into V1 responses and model responses</span>
+<span class="ne">---&gt; </span><span class="mi">31</span> <span class="n">rdm_model</span> <span class="o">=</span> <span class="n">rdm_dict</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span> <span class="n">rdm_v1</span> <span class="o">=</span> <span class="n">rdm_model</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">'V1 data'</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span> 
+
+<span class="ne">NameError</span>: name 'rdm_dict' is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D1_DeepLearning/solutions/W2D1_Tutorial3_Solution_ec39c647.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=558 height=413 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D1_DeepLearning/static/W2D1_Tutorial3_Solution_ec39c647_0.png>
+<img align="left" alt="Solution hint" height="413" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D1_DeepLearning/static/W2D1_Tutorial3_Solution_ec39c647_0.png" width="558"/>
 <p>According to this metric, which layer’s representations most resemble those in the data? Does this agree with your intuitions from exercise 3?</p>
 </div>
 </div>
@@ -1740,17 +1806,17 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_rdm_rows</span><span class="p">(</span><span class="n">ori_list</span><span class="p">,</span> <span class="n">rdm_dict</span><span class="p">,</span> <span class="n">rdm_oris</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Plot the dissimilarity of response to each stimulus with response to one</span>
+  <span class="sd">"""Plot the dissimilarity of response to each stimulus with response to one</span>
 <span class="sd">  specific stimulus</span>
 
 <span class="sd">  Args:</span>
 <span class="sd">    ori_list (list of float): plot dissimilarity with response to stimulus with</span>
 <span class="sd">      orientations closest to each value in this list</span>
-<span class="sd">    rdm_dict (dict): RDM&#39;s from which to extract dissimilarities</span>
+<span class="sd">    rdm_dict (dict): RDM's from which to extract dissimilarities</span>
 <span class="sd">    rdm_oris (np.ndarray): orientations corresponding to each row/column of RDMs</span>
 <span class="sd">    in rdm_dict</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="n">n_col</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ori_list</span><span class="p">)</span>
   <span class="n">f</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_col</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">n_col</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -1760,7 +1826,7 @@
 
     <span class="c1">######################################################################</span>
     <span class="c1"># TODO: plot dissimilarity curves in each RDM and remove the error</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: complete plot_rdm_rows&quot;</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Student exercise: complete plot_rdm_rows"</span><span class="p">)</span>
     <span class="c1">######################################################################</span>
 
     <span class="c1"># Plot dissimilarity curves in each RDM</span>
@@ -1768,14 +1834,14 @@
       <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
 
     <span class="c1"># Draw vertical line at stimulus we are plotting dissimilarity w.r.t.</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">rdm_oris</span><span class="p">[</span><span class="n">iori</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;.7&quot;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">rdm_oris</span><span class="p">[</span><span class="n">iori</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">".7"</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="c1"># Label axes</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Dissimilarity with response</span><span class="se">\n</span><span class="s1">to </span><span class="si">{</span><span class="n">ori_plot</span><span class="si">:</span><span class="s1"> .0f</span><span class="si">}</span><span class="s1">$^o$ stimulus&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Stimulus orientation ($^o$)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Dissimilarity with response</span><span class="se">\n</span><span class="s1">to </span><span class="si">{</span><span class="n">ori_plot</span><span class="si">:</span><span class="s1"> .0f</span><span class="si">}</span><span class="s1">$^o$ stimulus'</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Stimulus orientation ($^o$)'</span><span class="p">)</span>
 
-  <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Dissimilarity&#39;</span><span class="p">)</span>
-  <span class="n">axs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+  <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Dissimilarity'</span><span class="p">)</span>
+  <span class="n">axs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"upper left"</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 
 
 <span class="n">ori_list</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">75</span><span class="p">,</span> <span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">75</span><span class="p">]</span>
@@ -1788,11 +1854,11 @@
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D1_DeepLearning/solutions/W2D1_Tutorial3_Solution_42c2b339.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=1134 height=270 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D1_DeepLearning/static/W2D1_Tutorial3_Solution_42c2b339_1.png>
+<img align="left" alt="Solution hint" height="270" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D1_DeepLearning/static/W2D1_Tutorial3_Solution_42c2b339_1.png" width="1134"/>
 </div>
 </div>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="section-3-qualitative-comparisons-of-cnns-and-neural-activity">
 <h1>Section 3: Qualitative comparisons of CNNs and neural activity<a class="headerlink" href="#section-3-qualitative-comparisons-of-cnns-and-neural-activity" title="Permalink to this headline">¶</a></h1>
 <p>To visualize the representations in the data and in each of these model layers, we’ll use two classic techniques from systems neuroscience:</p>
@@ -1803,6 +1869,8 @@
 <div class="section" id="section-3-1-tuning-curves">
 <h2>Section 3.1: Tuning curves<a class="headerlink" href="#section-3-1-tuning-curves" title="Permalink to this headline">¶</a></h2>
 <p>Below, we show some example tuning curves for different neurons and units in the CNN we trained above. How are the single neuron responses similar/different between the model and the data? Try running this cell multiple times to get an idea of shared properties in the tuning curves of the neurons within each population.</p>
+<div class="section" id="id2">
+<h3><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
@@ -1813,7 +1881,7 @@
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">resp</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">resp_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
 
   <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> responses&#39;</span> <span class="o">%</span> <span class="n">label</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'</span><span class="si">%s</span><span class="s1"> responses'</span> <span class="o">%</span> <span class="n">label</span><span class="p">)</span>
 
   <span class="c1"># Pick three random neurons whose tuning curves to plot</span>
   <span class="n">ineurons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1822,13 +1890,17 @@
   <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ori</span><span class="p">,</span> <span class="n">resp</span><span class="p">[:,</span> <span class="n">ineurons</span><span class="p">])</span>
 
   <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;stimulus orientation&#39;</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;neural response&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'stimulus orientation'</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'neural response'</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/W2D1_Tutorial3_47_0.png" src="../../../_images/W2D1_Tutorial3_47_0.png">
+</img></div>
 </div>
 </div>
 </div>
@@ -1838,13 +1910,13 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_resp_lowd</span><span class="p">(</span><span class="n">resp_dict</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Plot a low-dimensional representation of each dataset in resp_dict.&quot;&quot;&quot;</span>
+    <span class="sd">"""Plot a low-dimensional representation of each dataset in resp_dict."""</span>
     <span class="n">n_col</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">resp_dict</span><span class="p">)</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_col</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">4.5</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">resp_dict</span><span class="p">),</span> <span class="mf">4.5</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">resp</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">resp_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
 
       <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-      <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> responses&#39;</span> <span class="o">%</span> <span class="n">label</span><span class="p">)</span>
+      <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'</span><span class="si">%s</span><span class="s1"> responses'</span> <span class="o">%</span> <span class="n">label</span><span class="p">)</span>
 
       <span class="c1"># First do PCA to reduce dimensionality to 20 dimensions so that tSNE is faster</span>
       <span class="n">resp_lowd</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">resp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
@@ -1852,14 +1924,14 @@
       <span class="c1"># Then do tSNE to reduce dimensionality to 2 dimensions</span>
       <span class="n">resp_lowd</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">resp_lowd</span><span class="p">)</span>
 
-      <span class="c1"># Plot dimensionality-reduced population responses &#39;resp_lowd&#39;</span>
+      <span class="c1"># Plot dimensionality-reduced population responses 'resp_lowd'</span>
       <span class="c1"># on 2D axes, with each point colored by stimulus orientation</span>
       <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">resp_lowd</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">resp_lowd</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-      <span class="n">pts</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">ori</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;twilight&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">90</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
-      <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Stimulus orientation&#39;</span><span class="p">)</span>
+      <span class="n">pts</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">ori</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'twilight'</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">90</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+      <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Stimulus orientation'</span><span class="p">)</span>
 
-      <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Dimension 1&#39;</span><span class="p">)</span>
-      <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Dimension 2&#39;</span><span class="p">)</span>
+      <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Dimension 1'</span><span class="p">)</span>
+      <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Dimension 2'</span><span class="p">)</span>
       <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
       <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
 
@@ -1868,6 +1940,18 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family ['xkcd', 'xkcd Script', 'Humor Sans', 'Comic Neue', 'Comic Sans MS'] not found. Falling back to DejaVu Sans.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family ['xkcd', 'xkcd Script', 'Humor Sans', 'Comic Neue', 'Comic Sans MS'] not found. Falling back to DejaVu Sans.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family ['xkcd', 'xkcd Script', 'Humor Sans', 'Comic Neue', 'Comic Sans MS'] not found. Falling back to DejaVu Sans.
+</pre></div>
+</div>
+<img alt="../../../_images/W2D1_Tutorial3_49_3.png" src="../../../_images/W2D1_Tutorial3_49_3.png">
+</img></div>
 </div>
 <div class="section" id="think-3-2-visualizing-reduced-dimensionality-representations">
 <h3>Think! 3.2: Visualizing reduced dimensionality representations<a class="headerlink" href="#think-3-2-visualizing-reduced-dimensionality-representations" title="Permalink to this headline">¶</a></h3>
@@ -1881,7 +1965,7 @@
 </div>
 </div>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="summary">
 <h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
 <p>In this notebook, we learned</p>
@@ -1894,7 +1978,7 @@
 <p>Secondly, our choice of visual task was mostly arbitrary. For example, we could have trained our network to directly estimate the orientation of the stimulus, rather than just discriminating between two classes of tilt. Or, we could have trained the network to perform a more naturalistic task, such as recognizing the rotation of an arbitrary image. Or we could try a task like object recognition. Is this something that mice compute in their visual cortex?</p>
 <p>Training on different tasks could lead to different representations of the oriented grating stimuli, which might match the observed V1 representations better or worse.</p>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="bonus">
 <h1>Bonus<a class="headerlink" href="#bonus" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="bonus-section-1-building-cnn-s-with-pytorch">
@@ -1907,7 +1991,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FC</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Deep network with one fully connected layer</span>
+  <span class="sd">"""Deep network with one fully connected layer</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">      h_in (int): height of input image, in pixels (i.e. number of rows)</span>
@@ -1917,7 +2001,7 @@
 <span class="sd">      fc (nn.Linear): weights and biases of fully connected layer</span>
 <span class="sd">      out (nn.Linear): weights and biases of output layer</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">h_in</span><span class="p">,</span> <span class="n">w_in</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -1926,7 +2010,7 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">out</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 10D representation --&gt; scalar</span>
 
   <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Classify grating stimulus as tilted right or left</span>
+    <span class="sd">"""Classify grating stimulus as tilted right or left</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">      x (torch.Tensor): p x 48 x 64 tensor with pixel grayscale values for</span>
@@ -1937,7 +2021,7 @@
 <span class="sd">          in x. Each output should be interpreted as the probability of the</span>
 <span class="sd">          corresponding stimulus being tilted right.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span>  <span class="c1"># flatten each input image into a vector</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># output of fully connected layer</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># network output</span>
@@ -1950,15 +2034,15 @@
 <div class="section" id="bonus-section-1-2-convolutional-layers">
 <h3>Bonus Section 1.2: Convolutional layers<a class="headerlink" href="#bonus-section-1-2-convolutional-layers" title="Permalink to this headline">¶</a></h3>
 <p>In a convolutional layer, each unit computes a weighted sum over a two-dimensional <span class="math notranslate nohighlight">\(K \times K\)</span> patch of inputs. As we saw in part 2, the units are arranged in <strong>channels</strong> (see figure below), whereby units in the same channel compute the same weighted sum over different parts of the input, using the weights of that channel’s <strong>convolutional filter (or kernel)</strong>. The output of a convolutional layer is thus a three-dimensional tensor of shape <span class="math notranslate nohighlight">\(C^{out} \times H \times W\)</span>, where <span class="math notranslate nohighlight">\(C^{out}\)</span> is the number of channels (i.e. the number of convolutional filters/kernels), and <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(W\)</span> are the height and width of the input.</p>
-  <p align="center">
-    <img src="https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/static/convnet.png?raw=true" width="350" />
-  </p>
+<p align="center">
+<img src="https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/static/convnet.png?raw=true" width="350">
+</img></p>
 <p>Such layers can be implemented in Python using the PyTorch class `nn.Conv2d as we saw in tutorial 2 (documentation <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Conv2d.html">here</a>).</p>
 <p>See the next cell for code incorporating a convolutional layer with 8 convolutional filters of size 5 <span class="math notranslate nohighlight">\(\times\)</span> 5 into our above fully connected network. Note that we have to flatten the multi-channel output in order to pass it on to the fully connected layer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ConvFC</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Deep network with one convolutional layer and one fully connected layer</span>
+  <span class="sd">"""Deep network with one convolutional layer and one fully connected layer</span>
 
 <span class="sd">  Args:</span>
 <span class="sd">    h_in (int): height of input image, in pixels (i.e. number of rows)</span>
@@ -1970,7 +2054,7 @@
 <span class="sd">    fc (nn.Linear): weights and biases of fully connected layer</span>
 <span class="sd">    out (nn.Linear): weights and biases of output layer</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
 
   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">h_in</span><span class="p">,</span> <span class="n">w_in</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -1983,7 +2067,7 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">out</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 10D representation --&gt; scalar</span>
 
   <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Classify grating stimulus as tilted right or left</span>
+    <span class="sd">"""Classify grating stimulus as tilted right or left</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">      x (torch.Tensor): p x 48 x 64 tensor with pixel grayscale values for</span>
@@ -1994,7 +2078,7 @@
 <span class="sd">          in x. Each output should be interpreted as the probability of the</span>
 <span class="sd">          corresponding stimulus being tilted right.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># p x 1 x 48 x 64, add a singleton dimension for the single stimulus channel</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># output of convolutional layer</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">))</span>  <span class="c1"># flatten convolutional layer outputs into a vector</span>
@@ -2009,8 +2093,8 @@
 <div class="section" id="bonus-section-1-3-max-pooling-layers">
 <h3>Bonus Section 1.3: Max pooling layers<a class="headerlink" href="#bonus-section-1-3-max-pooling-layers" title="Permalink to this headline">¶</a></h3>
 <p>In a max pooling layer, each unit computes the maximum over a small two-dimensional <span class="math notranslate nohighlight">\(K^{pool} \times K^{pool}\)</span> patch of inputs. Given a multi-channel input of dimensions <span class="math notranslate nohighlight">\(C \times H \times W\)</span>, the output of a max pooling layer has dimensions <span class="math notranslate nohighlight">\(C \times H^{out} \times W^{out}\)</span>, where:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4b8ab56a-9db8-4ccd-9c8e-08cc8e2d63c5">
-<span class="eqno">(107)<a class="headerlink" href="#equation-4b8ab56a-9db8-4ccd-9c8e-08cc8e2d63c5" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6f5cad49-f802-4eaa-b6f5-865bc0f2fb88">
+<span class="eqno">(107)<a class="headerlink" href="#equation-6f5cad49-f802-4eaa-b6f5-865bc0f2fb88" title="Permalink to this equation">¶</a></span>\[\begin{align}
   H^{out} &amp;= \left\lfloor \frac{H}{K^{pool}} \right\rfloor\\
   W^{out} &amp;= \left\lfloor \frac{W}{K^{pool}} \right\rfloor
 \end{align}\]</div>
@@ -2019,7 +2103,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PoolConvFC</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Deep network with one convolutional layer followed by a max pooling layer</span>
+  <span class="sd">"""Deep network with one convolutional layer followed by a max pooling layer</span>
 <span class="sd">  and one fully connected layer</span>
 
 <span class="sd">  Args:</span>
@@ -2033,7 +2117,7 @@
 <span class="sd">    fc (nn.Linear): weights and biases of fully connected layer</span>
 <span class="sd">    out (nn.Linear): weights and biases of output layer</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
 
   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">h_in</span><span class="p">,</span> <span class="n">w_in</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -2048,7 +2132,7 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">out</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 10D representation --&gt; scalar</span>
 
   <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Classify grating stimulus as tilted right or left</span>
+    <span class="sd">"""Classify grating stimulus as tilted right or left</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">      x (torch.Tensor): p x 48 x 64 tensor with pixel grayscale values for</span>
@@ -2059,7 +2143,7 @@
 <span class="sd">          in x. Each output should be interpreted as the probability of the</span>
 <span class="sd">          corresponding stimulus being tilted right.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># p x 1 x 48 x 64, add a singleton dimension for the single stimulus channel</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># output of convolutional layer</span>
     <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># output of pooling layer</span>
@@ -2084,8 +2168,8 @@
 <p>What loss function should we minimize to optimize orientation discrimination performance? We first note that the orientation discrimination task is a <strong>binary classification problem</strong>, where the goal is to classify a given stimulus into one of two classes: being tilted left or being tilted right.</p>
 <p>Our goal is thus to output a high probability of the stimulus being tilted right (i.e. large <span class="math notranslate nohighlight">\(p\)</span>) whenever the stimulus is tilted right, and a high probability of the stimulus being tilted left (i.e. large <span class="math notranslate nohighlight">\(1-p \Leftrightarrow\)</span> small <span class="math notranslate nohighlight">\(p\)</span>) whenever the stimulus is tilted left.</p>
 <p>Let <span class="math notranslate nohighlight">\(\tilde{y}^{(n)}\)</span> be the label of the <span class="math notranslate nohighlight">\(n\)</span>th stimulus in the mini-batch, indicating its true tilt:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5dc11b47-2e45-423a-a75e-f4896c0ab244">
-<span class="eqno">(108)<a class="headerlink" href="#equation-5dc11b47-2e45-423a-a75e-f4896c0ab244" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-847db0a9-8252-4a2f-8b09-d1cae6d28609">
+<span class="eqno">(108)<a class="headerlink" href="#equation-847db0a9-8252-4a2f-8b09-d1cae6d28609" title="Permalink to this equation">¶</a></span>\[\begin{equation}
   \tilde{y}^{(n)} =
   \begin{cases}
     1 &amp;\text{if stimulus }n\text{ is tilted right} \\
@@ -2093,8 +2177,8 @@
   \end{cases}
 \end{equation}\]</div>
 <p>Let <span class="math notranslate nohighlight">\(p^{(n)}\)</span> be the predicted probability of that stimulus being tilted right assigned by our network. Note that that <span class="math notranslate nohighlight">\(1-p^{(n)}\)</span> is the predicted probability of that stimulus being tilted left. We’d now like to modify the parameters so as to maximize the predicted probability of the true class <span class="math notranslate nohighlight">\(\tilde{y}^{(n)}\)</span>. One way to formalize this is as maximizing the <em>log</em> probability</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f9237744-4854-4127-98c9-1400780ab134">
-<span class="eqno">(109)<a class="headerlink" href="#equation-f9237744-4854-4127-98c9-1400780ab134" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8881c5a2-b62a-4b56-a544-9af617e0a02f">
+<span class="eqno">(109)<a class="headerlink" href="#equation-8881c5a2-b62a-4b56-a544-9af617e0a02f" title="Permalink to this equation">¶</a></span>\[\begin{align}
   \log \left( \text{predicted probability of stimulus } n \text{ being of class } \tilde{y}^{(n)}\right) &amp;= 
   \begin{cases}
     \log p^{(n)} &amp;\text{if }\tilde{y}^{(n)} = 1 \\
@@ -2105,8 +2189,8 @@
 \end{align}\]</div>
 <p>You should recognize this expression as the log likelihood of the Bernoulli distribution under the predicted probability <span class="math notranslate nohighlight">\(p^{(n)}\)</span>. This is the same quantity that is maximized in logistic regression, where the predicted probability <span class="math notranslate nohighlight">\(p^{(n)}\)</span> is just a simple linear sum of its inputs (rather than a complicated non-linear operation, like in the deep networks used here).</p>
 <p>To turn this into a loss function, we simply multiply it by -1, resulting in the so-called <strong>binary cross-entropy</strong>, or <strong>negative log likelihood</strong>. Summing over <span class="math notranslate nohighlight">\(P\)</span> samples in a batch, the binary cross entropy loss is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2dccdbe0-6a1d-46c6-86cf-8461a88721c3">
-<span class="eqno">(110)<a class="headerlink" href="#equation-2dccdbe0-6a1d-46c6-86cf-8461a88721c3" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a614f672-7e61-4a7a-b1ed-2e8173d67dc0">
+<span class="eqno">(110)<a class="headerlink" href="#equation-a614f672-7e61-4a7a-b1ed-2e8173d67dc0" title="Permalink to this equation">¶</a></span>\[\begin{equation}
   L = -\sum_{n=1}^P \tilde{y}^{(n)} \log p^{(n)} + (1 - \tilde{y}^{(n)})\log(1 - p^{(n)})
 \end{equation}\]</div>
 <p>The binary cross-entropy loss can be implemented in PyTorch using the <code class="docutils literal notranslate"><span class="pre">nn.BCELoss()</span></code> loss function (cf. <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.BCELoss.html">documentation</a>).</p>
@@ -2119,19 +2203,19 @@
 <div class="section" id="bonus-section-3-rdm-z-score-explanation">
 <h2>Bonus Section 3: RDM Z-Score Explanation<a class="headerlink" href="#bonus-section-3-rdm-z-score-explanation" title="Permalink to this headline">¶</a></h2>
 <p>If <span class="math notranslate nohighlight">\(r^{(s)}_i\)</span> is the response of the <span class="math notranslate nohighlight">\(i\)</span>th neuron to the <span class="math notranslate nohighlight">\(s\)</span>th stimulus, then</p>
-<div class="amsmath math notranslate nohighlight" id="equation-54297eb0-ca7c-4822-ac7c-cec13e2f0f17">
-<span class="eqno">(111)<a class="headerlink" href="#equation-54297eb0-ca7c-4822-ac7c-cec13e2f0f17" title="Permalink to this equation">¶</a></span>\[\begin{gather}
+<div class="amsmath math notranslate nohighlight" id="equation-0ffc9dce-25a9-4352-ada4-34268cc5da11">
+<span class="eqno">(111)<a class="headerlink" href="#equation-0ffc9dce-25a9-4352-ada4-34268cc5da11" title="Permalink to this equation">¶</a></span>\[\begin{gather}
   M_{ss'} = 1 - \frac{\text{Cov}\left[ r_i^{(s)}, r_i^{(s')} \right]}{\sqrt{\text{Var}\left[ r_i^{(s)} \right] \text{Var}\left[ r_i^{(s')} \right]}} = 1 - \frac{\sum_{i=1}^N (r_i^{(s)} - \bar{r}^{(s)})(r_i^{(s')} - \bar{r}^{(s')}) }{\sqrt{\sum_{i=1}^N \left( r_i^{(s)} - \bar{r}^{(s)} \right)^2 \sum_{i=1}^N \left( r_i^{(s')} - \bar{r}^{(s')} \right)^2 }} \\
   \bar{r}^{(s)} = \frac{1}{N} \sum_{i=1}^N r_i^{(s)}
 \end{gather}\]</div>
 <p>This can be computed efficiently by using the <span class="math notranslate nohighlight">\(z\)</span>-scored responses</p>
-<div class="amsmath math notranslate nohighlight" id="equation-837eb65d-7431-48a1-b6c9-42b17841357f">
-<span class="eqno">(112)<a class="headerlink" href="#equation-837eb65d-7431-48a1-b6c9-42b17841357f" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-67497fc3-45d8-4f7a-bd20-785ca06c3c2d">
+<span class="eqno">(112)<a class="headerlink" href="#equation-67497fc3-45d8-4f7a-bd20-785ca06c3c2d" title="Permalink to this equation">¶</a></span>\[\begin{equation}
   z_i^{(s)} = \frac{r_i^{(s)} - \bar{r}^{(s)}}{\sqrt{\frac{1}{N}\sum_{i=1}^N \left( r_i^{(s)} - \bar{r}^{(s)} \right)^2}} \Rightarrow M_{ss'} = 1 - \frac{1}{N}\sum_{i=1}^N z_i^{(s)}z_i^{(s')}
 \end{equation}\]</div>
 <p>such that the full matrix can be computed through the matrix multiplication</p>
-<div class="amsmath math notranslate nohighlight" id="equation-34c6e943-1c90-47d2-9a2c-ae2167e72fef">
-<span class="eqno">(113)<a class="headerlink" href="#equation-34c6e943-1c90-47d2-9a2c-ae2167e72fef" title="Permalink to this equation">¶</a></span>\[\begin{gather}
+<div class="amsmath math notranslate nohighlight" id="equation-f4786f4f-c15f-48a5-a944-03024805f54b">
+<span class="eqno">(113)<a class="headerlink" href="#equation-f4786f4f-c15f-48a5-a944-03024805f54b" title="Permalink to this equation">¶</a></span>\[\begin{gather}
   \mathbf{M} = 1 - \frac{1}{N} \mathbf{ZZ}^T \\
   \mathbf{Z} = 
   \begin{bmatrix}
@@ -2144,8 +2228,7 @@
 <p>where <span class="math notranslate nohighlight">\(S\)</span> is the total number of stimuli. Note that <span class="math notranslate nohighlight">\(\mathbf{Z}\)</span> is an <span class="math notranslate nohighlight">\(S \times N\)</span> matrix, and <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> is an <span class="math notranslate nohighlight">\(S \times S\)</span> matrix.</p>
 </div>
 </div>
-
-    <script type="text/x-thebe-config">
+<script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
@@ -2163,38 +2246,27 @@
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
-
-              </div>
-              
-        
-        <div class='prev-next-bottom'>
-            
-    <a class='left-prev' id="prev-link" href="W2D1_Tutorial2.html" title="previous page">Tutorial 2: Convolutional Neural Networks</a>
-    <a class='right-next' id="next-link" href="../W2D1_Outro.html" title="next page">Outro</a>
-
-        </div>
-        
-        </div>
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
+<script>kernelName = 'python3'</script>
+</div>
+<div class="prev-next-bottom">
+<a class="left-prev" href="W2D1_Tutorial2.html" id="prev-link" title="previous page">Tutorial 2: Convolutional Neural Networks</a>
+<a class="right-next" href="../W2D1_Outro.html" id="next-link" title="next page">Outro</a>
+</div>
+</div>
+</div>
+<footer class="footer mt-5 mt-md-0">
+<div class="container">
+<p>
         
           By Neuromatch<br/>
         
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+            © Copyright 2021.<br/>
+</p>
+</div>
+</footer>
 </main>
-
-
-      </div>
-    </div>
-  
-  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  
-  </body>
+</div>
+</div>
+<script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+</body>
 </html>

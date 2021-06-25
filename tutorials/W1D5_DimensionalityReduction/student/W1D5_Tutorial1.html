@@ -2,1007 +2,982 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tutorial 1: Geometric view of data &#8212; Neuromatch Computational Neuroscience</title>
-    
-  <link href="../../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
-
-    
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
-    
-      
-
-    
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
-
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/togglebutton.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tutorial 1: Geometric view of data — Neuromatch Academy: Computational Neuroscience</title>
+<link href="../../../_static/css/theme.css" rel="stylesheet"/>
+<link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet"/>
+<link href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../../_static/pygments.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/togglebutton.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/mystnb.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/sphinx-thebe.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" rel="stylesheet" type="text/css"/>
+<link as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js" rel="preload"/>
+<script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+<script src="../../../_static/jquery.js"></script>
+<script src="../../../_static/underscore.js"></script>
+<script src="../../../_static/doctools.js"></script>
+<script src="../../../_static/togglebutton.js"></script>
+<script src="../../../_static/clipboard.min.js"></script>
+<script src="../../../_static/copybutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+<script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+<script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Tutorial 2: Principal Component Analysis" href="W1D5_Tutorial2.html" />
-    <link rel="prev" title="Intro" href="../W1D5_Intro.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-    
-  </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
+<script async="async" src="../../../_static/sphinx-thebe.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+<link href="../../../_static/nma-logo-square-4xp.jpg" rel="shortcut icon">
+<link href="../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../search.html" rel="search" title="Search"/>
+<link href="W1D5_Tutorial2.html" rel="next" title="Tutorial 2: Principal Component Analysis"/>
+<link href="../W1D5_Intro.html" rel="prev" title="Intro"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</link></link></link></link></head>
+<body data-offset="80" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="container-fluid" id="banner"></div>
+<div class="container-xl">
+<div class="row">
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../../index.html">
-      
-      <img src="../../../_static/nma-logo-square-4xp.jpg" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../intro.html">
+<div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+<img alt="logo" class="logo" src="../../../_static/nma-logo-square-4xp.jpg"/>
+<h1 class="site-logo" id="site-title">Neuromatch Academy: Computational Neuroscience</h1>
+</a>
+</div><form action="../../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search this book..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search this book..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../../../intro.html">
    Introduction
   </a>
- </li>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Pre-reqs Refresher
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D1_PythonWorkshop1/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D1_PythonWorkshop1/chapter_title.html">
    Python Workshop 1 (W0D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox">
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
      Tutorial: LIF Neuron - Part I
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D2_PythonWorkshop2/chapter_title.html">
+</li>
+</ul>
+</input></li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D2_PythonWorkshop2/chapter_title.html">
    Python Workshop 2 (W0D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
      Tutorial 1: LIF Neuron Part II
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D3_LinearAlgebra/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/chapter_title.html">
    Linear Algebra (W0D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
      Tutorial 1: Vectors
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
      Tutorial 2: Matrices
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
      Bonus Tutorial: Discrete Dynamical Systems
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D4_Calculus/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D4_Calculus/chapter_title.html">
    Calculus (W0D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
      Tutorial 1: Basics of Differential and Integral Calculus
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
      Tutorial 2: Differential Equations
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
      Tutorial 3: Numerical Methods
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D5_Statistics/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D5_Statistics/chapter_title.html">
    Statistics (W0D5)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
      Neuromatch Academy: Precourse Week, Day 5, Tutorial 1
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
      Tutorial 2: Statistical Inference
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Intro to Modeling
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D1_ModelTypes/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D1_ModelTypes/chapter_title.html">
    Model Types (W1D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
      Tutorial 1: “What” models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
      Tutorial 2: “How” models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
      Tutorial 3: “Why” models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D2_ModelingPractice/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D2_ModelingPractice/chapter_title.html">
    Modeling Practice (W1D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
      Tutorial: Framing the Question
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Outro.html">
      Outro
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Machine Learning
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D3_ModelFitting/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D3_ModelFitting/chapter_title.html">
    Model Fitting (W1D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
      Tutorial 1: Linear regression with MSE
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
      Tutorial 2: Linear regression with MLE
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
      Tutorial 3: Confidence intervals and bootstrapping
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
      Tutorial 4: Multiple linear regression and polynomial regression
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
      Tutorial 5: Model Selection: Bias-variance trade-off
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
      Tutorial 6: Model Selection: Cross-validation
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/chapter_title.html">
    Generalized Linear Models (W1D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial1.html">
      Tutorial 1: GLMs for Encoding
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial2.html">
      Tutorial 2: Classifiers and regularizers
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children">
+<a class="reference internal" href="../chapter_title.html">
    Dimensionality Reduction (W1D5)
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../W1D5_Intro.html">
+<input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+<label for="toctree-checkbox-10">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul class="current">
+<li class="toctree-l2">
+<a class="reference internal" href="../W1D5_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+</li>
+<li class="toctree-l2 current active">
+<a class="current reference internal" href="#">
      Tutorial 1: Geometric view of data
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="W1D5_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="W1D5_Tutorial2.html">
      Tutorial 2: Principal Component Analysis
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="W1D5_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="W1D5_Tutorial3.html">
      Tutorial 3: Dimensionality Reduction &amp; Reconstruction
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="W1D5_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="W1D5_Tutorial4.html">
      Tutorial 4:  Nonlinear Dimensionality Reduction
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../W1D5_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../W1D5_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D1_DeepLearning/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D1_DeepLearning/chapter_title.html">
    Deep Learning (W2D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/W2D1_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+<label for="toctree-checkbox-11">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/W2D1_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
      Tutorial 1: Decoding Neural Responses
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
      Tutorial 2: Convolutional Neural Networks
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
      Tutorial 2: Building and Evaluating Normative Encoding Models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/W2D1_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/W2D1_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Dynamical Systems
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D2_LinearSystems/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D2_LinearSystems/chapter_title.html">
    Linear Systems (W2D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+<label for="toctree-checkbox-12">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
      Tutorial 1: Linear dynamical systems
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
      Tutorial 2: Markov Processes
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
      Tutorial 3: Combining determinism and stochasticity
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
      Tutorial 4: Autoregressive models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/chapter_title.html">
    Biological Neuron Models (W2D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+<label for="toctree-checkbox-13">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial1.html">
      Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial2.html">
      Tutorial 2: Effects of Input Correlation
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial3.html">
      Tutorial 3: Synaptic transmission - Models of static and dynamic synapses
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial4.html">
      Tutorial 4: Spike-timing dependent plasticity (STDP)
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D4_DynamicNetworks/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/chapter_title.html">
    Dynamic Networks (W2D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+<label for="toctree-checkbox-14">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
      Tutorial 1: Neural Rate Models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
      Tutorial 2: Wilson-Cowan Model
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Stochastic Processes
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D1_BayesianDecisions/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/chapter_title.html">
    Bayesian Decisions (W3D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-  <label for="toctree-checkbox-15">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+<label for="toctree-checkbox-15">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
      Tutorial 1: Bayes with a binary hidden state
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
      Tutorial 2: Bayesian inference and decisions with continuous hidden state
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
      Bonus Tutorial:Fitting to data
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D2_HiddenDynamics/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/chapter_title.html">
    Hidden Dynamics (W3D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
-  <label for="toctree-checkbox-16">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+<label for="toctree-checkbox-16">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
      Tutorial 1: Sequential Probability Ratio Test
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
      Tutorial 2: Hidden Markov Model
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
      Tutorial 3: 1D Kalman Filter
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
      Tutorial 4: 2D Kalman Filter
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D3_OptimalControl/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D3_OptimalControl/chapter_title.html">
    Optimal Control (W3D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
-  <label for="toctree-checkbox-17">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+<label for="toctree-checkbox-17">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
      Tutorial 1: Optimal Control for Discrete States
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
      Tutorial 2: Optimal Control for Continuous State
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D4_ReinforcementLearning/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/chapter_title.html">
    Reinforcement Learning (W3D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
-  <label for="toctree-checkbox-18">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+<label for="toctree-checkbox-18">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
      Tutorial 1: Learning to Predict
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
      Tutorial 2: Learning to Act: Multi-Armed Bandits
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
      Tutorial 3: Learning to Act: Q-Learning
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
      Tutorial 4: From Reinforcement Learning to Planning
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D5_NetworkCausality/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D5_NetworkCausality/chapter_title.html">
    Network Causality (W3D5)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-  <label for="toctree-checkbox-19">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+<label for="toctree-checkbox-19">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
      Tutorial 1: Interventions
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
      Tutorial 2: Correlations
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
      Tutorial 3: Simultaneous fitting/regression
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
      Tutorial 4: Instrumental Variables
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
+</li>
 </ul>
-
-    </div>
+</li>
+</ul>
+</div>
 </nav> <!-- To handle the deprecated key -->
-
 <div class="navbar_extra_footer">
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
 </div>
-
 </div>
-
-
-          
-
-
-          
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
+<div class="topbar container-xl fixed-top">
+<div class="topbar-contents row">
+<div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+<div class="col pl-md-4 topbar-main">
+<button aria-controls="site-navigation" aria-expanded="true" aria-label="Toggle navigation" class="navbar-toggler ml-0" data-placement="left" data-target=".site-navigation" data-toggle="tooltip" id="navbar-toggler" title="Toggle navigation" type="button">
+<i class="fas fa-bars"></i>
+<i class="fas fa-arrow-left"></i>
+<i class="fas fa-arrow-up"></i>
+</button>
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/tutorials/W1D5_DimensionalityReduction/student/W1D5_Tutorial1.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
+<button aria-label="Download this page" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-download"></i></button>
+<div class="dropdown-buttons">
+<!-- ipynb file if we had a myst markdown file -->
+<!-- Download raw file -->
+<a class="dropdown-buttons" href="../../../_sources/tutorials/W1D5_DimensionalityReduction/student/W1D5_Tutorial1.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.ipynb</button></a>
+<!-- Download PDF via print -->
+<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
 </div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
+</div>
+<!-- Source interaction buttons -->
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/tutorials/W1D5_DimensionalityReduction/student/W1D5_Tutorial1.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../../../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
+<button aria-label="Connect with source repository" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fab fa-github"></i></button>
+<div class="dropdown-buttons sourcebuttons">
+<a class="repository-button" href="https://github.com/NeuromatchAcademy/course-content"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Source repository" type="button"><i class="fab fa-github"></i>repository</button></a>
+<a class="issues-button" href="https://github.com/NeuromatchAcademy/course-content/issues/new?title=Issue%20on%20page%20%2Ftutorials/W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html&amp;body=Your%20issue%20content%20here."><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Open an issue" type="button"><i class="fas fa-lightbulb"></i>open issue</button></a>
 </div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+</div>
+<!-- Full screen (wrap in <a> to have style consistency -->
+<a class="full-screen-button"><button aria-label="Fullscreen mode" class="btn btn-secondary topbarbtn" data-placement="bottom" data-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode" type="button"><i class="fas fa-expand"></i></button></a>
+<!-- Launch buttons -->
+</div>
+<!-- Table of contents -->
+<div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+<i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#">
    Tutorial 1: Geometric view of data
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tutorial-objectives">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#tutorial-objectives">
    Tutorial Objectives
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-1-geometric-view-of-data">
+     Video 1: Geometric view of data
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#setup">
    Setup
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#section-1-generate-correlated-multivariate-data">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#figure-settings">
+     Figure Settings
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#helper-functions">
+     Helper functions
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-1-generate-correlated-multivariate-data">
    Section 1: Generate correlated multivariate data
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-1-draw-samples-from-a-distribution">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-2-multivariate-data">
+     Video 2: Multivariate data
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-1-draw-samples-from-a-distribution">
      Exercise 1: Draw samples from a distribution
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#section-2-define-a-new-orthonormal-basis">
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-2-define-a-new-orthonormal-basis">
    Section 2: Define a new orthonormal basis
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-2-find-an-orthonormal-basis">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-3-orthonormal-bases">
+     Video 3: Orthonormal bases
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-2-find-an-orthonormal-basis">
      Exercise 2: Find an orthonormal basis
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#section-3-project-data-onto-new-basis">
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-project-data-onto-new-basis">
    Section 3: Project data onto new basis
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-3-define-an-orthonormal-basis">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-4-change-of-basis">
+     Video 4: Change of basis
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-3-define-an-orthonormal-basis">
      Exercise 3: Define an orthonormal basis
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#interactive-demo-play-with-the-basis-vectors">
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#interactive-demo-play-with-the-basis-vectors">
      Interactive Demo: Play with the basis vectors
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#questions">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id1">
+</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#questions">
      Questions
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#summary">
    Summary
   </a>
- </li>
+</li>
 </ul>
-
-            </nav>
-        </div>
-    </div>
+</nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
-                
-  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D5_DimensionalityReduction/student/W1D5_Tutorial1.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></p>
+</div>
+</div>
+<div class="row" id="main-content">
+<div class="col-12 col-md-9 pl-md-3 pr-md-0">
+<div>
+<p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D5_DimensionalityReduction/student/W1D5_Tutorial1.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></p>
 <div class="section" id="tutorial-1-geometric-view-of-data">
 <h1>Tutorial 1: Geometric view of data<a class="headerlink" href="#tutorial-1-geometric-view-of-data" title="Permalink to this headline">¶</a></h1>
 <p><strong>Week 1, Day 5: Dimensionality Reduction</strong></p>
@@ -1010,7 +985,7 @@
 <p><strong>Content creators:</strong> Alex Cayco Gajic, John Murray</p>
 <p><strong>Content reviewers:</strong> Roozbeh Farhoudi, Matt Krause, Spiros Chavlis, Richard Gao, Michael Waskom</p>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="tutorial-objectives">
 <h1>Tutorial Objectives<a class="headerlink" href="#tutorial-objectives" title="Permalink to this headline">¶</a></h1>
 <p>In this notebook we’ll explore how multivariate data can be represented in different orthonormal bases. This will help us build intuition that will be helpful in understanding PCA in the following tutorial.</p>
@@ -1020,19 +995,20 @@
 <li><p>Define an arbitrary orthonormal basis.</p></li>
 <li><p>Project the data onto the new basis.</p></li>
 </ul>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Video 1: Geometric view of data</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
-<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;THu9yHnpq9I&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="n">video</span>
+<div class="section" id="video-1-geometric-view-of-data">
+<h2>Video 1: Geometric view of data<a class="headerlink" href="#video-1-geometric-view-of-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=THu9yHnpq9I
 </pre></div>
 </div>
+<div class="output text_html">
+<iframe allowfullscreen="" frameborder="0" height="410" src="https://www.youtube.com/embed/THu9yHnpq9I?fs=1" width="730"></iframe>
+</div></div>
 </div>
 </div>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="setup">
 <h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
@@ -1044,23 +1020,28 @@
 </div>
 </div>
 </div>
+<div class="section" id="figure-settings">
+<h2>Figure Settings<a class="headerlink" href="#figure-settings" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Figure Settings</span>
 <span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>  <span class="c1"># interactive display</span>
-<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;</span><span class="p">)</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = 'retina'
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="helper-functions">
+<h2>Helper functions<a class="headerlink" href="#helper-functions" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Helper functions</span>
 
 
 <span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="n">cov_matrix</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;</span>
+  <span class="sd">"""</span>
 <span class="sd">  Returns a matrix of 1000 samples from a bivariate, zero-mean Gaussian.</span>
 
 <span class="sd">  Note that samples are sorted in ascending order for the first random variable</span>
@@ -1072,7 +1053,7 @@
 <span class="sd">    (numpy array of floats) : samples from the bivariate Gaussian, with each</span>
 <span class="sd">                              column corresponding to a different random</span>
 <span class="sd">                              variable</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
 
   <span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
   <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">cov_matrix</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
@@ -1083,7 +1064,7 @@
 
 
 <span class="k">def</span> <span class="nf">plot_data</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;</span>
+  <span class="sd">"""</span>
 <span class="sd">  Plots bivariate data. Includes a plot of each random variable, and a scatter</span>
 <span class="sd">  plot of their joint activity. The title indicates the sample correlation</span>
 <span class="sd">  calculated from the data.</span>
@@ -1094,32 +1075,32 @@
 
 <span class="sd">  Returns:</span>
 <span class="sd">    Nothing.</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
 
   <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
   <span class="n">gs</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_gridspec</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
   <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-  <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Neuron 1&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sample var 1: </span><span class="si">{:.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])))</span>
+  <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Neuron 1'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Sample var 1: </span><span class="si">{:.1f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])))</span>
   <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([])</span>
   <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-  <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sample Number&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Neuron 2&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sample var 2: </span><span class="si">{:.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])))</span>
+  <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Sample Number'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Neuron 2'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Sample var 2: </span><span class="si">{:.1f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])))</span>
   <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
-  <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="p">[</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">],</span>
+  <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">'.'</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="p">[</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">],</span>
            <span class="n">markeredgewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-  <span class="n">ax3</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Neuron 1 activity&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Neuron 2 activity&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sample corr: </span><span class="si">{:.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+  <span class="n">ax3</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Neuron 1 activity'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Neuron 2 activity'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Sample corr: </span><span class="si">{:.1f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
   <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 
 <span class="k">def</span> <span class="nf">plot_basis_vectors</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;</span>
+  <span class="sd">"""</span>
 <span class="sd">  Plots bivariate data as well as new basis vectors.</span>
 
 <span class="sd">  Args:</span>
@@ -1130,23 +1111,23 @@
 
 <span class="sd">  Returns:</span>
 <span class="sd">    Nothing.</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
 
   <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Neuron 1 activity&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Neuron 2 activity&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">W</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">W</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-           <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Basis vector 1&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">W</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">W</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-           <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Basis vector 2&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">'.'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Data'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Neuron 1 activity'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Neuron 2 activity'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">W</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">W</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">color</span><span class="o">=</span><span class="s1">'r'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+           <span class="n">label</span><span class="o">=</span><span class="s1">'Basis vector 1'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">W</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">W</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">color</span><span class="o">=</span><span class="s1">'b'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+           <span class="n">label</span><span class="o">=</span><span class="s1">'Basis vector 2'</span><span class="p">)</span>
   <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
   <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 
 <span class="k">def</span> <span class="nf">plot_data_new_basis</span><span class="p">(</span><span class="n">Y</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;</span>
+  <span class="sd">"""</span>
 <span class="sd">  Plots bivariate data after transformation to new bases.</span>
 <span class="sd">  Similar to plot_data but with colors corresponding to projections onto</span>
 <span class="sd">  basis 1 (red) and basis 2 (blue). The title indicates the sample correlation</span>
@@ -1161,53 +1142,55 @@
 
 <span class="sd">  Returns:</span>
 <span class="sd">    Nothing.</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
   <span class="n">gs</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_gridspec</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
   <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-  <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+  <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">'r'</span><span class="p">)</span>
   <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Projection </span><span class="se">\n</span><span class="s1"> basis vector 1&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sample var 1: </span><span class="si">{:.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])))</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Projection </span><span class="se">\n</span><span class="s1"> basis vector 1'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Sample var 1: </span><span class="si">{:.1f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])))</span>
   <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([])</span>
   <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-  <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sample number&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Projection </span><span class="se">\n</span><span class="s1"> basis vector 2&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sample var 2: </span><span class="si">{:.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])))</span>
+  <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">'b'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Sample number'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Projection </span><span class="se">\n</span><span class="s1"> basis vector 2'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Sample var 2: </span><span class="si">{:.1f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])))</span>
   <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
-  <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">])</span>
-  <span class="n">ax3</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Projection basis vector 1&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Projection basis vector 2&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sample corr: </span><span class="si">{:.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+  <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">'.'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">])</span>
+  <span class="n">ax3</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Projection basis vector 1'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Projection basis vector 2'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Sample corr: </span><span class="si">{:.1f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
   <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<hr class="docutils" />
+</div>
+<hr class="docutils"/>
 <div class="section" id="section-1-generate-correlated-multivariate-data">
 <h1>Section 1: Generate correlated multivariate data<a class="headerlink" href="#section-1-generate-correlated-multivariate-data" title="Permalink to this headline">¶</a></h1>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Video 2: Multivariate data</span>
-<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;jcTq2PgU5Vw&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="n">video</span>
+<div class="section" id="video-2-multivariate-data">
+<h2>Video 2: Multivariate data<a class="headerlink" href="#video-2-multivariate-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=jcTq2PgU5Vw
 </pre></div>
 </div>
-</div>
+<div class="output text_html">
+<iframe allowfullscreen="" frameborder="0" height="410" src="https://www.youtube.com/embed/jcTq2PgU5Vw?fs=1" width="730"></iframe>
+</div></div>
 </div>
 <p>To gain intuition, we will first use a simple model to generate multivariate data. Specifically, we will draw random samples from a <em>bivariate normal distribution</em>. This is an extension of the one-dimensional normal distribution to two dimensions, in which each <span class="math notranslate nohighlight">\(x_i\)</span> is marginally normal with mean <span class="math notranslate nohighlight">\(\mu_i\)</span> and variance <span class="math notranslate nohighlight">\(\sigma_i^2\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b545050f-0008-4c6c-9c6c-cb6581187878">
-<span class="eqno">(66)<a class="headerlink" href="#equation-b545050f-0008-4c6c-9c6c-cb6581187878" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-90b2f004-34a3-4330-88a5-fe0a3ba403b2">
+<span class="eqno">(66)<a class="headerlink" href="#equation-90b2f004-34a3-4330-88a5-fe0a3ba403b2" title="Permalink to this equation">¶</a></span>\[\begin{align}
 x_i \sim \mathcal{N}(\mu_i,\sigma_i^2).
 \end{align}\]</div>
 <p>Additionally, the joint distribution for <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> has a specified correlation coefficient <span class="math notranslate nohighlight">\(\rho\)</span>. Recall that the correlation coefficient is a normalized version of the covariance, and ranges between -1 and +1:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d1edf6ff-7329-498d-9365-3d25d952f394">
-<span class="eqno">(67)<a class="headerlink" href="#equation-d1edf6ff-7329-498d-9365-3d25d952f394" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-66781a1c-28a8-430c-b154-c3efeaf8d600">
+<span class="eqno">(67)<a class="headerlink" href="#equation-66781a1c-28a8-430c-b154-c3efeaf8d600" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \rho = \frac{\text{cov}(x_1,x_2)}{\sqrt{\sigma_1^2 \sigma_2^2}}.
 \end{align}\]</div>
 <p>For simplicity, we will assume that the mean of each variable has already been subtracted, so that <span class="math notranslate nohighlight">\(\mu_i=0\)</span>. The remaining parameters can be summarized in the covariance matrix, which for two dimensions has the following form:</p>
@@ -1220,11 +1203,12 @@ x_i \sim \mathcal{N}(\mu_i,\sigma_i^2).
 \end{pmatrix}.
 \end{equation*}\]</div>
 <p>In general, <span class="math notranslate nohighlight">\(\bf \Sigma\)</span> is a symmetric matrix with the variances <span class="math notranslate nohighlight">\(\text{var}(x_i) = \sigma_i^2\)</span> on the diagonal, and the covariances on the off-diagonal. Later, we will see that the covariance matrix plays a key role in PCA.</p>
+</div>
 <div class="section" id="exercise-1-draw-samples-from-a-distribution">
 <h2>Exercise 1: Draw samples from a distribution<a class="headerlink" href="#exercise-1-draw-samples-from-a-distribution" title="Permalink to this headline">¶</a></h2>
 <p>We have provided code to draw random samples from a zero-mean bivariate normal distribution. Throughout this tutorial, we’ll imagine these samples represent the activity (firing rates) of two recorded neurons on different trials. Fill in the function below to calculate the covariance matrix given the desired variances and correlation coefficient. The covariance can be found by rearranging the equation above:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6691a52a-312f-4c4f-9dd7-9df45a07e6f9">
-<span class="eqno">(68)<a class="headerlink" href="#equation-6691a52a-312f-4c4f-9dd7-9df45a07e6f9" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-870d5892-5591-4acd-966e-92205fecdeb2">
+<span class="eqno">(68)<a class="headerlink" href="#equation-870d5892-5591-4acd-966e-92205fecdeb2" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \text{cov}(x_1,x_2) = \rho \sqrt{\sigma_1^2 \sigma_2^2}.
 \end{align}\]</div>
 <p>Use these functions to generate and plot data while varying the parameters. You should get a feel for how changing the correlation coefficient affects the geometry of the simulated data.</p>
@@ -1240,11 +1224,43 @@ x_i \sim \mathcal{N}(\mu_i,\sigma_i^2).
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function plot_data in module __main__:
+
+plot_data(X)
+    Plots bivariate data. Includes a plot of each random variable, and a scatter
+    plot of their joint activity. The title indicates the sample correlation
+    calculated from the data.
+    
+    Args:
+      X (numpy array of floats) :   Data matrix each column corresponds to a
+                                    different random variable
+    
+    Returns:
+      Nothing.
+
+Help on function get_data in module __main__:
+
+get_data(cov_matrix)
+    Returns a matrix of 1000 samples from a bivariate, zero-mean Gaussian.
+    
+    Note that samples are sorted in ascending order for the first random variable
+    
+    Args:
+      cov_matrix (numpy array of floats): desired covariance matrix
+    
+    Returns:
+      (numpy array of floats) : samples from the bivariate Gaussian, with each
+                                column corresponding to a different random
+                                variable
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_cov_matrix</span><span class="p">(</span><span class="n">var_1</span><span class="p">,</span> <span class="n">var_2</span><span class="p">,</span> <span class="n">corr_coef</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;</span>
+  <span class="sd">"""</span>
 <span class="sd">  Calculates the covariance matrix based on the variances and correlation</span>
 <span class="sd">  coefficient.</span>
 
@@ -1255,12 +1271,12 @@ x_i \sim \mathcal{N}(\mu_i,\sigma_i^2).
 
 <span class="sd">  Returns:</span>
 <span class="sd">    (numpy array of floats) : covariance matrix</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
 
   <span class="c1">#################################################</span>
   <span class="c1">## TODO for students: calculate the covariance matrix</span>
   <span class="c1"># Fill out function and remove</span>
-  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student excercise: calculate the covariance matrix!&quot;</span><span class="p">)</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Student excercise: calculate the covariance matrix!"</span><span class="p">)</span>
   <span class="c1">#################################################</span>
 
   <span class="c1"># Calculate the covariance from the variances and correlation</span>
@@ -1291,56 +1307,58 @@ x_i \sim \mathcal{N}(\mu_i,\sigma_i^2).
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W1D5_DimensionalityReduction/solutions/W1D5_Tutorial1_Solution_a068bc84.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=570 height=272 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W1D5_DimensionalityReduction/static/W1D5_Tutorial1_Solution_a068bc84_0.png>
+<img align="left" alt="Solution hint" height="272" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W1D5_DimensionalityReduction/static/W1D5_Tutorial1_Solution_a068bc84_0.png" width="570"/>
 </div>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="section-2-define-a-new-orthonormal-basis">
 <h1>Section 2: Define a new orthonormal basis<a class="headerlink" href="#section-2-define-a-new-orthonormal-basis" title="Permalink to this headline">¶</a></h1>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Video 3: Orthonormal bases</span>
-<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;PC1RZELnrIg&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="n">video</span>
+<div class="section" id="video-3-orthonormal-bases">
+<h2>Video 3: Orthonormal bases<a class="headerlink" href="#video-3-orthonormal-bases" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=PC1RZELnrIg
 </pre></div>
 </div>
-</div>
+<div class="output text_html">
+<iframe allowfullscreen="" frameborder="0" height="410" src="https://www.youtube.com/embed/PC1RZELnrIg?fs=1" width="730"></iframe>
+</div></div>
 </div>
 <p>Next, we will define a new orthonormal basis of vectors <span class="math notranslate nohighlight">\({\bf u} = [u_1,u_2]\)</span> and <span class="math notranslate nohighlight">\({\bf w} = [w_1,w_2]\)</span>. As we learned in the video, two vectors are orthonormal if:</p>
 <ol class="simple">
 <li><p>They are orthogonal (i.e., their dot product is zero):</p></li>
 </ol>
-<div class="amsmath math notranslate nohighlight" id="equation-2000364e-7197-4dad-ae94-f8b92e4811c5">
-<span class="eqno">(69)<a class="headerlink" href="#equation-2000364e-7197-4dad-ae94-f8b92e4811c5" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f794b0f2-e94a-467c-be51-41a5a4398af5">
+<span class="eqno">(69)<a class="headerlink" href="#equation-f794b0f2-e94a-467c-be51-41a5a4398af5" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 {\bf u\cdot w} = u_1 w_1 + u_2 w_2 = 0
 \end{equation}\]</div>
 <ol class="simple">
 <li><p>They have unit length:</p></li>
 </ol>
-<div class="amsmath math notranslate nohighlight" id="equation-ffb5f7b6-4f62-4546-9fe6-3afdbcafdf9d">
-<span class="eqno">(70)<a class="headerlink" href="#equation-ffb5f7b6-4f62-4546-9fe6-3afdbcafdf9d" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-421b8326-1a3d-4897-a091-6e6ef67ed854">
+<span class="eqno">(70)<a class="headerlink" href="#equation-421b8326-1a3d-4897-a091-6e6ef67ed854" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 ||{\bf u} || = ||{\bf w} || = 1
 \end{equation}\]</div>
 <p>In two dimensions, it is easy to make an arbitrary orthonormal basis. All we need is a random vector <span class="math notranslate nohighlight">\({\bf u}\)</span>, which we have normalized. If we now define the second basis vector to be <span class="math notranslate nohighlight">\({\bf w} = [-u_2,u_1]\)</span>, we can check that both conditions are satisfied:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9a9286a8-4696-491a-92e6-ac84b0bd982b">
-<span class="eqno">(71)<a class="headerlink" href="#equation-9a9286a8-4696-491a-92e6-ac84b0bd982b" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d02a0730-849c-475c-85bf-86b93bfd281d">
+<span class="eqno">(71)<a class="headerlink" href="#equation-d02a0730-849c-475c-85bf-86b93bfd281d" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 {\bf u\cdot w} = - u_1 u_2 + u_2 u_1 = 0
 \end{equation}\]</div>
 <p>and</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a8bc9ab2-5242-4b1f-851e-e42923c8da82">
-<span class="eqno">(72)<a class="headerlink" href="#equation-a8bc9ab2-5242-4b1f-851e-e42923c8da82" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-56491007-a7a4-42a1-9d3d-130f386ecd9e">
+<span class="eqno">(72)<a class="headerlink" href="#equation-56491007-a7a4-42a1-9d3d-130f386ecd9e" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 {|| {\bf w} ||} = \sqrt{(-u_2)^2 + u_1^2} = \sqrt{u_1^2 + u_2^2} = 1,
 \end{equation}\]</div>
 <p>where we used the fact that <span class="math notranslate nohighlight">\({\bf u}\)</span> is normalized. So, with an arbitrary input vector, we can define an orthonormal basis, which we will write in matrix by stacking the basis vectors horizontally:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c32d474c-0d8b-4b09-8aec-075550f34cdb">
-<span class="eqno">(73)<a class="headerlink" href="#equation-c32d474c-0d8b-4b09-8aec-075550f34cdb" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ee65ba01-19ea-4226-9d4b-9f470c660fcc">
+<span class="eqno">(73)<a class="headerlink" href="#equation-ee65ba01-19ea-4226-9d4b-9f470c660fcc" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 {{\bf W} } =
 \begin{pmatrix}
  u_1 &amp; w_1 \\
  u_2 &amp; w_2
 \end{pmatrix}.
 \end{equation}\]</div>
+</div>
 <div class="section" id="exercise-2-find-an-orthonormal-basis">
 <h2>Exercise 2: Find an orthonormal basis<a class="headerlink" href="#exercise-2-find-an-orthonormal-basis" title="Permalink to this headline">¶</a></h2>
 <p>In this exercise you will fill in the function below to define an orthonormal basis, given a single arbitrary 2-dimensional vector as an input.</p>
@@ -1356,11 +1374,28 @@ x_i \sim \mathcal{N}(\mu_i,\sigma_i^2).
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function plot_basis_vectors in module __main__:
+
+plot_basis_vectors(X, W)
+    Plots bivariate data as well as new basis vectors.
+    
+    Args:
+      X (numpy array of floats) :   Data matrix each column corresponds to a
+                                    different random variable
+      W (numpy array of floats) :   Square matrix representing new orthonormal
+                                    basis each column represents a basis vector
+    
+    Returns:
+      Nothing.
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">define_orthonormal_basis</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;</span>
+  <span class="sd">"""</span>
 <span class="sd">  Calculates an orthonormal basis given an arbitrary vector u.</span>
 
 <span class="sd">  Args:</span>
@@ -1370,12 +1405,12 @@ x_i \sim \mathcal{N}(\mu_i,\sigma_i^2).
 <span class="sd">  Returns:</span>
 <span class="sd">    (numpy array of floats)   : new orthonormal basis</span>
 <span class="sd">                                columns correspond to basis vectors</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
 
   <span class="c1">#################################################</span>
   <span class="c1">## TODO for students: calculate the orthonormal basis</span>
   <span class="c1"># Fill out function and remove</span>
-  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student excercise: implement the orthonormal basis function&quot;</span><span class="p">)</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Student excercise: implement the orthonormal basis function"</span><span class="p">)</span>
   <span class="c1">#################################################</span>
 
   <span class="c1"># normalize vector u</span>
@@ -1403,31 +1438,34 @@ x_i \sim \mathcal{N}(\mu_i,\sigma_i^2).
 </pre></div>
 </div>
 </div>
+
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W1D5_DimensionalityReduction/solutions/W1D5_Tutorial1_Solution_85e5b50f.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=274 height=272 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W1D5_DimensionalityReduction/static/W1D5_Tutorial1_Solution_85e5b50f_0.png>
+<img align="left" alt="Solution hint" height="272" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W1D5_DimensionalityReduction/static/W1D5_Tutorial1_Solution_85e5b50f_0.png" width="274"/>
 </div>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="section-3-project-data-onto-new-basis">
 <h1>Section 3: Project data onto new basis<a class="headerlink" href="#section-3-project-data-onto-new-basis" title="Permalink to this headline">¶</a></h1>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Video 4: Change of basis</span>
-<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;Mj6BRQPKKUc&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="n">video</span>
+<div class="section" id="video-4-change-of-basis">
+<h2>Video 4: Change of basis<a class="headerlink" href="#video-4-change-of-basis" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=Mj6BRQPKKUc
 </pre></div>
 </div>
-</div>
+<div class="output text_html">
+<iframe allowfullscreen="" frameborder="0" height="410" src="https://www.youtube.com/embed/Mj6BRQPKKUc?fs=1" width="730"></iframe>
+</div></div>
 </div>
 <p>Finally, we will express our data in the new basis that we have just found. Since <span class="math notranslate nohighlight">\(\bf W\)</span> is orthonormal, we can project the data into our new basis using simple matrix multiplication :</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a6bdf43d-2744-4705-869e-521c3d7f368d">
-<span class="eqno">(74)<a class="headerlink" href="#equation-a6bdf43d-2744-4705-869e-521c3d7f368d" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-327de4ff-030e-4233-83eb-f81c0d9e923d">
+<span class="eqno">(74)<a class="headerlink" href="#equation-327de4ff-030e-4233-83eb-f81c0d9e923d" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 {\bf Y = X W}.
 \end{equation}\]</div>
 <p>We will explore the geometry of the transformed data <span class="math notranslate nohighlight">\(\bf Y\)</span> as we vary the choice of basis.</p>
+</div>
 <div class="section" id="exercise-3-define-an-orthonormal-basis">
 <h2>Exercise 3: Define an orthonormal basis<a class="headerlink" href="#exercise-3-define-an-orthonormal-basis" title="Permalink to this headline">¶</a></h2>
 <p>In this exercise you will fill in the function below to define an orthonormal basis, given a single arbitrary vector as an input.</p>
@@ -1441,7 +1479,7 @@ x_i \sim \mathcal{N}(\mu_i,\sigma_i^2).
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">change_of_basis</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;</span>
+  <span class="sd">"""</span>
 <span class="sd">  Projects data onto new basis W.</span>
 
 <span class="sd">  Args:</span>
@@ -1452,12 +1490,12 @@ x_i \sim \mathcal{N}(\mu_i,\sigma_i^2).
 
 <span class="sd">  Returns:</span>
 <span class="sd">    (numpy array of floats)    : Data matrix expressed in new basis</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
 
   <span class="c1">#################################################</span>
   <span class="c1">## TODO for students: project the data onto o new basis W</span>
   <span class="c1"># Fill out function and remove</span>
-  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student excercise: implement change of basis&quot;</span><span class="p">)</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Student excercise: implement change of basis"</span><span class="p">)</span>
   <span class="c1">#################################################</span>
 
   <span class="c1"># project data onto new basis described by W</span>
@@ -1475,11 +1513,13 @@ x_i \sim \mathcal{N}(\mu_i,\sigma_i^2).
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W1D5_DimensionalityReduction/solutions/W1D5_Tutorial1_Solution_a1124bbc.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=560 height=272 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W1D5_DimensionalityReduction/static/W1D5_Tutorial1_Solution_a1124bbc_0.png>
+<img align="left" alt="Solution hint" height="272" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W1D5_DimensionalityReduction/static/W1D5_Tutorial1_Solution_a1124bbc_0.png" width="560"/>
 </div>
 <div class="section" id="interactive-demo-play-with-the-basis-vectors">
 <h2>Interactive Demo: Play with the basis vectors<a class="headerlink" href="#interactive-demo-play-with-the-basis-vectors" title="Permalink to this headline">¶</a></h2>
 <p>To see what happens to the correlation as we change the basis vectors, run the cell below. The parameter <span class="math notranslate nohighlight">\(\theta\)</span> controls the angle of <span class="math notranslate nohighlight">\(\bf u\)</span> in degrees. Use the slider to rotate the basis vectors.</p>
+<div class="section" id="id1">
+<h3><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
@@ -1499,6 +1539,11 @@ x_i \sim \mathcal{N}(\mu_i,\sigma_i^2).
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "7a8ca9ee56f1408d8832c6d2d7e96084"}
+</script></div>
+</div>
 </div>
 </div>
 <div class="section" id="questions">
@@ -1510,7 +1555,7 @@ x_i \sim \mathcal{N}(\mu_i,\sigma_i^2).
 </ul>
 </div>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="summary">
 <h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
@@ -1522,8 +1567,10 @@ x_i \sim \mathcal{N}(\mu_i,\sigma_i^2).
 <li><p>These concepts - covariance, projections, and orthonormal bases - are key for understanding PCA, which we be our focus in the next tutorial.</p></li>
 </ul>
 </div>
-
-    <script type="text/x-thebe-config">
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"dacf08ab5caa473d9f0cc92633fa8672": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7a8ca9ee56f1408d8832c6d2d7e96084": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_92e9fc7dffc4438d99b7cb6170f2e25c", "IPY_MODEL_2910fc2b288848f1bb1733e44b18dac6"], "layout": "IPY_MODEL_dacf08ab5caa473d9f0cc92633fa8672"}}, "5aa8aef523004dd2a5beb042530a254b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5c85d2ebd2154fe98284e36113c44405": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "92e9fc7dffc4438d99b7cb6170f2e25c": {"model_name": "IntSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntSliderView", "continuous_update": true, "description": "theta", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_5aa8aef523004dd2a5beb042530a254b", "max": 90, "min": 0, "orientation": "horizontal", "readout": true, "readout_format": "d", "step": 5, "style": "IPY_MODEL_5c85d2ebd2154fe98284e36113c44405", "value": 0}}, "3cd3338bdabf48ebbbf43138d23cadb6": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "2910fc2b288848f1bb1733e44b18dac6": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_3cd3338bdabf48ebbbf43138d23cadb6", "msg_id": "", "outputs": [{"output_type": "error", "ename": "NotImplementedError", "evalue": "Student excercise: implement the orthonormal basis function", "traceback": ["\u001b[0;31m---------------------------------------------------------------------------\u001b[0m", "\u001b[0;31mNotImplementedError\u001b[0m                       Traceback (most recent call last)", "\u001b[0;32m/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/ipywidgets/widgets/interaction.py\u001b[0m in \u001b[0;36mupdate\u001b[0;34m(self, *args)\u001b[0m\n\u001b[1;32m    254\u001b[0m                     \u001b[0mvalue\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mwidget\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mget_interact_value\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    255\u001b[0m                     \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mkwargs\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0mwidget\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_kwarg\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mvalue\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 256\u001b[0;31m                 \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mresult\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mf\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m**\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mkwargs\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    257\u001b[0m                 \u001b[0mshow_inline_matplotlib_plots\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    258\u001b[0m                 \u001b[0;32mif\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mauto_display\u001b[0m \u001b[0;32mand\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mresult\u001b[0m \u001b[0;32mis\u001b[0m \u001b[0;32mnot\u001b[0m \u001b[0;32mNone\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n", "\u001b[0;32m<ipython-input-13-c9306482d073>\u001b[0m in \u001b[0;36mrefresh\u001b[0;34m(theta)\u001b[0m\n\u001b[1;32m      6\u001b[0m \u001b[0;32mdef\u001b[0m \u001b[0mrefresh\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mtheta\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      7\u001b[0m   \u001b[0mu\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m[\u001b[0m\u001b[0;36m1\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mnp\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mtan\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mtheta\u001b[0m \u001b[0;34m*\u001b[0m \u001b[0mnp\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mpi\u001b[0m \u001b[0;34m/\u001b[0m \u001b[0;36m180\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 8\u001b[0;31m   \u001b[0mW\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mdefine_orthonormal_basis\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mu\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      9\u001b[0m   \u001b[0mY\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mchange_of_basis\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mX\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mW\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     10\u001b[0m   \u001b[0mplot_basis_vectors\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mX\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mW\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n", "\u001b[0;32m<ipython-input-10-3528b2cbf3c7>\u001b[0m in \u001b[0;36mdefine_orthonormal_basis\u001b[0;34m(u)\u001b[0m\n\u001b[1;32m     15\u001b[0m   \u001b[0;31m## TODO for students: calculate the orthonormal basis\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     16\u001b[0m   \u001b[0;31m# Fill out function and remove\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 17\u001b[0;31m   \u001b[0;32mraise\u001b[0m \u001b[0mNotImplementedError\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Student excercise: implement the orthonormal basis function\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     18\u001b[0m   \u001b[0;31m#################################################\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     19\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n", "\u001b[0;31mNotImplementedError\u001b[0m: Student excercise: implement the orthonormal basis function"]}]}}}, "version_major": 2, "version_minor": 0}
+</script>
+<script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
@@ -1541,38 +1588,27 @@ x_i \sim \mathcal{N}(\mu_i,\sigma_i^2).
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
-
-              </div>
-              
-        
-        <div class='prev-next-bottom'>
-            
-    <a class='left-prev' id="prev-link" href="../W1D5_Intro.html" title="previous page">Intro</a>
-    <a class='right-next' id="next-link" href="W1D5_Tutorial2.html" title="next page">Tutorial 2: Principal Component Analysis</a>
-
-        </div>
-        
-        </div>
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
+<script>kernelName = 'python3'</script>
+</div>
+<div class="prev-next-bottom">
+<a class="left-prev" href="../W1D5_Intro.html" id="prev-link" title="previous page">Intro</a>
+<a class="right-next" href="W1D5_Tutorial2.html" id="next-link" title="next page">Tutorial 2: Principal Component Analysis</a>
+</div>
+</div>
+</div>
+<footer class="footer mt-5 mt-md-0">
+<div class="container">
+<p>
         
           By Neuromatch<br/>
         
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+            © Copyright 2021.<br/>
+</p>
+</div>
+</footer>
 </main>
-
-
-      </div>
-    </div>
-  
-  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  
-  </body>
+</div>
+</div>
+<script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+</body>
 </html>

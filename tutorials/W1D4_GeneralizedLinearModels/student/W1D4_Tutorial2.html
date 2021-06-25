@@ -2,1047 +2,1022 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tutorial 2: Classifiers and regularizers &#8212; Neuromatch Computational Neuroscience</title>
-    
-  <link href="../../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
-
-    
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
-    
-      
-
-    
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
-
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/togglebutton.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tutorial 2: Classifiers and regularizers — Neuromatch Academy: Computational Neuroscience</title>
+<link href="../../../_static/css/theme.css" rel="stylesheet"/>
+<link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet"/>
+<link href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../../_static/pygments.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/togglebutton.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/mystnb.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/sphinx-thebe.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" rel="stylesheet" type="text/css"/>
+<link as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js" rel="preload"/>
+<script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+<script src="../../../_static/jquery.js"></script>
+<script src="../../../_static/underscore.js"></script>
+<script src="../../../_static/doctools.js"></script>
+<script src="../../../_static/togglebutton.js"></script>
+<script src="../../../_static/clipboard.min.js"></script>
+<script src="../../../_static/copybutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+<script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+<script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Outro" href="../W1D4_Outro.html" />
-    <link rel="prev" title="Tutorial 1: GLMs for Encoding" href="W1D4_Tutorial1.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-    
-  </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
+<script async="async" src="../../../_static/sphinx-thebe.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+<link href="../../../_static/nma-logo-square-4xp.jpg" rel="shortcut icon">
+<link href="../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../search.html" rel="search" title="Search"/>
+<link href="../W1D4_Outro.html" rel="next" title="Outro"/>
+<link href="W1D4_Tutorial1.html" rel="prev" title="Tutorial 1: GLMs for Encoding"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</link></link></link></link></head>
+<body data-offset="80" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="container-fluid" id="banner"></div>
+<div class="container-xl">
+<div class="row">
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../../index.html">
-      
-      <img src="../../../_static/nma-logo-square-4xp.jpg" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../intro.html">
+<div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+<img alt="logo" class="logo" src="../../../_static/nma-logo-square-4xp.jpg"/>
+<h1 class="site-logo" id="site-title">Neuromatch Academy: Computational Neuroscience</h1>
+</a>
+</div><form action="../../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search this book..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search this book..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../../../intro.html">
    Introduction
   </a>
- </li>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Pre-reqs Refresher
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D1_PythonWorkshop1/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D1_PythonWorkshop1/chapter_title.html">
    Python Workshop 1 (W0D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox">
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
      Tutorial: LIF Neuron - Part I
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D2_PythonWorkshop2/chapter_title.html">
+</li>
+</ul>
+</input></li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D2_PythonWorkshop2/chapter_title.html">
    Python Workshop 2 (W0D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
      Tutorial 1: LIF Neuron Part II
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D3_LinearAlgebra/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/chapter_title.html">
    Linear Algebra (W0D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
      Tutorial 1: Vectors
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
      Tutorial 2: Matrices
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
      Bonus Tutorial: Discrete Dynamical Systems
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D4_Calculus/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D4_Calculus/chapter_title.html">
    Calculus (W0D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
      Tutorial 1: Basics of Differential and Integral Calculus
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
      Tutorial 2: Differential Equations
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
      Tutorial 3: Numerical Methods
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D5_Statistics/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D5_Statistics/chapter_title.html">
    Statistics (W0D5)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
      Neuromatch Academy: Precourse Week, Day 5, Tutorial 1
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
      Tutorial 2: Statistical Inference
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Intro to Modeling
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D1_ModelTypes/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D1_ModelTypes/chapter_title.html">
    Model Types (W1D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
      Tutorial 1: “What” models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
      Tutorial 2: “How” models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
      Tutorial 3: “Why” models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D2_ModelingPractice/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D2_ModelingPractice/chapter_title.html">
    Modeling Practice (W1D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
      Tutorial: Framing the Question
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Outro.html">
      Outro
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Machine Learning
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D3_ModelFitting/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D3_ModelFitting/chapter_title.html">
    Model Fitting (W1D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
      Tutorial 1: Linear regression with MSE
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
      Tutorial 2: Linear regression with MLE
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
      Tutorial 3: Confidence intervals and bootstrapping
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
      Tutorial 4: Multiple linear regression and polynomial regression
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
      Tutorial 5: Model Selection: Bias-variance trade-off
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
      Tutorial 6: Model Selection: Cross-validation
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children">
+<a class="reference internal" href="../chapter_title.html">
    Generalized Linear Models (W1D4)
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../W1D4_Intro.html">
+<input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul class="current">
+<li class="toctree-l2">
+<a class="reference internal" href="../W1D4_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="W1D4_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="W1D4_Tutorial1.html">
      Tutorial 1: GLMs for Encoding
     </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+</li>
+<li class="toctree-l2 current active">
+<a class="current reference internal" href="#">
      Tutorial 2: Classifiers and regularizers
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../W1D4_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../W1D4_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D5_DimensionalityReduction/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/chapter_title.html">
    Dimensionality Reduction (W1D5)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+<label for="toctree-checkbox-10">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
      Tutorial 1: Geometric view of data
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
      Tutorial 2: Principal Component Analysis
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
      Tutorial 3: Dimensionality Reduction &amp; Reconstruction
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
      Tutorial 4:  Nonlinear Dimensionality Reduction
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D1_DeepLearning/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D1_DeepLearning/chapter_title.html">
    Deep Learning (W2D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/W2D1_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+<label for="toctree-checkbox-11">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/W2D1_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
      Tutorial 1: Decoding Neural Responses
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
      Tutorial 2: Convolutional Neural Networks
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
      Tutorial 2: Building and Evaluating Normative Encoding Models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/W2D1_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/W2D1_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Dynamical Systems
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D2_LinearSystems/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D2_LinearSystems/chapter_title.html">
    Linear Systems (W2D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+<label for="toctree-checkbox-12">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
      Tutorial 1: Linear dynamical systems
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
      Tutorial 2: Markov Processes
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
      Tutorial 3: Combining determinism and stochasticity
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
      Tutorial 4: Autoregressive models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/chapter_title.html">
    Biological Neuron Models (W2D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+<label for="toctree-checkbox-13">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial1.html">
      Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial2.html">
      Tutorial 2: Effects of Input Correlation
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial3.html">
      Tutorial 3: Synaptic transmission - Models of static and dynamic synapses
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial4.html">
      Tutorial 4: Spike-timing dependent plasticity (STDP)
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D4_DynamicNetworks/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/chapter_title.html">
    Dynamic Networks (W2D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+<label for="toctree-checkbox-14">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
      Tutorial 1: Neural Rate Models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
      Tutorial 2: Wilson-Cowan Model
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Stochastic Processes
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D1_BayesianDecisions/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/chapter_title.html">
    Bayesian Decisions (W3D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-  <label for="toctree-checkbox-15">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+<label for="toctree-checkbox-15">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
      Tutorial 1: Bayes with a binary hidden state
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
      Tutorial 2: Bayesian inference and decisions with continuous hidden state
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
      Bonus Tutorial:Fitting to data
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D2_HiddenDynamics/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/chapter_title.html">
    Hidden Dynamics (W3D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
-  <label for="toctree-checkbox-16">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+<label for="toctree-checkbox-16">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
      Tutorial 1: Sequential Probability Ratio Test
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
      Tutorial 2: Hidden Markov Model
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
      Tutorial 3: 1D Kalman Filter
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
      Tutorial 4: 2D Kalman Filter
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D3_OptimalControl/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D3_OptimalControl/chapter_title.html">
    Optimal Control (W3D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
-  <label for="toctree-checkbox-17">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+<label for="toctree-checkbox-17">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
      Tutorial 1: Optimal Control for Discrete States
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
      Tutorial 2: Optimal Control for Continuous State
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D4_ReinforcementLearning/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/chapter_title.html">
    Reinforcement Learning (W3D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
-  <label for="toctree-checkbox-18">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+<label for="toctree-checkbox-18">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
      Tutorial 1: Learning to Predict
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
      Tutorial 2: Learning to Act: Multi-Armed Bandits
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
      Tutorial 3: Learning to Act: Q-Learning
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
      Tutorial 4: From Reinforcement Learning to Planning
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D5_NetworkCausality/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D5_NetworkCausality/chapter_title.html">
    Network Causality (W3D5)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-  <label for="toctree-checkbox-19">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+<label for="toctree-checkbox-19">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
      Tutorial 1: Interventions
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
      Tutorial 2: Correlations
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
      Tutorial 3: Simultaneous fitting/regression
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
      Tutorial 4: Instrumental Variables
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
+</li>
 </ul>
-
-    </div>
+</li>
+</ul>
+</div>
 </nav> <!-- To handle the deprecated key -->
-
 <div class="navbar_extra_footer">
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
 </div>
-
 </div>
-
-
-          
-
-
-          
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
+<div class="topbar container-xl fixed-top">
+<div class="topbar-contents row">
+<div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+<div class="col pl-md-4 topbar-main">
+<button aria-controls="site-navigation" aria-expanded="true" aria-label="Toggle navigation" class="navbar-toggler ml-0" data-placement="left" data-target=".site-navigation" data-toggle="tooltip" id="navbar-toggler" title="Toggle navigation" type="button">
+<i class="fas fa-bars"></i>
+<i class="fas fa-arrow-left"></i>
+<i class="fas fa-arrow-up"></i>
+</button>
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/tutorials/W1D4_GeneralizedLinearModels/student/W1D4_Tutorial2.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
+<button aria-label="Download this page" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-download"></i></button>
+<div class="dropdown-buttons">
+<!-- ipynb file if we had a myst markdown file -->
+<!-- Download raw file -->
+<a class="dropdown-buttons" href="../../../_sources/tutorials/W1D4_GeneralizedLinearModels/student/W1D4_Tutorial2.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.ipynb</button></a>
+<!-- Download PDF via print -->
+<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
 </div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
+</div>
+<!-- Source interaction buttons -->
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/tutorials/W1D4_GeneralizedLinearModels/student/W1D4_Tutorial2.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../../../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
+<button aria-label="Connect with source repository" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fab fa-github"></i></button>
+<div class="dropdown-buttons sourcebuttons">
+<a class="repository-button" href="https://github.com/NeuromatchAcademy/course-content"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Source repository" type="button"><i class="fab fa-github"></i>repository</button></a>
+<a class="issues-button" href="https://github.com/NeuromatchAcademy/course-content/issues/new?title=Issue%20on%20page%20%2Ftutorials/W1D4_GeneralizedLinearModels/student/W1D4_Tutorial2.html&amp;body=Your%20issue%20content%20here."><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Open an issue" type="button"><i class="fas fa-lightbulb"></i>open issue</button></a>
 </div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+</div>
+<!-- Full screen (wrap in <a> to have style consistency -->
+<a class="full-screen-button"><button aria-label="Fullscreen mode" class="btn btn-secondary topbarbtn" data-placement="bottom" data-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode" type="button"><i class="fas fa-expand"></i></button></a>
+<!-- Launch buttons -->
+</div>
+<!-- Table of contents -->
+<div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+<i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#">
    Tutorial 2: Classifiers and regularizers
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#setup">
    Setup
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-1-1-the-logistic-regression-model">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#figure-settings">
+     Figure settings
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#helper-functions">
+     Helper functions
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#data-retrieval-and-loading">
+     Data retrieval and loading
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-1-logistic-regression">
+     Video 1: Logistic regression
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-1-1-the-logistic-regression-model">
      Section 1.1: The logistic regression model
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#exercise-1-implement-the-sigmoid-function">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-1-implement-the-sigmoid-function">
        Exercise 1: implement the sigmoid function
       </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-1-2-using-scikit-learn">
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-1-2-using-scikit-learn">
      Section 1.2: Using scikit-learn
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-2-1-setting-up-the-data">
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-2-1-setting-up-the-data">
      Section 2.1: Setting up the data
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#data-format">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#data-format">
        Data format
       </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-2-2-fitting-the-model">
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-2-2-fitting-the-model">
      Section 2.2: Fitting the model
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-2-3-classifying-the-training-data">
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-2-3-classifying-the-training-data">
      Section 2.3: Classifying the training data
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-2-4-evaluating-the-model">
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-2-4-evaluating-the-model">
      Section 2.4: Evaluating the model
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#exercise-2-classifier-accuracy">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-2-classifier-accuracy">
        Exercise 2: classifier accuracy
       </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-2-5-cross-validating-the-classifer">
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-2-5-cross-validating-the-classifer">
      Section 2.5: Cross-validating the classifer
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#cross-validating-using-scikit-learn-helper-functions">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#cross-validating-using-scikit-learn-helper-functions">
        Cross-validating using
        <code class="docutils literal notranslate">
-        <span class="pre">
+<span class="pre">
          scikit-learn
         </span>
-       </code>
+</code>
        helper functions
       </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#why-more-features-than-samples-leads-to-overfitting">
+<ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id1">
+</a>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#why-more-features-than-samples-leads-to-overfitting">
        Why more features than samples leads to overfitting
       </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#what-we-can-do-about-it">
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#what-we-can-do-about-it">
        What we can do about it
       </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-3-1-l-2-regularization">
+<ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-2-regularization">
+         Video 2: Regularization
+        </a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-1-l-2-regularization">
      Section 3.1:
      <span class="math notranslate nohighlight">
       \(L_2\)
      </span>
      regularization
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#interactive-demo-the-effect-of-varying-c-on-parameter-size">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#interactive-demo-the-effect-of-varying-c-on-parameter-size">
        Interactive Demo: The effect of varying C on parameter size
       </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-3-2-l-1-regularization">
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id2">
+</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-2-l-1-regularization">
      Section 3.2:
      <span class="math notranslate nohighlight">
       \(L_1\)
      </span>
      regularization
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#section-4-the-key-difference-between-l-1-and-l-2-regularization-sparsity">
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-4-the-key-difference-between-l-1-and-l-2-regularization-sparsity">
    Section 4: The key difference between
    <span class="math notranslate nohighlight">
     \(L_1\)
@@ -1053,69 +1028,70 @@
    </span>
    regularization: sparsity
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-3-the-effect-of-l-1-regularization-on-parameter-sparsity">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id3">
+</a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-3-the-effect-of-l-1-regularization-on-parameter-sparsity">
      Exercise 3: The effect of
      <span class="math notranslate nohighlight">
       \(L_1\)
      </span>
      regularization on parameter sparsity
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-4-1-choosing-the-regularization-penalty">
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-4-1-choosing-the-regularization-penalty">
      Section 4.1: Choosing the regularization penalty
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#exercise-4-model-selection">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-4-model-selection">
        Exercise 4: Model selection
       </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#summary">
    Summary
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#appendix-the-logistic-regression-model-in-full">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#appendix-the-logistic-regression-model-in-full">
    Appendix: The Logistic Regression model in full
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-logistic-link-function">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#the-logistic-link-function">
      The logistic link function
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-bernoulli-likelihood">
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#the-bernoulli-likelihood">
      The Bernoulli likelihood
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#appendix-more-detail-about-model-selection">
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#appendix-more-detail-about-model-selection">
    Appendix: More detail about model selection
   </a>
- </li>
+</li>
 </ul>
-
-            </nav>
-        </div>
-    </div>
+</nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
-                
-  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D4_MachineLearning/student/W1D4_Tutorial2.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></p>
+</div>
+</div>
+<div class="row" id="main-content">
+<div class="col-12 col-md-9 pl-md-3 pr-md-0">
+<div>
+<p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D4_MachineLearning/student/W1D4_Tutorial2.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></p>
 <div class="section" id="tutorial-2-classifiers-and-regularizers">
 <h1>Tutorial 2: Classifiers and regularizers<a class="headerlink" href="#tutorial-2-classifiers-and-regularizers" title="Permalink to this headline">¶</a></h1>
 <p><strong>Week 1, Day 4: Generalized Linear Models</strong></p>
@@ -1129,7 +1105,7 @@ Oftentimes the variable you would like to predict takes only one of two possible
 <li><p>Apply logistic regression to decode choies from neural responses</p></li>
 <li><p>Learn about regularization, including the different approaches and the influence of hyperparameters</p></li>
 </ol>
-<hr class="docutils" />
+<hr class="docutils"/>
 <p>We would like to acknowledge <a class="reference external" href="https://www.nature.com/articles/s41586-019-1787-x">Steinmetz <em>et al.</em> (2019)</a> for sharing their data, a subset of which is used here.</p>
 </div>
 <div class="section" id="setup">
@@ -1145,24 +1121,29 @@ Oftentimes the variable you would like to predict takes only one of two possible
 </div>
 </div>
 </div>
+<div class="section" id="figure-settings">
+<h2>Figure settings<a class="headerlink" href="#figure-settings" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Figure settings</span>
 <span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;</span><span class="p">)</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = 'retina'
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="helper-functions">
+<h2>Helper functions<a class="headerlink" href="#helper-functions" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Helper functions</span>
 
 <span class="k">def</span> <span class="nf">plot_weights</span><span class="p">(</span><span class="n">models</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Draw a stem plot of weights for each model in models dict.&quot;&quot;&quot;</span>
+  <span class="sd">"""Draw a stem plot of weights for each model in models dict."""</span>
   <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">models</span><span class="p">)</span>
   <span class="n">f</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">2.5</span> <span class="o">*</span> <span class="n">n</span><span class="p">))</span>
   <span class="n">axs</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">sharey</span><span class="p">)</span>
@@ -1172,64 +1153,67 @@ Oftentimes the variable you would like to predict takes only one of two possible
 
     <span class="n">ax</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">.02</span><span class="p">)</span>
     <span class="n">stem</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">stem</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_marker</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
-    <span class="n">stem</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;.2&quot;</span><span class="p">)</span>
+    <span class="n">stem</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_marker</span><span class="p">(</span><span class="s2">"."</span><span class="p">)</span>
+    <span class="n">stem</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">".2"</span><span class="p">)</span>
     <span class="n">stem</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidths</span><span class="p">(</span><span class="mf">.5</span><span class="p">)</span>
-    <span class="n">stem</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;.2&quot;</span><span class="p">)</span>
+    <span class="n">stem</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">".2"</span><span class="p">)</span>
     <span class="n">stem</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C3&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Weight&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Neuron (a.k.a. feature)&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"C3"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">"Weight"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">"Neuron (a.k.a. feature)"</span><span class="p">)</span>
   <span class="n">f</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 
 
 <span class="k">def</span> <span class="nf">plot_function</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)):</span>
-    <span class="sd">&quot;&quot;&quot;Evaluate f() on linear space between points and plot.</span>
+    <span class="sd">"""Evaluate f() on linear space between points and plot.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">      f (callable): function that maps scalar -&gt; scalar</span>
 <span class="sd">      name (string): Function name for axis labels</span>
 <span class="sd">      var (string): Variable name for axis labels.</span>
 <span class="sd">      points (tuple): Args for np.linspace to create eval grid.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">points</span><span class="p">)</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
-      <span class="n">xlabel</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;$</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">,</span>
-      <span class="n">ylabel</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;$</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">(</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1">)$&#39;</span>
+      <span class="n">xlabel</span><span class="o">=</span><span class="sa">f</span><span class="s1">'$</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1">$'</span><span class="p">,</span>
+      <span class="n">ylabel</span><span class="o">=</span><span class="sa">f</span><span class="s1">'$</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">(</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1">)$'</span>
     <span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">plot_model_selection</span><span class="p">(</span><span class="n">C_values</span><span class="p">,</span> <span class="n">accuracies</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Plot the accuracy curve over log-spaced C values.&quot;&quot;&quot;</span>
+  <span class="sd">"""Plot the accuracy curve over log-spaced C values."""</span>
   <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">C_values</span><span class="p">,</span> <span class="n">accuracies</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">C_values</span><span class="p">,</span> <span class="n">accuracies</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">)</span>
   <span class="n">best_C</span> <span class="o">=</span> <span class="n">C_values</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">accuracies</span><span class="p">)]</span>
   <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
       <span class="n">xticks</span><span class="o">=</span><span class="n">C_values</span><span class="p">,</span>
-      <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;$C$&quot;</span><span class="p">,</span>
-      <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Cross-validated accuracy&quot;</span><span class="p">,</span>
-      <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Best C: </span><span class="si">{</span><span class="n">best_C</span><span class="si">:</span><span class="s2">1g</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">accuracies</span><span class="p">)</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span>
+      <span class="n">xlabel</span><span class="o">=</span><span class="s2">"$C$"</span><span class="p">,</span>
+      <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Cross-validated accuracy"</span><span class="p">,</span>
+      <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">"Best C: </span><span class="si">{</span><span class="n">best_C</span><span class="si">:</span><span class="s2">1g</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">accuracies</span><span class="p">)</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">)"</span><span class="p">,</span>
   <span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">plot_non_zero_coefs</span><span class="p">(</span><span class="n">C_values</span><span class="p">,</span> <span class="n">non_zero_l1</span><span class="p">,</span> <span class="n">n_voxels</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Plot the accuracy curve over log-spaced C values.&quot;&quot;&quot;</span>
+  <span class="sd">"""Plot the accuracy curve over log-spaced C values."""</span>
   <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">C_values</span><span class="p">,</span> <span class="n">non_zero_l1</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">C_values</span><span class="p">,</span> <span class="n">non_zero_l1</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">)</span>
   <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
     <span class="n">xticks</span><span class="o">=</span><span class="n">C_values</span><span class="p">,</span>
-    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;$C$&quot;</span><span class="p">,</span>
-    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Number of non-zero coefficients&quot;</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">"$C$"</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Number of non-zero coefficients"</span><span class="p">,</span>
   <span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">n_voxels</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;.1&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Total</span><span class="se">\n</span><span class="s2"># Neurons&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">C_values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_voxels</span> <span class="o">*</span> <span class="mf">.98</span><span class="p">),</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">n_voxels</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">".1"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">"Total</span><span class="se">\n</span><span class="s2"># Neurons"</span><span class="p">,</span> <span class="p">(</span><span class="n">C_values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_voxels</span> <span class="o">*</span> <span class="mf">.98</span><span class="p">),</span> <span class="n">va</span><span class="o">=</span><span class="s2">"top"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="data-retrieval-and-loading">
+<h2>Data retrieval and loading<a class="headerlink" href="#data-retrieval-and-loading" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Data retrieval and loading</span>
@@ -1237,22 +1221,22 @@ Oftentimes the variable you would like to predict takes only one of two possible
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">hashlib</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://osf.io/r9gh8/download&quot;</span>
-<span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;W1D4_steinmetz_data.npz&quot;</span>
-<span class="n">expected_md5</span> <span class="o">=</span> <span class="s2">&quot;d19716354fed0981267456b80db07ea8&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://osf.io/r9gh8/download"</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="s2">"W1D4_steinmetz_data.npz"</span>
+<span class="n">expected_md5</span> <span class="o">=</span> <span class="s2">"d19716354fed0981267456b80db07ea8"</span>
 
 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
   <span class="k">try</span><span class="p">:</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
   <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;!!! Failed to download data !!!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"!!! Failed to download data !!!"</span><span class="p">)</span>
   <span class="k">else</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="n">requests</span><span class="o">.</span><span class="n">codes</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
-      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;!!! Failed to download data !!!&quot;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">"!!! Failed to download data !!!"</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span> <span class="o">!=</span> <span class="n">expected_md5</span><span class="p">:</span>
-      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;!!! Data download appears corrupted !!!&quot;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">"!!! Data download appears corrupted !!!"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-      <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fid</span><span class="p">:</span>
+      <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">fid</span><span class="p">:</span>
         <span class="n">fid</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">load_steinmetz_data</span><span class="p">(</span><span class="n">data_fname</span><span class="o">=</span><span class="n">fname</span><span class="p">):</span>
@@ -1265,18 +1249,19 @@ Oftentimes the variable you would like to predict takes only one of two possible
 </div>
 </div>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <p>#Section 1: Logistic regression</p>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 1: Logistic regression</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
-<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;qfXFrUnLU0o&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="n">video</span>
+</div>
+<div class="section" id="video-1-logistic-regression">
+<h2>Video 1: Logistic regression<a class="headerlink" href="#video-1-logistic-regression" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=qfXFrUnLU0o
 </pre></div>
 </div>
-</div>
+<div class="output text_html">
+<iframe allowfullscreen="" frameborder="0" height="410" src="https://www.youtube.com/embed/qfXFrUnLU0o?fs=1" width="730"></iframe>
+</div></div>
 </div>
 <p>Logistic Regression is a binary classification model. It is a GLM with a <em>logistic</em> link function and a <em>Bernoulli</em> (i.e. coinflip) noise model.</p>
 <p>Like in the last notebook, logistic regression invokes a standard procedure:</p>
@@ -1284,6 +1269,7 @@ Oftentimes the variable you would like to predict takes only one of two possible
 <li><p>Define a <em>model</em> of how inputs relate to outputs.</p></li>
 <li><p>Adjust the parameters to maximize (log) probability of your data given your model</p></li>
 </ol>
+</div>
 <div class="section" id="section-1-1-the-logistic-regression-model">
 <h2>Section 1.1: The logistic regression model<a class="headerlink" href="#section-1-1-the-logistic-regression-model" title="Permalink to this headline">¶</a></h2>
 <p>The fundamental input/output equation of logistic regression is:</p>
@@ -1299,22 +1285,22 @@ Oftentimes the variable you would like to predict takes only one of two possible
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Return the logistic transform of z.&quot;&quot;&quot;</span>
+  <span class="sd">"""Return the logistic transform of z."""</span>
   <span class="c1">##############################################################################</span>
   <span class="c1"># TODO for students: Fill in the missing code (...) and remove the error</span>
-  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student excercise: implement the sigmoid function&quot;</span><span class="p">)</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Student excercise: implement the sigmoid function"</span><span class="p">)</span>
   <span class="c1">##############################################################################</span>
   <span class="k">return</span> <span class="o">...</span>
 
 <span class="c1"># Uncomment to test your sigmoid function</span>
-<span class="c1"># plot_function(sigmoid, &quot;\sigma&quot;, &quot;z&quot;, (-10, 10))</span>
+<span class="c1"># plot_function(sigmoid, "\sigma", "z", (-10, 10))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W1D4_GeneralizedLinearModels/solutions/W1D4_Tutorial2_Solution_e5c46d0a.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=558 height=414 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W1D4_GeneralizedLinearModels/static/W1D4_Tutorial2_Solution_e5c46d0a_0.png>
+<img align="left" alt="Solution hint" height="414" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W1D4_GeneralizedLinearModels/static/W1D4_Tutorial2_Solution_e5c46d0a_0.png" width="558"/>
 </div>
 </div>
 <div class="section" id="section-1-2-using-scikit-learn">
@@ -1327,7 +1313,7 @@ Oftentimes the variable you would like to predict takes only one of two possible
 <h2>Section 2.1: Setting up the data<a class="headerlink" href="#section-2-1-setting-up-the-data" title="Permalink to this headline">¶</a></h2>
 <p>In this notebook we’ll use the Steinmetz dataset that you have seen previously. Recall that this dataset includes recordings of neurons as mice perform a decision task.</p>
 <p>Mice had the task of turning a wheel to indicate whether they perceived a Gabor stimulus to the left, to the right, or not at all. Neuropixel probes measured spikes across the cortex. Check out the following task schematic from the BiorXiv preprint:</p>
-<img src='http://kordinglab.com/images/others/steinmetz-task.png' width= '200'/>
+<img src="http://kordinglab.com/images/others/steinmetz-task.png" width="200">
 <p>Today we’re going to <strong>decode the decision from neural data</strong> using Logistic Regression. We will only consider trials where the mouse chose “Left” or “Right” and ignore NoGo trials.</p>
 <div class="section" id="data-format">
 <h3>Data format<a class="headerlink" href="#data-format" title="Permalink to this headline">¶</a></h3>
@@ -1344,6 +1330,12 @@ Oftentimes the variable you would like to predict takes only one of two possible
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>spikes (276, 691)
+choices (276,)
+</pre></div>
+</div>
+</div>
 </div>
 <p>As with the GLMs you’ve seen in the previous tutorial (Linear and Poisson Regression), we will need two data structures:</p>
 <ul class="simple">
@@ -1353,24 +1345,29 @@ Oftentimes the variable you would like to predict takes only one of two possible
 <p>In the previous notebook, <code class="docutils literal notranslate"><span class="pre">y</span></code> corresponded to the neural data, and <code class="docutils literal notranslate"><span class="pre">X</span></code> corresponded to something about the experiment. Here, we are going to invert those relationships. That’s what makes this a <em>decoding</em> model: we are going to predict behavior (<code class="docutils literal notranslate"><span class="pre">y</span></code>) from the neural responses (<code class="docutils literal notranslate"><span class="pre">X</span></code>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;choices&quot;</span><span class="p">]</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;spikes&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"choices"</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"spikes"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div>
+</img></div>
 <div class="section" id="section-2-2-fitting-the-model">
 <h2>Section 2.2: Fitting the model<a class="headerlink" href="#section-2-2-fitting-the-model" title="Permalink to this headline">¶</a></h2>
 <p>Using a Logistic Regression model within <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> is very simple.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First define the model</span>
-<span class="n">log_reg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+<span class="n">log_reg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">"none"</span><span class="p">)</span>
 
 <span class="c1">#Then fit it to data</span>
 <span class="n">log_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression(penalty='none')
 </pre></div>
 </div>
 </div>
@@ -1401,7 +1398,7 @@ Oftentimes the variable you would like to predict takes only one of two possible
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_accuracy</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Compute accuracy of classifier predictions.</span>
+  <span class="sd">"""Compute accuracy of classifier predictions.</span>
 
 <span class="sd">  Args:</span>
 <span class="sd">    X (2D array): Data matrix</span>
@@ -1410,10 +1407,10 @@ Oftentimes the variable you would like to predict takes only one of two possible
 
 <span class="sd">  Returns:</span>
 <span class="sd">    accuracy (float): Proportion of correct predictions.</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="c1">#############################################################################</span>
   <span class="c1"># TODO Complete the function, then remove the next line to test it</span>
-  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Implement the compute_accuracy function&quot;</span><span class="p">)</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Implement the compute_accuracy function"</span><span class="p">)</span>
   <span class="c1">#############################################################################</span>
 
   <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -1423,7 +1420,7 @@ Oftentimes the variable you would like to predict takes only one of two possible
 
 <span class="c1"># Uncomment and run to test your function:</span>
 <span class="c1"># train_accuracy = compute_accuracy(X, y, log_reg)</span>
-<span class="c1"># print(f&quot;Accuracy on the training data: {train_accuracy:.2%}&quot;)</span>
+<span class="c1"># print(f"Accuracy on the training data: {train_accuracy:.2%}")</span>
 </pre></div>
 </div>
 </div>
@@ -1435,17 +1432,19 @@ Oftentimes the variable you would like to predict takes only one of two possible
 <h2>Section 2.5: Cross-validating the classifer<a class="headerlink" href="#section-2-5-cross-validating-the-classifer" title="Permalink to this headline">¶</a></h2>
 <p>Classification accuracy on the training data is 100%! That might sound impressive, but you should recall from yesterday the concept of <em>overfitting</em>: the classifier may have learned something idiosyncratic about the training data. If that’s the case, it won’t have really learned the underlying data-&gt;decision function, and thus won’t generalize well to new data.</p>
 <p>To check this, we can evaluate the <em>cross-validated</em> accuracy.</p>
-<img src='http://kordinglab.com/images/others/justCV-01.png' width= '700'/><div class="section" id="cross-validating-using-scikit-learn-helper-functions">
+<img src="http://kordinglab.com/images/others/justCV-01.png" width="700"/><div class="section" id="cross-validating-using-scikit-learn-helper-functions">
 <h3>Cross-validating using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> helper functions<a class="headerlink" href="#cross-validating-using-scikit-learn-helper-functions" title="Permalink to this headline">¶</a></h3>
 <p>Yesterday, we asked you to write your own functions for implementing cross-validation. In practice, this won’t be necessary, because <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> offers a number of <a class="reference external" href="https://scikit-learn.org/stable/model_selection.html">helpful functions</a> that will do this for you. For example, you can cross-validate a classifer using <code class="docutils literal notranslate"><span class="pre">cross_val_score</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">cross_val_score</span></code> takes a <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> model like <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code>, as well as your <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> data. It then retrains your model on test/train splits of <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>, and returns the test accuracy on each of the test sets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracies</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">),</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="c1"># k=8 crossvalidation</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracies</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s1">'none'</span><span class="p">),</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="c1"># k=8 crossvalidation</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="section" id="id1">
+<h4><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
@@ -1454,13 +1453,16 @@ Oftentimes the variable you would like to predict takes only one of two possible
 <span class="n">ax</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">accuracies</span><span class="p">,</span> <span class="n">vert</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">widths</span><span class="o">=</span><span class="mf">.7</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">accuracies</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
-  <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Accuracy&quot;</span><span class="p">,</span>
+  <span class="n">xlabel</span><span class="o">=</span><span class="s2">"Accuracy"</span><span class="p">,</span>
   <span class="n">yticks</span><span class="o">=</span><span class="p">[],</span>
-  <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Average test accuracy: </span><span class="si">{</span><span class="n">accuracies</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">"Average test accuracy: </span><span class="si">{</span><span class="n">accuracies</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">"</span>
 <span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">"left"</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/W1D4_Tutorial2_37_0.png" src="../../../_images/W1D4_Tutorial2_37_0.png"/>
 </div>
 </div>
 <p>The lower cross-validated accuracy compared to the training accuracy (100%) suggests that the model is being <em>overfit</em>. Is this surprising? Think about the shape of the <span class="math notranslate nohighlight">\(X\)</span> matrix:</p>
@@ -1470,9 +1472,15 @@ Oftentimes the variable you would like to predict takes only one of two possible
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(276, 691)
+</pre></div>
+</div>
+</div>
 </div>
 <p>The model has almost three times as many features as samples. This is a situation where overfitting is very likely (almost guaranteed).</p>
 <p><strong>Link to neuroscience</strong>: Neuro data commonly has more features than samples. Having more neurons than independent trials is one example. In fMRI data, there are commonly more measured voxels than independent trials.</p>
+</div>
 </div>
 <div class="section" id="why-more-features-than-samples-leads-to-overfitting">
 <h3>Why more features than samples leads to overfitting<a class="headerlink" href="#why-more-features-than-samples-leads-to-overfitting" title="Permalink to this headline">¶</a></h3>
@@ -1482,32 +1490,36 @@ Oftentimes the variable you would like to predict takes only one of two possible
 <div class="section" id="what-we-can-do-about-it">
 <h3>What we can do about it<a class="headerlink" href="#what-we-can-do-about-it" title="Permalink to this headline">¶</a></h3>
 <p>As you learned on day 1, you can decrease model variance if you don’t mind increasing its bias. Here, we will increase bias by assuming that the correct parameters are all small. In our 2D example, this is like prefering the horizontal line to all others. This is one example of <em>regularization</em>.</p>
-<hr class="docutils" />
+<hr class="docutils"/>
 <p>#Section 3: Regularization</p>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 2: Regularization</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
-<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b2IaUCZ91bo&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="n">video</span>
+<div class="section" id="video-2-regularization">
+<h4>Video 2: Regularization<a class="headerlink" href="#video-2-regularization" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=b2IaUCZ91bo
 </pre></div>
 </div>
-</div>
+<div class="output text_html">
+<iframe allowfullscreen="" frameborder="0" height="410" src="https://www.youtube.com/embed/b2IaUCZ91bo?fs=1" width="730"></iframe>
+</div></div>
 </div>
 <p>Regularization forces a model to learn a set solutions you <em>a priori</em> believe to be more correct, which reduces overfitting because it doesn’t have as much flexibility to fit idiosyncracies in the training data. This adds model bias, but it’s a good bias because you know (maybe) that parameters should be small or mostly 0.</p>
 <p>In a GLM, a common form of regularization is to <em>shrink</em> the classifier weights. In a linear model, you can see its effect by plotting the weights. We’ve defined a helper function, <code class="docutils literal notranslate"><span class="pre">plot_weights</span></code>, that we’ll use extensively in this section.</p>
 <p>Here is what the weights look like for a Logistic Regression model with no regularization:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_reg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">plot_weights</span><span class="p">({</span><span class="s2">&quot;No regularization&quot;</span><span class="p">:</span> <span class="n">log_reg</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_reg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">"none"</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plot_weights</span><span class="p">({</span><span class="s2">"No regularization"</span><span class="p">:</span> <span class="n">log_reg</span><span class="p">})</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/W1D4_Tutorial2_46_0.png" src="../../../_images/W1D4_Tutorial2_46_0.png"/>
 </div>
 </div>
 <p>It’s important to understand this plot. Each dot visualizes a value in our parameter vector <span class="math notranslate nohighlight">\(\theta\)</span>. (It’s the same style of plot as the one showing <span class="math notranslate nohighlight">\(\theta\)</span> in the video). Since each feature is the time-averaged response of a neuron, each dot shows how the model uses each neuron to estimate a decision.</p>
 <p>Note the scale of the y-axis. Some neurons have values of about <span class="math notranslate nohighlight">\(20\)</span>, whereas others scale to <span class="math notranslate nohighlight">\(-20\)</span>.</p>
+</div>
 </div>
 </div>
 <div class="section" id="section-3-1-l-2-regularization">
@@ -1522,16 +1534,19 @@ Oftentimes the variable you would like to predict takes only one of two possible
 <p>Let’s compare the unregularized classifier weights with the classifier weights when we use the default <code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">=</span> <span class="pre">1</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_reg_l2</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;l2&quot;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_reg_l2</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">"l2"</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
 <span class="c1"># now show the two models</span>
 <span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">&quot;No regularization&quot;</span><span class="p">:</span> <span class="n">log_reg</span><span class="p">,</span>
-  <span class="s2">&quot;$L_2$ (C = 1)&quot;</span><span class="p">:</span> <span class="n">log_reg_l2</span><span class="p">,</span>
+  <span class="s2">"No regularization"</span><span class="p">:</span> <span class="n">log_reg</span><span class="p">,</span>
+  <span class="s2">"$L_2$ (C = 1)"</span><span class="p">:</span> <span class="n">log_reg_l2</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">plot_weights</span><span class="p">(</span><span class="n">models</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/W1D4_Tutorial2_49_0.png" src="../../../_images/W1D4_Tutorial2_49_0.png"/>
 </div>
 </div>
 <p>Using the same scale for the two y axes, it’s almost impossible to see the <span class="math notranslate nohighlight">\(L_2\)</span> weights. Let’s allow the y axis scales to adjust to each set of weights:</p>
@@ -1541,11 +1556,17 @@ Oftentimes the variable you would like to predict takes only one of two possible
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/W1D4_Tutorial2_51_0.png" src="../../../_images/W1D4_Tutorial2_51_0.png"/>
+</div>
 </div>
 <p>Now you can see that the weights have the same basic pattern, but the regularized weights are an order-of-magnitude smaller.</p>
 <div class="section" id="interactive-demo-the-effect-of-varying-c-on-parameter-size">
 <h3>Interactive Demo: The effect of varying C on parameter size<a class="headerlink" href="#interactive-demo-the-effect-of-varying-c-on-parameter-size" title="Permalink to this headline">¶</a></h3>
 <p>We can use this same approach to see how the weights depend on the <em>strength</em> of the regularization:</p>
+</div>
+<div class="section" id="id2">
+<h3><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
@@ -1556,18 +1577,23 @@ Oftentimes the variable you would like to predict takes only one of two possible
 <span class="n">log_C_steps</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
 <span class="n">penalized_models</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">log_C</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">*</span><span class="n">log_C_steps</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">):</span>
-  <span class="n">m</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="s2">&quot;l2&quot;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">10</span> <span class="o">**</span> <span class="n">log_C</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+  <span class="n">m</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="s2">"l2"</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">10</span> <span class="o">**</span> <span class="n">log_C</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
   <span class="n">penalized_models</span><span class="p">[</span><span class="n">log_C</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
 <span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span>
 <span class="k">def</span> <span class="nf">plot_observed</span><span class="p">(</span><span class="n">log_C</span><span class="o">=</span><span class="n">log_C_steps</span><span class="p">):</span>
   <span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;No regularization&quot;</span><span class="p">:</span> <span class="n">log_reg</span><span class="p">,</span>
-    <span class="sa">f</span><span class="s2">&quot;$L_2$ (C = $10^</span><span class="si">{</span><span class="n">log_C</span><span class="si">}</span><span class="s2">$)&quot;</span><span class="p">:</span> <span class="n">penalized_models</span><span class="p">[</span><span class="n">log_C</span><span class="p">]</span>
+    <span class="s2">"No regularization"</span><span class="p">:</span> <span class="n">log_reg</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s2">"$L_2$ (C = $10^</span><span class="si">{</span><span class="n">log_C</span><span class="si">}</span><span class="s2">$)"</span><span class="p">:</span> <span class="n">penalized_models</span><span class="p">[</span><span class="n">log_C</span><span class="p">]</span>
   <span class="p">}</span>
   <span class="n">plot_weights</span><span class="p">(</span><span class="n">models</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "4eb955b6ccc24cdaa0f503eb7799c52a"}
+</script><img alt="../../../_images/W1D4_Tutorial2_54_1.png" src="../../../_images/W1D4_Tutorial2_54_1.png"/>
 </div>
 </div>
 <p>Recall from above that <span class="math notranslate nohighlight">\(C=\frac1\beta\)</span> so larger <code class="docutils literal notranslate"><span class="pre">C</span></code> is less regularization. The top panel corresponds to <span class="math notranslate nohighlight">\(C=\infty\)</span>.</p>
@@ -1584,18 +1610,21 @@ Oftentimes the variable you would like to predict takes only one of two possible
 <p>In practice, using the summed absolute values of the weights causes <em>sparsity</em>: instead of just getting smaller, some of the weights will get forced to <span class="math notranslate nohighlight">\(0\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_reg_l1</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;l1&quot;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;saga&quot;</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_reg_l1</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">"l1"</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s2">"saga"</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
 <span class="n">log_reg_l1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">&quot;$L_2$ (C = 1)&quot;</span><span class="p">:</span> <span class="n">log_reg_l2</span><span class="p">,</span>
-  <span class="s2">&quot;$L_1$ (C = 1)&quot;</span><span class="p">:</span> <span class="n">log_reg_l1</span><span class="p">,</span>
+  <span class="s2">"$L_2$ (C = 1)"</span><span class="p">:</span> <span class="n">log_reg_l2</span><span class="p">,</span>
+  <span class="s2">"$L_1$ (C = 1)"</span><span class="p">:</span> <span class="n">log_reg_l1</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">plot_weights</span><span class="p">(</span><span class="n">models</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/W1D4_Tutorial2_57_0.png" src="../../../_images/W1D4_Tutorial2_57_0.png"/>
 </div>
-<p>Note: You’ll notice that we added two additional parameters: <code class="docutils literal notranslate"><span class="pre">solver=&quot;saga&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">max_iter=5000</span></code>. The <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> class can use several different optimization algorithms (“solvers”), and not all of them support the <span class="math notranslate nohighlight">\(L_1\)</span> penalty. At a certain point, the solver will give up if it hasn’t found a minimum value. The <code class="docutils literal notranslate"><span class="pre">max_iter</span></code> parameter tells it to make more attempts; otherwise, we’d see an ugly warning about “convergence”.</p>
+</div>
+<p>Note: You’ll notice that we added two additional parameters: <code class="docutils literal notranslate"><span class="pre">solver="saga"</span></code> and <code class="docutils literal notranslate"><span class="pre">max_iter=5000</span></code>. The <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> class can use several different optimization algorithms (“solvers”), and not all of them support the <span class="math notranslate nohighlight">\(L_1\)</span> penalty. At a certain point, the solver will give up if it hasn’t found a minimum value. The <code class="docutils literal notranslate"><span class="pre">max_iter</span></code> parameter tells it to make more attempts; otherwise, we’d see an ugly warning about “convergence”.</p>
 </div>
 </div>
 <div class="section" id="section-4-the-key-difference-between-l-1-and-l-2-regularization-sparsity">
@@ -1611,6 +1640,8 @@ A “sparse” vector has mostly zero elements:
   0 \\ -0.7\\ 0\\0
 \end{bmatrix}\)</span>.</p>
 <p>The same is true of matrices:</p>
+<div class="section" id="id3">
+<h2><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
@@ -1624,19 +1655,23 @@ A “sparse” vector has mostly zero elements:
 
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">M_sparse</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;A dense matrix&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;A sparse matrix&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">text_kws</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"A dense matrix"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"A sparse matrix"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">text_kws</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">ha</span><span class="o">=</span><span class="s2">"center"</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">"center"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
   <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">iter_parts</span> <span class="o">=</span> <span class="n">axs</span><span class="p">,</span> <span class="p">[</span><span class="n">M</span><span class="p">,</span> <span class="n">M_sparse</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{:.1f}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="p">]</span>
+    <span class="n">iter_parts</span> <span class="o">=</span> <span class="n">axs</span><span class="p">,</span> <span class="p">[</span><span class="n">M</span><span class="p">,</span> <span class="n">M_sparse</span><span class="p">],</span> <span class="p">[</span><span class="s2">"</span><span class="si">{:.1f}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="si">{:d}</span><span class="s2">"</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">mat</span><span class="p">,</span> <span class="n">fmt</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">iter_parts</span><span class="p">):</span>
       <span class="n">val</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
-      <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;.1&quot;</span> <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="mf">.7</span> <span class="k">else</span> <span class="s2">&quot;w&quot;</span>
+      <span class="n">color</span> <span class="o">=</span> <span class="s2">".1"</span> <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="mf">.7</span> <span class="k">else</span> <span class="s2">"w"</span>
       <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="o">**</span><span class="n">text_kws</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/W1D4_Tutorial2_61_0.png" src="../../../_images/W1D4_Tutorial2_61_0.png"/>
 </div>
 </div>
 </div>
@@ -1647,7 +1682,7 @@ A “sparse” vector has mostly zero elements:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">count_non_zero_coefs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">C_values</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Fit models with different L1 penalty values and count non-zero coefficients.</span>
+  <span class="sd">"""Fit models with different L1 penalty values and count non-zero coefficients.</span>
 
 <span class="sd">  Args:</span>
 <span class="sd">    X (2D array): Data matrix</span>
@@ -1657,10 +1692,10 @@ A “sparse” vector has mostly zero elements:
 <span class="sd">  Returns:</span>
 <span class="sd">    non_zero_coefs (list): number of coefficients in each model that are nonzero</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="c1">#############################################################################</span>
   <span class="c1"># TODO Complete the function and remove the error</span>
-  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Implement the count_non_zero_coefs function&quot;</span><span class="p">)</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Implement the count_non_zero_coefs function"</span><span class="p">)</span>
   <span class="c1">#############################################################################</span>
 
   <span class="n">non_zero_coefs</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1692,12 +1727,12 @@ A “sparse” vector has mostly zero elements:
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W1D4_GeneralizedLinearModels/solutions/W1D4_Tutorial2_Solution_49c3b893.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=558 height=413 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W1D4_GeneralizedLinearModels/static/W1D4_Tutorial2_Solution_49c3b893_0.png>
+<img align="left" alt="Solution hint" height="413" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W1D4_GeneralizedLinearModels/static/W1D4_Tutorial2_Solution_49c3b893_0.png" width="558"/>
 <p>Smaller <code class="docutils literal notranslate"><span class="pre">C</span></code> (bigger <span class="math notranslate nohighlight">\(\beta\)</span>) leads to sparser solutions.</p>
 <p><strong>Link to neuroscience</strong>: When is it OK to assume that the parameter vector is sparse? Whenever it is true that most features don’t affect the outcome. One use-case might be decoding low-level visual features from whole-brain fMRI: we may expect only voxels in V1 and thalamus should be used in the prediction.</p>
 <p><strong>WARNING</strong>: be careful when interpreting <span class="math notranslate nohighlight">\(\theta\)</span>. Never interpret the nonzero coefficients as <em>evidence</em> that only those voxels/neurons/features carry information about the outcome. This is a product of our regularization scheme, and thus <em>our prior assumption that the solution is sparse</em>. Other regularization types or models may find very distributed relationships across the brain. Never use a model as evidence for a phenomena when that phenomena is encoded in the assumptions of the model.</p>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="section-4-1-choosing-the-regularization-penalty">
 <h2>Section 4.1: Choosing the regularization penalty<a class="headerlink" href="#section-4-1-choosing-the-regularization-penalty" title="Permalink to this headline">¶</a></h2>
 <p>In the examples above, we just picked arbitrary numbers for the strength of regularization. How do you know what value of the hyperparameter to use?</p>
@@ -1708,7 +1743,7 @@ A “sparse” vector has mostly zero elements:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">model_selection</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">C_values</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Compute CV accuracy for each C value.</span>
+  <span class="sd">"""Compute CV accuracy for each C value.</span>
 
 <span class="sd">  Args:</span>
 <span class="sd">    X (2D array): Data matrix</span>
@@ -1718,10 +1753,10 @@ A “sparse” vector has mostly zero elements:
 <span class="sd">  Returns:</span>
 <span class="sd">    accuracies (1D array): CV accuracy with each value of C</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="c1">#############################################################################</span>
   <span class="c1"># TODO Complete the function and remove the error</span>
-  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Implement the model_selection function&quot;</span><span class="p">)</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Implement the model_selection function"</span><span class="p">)</span>
   <span class="c1">#############################################################################</span>
 
   <span class="n">accuracies</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1751,7 +1786,7 @@ A “sparse” vector has mostly zero elements:
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W1D4_GeneralizedLinearModels/solutions/W1D4_Tutorial2_Solution_4e6a13d4.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=558 height=414 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W1D4_GeneralizedLinearModels/static/W1D4_Tutorial2_Solution_4e6a13d4_0.png>
+<img align="left" alt="Solution hint" height="414" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W1D4_GeneralizedLinearModels/static/W1D4_Tutorial2_Solution_4e6a13d4_0.png" width="558"/>
 <p>This plot suggests that the right value of <span class="math notranslate nohighlight">\(C\)</span> does matter — up to a point. Remember that C is the <em>inverse</em> regularization. The plot shows that models where the regularization was too strong (small C values) performed very poorly. For <span class="math notranslate nohighlight">\(C &gt; 10^{-2}\)</span>, the differences are marginal, but the best performance was obtained with an intermediate value (<span class="math notranslate nohighlight">\(C \approx 10^1\)</span>).</p>
 </div>
 </div>
@@ -1760,7 +1795,7 @@ A “sparse” vector has mostly zero elements:
 <h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
 <p>In this notebook, we learned about Logistic Regression, a fundamental algorithm for <em>classification</em>. We applied the algorithm to a <em>neural decoding</em> problem: we tried to predict an animal’s behavioral choice from its neural activity. We saw again how important it is to use <em>cross-validation</em> to evaluate complex models that are at risk for <em>overfitting</em>, and we learned how <em>regularization</em> can be used to fit models that generalize better. Finally, we learned about some of the different options for regularization, and we saw how cross-validation can be useful for <em>model selection</em>.</p>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="appendix-the-logistic-regression-model-in-full">
 <h1>Appendix: The Logistic Regression model in full<a class="headerlink" href="#appendix-the-logistic-regression-model-in-full" title="Permalink to this headline">¶</a></h1>
 <p>The fundamental input/output equation of logistic regression is:</p>
@@ -1795,10 +1830,12 @@ A “sparse” vector has mostly zero elements:
 <h1>Appendix: More detail about model selection<a class="headerlink" href="#appendix-more-detail-about-model-selection" title="Permalink to this headline">¶</a></h1>
 <p>In the final exercise, we used all of the data to choose the hyperparameters. That means we don’t have any fresh data left over to evaluate the performance of the selected model. In practice, you would want to have two <em>nested</em> layers of cross-validation, where the final evaluation is performed on data that played no role in selecting or training the model.</p>
 <p>Indeed, the proper method for splitting your data to choose hyperparameters can get confusing. Here’s a guide that the authors of this notebook developed while writing a tutorial on using machine learning for neural decoding (https://arxiv.org/abs/1708.00909).</p>
-<img src='http://kordinglab.com/images/others/CV-01.png' width= '700'/>
-</div>
-
-    <script type="text/x-thebe-config">
+<img src="http://kordinglab.com/images/others/CV-01.png" width="700">
+</img></div>
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"7aebf62c40454ae68b30b32923c48fa9": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4eb955b6ccc24cdaa0f503eb7799c52a": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_e8cb560bb8b14d2e8db009b80aec036d", "IPY_MODEL_83f461af6dd043afb3641246c5e6cff3"], "layout": "IPY_MODEL_7aebf62c40454ae68b30b32923c48fa9"}}, "6428777e8f8649d6a279a76afc08f0bb": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "d81a7f3cb69e4e258283e2e6bd23db28": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "e8cb560bb8b14d2e8db009b80aec036d": {"model_name": "IntSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntSliderView", "continuous_update": true, "description": "log_C", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_6428777e8f8649d6a279a76afc08f0bb", "max": 10, "min": 1, "orientation": "horizontal", "readout": true, "readout_format": "d", "step": 1, "style": "IPY_MODEL_d81a7f3cb69e4e258283e2e6bd23db28", "value": 5}}, "a7bc7343b57949fca91eceaded07ee7b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "83f461af6dd043afb3641246c5e6cff3": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_a7bc7343b57949fca91eceaded07ee7b", "msg_id": "", "outputs": []}}}, "version_major": 2, "version_minor": 0}
+</script>
+<script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
@@ -1816,38 +1853,27 @@ A “sparse” vector has mostly zero elements:
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
-
-              </div>
-              
-        
-        <div class='prev-next-bottom'>
-            
-    <a class='left-prev' id="prev-link" href="W1D4_Tutorial1.html" title="previous page">Tutorial 1: GLMs for Encoding</a>
-    <a class='right-next' id="next-link" href="../W1D4_Outro.html" title="next page">Outro</a>
-
-        </div>
-        
-        </div>
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
+<script>kernelName = 'python3'</script>
+</div>
+<div class="prev-next-bottom">
+<a class="left-prev" href="W1D4_Tutorial1.html" id="prev-link" title="previous page">Tutorial 1: GLMs for Encoding</a>
+<a class="right-next" href="../W1D4_Outro.html" id="next-link" title="next page">Outro</a>
+</div>
+</div>
+</div>
+<footer class="footer mt-5 mt-md-0">
+<div class="container">
+<p>
         
           By Neuromatch<br/>
         
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+            © Copyright 2021.<br/>
+</p>
+</div>
+</footer>
 </main>
-
-
-      </div>
-    </div>
-  
-  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  
-  </body>
+</div>
+</div>
+<script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+</body>
 </html>

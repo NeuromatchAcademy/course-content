@@ -2,1063 +2,1037 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tutorial: LIF Neuron - Part I &#8212; Neuromatch Computational Neuroscience</title>
-    
-  <link href="../../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
-
-    
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
-    
-      
-
-    
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
-
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/togglebutton.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tutorial: LIF Neuron - Part I — Neuromatch Academy: Computational Neuroscience</title>
+<link href="../../../_static/css/theme.css" rel="stylesheet"/>
+<link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet"/>
+<link href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../../_static/pygments.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/togglebutton.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/mystnb.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/sphinx-thebe.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" rel="stylesheet" type="text/css"/>
+<link as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js" rel="preload"/>
+<script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+<script src="../../../_static/jquery.js"></script>
+<script src="../../../_static/underscore.js"></script>
+<script src="../../../_static/doctools.js"></script>
+<script src="../../../_static/togglebutton.js"></script>
+<script src="../../../_static/clipboard.min.js"></script>
+<script src="../../../_static/copybutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+<script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+<script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Python Workshop 2" href="../../W0D2_PythonWorkshop2/chapter_title.html" />
-    <link rel="prev" title="Python Workshop 1" href="../chapter_title.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-    
-  </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
+<script async="async" src="../../../_static/sphinx-thebe.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+<link href="../../../_static/nma-logo-square-4xp.jpg" rel="shortcut icon">
+<link href="../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../search.html" rel="search" title="Search"/>
+<link href="../../W0D2_PythonWorkshop2/chapter_title.html" rel="next" title="Python Workshop 2"/>
+<link href="../chapter_title.html" rel="prev" title="Python Workshop 1"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</link></link></link></link></head>
+<body data-offset="80" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="container-fluid" id="banner"></div>
+<div class="container-xl">
+<div class="row">
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../../index.html">
-      
-      <img src="../../../_static/nma-logo-square-4xp.jpg" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../intro.html">
+<div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+<img alt="logo" class="logo" src="../../../_static/nma-logo-square-4xp.jpg"/>
+<h1 class="site-logo" id="site-title">Neuromatch Academy: Computational Neuroscience</h1>
+</a>
+</div><form action="../../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search this book..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search this book..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../../../intro.html">
    Introduction
   </a>
- </li>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Pre-reqs Refresher
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../chapter_title.html">
+<li class="toctree-l1 current active has-children">
+<a class="reference internal" href="../chapter_title.html">
    Python Workshop 1 (W0D1)
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+<input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox">
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul class="current">
+<li class="toctree-l2 current active">
+<a class="current reference internal" href="#">
      Tutorial: LIF Neuron - Part I
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D2_PythonWorkshop2/chapter_title.html">
+</li>
+</ul>
+</input></li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D2_PythonWorkshop2/chapter_title.html">
    Python Workshop 2 (W0D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
      Tutorial 1: LIF Neuron Part II
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D3_LinearAlgebra/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/chapter_title.html">
    Linear Algebra (W0D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
      Tutorial 1: Vectors
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
      Tutorial 2: Matrices
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
      Bonus Tutorial: Discrete Dynamical Systems
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D4_Calculus/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D4_Calculus/chapter_title.html">
    Calculus (W0D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
      Tutorial 1: Basics of Differential and Integral Calculus
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
      Tutorial 2: Differential Equations
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
      Tutorial 3: Numerical Methods
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D5_Statistics/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D5_Statistics/chapter_title.html">
    Statistics (W0D5)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
      Neuromatch Academy: Precourse Week, Day 5, Tutorial 1
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
      Tutorial 2: Statistical Inference
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Intro to Modeling
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D1_ModelTypes/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D1_ModelTypes/chapter_title.html">
    Model Types (W1D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
      Tutorial 1: “What” models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
      Tutorial 2: “How” models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
      Tutorial 3: “Why” models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D2_ModelingPractice/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D2_ModelingPractice/chapter_title.html">
    Modeling Practice (W1D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
      Tutorial: Framing the Question
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Outro.html">
      Outro
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Machine Learning
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D3_ModelFitting/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D3_ModelFitting/chapter_title.html">
    Model Fitting (W1D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
      Tutorial 1: Linear regression with MSE
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
      Tutorial 2: Linear regression with MLE
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
      Tutorial 3: Confidence intervals and bootstrapping
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
      Tutorial 4: Multiple linear regression and polynomial regression
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
      Tutorial 5: Model Selection: Bias-variance trade-off
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
      Tutorial 6: Model Selection: Cross-validation
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/chapter_title.html">
    Generalized Linear Models (W1D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial1.html">
      Tutorial 1: GLMs for Encoding
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial2.html">
      Tutorial 2: Classifiers and regularizers
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D5_DimensionalityReduction/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/chapter_title.html">
    Dimensionality Reduction (W1D5)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+<label for="toctree-checkbox-10">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
      Tutorial 1: Geometric view of data
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
      Tutorial 2: Principal Component Analysis
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
      Tutorial 3: Dimensionality Reduction &amp; Reconstruction
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
      Tutorial 4:  Nonlinear Dimensionality Reduction
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D1_DeepLearning/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D1_DeepLearning/chapter_title.html">
    Deep Learning (W2D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/W2D1_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+<label for="toctree-checkbox-11">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/W2D1_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
      Tutorial 1: Decoding Neural Responses
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
      Tutorial 2: Convolutional Neural Networks
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
      Tutorial 2: Building and Evaluating Normative Encoding Models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/W2D1_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/W2D1_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Dynamical Systems
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D2_LinearSystems/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D2_LinearSystems/chapter_title.html">
    Linear Systems (W2D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+<label for="toctree-checkbox-12">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
      Tutorial 1: Linear dynamical systems
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
      Tutorial 2: Markov Processes
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
      Tutorial 3: Combining determinism and stochasticity
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
      Tutorial 4: Autoregressive models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/chapter_title.html">
    Biological Neuron Models (W2D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+<label for="toctree-checkbox-13">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial1.html">
      Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial2.html">
      Tutorial 2: Effects of Input Correlation
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial3.html">
      Tutorial 3: Synaptic transmission - Models of static and dynamic synapses
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial4.html">
      Tutorial 4: Spike-timing dependent plasticity (STDP)
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D4_DynamicNetworks/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/chapter_title.html">
    Dynamic Networks (W2D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+<label for="toctree-checkbox-14">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
      Tutorial 1: Neural Rate Models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
      Tutorial 2: Wilson-Cowan Model
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Stochastic Processes
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D1_BayesianDecisions/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/chapter_title.html">
    Bayesian Decisions (W3D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-  <label for="toctree-checkbox-15">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+<label for="toctree-checkbox-15">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
      Tutorial 1: Bayes with a binary hidden state
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
      Tutorial 2: Bayesian inference and decisions with continuous hidden state
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
      Bonus Tutorial:Fitting to data
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D2_HiddenDynamics/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/chapter_title.html">
    Hidden Dynamics (W3D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
-  <label for="toctree-checkbox-16">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+<label for="toctree-checkbox-16">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
      Tutorial 1: Sequential Probability Ratio Test
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
      Tutorial 2: Hidden Markov Model
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
      Tutorial 3: 1D Kalman Filter
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
      Tutorial 4: 2D Kalman Filter
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D3_OptimalControl/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D3_OptimalControl/chapter_title.html">
    Optimal Control (W3D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
-  <label for="toctree-checkbox-17">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+<label for="toctree-checkbox-17">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
      Tutorial 1: Optimal Control for Discrete States
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
      Tutorial 2: Optimal Control for Continuous State
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D4_ReinforcementLearning/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/chapter_title.html">
    Reinforcement Learning (W3D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
-  <label for="toctree-checkbox-18">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+<label for="toctree-checkbox-18">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
      Tutorial 1: Learning to Predict
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
      Tutorial 2: Learning to Act: Multi-Armed Bandits
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
      Tutorial 3: Learning to Act: Q-Learning
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
      Tutorial 4: From Reinforcement Learning to Planning
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D5_NetworkCausality/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D5_NetworkCausality/chapter_title.html">
    Network Causality (W3D5)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-  <label for="toctree-checkbox-19">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+<label for="toctree-checkbox-19">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
      Tutorial 1: Interventions
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
      Tutorial 2: Correlations
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
      Tutorial 3: Simultaneous fitting/regression
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
      Tutorial 4: Instrumental Variables
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
+</li>
 </ul>
-
-    </div>
+</li>
+</ul>
+</div>
 </nav> <!-- To handle the deprecated key -->
-
 <div class="navbar_extra_footer">
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
 </div>
-
 </div>
-
-
-          
-
-
-          
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
+<div class="topbar container-xl fixed-top">
+<div class="topbar-contents row">
+<div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+<div class="col pl-md-4 topbar-main">
+<button aria-controls="site-navigation" aria-expanded="true" aria-label="Toggle navigation" class="navbar-toggler ml-0" data-placement="left" data-target=".site-navigation" data-toggle="tooltip" id="navbar-toggler" title="Toggle navigation" type="button">
+<i class="fas fa-bars"></i>
+<i class="fas fa-arrow-left"></i>
+<i class="fas fa-arrow-up"></i>
+</button>
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/tutorials/W0D1_PythonWorkshop1/student/W0D1_Tutorial1.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
+<button aria-label="Download this page" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-download"></i></button>
+<div class="dropdown-buttons">
+<!-- ipynb file if we had a myst markdown file -->
+<!-- Download raw file -->
+<a class="dropdown-buttons" href="../../../_sources/tutorials/W0D1_PythonWorkshop1/student/W0D1_Tutorial1.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.ipynb</button></a>
+<!-- Download PDF via print -->
+<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
 </div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
+</div>
+<!-- Source interaction buttons -->
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/tutorials/W0D1_PythonWorkshop1/student/W0D1_Tutorial1.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../../../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
+<button aria-label="Connect with source repository" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fab fa-github"></i></button>
+<div class="dropdown-buttons sourcebuttons">
+<a class="repository-button" href="https://github.com/NeuromatchAcademy/course-content"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Source repository" type="button"><i class="fab fa-github"></i>repository</button></a>
+<a class="issues-button" href="https://github.com/NeuromatchAcademy/course-content/issues/new?title=Issue%20on%20page%20%2Ftutorials/W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html&amp;body=Your%20issue%20content%20here."><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Open an issue" type="button"><i class="fas fa-lightbulb"></i>open issue</button></a>
 </div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+</div>
+<!-- Full screen (wrap in <a> to have style consistency -->
+<a class="full-screen-button"><button aria-label="Fullscreen mode" class="btn btn-secondary topbarbtn" data-placement="bottom" data-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode" type="button"><i class="fas fa-expand"></i></button></a>
+<!-- Launch buttons -->
+</div>
+<!-- Table of contents -->
+<div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+<i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tutorial-objectives">
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#tutorial-objectives">
    Tutorial objectives
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#imports-and-helper-functions">
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#imports-and-helper-functions">
    Imports and helper functions
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#neuron-model">
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#figure-settings">
+   Figure settings
+  </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#neuron-model">
    Neuron model
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-1">
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-synaptic-input">
+   Video: Synaptic input
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-1">
      Exercise 1
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-2">
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-2">
      Exercise 2
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-3">
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-3">
      Exercise 3
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ode-integration-without-spikes">
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#ode-integration-without-spikes">
    ODE integration without spikes
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-4">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-discrete-time-integration">
+     Video: Discrete time integration
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-4">
      Exercise 4
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-5">
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-plotting">
+   Video: Plotting
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-5">
      Exercise 5
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-6">
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-6">
      Exercise 6
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#random-synaptic-input">
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#random-synaptic-input">
    Random synaptic input
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-7">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-7">
      Exercise 7
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ensemble-statistics">
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#ensemble-statistics">
    Ensemble statistics
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-8">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-ensemble-statistics">
+     Video: Ensemble statistics
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-8">
      Exercise 8
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-9">
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-9">
      Exercise 9
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-10">
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-10">
      Exercise 10
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-numpy">
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#using-numpy">
    Using NumPy
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-11">
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-using-numpy">
+   Video: Using NumPy
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-11">
      Exercise 11
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-12">
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-12">
      Exercise 12
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-13">
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-aggregation">
+   Video: Aggregation
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-13">
      Exercise 13
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-14">
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-14">
      Exercise 14
     </a>
-   </li>
-  </ul>
- </li>
+</li>
 </ul>
-
-            </nav>
-        </div>
-    </div>
+</li>
+</ul>
+</nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
-                
-  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W0D1_PythonWorkshop1/student/W0D1_Tutorial1.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></p>
+</div>
+</div>
+<div class="row" id="main-content">
+<div class="col-12 col-md-9 pl-md-3 pr-md-0">
+<div>
+<p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W0D1_PythonWorkshop1/student/W0D1_Tutorial1.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></p>
 <div class="section" id="tutorial-lif-neuron-part-i">
 <h1>Tutorial: LIF Neuron - Part I<a class="headerlink" href="#tutorial-lif-neuron-part-i" title="Permalink to this headline">¶</a></h1>
 <p><strong>Week 0, Day 1: Python Workshop 1</strong></p>
 <p><strong>By Neuromatch Academy</strong></p>
 <p><strong>Content creators:</strong> Marco Brigham and the <a class="reference external" href="https://www.ccnss.org/">CCNSS</a> team</p>
 <p><strong>Content reviewers:</strong> Michael Waskom, Karolina Stosio, Spiros Chavlis</p>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="tutorial-objectives">
 <h2>Tutorial objectives<a class="headerlink" href="#tutorial-objectives" title="Permalink to this headline">¶</a></h2>
 <p>NMA students, you are going to use Python skills to advance your understanding of neuroscience. Just like two legs that support and strengthen each other. One has “Python” written in it, and the other has “Neuro”. And step-by-step they go.</p>
@@ -1069,7 +1043,7 @@
 <p> </p>
 <p>Well then, let’s start our walk today!</p>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="imports-and-helper-functions">
 <h2>Imports and helper functions<a class="headerlink" href="#imports-and-helper-functions" title="Permalink to this headline">¶</a></h2>
 <p>Please execute the cell(s) below to initialize the notebook environment.</p>
@@ -1083,19 +1057,22 @@
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="figure-settings">
+<h2>Figure settings<a class="headerlink" href="#figure-settings" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Figure settings</span>
 
-<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = 'retina'
 
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="neuron-model">
 <h2>Neuron model<a class="headerlink" href="#neuron-model" title="Permalink to this headline">¶</a></h2>
 <p>A <em>membrane equation</em> and a <em>reset condition</em> define our <em>leaky-integrate-and-fire (LIF)</em> neuron:</p>
@@ -1110,15 +1087,17 @@
 <p>where <span class="math notranslate nohighlight">\(V(t)\)</span> is the membrane potential, <span class="math notranslate nohighlight">\(\tau_m\)</span> is the membrane time constant, <span class="math notranslate nohighlight">\(E_{L}\)</span> is the leak potential, <span class="math notranslate nohighlight">\(R\)</span> is the membrane resistance, <span class="math notranslate nohighlight">\(I(t)\)</span> is the synaptic input current, <span class="math notranslate nohighlight">\(V_{th}\)</span> is the firing threshold, and <span class="math notranslate nohighlight">\(V_{reset}\)</span> is the reset voltage. We can also write <span class="math notranslate nohighlight">\(V_m\)</span> for membrane potential - very convenient for plot labels.</p>
 <p>The membrane equation is an <em>ordinary differential equation (ODE)</em> that describes the time evolution of membrane potential <span class="math notranslate nohighlight">\(V(t)\)</span> in response to synaptic input and leaking of change across the cell membrane.</p>
 <p><strong>Note that, in this tutorial the neuron model will not implement a spiking mechanism.</strong></p>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Video: Synaptic input</span>
-<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;UP8rD2AwceM&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="n">video</span>
+</div>
+<div class="section" id="video-synaptic-input">
+<h2>Video: Synaptic input<a class="headerlink" href="#video-synaptic-input" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=UP8rD2AwceM
 </pre></div>
 </div>
-</div>
+<div class="output text_html">
+<iframe allowfullscreen="" frameborder="0" height="410" src="https://www.youtube.com/embed/UP8rD2AwceM?fs=1" width="730"></iframe>
+</div></div>
 </div>
 <div class="section" id="exercise-1">
 <h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
@@ -1151,7 +1130,7 @@
 </div>
 <div class="section" id="exercise-2">
 <h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
-<p><img alt="synaptic input" src="https://github.com/mpbrigham/colaboratory-figures/raw/master/nma/python-for-nma/synaptic_input.png" /></p>
+<p><img alt="synaptic input" src="https://github.com/mpbrigham/colaboratory-figures/raw/master/nma/python-for-nma/synaptic_input.png"/></p>
 <p>We start with a sinusoidal model to simulate the synaptic input <span class="math notranslate nohighlight">\(I(t)\)</span> given by:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -1177,11 +1156,25 @@ I(t)=I_{mean}\left(1+\sin\left(\frac{2 \pi}{0.01}\,t\right)\right)\\
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialize t</span>
 <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="c1"># loop for 10 steps, variable &#39;step&#39; takes values from 0 to 9</span>
+<span class="c1"># loop for 10 steps, variable 'step' takes values from 0 to 9</span>
 <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
   <span class="n">t</span> <span class="o">=</span> <span class="n">step</span> <span class="o">*</span> <span class="n">dt</span>
   <span class="n">i</span> <span class="o">=</span> <span class="o">...</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="n">a1f7a0c06ca4</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># loop for 10 steps, variable 'step' takes values from 0 to 9</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">6</span>   <span class="n">t</span> <span class="o">=</span> <span class="n">step</span> <span class="o">*</span> <span class="n">dt</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>   <span class="n">i</span> <span class="o">=</span> <span class="o">...</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>   <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name 'dt' is not defined
 </pre></div>
 </div>
 </div>
@@ -1205,10 +1198,10 @@ I(t)=I_{mean}\left(1+\sin\left(\frac{2 \pi}{0.01}\,t\right)\right)\\
 <h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
 <p>Print formatting is handy for displaying simulation parameters in a clean and organized form. Python 3.6 introduced the new string formatting <a class="reference external" href="https://www.python.org/dev/peps/pep-0498">f-strings</a>. Since we are dealing with type <code class="docutils literal notranslate"><span class="pre">float</span></code> variables, we use <code class="docutils literal notranslate"><span class="pre">f'{x:.3f}'</span></code> for formatting <code class="docutils literal notranslate"><span class="pre">x</span></code> to three decimal points, and <code class="docutils literal notranslate"><span class="pre">f'{x:.4e}'</span></code> for four decimal points but in exponential notation.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">3.14159265e-1</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 <span class="o">--&gt;</span> <span class="mf">0.314</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s1">.4e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s1">.4e</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 <span class="o">--&gt;</span> <span class="mf">3.1416e-01</span>
 </pre></div>
 </div>
@@ -1228,6 +1221,20 @@ I(t)=I_{mean}\left(1+\sin\left(\frac{2 \pi}{0.01}\,t\right)\right)\\
   <span class="n">t</span> <span class="o">=</span> <span class="n">step</span> <span class="o">*</span> <span class="n">dt</span>
   <span class="n">i</span> <span class="o">=</span> <span class="o">...</span>
   <span class="nb">print</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="mi">22</span><span class="n">a5c17f6f1c</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># loop for step_end steps</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">step_end</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">6</span>   <span class="n">t</span> <span class="o">=</span> <span class="n">step</span> <span class="o">*</span> <span class="n">dt</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>   <span class="n">i</span> <span class="o">=</span> <span class="o">...</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>   <span class="nb">print</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name 'dt' is not defined
 </pre></div>
 </div>
 </div>
@@ -1260,14 +1267,16 @@ I(t)=I_{mean}\left(1+\sin\left(\frac{2 \pi}{0.01}\,t\right)\right)\\
 \end{align*}\]</div>
 <p>The value of membrane potential <span class="math notranslate nohighlight">\(V\left(t+\Delta t\right)\)</span> can be expressed in terms of its previous value <span class="math notranslate nohighlight">\(V(t)\)</span> by simple algebraic manipulation. For <em>small enough</em> values of <span class="math notranslate nohighlight">\(\Delta t\)</span>, this provides a good approximation of the continuous-time integration.</p>
 <p>This operation is an integration since we obtain a sequence <span class="math notranslate nohighlight">\(\{V(t), V(t+\Delta t), V(t+2\Delta t),...\}\)</span> starting from the ODE. Notice how the ODE describes the evolution of <span class="math notranslate nohighlight">\(\frac{d}{dt}\,V(t)\)</span>, the derivative of <span class="math notranslate nohighlight">\(V(t)\)</span>, but not directly the evolution of <span class="math notranslate nohighlight">\(V(t)\)</span>. For the evolution of <span class="math notranslate nohighlight">\(V(t)\)</span> we need to integrate the ODE, and in this tutorial, we will do a discrete-time integration using the Euler method. See <a class="reference external" href="https://en.wikipedia.org/wiki/Numerical_methods_for_ordinary_differential_equations">Numerical methods for ordinary differential equations</a> for additional details.</p>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Video: Discrete time integration</span>
-<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;kyCbeR28AYQ&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="n">video</span>
+<div class="section" id="video-discrete-time-integration">
+<h3>Video: Discrete time integration<a class="headerlink" href="#video-discrete-time-integration" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=kyCbeR28AYQ
 </pre></div>
 </div>
+<div class="output text_html">
+<iframe allowfullscreen="" frameborder="0" height="410" src="https://www.youtube.com/embed/kyCbeR28AYQ?fs=1" width="730"></iframe>
+</div></div>
 </div>
 </div>
 <div class="section" id="exercise-4">
@@ -1316,6 +1325,20 @@ I(t)=I_{mean}\left(1+\sin\left(\frac{2 \pi}{0.01}\,t\right)\right)\\
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="n">d08035c5b6e8</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># initialize step_end and v</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">step_end</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">v</span> <span class="o">=</span> <span class="n">el</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># loop for step_end steps</span>
+
+<span class="ne">NameError</span>: name 'el' is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>SAMPLE OUTPUT</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.000</span> <span class="o">-</span><span class="mf">6.0000e-02</span>
@@ -1331,21 +1354,22 @@ I(t)=I_{mean}\left(1+\sin\left(\frac{2 \pi}{0.01}\,t\right)\right)\\
 </pre></div>
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D1_PythonWorkshop1/solutions/W0D1_Tutorial1_Solution_95c91766.py"><em>Click for solution</em></a></p>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Video: Plotting</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
-<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;BOh8CsuTFkY&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="n">video</span>
+</div>
+</div>
+<div class="section" id="video-plotting">
+<h2>Video: Plotting<a class="headerlink" href="#video-plotting" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=BOh8CsuTFkY
 </pre></div>
 </div>
-</div>
-</div>
+<div class="output text_html">
+<iframe allowfullscreen="" frameborder="0" height="410" src="https://www.youtube.com/embed/BOh8CsuTFkY?fs=1" width="730"></iframe>
+</div></div>
 </div>
 <div class="section" id="exercise-5">
 <h3>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h3>
-<p><img alt="synaptic input discrete" src="https://github.com/mpbrigham/colaboratory-figures/raw/master/nma/python-for-nma/synaptic_input_discrete.png" /></p>
+<p><img alt="synaptic input discrete" src="https://github.com/mpbrigham/colaboratory-figures/raw/master/nma/python-for-nma/synaptic_input_discrete.png"/></p>
 <p>Plot the values of <span class="math notranslate nohighlight">\(I(t)\)</span> between <span class="math notranslate nohighlight">\(t=0\)</span> and <span class="math notranslate nohighlight">\(t=0.024\)</span>.</p>
 <p><strong>Suggestions</strong></p>
 <ul class="simple">
@@ -1377,10 +1401,27 @@ I(t)=I_{mean}\left(1+\sin\left(\frac{2 \pi}{0.01}\,t\right)\right)\\
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">1108</span><span class="n">aed9725e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># loop for step_end steps</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">step_end</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">13</span>   <span class="n">t</span> <span class="o">=</span> <span class="n">step</span> <span class="o">*</span> <span class="n">dt</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>   <span class="n">i</span> <span class="o">=</span> <span class="o">...</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>   <span class="c1"># Complete this line and uncomment</span>
+
+<span class="ne">NameError</span>: name 'dt' is not defined
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 576x432 with 0 Axes&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D1_PythonWorkshop1/solutions/W0D1_Tutorial1_Solution_23446a7e.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=559 height=416 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_23446a7e_0.png>
+<img align="left" alt="Solution hint" height="416" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_23446a7e_0.png" width="559"/>
 </div>
 <div class="section" id="exercise-6">
 <h3>Exercise 6<a class="headerlink" href="#exercise-6" title="Permalink to this headline">¶</a></h3>
@@ -1398,9 +1439,9 @@ I(t)=I_{mean}\left(1+\sin\left(\frac{2 \pi}{0.01}\,t\right)\right)\\
 
 <span class="c1"># initialize the figure</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$V_m$ with sinusoidal I(t)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$V_m$ (V)&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'$V_m$ with sinusoidal I(t)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'time (s)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'$V_m$ (V)'</span><span class="p">);</span>
 
 <span class="c1"># loop for step_end steps</span>
 <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">step_end</span><span class="p">):</span>
@@ -1418,13 +1459,27 @@ I(t)=I_{mean}\left(1+\sin\left(\frac{2 \pi}{0.01}\,t\right)\right)\\
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">0</span><span class="n">c31d61501f6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># initialize step_end and v</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">step_end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_max</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">v</span> <span class="o">=</span> <span class="n">el</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># initialize the figure</span>
+
+<span class="ne">NameError</span>: name 't_max' is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D1_PythonWorkshop1/solutions/W0D1_Tutorial1_Solution_1046fd94.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=560 height=416 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_1046fd94_0.png>
+<img align="left" alt="Solution hint" height="416" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_1046fd94_0.png" width="560"/>
 </div>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="random-synaptic-input">
 <h2>Random synaptic input<a class="headerlink" href="#random-synaptic-input" title="Permalink to this headline">¶</a></h2>
 <p>From the perspective of neurons, synaptic input is random (or stochastic). We’ll improve the synaptic input model by introducing random input current with statistical properties similar to the previous exercise:</p>
@@ -1460,9 +1515,9 @@ I(t)=I_{mean}\left(1+0.1\sqrt{\frac{t_{max}}{\Delta t}}\,\xi(t)\right)\qquad\tex
 
 <span class="c1"># initialize the figure</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$V_m$ with random I(t)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$V_m$ (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'$V_m$ with random I(t)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'time (s)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'$V_m$ (V)'</span><span class="p">)</span>
 
 <span class="c1"># loop for step_end steps</span>
 <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">step_end</span><span class="p">):</span>
@@ -1477,10 +1532,24 @@ I(t)=I_{mean}\left(1+0.1\sqrt{\frac{t_{max}}{\Delta t}}\,\xi(t)\right)\qquad\tex
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="n">eca9ce40248c</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># initialize step_end and v</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">step_end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_max</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">v</span> <span class="o">=</span> <span class="n">el</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+
+<span class="ne">NameError</span>: name 't_max' is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D1_PythonWorkshop1/solutions/W0D1_Tutorial1_Solution_41355f96.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=560 height=416 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_41355f96_1.png>
+<img align="left" alt="Solution hint" height="416" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_41355f96_1.png" width="560"/>
 </div>
 </div>
 <div class="section" id="ensemble-statistics">
@@ -1495,14 +1564,16 @@ I(t)=I_{mean}\left(1+0.1\sqrt{\frac{t_{max}}{\Delta t}}\,\xi(t)\right)\qquad\tex
 &amp;= \frac{1}{N-1} \sum_{n=1}^N \left(V_n(t)-\left\langle V(t)\right\rangle\right)\left(V_n(s)-\left\langle V(s)\right\rangle\right) &amp; &amp; \text{sample autocovariance}\\
 \\
 \end{align*}\]</div>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Video: Ensemble statistics</span>
-<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;4nIAS2oPEFI&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="n">video</span>
+<div class="section" id="video-ensemble-statistics">
+<h3>Video: Ensemble statistics<a class="headerlink" href="#video-ensemble-statistics" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=4nIAS2oPEFI
 </pre></div>
 </div>
+<div class="output text_html">
+<iframe allowfullscreen="" frameborder="0" height="410" src="https://www.youtube.com/embed/4nIAS2oPEFI?fs=1" width="730"></iframe>
+</div></div>
 </div>
 </div>
 <div class="section" id="exercise-8">
@@ -1536,9 +1607,9 @@ I(t)=I_{mean}\left(1+0.1\sqrt{\frac{t_{max}}{\Delta t}}\,\xi(t)\right)\qquad\tex
 
 <span class="c1"># initialize the figure</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Multiple realizations of $V_m$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$V_m$ (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Multiple realizations of $V_m$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'time (s)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'$V_m$ (V)'</span><span class="p">)</span>
 
 <span class="c1"># loop for step_end steps</span>
 <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">step_end</span><span class="p">):</span>
@@ -1556,10 +1627,24 @@ I(t)=I_{mean}\left(1+0.1\sqrt{\frac{t_{max}}{\Delta t}}\,\xi(t)\right)\qquad\tex
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">14</span><span class="o">-</span><span class="n">c70439f50da0</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># initialize step_end, n and v_n</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">step_end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_max</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># Complete this line and uncomment</span>
+
+<span class="ne">NameError</span>: name 't_max' is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D1_PythonWorkshop1/solutions/W0D1_Tutorial1_Solution_8b55f5dd.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=558 height=413 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_8b55f5dd_0.png>
+<img align="left" alt="Solution hint" height="413" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_8b55f5dd_0.png" width="558"/>
 </div>
 <div class="section" id="exercise-9">
 <h3>Exercise 9<a class="headerlink" href="#exercise-9" title="Permalink to this headline">¶</a></h3>
@@ -1587,9 +1672,9 @@ I(t)=I_{mean}\left(1+0.1\sqrt{\frac{t_{max}}{\Delta t}}\,\xi(t)\right)\qquad\tex
 
 <span class="c1"># initialize the figure</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Multiple realizations of $V_m$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$V_m$ (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Multiple realizations of $V_m$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'time (s)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'$V_m$ (V)'</span><span class="p">)</span>
 
 <span class="c1"># loop for step_end steps</span>
 <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">step_end</span><span class="p">):</span>
@@ -1608,10 +1693,24 @@ I(t)=I_{mean}\left(1+0.1\sqrt{\frac{t_{max}}{\Delta t}}\,\xi(t)\right)\qquad\tex
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">15</span><span class="o">-</span><span class="n">b845ec411360</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># initialize step_end, n and v_n</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">step_end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_max</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">v_n</span> <span class="o">=</span> <span class="p">[</span><span class="n">el</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+
+<span class="ne">NameError</span>: name 't_max' is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D1_PythonWorkshop1/solutions/W0D1_Tutorial1_Solution_98017570.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=558 height=413 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_98017570_0.png>
+<img align="left" alt="Solution hint" height="413" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_98017570_0.png" width="558"/>
 </div>
 <div class="section" id="exercise-10">
 <h3>Exercise 10<a class="headerlink" href="#exercise-10" title="Permalink to this headline">¶</a></h3>
@@ -1648,9 +1747,9 @@ I(t)=I_{mean}\left(1+0.1\sqrt{\frac{t_{max}}{\Delta t}}\,\xi(t)\right)\qquad\tex
 
 <span class="c1"># initialize the figure</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Multiple realizations of $V_m$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$V_m$ (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Multiple realizations of $V_m$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'time (s)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'$V_m$ (V)'</span><span class="p">)</span>
 
 <span class="c1"># loop for step_end steps</span>
 <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">step_end</span><span class="p">):</span>
@@ -1675,28 +1774,44 @@ I(t)=I_{mean}\left(1+0.1\sqrt{\frac{t_{max}}{\Delta t}}\,\xi(t)\right)\qquad\tex
 </pre></div>
 </div>
 </div>
-</div>
-<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D1_PythonWorkshop1/solutions/W0D1_Tutorial1_Solution_9e048e4b.py"><em>Click for solution</em></a></p>
-<p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=558 height=413 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_9e048e4b_0.png>
-</div>
-</div>
-<hr class="docutils" />
-<div class="section" id="using-numpy">
-<h2>Using NumPy<a class="headerlink" href="#using-numpy" title="Permalink to this headline">¶</a></h2>
-<p>The next set of exercises introduces <code class="docutils literal notranslate"><span class="pre">np.array</span></code>, the workhorse from the scientific computation package <a class="reference external" href="https://numpy.org">NumPy</a>. Numpy arrays the default for numerical data storage and computation and will separate computing steps from plotting.</p>
-<p><img alt="NumPy package" src="https://github.com/mpbrigham/colaboratory-figures/raw/master/nma/python-for-nma/numpy_logo_small.png" /></p>
-<p>We updated plots inside the main loop in the previous exercises and stored intermediate results in lists for plotting them. The purpose was to simplify earlier exercises as much as possible. However, there are very few scenarios where this technique is necessary, and you should avoid it in the future. Using numpy arrays will significantly simplify our coding narrative by computing inside the main loop and plotting afterward.</p>
-<p>Lists are much more natural for storing data for other purposes than computation. For example, lists are handy for storing numerical indexes and text.</p>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Video: Using NumPy</span>
-<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;ewyHKKa2_OU&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="n">video</span>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">1482</span><span class="n">f6956c7b</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># initialize step_end, n and v_n</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">step_end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_max</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">v_n</span> <span class="o">=</span> <span class="p">[</span><span class="n">el</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+
+<span class="ne">NameError</span>: name 't_max' is not defined
 </pre></div>
 </div>
 </div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D1_PythonWorkshop1/solutions/W0D1_Tutorial1_Solution_9e048e4b.py"><em>Click for solution</em></a></p>
+<p><em>Example output:</em></p>
+<img align="left" alt="Solution hint" height="413" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_9e048e4b_0.png" width="558"/>
+</div>
+</div>
+<hr class="docutils"/>
+<div class="section" id="using-numpy">
+<h2>Using NumPy<a class="headerlink" href="#using-numpy" title="Permalink to this headline">¶</a></h2>
+<p>The next set of exercises introduces <code class="docutils literal notranslate"><span class="pre">np.array</span></code>, the workhorse from the scientific computation package <a class="reference external" href="https://numpy.org">NumPy</a>. Numpy arrays the default for numerical data storage and computation and will separate computing steps from plotting.</p>
+<p><img alt="NumPy package" src="https://github.com/mpbrigham/colaboratory-figures/raw/master/nma/python-for-nma/numpy_logo_small.png"/></p>
+<p>We updated plots inside the main loop in the previous exercises and stored intermediate results in lists for plotting them. The purpose was to simplify earlier exercises as much as possible. However, there are very few scenarios where this technique is necessary, and you should avoid it in the future. Using numpy arrays will significantly simplify our coding narrative by computing inside the main loop and plotting afterward.</p>
+<p>Lists are much more natural for storing data for other purposes than computation. For example, lists are handy for storing numerical indexes and text.</p>
+</div>
+<div class="section" id="video-using-numpy">
+<h2>Video: Using NumPy<a class="headerlink" href="#video-using-numpy" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=ewyHKKa2_OU
+</pre></div>
+</div>
+<div class="output text_html">
+<iframe allowfullscreen="" frameborder="0" height="410" src="https://www.youtube.com/embed/ewyHKKa2_OU?fs=1" width="730"></iframe>
+</div></div>
 </div>
 <div class="section" id="exercise-11">
 <h3>Exercise 11<a class="headerlink" href="#exercise-11" title="Permalink to this headline">¶</a></h3>
@@ -1728,19 +1843,33 @@ I(t)=I_{mean}\left(1+0.1\sqrt{\frac{t_{max}}{\Delta t}}\,\xi(t)\right)\qquad\tex
 
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$V_m$ with random I(t)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$V_m$ (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'$V_m$ with random I(t)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'time (s)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'$V_m$ (V)'</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="s1">&#39;k.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="s1">'k.'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">18</span><span class="o">-</span><span class="mi">1</span><span class="n">cf03e51e4c2</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># initialize step_end, t_range, v and syn</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">step_end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_max</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># skip the endpoint to match Exercise 7 plot</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">t_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">step_end</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name 't_max' is not defined
 </pre></div>
 </div>
 </div>
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D1_PythonWorkshop1/solutions/W0D1_Tutorial1_Solution_4427a815.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=560 height=416 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_4427a815_0.png>
+<img align="left" alt="Solution hint" height="416" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_4427a815_0.png" width="560"/>
 </div>
 <div class="section" id="exercise-12">
 <h3>Exercise 12<a class="headerlink" href="#exercise-12" title="Permalink to this headline">¶</a></h3>
@@ -1770,29 +1899,45 @@ I(t)=I_{mean}\left(1+0.1\sqrt{\frac{t_{max}}{\Delta t}}\,\xi(t)\right)\qquad\tex
   <span class="c1"># v[step] = ...</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$V_m$ with random I(t)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$V_m$ (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'$V_m$ with random I(t)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'time (s)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'$V_m$ (V)'</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="s1">'k'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">19</span><span class="o">-</span><span class="n">f5d3dcc920fe</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># initialize step_end, t_range, v and syn</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">step_end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_max</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">t_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">step_end</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">v</span> <span class="o">=</span> <span class="n">el</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">step_end</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name 't_max' is not defined
 </pre></div>
 </div>
 </div>
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D1_PythonWorkshop1/solutions/W0D1_Tutorial1_Solution_4139f63a.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=560 height=416 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_4139f63a_0.png>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Video: Aggregation</span>
-<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;1ME-0rJXLFg&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="n">video</span>
+<img align="left" alt="Solution hint" height="416" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_4139f63a_0.png" width="560"/>
+</div>
+</div>
+<div class="section" id="video-aggregation">
+<h2>Video: Aggregation<a class="headerlink" href="#video-aggregation" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=1ME-0rJXLFg
 </pre></div>
 </div>
-</div>
-</div>
+<div class="output text_html">
+<iframe allowfullscreen="" frameborder="0" height="410" src="https://www.youtube.com/embed/1ME-0rJXLFg?fs=1" width="730"></iframe>
+</div></div>
 </div>
 <div class="section" id="exercise-13">
 <h3>Exercise 13<a class="headerlink" href="#exercise-13" title="Permalink to this headline">¶</a></h3>
@@ -1823,9 +1968,9 @@ I(t)=I_{mean}\left(1+0.1\sqrt{\frac{t_{max}}{\Delta t}}\,\xi(t)\right)\qquad\tex
 
 <span class="c1"># initialize the figure</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Multiple realizations of $V_m$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$V_m$ (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Multiple realizations of $V_m$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'time (s)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'$V_m$ (V)'</span><span class="p">)</span>
 
 <span class="c1"># Complete this line and uncomment</span>
 <span class="c1"># plt.plot(...)</span>
@@ -1833,10 +1978,24 @@ I(t)=I_{mean}\left(1+0.1\sqrt{\frac{t_{max}}{\Delta t}}\,\xi(t)\right)\qquad\tex
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">21</span><span class="o">-</span><span class="mi">9632</span><span class="n">a8c00aae</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># initialize step_end, n, t_range, v and syn</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">step_end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_max</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">t_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">step_end</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name 't_max' is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D1_PythonWorkshop1/solutions/W0D1_Tutorial1_Solution_e8466b6b.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=560 height=416 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_e8466b6b_0.png>
+<img align="left" alt="Solution hint" height="416" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_e8466b6b_0.png" width="560"/>
 </div>
 <div class="section" id="exercise-14">
 <h3>Exercise 14<a class="headerlink" href="#exercise-14" title="Permalink to this headline">¶</a></h3>
@@ -1869,32 +2028,45 @@ I(t)=I_{mean}\left(1+0.1\sqrt{\frac{t_{max}}{\Delta t}}\,\xi(t)\right)\qquad\tex
 
 <span class="c1"># initialize the figure</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Multiple realizations of $V_m$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$V_m$ (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Multiple realizations of $V_m$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'time (s)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'$V_m$ (V)'</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">v_n</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_range</span><span class="p">,</span> <span class="n">v_n</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="s1">'k'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 
 <span class="c1"># Complete these lines and uncomment</span>
-<span class="c1"># plt.plot(t_range, v_n[-1], &#39;k&#39;, alpha=0.3, label=...)</span>
-<span class="c1"># plt.plot(t_range, ..., &#39;C0&#39;, alpha=0.8, label=&#39;mean&#39;)</span>
-<span class="c1"># plt.plot(t_range, ..., &#39;C7&#39;, alpha=0.8)</span>
-<span class="c1"># plt.plot(t_range, ..., &#39;C7&#39;, alpha=0.8, label=...)</span>
+<span class="c1"># plt.plot(t_range, v_n[-1], 'k', alpha=0.3, label=...)</span>
+<span class="c1"># plt.plot(t_range, ..., 'C0', alpha=0.8, label='mean')</span>
+<span class="c1"># plt.plot(t_range, ..., 'C7', alpha=0.8)</span>
+<span class="c1"># plt.plot(t_range, ..., 'C7', alpha=0.8, label=...)</span>
 
 <span class="c1">#plt.legend()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">22</span><span class="o">-</span><span class="mi">26</span><span class="n">be78f45e8e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># initialize step_end, n, t_range, v and syn</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">step_end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_max</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">t_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">step_end</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name 't_max' is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W0D1_PythonWorkshop1/solutions/W0D1_Tutorial1_Solution_061d112f.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=560 height=416 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_061d112f_0.png>
+<img align="left" alt="Solution hint" height="416" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W0D1_PythonWorkshop1/static/W0D1_Tutorial1_Solution_061d112f_0.png" width="560"/>
 </div>
 </div>
 </div>
-
-    <script type="text/x-thebe-config">
+<script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
@@ -1912,38 +2084,27 @@ I(t)=I_{mean}\left(1+0.1\sqrt{\frac{t_{max}}{\Delta t}}\,\xi(t)\right)\qquad\tex
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
-
-              </div>
-              
-        
-        <div class='prev-next-bottom'>
-            
-    <a class='left-prev' id="prev-link" href="../chapter_title.html" title="previous page">Python Workshop 1</a>
-    <a class='right-next' id="next-link" href="../../W0D2_PythonWorkshop2/chapter_title.html" title="next page">Python Workshop 2</a>
-
-        </div>
-        
-        </div>
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
+<script>kernelName = 'python3'</script>
+</div>
+<div class="prev-next-bottom">
+<a class="left-prev" href="../chapter_title.html" id="prev-link" title="previous page">Python Workshop 1</a>
+<a class="right-next" href="../../W0D2_PythonWorkshop2/chapter_title.html" id="next-link" title="next page">Python Workshop 2</a>
+</div>
+</div>
+</div>
+<footer class="footer mt-5 mt-md-0">
+<div class="container">
+<p>
         
           By Neuromatch<br/>
         
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+            © Copyright 2021.<br/>
+</p>
+</div>
+</footer>
 </main>
-
-
-      </div>
-    </div>
-  
-  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  
-  </body>
+</div>
+</div>
+<script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+</body>
 </html>

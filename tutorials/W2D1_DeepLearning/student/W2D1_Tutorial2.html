@@ -2,1059 +2,1054 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tutorial 2: Convolutional Neural Networks &#8212; Neuromatch Computational Neuroscience</title>
-    
-  <link href="../../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
-
-    
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
-    
-      
-
-    
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
-
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/togglebutton.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tutorial 2: Convolutional Neural Networks — Neuromatch Academy: Computational Neuroscience</title>
+<link href="../../../_static/css/theme.css" rel="stylesheet"/>
+<link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet"/>
+<link href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../../_static/pygments.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/togglebutton.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/mystnb.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/sphinx-thebe.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" rel="stylesheet" type="text/css"/>
+<link as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js" rel="preload"/>
+<script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+<script src="../../../_static/jquery.js"></script>
+<script src="../../../_static/underscore.js"></script>
+<script src="../../../_static/doctools.js"></script>
+<script src="../../../_static/togglebutton.js"></script>
+<script src="../../../_static/clipboard.min.js"></script>
+<script src="../../../_static/copybutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+<script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+<script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Tutorial 2: Building and Evaluating Normative Encoding Models" href="W2D1_Tutorial3.html" />
-    <link rel="prev" title="Tutorial 1: Decoding Neural Responses" href="W2D1_Tutorial1.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-    
-  </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
+<script async="async" src="../../../_static/sphinx-thebe.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+<link href="../../../_static/nma-logo-square-4xp.jpg" rel="shortcut icon">
+<link href="../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../search.html" rel="search" title="Search"/>
+<link href="W2D1_Tutorial3.html" rel="next" title="Tutorial 2: Building and Evaluating Normative Encoding Models"/>
+<link href="W2D1_Tutorial1.html" rel="prev" title="Tutorial 1: Decoding Neural Responses"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</link></link></link></link></head>
+<body data-offset="80" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="container-fluid" id="banner"></div>
+<div class="container-xl">
+<div class="row">
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../../index.html">
-      
-      <img src="../../../_static/nma-logo-square-4xp.jpg" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../intro.html">
+<div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+<img alt="logo" class="logo" src="../../../_static/nma-logo-square-4xp.jpg"/>
+<h1 class="site-logo" id="site-title">Neuromatch Academy: Computational Neuroscience</h1>
+</a>
+</div><form action="../../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search this book..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search this book..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../../../intro.html">
    Introduction
   </a>
- </li>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Pre-reqs Refresher
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D1_PythonWorkshop1/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D1_PythonWorkshop1/chapter_title.html">
    Python Workshop 1 (W0D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox">
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
      Tutorial: LIF Neuron - Part I
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D2_PythonWorkshop2/chapter_title.html">
+</li>
+</ul>
+</input></li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D2_PythonWorkshop2/chapter_title.html">
    Python Workshop 2 (W0D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
      Tutorial 1: LIF Neuron Part II
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D3_LinearAlgebra/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/chapter_title.html">
    Linear Algebra (W0D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
      Tutorial 1: Vectors
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
      Tutorial 2: Matrices
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
      Bonus Tutorial: Discrete Dynamical Systems
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D4_Calculus/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D4_Calculus/chapter_title.html">
    Calculus (W0D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
      Tutorial 1: Basics of Differential and Integral Calculus
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
      Tutorial 2: Differential Equations
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
      Tutorial 3: Numerical Methods
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D5_Statistics/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D5_Statistics/chapter_title.html">
    Statistics (W0D5)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
      Neuromatch Academy: Precourse Week, Day 5, Tutorial 1
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
      Tutorial 2: Statistical Inference
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Intro to Modeling
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D1_ModelTypes/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D1_ModelTypes/chapter_title.html">
    Model Types (W1D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
      Tutorial 1: “What” models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
      Tutorial 2: “How” models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
      Tutorial 3: “Why” models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D2_ModelingPractice/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D2_ModelingPractice/chapter_title.html">
    Modeling Practice (W1D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
      Tutorial: Framing the Question
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Outro.html">
      Outro
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Machine Learning
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D3_ModelFitting/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D3_ModelFitting/chapter_title.html">
    Model Fitting (W1D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
      Tutorial 1: Linear regression with MSE
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
      Tutorial 2: Linear regression with MLE
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
      Tutorial 3: Confidence intervals and bootstrapping
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
      Tutorial 4: Multiple linear regression and polynomial regression
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
      Tutorial 5: Model Selection: Bias-variance trade-off
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
      Tutorial 6: Model Selection: Cross-validation
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D3_ModelFitting/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/chapter_title.html">
    Generalized Linear Models (W1D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial1.html">
      Tutorial 1: GLMs for Encoding
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial2.html">
      Tutorial 2: Classifiers and regularizers
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D5_DimensionalityReduction/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/chapter_title.html">
    Dimensionality Reduction (W1D5)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+<label for="toctree-checkbox-10">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
      Tutorial 1: Geometric view of data
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
      Tutorial 2: Principal Component Analysis
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
      Tutorial 3: Dimensionality Reduction &amp; Reconstruction
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
      Tutorial 4:  Nonlinear Dimensionality Reduction
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children">
+<a class="reference internal" href="../chapter_title.html">
    Deep Learning (W2D1)
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../W2D1_Intro.html">
+<input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+<label for="toctree-checkbox-11">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul class="current">
+<li class="toctree-l2">
+<a class="reference internal" href="../W2D1_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="W2D1_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="W2D1_Tutorial1.html">
      Tutorial 1: Decoding Neural Responses
     </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+</li>
+<li class="toctree-l2 current active">
+<a class="current reference internal" href="#">
      Tutorial 2: Convolutional Neural Networks
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="W2D1_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="W2D1_Tutorial3.html">
      Tutorial 2: Building and Evaluating Normative Encoding Models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../W2D1_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../W2D1_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Dynamical Systems
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D2_LinearSystems/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D2_LinearSystems/chapter_title.html">
    Linear Systems (W2D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+<label for="toctree-checkbox-12">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
      Tutorial 1: Linear dynamical systems
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
      Tutorial 2: Markov Processes
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
      Tutorial 3: Combining determinism and stochasticity
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
      Tutorial 4: Autoregressive models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/chapter_title.html">
    Biological Neuron Models (W2D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+<label for="toctree-checkbox-13">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial1.html">
      Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial2.html">
      Tutorial 2: Effects of Input Correlation
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial3.html">
      Tutorial 3: Synaptic transmission - Models of static and dynamic synapses
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial4.html">
      Tutorial 4: Spike-timing dependent plasticity (STDP)
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D4_DynamicNetworks/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/chapter_title.html">
    Dynamic Networks (W2D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+<label for="toctree-checkbox-14">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
      Tutorial 1: Neural Rate Models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
      Tutorial 2: Wilson-Cowan Model
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Stochastic Processes
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D1_BayesianDecisions/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/chapter_title.html">
    Bayesian Decisions (W3D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-  <label for="toctree-checkbox-15">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+<label for="toctree-checkbox-15">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
      Tutorial 1: Bayes with a binary hidden state
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
      Tutorial 2: Bayesian inference and decisions with continuous hidden state
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
      Bonus Tutorial:Fitting to data
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D2_HiddenDynamics/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/chapter_title.html">
    Hidden Dynamics (W3D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
-  <label for="toctree-checkbox-16">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+<label for="toctree-checkbox-16">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
      Tutorial 1: Sequential Probability Ratio Test
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
      Tutorial 2: Hidden Markov Model
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
      Tutorial 3: 1D Kalman Filter
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
      Tutorial 4: 2D Kalman Filter
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D3_OptimalControl/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D3_OptimalControl/chapter_title.html">
    Optimal Control (W3D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
-  <label for="toctree-checkbox-17">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+<label for="toctree-checkbox-17">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
      Tutorial 1: Optimal Control for Discrete States
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
      Tutorial 2: Optimal Control for Continuous State
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D4_ReinforcementLearning/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/chapter_title.html">
    Reinforcement Learning (W3D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
-  <label for="toctree-checkbox-18">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+<label for="toctree-checkbox-18">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
      Tutorial 1: Learning to Predict
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
      Tutorial 2: Learning to Act: Multi-Armed Bandits
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
      Tutorial 3: Learning to Act: Q-Learning
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
      Tutorial 4: From Reinforcement Learning to Planning
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D5_NetworkCausality/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D5_NetworkCausality/chapter_title.html">
    Network Causality (W3D5)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-  <label for="toctree-checkbox-19">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+<label for="toctree-checkbox-19">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
      Tutorial 1: Interventions
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
      Tutorial 2: Correlations
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
      Tutorial 3: Simultaneous fitting/regression
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
      Tutorial 4: Instrumental Variables
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
+</li>
 </ul>
-
-    </div>
+</li>
+</ul>
+</div>
 </nav> <!-- To handle the deprecated key -->
-
 <div class="navbar_extra_footer">
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
 </div>
-
 </div>
-
-
-          
-
-
-          
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
+<div class="topbar container-xl fixed-top">
+<div class="topbar-contents row">
+<div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+<div class="col pl-md-4 topbar-main">
+<button aria-controls="site-navigation" aria-expanded="true" aria-label="Toggle navigation" class="navbar-toggler ml-0" data-placement="left" data-target=".site-navigation" data-toggle="tooltip" id="navbar-toggler" title="Toggle navigation" type="button">
+<i class="fas fa-bars"></i>
+<i class="fas fa-arrow-left"></i>
+<i class="fas fa-arrow-up"></i>
+</button>
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/tutorials/W2D1_DeepLearning/student/W2D1_Tutorial2.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
+<button aria-label="Download this page" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-download"></i></button>
+<div class="dropdown-buttons">
+<!-- ipynb file if we had a myst markdown file -->
+<!-- Download raw file -->
+<a class="dropdown-buttons" href="../../../_sources/tutorials/W2D1_DeepLearning/student/W2D1_Tutorial2.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.ipynb</button></a>
+<!-- Download PDF via print -->
+<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
 </div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
+</div>
+<!-- Source interaction buttons -->
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/tutorials/W2D1_DeepLearning/student/W2D1_Tutorial2.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../../../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
+<button aria-label="Connect with source repository" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fab fa-github"></i></button>
+<div class="dropdown-buttons sourcebuttons">
+<a class="repository-button" href="https://github.com/NeuromatchAcademy/course-content"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Source repository" type="button"><i class="fab fa-github"></i>repository</button></a>
+<a class="issues-button" href="https://github.com/NeuromatchAcademy/course-content/issues/new?title=Issue%20on%20page%20%2Ftutorials/W2D1_DeepLearning/student/W2D1_Tutorial2.html&amp;body=Your%20issue%20content%20here."><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Open an issue" type="button"><i class="fas fa-lightbulb"></i>open issue</button></a>
 </div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+</div>
+<!-- Full screen (wrap in <a> to have style consistency -->
+<a class="full-screen-button"><button aria-label="Fullscreen mode" class="btn btn-secondary topbarbtn" data-placement="bottom" data-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode" type="button"><i class="fas fa-expand"></i></button></a>
+<!-- Launch buttons -->
+</div>
+<!-- Table of contents -->
+<div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+<i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#">
    Tutorial 2: Convolutional Neural Networks
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#setup">
    Setup
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#section-1-introduction-to-2d-convolutions">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#figure-settings">
+     Figure settings
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#data-retrieval-and-loading">
+     Data retrieval and loading
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#plotting-functions">
+     Plotting Functions
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#helper-functions">
+     Helper Functions
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-1-introduction-to-2d-convolutions">
    Section 1: Introduction to 2D convolutions
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-1-1-what-is-a-2d-convolution">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-1-1-what-is-a-2d-convolution">
      Section 1.1: What is a 2D convolution?
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-1-2-2d-convolutions-in-deep-learning">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id1">
+</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-1-2-2d-convolutions-in-deep-learning">
      Section 1.2: 2D convolutions in deep learning
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-1-3-2d-convolutions-in-pytorch">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-1-2d-convolutions">
+       Video 1: 2D Convolutions
+      </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id2">
+</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-1-3-2d-convolutions-in-pytorch">
      Section 1.3: 2D convolutions in Pytorch
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#coding-exercise-1-2-2d-convolution-in-pytorch">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id3">
+</a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#coding-exercise-1-2-2d-convolution-in-pytorch">
        Coding Exercise 1.2: 2D convolution in pytorch
       </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#think-2-3-output-and-weight-shapes-in-a-convolutional-layer">
+<ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#think-2-3-output-and-weight-shapes-in-a-convolutional-layer">
          Think! 2.3: Output and weight shapes in a convolutional layer
         </a>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#summary">
    Summary
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bonus">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus">
    Bonus
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bonus-section-1-why-cnn-s">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus-section-1-why-cnn-s">
      Bonus Section 1: Why CNN’s?
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bonus-section-2-understanding-activations-from-weight">
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus-section-2-understanding-activations-from-weight">
      Bonus Section 2: Understanding activations from weight
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bonus-coding-exercise-2-visualizing-convolutional-filter-weights">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus-coding-exercise-2-visualizing-convolutional-filter-weights">
        Bonus Coding Exercise 2: Visualizing convolutional filter weights
       </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#think">
+<ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#think">
          Think!
         </a>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bonus-section-3-neural-encoding-model">
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus-section-3-neural-encoding-model">
      Bonus Section 3: Neural encoding model
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bonus-section-3-1-neural-tuning-curves">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-2-convolutional-encoding-model">
+       Video 2: Convolutional Encoding Model
+      </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus-section-3-1-neural-tuning-curves">
        Bonus Section 3.1: Neural tuning curves
       </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bonus-section-3-2-adding-a-fully-connected-layer-to-create-encoding-model">
+<ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id4">
+</a>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus-section-3-2-adding-a-fully-connected-layer-to-create-encoding-model">
        Bonus Section 3.2: Adding a fully-connected layer to create encoding model
       </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#think-3-2-number-of-unis-and-weights">
+<ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#think-3-2-number-of-unis-and-weights">
          Think! 3.2: Number of unis and weights
         </a>
-       </li>
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#bonus-coding-exercise-3-2-add-linear-layer">
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus-coding-exercise-3-2-add-linear-layer">
          Bonus Coding Exercise 3.2: Add linear layer
         </a>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
+<ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id5">
+</a>
+</li>
 </ul>
-
-            </nav>
-        </div>
-    </div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
-                
-  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D1_DeepLearning/student/W2D1_Tutorial2.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></p>
+</div>
+</div>
+<div class="row" id="main-content">
+<div class="col-12 col-md-9 pl-md-3 pr-md-0">
+<div>
+<p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W2D1_DeepLearning/student/W2D1_Tutorial2.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></p>
 <div class="section" id="tutorial-2-convolutional-neural-networks">
 <h1>Tutorial 2: Convolutional Neural Networks<a class="headerlink" href="#tutorial-2-convolutional-neural-networks" title="Permalink to this headline">¶</a></h1>
 <p><strong>Week 2, Day 1: Deep Learning</strong></p>
 <p><strong>By Neuromatch Academy</strong></p>
 <p><strong>Content creators</strong>: Jorge A. Menendez, Carsen Stringer</p>
 <p><strong>Content reviewers</strong>: Roozbeh Farhoodi, Ella Batty, Kshitij Dwivedi, Spiros Chavlis, Michael Waskom</p>
-<hr class="docutils" />
+<hr class="docutils"/>
 <p>#Tutorial Objectives</p>
 <p>In this short tutorial, we’ll go through an introduction to 2D convolutions and apply a convolutional network to an image to prepare for creating normative models in tutorial 3.</p>
 <p>In this tutorial, we will</p>
@@ -1065,7 +1060,7 @@
 <li><p>(Bonus) Build an encoding model from images to neural responses</p></li>
 </ul>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="setup">
 <h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
@@ -1081,76 +1076,84 @@
 </div>
 </div>
 </div>
+<div class="section" id="figure-settings">
+<h2>Figure settings<a class="headerlink" href="#figure-settings" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Figure settings</span>
-<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;</span><span class="p">)</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = 'retina'
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="data-retrieval-and-loading">
+<h2>Data retrieval and loading<a class="headerlink" href="#data-retrieval-and-loading" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Data retrieval and loading</span>
 <span class="kn">import</span> <span class="nn">hashlib</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;W3D4_stringer_oribinned6_split.npz&quot;</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://osf.io/p3aeb/download&quot;</span>
-<span class="n">expected_md5</span> <span class="o">=</span> <span class="s2">&quot;b3f7245c6221234a676b71a1f43c3bb5&quot;</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="s2">"W3D4_stringer_oribinned6_split.npz"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://osf.io/p3aeb/download"</span>
+<span class="n">expected_md5</span> <span class="o">=</span> <span class="s2">"b3f7245c6221234a676b71a1f43c3bb5"</span>
 
 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
   <span class="k">try</span><span class="p">:</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
   <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;!!! Failed to download data !!!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"!!! Failed to download data !!!"</span><span class="p">)</span>
   <span class="k">else</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="n">requests</span><span class="o">.</span><span class="n">codes</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
-      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;!!! Failed to download data !!!&quot;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">"!!! Failed to download data !!!"</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span> <span class="o">!=</span> <span class="n">expected_md5</span><span class="p">:</span>
-      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;!!! Data download appears corrupted !!!&quot;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">"!!! Data download appears corrupted !!!"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-      <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fid</span><span class="p">:</span>
+      <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">fid</span><span class="p">:</span>
         <span class="n">fid</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="plotting-functions">
+<h2>Plotting Functions<a class="headerlink" href="#plotting-functions" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Plotting Functions</span>
 
 <span class="k">def</span> <span class="nf">plot_tuning</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">stimuli</span><span class="p">,</span> <span class="n">respi_train</span><span class="p">,</span> <span class="n">respi_test</span><span class="p">,</span> <span class="n">neuron_index</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Plot the tuning curve of a neuron&quot;&quot;&quot;</span>
+  <span class="sd">"""Plot the tuning curve of a neuron"""</span>
 
-  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stimuli</span><span class="p">,</span> <span class="n">respi_train</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth</span><span class="p">)</span>  <span class="c1"># plot its responses as a function of stimulus orientation</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stimuli</span><span class="p">,</span> <span class="n">respi_test</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth</span><span class="p">)</span>  <span class="c1"># plot its responses as a function of stimulus orientation</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;neuron </span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">neuron_index</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;stimulus orientation ($^o$)&#39;</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;neural response&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stimuli</span><span class="p">,</span> <span class="n">respi_train</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth</span><span class="p">)</span>  <span class="c1"># plot its responses as a function of stimulus orientation</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stimuli</span><span class="p">,</span> <span class="n">respi_test</span><span class="p">,</span> <span class="s1">'m'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth</span><span class="p">)</span>  <span class="c1"># plot its responses as a function of stimulus orientation</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'neuron </span><span class="si">%i</span><span class="s1">'</span> <span class="o">%</span> <span class="n">neuron_index</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'stimulus orientation ($^o$)'</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'neural response'</span><span class="p">)</span>
   <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
   <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">])</span>
 
 
 <span class="k">def</span> <span class="nf">show_stimulus</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Visualize a stimulus&quot;&quot;&quot;</span>
+  <span class="sd">"""Visualize a stimulus"""</span>
   <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
   <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
   <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
   <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'left'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'bottom'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">plot_example_activations</span><span class="p">(</span><span class="n">stimuli</span><span class="p">,</span> <span class="n">act</span><span class="p">,</span> <span class="n">channels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-  <span class="sd">&quot;&quot;&quot; plot activations act and corresponding stimulus</span>
+  <span class="sd">""" plot activations act and corresponding stimulus</span>
 <span class="sd">  Args:</span>
 <span class="sd">        stimuli: stimulus input to convolutional layer (n x h x w) or (h x w)</span>
 <span class="sd">        act: activations of convolutional layer (n_bins x conv_channels x n_bins)</span>
 <span class="sd">        channels: which conv channels to plot</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="k">if</span> <span class="n">stimuli</span><span class="o">.</span><span class="n">ndim</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">:</span>
     <span class="n">n_stimuli</span> <span class="o">=</span> <span class="n">stimuli</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
   <span class="k">else</span><span class="p">:</span>
@@ -1162,48 +1165,48 @@
   <span class="c1"># plot stimulus</span>
   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_stimuli</span><span class="p">):</span>
     <span class="n">show_stimulus</span><span class="p">(</span><span class="n">stimuli</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;stimulus&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'stimulus'</span><span class="p">)</span>
 
     <span class="c1"># plot example activations</span>
     <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">channels</span><span class="p">,</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">:])):</span>
-      <span class="n">img</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">act</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">channel</span><span class="p">],</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">6</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;bwr&#39;</span><span class="p">)</span>
-      <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x-pos&#39;</span><span class="p">)</span>
-      <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y-pos&#39;</span><span class="p">)</span>
-      <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;channel </span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">%</span><span class="k">channel</span>)
+      <span class="n">img</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">act</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">channel</span><span class="p">],</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">6</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'bwr'</span><span class="p">)</span>
+      <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'x-pos'</span><span class="p">)</span>
+      <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'y-pos'</span><span class="p">)</span>
+      <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'channel </span><span class="si">%d</span><span class="s1">'</span><span class="o">%</span><span class="k">channel</span>)
   <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">1.05</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.1</span><span class="p">])</span>
   <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;activation</span><span class="se">\n</span><span class="s1"> strength&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'activation</span><span class="se">\n</span><span class="s1"> strength'</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">plot_weights</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">channels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot; plot convolutional channel weights</span>
+  <span class="sd">""" plot convolutional channel weights</span>
 <span class="sd">  Args:</span>
 <span class="sd">        weights: weights of convolutional filters (conv_channels x K x K)</span>
 <span class="sd">        channels: which conv channels to plot</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="n">wmax</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
   <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">channels</span><span class="p">),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mf">2.5</span><span class="p">))</span>
   <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">channel</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">channels</span><span class="p">):</span>
-    <span class="n">im</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">weights</span><span class="p">[</span><span class="n">channel</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">vmin</span><span class="o">=-</span><span class="n">wmax</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">wmax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;bwr&#39;</span><span class="p">)</span>
-    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;channel </span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">%</span><span class="k">channel</span>)
+    <span class="n">im</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">weights</span><span class="p">[</span><span class="n">channel</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">vmin</span><span class="o">=-</span><span class="n">wmax</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">wmax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'bwr'</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'channel </span><span class="si">%d</span><span class="s1">'</span><span class="o">%</span><span class="k">channel</span>)
 
   <span class="k">if</span> <span class="n">colorbar</span><span class="p">:</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">plot_prediction</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot; plot prediction of neural response + test neural response &quot;&quot;&quot;</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;stimulus bin&#39;</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;response&#39;</span><span class="p">)</span>
+  <span class="sd">""" plot prediction of neural response + test neural response """</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">'m'</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="s1">'g'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'stimulus bin'</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'response'</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">plot_training_curves</span><span class="p">(</span><span class="n">train_loss</span><span class="p">,</span> <span class="n">test_loss</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;</span>
+  <span class="sd">"""</span>
 <span class="sd">  Args:</span>
 <span class="sd">    train_loss (list): training error over iterations</span>
 <span class="sd">    test_loss (list): n_test x 1 tensor with orientations of the</span>
@@ -1211,25 +1214,28 @@
 <span class="sd">    predicted_test_labels (torch.Tensor): n_test x 1 tensor with predicted orientations of the</span>
 <span class="sd">      stimuli from decoding neural network</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
 
   <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
   <span class="c1"># Plot the training loss over iterations of GD</span>
   <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_loss</span><span class="p">)</span>
   <span class="c1"># Plot the testing loss over iterations of GD</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test_loss</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;train loss&#39;</span><span class="p">,</span> <span class="s1">&#39;test loss&#39;</span><span class="p">])</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Gradient descent iteration&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Mean squared error&quot;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test_loss</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">'train loss'</span><span class="p">,</span> <span class="s1">'test loss'</span><span class="p">])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">"Gradient descent iteration"</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Mean squared error"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="helper-functions">
+<h2>Helper Functions<a class="headerlink" href="#helper-functions" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Helper Functions</span>
 
 <span class="k">def</span> <span class="nf">load_data_split</span><span class="p">(</span><span class="n">data_name</span><span class="o">=</span><span class="n">fname</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Load mouse V1 data from Stringer et al. (2019)</span>
+  <span class="sd">"""Load mouse V1 data from Stringer et al. (2019)</span>
 
 <span class="sd">  Data from study reported in this preprint:</span>
 <span class="sd">  https://www.biorxiv.org/content/10.1101/679324v2.abstract</span>
@@ -1255,22 +1261,22 @@
 <span class="sd">  Returns:</span>
 <span class="sd">    resp_train (torch.Tensor): n_stimuli x n_neurons matrix of neural responses,</span>
 <span class="sd">        each row contains the responses of each neuron to a given stimulus.</span>
-<span class="sd">        As mentioned above, neural &quot;response&quot; is actually an average over</span>
+<span class="sd">        As mentioned above, neural "response" is actually an average over</span>
 <span class="sd">        responses to stimuli with similar angles falling within specified bins.</span>
 <span class="sd">    resp_test (torch.Tensor): n_stimuli x n_neurons matrix of neural responses,</span>
 <span class="sd">        each row contains the responses of each neuron to a given stimulus.</span>
-<span class="sd">        As mentioned above, neural &quot;response&quot; is actually an average over</span>
+<span class="sd">        As mentioned above, neural "response" is actually an average over</span>
 <span class="sd">        responses to stimuli with similar angles falling within specified bins</span>
 <span class="sd">    stimuli: (torch.Tensor): n_stimuli x 1 column vector with orientation</span>
 <span class="sd">        of each stimulus, in degrees. This is actually the mean orientation</span>
 <span class="sd">        of all stimuli in each bin.</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">dobj</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="o">**</span><span class="n">dobj</span><span class="p">)</span>
-  <span class="n">resp_train</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;resp_train&#39;</span><span class="p">]</span>
-  <span class="n">resp_test</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;resp_test&#39;</span><span class="p">]</span>
-  <span class="n">stimuli</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;stimuli&#39;</span><span class="p">]</span>
+  <span class="n">resp_train</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'resp_train'</span><span class="p">]</span>
+  <span class="n">resp_test</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'resp_test'</span><span class="p">]</span>
+  <span class="n">stimuli</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'stimuli'</span><span class="p">]</span>
 
   <span class="c1"># Return as torch.Tensor</span>
   <span class="n">resp_train_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">resp_train</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
@@ -1281,7 +1287,7 @@
 
 
 <span class="k">def</span> <span class="nf">grating</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">sf</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">28</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">patch</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Generate oriented grating stimulus</span>
+  <span class="sd">"""Generate oriented grating stimulus</span>
 
 <span class="sd">  Args:</span>
 <span class="sd">    angle (float): orientation of grating (angle from vertical), in degrees</span>
@@ -1295,7 +1301,7 @@
 <span class="sd">  Returns:</span>
 <span class="sd">    torch.Tensor: (res * 480) x (res * 640) pixel oriented grating image</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
 
   <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>  <span class="c1"># transform to radians</span>
 
@@ -1325,12 +1331,12 @@
 
 
 <span class="k">def</span> <span class="nf">filters</span><span class="p">(</span><span class="n">K</span><span class="o">=</span><span class="mi">7</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot; make example filters, some center-surround and gabors</span>
+  <span class="sd">""" make example filters, some center-surround and gabors</span>
 <span class="sd">  Returns:</span>
 <span class="sd">      filters: 6 x K x K</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">K</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">K</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-  <span class="n">xx</span><span class="p">,</span><span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s1">&#39;ij&#39;</span><span class="p">)</span>
+  <span class="n">xx</span><span class="p">,</span><span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s1">'ij'</span><span class="p">)</span>
 
   <span class="c1"># create center-surround filters</span>
   <span class="n">sigma</span> <span class="o">=</span> <span class="mf">1.1</span>
@@ -1362,7 +1368,7 @@
 
 
 <span class="k">def</span> <span class="nf">regularized_MSE_loss</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">L2_penalty</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">L1_penalty</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;loss function for MSE</span>
+  <span class="sd">"""loss function for MSE</span>
 
 <span class="sd">  Args:</span>
 <span class="sd">    output (torch.Tensor): output of network</span>
@@ -1374,7 +1380,7 @@
 <span class="sd">  Returns:</span>
 <span class="sd">    (torch.Tensor) mean-squared error with L1 and L2 penalties added</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
 
   <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
   <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
@@ -1389,7 +1395,7 @@
 <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">custom_loss</span><span class="p">,</span> <span class="n">train_data</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span>
           <span class="n">test_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">test_labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
           <span class="n">learning_rate</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">L2_penalty</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">L1_penalty</span><span class="o">=</span><span class="mf">0.</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Run gradient descent for network without batches</span>
+  <span class="sd">"""Run gradient descent for network without batches</span>
 
 <span class="sd">  Args:</span>
 <span class="sd">    net (nn.Module): deep network whose parameters to optimize with SGD</span>
@@ -1407,7 +1413,7 @@
 <span class="sd">    train_loss: training loss across iterations</span>
 <span class="sd">    test_loss: testing loss across iterations</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span> <span class="c1"># Initialize PyTorch SGD optimizer</span>
   <span class="n">train_loss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iter</span><span class="p">)</span>  <span class="c1"># Placeholder for train loss</span>
   <span class="n">test_loss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_iter</span><span class="p">)</span>  <span class="c1"># Placeholder for test loss</span>
@@ -1416,7 +1422,7 @@
   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iter</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">n_iter</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
       <span class="k">for</span> <span class="n">param_group</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">param_groups</span><span class="p">:</span>
-        <span class="n">param_group</span><span class="p">[</span><span class="s1">&#39;lr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">,</span> <span class="mi">10</span><span class="p">)[</span><span class="n">n_iter</span><span class="p">]</span>
+        <span class="n">param_group</span><span class="p">[</span><span class="s1">'lr'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">,</span> <span class="mi">10</span><span class="p">)[</span><span class="n">n_iter</span><span class="p">]</span>
     <span class="n">y_pred</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">train_data</span><span class="p">)</span> <span class="c1"># Forward pass: compute predicted y by passing train_data to the model.</span>
 
     <span class="k">if</span> <span class="n">L2_penalty</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">or</span> <span class="n">L1_penalty</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
@@ -1440,9 +1446,9 @@
         <span class="k">else</span><span class="p">:</span>
           <span class="n">loss</span> <span class="o">=</span> <span class="n">custom_loss</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span>
         <span class="n">test_loss</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;iteration </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">n_iter</span><span class="si">}</span><span class="s1"> | train loss: </span><span class="si">{</span><span class="n">train_loss</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> | test loss: </span><span class="si">{</span><span class="n">test_loss</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'iteration </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">n_iter</span><span class="si">}</span><span class="s1"> | train loss: </span><span class="si">{</span><span class="n">train_loss</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> | test loss: </span><span class="si">{</span><span class="n">test_loss</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
       <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;iteration </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">n_iter</span><span class="si">}</span><span class="s1"> | train loss: </span><span class="si">{</span><span class="n">train_loss</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'iteration </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">n_iter</span><span class="si">}</span><span class="s1"> | train loss: </span><span class="si">{</span><span class="n">train_loss</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 
   <span class="k">return</span> <span class="n">train_loss</span><span class="p">,</span> <span class="n">test_loss</span>
 </pre></div>
@@ -1450,57 +1456,68 @@
 </div>
 </div>
 </div>
-<hr class="docutils" />
+</div>
+<hr class="docutils"/>
 <div class="section" id="section-1-introduction-to-2d-convolutions">
 <h1>Section 1: Introduction to 2D convolutions<a class="headerlink" href="#section-1-introduction-to-2d-convolutions" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="section-1-1-what-is-a-2d-convolution">
 <h2>Section 1.1: What is a 2D convolution?<a class="headerlink" href="#section-1-1-what-is-a-2d-convolution" title="Permalink to this headline">¶</a></h2>
 <p>A 2D convolution is an integral of the product of a filter <span class="math notranslate nohighlight">\(f\)</span> and an input image <span class="math notranslate nohighlight">\(I\)</span> computed at various positions as the filter is slid across the input. The output of the convolution operation at position <span class="math notranslate nohighlight">\((x,y)\)</span> can be written as follows, where the filter <span class="math notranslate nohighlight">\(f\)</span> is size <span class="math notranslate nohighlight">\((K,K)\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dd98023a-4f46-4ed1-8546-1d8a3d7573fd">
-<span class="eqno">(105)<a class="headerlink" href="#equation-dd98023a-4f46-4ed1-8546-1d8a3d7573fd" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-87940644-2720-45b3-ba93-29777ff53031">
+<span class="eqno">(105)<a class="headerlink" href="#equation-87940644-2720-45b3-ba93-29777ff53031" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 C(x,y) = \sum_{k_x=-K/2}^{K/2} \sum_{k_y=-K/2}^{K/2} f(k_x,k_y) I(x+k_x,y+k_y)
 \end{equation}\]</div>
 <p>This <strong>convolutional filter</strong> is often called a <strong>kernel</strong>.</p>
 <p>Here is an illustration of a 2D convolution from this <a class="reference external" href="https://towardsdatascience.com/light-on-math-machine-learning-intuitive-guide-to-convolution-neural-networks-e3f054dd5daa">article</a>:</p>
+<div class="section" id="id1">
+<h3><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
 <span class="c1">#@markdown Execute this cell to view convolution gif</span>
 
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://miro.medium.com/max/700/1*5BwZUqAqFFP5f3wKYQ6wJg.gif&#39;</span><span class="p">)</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s1">'https://miro.medium.com/max/700/1*5BwZUqAqFFP5f3wKYQ6wJg.gif'</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><img src="https://miro.medium.com/max/700/1*5BwZUqAqFFP5f3wKYQ6wJg.gif"/></div></div>
 </div>
 </div>
 </div>
 <div class="section" id="section-1-2-2d-convolutions-in-deep-learning">
 <h2>Section 1.2: 2D convolutions in deep learning<a class="headerlink" href="#section-1-2-2d-convolutions-in-deep-learning" title="Permalink to this headline">¶</a></h2>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 1: 2D Convolutions</span>
-<span class="c1"># Insert the ID of the corresponding youtube video</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
-<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;igLkHuuJurE&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="n">video</span>
+<div class="section" id="video-1-2d-convolutions">
+<h3>Video 1: 2D Convolutions<a class="headerlink" href="#video-1-2d-convolutions" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtu.be/igLkHuuJurE
 </pre></div>
 </div>
-</div>
+<div class="output text_html">
+<iframe allowfullscreen="" frameborder="0" height="410" src="https://www.youtube.com/embed/igLkHuuJurE?fs=1" width="730"></iframe>
+</div></div>
 </div>
 <p>In the <a class="reference external" href="https://www.youtube.com/watch?v=IZvcy0Myb3M">intro</a> you learned about convolutional networks for computer vision tasks and applications to neuroscience. Object recognition was essentially an unsolved problem in machine learning until the <a class="reference external" href="https://en.wikipedia.org/wiki/AlexNet">advent</a> of techniques for effectively training <em>deep</em> convolutional neural networks. See Bonus Section 1 for more information on why we use CNNs to model the visual system.</p>
 <p>Convolutional neural networks consist of 2D convolutional layers, RELU non-linearities, 2D pooling layers, and at the output, a fully connected layer. We will see an example network with all these components in tutorial 3.</p>
 <p>A 2D convolutional layer consists of multiple channels. Each <strong>channel</strong> is a 2D convolutional filter applied to the input resulting in several units, where the number of units depends on the <em>stride</em> you set. In most applications, especially with small filter sizes, a stride of 1 is used.</p>
 <p>(<em>Technical note</em>: if filter size <em>K</em> is odd and you set the <em>pad=K//2</em> and <em>stride=1</em> (as is shown below), you get a <strong>channel</strong> of units that is the same size as the input.)</p>
+</div>
+<div class="section" id="id2">
+<h3><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
 <span class="c1">#@markdown Execute this cell to view convolution gif</span>
 
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://miro.medium.com/max/790/1*1okwhewf5KCtIPaFib4XaA.gif&#39;</span><span class="p">)</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s1">'https://miro.medium.com/max/790/1*1okwhewf5KCtIPaFib4XaA.gif'</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><img src="https://miro.medium.com/max/790/1*1okwhewf5KCtIPaFib4XaA.gif"/></div></div>
 </div>
 </div>
 </div>
@@ -1512,10 +1529,12 @@ C(x,y) = \sum_{k_x=-K/2}^{K/2} \sum_{k_y=-K/2}^{K/2} f(k_x,k_y) I(x+k_x,y+k_y)
 <li><p>In a fully connected layer, each unit uses its own independent set of weights to compute the weighted sum. In a convolutional layer, all the units (within the same channel) <strong>share the same weights</strong>. This set of shared weights is called the <strong>convolutional filter or kernel</strong>. The result of this computation is a convolution, where each unit has computed the same weighted sum over a different part of the input. This reduces the number of parameters in the network substantially.</p></li>
 </ul>
 <p align="center">
-  <img src="https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/static/weight-sharing.png?raw=true" width="700" />
+<img src="https://github.com/NeuromatchAcademy/course-content/blob/master/tutorials/static/weight-sharing.png?raw=true" width="700"/>
 </p>
 <p>We will compute the difference in the number of weights for a fully connected layer versus a convolutional layer in the Think exercise below.</p>
 <p>First, let’s visualize the stimuli in the dataset from tutorial 1. During the neural recordings from <a class="reference external" href="https://www.biorxiv.org/content/10.1101/679324v2.abstract">Stringer et al 2019</a>, mice were presented oriented gratings:</p>
+<div class="section" id="id3">
+<h3><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
@@ -1528,14 +1547,20 @@ C(x,y) = \sum_{k_x=-K/2}^{K/2} \sum_{k_y=-K/2}^{K/2} f(k_x,k_y) I(x+k_x,y+k_y)
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_col</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">h</span> <span class="o">*</span> <span class="n">n_col</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
 
 <span class="n">h</span><span class="p">,</span> <span class="n">w</span>  <span class="o">=</span> <span class="n">grating</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># height and width of stimulus</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;stimulus size: </span><span class="si">%i</span><span class="s1"> x </span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'stimulus size: </span><span class="si">%i</span><span class="s1"> x </span><span class="si">%i</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ori</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">orientations</span><span class="p">):</span>
   <span class="n">stimulus</span> <span class="o">=</span> <span class="n">grating</span><span class="p">(</span><span class="n">ori</span><span class="p">)</span>
-  <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ori</span><span class="si">:</span><span class="s1"> .0f</span><span class="si">}</span><span class="s1">$^o$&#39;</span><span class="p">)</span>
+  <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">ori</span><span class="si">:</span><span class="s1"> .0f</span><span class="si">}</span><span class="s1">$^o$'</span><span class="p">)</span>
   <span class="n">show_stimulus</span><span class="p">(</span><span class="n">stimulus</span><span class="p">,</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>stimulus size: 48 x 64
+</pre></div>
+</div>
+<img alt="../../../_images/W2D1_Tutorial2_26_1.png" src="../../../_images/W2D1_Tutorial2_26_1.png"/>
 </div>
 </div>
 <p>Now let’s implement 2D convolutional operations. We will use mutliple convolutional channels and implement this operation efficiently using pytorch. A <em>layer</em> of convolutional channels can be implemented with one line of code using the PyTorch class <code class="docutils literal notranslate"><span class="pre">nn.Conv2d()</span></code>, which requires the following arguments for initialization (see full documentation <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Conv2d.html">here</a>):</p>
@@ -1548,11 +1573,11 @@ C(x,y) = \sum_{k_x=-K/2}^{K/2} \sum_{k_y=-K/2}^{K/2} f(k_x,k_y) I(x+k_x,y+k_y)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ConvolutionalLayer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Deep network with one convolutional layer</span>
+  <span class="sd">"""Deep network with one convolutional layer</span>
 <span class="sd">     Attributes: conv (nn.Conv2d): convolutional layer</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c_in</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c_out</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Initialize layer</span>
+    <span class="sd">"""Initialize layer</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        c_in: number of input stimulus channels</span>
@@ -1560,7 +1585,7 @@ C(x,y) = \sum_{k_x=-K/2}^{K/2} \sum_{k_y=-K/2}^{K/2} f(k_x,k_y) I(x+k_x,y+k_y)
 <span class="sd">        K: size of each convolutional filter</span>
 <span class="sd">        filters: (optional) initialize the convolutional weights</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="n">K</span><span class="p">,</span>
                           <span class="n">padding</span><span class="o">=</span><span class="n">K</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1569,7 +1594,7 @@ C(x,y) = \sum_{k_x=-K/2}^{K/2} \sum_{k_y=-K/2}^{K/2} f(k_x,k_y) I(x+k_x,y+k_y)
       <span class="bp">self</span><span class="o">.</span><span class="n">conv</span><span class="o">.</span><span class="n">bias</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">c_out</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
 
   <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Run stimulus through convolutional layer</span>
+    <span class="sd">"""Run stimulus through convolutional layer</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        s (torch.Tensor): n_stimuli x h x w tensor with stimuli</span>
@@ -1577,12 +1602,13 @@ C(x,y) = \sum_{k_x=-K/2}^{K/2} \sum_{k_y=-K/2}^{K/2} f(k_x,k_y) I(x+k_x,y+k_y)
 <span class="sd">    Returns:</span>
 <span class="sd">        (torch.Tensor): n_stimuli x c_out x w x h tensor with convolutional layer unit activations.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># add channel dimension</span>
     <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="c1"># output of convolutional layer</span>
 
     <span class="k">return</span> <span class="n">a</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -1626,7 +1652,7 @@ C(x,y) = \sum_{k_x=-K/2}^{K/2} \sum_{k_y=-K/2}^{K/2} f(k_x,k_y) I(x+k_x,y+k_y)
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D1_DeepLearning/solutions/W2D1_Tutorial2_Solution_3f2bd25a.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=948 height=799 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D1_DeepLearning/static/W2D1_Tutorial2_Solution_3f2bd25a_1.png>
+<img align="left" alt="Solution hint" height="799" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D1_DeepLearning/static/W2D1_Tutorial2_Solution_3f2bd25a_1.png" width="948"/>
 <div class="section" id="think-2-3-output-and-weight-shapes-in-a-convolutional-layer">
 <h4>Think! 2.3: Output and weight shapes in a convolutional layer<a class="headerlink" href="#think-2-3-output-and-weight-shapes-in-a-convolutional-layer" title="Permalink to this headline">¶</a></h4>
 <p>Let’s think about the shape of the weights and outputs of <code class="docutils literal notranslate"><span class="pre">convLayer</span></code>:</p>
@@ -1646,14 +1672,14 @@ C(x,y) = \sum_{k_x=-K/2}^{K/2} \sum_{k_y=-K/2}^{K/2} f(k_x,k_y) I(x+k_x,y+k_y)
 </div>
 </div>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="summary">
 <h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
 <p>In this notebook, we built a 2D convolutional layer which is meant to represent the responses of neurons in mouse visual cortex, or the responses of neurons
 which are inputs to mouse visual cortex.</p>
 <p>In Tutorial 3, we will add to this 2D convolutional layer a fully-connected layer and train this model to predict whether an orientation is left or right. We will see if the convolutional filters it learns are similar to mouse visual cortex.</p>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="bonus">
 <h1>Bonus<a class="headerlink" href="#bonus" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="bonus-section-1-why-cnn-s">
@@ -1672,7 +1698,7 @@ which are inputs to mouse visual cortex.</p>
 <li><p>Secondly, this architecture significantly improves object recognition ability. Object recognition was essentially an unsolved problem in machine learning until the <a class="reference external" href="https://en.wikipedia.org/wiki/AlexNet">advent</a> of techniques for effectively training <em>deep</em> convolutional neural networks. Fully connected networks on their own can’t achieve object recognition abilities anywhere close to human levels, making them bad models of human object recognition. Indeed, it is generally the case that <a class="reference external" href="https://www.pnas.org/content/111/23/8619.short">the better a neural network model is at object recognition, the closer the match between its representations and those observed in the brain</a>. That said, it is worth noting that our much simpler orientation discrimination task (in Tutorial 3) can be solved by relatively simple networks.</p></li>
 </ul>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="bonus-section-2-understanding-activations-from-weight">
 <h2>Bonus Section 2: Understanding activations from weight<a class="headerlink" href="#bonus-section-2-understanding-activations-from-weight" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="bonus-coding-exercise-2-visualizing-convolutional-filter-weights">
@@ -1696,7 +1722,7 @@ which are inputs to mouse visual cortex.</p>
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D1_DeepLearning/solutions/W2D1_Tutorial2_Solution_a1ae60f7.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=939 height=158 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D1_DeepLearning/static/W2D1_Tutorial2_Solution_a1ae60f7_2.png>
+<img align="left" alt="Solution hint" height="158" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D1_DeepLearning/static/W2D1_Tutorial2_Solution_a1ae60f7_2.png" width="939"/>
 <p>In the function <code class="docutils literal notranslate"><span class="pre">filters</span></code> we premade center-surround filters and Gabor filters of various orientations. <a class="reference external" href="https://en.wikipedia.org/wiki/Gabor_filter">Gabor filters</a> have a positive region next to a negative region and the orientation of these regions of the filter determine the orientation of edges to which they respond.</p>
 <p>In visual cortex, Hubel and Wiesel discovered simple cells, which would correspond to a unit in the channels 2-5 above with Gabor filters. There are also some neurons with activity that resembles center-surround filters, which would correspond to the first two convolutional channels above.</p>
 <p>There were additional cells discovered by Hubel and Wiesel - complex cells - that respond to an oriented grating regardless of where the bars are exactly (note that the responses we see are specific to where the bars are). These cells therefore have some level of translation invariance. This is something that convolutional neural networks try to replicate – e.g. a grating is still oriented horizontal even if it moves slightly, and a cat is still a cat even if it’s in a different position in the image.</p>
@@ -1710,27 +1736,29 @@ which are inputs to mouse visual cortex.</p>
 </div>
 </div>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="bonus-section-3-neural-encoding-model">
 <h2>Bonus Section 3: Neural encoding model<a class="headerlink" href="#bonus-section-3-neural-encoding-model" title="Permalink to this headline">¶</a></h2>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 2: Convolutional Encoding Model</span>
-<span class="c1"># Insert the ID of the corresponding youtube video</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
-<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;TCAQYIoqcgA&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtu.be/&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="n">video</span>
+<div class="section" id="video-2-convolutional-encoding-model">
+<h3>Video 2: Convolutional Encoding Model<a class="headerlink" href="#video-2-convolutional-encoding-model" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtu.be/TCAQYIoqcgA
 </pre></div>
 </div>
-</div>
+<div class="output text_html">
+<iframe allowfullscreen="" frameborder="0" height="410" src="https://www.youtube.com/embed/TCAQYIoqcgA?fs=1" width="730"></iframe>
+</div></div>
 </div>
 <p>In neuroscience, we often want to understand how the brain represents external stimuli. One approach to discovering these representations is to build an encoding model that takes as input the external stimuli (in this case grating stimuli) and outputs the neural responses.</p>
 <p>Because visual cortex is often thought to be a convolutional network where the same filters are combined across the visual field, we will use a model with a convolutional layer. We learned how to build a convolutional layer in the previous section. We will add to this convolutional layer a fully connected layer from the output of the convolutions to the neurons. We will then visualize the weights of this fully connected layer.</p>
+</div>
 <div class="section" id="bonus-section-3-1-neural-tuning-curves">
 <h3>Bonus Section 3.1: Neural tuning curves<a class="headerlink" href="#bonus-section-3-1-neural-tuning-curves" title="Permalink to this headline">¶</a></h3>
 <p>In the next cell, we plot the turning curves of a random subset of neurons. We have binned the stimuli orientations more than in Tutorial 1. We create the gratings images as above for the 60 orientations below, and save them to a variable <code class="docutils literal notranslate"><span class="pre">grating_stimuli</span></code>.</p>
 <p>Rerun the cell to look at different example neurons and observe the diversity of tuning curves in the population. How can we fit these neural responses with an encoding model?</p>
+<div class="section" id="id4">
+<h4><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
@@ -1740,7 +1768,7 @@ which are inputs to mouse visual cortex.</p>
 <span class="c1"># responses are split into test and train</span>
 <span class="n">resp_train</span><span class="p">,</span> <span class="n">resp_test</span><span class="p">,</span> <span class="n">stimuli</span> <span class="o">=</span> <span class="n">load_data_split</span><span class="p">()</span>
 <span class="n">n_stimuli</span><span class="p">,</span> <span class="n">n_neurons</span> <span class="o">=</span> <span class="n">resp_train</span><span class="o">.</span><span class="n">shape</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;resp_train contains averaged responses of </span><span class="si">%i</span><span class="s1"> neurons to </span><span class="si">%i</span><span class="s1"> binned stimuli&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_neurons</span><span class="p">,</span> <span class="n">n_stimuli</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'resp_train contains averaged responses of </span><span class="si">%i</span><span class="s1"> neurons to </span><span class="si">%i</span><span class="s1"> binned stimuli'</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_neurons</span><span class="p">,</span> <span class="n">n_stimuli</span><span class="p">))</span>
 <span class="c1">#print(resp_train.shape)</span>
 
 <span class="c1"># also make stimuli into images</span>
@@ -1750,7 +1778,7 @@ which are inputs to mouse visual cortex.</p>
   <span class="n">grating_stimuli</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">grating</span><span class="p">(</span><span class="n">ori</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="mf">0.025</span><span class="p">)</span><span class="c1">#[18:30, 24:40]</span>
 
 <span class="n">grating_stimuli</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">grating_stimuli</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;grating_stimuli contains 60 stimuli of size 12 x 16&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'grating_stimuli contains 60 stimuli of size 12 x 16'</span><span class="p">)</span>
 
 <span class="c1"># Visualize tuning curves</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
@@ -1758,12 +1786,20 @@ which are inputs to mouse visual cortex.</p>
   <span class="n">neuron_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n_neurons</span><span class="p">)</span>  <span class="c1"># pick random neuron</span>
   <span class="n">plot_tuning</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">stimuli</span><span class="p">,</span> <span class="n">resp_train</span><span class="p">[:,</span> <span class="n">neuron_index</span><span class="p">],</span> <span class="n">resp_test</span><span class="p">[:,</span> <span class="n">neuron_index</span><span class="p">],</span> <span class="n">neuron_index</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
   <span class="k">if</span> <span class="n">k</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="s1">'train'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'y'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">,</span> <span class="s1">'test'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'m'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>resp_train contains averaged responses of 23589 neurons to 60 binned stimuli
+grating_stimuli contains 60 stimuli of size 12 x 16
+</pre></div>
+</div>
+<img alt="../../../_images/W2D1_Tutorial2_51_1.png" src="../../../_images/W2D1_Tutorial2_51_1.png">
+</img></div>
 </div>
 </div>
 </div>
@@ -1784,24 +1820,24 @@ which are inputs to mouse visual cortex.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ConvFC</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Deep network with one convolutional layer + one fully connected layer</span>
+  <span class="sd">"""Deep network with one convolutional layer + one fully connected layer</span>
 
 <span class="sd">  Attributes:</span>
 <span class="sd">    conv (nn.Conv1d): convolutional layer</span>
 <span class="sd">    dims (tuple): shape of convolutional layer output</span>
 <span class="sd">    out_layer (nn.Linear): linear layer</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
 
   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_neurons</span><span class="p">,</span> <span class="n">c_in</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c_out</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">12</span><span class="o">*</span><span class="mi">16</span><span class="p">,</span>
                <span class="n">filters</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; initialize layer</span>
+    <span class="sd">""" initialize layer</span>
 <span class="sd">    Args:</span>
 <span class="sd">        c_in: number of input stimulus channels</span>
 <span class="sd">        c_out: number of convolutional channels</span>
 <span class="sd">        K: size of each convolutional filter</span>
 <span class="sd">        h: number of stimulus bins, n_bins</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="n">K</span><span class="p">,</span>
                           <span class="n">padding</span><span class="o">=</span><span class="n">K</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1811,7 +1847,7 @@ which are inputs to mouse visual cortex.</p>
     <span class="c1">################################################################################</span>
     <span class="c1">## TO DO for students: add fully connected layer to network (self.out_layer)</span>
     <span class="c1"># Fill out function and remove</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: add fully connected layer to initialize network&quot;</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Student exercise: add fully connected layer to initialize network"</span><span class="p">)</span>
     <span class="c1">################################################################################</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">out_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 
@@ -1823,7 +1859,7 @@ which are inputs to mouse visual cortex.</p>
     <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">normal_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_layer</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span> <span class="c1"># initialize weights to be small</span>
 
   <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Predict neural responses to stimuli s</span>
+    <span class="sd">""" Predict neural responses to stimuli s</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        s (torch.Tensor): p x L tensor with stimuli</span>
@@ -1831,7 +1867,7 @@ which are inputs to mouse visual cortex.</p>
 <span class="sd">    Returns:</span>
 <span class="sd">        torch.Tensor: p x N tensor with convolutional layer unit activations.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># p x 1 x W x H, add a singleton dimension for the single channel</span>
     <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="c1"># output of convolutional layer</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">))</span>  <span class="c1"># flatten each convolutional layer output into a vector</span>
@@ -1839,19 +1875,19 @@ which are inputs to mouse visual cortex.</p>
     <span class="c1">################################################################################</span>
     <span class="c1">## TO DO for students: add fully connected layer to forward pass of network (self.out_layer)</span>
     <span class="c1"># Fill out function and remove</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: add fully connected layer to network&quot;</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Student exercise: add fully connected layer to network"</span><span class="p">)</span>
     <span class="c1">################################################################################</span>
     <span class="n">y</span> <span class="o">=</span> <span class="o">...</span>
 
     <span class="k">return</span> <span class="n">y</span>
 
 
-<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cpu'</span><span class="p">)</span>
 
-<span class="c1"># (Optional) To speed up processing, go to &quot;Runtime&quot; menu and &quot;Change runtime&quot;</span>
+<span class="c1"># (Optional) To speed up processing, go to "Runtime" menu and "Change runtime"</span>
 <span class="c1"># and select GPU processing, then uncomment line below, otherwise runtime will</span>
 <span class="c1"># be ~ 2 minutes</span>
-<span class="c1"># device = torch.device(&#39;cuda&#39;)</span>
+<span class="c1"># device = torch.device('cuda')</span>
 
 <span class="c1"># Initialize network</span>
 <span class="n">n_neurons</span> <span class="o">=</span> <span class="n">resp_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -1873,11 +1909,14 @@ which are inputs to mouse visual cortex.</p>
 </pre></div>
 </div>
 </div>
+
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W2D1_DeepLearning/solutions/W2D1_Tutorial2_Solution_490d72a9.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<img alt='Solution hint' align='left' width=558 height=413 src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D1_DeepLearning/static/W2D1_Tutorial2_Solution_490d72a9_11.png>
+<img align="left" alt="Solution hint" height="413" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W2D1_DeepLearning/static/W2D1_Tutorial2_Solution_490d72a9_11.png" width="558"/>
 <p>How well can we fit single neuron tuning curves with this model? What aspects of the tuning curves are we capturing?</p>
+<div class="section" id="id5">
+<h5><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h5>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
@@ -1892,12 +1931,26 @@ which are inputs to mouse visual cortex.</p>
                   <span class="n">resp_train</span><span class="p">[:,</span><span class="n">ineur</span><span class="p">],</span>
                   <span class="n">resp_test</span><span class="p">[:,</span><span class="n">ineur</span><span class="p">])</span>
   <span class="k">if</span> <span class="n">k</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s1">&#39;prediction&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="s1">'train'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'y'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="s1">'test'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'m'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s1">'prediction'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'g'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">34987</span><span class="n">b0767ee</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1">#@markdown Execute this cell to examine predictions for random subsets of neurons</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">grating_stimuli</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Visualize tuning curves &amp; plot neural predictions</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="ne">NameError</span>: name 'net' is not defined
 </pre></div>
 </div>
 </div>
@@ -1913,13 +1966,27 @@ which are inputs to mouse visual cortex.</p>
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">17</span><span class="o">-</span><span class="mi">425</span><span class="n">fe56ade55</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># get weights of conv layer in convLayer</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">weights</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">conv</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># can you identify what each of the dimensions are?</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">plot_weights</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">channels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">conv_channels</span><span class="p">))</span>
 
-    <script type="text/x-thebe-config">
+<span class="ne">NameError</span>: name 'net' is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
@@ -1937,38 +2004,27 @@ which are inputs to mouse visual cortex.</p>
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
-
-              </div>
-              
-        
-        <div class='prev-next-bottom'>
-            
-    <a class='left-prev' id="prev-link" href="W2D1_Tutorial1.html" title="previous page">Tutorial 1: Decoding Neural Responses</a>
-    <a class='right-next' id="next-link" href="W2D1_Tutorial3.html" title="next page">Tutorial 2: Building and Evaluating Normative Encoding Models</a>
-
-        </div>
-        
-        </div>
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
+<script>kernelName = 'python3'</script>
+</div>
+<div class="prev-next-bottom">
+<a class="left-prev" href="W2D1_Tutorial1.html" id="prev-link" title="previous page">Tutorial 1: Decoding Neural Responses</a>
+<a class="right-next" href="W2D1_Tutorial3.html" id="next-link" title="next page">Tutorial 2: Building and Evaluating Normative Encoding Models</a>
+</div>
+</div>
+</div>
+<footer class="footer mt-5 mt-md-0">
+<div class="container">
+<p>
         
           By Neuromatch<br/>
         
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+            © Copyright 2021.<br/>
+</p>
+</div>
+</footer>
 </main>
-
-
-      </div>
-    </div>
-  
-  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  
-  </body>
+</div>
+</div>
+<script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+</body>
 </html>

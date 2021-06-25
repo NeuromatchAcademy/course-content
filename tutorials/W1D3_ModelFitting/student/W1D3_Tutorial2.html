@@ -2,1002 +2,980 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tutorial 2: Linear regression with MLE &#8212; Neuromatch Computational Neuroscience</title>
-    
-  <link href="../../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
-
-    
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
-    
-      
-
-    
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
-
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/togglebutton.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tutorial 2: Linear regression with MLE — Neuromatch Academy: Computational Neuroscience</title>
+<link href="../../../_static/css/theme.css" rel="stylesheet"/>
+<link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet"/>
+<link href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../../_static/pygments.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/togglebutton.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/mystnb.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/sphinx-thebe.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" rel="stylesheet" type="text/css"/>
+<link as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js" rel="preload"/>
+<script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+<script src="../../../_static/jquery.js"></script>
+<script src="../../../_static/underscore.js"></script>
+<script src="../../../_static/doctools.js"></script>
+<script src="../../../_static/togglebutton.js"></script>
+<script src="../../../_static/clipboard.min.js"></script>
+<script src="../../../_static/copybutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+<script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+<script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Tutorial 3: Confidence intervals and bootstrapping" href="W1D3_Tutorial3.html" />
-    <link rel="prev" title="Tutorial 1: Linear regression with MSE" href="W1D3_Tutorial1.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-    
-  </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
+<script async="async" src="../../../_static/sphinx-thebe.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+<link href="../../../_static/nma-logo-square-4xp.jpg" rel="shortcut icon">
+<link href="../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../search.html" rel="search" title="Search"/>
+<link href="W1D3_Tutorial3.html" rel="next" title="Tutorial 3: Confidence intervals and bootstrapping"/>
+<link href="W1D3_Tutorial1.html" rel="prev" title="Tutorial 1: Linear regression with MSE"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</link></link></link></link></head>
+<body data-offset="80" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="container-fluid" id="banner"></div>
+<div class="container-xl">
+<div class="row">
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../../index.html">
-      
-      <img src="../../../_static/nma-logo-square-4xp.jpg" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Neuromatch Computational Neuroscience</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../intro.html">
+<div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+<img alt="logo" class="logo" src="../../../_static/nma-logo-square-4xp.jpg"/>
+<h1 class="site-logo" id="site-title">Neuromatch Academy: Computational Neuroscience</h1>
+</a>
+</div><form action="../../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search this book..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search this book..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../../../intro.html">
    Introduction
   </a>
- </li>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Pre-reqs Refresher
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D1_PythonWorkshop1/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D1_PythonWorkshop1/chapter_title.html">
    Python Workshop 1 (W0D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox">
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
      Tutorial: LIF Neuron - Part I
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D2_PythonWorkshop2/chapter_title.html">
+</li>
+</ul>
+</input></li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D2_PythonWorkshop2/chapter_title.html">
    Python Workshop 2 (W0D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
      Tutorial 1: LIF Neuron Part II
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D3_LinearAlgebra/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/chapter_title.html">
    Linear Algebra (W0D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
      Tutorial 1: Vectors
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
      Tutorial 2: Matrices
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
      Bonus Tutorial: Discrete Dynamical Systems
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D4_Calculus/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D4_Calculus/chapter_title.html">
    Calculus (W0D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
      Tutorial 1: Basics of Differential and Integral Calculus
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
      Tutorial 2: Differential Equations
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
      Tutorial 3: Numerical Methods
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W0D5_Statistics/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D5_Statistics/chapter_title.html">
    Statistics (W0D5)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
      Neuromatch Academy: Precourse Week, Day 5, Tutorial 1
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
      Tutorial 2: Statistical Inference
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Intro to Modeling
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D1_ModelTypes/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D1_ModelTypes/chapter_title.html">
    Model Types (W1D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
      Tutorial 1: “What” models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
      Tutorial 2: “How” models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
      Tutorial 3: “Why” models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D1_ModelTypes/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D2_ModelingPractice/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D2_ModelingPractice/chapter_title.html">
    Modeling Practice (W1D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
      Tutorial: Framing the Question
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Outro.html">
      Outro
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Machine Learning
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../chapter_title.html">
+<li class="toctree-l1 current active has-children">
+<a class="reference internal" href="../chapter_title.html">
    Model Fitting (W1D3)
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../W1D3_Intro.html">
+<input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul class="current">
+<li class="toctree-l2">
+<a class="reference internal" href="../W1D3_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="W1D3_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="W1D3_Tutorial1.html">
      Tutorial 1: Linear regression with MSE
     </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+</li>
+<li class="toctree-l2 current active">
+<a class="current reference internal" href="#">
      Tutorial 2: Linear regression with MLE
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="W1D3_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="W1D3_Tutorial3.html">
      Tutorial 3: Confidence intervals and bootstrapping
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="W1D3_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="W1D3_Tutorial4.html">
      Tutorial 4: Multiple linear regression and polynomial regression
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="W1D3_Tutorial5.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="W1D3_Tutorial5.html">
      Tutorial 5: Model Selection: Bias-variance trade-off
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="W1D3_Tutorial6.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="W1D3_Tutorial6.html">
      Tutorial 6: Model Selection: Cross-validation
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../W1D3_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../W1D3_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/chapter_title.html">
    Generalized Linear Models (W1D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial1.html">
      Tutorial 1: GLMs for Encoding
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial2.html">
      Tutorial 2: Classifiers and regularizers
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W1D5_DimensionalityReduction/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/chapter_title.html">
    Dimensionality Reduction (W1D5)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+<label for="toctree-checkbox-10">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
      Tutorial 1: Geometric view of data
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
      Tutorial 2: Principal Component Analysis
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
      Tutorial 3: Dimensionality Reduction &amp; Reconstruction
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
      Tutorial 4:  Nonlinear Dimensionality Reduction
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W1D5_DimensionalityReduction/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D1_DeepLearning/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D1_DeepLearning/chapter_title.html">
    Deep Learning (W2D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/W2D1_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+<label for="toctree-checkbox-11">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/W2D1_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
      Tutorial 1: Decoding Neural Responses
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
      Tutorial 2: Convolutional Neural Networks
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
      Tutorial 2: Building and Evaluating Normative Encoding Models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/W2D1_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/W2D1_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D1_DeepLearning/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Dynamical Systems
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D2_LinearSystems/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D2_LinearSystems/chapter_title.html">
    Linear Systems (W2D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+<label for="toctree-checkbox-12">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
      Tutorial 1: Linear dynamical systems
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
      Tutorial 2: Markov Processes
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
      Tutorial 3: Combining determinism and stochasticity
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
      Tutorial 4: Autoregressive models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D2_LinearSystems/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/chapter_title.html">
    Biological Neuron Models (W2D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+<label for="toctree-checkbox-13">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial1.html">
      Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial2.html">
      Tutorial 2: Effects of Input Correlation
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial3.html">
      Tutorial 3: Synaptic transmission - Models of static and dynamic synapses
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial4.html">
      Tutorial 4: Spike-timing dependent plasticity (STDP)
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W2D4_DynamicNetworks/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/chapter_title.html">
    Dynamic Networks (W2D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+<label for="toctree-checkbox-14">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
      Tutorial 1: Neural Rate Models
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
      Tutorial 2: Wilson-Cowan Model
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W2D4_DynamicNetworks/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption">
- <span class="caption-text">
+<span class="caption-text">
   Stochastic Processes
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D1_BayesianDecisions/chapter_title.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/chapter_title.html">
    Bayesian Decisions (W3D1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-  <label for="toctree-checkbox-15">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+<label for="toctree-checkbox-15">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
      Tutorial 1: Bayes with a binary hidden state
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
      Tutorial 2: Bayesian inference and decisions with continuous hidden state
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
      Bonus Tutorial:Fitting to data
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D1_BayesianDecisions/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D2_HiddenDynamics/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/chapter_title.html">
    Hidden Dynamics (W3D2)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
-  <label for="toctree-checkbox-16">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+<label for="toctree-checkbox-16">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
      Tutorial 1: Sequential Probability Ratio Test
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
      Tutorial 2: Hidden Markov Model
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
      Tutorial 3: 1D Kalman Filter
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
      Tutorial 4: 2D Kalman Filter
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D2_HiddenDynamics/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D3_OptimalControl/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D3_OptimalControl/chapter_title.html">
    Optimal Control (W3D3)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
-  <label for="toctree-checkbox-17">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+<label for="toctree-checkbox-17">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
      Tutorial 1: Optimal Control for Discrete States
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
      Tutorial 2: Optimal Control for Continuous State
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D3_OptimalControl/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D4_ReinforcementLearning/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/chapter_title.html">
    Reinforcement Learning (W3D4)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
-  <label for="toctree-checkbox-18">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+<label for="toctree-checkbox-18">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
      Tutorial 1: Learning to Predict
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
      Tutorial 2: Learning to Act: Multi-Armed Bandits
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
      Tutorial 3: Learning to Act: Q-Learning
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
      Tutorial 4: From Reinforcement Learning to Planning
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D4_ReinforcementLearning/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../W3D5_NetworkCausality/chapter_title.html">
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D5_NetworkCausality/chapter_title.html">
    Network Causality (W3D5)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-  <label for="toctree-checkbox-19">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Intro.html">
+<input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+<label for="toctree-checkbox-19">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Intro.html">
      Intro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
      Tutorial 1: Interventions
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
      Tutorial 2: Correlations
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
      Tutorial 3: Simultaneous fitting/regression
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
      Tutorial 4: Instrumental Variables
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Outro.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Outro.html">
      Outro
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../W3D5_NetworkCausality/further_reading.html">
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/further_reading.html">
      Suggested further readings
     </a>
-   </li>
-  </ul>
- </li>
+</li>
 </ul>
-
-    </div>
+</li>
+</ul>
+</div>
 </nav> <!-- To handle the deprecated key -->
-
 <div class="navbar_extra_footer">
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
 </div>
-
 </div>
-
-
-          
-
-
-          
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
+<div class="topbar container-xl fixed-top">
+<div class="topbar-contents row">
+<div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+<div class="col pl-md-4 topbar-main">
+<button aria-controls="site-navigation" aria-expanded="true" aria-label="Toggle navigation" class="navbar-toggler ml-0" data-placement="left" data-target=".site-navigation" data-toggle="tooltip" id="navbar-toggler" title="Toggle navigation" type="button">
+<i class="fas fa-bars"></i>
+<i class="fas fa-arrow-left"></i>
+<i class="fas fa-arrow-up"></i>
+</button>
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/tutorials/W1D3_ModelFitting/student/W1D3_Tutorial2.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
+<button aria-label="Download this page" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-download"></i></button>
+<div class="dropdown-buttons">
+<!-- ipynb file if we had a myst markdown file -->
+<!-- Download raw file -->
+<a class="dropdown-buttons" href="../../../_sources/tutorials/W1D3_ModelFitting/student/W1D3_Tutorial2.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.ipynb</button></a>
+<!-- Download PDF via print -->
+<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
 </div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
+</div>
+<!-- Source interaction buttons -->
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/NeuromatchAcademy/course_content/blob/master/book/tutorials/W1D3_ModelFitting/student/W1D3_Tutorial2.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../../../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
+<button aria-label="Connect with source repository" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fab fa-github"></i></button>
+<div class="dropdown-buttons sourcebuttons">
+<a class="repository-button" href="https://github.com/NeuromatchAcademy/course-content"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Source repository" type="button"><i class="fab fa-github"></i>repository</button></a>
+<a class="issues-button" href="https://github.com/NeuromatchAcademy/course-content/issues/new?title=Issue%20on%20page%20%2Ftutorials/W1D3_ModelFitting/student/W1D3_Tutorial2.html&amp;body=Your%20issue%20content%20here."><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Open an issue" type="button"><i class="fas fa-lightbulb"></i>open issue</button></a>
 </div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+</div>
+<!-- Full screen (wrap in <a> to have style consistency -->
+<a class="full-screen-button"><button aria-label="Fullscreen mode" class="btn btn-secondary topbarbtn" data-placement="bottom" data-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode" type="button"><i class="fas fa-expand"></i></button></a>
+<!-- Launch buttons -->
+</div>
+<!-- Table of contents -->
+<div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+<i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#">
    Tutorial 2: Linear regression with MLE
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#setup">
    Setup
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#section-1-maximum-likelihood-estimation-mle">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#figure-settings">
+     Figure Settings
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#helper-functions">
+     Helper Functions
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-1-maximum-likelihood-estimation-mle">
    Section 1: Maximum Likelihood Estimation (MLE)
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#interactive-demo-gaussian-distribution-explorer">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-1-maximum-likelihood-estimation">
+     Video 1: Maximum Likelihood Estimation
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#interactive-demo-gaussian-distribution-explorer">
      Interactive Demo: Gaussian Distribution Explorer
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-1-1-probabilistic-models">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id1">
+</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-1-1-probabilistic-models">
      Section 1.1: Probabilistic Models
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-1-2-likelihood-estimation">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id2">
+</a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id3">
+</a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-1-2-likelihood-estimation">
      Section 1.2: Likelihood Estimation
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#exercise-1-likelihood-function">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-1-likelihood-function">
        Exercise 1: Likelihood Function
       </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-1-3-finding-the-maximum-likelihood-estimator">
+<ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id4">
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-1-3-finding-the-maximum-likelihood-estimator">
      Section 1.3: Finding the Maximum Likelihood Estimator
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id5">
+</a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#summary">
    Summary
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#appendix">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#appendix">
    Appendix
   </a>
- </li>
+</li>
 </ul>
-
-            </nav>
-        </div>
-    </div>
+</nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
-                
-  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D3_ModelFitting/student/W1D3_Tutorial2.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></p>
+</div>
+</div>
+<div class="row" id="main-content">
+<div class="col-12 col-md-9 pl-md-3 pr-md-0">
+<div>
+<p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D3_ModelFitting/student/W1D3_Tutorial2.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></p>
 <div class="section" id="tutorial-2-linear-regression-with-mle">
 <h1>Tutorial 2: Linear regression with MLE<a class="headerlink" href="#tutorial-2-linear-regression-with-mle" title="Permalink to this headline">¶</a></h1>
 <p><strong>Week 1, Day 3: Model Fitting</strong></p>
 <p><strong>By Neuromatch Academy</strong></p>
 <p><strong>Content creators</strong>: Pierre-Étienne Fiquet, Anqi Wu, Alex Hyafil  with help from Byron Galbraith</p>
 <p><strong>Content reviewers</strong>: Lina Teichmann, Madineh Sarvestani, Patrick Mineault, Ella Batty, Michael Waskom</p>
-<hr class="docutils" />
+<hr class="docutils"/>
 <p>#Tutorial Objectives</p>
 <p>This is Tutorial 2 of a series on fitting models to data. We start with simple linear regression, using least squares optimization (Tutorial 1) and Maximum Likelihood Estimation (Tutorial 2). We will use bootstrapping to build confidence intervals around the inferred linear model parameters (Tutorial 3). We’ll finish our exploration of regression models by generalizing to multiple linear regression and polynomial regression (Tutorial 4). We end by learning how to choose between these various models. We discuss the bias-variance trade-off (Tutorial 5) and Cross Validation for model selection (Tutorial 6).</p>
 <p>In this tutorial, we will use a different approach to fit linear models that incorporates the random ‘noise’ in our data.</p>
@@ -1007,7 +985,7 @@
 <li><p>Learn how to implement the maximum likelihood estimator, to find the model parameter with the maximum likelihood</p></li>
 </ul>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="setup">
 <h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
@@ -1019,21 +997,26 @@
 </div>
 </div>
 </div>
+<div class="section" id="figure-settings">
+<h2>Figure Settings<a class="headerlink" href="#figure-settings" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Figure Settings</span>
 <span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>       <span class="c1"># interactive display</span>
-<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle&quot;</span><span class="p">)</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = 'retina'
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/nma.mplstyle"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="helper-functions">
+<h2>Helper Functions<a class="headerlink" href="#helper-functions" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Helper Functions</span>
 <span class="k">def</span> <span class="nf">plot_density_image</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot; Plots probability distribution of y given x, theta, and sigma</span>
+  <span class="sd">""" Plots probability distribution of y given x, theta, and sigma</span>
 
 <span class="sd">  Args:</span>
 
@@ -1043,7 +1026,7 @@
 <span class="sd">    theta (float): Slope parameter</span>
 <span class="sd">    sigma (float): standard deviation of Gaussian noise</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
 
   <span class="c1"># plot the probability density of p(y|x,theta)</span>
   <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1058,16 +1041,16 @@
   <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x_i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">xx</span><span class="p">):</span>
     <span class="n">surface</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">theta</span> <span class="o">*</span> <span class="n">x_i</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">yy</span><span class="p">)</span>
 
-  <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">'y'</span><span class="p">)</span>
 
-  <span class="k">return</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-            <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;Wistia&#39;</span><span class="p">),</span>
+  <span class="k">return</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">surface</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">'lower'</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">'auto'</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">'Wistia'</span><span class="p">),</span>
             <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">])</span>
 
 
 
 <span class="k">def</span> <span class="nf">solve_normal_eqn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Solve the normal equations to produce the value of theta_hat that minimizes</span>
+  <span class="sd">"""Solve the normal equations to produce the value of theta_hat that minimizes</span>
 <span class="sd">    MSE.</span>
 
 <span class="sd">    Args:</span>
@@ -1078,7 +1061,7 @@
 
 <span class="sd">  Returns:</span>
 <span class="sd">    float: The mean squared error of the data with the estimated parameter.</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="n">theta_hat</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">x</span><span class="p">)</span>
   <span class="k">return</span> <span class="n">theta_hat</span>
 </pre></div>
@@ -1086,41 +1069,45 @@
 </div>
 </div>
 </div>
-<hr class="docutils" />
+</div>
+<hr class="docutils"/>
 <div class="section" id="section-1-maximum-likelihood-estimation-mle">
 <h1>Section 1: Maximum Likelihood Estimation (MLE)<a class="headerlink" href="#section-1-maximum-likelihood-estimation-mle" title="Permalink to this headline">¶</a></h1>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Video 1: Maximum Likelihood Estimation</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
-<span class="n">video</span> <span class="o">=</span> <span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;8mpNmzLKNfU&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">854</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Video available at https://youtube.com/watch?v=&quot;</span> <span class="o">+</span> <span class="n">video</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="n">video</span>
+<div class="section" id="video-1-maximum-likelihood-estimation">
+<h2>Video 1: Maximum Likelihood Estimation<a class="headerlink" href="#video-1-maximum-likelihood-estimation" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Video available at https://youtube.com/watch?v=8mpNmzLKNfU
 </pre></div>
 </div>
-</div>
+<div class="output text_html">
+<iframe allowfullscreen="" frameborder="0" height="410" src="https://www.youtube.com/embed/8mpNmzLKNfU?fs=1" width="730"></iframe>
+</div></div>
 </div>
 <p>In the previous tutorial we made the assumption that the data was drawn from a linear relationship with noise added, and found an effective approach for estimating model parameters based on minimizing the mean squared error.</p>
 <p>In that case we treated the noise as simply a nuisance, but what if we factored it directly into our model?</p>
 <p>Recall our linear model:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-10bf8ac8-db6a-48da-9353-6fd52c006327">
-<span class="eqno">(45)<a class="headerlink" href="#equation-10bf8ac8-db6a-48da-9353-6fd52c006327" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2c4e0429-9470-491f-8304-9da26939f2da">
+<span class="eqno">(45)<a class="headerlink" href="#equation-2c4e0429-9470-491f-8304-9da26939f2da" title="Permalink to this equation">¶</a></span>\[\begin{align}
 y = \theta x + \epsilon.
 \end{align}\]</div>
 <p>The noise component <span class="math notranslate nohighlight">\(\epsilon\)</span> is often modeled as a random variable drawn from a Gaussian distribution (also called the normal distribution).</p>
 <p>The Gaussian distribution is described by its <a class="reference external" href="https://en.wikipedia.org/wiki/Probability_density_function">probability density function</a> (pdf)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3e89dcbf-fc94-4f62-add6-d0386ff44eff">
-<span class="eqno">(46)<a class="headerlink" href="#equation-3e89dcbf-fc94-4f62-add6-d0386ff44eff" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-cadd6b23-9c88-4629-8d8b-e3f0bc80f6f5">
+<span class="eqno">(46)<a class="headerlink" href="#equation-cadd6b23-9c88-4629-8d8b-e3f0bc80f6f5" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mathcal{N}(x; \mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{1}{2\sigma^2}(x-\mu)^2}
 \end{align}\]</div>
 <p>and is dependent on two parameters: the mean <span class="math notranslate nohighlight">\(\mu\)</span> and the variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. We often consider the noise signal to be Gaussian “white noise”, with zero mean and unit variance:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-48ff134c-118d-4473-bd2b-d512358c0c37">
-<span class="eqno">(47)<a class="headerlink" href="#equation-48ff134c-118d-4473-bd2b-d512358c0c37" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2a1d2f95-d2b3-4712-9d2b-63369a8d6d02">
+<span class="eqno">(47)<a class="headerlink" href="#equation-2a1d2f95-d2b3-4712-9d2b-63369a8d6d02" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \epsilon \sim \mathcal{N}(0, 1).
 \end{align}\]</div>
+</div>
 <div class="section" id="interactive-demo-gaussian-distribution-explorer">
 <h2>Interactive Demo: Gaussian Distribution Explorer<a class="headerlink" href="#interactive-demo-gaussian-distribution-explorer" title="Permalink to this headline">¶</a></h2>
 <p>Use the explorer widget below to see how varying the <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> parameters change the location and shape of the samples.</p>
+<div class="section" id="id1">
+<h3><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
@@ -1139,33 +1126,40 @@ y = \theta x + \epsilon.
 
   <span class="c1"># Plot</span>
   <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;stepfilled&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
-          <span class="n">label</span><span class="o">=</span><span class="s1">&#39;histogram&#39;</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;pdf&#39;</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rv</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">mu</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">([</span><span class="n">mu</span><span class="o">-</span><span class="n">sigma</span><span class="p">,</span> <span class="n">mu</span><span class="o">+</span><span class="n">sigma</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rv</span><span class="o">.</span><span class="n">pdf</span><span class="p">([</span><span class="n">mu</span><span class="o">-</span><span class="n">sigma</span><span class="p">,</span> <span class="n">mu</span><span class="o">+</span><span class="n">sigma</span><span class="p">]),</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
-            <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\sigma$&#39;</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;probability density&#39;</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'g'</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">'stepfilled'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+          <span class="n">label</span><span class="o">=</span><span class="s1">'histogram'</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'orange'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'pdf'</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rv</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">mu</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">'y'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'$\mu$'</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">([</span><span class="n">mu</span><span class="o">-</span><span class="n">sigma</span><span class="p">,</span> <span class="n">mu</span><span class="o">+</span><span class="n">sigma</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rv</span><span class="o">.</span><span class="n">pdf</span><span class="p">([</span><span class="n">mu</span><span class="o">-</span><span class="n">sigma</span><span class="p">,</span> <span class="n">mu</span><span class="o">+</span><span class="n">sigma</span><span class="p">]),</span> <span class="n">colors</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="s1">'b'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'$\sigma$'</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">'probability density'</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
   <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "fbe5aade027f4536ab6c5064c9c402c7"}
+</script></div>
 </div>
 </div>
 </div>
 <div class="section" id="section-1-1-probabilistic-models">
 <h2>Section 1.1: Probabilistic Models<a class="headerlink" href="#section-1-1-probabilistic-models" title="Permalink to this headline">¶</a></h2>
 <p>Now that we have a model of our noise component <span class="math notranslate nohighlight">\(\epsilon\)</span> as random variable, how do we incorporate this back into our original linear model from before? Consider again our simplified model <span class="math notranslate nohighlight">\(y = \theta x + \epsilon\)</span> where the noise has zero mean and unit variance <span class="math notranslate nohighlight">\(\epsilon \sim \mathcal{N}(0, 1)\)</span>. We can now also treat <span class="math notranslate nohighlight">\(y\)</span> as a random variable drawn from a Gaussian distribution where <span class="math notranslate nohighlight">\(\mu = \theta x\)</span> and <span class="math notranslate nohighlight">\(\sigma^2 = 1\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6dd1f780-96f7-4b29-88e5-8bc415450fec">
-<span class="eqno">(48)<a class="headerlink" href="#equation-6dd1f780-96f7-4b29-88e5-8bc415450fec" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8d503ff7-d40a-40bb-93ab-0561131212c4">
+<span class="eqno">(48)<a class="headerlink" href="#equation-8d503ff7-d40a-40bb-93ab-0561131212c4" title="Permalink to this equation">¶</a></span>\[\begin{align}
 y \sim \mathcal{N}(\theta x, 1)
 \end{align}\]</div>
 <p>which is to say that the probability of observing <span class="math notranslate nohighlight">\(y\)</span> given <span class="math notranslate nohighlight">\(x\)</span> and parameter <span class="math notranslate nohighlight">\(\theta\)</span> is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2b0065d3-89db-4608-96d7-b8ba5d8909f1">
-<span class="eqno">(49)<a class="headerlink" href="#equation-2b0065d3-89db-4608-96d7-b8ba5d8909f1" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-91595fca-bcea-4af8-b8c4-5e727cc2e9eb">
+<span class="eqno">(49)<a class="headerlink" href="#equation-91595fca-bcea-4af8-b8c4-5e727cc2e9eb" title="Permalink to this equation">¶</a></span>\[\begin{align}
 p(y|x,\theta) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(y-\theta x)^2}
 \end{align}\]</div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <p>Let’s revisit our original sample dataset where the true underlying model has <span class="math notranslate nohighlight">\(\theta = 1.2\)</span>.</p>
+<div class="section" id="id2">
+<h3><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title</span>
@@ -1186,6 +1180,9 @@ p(y|x,\theta) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(y-\theta x)^2}
 </div>
 </div>
 <p>This time we can plot the density of <span class="math notranslate nohighlight">\(p(y|x,\theta=1.2)\)</span> and see how <span class="math notranslate nohighlight">\(p(y)\)</span> changes for different values of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+</div>
+<div class="section" id="id3">
+<h3><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
@@ -1196,18 +1193,22 @@ p(y|x,\theta) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(y-\theta x)^2}
 <span class="c1"># Invokes helper function to generate density image plots from data and parameters</span>
 <span class="n">im</span> <span class="o">=</span> <span class="n">plot_density_image</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;p(y | x, $\theta$=1.2)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">r</span><span class="s1">'p(y | x, $\theta$=1.2)'</span><span class="p">)</span>
 
 <span class="c1"># Plot pdf for given x</span>
 <span class="n">ylim</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
 <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ylim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ylim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">yy</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">theta</span> <span class="o">*</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">yy</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">yy</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">theta</span> <span class="o">*</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">yy</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">'orange'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
-    <span class="n">title</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;p(y|x=8, $\theta$=1.2)&#39;</span><span class="p">,</span>
-    <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span>
-    <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;probability density&#39;</span><span class="p">);</span>
+    <span class="n">title</span><span class="o">=</span><span class="sa">r</span><span class="s1">'p(y|x=8, $\theta$=1.2)'</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s1">'y'</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s1">'probability density'</span><span class="p">);</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/W1D3_Tutorial2_21_0.png" src="../../../_images/W1D3_Tutorial2_21_0.png"/>
 </div>
 </div>
 </div>
@@ -1215,8 +1216,8 @@ p(y|x,\theta) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(y-\theta x)^2}
 <div class="section" id="section-1-2-likelihood-estimation">
 <h2>Section 1.2: Likelihood Estimation<a class="headerlink" href="#section-1-2-likelihood-estimation" title="Permalink to this headline">¶</a></h2>
 <p>Now that we have our probabilistic model, we turn back to our original challenge of finding a good estimate for <span class="math notranslate nohighlight">\(\theta\)</span> that fits our data. Given the inherent uncertainty when dealing in probabilities, we talk about the <a class="reference external" href="https://en.wikipedia.org/wiki/Likelihood_function">likelihood</a> that some estimate <span class="math notranslate nohighlight">\(\hat \theta\)</span> fits our data. The likelihood function <span class="math notranslate nohighlight">\(\mathcal{L(\theta)}\)</span> is equal to the probability density function parameterized by that <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-585a3904-e9b5-4aa0-a09a-5675e5aa780b">
-<span class="eqno">(50)<a class="headerlink" href="#equation-585a3904-e9b5-4aa0-a09a-5675e5aa780b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8379e5c5-5c35-463f-bfe9-3ab29e943cf6">
+<span class="eqno">(50)<a class="headerlink" href="#equation-8379e5c5-5c35-463f-bfe9-3ab29e943cf6" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mathcal{L}(\theta|x,y) = p(y|x,\theta) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{1}{2\sigma^2}(y-\theta x)^2}
 \end{align}\]</div>
 <div class="section" id="exercise-1-likelihood-function">
@@ -1227,7 +1228,7 @@ p(y|x,\theta) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(y-\theta x)^2}
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">likelihood</span><span class="p">(</span><span class="n">theta_hat</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;The likelihood function for a linear model with noise sampled from a</span>
+  <span class="sd">"""The likelihood function for a linear model with noise sampled from a</span>
 <span class="sd">    Gaussian distribution with zero mean and unit variance.</span>
 
 <span class="sd">  Args:</span>
@@ -1238,12 +1239,12 @@ p(y|x,\theta) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(y-\theta x)^2}
 
 <span class="sd">  Returns:</span>
 <span class="sd">    ndarray: the likelihood values for the theta_hat estimate</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span>
   <span class="c1">##############################################################################</span>
   <span class="c1">## TODO for students: implement the likelihood function</span>
   <span class="c1"># Fill out function and remove</span>
-  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Student exercise: implement the likelihood function&quot;</span><span class="p">)</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Student exercise: implement the likelihood function"</span><span class="p">)</span>
   <span class="c1">##############################################################################</span>
 
   <span class="c1"># Compute Gaussian likelihood</span>
@@ -1261,17 +1262,19 @@ p(y|x,\theta) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(y-\theta x)^2}
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W1D3_ModelFitting/solutions/W1D3_Tutorial2_Solution_328a0c30.py"><em>Click for solution</em></a></p>
 <p>We should see that <span class="math notranslate nohighlight">\(\mathcal{L}(\theta=1.0|x=2.1,y=3.7) \approx 0.11\)</span>. So far so good, but how does this tell us how this estimate is better than any others?</p>
 <p>When dealing with a set of data points, as we are with our dataset, we are concerned with their joint probability – the likelihood that all data points are explained by our parameterization. Since we have assumed that the noise affects each output independently, we can factorize the likelihood, and write:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-60895a6d-eee0-40bd-81de-acaaceec144f">
-<span class="eqno">(51)<a class="headerlink" href="#equation-60895a6d-eee0-40bd-81de-acaaceec144f" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c64b7e30-7b74-4546-a351-6b947540d80b">
+<span class="eqno">(51)<a class="headerlink" href="#equation-c64b7e30-7b74-4546-a351-6b947540d80b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mathcal{L}(\theta|X,Y) = \prod_{i=1}^N \mathcal{L}(\theta|x_i,y_i),
 \end{align}\]</div>
 <p>where we have <span class="math notranslate nohighlight">\(N\)</span> data points <span class="math notranslate nohighlight">\(X = \{x_1,...,x_N\}\)</span> and <span class="math notranslate nohighlight">\(Y = \{y_1,...,y_N\}\)</span>.</p>
 <p>In practice, such a product can be numerically unstable. Indeed multiplying small values together can lead to <a class="reference external" href="https://en.wikipedia.org/wiki/Arithmetic_underflow">underflow</a>, the situation in which the digital representation of floating point number reaches its limit. This problem can be circumvented by taking the logarithm of the likelihood because the logarithm transforms products into sums:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ced239e0-83f4-491d-90fc-3f78830c54f3">
-<span class="eqno">(52)<a class="headerlink" href="#equation-ced239e0-83f4-491d-90fc-3f78830c54f3" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a5653f80-3527-4355-af4b-47800825d048">
+<span class="eqno">(52)<a class="headerlink" href="#equation-a5653f80-3527-4355-af4b-47800825d048" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \operatorname{log}\mathcal{L}(\theta|X,Y) = \sum_{i=1}^N \operatorname{log}\mathcal{L}(\theta|x_i,y_i)
 \end{align}\]</div>
 <p>We can take the sum of the log of the output of our <code class="docutils literal notranslate"><span class="pre">likelihood</span></code> method applied to the full dataset to get a better idea of how different <span class="math notranslate nohighlight">\(\hat\theta\)</span> compare. We can also plot the different distribution densities over our dataset and see how they line up qualitatively.</p>
+<div class="section" id="id4">
+<h4><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
@@ -1282,41 +1285,43 @@ p(y|x,\theta) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(y-\theta x)^2}
   <span class="n">ll</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">likelihood</span><span class="p">(</span><span class="n">theta_hat</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)))</span>  <span class="c1"># log likelihood</span>
   <span class="n">im</span> <span class="o">=</span> <span class="n">plot_density_image</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta_hat</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
   <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">fr</span><span class="s1">&#39;$\hat</span><span class="se">{{</span><span class="s1">\theta</span><span class="se">}}</span><span class="s1">$ = </span><span class="si">{</span><span class="n">theta_hat</span><span class="si">}</span><span class="s1">, log likelihood: </span><span class="si">{</span><span class="n">ll</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">fr</span><span class="s1">'$\hat</span><span class="se">{{</span><span class="s1">\theta</span><span class="se">}}</span><span class="s1">$ = </span><span class="si">{</span><span class="n">theta_hat</span><span class="si">}</span><span class="s1">, log likelihood: </span><span class="si">{</span><span class="n">ll</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
+
 </div>
 <p>Using the log likelihood calculation, we see that <span class="math notranslate nohighlight">\(\mathcal{L}(\theta=1.0) &gt; \mathcal{L}(\theta=0.5) &gt; \mathcal{L}(\theta=2.2)\)</span>.</p>
 <p>This is great: now we have a way to compare estimators based on likelihood. But like with the MSE approach, we want an analytic solution to find the best estimator. In this case, we want to find the estimator that maximizes the likelihood.</p>
 </div>
 </div>
+</div>
 <div class="section" id="section-1-3-finding-the-maximum-likelihood-estimator">
 <h2>Section 1.3: Finding the Maximum Likelihood Estimator<a class="headerlink" href="#section-1-3-finding-the-maximum-likelihood-estimator" title="Permalink to this headline">¶</a></h2>
 <p>We want to find the parameter value <span class="math notranslate nohighlight">\(\hat\theta\)</span> that makes our data set most likely:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-96bab051-cf2b-41bd-a1cd-65389fb2ce2f">
-<span class="eqno">(53)<a class="headerlink" href="#equation-96bab051-cf2b-41bd-a1cd-65389fb2ce2f" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8b04e93e-9454-44d7-9bc0-f5eaaf414b2a">
+<span class="eqno">(53)<a class="headerlink" href="#equation-8b04e93e-9454-44d7-9bc0-f5eaaf414b2a" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat{\theta}_{\textrm{MLE}} = \underset{\theta}{\operatorname{argmax}} \mathcal{L}(\theta|X,Y) 
 \end{align}\]</div>
 <p>We discussed how taking the logarithm of the likelihood helps with numerical stability, the good thing is that it does so without changing the parameter value that maximizes the likelihood. Indeed, the <span class="math notranslate nohighlight">\(\textrm{log}()\)</span> function is <em>monotonically increasing</em>, which means that it preserves the order of its inputs. So we have:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-446e7d73-9a17-47b3-a866-657715e50d49">
-<span class="eqno">(54)<a class="headerlink" href="#equation-446e7d73-9a17-47b3-a866-657715e50d49" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0fd9589b-897e-4fe2-9a0f-103e84ab9bd0">
+<span class="eqno">(54)<a class="headerlink" href="#equation-0fd9589b-897e-4fe2-9a0f-103e84ab9bd0" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat{\theta}_{\textrm{MLE}} = \underset{\theta}{\operatorname{argmax}} \sum_{i=1}^m \textrm{log} \mathcal{L}(\theta|x_i,y_i) 
 \end{align}\]</div>
 <p>Now substituting our specific likelihood function and taking its logarithm, we get:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-89230e31-ca20-430a-8260-4cb2d4dd6f2d">
-<span class="eqno">(55)<a class="headerlink" href="#equation-89230e31-ca20-430a-8260-4cb2d4dd6f2d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-81d10917-7664-494f-8c7a-2faad5959cbe">
+<span class="eqno">(55)<a class="headerlink" href="#equation-81d10917-7664-494f-8c7a-2faad5959cbe" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat{\theta}_{\textrm{MLE}} = \underset{\theta}{\operatorname{argmax}} [-\frac{N}{2} \operatorname{log} 2\pi\sigma^2 - \frac{1}{2\sigma^2}\sum_{i=1}^N (y_i-\theta x_i)^2].
 \end{align}\]</div>
 <p>Note that maximizing the log likelihood is the same as minimizing the negative log likelihood (in practice optimization routines are developed to solve minimization not maximization problems). Because of the convexity of this objective function, we can take the derivative of our negative log likelihhood, set it to 0, and solve - just like our solution to minimizing MSE.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e7709769-1f07-4f04-8c28-5b7d39641148">
-<span class="eqno">(56)<a class="headerlink" href="#equation-e7709769-1f07-4f04-8c28-5b7d39641148" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-16b2aff6-6123-4322-beaa-914b36640327">
+<span class="eqno">(56)<a class="headerlink" href="#equation-16b2aff6-6123-4322-beaa-914b36640327" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{\partial\operatorname{log}\mathcal{L}(\theta|x,y)}{\partial\theta}=\frac{1}{\sigma^2}\sum_{i=1}^N(y_i-\theta x_i)x_i = 0
 \end{align}\]</div>
 <p>This looks remarkably like the equation we had to solve for the optimal MSE estimator, and, in fact, we arrive to the exact same solution!</p>
-<div class="amsmath math notranslate nohighlight" id="equation-261a7c50-0447-4a68-87fc-f24be60ecbfd">
-<span class="eqno">(57)<a class="headerlink" href="#equation-261a7c50-0447-4a68-87fc-f24be60ecbfd" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a14cffb1-fb89-4551-9b7d-c869d2d9f4c8">
+<span class="eqno">(57)<a class="headerlink" href="#equation-a14cffb1-fb89-4551-9b7d-c869d2d9f4c8" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat{\theta}_{\textrm{MLE}} = \hat{\theta}_{\textrm{MSE}} = \frac{\sum_{i=1}^N x_i y_i}{\sum_{i=1}^N x_i^2}
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -1327,6 +1332,9 @@ p(y|x,\theta) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(y-\theta x)^2}
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="id5">
+<h2><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title</span>
@@ -1338,14 +1346,15 @@ p(y|x,\theta) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(y-\theta x)^2}
 <span class="n">im</span> <span class="o">=</span> <span class="n">plot_density_image</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta_hat_mle</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">);</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">fr</span><span class="s1">&#39;$\hat</span><span class="se">{{</span><span class="s1">\theta</span><span class="se">}}</span><span class="s1">$ = </span><span class="si">{</span><span class="n">theta_hat_mle</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, log likelihood: </span><span class="si">{</span><span class="n">ll</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">fr</span><span class="s1">'$\hat</span><span class="se">{{</span><span class="s1">\theta</span><span class="se">}}</span><span class="s1">$ = </span><span class="si">{</span><span class="n">theta_hat_mle</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, log likelihood: </span><span class="si">{</span><span class="n">ll</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">'</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
+
 </div>
 </div>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="summary">
 <h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
@@ -1369,13 +1378,15 @@ p(y|x,\theta) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(y-\theta x)^2}
 </li>
 </ul>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="appendix">
 <h1>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h1>
 <p>We can also see <span class="math notranslate nohighlight">\(\mathrm{p}(\mathrm{y} | \mathrm{x}, \theta)\)</span> as a function of <span class="math notranslate nohighlight">\(x\)</span>. This is the stimulus likelihood function, and it is useful in case we want to decode the input <span class="math notranslate nohighlight">\(x\)</span> from observed responses <span class="math notranslate nohighlight">\(y\)</span>. This is what is relevant from the point of view of a neuron that does not have access to the outside world and tries to infer what’s out there from the responses of other neurons!</p>
 </div>
-
-    <script type="text/x-thebe-config">
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"a0407bd3ce424375822f52b7d1fc3a28": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4b23183206194c53ae30b5dc146a5cae": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "9ed69d58913143738289603ed06ccab9": {"model_name": "FloatSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "FloatSliderView", "continuous_update": true, "description": "mu", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_a0407bd3ce424375822f52b7d1fc3a28", "max": 2.0, "min": -2.0, "orientation": "horizontal", "readout": true, "readout_format": ".2f", "step": 0.1, "style": "IPY_MODEL_4b23183206194c53ae30b5dc146a5cae", "value": 0.0}}, "caec301172344af5b0c21f5b9cd5aa84": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5224b77d490f419686f71e351e42a6fd": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "892c70496ce44c34bfa9e87438299048": {"model_name": "FloatSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "FloatSliderView", "continuous_update": true, "description": "sigma", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_caec301172344af5b0c21f5b9cd5aa84", "max": 2.0, "min": 0.5, "orientation": "horizontal", "readout": true, "readout_format": ".2f", "step": 0.1, "style": "IPY_MODEL_5224b77d490f419686f71e351e42a6fd", "value": 1.0}}, "9d9ee530ad614876a34aad89334b955e": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "fbe5aade027f4536ab6c5064c9c402c7": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_9ed69d58913143738289603ed06ccab9", "IPY_MODEL_892c70496ce44c34bfa9e87438299048", "IPY_MODEL_a8a96d49a2e34f40991469fce88299c7"], "layout": "IPY_MODEL_9d9ee530ad614876a34aad89334b955e"}}, "c879964f25b247b292801e89bfa3ba2d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a8a96d49a2e34f40991469fce88299c7": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_c879964f25b247b292801e89bfa3ba2d", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {"image/png": {"width": 558, "height": 413}, "needs_background": "light"}, "data": {"text/plain": "<Figure size 576x432 with 1 Axes>", "image/png": "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fsnf/va3VFdXc8UVV3DIIYdQVVXF9OnT+fnPf86dd97Jaaedxrhx4/ja17624pwTTzyR++67jxACZ5xxBkcddRT9+/dnzpw5TJw4kfPOO48BAwZ84l6XXHIJl1xyCRMnTuS0005ju+2245FHHkn9e1L34SNFkiRJkqSitHDhQn7729/y/e9/n6qqKgBGjx7Nbbfdxuc//3kAfvGLX6wYP2vWLC677DIATj75ZE466ST69+8PwNChQ/ntb3/LAQccwMKFCzP+TtQdGbhIkiRJkorS6NGj+c53vvOJz0tKSjj55JMBePnll1fsLHTnnXdSX19Pr169OOaYYxKv6Vosai0DF0mSJElSUWpaPDfJjjvuSFlZbpWNyZMnf+w4fvz4FTNbVvapT32KkSNHdkC3KjYGLpIkSZKkotRSMFJVVcXgwYMBmDNnzseOqwpURo0alVKHKmYGLpIkSZIkSSlzlyJJkiRJ6g46YBefYjdz5syCtZqaGubOnQvkFsRtfmzpvNbUJXCGiyRJkiSpSE2aNIkYk4Oqxx57jPr6eiC3Zkvz4+TJk1myZEnieW+++SYzZszogG5VbAxcJEmSJElF6d133+WGG274xOeNjY2cffbZAGy88cZsttlmAOyzzz6UlpayfPlyLrjggsRrnn766R3XsIqKgYskSZIkqSgNGDCAH/7wh1x99dVUV1cDMH36dA444AAefvhhAM4888wV40eOHMmPfvQjAM444wzOOeccFi9eDMAHH3zAj3/8Y26++WYGDBiQ8Xei7sjARZIkSZJUlI488kjGjx/PEUccQf/+/Rk0aBBjxozh9ttvB+Dkk09m7733/tg55513HrvuuiuNjY384he/YODAgQwaNIi11lqLyy+/nOOPP54tt9yyE74bdTcGLpIkSZKkolRRUcFDDz3E2WefzYYbbkhNTQ0DBgxgl1124R//+AdnnHHGJ86pqqri3nvv5ZJLLmHLLbekoqKCGCM77rgjt99+O+eee24nfCfqjkKhBYTU9YQQpowbN27clClTOrsVSZIkSSl79dVXAdhoo406uZPub8KECUyaNIlTTz2ViRMndnY76iJW489YaM/9nOEiSZIkSZKUMgMXSZIkSZKklBm4SJIkSZIkpczARZIkSZIkKWVlnd2AJEmSJElpeuSRRzq7BckZLpIkSZIkSWkzcJEkSZIkSUqZgYskSZIkSVLKDFwkSZIkSZJSZuAiSZIkSZKUMgMXSZIkSZKklBm4SJIkSZIkpczARZIkSZIkKWUGLpIkSZIkSSkzcJEkSZIkSUqZgYskSZIkSVLKDFwkSZIkSZJSVtbZDUiSJEmS2mb8VeM7u4VUTD5icodcd8KECUyaNIlTTz2ViRMnZnau1JyBiyRJkiRJHeT6669n6tSpTJgwgQkTJnR2O8qQgYskSZIkSXljxoxhww03ZMiQIalc7/rrr2fSpEkABi49jIGLJEmSJEl5N954Y2e3oCLhormSJEmSJEkpM3CRJEmSJBWtGCNXX3012267Lf3796dfv3587nOf4+abb04cP2HCBEIIiQvm1tfXc9VVVzFhwgSGDBlCeXk5gwcPZsMNN+Sb3/wm11577Yqx119/PSGEFY8TnXbaaYQQPvaaOnXqx67f0NDAddddxxe+8AWGDBlCZWUlI0eOZL/99uORRx5Z5ff5+9//ns997nP069ePAQMGsO2223LVVVcRY+TQQw8lhMChhx76iXPHjh1LCIHrr7+eJUuWcMopp7DZZpvRr1+/j/VZV1fH3XffzRFHHMH48eMZPnw4FRUVDB06lC996UvccsstxBgT+3vkkUdWfN8AL7zwAgcccAAjRoygV69ebLTRRlxwwQXU19evOOfxxx9nr732Yvjw4VRVVbHpppty+eWXF7xHV+MjRZIkSZKkotTQ0MDee+/NX//6V8rKyujduzeLFy/mySef5Mknn+TNN9/ktNNOa/W1dt99dx544IEVnw0YMIClS5cyb9483njjDW6//XYOO+wwAHr16sVaa63FvHnzqKuro0+fPvTt2/dj1ywtLV3xfuHChey1114rgpXS0lL69evHe++9x5133smdd97JMcccw/nnn5/Y20EHHcRtt90GQAiBNdZYg8mTJ/P000/zyCOPUFFRscrvce7cuWy11Va88cYbVFRU0Lt374/VH3/8cfbcc88VX/fv35+qqio++OAD7r//fu6//37uuusubr31VkpKCs/vuPfee/n6179OdXU1AwYMoKamhtdee41jjz2WKVOmcMstt3DNNdfwgx/8gMbGRvr3709NTQ0vv/wyP/7xj5k+fTrnnnvuKr+fzuYMF0mSJElSUbr88st55JFHuP7661m0aBELFy5k+vTp7LHHHgCceeaZvPnmm6261i233MIDDzxAVVUV11xzDYsXL2bBggUsX76c999/nz//+c/su+++K8Z/85vfZPbs2Wy33XYAHHPMMcyePftjr9GjR68Yf9hhh60IRi699FIWLVrE/PnzmTVrFt/97ncBuOCCC7jiiis+0dv555+/Imz5+c9/zgcffMC8efOYP38+Z599Nrfeeit33333Kr/HiRMnsmjRIu666y6WLFnC/PnzmT59OkOHDgWgd+/efP/73+eBBx5g4cKFLFy4kEWLFjF37lwuueQS+vfvzx133MFvfvObFu9z4IEHsueeezJt2jQWLFjAwoULOfHEEwG49dZbOffccznyyCM58sgjmT17NgsWLGDevHkrZuecf/75vPHGG6v8fjqbgYskSZIkqSjNnz+fu+66i0MOOYRevXoBMGrUKO644w5GjBhBY2Mjt99+e6uu9Z///AeAgw8+mMMOO2zFbJUQAkOHDmXvvffmjjvuaFefTz31FH/6058AuOyyyzjqqKNWzC4ZNmwY1157Lfvssw8Av/zlL6murl5x7tKlSznnnHOAXGhz4YUXMnjwYCA3A+XEE0/klFNOYf78+avsY/ny5dxzzz3stddelJeXA7m/Xk29bLPNNlxxxRXsuuuu9O/ff8V5gwYN4ic/+cmKR6ouvfTSFu+z9dZbc8sttzBmzBgA+vXrx9lnn82OO+4IwIknnsghhxzCpZdeuiLsGThwINdccw3rrLNOm/6+dSYDF0mSJElSUdp+++3ZeeedP/F5ZWUlX/rSl4DcWiKtscYaawAwe/bs1Ppr0jQ7ZdSoUXzve99LHHPGGWcA8OGHH37ssab777+fRYsWAXDSSSclnnv00Ud/4vGgJF/+8pf5zGc+06bem/t//+//AfD222+3+Nfp+OOPX7GWS3NNf0+AFTNemistLWWXXXYBWv/3rTMZuEiSJEmSitK2225bsDZixAgA5s2b16pr7b777oQQuPvuu/nKV77CLbfcwqxZs1Lpc/LkyQDsvPPOBdc+2WijjRg5cuTHxgM888wzAIwZM4Z11lkn8dx+/fqx1VZbrbKP7bfffpVjFi9ezPnnn89OO+3E0KFDqaioWLEYbvNQZ8aMGQWvsc022yR+vtZaawG5GTPrrrtui2NaM2Ons7loriRJkiSpKPXr169graws97/DdXV1rbrWDjvswHnnncfJJ5/MP//5T/75z38CuVkpu+66KwcffHDibJrWmDNnDsCKQKWQUaNGMXPmzBXjAT744APgowCpkFVdG1jx+E4hb7zxBrvsssvHwpTevXuzxhprrAiK3n//fSD3qFMhhf6+NP09SfPvW2dyhoskSZIkSa1w7LHH8s4773DRRRex1157MXToUGbMmMH111/PF77wBfbbb79OCwKSHtFpq+a7JiX5zne+w4wZMxg7dix33HEHc+fOZenSpcyZM4fZs2czc+bMFWO7y9bNHcnARZIkSZKkVhoxYgQ//elPueuuu3j//fd54YUXVqy7cuedd/K73/2uzddsmlnS0mM4zevNZ6KsueaaAKt8vKl5GNIe06dPX7Fw8C233MK+++7LoEGDPjamI9a36c4MXCRJkiRJaqfNNtuMq6++esX6J80XtAVWPGrT0oyP8ePHA/Dwww/T2NiYOOa1115bEZpsvfXWKz4fN24cANOmTWPq1KmJ5y5ZsoQpU6a04rspbPr06SveF1pY98EHH1ytexQbAxdJkiRJklahpqamxXrTttMrL3rbtH3yggULCp67//77A7lZKNdcc03imFNOOQWAIUOGsOuuu674fLfddltxj7PPPjvx3Isuuohly5a12P+qDBgwYMX7559//hP1xYsXc+aZZ67WPYqNgYskSZIkSauw11578d3vfpd77733Y+HJvHnzOPPMM3nooYeAj7ZGbrLpppsCcM899xR8rGebbbZhn332AeCoo47iN7/5zYqAZPbs2Rx++OHccccdQG576KqqqhXn9unTh+OPPx6Aq6++muOOO27FzkuLFy/mvPPOY+LEiQwcOHC1vv+NNtqIMWPGAPDd7373YzNmnnjiCSZMmNAtdg7KkoGLJEmSJEmrsHz5cn7/+9+z++67M3DgQAYMGMCAAQMYPHgwv/zlL4kxsu+++65Yz6XJIYccQlVVFW+99RZjxoxh2LBhjB07lrFjx35szZZrr72WnXbaidraWo466igGDBjAoEGDGDFixIpZL8cccww/+MEPPtHbcccdx7777gvA+eefz5prrsmgQYMYOHAgJ5xwAgcddBB77LEHwMfCmrYoKSnh8ssvp6ysjJdffpnx48fTp08f+vTpw3bbbcfrr7/Obbfd1q5rFyu3hZYkSZKkbmbyEZM7u4Ue57LLLuPee+9l0qRJvPnmm8yePZvq6mpGjBjB+PHjOeSQ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\n"}}]}}}, "version_major": 2, "version_minor": 0}
+</script>
+<script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
@@ -1393,38 +1404,27 @@ p(y|x,\theta) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(y-\theta x)^2}
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
-
-              </div>
-              
-        
-        <div class='prev-next-bottom'>
-            
-    <a class='left-prev' id="prev-link" href="W1D3_Tutorial1.html" title="previous page">Tutorial 1: Linear regression with MSE</a>
-    <a class='right-next' id="next-link" href="W1D3_Tutorial3.html" title="next page">Tutorial 3: Confidence intervals and bootstrapping</a>
-
-        </div>
-        
-        </div>
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
+<script>kernelName = 'python3'</script>
+</div>
+<div class="prev-next-bottom">
+<a class="left-prev" href="W1D3_Tutorial1.html" id="prev-link" title="previous page">Tutorial 1: Linear regression with MSE</a>
+<a class="right-next" href="W1D3_Tutorial3.html" id="next-link" title="next page">Tutorial 3: Confidence intervals and bootstrapping</a>
+</div>
+</div>
+</div>
+<footer class="footer mt-5 mt-md-0">
+<div class="container">
+<p>
         
           By Neuromatch<br/>
         
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+            © Copyright 2021.<br/>
+</p>
+</div>
+</footer>
 </main>
-
-
-      </div>
-    </div>
-  
-  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  
-  </body>
+</div>
+</div>
+<script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+</body>
 </html>
