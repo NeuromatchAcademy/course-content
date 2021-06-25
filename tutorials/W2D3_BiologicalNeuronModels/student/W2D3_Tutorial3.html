@@ -1377,16 +1377,16 @@ Next, we will extend the model and model <strong>dynamic synapses</strong> – w
 <p>This process can be modelled by assuming that the presynaptic neuron’s spiking activity produces transient changes in the postsynaptic neuron’s conductance (<span class="math notranslate nohighlight">\(g_{\rm syn}(t)\)</span>). Typically, the conductance transient is modeled as an exponential function.</p>
 <p>Such conductance transients can be generated using a simple ordinary differential equation (ODE):</p>
 <p>\</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0a71dcbe-3cf4-4809-a513-ed76b506146c">
-<span class="eqno">(125)<a class="headerlink" href="#equation-0a71dcbe-3cf4-4809-a513-ed76b506146c" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-5e4200c4-84db-4b9c-9bf1-59b5abc1690d">
+<span class="eqno">(125)<a class="headerlink" href="#equation-5e4200c4-84db-4b9c-9bf1-59b5abc1690d" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 \frac{dg_{\rm syn}(t)}{dt} &amp;=&amp; \bar{g}_{\rm syn} \sum_k \delta(t-t_k) -g_{\rm syn}(t)/\tau_{\rm syn}
 \end{eqnarray}\]</div>
 <p>\</p>
 <p>where <span class="math notranslate nohighlight">\(\bar{g}_{\rm syn}\)</span> (often referred to as synaptic weight) is the maximum conductance elicited by each incoming spike, and <span class="math notranslate nohighlight">\(\tau_{\rm syn}\)</span> is the synaptic time constant. Note that the summation runs over all spikes received by the neuron at time <span class="math notranslate nohighlight">\(t_k\)</span>.</p>
 <p>Ohm’s law allows us to convert conductance changes to the current as:</p>
 <p>\</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8ea476f1-fbe6-4b5a-8415-0bd256bbd0fa">
-<span class="eqno">(126)<a class="headerlink" href="#equation-8ea476f1-fbe6-4b5a-8415-0bd256bbd0fa" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-328b334d-99cb-4e8a-859a-ddb79dfc4fc2">
+<span class="eqno">(126)<a class="headerlink" href="#equation-328b334d-99cb-4e8a-859a-ddb79dfc4fc2" title="Permalink to this equation">¶</a></span>\[\begin{align}
 I_{\rm syn}(t) = g_{\rm syn}(t)(V(t)-E_{\rm syn})  \\
 \end{align}\]</div>
 <p>\</p>
@@ -1394,15 +1394,15 @@ I_{\rm syn}(t) = g_{\rm syn}(t)(V(t)-E_{\rm syn})  \\
 <p><strong>Thus, incoming spikes are filtered by an exponential-shaped kernel, effectively low-pass filtering the input. In other words, synaptic input is not white noise, but it is, in fact, colored noise, where the color (spectrum) of the noise is determined by the synaptic time constants of both excitatory and inhibitory synapses.</strong></p>
 <p>In a neuronal network, the total synaptic input current <span class="math notranslate nohighlight">\(I_{\rm syn}\)</span> is the sum of both excitatory and inhibitory inputs. Assuming the total excitatory and inhibitory conductances received at time <span class="math notranslate nohighlight">\(t\)</span> are <span class="math notranslate nohighlight">\(g_E(t)\)</span> and <span class="math notranslate nohighlight">\(g_I(t)\)</span>, and their corresponding reversal potentials are <span class="math notranslate nohighlight">\(E_E\)</span> and <span class="math notranslate nohighlight">\(E_I\)</span>, respectively, then the total synaptic current can be described as:</p>
 <p>\</p>
-<div class="amsmath math notranslate nohighlight" id="equation-555dbe91-cd5f-44f5-b893-6084c3ce0a6e">
-<span class="eqno">(127)<a class="headerlink" href="#equation-555dbe91-cd5f-44f5-b893-6084c3ce0a6e" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f87d33bd-6b6e-4f5f-bf74-5155be8c7843">
+<span class="eqno">(127)<a class="headerlink" href="#equation-f87d33bd-6b6e-4f5f-bf74-5155be8c7843" title="Permalink to this equation">¶</a></span>\[\begin{align}
 I_{\rm syn}(V(t),t) = -g_E(t) (V-E_E) - g_I(t) (V-E_I)
 \end{align}\]</div>
 <p>\</p>
 <p>Accordingly, the membrane potential dynamics of the LIF neuron under synaptic current drive become:</p>
 <p>\</p>
-<div class="amsmath math notranslate nohighlight" id="equation-024e1cae-ca53-41e9-a059-a095a0dba085">
-<span class="eqno">(128)<a class="headerlink" href="#equation-024e1cae-ca53-41e9-a059-a095a0dba085" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-5af18f9c-e35f-49ee-acdc-0962ea4540aa">
+<span class="eqno">(128)<a class="headerlink" href="#equation-5af18f9c-e35f-49ee-acdc-0962ea4540aa" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 \tau_m\frac{dV(t)}{dt} = -(V(t)-E_L) - \frac{g_E(t)}{g_L} (V(t)-E_E) - \frac{g_I(t)}{g_L} (V(t)-E_I) + \frac{I_{\rm inj}}{g_L}\quad (2)
 \end{eqnarray}\]</div>
 <p>\</p>
@@ -1666,8 +1666,8 @@ I_{\rm syn}(V(t),t) = -g_E(t) (V-E_E) - g_I(t) (V-E_I)
 <p>The mathematical model (<em>for more information see <a class="reference external" href="http://www.scholarpedia.org/article/Short-term_synaptic_plasticity">here</a></em>) of STP is based on the concept of a limited pool of synaptic resources available for transmission (<span class="math notranslate nohighlight">\(R\)</span>), such as, for example, the overall amount of synaptic vesicles at the presynaptic terminals. The amount of presynaptic resource changes in a dynamic fashion depending on the recent history of spikes.</p>
 <p>Following a presynaptic spike, (i) the fraction <span class="math notranslate nohighlight">\(u\)</span> (release probability) of the available pool to be utilized increases due to spike-induced calcium influx to the presynaptic terminal, after which (ii) <span class="math notranslate nohighlight">\(u\)</span> is consumed to increase the post-synaptic conductance. Between spikes, <span class="math notranslate nohighlight">\(u\)</span> decays back to zero with time constant <span class="math notranslate nohighlight">\(\tau_f\)</span> and <span class="math notranslate nohighlight">\(R\)</span> recovers to 1 with time constant <span class="math notranslate nohighlight">\(\tau_d\)</span>. In summary, the dynamics of excitatory (subscript <span class="math notranslate nohighlight">\(E\)</span>) STP are given by:</p>
 <p>\</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e69a388e-903e-42ae-8b36-2a2a070a307f">
-<span class="eqno">(129)<a class="headerlink" href="#equation-e69a388e-903e-42ae-8b36-2a2a070a307f" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-a707167b-2353-4c47-8cb1-7ff1c610cbca">
+<span class="eqno">(129)<a class="headerlink" href="#equation-a707167b-2353-4c47-8cb1-7ff1c610cbca" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 &amp;&amp; \frac{du_E}{dt} &amp;=&amp; -\frac{u_E}{\tau_f} + U_0(1-u_E^-)\delta(t-t_{\rm sp}) \\[.5mm]
 &amp;&amp; \frac{dR_E}{dt} &amp;=&amp; \frac{1-R_E}{\tau_d} - u_E^+ R_E^- \delta(t-t_{\rm sp}) \qquad (6) \\[.5mm]    
 &amp;&amp; \frac{dg_E(t)}{dt} &amp;=&amp; -\frac{g_E}{\tau_E} + \bar{g}_E u_E^+ R_E^- \delta(t-t_{\rm sp})
@@ -1679,8 +1679,8 @@ I_{\rm syn}(V(t),t) = -g_E(t) (V-E_E) - g_I(t) (V-E_I)
 <h2>Exercise 2: Compute <span class="math notranslate nohighlight">\(du\)</span>, <span class="math notranslate nohighlight">\(dR\)</span> and <span class="math notranslate nohighlight">\(dg\)</span><a class="headerlink" href="#exercise-2-compute-du-dr-and-dg" title="Permalink to this headline">¶</a></h2>
 <p>As we learned in several previous tutorials, the Euler numerical integration method involves the calculation of each derivative at step <span class="math notranslate nohighlight">\(n\)</span>:</p>
 <p>\</p>
-<div class="amsmath math notranslate nohighlight" id="equation-74bdfdb3-787e-4c14-b750-0daaaecf198b">
-<span class="eqno">(130)<a class="headerlink" href="#equation-74bdfdb3-787e-4c14-b750-0daaaecf198b" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-f4f0e5c0-6702-4b97-93f1-6bc594682ce7">
+<span class="eqno">(130)<a class="headerlink" href="#equation-f4f0e5c0-6702-4b97-93f1-6bc594682ce7" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 du_E &amp;=&amp; -\frac{u_E[t]}{\tau_f} dt + U_0(1-u_E[t])\cdot \text{sp_or_not[t+dt]} \\
 dR_E &amp;=&amp; \frac{1-R_E[t]}{\tau_d} dt - u_E[t+dt]R_E[t]\cdot \text{sp_or_not[t+dt]} \\
 dg_E &amp;=&amp; -\frac{g_E[t]}{\tau_{E}} dt + \bar{g}_Eu_E[t+dt]R_E[t]\cdot \text{sp_or_not[t+dt]} \\
@@ -1688,8 +1688,8 @@ dg_E &amp;=&amp; -\frac{g_E[t]}{\tau_{E}} dt + \bar{g}_Eu_E[t+dt]R_E[t]\cdot \te
 <p>\</p>
 <p>where <span class="math notranslate nohighlight">\(\text{sp_or_not}=1\)</span> if there’s a spike in the time window <span class="math notranslate nohighlight">\(dt\)</span>, and <span class="math notranslate nohighlight">\(\text{sp_or_not}=0\)</span>  otherwise. In addition, note that any spike train generated by our <code class="docutils literal notranslate"><span class="pre">Poisson_generator</span></code> is binary. Then, the values are updated:</p>
 <p>\</p>
-<div class="amsmath math notranslate nohighlight" id="equation-331cbacb-7b28-451a-bb25-323b14237761">
-<span class="eqno">(131)<a class="headerlink" href="#equation-331cbacb-7b28-451a-bb25-323b14237761" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-91425775-4338-4cac-923c-ab45013f13e0">
+<span class="eqno">(131)<a class="headerlink" href="#equation-91425775-4338-4cac-923c-ab45013f13e0" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
   u_E[t+dt] &amp;=&amp; u_E[t] + du_E \\
   R_E[t+dt] &amp;=&amp; R_E[t] + dR_E \\
   g_E[t+dt] &amp;=&amp; g_E[t] + dg_E \\
