@@ -1614,8 +1614,8 @@
 <div class="section" id="section-2-1-representational-dissimilarity-matrix-rdm">
 <h2>Section 2.1: Representational dissimilarity matrix (RDM)<a class="headerlink" href="#section-2-1-representational-dissimilarity-matrix-rdm" title="Permalink to this headline">¶</a></h2>
 <p>To quantify this, we begin by computing the <strong>representational dissimilarity matrix (RDM)</strong> for the mouse V1 data and each model layer. This matrix, which we’ll call <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>, is computed as one minus the correlation coefficients between population responses to each stimulus. We can  efficiently compute this by using the <span class="math notranslate nohighlight">\(z\)</span>-scored responses (see Bonus Section 3 for explanation). In particular, the full matrix can be computed as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f7ad89f4-3da6-4390-9662-f268c73f5e5c">
-<span class="eqno">(106)<a class="headerlink" href="#equation-f7ad89f4-3da6-4390-9662-f268c73f5e5c" title="Permalink to this equation">¶</a></span>\[\begin{gather}
+<div class="amsmath math notranslate nohighlight" id="equation-dc5b2e06-ab9b-4883-8d64-7a7acb2e14c9">
+<span class="eqno">(106)<a class="headerlink" href="#equation-dc5b2e06-ab9b-4883-8d64-7a7acb2e14c9" title="Permalink to this equation">¶</a></span>\[\begin{gather}
   \mathbf{M} = 1 - \frac{1}{N} \mathbf{ZZ}^T \\
 \end{gather}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{Z}\)</span> is the z-scored responses and N is the number of neurons (or units).</p>
@@ -2009,8 +2009,8 @@
 <div class="section" id="bonus-section-1-3-max-pooling-layers">
 <h3>Bonus Section 1.3: Max pooling layers<a class="headerlink" href="#bonus-section-1-3-max-pooling-layers" title="Permalink to this headline">¶</a></h3>
 <p>In a max pooling layer, each unit computes the maximum over a small two-dimensional <span class="math notranslate nohighlight">\(K^{pool} \times K^{pool}\)</span> patch of inputs. Given a multi-channel input of dimensions <span class="math notranslate nohighlight">\(C \times H \times W\)</span>, the output of a max pooling layer has dimensions <span class="math notranslate nohighlight">\(C \times H^{out} \times W^{out}\)</span>, where:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fb3346c5-66d3-4847-a86b-707e840558dd">
-<span class="eqno">(107)<a class="headerlink" href="#equation-fb3346c5-66d3-4847-a86b-707e840558dd" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b34773d8-69f7-48c1-a910-dad67adf8e48">
+<span class="eqno">(107)<a class="headerlink" href="#equation-b34773d8-69f7-48c1-a910-dad67adf8e48" title="Permalink to this equation">¶</a></span>\[\begin{align}
   H^{out} &amp;= \left\lfloor \frac{H}{K^{pool}} \right\rfloor\\
   W^{out} &amp;= \left\lfloor \frac{W}{K^{pool}} \right\rfloor
 \end{align}\]</div>
@@ -2084,8 +2084,8 @@
 <p>What loss function should we minimize to optimize orientation discrimination performance? We first note that the orientation discrimination task is a <strong>binary classification problem</strong>, where the goal is to classify a given stimulus into one of two classes: being tilted left or being tilted right.</p>
 <p>Our goal is thus to output a high probability of the stimulus being tilted right (i.e. large <span class="math notranslate nohighlight">\(p\)</span>) whenever the stimulus is tilted right, and a high probability of the stimulus being tilted left (i.e. large <span class="math notranslate nohighlight">\(1-p \Leftrightarrow\)</span> small <span class="math notranslate nohighlight">\(p\)</span>) whenever the stimulus is tilted left.</p>
 <p>Let <span class="math notranslate nohighlight">\(\tilde{y}^{(n)}\)</span> be the label of the <span class="math notranslate nohighlight">\(n\)</span>th stimulus in the mini-batch, indicating its true tilt:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4bfe5267-c223-4517-9ef1-b32161c68a69">
-<span class="eqno">(108)<a class="headerlink" href="#equation-4bfe5267-c223-4517-9ef1-b32161c68a69" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-eace12a7-b2a5-4d54-ba1a-738920691940">
+<span class="eqno">(108)<a class="headerlink" href="#equation-eace12a7-b2a5-4d54-ba1a-738920691940" title="Permalink to this equation">¶</a></span>\[\begin{equation}
   \tilde{y}^{(n)} =
   \begin{cases}
     1 &amp;\text{if stimulus }n\text{ is tilted right} \\
@@ -2093,8 +2093,8 @@
   \end{cases}
 \end{equation}\]</div>
 <p>Let <span class="math notranslate nohighlight">\(p^{(n)}\)</span> be the predicted probability of that stimulus being tilted right assigned by our network. Note that that <span class="math notranslate nohighlight">\(1-p^{(n)}\)</span> is the predicted probability of that stimulus being tilted left. We’d now like to modify the parameters so as to maximize the predicted probability of the true class <span class="math notranslate nohighlight">\(\tilde{y}^{(n)}\)</span>. One way to formalize this is as maximizing the <em>log</em> probability</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3b30dedf-6212-4493-8721-3f427902668a">
-<span class="eqno">(109)<a class="headerlink" href="#equation-3b30dedf-6212-4493-8721-3f427902668a" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-de32ba91-a0d7-4ca5-9990-178ad5ad4f2d">
+<span class="eqno">(109)<a class="headerlink" href="#equation-de32ba91-a0d7-4ca5-9990-178ad5ad4f2d" title="Permalink to this equation">¶</a></span>\[\begin{align}
   \log \left( \text{predicted probability of stimulus } n \text{ being of class } \tilde{y}^{(n)}\right) &amp;= 
   \begin{cases}
     \log p^{(n)} &amp;\text{if }\tilde{y}^{(n)} = 1 \\
@@ -2105,8 +2105,8 @@
 \end{align}\]</div>
 <p>You should recognize this expression as the log likelihood of the Bernoulli distribution under the predicted probability <span class="math notranslate nohighlight">\(p^{(n)}\)</span>. This is the same quantity that is maximized in logistic regression, where the predicted probability <span class="math notranslate nohighlight">\(p^{(n)}\)</span> is just a simple linear sum of its inputs (rather than a complicated non-linear operation, like in the deep networks used here).</p>
 <p>To turn this into a loss function, we simply multiply it by -1, resulting in the so-called <strong>binary cross-entropy</strong>, or <strong>negative log likelihood</strong>. Summing over <span class="math notranslate nohighlight">\(P\)</span> samples in a batch, the binary cross entropy loss is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8dd70d00-49b3-4d82-b046-43467cb037a3">
-<span class="eqno">(110)<a class="headerlink" href="#equation-8dd70d00-49b3-4d82-b046-43467cb037a3" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-490562c3-c0f1-4111-a489-7d2b54fc4365">
+<span class="eqno">(110)<a class="headerlink" href="#equation-490562c3-c0f1-4111-a489-7d2b54fc4365" title="Permalink to this equation">¶</a></span>\[\begin{equation}
   L = -\sum_{n=1}^P \tilde{y}^{(n)} \log p^{(n)} + (1 - \tilde{y}^{(n)})\log(1 - p^{(n)})
 \end{equation}\]</div>
 <p>The binary cross-entropy loss can be implemented in PyTorch using the <code class="docutils literal notranslate"><span class="pre">nn.BCELoss()</span></code> loss function (cf. <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.BCELoss.html">documentation</a>).</p>
@@ -2119,19 +2119,19 @@
 <div class="section" id="bonus-section-3-rdm-z-score-explanation">
 <h2>Bonus Section 3: RDM Z-Score Explanation<a class="headerlink" href="#bonus-section-3-rdm-z-score-explanation" title="Permalink to this headline">¶</a></h2>
 <p>If <span class="math notranslate nohighlight">\(r^{(s)}_i\)</span> is the response of the <span class="math notranslate nohighlight">\(i\)</span>th neuron to the <span class="math notranslate nohighlight">\(s\)</span>th stimulus, then</p>
-<div class="amsmath math notranslate nohighlight" id="equation-88f8801f-b062-4cc3-81e2-e75acd425c67">
-<span class="eqno">(111)<a class="headerlink" href="#equation-88f8801f-b062-4cc3-81e2-e75acd425c67" title="Permalink to this equation">¶</a></span>\[\begin{gather}
+<div class="amsmath math notranslate nohighlight" id="equation-762e0299-99af-4468-8283-36ba20ab40fa">
+<span class="eqno">(111)<a class="headerlink" href="#equation-762e0299-99af-4468-8283-36ba20ab40fa" title="Permalink to this equation">¶</a></span>\[\begin{gather}
   M_{ss'} = 1 - \frac{\text{Cov}\left[ r_i^{(s)}, r_i^{(s')} \right]}{\sqrt{\text{Var}\left[ r_i^{(s)} \right] \text{Var}\left[ r_i^{(s')} \right]}} = 1 - \frac{\sum_{i=1}^N (r_i^{(s)} - \bar{r}^{(s)})(r_i^{(s')} - \bar{r}^{(s')}) }{\sqrt{\sum_{i=1}^N \left( r_i^{(s)} - \bar{r}^{(s)} \right)^2 \sum_{i=1}^N \left( r_i^{(s')} - \bar{r}^{(s')} \right)^2 }} \\
   \bar{r}^{(s)} = \frac{1}{N} \sum_{i=1}^N r_i^{(s)}
 \end{gather}\]</div>
 <p>This can be computed efficiently by using the <span class="math notranslate nohighlight">\(z\)</span>-scored responses</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e6e282e6-c0ce-4256-b1ee-cd713e840a6c">
-<span class="eqno">(112)<a class="headerlink" href="#equation-e6e282e6-c0ce-4256-b1ee-cd713e840a6c" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ef6d13a0-739a-4db7-ae5b-efe9426f6a79">
+<span class="eqno">(112)<a class="headerlink" href="#equation-ef6d13a0-739a-4db7-ae5b-efe9426f6a79" title="Permalink to this equation">¶</a></span>\[\begin{equation}
   z_i^{(s)} = \frac{r_i^{(s)} - \bar{r}^{(s)}}{\sqrt{\frac{1}{N}\sum_{i=1}^N \left( r_i^{(s)} - \bar{r}^{(s)} \right)^2}} \Rightarrow M_{ss'} = 1 - \frac{1}{N}\sum_{i=1}^N z_i^{(s)}z_i^{(s')}
 \end{equation}\]</div>
 <p>such that the full matrix can be computed through the matrix multiplication</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bca020b6-749b-41ce-a11b-fc4cf906f4ad">
-<span class="eqno">(113)<a class="headerlink" href="#equation-bca020b6-749b-41ce-a11b-fc4cf906f4ad" title="Permalink to this equation">¶</a></span>\[\begin{gather}
+<div class="amsmath math notranslate nohighlight" id="equation-daebbafe-a9ee-4bb1-8b56-415b47fd5bc2">
+<span class="eqno">(113)<a class="headerlink" href="#equation-daebbafe-a9ee-4bb1-8b56-415b47fd5bc2" title="Permalink to this equation">¶</a></span>\[\begin{gather}
   \mathbf{M} = 1 - \frac{1}{N} \mathbf{ZZ}^T \\
   \mathbf{Z} = 
   \begin{bmatrix}

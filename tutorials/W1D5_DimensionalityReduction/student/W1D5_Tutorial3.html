@@ -1401,8 +1401,8 @@
 <div class="section" id="section-2-calculate-the-variance-explained">
 <h1>Section 2: Calculate the variance explained<a class="headerlink" href="#section-2-calculate-the-variance-explained" title="Permalink to this headline">¶</a></h1>
 <p>The scree plot suggests that most of the eigenvalues are near zero, with fewer than 100 having large values. Another common way to determine the intrinsic dimensionality is by considering the variance explained. This can be examined with a cumulative plot of the fraction of the total variance explained by the top <span class="math notranslate nohighlight">\(K\)</span> components, i.e.,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-12ee41b6-7fa3-4c8f-a690-cfa7593e662d">
-<span class="eqno">(80)<a class="headerlink" href="#equation-12ee41b6-7fa3-4c8f-a690-cfa7593e662d" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-197c4a53-5441-4ffb-8cac-83a376ae6643">
+<span class="eqno">(80)<a class="headerlink" href="#equation-197c4a53-5441-4ffb-8cac-83a376ae6643" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{var explained} = \frac{\sum_{i=1}^K \lambda_i}{\sum_{i=1}^N \lambda_i}
 \end{equation}\]</div>
 <p>The intrinsic dimensionality is often quantified by the <span class="math notranslate nohighlight">\(K\)</span> necessary to explain a large proportion of the total variance of the data (often a defined threshold, e.g., 90%).</p>
@@ -1488,18 +1488,18 @@
 </div>
 </div>
 <p>Now we have seen that the top 100 or so principal components of the data can explain most of the variance. We can use this fact to perform <em>dimensionality reduction</em>, i.e., by storing the data using only 100 components rather than the samples of all 784 pixels. Remarkably, we will be able to reconstruct much of the structure of the data using only the top 100 components. To see this, recall that to perform PCA we projected the data <span class="math notranslate nohighlight">\(\bf X\)</span> onto the eigenvectors of the covariance matrix:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b9444b1b-d673-4f09-965d-78ba2dcd62c9">
-<span class="eqno">(81)<a class="headerlink" href="#equation-b9444b1b-d673-4f09-965d-78ba2dcd62c9" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-62d3c6ce-59ce-4c7b-8b68-326ccab84a0c">
+<span class="eqno">(81)<a class="headerlink" href="#equation-62d3c6ce-59ce-4c7b-8b68-326ccab84a0c" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \bf S = X W
 \end{equation}\]</div>
 <p>Since <span class="math notranslate nohighlight">\(\bf W\)</span> is an orthogonal matrix, <span class="math notranslate nohighlight">\({\bf W}^{-1} = {\bf W}^T\)</span>. So by multiplying by <span class="math notranslate nohighlight">\({\bf W}^T\)</span> on each side we can rewrite this equation as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-558bb228-5369-4a3e-903f-e5a465a1dcb9">
-<span class="eqno">(82)<a class="headerlink" href="#equation-558bb228-5369-4a3e-903f-e5a465a1dcb9" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ecd94eb5-3c2d-4fb9-bcf4-2d75d68bba57">
+<span class="eqno">(82)<a class="headerlink" href="#equation-ecd94eb5-3c2d-4fb9-bcf4-2d75d68bba57" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 {\bf X = S W}^T.
 \end{equation}\]</div>
 <p>This now gives us a way to reconstruct the data matrix from the scores and loadings. To reconstruct the data from a low-dimensional approximation, we just have to truncate these matrices.  Let’s call <span class="math notranslate nohighlight">\({\bf S}_{1:K}\)</span> and <span class="math notranslate nohighlight">\({\bf W}_{1:K}\)</span> as keeping only the first <span class="math notranslate nohighlight">\(K\)</span> columns of this matrix. Then our reconstruction is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6aa59327-b1ca-49ae-967f-4d39b8d94168">
-<span class="eqno">(83)<a class="headerlink" href="#equation-6aa59327-b1ca-49ae-967f-4d39b8d94168" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-aaa0915f-e5a2-469f-9ff4-da375a84eeb8">
+<span class="eqno">(83)<a class="headerlink" href="#equation-aaa0915f-e5a2-469f-9ff4-da375a84eeb8" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 {\bf \hat X = S}_{1:K} ({\bf W}_{1:K})^T.
 \end{equation}\]</div>
 <div class="section" id="exercise-3-data-reconstruction">
