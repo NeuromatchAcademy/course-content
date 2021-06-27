@@ -17,6 +17,6 @@ dv_dt = -1/tau * np.exp(-t/tau)
 # Define full derivative
 df_dt = u_t * dv_dt + v_t * du_dt
 
-# Uncomment below to visualize
+# Visualize
 with plt.xkcd():
   plot_alpha_func(t, f, df_dt)
