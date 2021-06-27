@@ -23,11 +23,11 @@ Group projects are offered for the *interactive track* only and will be running 
 # Course outline
 
 * Week 0 (Optional)
-    * Asynchronous: Python Workshop Part 1
-    * Asynchronous: Python Workshop Part 2
-    * Wed, June 30th: Linear Algebra
-    * Thus, July 1st:Calculus
-    * Fri, July 2nd: Probability & Statistics 
+    * Asynchronous: Python Workshop Part 1 for students + Mandatory TA training for **ALL TAS**
+    * Asynchronous: Python Workshop Part 2 for students + Mandatory TA training for **ALL TAS**
+    * Wed, June 30th: Linear Algebra (Mandatory for all Tutorial TAs). Project TAs have separate training.
+    * Thus, July 1st:Calculus (Mandatory for all Tutorial TAs). Project TAs have separate training.
+    * Fri, July 2nd: Probability & Statistics (Mandatory for all Tutorial TAs). Project TAs have separate training.
     
 * Week 1
     * Mon, July 5: Model Types
