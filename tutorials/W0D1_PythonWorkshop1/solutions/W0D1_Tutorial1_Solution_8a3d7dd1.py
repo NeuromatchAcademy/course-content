@@ -2,7 +2,7 @@
 # Set random number generator
 np.random.seed(2020)
 
-# Initialize step_end, n, t_range, v and syn
+# Initialize step_end, n, t_range, v and i
 step_end = int(t_max / dt)
 n = 50
 t_range = np.linspace(0, t_max, num=step_end)
