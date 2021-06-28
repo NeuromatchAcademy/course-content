@@ -40,6 +40,7 @@ def classic_vs_bayesian_normal(mu, sigma, num_points, prior):
 
   return mean_classic, var_classic, mean_bayes, var_bayes
 
+
 # Set normal distribution parameters, mu and sigma
 mu = 5
 sigma = 1
