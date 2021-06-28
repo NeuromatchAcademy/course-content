@@ -1,10 +1,11 @@
 # NeuroMatch Academy (NMA) projects
 
-*July 13-31, 2020*
+*July 5-23, 2021*
 
 * [Project Structure and Schedule](#Project-structure-and-schedule)
   * [Week One](#Week-One)
-  * [Week-Two-and-Three](#Week-two-and-three)
+  * [Week-Two](#Week-Two)
+  * [Week-Three](#Week-Three)
 * [Data Loaders (Google Colab) for Each Data Set](#data-set-notebooks)
 * [Student’s Guide to NMA Projects](#Student-Guide-to-NMA-Projects)
   * [Time Commitment](#time-commitment)
@@ -16,15 +17,17 @@
 
 # **Project Structure and Schedule**
 
-The NMA projects are conducted over 14 days, beginning on the morning of the ‘second’ curriculum day (W1D2) and ending
-W3D4. The first week is about the process of forming a project. The second two weeks are for executing a project. You
-are highly encouraged, but not required to participate in a group project. Please think about your project partners, if
-you decide to join a group, please try to see the project through to the end! On the last day, there will be a presentation
-of your the projects in small groups within your super pod. These presenations are five minutes and you should have at
-least three slides--but remember that you have only about five minutes to present, so five or six slides is probably
-reasonable. After presenting you will have five minutes for question and discussion. We will ask, but not require, that
-you allow your project to be highlighted across the zone on W3D4 during the closing celebration! We will randomly select
-a representative sample of projects to discuss and highlight the diversity of NMA projects.
+The NMA projects are conducted over 14 days, beginning on the first project timeslot after the school opening on July 5.
+The projects are a core part of the summer school, and will teach different skills from those you learn during the course content.
+Your pod will split into two groups at the end of the first day, based on common research interests.
+Day 2 is a full project day to kickstart your projects: you begin with structured material during the course content (2-3h), and
+continue with structured project time to try to formulate a project proposal by the end of the day.
+You will be matched to external mentors based on this proposal, so please include as many relevant keywords as possible, all
+written in plain text. During the second week, you will continue through the process of refining your question and
+finding the right data analysis tools to test your hypotheses, culminating in an "abstract" that you write on day 10, which is
+again a full projects day with some structured guidance to the process of writing abstracts. Finally, week 3 is all about
+implementing your project and trying to get an answer to your question, culminating in a short presentation to your pod
+on the final day 15 (3-5 slides, informal, take turns to present).
 
  <!-- It is important to note that project time can begin:
 
@@ -34,69 +37,37 @@ a representative sample of projects to discuss and highlight the diversity of NM
 
 Daily project time can be:
 
- - A zones — Early — 4h before content
- - B zones — Split — 2h before and after content
- - C zones — Late — 4h after content
+ - Early — 3h before content (time slots 2,4)
+ - Late  — 3h after content (time slots 1,3,5)
 
-### Week One
+### Weeks One, Two, Three
 
-Week one is about brainstorming, generating questions, refining ideas and coming up with a simple project proposal. By
-the end of project day four, project groups should form, with a specific project proposal idea including a question,
-data set and planned techniques. These will be collected on day five and used to match projects with Mentors.
+Detailed information about each day is available in the student guide.
 
-We suggest using the [Miro](https://miro.com) collaborative board for
-brainstorming. The project days are:
+We include here some important links and information for ease of access:
 
-* **Project Day 1** — General discussion — (zone A: Tues; zone B: Mon-Tues; zone C: Mon)
-  * Extended ice-breaker. Students get to know about each other's research interests.
+day 2: by end of day, please submit a project proposal via this [Airtable link]().  
+day 10: by end of day, please submit your abstract via this [Airtable link]().  
+day 14: by end of day, please submit your slides via this [Airtable link]().  
 
-* **Project Day 2** — Project Structure
-    * Videos: from topic to scientific questions
-    * Videos: intros to data sets
-    * Videos: overview of course content
-    * Pod brainstorm: dreaming big ideas
-    * We suggest using [Miro](https://miro.com/) collaborative board for brainstorming
 
-* **Project Day 3** — Refinement (with Mentors)
-  * In temporary groups of 3–5 students
-  * Develop projects from idea to plan
-
-* **Project Day 4** — Refinement (with Mentors)
-  * In temporary groups of 3-5 students
-  * Refine, specify techniques
-  * Write short proposal uestion
-      * What is the quesion?
-      * What data set will you use?
-      * What analysis or models will you use?
-      * What do you predict you will find?
-
-* **Project Day 5** — Groups (led by TAs) — (zone A: Mon; zone B: Fri-Mon; zone C: Fri)
-  * Organize into final project groups (projects and the groups will be matched to Mentors)
-  * Projects are submitted for neuromatching via [AirTable](https://airtable.com/shr8F7Tz0wf0x0L7A "Project proposal form")
-  * HARD DEADLINE OF W1D5 (Friday, local time)
-
-## Week Two and Three
-During weeks two and three, project groups meet together to work on the projects. Neuromatched Mentors will
-visit the groups to discuss the projects and provide advice. Remember, this is about the experience, not producing a
-publication-worthy project! All groups must finish their projects by the end of project day 13 (W3D3).
-
- * **Project day 14** — Prepare project presentation
+**Project day 14** — Prepare project presentation
  * Groups make a five minute project presentation
  * RESULTS ARE OPTIONAL! We would like you to present your experience, and results if you happen to have them
- * Optionally, a recording for a group presenation and to allow other NMA students to see the project
- * All group members should contribute to the presenation slides and video!
+ * All group members should contribute to the presentation!
  * [Example project video one](https://youtu.be/zMphz4yvyfc) (*notice how quickly our mascot black cat jumps continents!*)
  * [Example project video two](https://www.youtube.com/watch?v=pvfy0_v12wI)
  * PROJECTS ARE DUE PRIOR TO THE INTRO FOR W3D5!!
- * Submit your project (only once per group) using this [project submission form](https://airtable.com/shrBTUnFNkVcHSgl5)
- 
- * **NMA final day** — Presentation of projects
+
+**NMA final day** — Presentation of projects
 
   * The afternoon of the final day of NMA will include project presentations!
 
 # **Project materials**
 
 ---
+
+All of these materials can also be found in the project booklet, which is a chapter in the course book.  
 
 ## Links for project introductory videos
 - [Projects Intro](https://youtu.be/fNOxmO1Hq3Y)
@@ -107,8 +78,6 @@ publication-worthy project! All groups must finish their projects by the end of 
   * [Kay/Gallant Dataset](https://youtu.be/LdJkLyw4yzg)
   * [HCP Dataset](https://youtu.be/iOCcY0QFMS4)
   * [IBL Dataset](https://youtu.be/NofrFH8FRZU)
-
-- [Brainstorming Example](https://youtu.be/H6rSlZzlrgQ)
 
 ## Links for project slides/documents
 - [Project Instruction](https://mfr.ca-1.osf.io/render?url=https://osf.io/7frh3/?direct%26mode=render%26action=download%26mode=render)
@@ -132,6 +101,8 @@ publication-worthy project! All groups must finish their projects by the end of 
 
 ---
 
+
+<!--
 # Student Guide to NMA Projects
 
 in small groups to develop a scientific question, select a data set to analyze and work together to develop a project
@@ -181,7 +152,7 @@ A few important things to remember:
   * Advise students about how to make a good presentation
  * If you want to make time availible for answer questions outside of this time, we appreciate it, but it is not required!
  * Remind the students to submit their projects at the end of W3D4 using the [project submission form](https://airtable.com/shrBTUnFNkVcHSgl5)
- 
+
 *These are **student-run** projects. TAs are only facilitators, and you are not responsible for the content of the projects.*
 
 ---
@@ -204,7 +175,7 @@ As a Mentor, you will have two roles:
     * The ‘quality’, ‘novelty’ and ‘depth’ of the question and outcome are less important than completing the full cycle
 
 ## AirTable match information
-
  * You will receive an email with 'match' information from NMA for week one and then again for week two and three.
  * You will have contact information (Links for video, emal and names in an 'AirTable')
  * If you thin you have any quesrtons, please contact us!
+ -->
