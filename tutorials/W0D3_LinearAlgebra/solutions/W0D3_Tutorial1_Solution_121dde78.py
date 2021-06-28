@@ -9,12 +9,6 @@ def normalize_vector(input_vector):
     (ndarray): normalized vector of length 1
   """
 
-  #################################################################################
-  ## TODO for students: complete normalize_vector function ##
-  # Fill out function and remove
-  # raise NotImplementedError("Student exercise: complete normalize_vector function")
-  #################################################################################
-
   # Compute vector length (use np.linalg.norm)
   vector_length = np.linalg.norm(input_vector)
 
