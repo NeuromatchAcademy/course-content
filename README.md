@@ -64,7 +64,7 @@ All days (except W1D2, W2D5, and W3D5) will follow this schedule for course time
 |    1:45-2:45     |    Big break                 |    
 |    2:45-4:15     |    Tutorials + nano-lectures II      |   
 |    4:15-4:25    |    Pod dicussion II       |    
-|    4:25-4:30    |    Content check & reflections                |    
+|    4:25-4:30    |    Reflections & content checks               |    
 |    4:35-5:05**     |    Outro                              |
 * the Intro / keynote will be watched asynchronously, which means that you can watch this lecture before the start of the day ** please watch the Outro on your own after having completed the tutorials and before the Q&A session
  
