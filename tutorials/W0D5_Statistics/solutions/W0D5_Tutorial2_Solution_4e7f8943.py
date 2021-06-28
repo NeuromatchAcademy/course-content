@@ -31,7 +31,7 @@ def compute_posterior_pointwise(prior, likelihood):
   """
 
   posterior = likelihood * prior
-  posterior /= posterior.sum()
+  posterior =posterior/ (0.1*posterior.sum())
 
   return posterior
 

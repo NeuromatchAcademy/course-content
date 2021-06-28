@@ -48,13 +48,9 @@ mu = 5
 sigma = 1  # since variance = 1, sigma = 1
 x = generate_normal_samples(mu, sigma, 1000)
 
-# You can calculate mean and variance through either numpy or scipy
+# You can calculate mean and variance through numpy as
 print("This is the sample mean as estimated by numpy: " + str(np.mean(x)))
 print("This is the sample standard deviation as estimated by numpy: " + str(np.std(x)))
-# or
-meanX, varX = sp.stats.norm.stats(x)
-print("This is the sample mean as estimated by scipy: " + str(meanX[0]))
-print("This is the sample standard deviation as estimated by scipy: " + str(varX[0]))
 
 # Let's look through possible mean and variance values for the highest likelihood
 # using the compute_likelihood function
