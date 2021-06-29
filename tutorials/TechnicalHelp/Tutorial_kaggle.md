@@ -22,8 +22,9 @@ access to Google Colab, you can use Kaggle as a substitute for launching an inte
 5.2 Next, in the **Upload notebook** window, select your  notebook file which you downloaded via **step 5.1** by clicking on **Browse Files** button. Then, finally select **Upload** button to import the notebook on Kaggle.
 ![Step 5.2](../static/kaggle_step5.2.png)
 
+**NOTE:- **The last step, that is **step 6** grants you access to GPUs in Kaggle. It is NOT required for Computational Neuroscience course and is only required for Deep Learning course
 
-1.  The last and final step but important **step** about how to leverage **GPU** accelerator in the kaggle kernel. To get access to the GPU, first time users have get their phone numbers verified. In order to have GPU access, on the left sidebar of the notebook under the settings panel, go to **Get phone verified** link and enter your credentials.
+6. (Optional) The last and final step about how to leverage **GPU** accelerator in the kaggle kernel. To get access to the GPU, first time users have get their phone numbers verified. In order to have GPU access, on the left sidebar of the notebook under the settings panel, go to **Get phone verified** link and enter your credentials.
 
 ![Step 6.1](../static/kaggle_step6_1.png)
 
