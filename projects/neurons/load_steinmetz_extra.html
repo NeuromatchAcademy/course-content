@@ -1219,12 +1219,40 @@
 <span class="g g-Whitespace">    </span><span class="mi">749</span>         <span class="k">except</span> <span class="ne">UnicodeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">750</span>             <span class="c1"># Friendlier error message</span>
 
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/zipfile.py</span> in <span class="ni">peek</span><span class="nt">(self, n)</span>
+<span class="g g-Whitespace">    </span><span class="mi">892</span>         <span class="sd">&quot;&quot;&quot;Returns buffered bytes without advancing the position.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">893</span>         <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_readbuffer</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_offset</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">894</span>             <span class="n">chunk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">895</span>             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_offset</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">896</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_readbuffer</span> <span class="o">=</span> <span class="n">chunk</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_readbuffer</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_offset</span><span class="p">:]</span>
+
 <span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/zipfile.py</span> in <span class="ni">read</span><span class="nt">(self, n)</span>
-<span class="g g-Whitespace">    </span><span class="mi">905</span>         <span class="k">return</span> <span class="kc">True</span>
-<span class="g g-Whitespace">    </span><span class="mi">906</span> 
-<span class="ne">--&gt; </span><span class="mi">907</span>     <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">908</span>         <span class="s2">&quot;&quot;&quot;Read and return up to n bytes.</span>
-<span class="g g-Whitespace">    </span><span class="mi">909</span><span class="s2">         If the argument is omitted, None, or negative, data is read and returned until EOF is reached.</span>
+<span class="g g-Whitespace">    </span><span class="mi">928</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_offset</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="g g-Whitespace">    </span><span class="mi">929</span>         <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eof</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">930</span>             <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read1</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">931</span>             <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">932</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_readbuffer</span> <span class="o">=</span> <span class="n">data</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/zipfile.py</span> in <span class="ni">_read1</span><span class="nt">(self, n)</span>
+<span class="g g-Whitespace">    </span><span class="mi">996</span>             <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decompressor</span><span class="o">.</span><span class="n">unconsumed_tail</span>
+<span class="g g-Whitespace">    </span><span class="mi">997</span>             <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">998</span>                 <span class="n">data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read2</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">999</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1000</span>             <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read2</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/zipfile.py</span> in <span class="ni">_read2</span><span class="nt">(self, n)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1028</span>         <span class="n">n</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compress_left</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1029</span> 
+<span class="ne">-&gt; </span><span class="mi">1030</span>         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1031</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_compress_left</span> <span class="o">-=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1032</span>         <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/zipfile.py</span> in <span class="ni">read</span><span class="nt">(self, n)</span>
+<span class="g g-Whitespace">    </span><span class="mi">752</span>                         <span class="s2">&quot;Close the writing handle before trying to read.&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">753</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pos</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">754</span>             <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">755</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">756</span>             <span class="k">return</span> <span class="n">data</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
