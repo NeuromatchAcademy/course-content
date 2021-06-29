@@ -26,7 +26,7 @@ access to Google Colab, you can use Kaggle as a substitute for launching an inte
 
 >**NOTE:-** The last step, that is **step 6** grants you access to GPU in Kaggle. It is **NOT** required for Computational Neuroscience course and is only required for Deep Learning course
 
-**6.** (Optional) The last and final step about how to leverage **GPU** accelerator in the kaggle kernel. To get access to the GPU, first time users have get their phone numbers verified. In order to have GPU access, on the left sidebar of the notebook under the settings panel, go to **Get phone verified** link and enter your credentials.
+**6.** (Optional) The last and final step about how to leverage **GPU** accelerator in the kaggle kernel. You should not need to do this ever for the comp neuro course tutorials. You may want it for project work and especially for the deep learning course. To get access to the GPU, first time users have get their phone numbers verified. In order to have GPU access, on the left sidebar of the notebook under the settings panel, go to **Get phone verified** link and enter your credentials.
 
 ![Step 6.1](../static/kaggle_step6_1.png)
 

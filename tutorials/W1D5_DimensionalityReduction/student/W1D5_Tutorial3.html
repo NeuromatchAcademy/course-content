@@ -1210,7 +1210,7 @@
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "80c8225f03d04e5887f2c73392327143"}
+{"version_major": 2, "version_minor": 0, "model_id": "5766d118374c498fa6edbb8b03c02a9e"}
 </script></div>
 </div>
 </div>
@@ -1654,8 +1654,8 @@
 <div class="section" id="section-2-calculate-the-variance-explained">
 <h1>Section 2: Calculate the variance explained<a class="headerlink" href="#section-2-calculate-the-variance-explained" title="Permalink to this headline">¶</a></h1>
 <p>The scree plot suggests that most of the eigenvalues are near zero, with fewer than 100 having large values. Another common way to determine the intrinsic dimensionality is by considering the variance explained. This can be examined with a cumulative plot of the fraction of the total variance explained by the top <span class="math notranslate nohighlight">\(K\)</span> components, i.e.,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d301496d-4bfd-4060-9c89-5483f2a8ee6e">
-<span class="eqno">(80)<a class="headerlink" href="#equation-d301496d-4bfd-4060-9c89-5483f2a8ee6e" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0a07b4f8-b1c5-414b-b10b-6f9b8ed0ea1a">
+<span class="eqno">(80)<a class="headerlink" href="#equation-0a07b4f8-b1c5-414b-b10b-6f9b8ed0ea1a" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{var explained} = \frac{\sum_{i=1}^K \lambda_i}{\sum_{i=1}^N \lambda_i}
 \end{equation}\]</div>
 <p>The intrinsic dimensionality is often quantified by the <span class="math notranslate nohighlight">\(K\)</span> necessary to explain a large proportion of the total variance of the data (often a defined threshold, e.g., 90%).</p>
@@ -1734,18 +1734,18 @@
 <div class="cell tag_remove-input docutils container">
 </div>
 <p>Now we have seen that the top 100 or so principal components of the data can explain most of the variance. We can use this fact to perform <em>dimensionality reduction</em>, i.e., by storing the data using only 100 components rather than the samples of all 784 pixels. Remarkably, we will be able to reconstruct much of the structure of the data using only the top 100 components. To see this, recall that to perform PCA we projected the data <span class="math notranslate nohighlight">\(\bf X\)</span> onto the eigenvectors of the covariance matrix:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0a109724-7214-4971-9269-234c56c6db6c">
-<span class="eqno">(81)<a class="headerlink" href="#equation-0a109724-7214-4971-9269-234c56c6db6c" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f78e460b-5e56-4a50-a8f8-09673f5543ee">
+<span class="eqno">(81)<a class="headerlink" href="#equation-f78e460b-5e56-4a50-a8f8-09673f5543ee" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \bf S = X W
 \end{equation}\]</div>
 <p>Since <span class="math notranslate nohighlight">\(\bf W\)</span> is an orthogonal matrix, <span class="math notranslate nohighlight">\({\bf W}^{-1} = {\bf W}^T\)</span>. So by multiplying by <span class="math notranslate nohighlight">\({\bf W}^T\)</span> on each side we can rewrite this equation as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-74802417-75d7-4386-b6a6-ff7f430ae04f">
-<span class="eqno">(82)<a class="headerlink" href="#equation-74802417-75d7-4386-b6a6-ff7f430ae04f" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5fea4744-89c5-4c72-98e2-fb5e6871eccd">
+<span class="eqno">(82)<a class="headerlink" href="#equation-5fea4744-89c5-4c72-98e2-fb5e6871eccd" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 {\bf X = S W}^T.
 \end{equation}\]</div>
 <p>This now gives us a way to reconstruct the data matrix from the scores and loadings. To reconstruct the data from a low-dimensional approximation, we just have to truncate these matrices.  Let’s call <span class="math notranslate nohighlight">\({\bf S}_{1:K}\)</span> and <span class="math notranslate nohighlight">\({\bf W}_{1:K}\)</span> as keeping only the first <span class="math notranslate nohighlight">\(K\)</span> columns of this matrix. Then our reconstruction is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-88a5f2dd-94b5-425d-8701-4bd927bdaefc">
-<span class="eqno">(83)<a class="headerlink" href="#equation-88a5f2dd-94b5-425d-8701-4bd927bdaefc" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f508cfe3-e652-428d-9d08-a68683674cc3">
+<span class="eqno">(83)<a class="headerlink" href="#equation-f508cfe3-e652-428d-9d08-a68683674cc3" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 {\bf \hat X = S}_{1:K} ({\bf W}_{1:K})^T.
 \end{equation}\]</div>
 </div>
