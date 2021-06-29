@@ -1,6 +1,9 @@
 name: publish-book
 
-on:
+on: 
+
+  workflow_dispatch:
+    
   push:
     branches: master
 
@@ -52,6 +55,7 @@ jobs:
         run: |
           python ci/generate_book.py
           ln -s ../tutorials book/tutorials
+          ln -s ../projects book/projects
           jupyter-book build book
           python ci/parse_html_for_errors.py
 
