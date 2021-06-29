@@ -14,15 +14,18 @@
 ![Step 4](../tutorials/static/kaggle_step4.png)
 
 5.1 Now, download the notebook you wish to import on Kaggle by clicking on the **download** icon located in upper right corner of the webpage.
+<br>
 ![Step 5.1](../tutorials/static/kaggle_step5.1.png)
 
 5.2 Next, in the **Upload notebook** window, select your  notebook file which you downloaded via **step 5.1** by clicking on **Browse Files** button. Then, finally select **Upload** button to import the notebook on Kaggle.
+<br>
 ![Step 5.2](../tutorials/static/kaggle_step5.2.png)
 
 6. The last and final step but important **step** about how to leverage **GPU** accelerator in the kaggle kernel. To get access to the GPU, first time users have get their phone numbers verified. In order to have GPU access, on the left sidebar of the notebook under the settings panel, go to **Get phone verified** link and enter your credentials.
-   
+<br>
 
 ![Step 6.1](../tutorials/static/kaggle_step6_1.png)
 
 Once your phone number has been verified, on the left sidebar under **Settings** panel, select **Accelerator** to **GPU** from **None** using the drop down menu.
+<br>
 ![Step 6.2](../tutorials/static/kaggle_step6_2.png)
