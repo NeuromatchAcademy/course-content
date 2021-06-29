@@ -27,13 +27,13 @@ Daily project time can be:
 Below we link all the relevant project materials. This duplicates the information from the Project Booklet, a chapter in the NMA coursebook.
 
 * [Daily student guide for project](student_guide.md)
-* Ten steps how-to-model [notebook1]() [notebook2]()
-* Datasets + videos [neurons]() [fMRI]() [behavior]() [ECoG]()
-* Project templates [slides]()
-* Project examples 2020 [Asia](), [Europe+Africa](), [Americas]()
-* How to write an abstract [guide]() [paper1]() [paper2]() [paper3]()
+* Ten steps how-to-model: [notebook1]() [notebook2]()
+* Datasets + videos: [neurons]() / [fMRI]() / [behavior]() / [ECoG]()
+* Project templates: [slides]()
+* Project examples 2020: [Asia](), [Europe+Africa](), [Americas]()
+* How to write an abstract: [guide]() [paper1]() [paper2]() [paper3]()
 
-### Important deadlines
+# **Important deadlines**
 
 * day 2: by end of day, please submit a project proposal via this [Airtable link](). We will use this the same day to match your group with a mentor and project TA.  
 * day 10: by end of day, please submit your abstract via this [Airtable link]().  
