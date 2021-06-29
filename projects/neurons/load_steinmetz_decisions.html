@@ -1214,25 +1214,11 @@
 <span class="g g-Whitespace">    </span><span class="mi">750</span>             <span class="c1"># Friendlier error message</span>
 
 <span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/zipfile.py</span> in <span class="ni">read</span><span class="nt">(self, n)</span>
-<span class="g g-Whitespace">    </span><span class="mi">928</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_offset</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="g g-Whitespace">    </span><span class="mi">929</span>         <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eof</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">930</span>             <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read1</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">931</span>             <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">932</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_readbuffer</span> <span class="o">=</span> <span class="n">data</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/zipfile.py</span> in <span class="ni">_read1</span><span class="nt">(self, n)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1018</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_left</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1019</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_eof</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="ne">-&gt; </span><span class="mi">1020</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_update_crc</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1021</span>         <span class="k">return</span> <span class="n">data</span>
-<span class="g g-Whitespace">   </span><span class="mi">1022</span> 
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/zipfile.py</span> in <span class="ni">_update_crc</span><span class="nt">(self, newdata)</span>
-<span class="g g-Whitespace">    </span><span class="mi">943</span>             <span class="c1"># No need to compute the CRC if we don&#39;t have a reference value</span>
-<span class="g g-Whitespace">    </span><span class="mi">944</span>             <span class="k">return</span>
-<span class="ne">--&gt; </span><span class="mi">945</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_running_crc</span> <span class="o">=</span> <span class="n">crc32</span><span class="p">(</span><span class="n">newdata</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_running_crc</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">946</span>         <span class="c1"># Check the CRC if we&#39;re at the end of the file</span>
-<span class="g g-Whitespace">    </span><span class="mi">947</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eof</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_running_crc</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expected_crc</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">934</span>                 <span class="n">buf</span> <span class="o">+=</span> <span class="n">data</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">935</span>                 <span class="k">break</span>
+<span class="ne">--&gt; </span><span class="mi">936</span>             <span class="n">buf</span> <span class="o">+=</span> <span class="n">data</span>
+<span class="g g-Whitespace">    </span><span class="mi">937</span>             <span class="n">n</span> <span class="o">-=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">938</span>         <span class="k">return</span> <span class="n">buf</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
