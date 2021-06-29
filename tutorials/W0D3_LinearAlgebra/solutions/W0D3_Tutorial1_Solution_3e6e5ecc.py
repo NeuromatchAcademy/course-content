@@ -5,6 +5,8 @@
 #.
 # 2) The span of a, b, c, and d is all of 3D space (R^3).
 
-# 3) The span of a and b is a 1D line through 3D space (note this is not R^1)
+# 3) The span of a, b, and c is all of 3D space (R^3).
 
-# 4) The span of a and b is a 2d plane through 3D space (note this is not R^2)
+# 4) The span of a and b is a 1D line through 3D space (note this is not R^1)
+
+# 5) The span of a and b is a 2d plane through 3D space (note this is not R^2)
