@@ -2,17 +2,6 @@
 
 *July 5-23, 2021*
 
-* [Project Structure and Schedule](#Project-structure-and-schedule)
-  * [Week One](#Week-One)
-  * [Week-Two](#Week-Two)
-  * [Week-Three](#Week-Three)
-* [Data Loaders (Google Colab) for Each Data Set](#data-set-notebooks)
-* [Student’s Guide to NMA Projects](#Student-Guide-to-NMA-Projects)
-  * [Time Commitment](#time-commitment)
-  * [Your schedule](#Your-schedule)
-* [TA’s Guide to NMA Projects](#TA-Guide-to-NMA-Projects)
-* [Mentor’s Guide to NMA Projects](#Mentor-Guide-to-NMA-Projects)
-
 ----
 
 # **Project Structure and Schedule**
@@ -29,27 +18,26 @@ again a full projects day with some structured guidance to the process of writin
 implementing your project and trying to get an answer to your question, culminating in a short presentation to your pod
 on the final day 15 (3-5 slides, informal, take turns to present).
 
- <!-- It is important to note that project time can begin:
-
-- TimeZones 1A, 2A, 3A: Project Day 2 is the morning of course Day 3
-- TimeZones 1B, 2B, 3B: Project Day 2 is partly the afternoon of Course Day 2, and partly the morning of Course Day 3.
-- TimeZones 1C, 2C, 3C: Project Day 2 is the afternoon of Course Day 2. -->
-
 Daily project time can be:
-
  - Early — 3h before content (time slots 2,4)
  - Late  — 3h after content (time slots 1,3,5)
 
-### Weeks One, Two, Three
+# **Project Materials**
 
-Detailed information about each day is available in the student guide.
+Below we link all the relevant project materials. This duplicates the information from the Project Booklet, a chapter in the NMA coursebook.
 
-We include here some important links and information for ease of access:
+* [Daily student guide for project](student_guide.md)
+* Ten steps how-to-model [notebook1]() [notebook2]()
+* Datasets + videos [neurons]() [fMRI]() [behavior]() [ECoG]()
+* Project templates [slides]()
+* Project examples 2020 [Asia](), [Europe+Africa](), [Americas]()
+* How to write an abstract [guide]() [paper1]() [paper2]() [paper3]()
 
-day 2: by end of day, please submit a project proposal via this [Airtable link]().  
-day 10: by end of day, please submit your abstract via this [Airtable link]().  
-day 14: by end of day, please submit your slides via this [Airtable link]().  
+### Important deadlines
 
+* day 2: by end of day, please submit a project proposal via this [Airtable link](). We will use this the same day to match your group with a mentor and project TA.  
+* day 10: by end of day, please submit your abstract via this [Airtable link]().  
+* day 14: by end of day, please submit your slides via this [Airtable link]().  
 
 **Project day 14** — Prepare project presentation
  * Groups make a five minute project presentation
@@ -63,11 +51,9 @@ day 14: by end of day, please submit your slides via this [Airtable link]().
 
   * The afternoon of the final day of NMA will include project presentations!
 
-# **Project materials**
 
+<!--
 ---
-
-All of these materials can also be found in the project booklet, which is a chapter in the course book.  
 
 ## Links for project introductory videos
 - [Projects Intro](https://youtu.be/fNOxmO1Hq3Y)
@@ -102,7 +88,7 @@ All of these materials can also be found in the project booklet, which is a chap
 ---
 
 
-<!--
+
 # Student Guide to NMA Projects
 
 in small groups to develop a scientific question, select a data set to analyze and work together to develop a project
