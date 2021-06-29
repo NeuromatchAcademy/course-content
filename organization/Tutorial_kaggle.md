@@ -13,7 +13,7 @@
 4. In the **File** menu bar, select **Upload Notebook** option.
 ![Step 4](../tutorials/static/kaggle_step4.png)
 
-5.1 Now, download the notebook you wish to import on Kaggle and click on the **download** icon located in upper right corner of the webpage.
+5.1 Now, download the notebook you wish to import on Kaggle by clicking on the **download** icon located in upper right corner of the webpage.
 ![Step 5.1](../tutorials/static/kaggle_step5.1.png)
 
 5.2 Next, in the **Upload notebook** window, select your  notebook file which you downloaded via **step 5.1** by clicking on **Browse Files** button. Then, finally select **Upload** button to import the notebook on Kaggle.
