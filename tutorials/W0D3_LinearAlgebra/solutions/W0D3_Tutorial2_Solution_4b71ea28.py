@@ -1,13 +1,13 @@
 
-# Define G
-G = np.array([[0, 1], [2, 4], [5, 1]])
+# Define R
+R = np.array([[0, 1], [2, 4], [5, 1]])
 
 # Define W
 W = np.array([[3, 2, 1], [1, 2, 7]])
 
-# Compute V
+# Compute G
 # in Python, we can use @ for matrix multiplication: matrix1 @ matrix2
-V = W @ G
+G = W @ R
 
-# Print values of V
-print(V)
+# Print values of G
+print(G)
