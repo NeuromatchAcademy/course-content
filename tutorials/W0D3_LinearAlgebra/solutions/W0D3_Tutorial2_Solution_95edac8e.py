@@ -16,6 +16,6 @@
 
 # 4) We could completely recover the retinal neural activity given the LGN activities in population
 #.  p as the matrix P is full rank and invertible. There is no information loss from the
-#.  two LGN neurons to the two LGN neurons. We cannot recover retinal activity given population
+#.  two retinal neurons to the two LGN neurons. We cannot recover retinal activity given population
 #.  q since we lose a dimension. There is information loss between retinal neurons and population q
 #. LGN neurons.
