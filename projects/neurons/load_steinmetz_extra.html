@@ -1220,11 +1220,18 @@
 <span class="g g-Whitespace">    </span><span class="mi">750</span>             <span class="c1"># Friendlier error message</span>
 
 <span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/zipfile.py</span> in <span class="ni">peek</span><span class="nt">(self, n)</span>
-<span class="g g-Whitespace">    </span><span class="mi">900</span> 
-<span class="g g-Whitespace">    </span><span class="mi">901</span>         <span class="c1"># Return up to 512 bytes to reduce allocation overhead for tight loops.</span>
-<span class="ne">--&gt; </span><span class="mi">902</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_readbuffer</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_offset</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_offset</span> <span class="o">+</span> <span class="mi">512</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">903</span> 
-<span class="g g-Whitespace">    </span><span class="mi">904</span>     <span class="k">def</span> <span class="nf">readable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">892</span>         <span class="sd">&quot;&quot;&quot;Returns buffered bytes without advancing the position.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">893</span>         <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_readbuffer</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_offset</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">894</span>             <span class="n">chunk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">895</span>             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_offset</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">896</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_readbuffer</span> <span class="o">=</span> <span class="n">chunk</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_readbuffer</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_offset</span><span class="p">:]</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/zipfile.py</span> in <span class="ni">read</span><span class="nt">(self, n)</span>
+<span class="g g-Whitespace">    </span><span class="mi">932</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_readbuffer</span> <span class="o">=</span> <span class="n">data</span>
+<span class="g g-Whitespace">    </span><span class="mi">933</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_offset</span> <span class="o">=</span> <span class="n">n</span>
+<span class="ne">--&gt; </span><span class="mi">934</span>                 <span class="n">buf</span> <span class="o">+=</span> <span class="n">data</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">935</span>                 <span class="k">break</span>
+<span class="g g-Whitespace">    </span><span class="mi">936</span>             <span class="n">buf</span> <span class="o">+=</span> <span class="n">data</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
