@@ -25,9 +25,20 @@ Daily project time can be:
  - Early — 3h before content (time slots 2,4)
  - Late  — 3h after content (time slots 1,3,5)
 
- For those of you whose project slot is before tutorials (Slot 2 and Slot 4), there is no project day on the first day of the course - you simply show up to tutorials that day. For those of you whose project slot is after tutorials (Slot 3 and Slot 5), there is no project day work on the last day of the course - there is a wrap up project presentation session during the tutorial block that day and the course then ends. Your project proposals (used for mentor matching) are due at the end of the project day 2 block - this is on July 6 for Slots 1,3,5 and on July 7 for Slots 2,4. See image below.
+ For those of you whose project slot is before tutorials (Slot 2 and Slot 4), there is no project day on the first day of the course - you simply show up to tutorials that day. For those of you whose project slot is after tutorials (Slot 3 and Slot 5), there is no project day work on the last day of the course - there is a wrap up project presentation session during the tutorial block that day and the course then ends. Your project proposals (used for mentor matching) are due at the end of the project day 2 block - this is on July 6 for Slots 1,3,5 and on July 7 for Slots 2,4. See table below.
 
+| date | Slot 1 | Slot 2 | Slot 3 | Slot 4 | Slot 5 |
+| --- | --- | --- | --- | --- | --- |
+| July 5 | project day 1 | empty | project day 1 | empty | project day 1 |
+| July 6 | project day 2 | project day 1 | project day 2 | project day 1 | project day 2 |
+| July 7 | ... | project day 2 | ... | project day 2 | ... |
+| ... | ... | ... | ... | ... | ... |
+| July 16 | abstract day | abstract day | abstract day | abstract day | abstract day |
+| ... | ... | ... | ... | ... | ... |
+| July 22 | project day 14 | ... | project day 14 | ... | project day 14 |
+| July 23 | empty | project day 14 | empty | project day 14 | empty |
 
+On July 23, everyone has project presentations during the second half of their tutorial block!
 
 # **Project Materials**
 
