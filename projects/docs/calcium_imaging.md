@@ -1,1 +1,0 @@
-# Large-scale calcium imaging
