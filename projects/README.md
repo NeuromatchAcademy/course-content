@@ -4,7 +4,7 @@
 
 ----
 
-# **Project Structure and Schedule**
+# **Project Structure**
 
 The NMA projects are conducted over 14 days, beginning on the first project timeslot after the school opening on July 5.
 The projects are a core part of the summer school, and will teach different skills from those you learn during the course content.
@@ -18,26 +18,37 @@ again a full projects day with some structured guidance to the process of writin
 implementing your project and trying to get an answer to your question, culminating in a short presentation to your pod
 on the final day 15 (3-5 slides, informal, take turns to present).
 
+
+# **Daily Schedule**
+
 Daily project time can be:
  - Early — 3h before content (time slots 2,4)
  - Late  — 3h after content (time slots 1,3,5)
+
+ For those of you whose project slot is before tutorials (Slot 2 and Slot 4), there is no project day on the first day of the course - you simply show up to tutorials that day. For those of you whose project slot is after tutorials (Slot 3 and Slot 5), there is no project day work on the last day of the course - there is a wrap up project presentation session during the tutorial block that day and the course then ends. Your project proposals (used for mentor matching) are due at the end of the project day 2 block - this is on July 6 for Slots 1,3,5 and on July 7 for Slots 2,4. See image below.
+
+
 
 # **Project Materials**
 
 Below we link all the relevant project materials. This duplicates the information from the Project Booklet, a chapter in the NMA coursebook.
 
-* [Daily student guide for project](student_guide.md)
-* Ten steps how-to-model: [notebook1]() [notebook2]()
-* Datasets + videos: [neurons]() / [fMRI]() / [behavior]() / [ECoG]()
-* Project templates: [slides]()
-* Project examples 2020: [Asia](), [Europe+Africa](), [Americas]()
-* How to write an abstract: [guide]() [paper1]() [paper2]() [paper3]()
+1. [Daily student guide for project](https://docs.google.com/document/d/1MxRkAD-nxWWIGVadxfkDjwPgof1g6v-Ty4UUvFm1BIo/edit?usp=sharing)
+2. Ten steps how-to-model (in construction): <!--[steps1-4](https://colab.research.google.com/drive/1wpGnNIg1Z5DtoSlqIngWCQvAdw-0gMfd?usp=sharing), [modelling_example](https://colab.research.google.com/drive/1jY-QkGtK4CmS2tyGAUhSFhWm7Jw0as0-?usp=sharing) [data_analysis_example](https://colab.research.google.com/drive/1jY-QkGtK4CmS2tyGAUhSFhWm7Jw0as0-?usp=sharing) -->
+3. [Datasets](https://github.com/NeuromatchAcademy/course-content/tree/master/projects) + [videos](https://www.youtube.com/playlist?list=PLkBQOLLbi18ODTckxhgah98JloMLXt4oF): <!--[neurons]() / [fMRI]() / [behavior]() / [ECoG]()-->
+4. Project templates: [slides](https://docs.google.com/presentation/d/1v7fuzi9Y9RV12CysMBi5rxZKhjnWD5Js29UDEvmbzNA/edit?usp=sharing)
+5. Project examples 2020:
+   - Neurons: [stringer](https://osf.io/u9gqe/), [steinmetz1](https://osf.io/29vuq/), [steinmetz2](https://osf.io/52wja/), [steinmetz3](https://osf.io/bt4ph/)  
+   - FMRI: [kay](https://osf.io/h3z4e/), [hcp1](https://osf.io/td957/), [hcp2](https://osf.io/5fmnq/)
+   - Other: [theory](https://osf.io/z7p5v/), [behavior](https://osf.io/hez85/), [eeg](https://osf.io/5r96v/)
+* How to write an abstract (in construction): <!--[guide]() [paper1]() [paper2]() [paper3]()-->
+
 
 # **Important deadlines**
 
-* day 2: by end of day, please submit a project proposal via this [Airtable link](). We will use this the same day to match your group with a mentor and project TA.  
-* day 10: by end of day, please submit your abstract via this [Airtable link]().  
-* day 14: by end of day, please submit your slides via this [Airtable link]().  
+* project day 2:  by end of day, please submit a project proposal via this [Airtable link](). We will use this the same day to match your group with a mentor and project TA.  
+* course day 10:  by end of day, please submit your abstract via this [Airtable link]().  
+* project day 14: by end of day, please submit your slides via this [Airtable link]().  
 
 **Project day 14** — Prepare project presentation
  * Groups make a five minute project presentation
