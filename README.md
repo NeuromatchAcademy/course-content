@@ -104,6 +104,32 @@ On W2D5 (abstract writing day):
 
 * This day is completely asynchronous, so you should combine tutorial and project time for a total of 8 hours. 
 
+On W3D5 (final day!), we will have an extra celebration and pod wrap-ups after the material:
+|    Time (Hour)   |    Lecture                            | 
+|------------------|---------------------------------------|
+|    0:00-0:30\*   |    Intro video & text   |   
+|    **0:30**-0:45**     |    Pod discussion I                   |                                      
+|    0:45-2:15     |    Tutorials + nano-lectures I        |    
+|    2:15-3:15     |    Big break                 |    
+|    3:15-4:45     |    Tutorials + nano-lectures II      |   
+|    4:45-4:55    |    Pod dicussion II       |    
+|    4:55-5:00    |    Reflections & content checks               |    
+|    5:05-5:35\*     |    Outro                              |
+|    5:35-5:45     |    Break                        |
+|    5:45-6:10    |    Evaluation report                      |
+|    6:10-7:10    |    Project presentations                      |
+|    7:10-7:25    |    Pod farewell                      |
+|    7:25-8:15    |    Closing ceremony                      |
+\* The intro and outro will be watched asynchronously, which means that you can watch this lecture before and after the start of the synchronous session 
+
+\** Note that the synchronous session starts at 0:30 with the first pod discussion!
+
+
+
+
+
+
+
 ## Licensing
 
 [![CC BY 4.0][cc-by-image]][cc-by]
