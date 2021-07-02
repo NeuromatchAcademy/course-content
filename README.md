@@ -53,7 +53,7 @@ All days (except W1D2, W2D5, and W3D5) will follow this schedule for course time
 |    Time (Hour)   |    Lecture                            | 
 |------------------|---------------------------------------|
 |    0:00-0:30\*   |    Intro video & text   |   
-|    *0:30*-0:45**     |    Pod discussion I                   |                                      
+|    **0:30**-0:45**     |    Pod discussion I                   |                                      
 |    0:45-2:15     |    Tutorials + nano-lectures I        |    
 |    2:15-3:15     |    Big break                 |    
 |    3:15-4:45     |    Tutorials + nano-lectures II      |   
@@ -76,7 +76,7 @@ On W1D2 (project launch day):
 |    Time (Hour)   |    Lecture                            |
 |------------------|---------------------------------------|
 |    0:00-0:30\*   |    Intro video & text   |   
-|    *0:30*-0:45**     |    Pod discussion I                   |                                      
+|    **0:30**-0:45**     |    Pod discussion I                   |                                      
 |    0:45-2:30     |    Tutorials + nano-lectures I        |    
 |    2:30-2:45     |    Outro           |
 |    2:45-3:45     |    Big break                 |    
