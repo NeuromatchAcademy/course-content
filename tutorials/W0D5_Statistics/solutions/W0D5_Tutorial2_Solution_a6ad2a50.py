@@ -1,9 +1,12 @@
 
-mu = 5
-sigma = 1
+# Set random seed
+np.random.seed(0)
 
-# Generate 1000 random samples from a Gaussian distribution
-dataX = generate_normal_samples(mu, sigma, 1000)
+# Generate data
+true_mean = 5
+true_standard_dev = 1
+n_samples = 1000
+x = np.random.normal(true_mean, true_standard_dev, size = (n_samples,))
 
 # We define the function to optimise, the negative log likelihood
 def negLogLike(theta):
@@ -17,13 +20,12 @@ def negLogLike(theta):
     Returns:
       Calculated negative Log Likelihood value!
   """
-  return -sum(np.log(norm.pdf(dataX, theta[0], theta[1])))
+  return -sum(np.log(norm.pdf(x, theta[0], theta[1])))
 
 # Define bounds, var has to be positive
 bnds = ((None, None), (0, None))
 
 # Optimize with scipy!
-# Uncomment once function above is implemented
 optimal_parameters = sp.optimize.minimize(negLogLike, (2, 2), bounds = bnds)
 print("The optimal mean estimate is: " + str(optimal_parameters.x[0]))
 print("The optimal variance estimate is: " + str(optimal_parameters.x[1]))

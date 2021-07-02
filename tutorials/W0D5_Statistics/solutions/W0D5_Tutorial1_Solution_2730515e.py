@@ -13,7 +13,7 @@ def my_gaussian(x_points, mu, sigma):
 
   px = 1/(2*np.pi*sigma**2)**1/2 *np.exp(-(x_points-mu)**2/(2*sigma**2))
 
-  # as we are doing numerical integration we may have to remember to normalise
+  # as we are doing numerical integration we have to remember to normalise
   # taking into account the stepsize (0.1)
   px = px/(0.1*sum(px))
   return px
