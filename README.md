@@ -120,6 +120,7 @@ On W3D5 (final day!), we will have an extra celebration and pod wrap-ups after t
 |    6:10-7:10    |    Project presentations                      |
 |    7:10-7:25    |    Pod farewell                      |
 |    7:25-8:15    |    Closing ceremony                      |
+
 \* The intro and outro will be watched asynchronously, which means that you can watch this lecture before and after the start of the synchronous session 
 
 \** Note that the synchronous session starts at 0:30 with the first pod discussion!
