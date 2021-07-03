@@ -21,6 +21,8 @@ directory:
    
 `ln -s ../tutorials book/tutorials`
 
+`ln -s ../projects book/projects`
+
 3. Prepare repo for book building
 
 `python ci/generate_book.py`
