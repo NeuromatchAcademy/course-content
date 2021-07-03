@@ -26,15 +26,15 @@ Click on each image below to see a full browser version!
 
 <img src="template_images/NavigationalAffordancesFMRI.svg" width="100%">
 
-# Investigating the visual information in different brain regions
+# Visual information in different brain regions
 
 <img src="template_images/VisualInformationAcrossRegions.svg" width="100%">
 
-# Investigating state-dependent decision-making in mice performing a 2AFC task
+# State-dependent decision-making in mice performing a 2AFC task
 
 <img src="template_images/MouseBehavior2AFC.svg" width="100%">
 
-# Investigating the working memory capacity of recurrent neural network models
+# The working memory capacity of recurrent neural network models
 
 <img src="template_images/WorkingMemoryRNNs.svg" width="100%">
 
