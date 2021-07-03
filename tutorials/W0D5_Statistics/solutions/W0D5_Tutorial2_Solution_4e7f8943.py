@@ -57,7 +57,7 @@ def localization_simulation(mu_auditory = 3.0, sigma_auditory = 1.5,
   x = np.arange(-8, 9, 0.1)
 
   auditory = my_gaussian(x, mu_auditory, sigma_auditory)
-  visual = my_gaussian(x, mu_visual, mu_visual)
+  visual = my_gaussian(x, mu_visual, sigma_visual)
   posterior = compute_posterior_pointwise(auditory, visual)
 
   return x, auditory, visual, posterior
