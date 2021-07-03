@@ -3,7 +3,7 @@
 This page contains a lot of example projects from NMA last year! Useful for 2021 students to get a sense of what projects are like, and also for brainstorming ideas.
 
 ## Neurons
-Stringer
+### Stringer
 <iframe src="https://mfr.ca-1.osf.io/render?url=https://osf.io/u9gqe/?direct%26mode=render%26action=download%26mode=render", width="730", height="410"></iframe>
 
 Steinmetz 1
@@ -30,6 +30,6 @@ Kay Dataset
 
 ## Behavior
 <iframe src="https://mfr.ca-1.osf.io/render?url=https://osf.io/hez85/?direct%26mode=render%26action=download%26mode=render", width="730", height="410"></iframe>
-  
+
 ## EEG
 <iframe src="https://mfr.ca-1.osf.io/render?url=https://osf.io/5r96v/?direct%26mode=render%26action=download%26mode=render", width="730", height="410"></iframe>
