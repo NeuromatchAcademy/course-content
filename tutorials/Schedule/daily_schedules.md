@@ -1,21 +1,6 @@
-# NeuroMatch Academy (NMA) Computational Neuroscience syllabus
+# General schedule
 
-**The content should primarily be accessed from our new ebook: https://compneuro.neuromatch.io/**
-
-**Objectives**: Introduce traditional and emerging computational neuroscience tools, their complementarity, and what they can tell us about the brain. A main focus is on modeling choices, model creation, model evaluation and understanding how they relate to biological questions.
-
-**Prerequisites**: [See here](https://github.com/NeuromatchAcademy/precourse)
-
-# Course materials
-
-- [Welcome Video](https://youtu.be/s4kBB1OMs0Q)
-- [**Tutorials**: videos, notebooks, and slides](./tutorials/README.md)
-- [**Projects**: videos, notebooks, and slides](./projects/README.md)
-
-Group projects are offered for the *interactive track* only and will be running during all 3 weeks of NMA!
-
-# Course outline
-
+## Course overview
 * Week 0 (Optional)
     * Asynchronous: Python Workshop Part 1 for students + Mandatory TA training for **ALL TAS**
     * Asynchronous: Python Workshop Part 2 for students + Mandatory TA training for **ALL TAS**
@@ -47,7 +32,9 @@ Group projects are offered for the *interactive track* only and will be running 
 
 ----
 
-# Daily schedule
+## Daily coursework schedule
+
+### General schedule except for W1D2, W2D5, and W3D5
 All days (except W1D2, W2D5, and W3D5) will follow this schedule for course time:
  
 |    Time (Hour)   |    Lecture                            | 
@@ -60,17 +47,17 @@ All days (except W1D2, W2D5, and W3D5) will follow this schedule for course time
 |    4:45-4:55    |    Pod dicussion II       |    
 |    4:55-5:00    |    Reflections & content checks               |    
 |    5:05-5:35\*     |    Outro                              |
+On W2D1, W2D4, and W3D4:
+
+|    Time (Hour)   |    Lecture                            | 
+|------------------|---------------------------------------|
+|    5:40-6:40     |    Live Q&A                                |   
 
 \* The intro and outro will be watched asynchronously, which means that you can watch this lecture before and after the start of the synchronous session
 
 \** Note that the synchronous session starts at 0:30 with the first pod discussion!
 
-On W2D1, W2D4, and W3D4:
-|    Time (Hour)   |    Lecture                            | 
-|------------------|---------------------------------------|
-|    5:40-6:40     |    Live Q&A                                |   
-
-
+### W1D2
 On W1D2 (project launch day):
 
 |    Time (Hour)   |    Lecture                            |
@@ -90,6 +77,7 @@ On W1D2 (project launch day):
 
 \*** Note that this includes the next available project time, which may be on the next day.
 
+### W2D5 (subject to changes)
 On W2D5 (abstract writing day):
 
 |    Time (Hour)   |    Lecture                            |
@@ -104,6 +92,7 @@ On W2D5 (abstract writing day):
 
 * This day is completely asynchronous, so you should combine tutorial and project time for a total of 8 hours. 
 
+### W3D5 (subject to changes)
 On W3D5 (final day!), we will have an extra celebration and pod wrap-ups after the material:
 |    Time (Hour)   |    Lecture                            | 
 |------------------|---------------------------------------|
@@ -125,27 +114,6 @@ On W3D5 (final day!), we will have an extra celebration and pod wrap-ups after t
 
 \** Note that the synchronous session starts at 0:30 with the first pod discussion!
 
+## Professional Development Series
 
-
-
-
-
-
-## Licensing
-
-[![CC BY 4.0][cc-by-image]][cc-by]
-
-[![CC BY 4.0][cc-by-shield]][cc-by] [![BSD-3][bsd-3-shield]][bsd-3]
-
-The contents of this repository are shared under under a [Creative Commons Attribution 4.0 International License][cc-by].
-
-Software elements are additionally licensed under the [BSD (3-Clause) License][bsd-3].
-
-Derivative works may use the license that is more appropriate to the relevant context.
-
-[cc-by]: http://creativecommons.org/licenses/by/4.0/
-[cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
-[cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
-
-[bsd-3]: https://opensource.org/licenses/BSD-3-Clause
-[bsd-3-shield]: https://camo.githubusercontent.com/9b9ea65d95c9ef878afa1987df65731d47681336/68747470733a2f2f696d672e736869656c64732e696f2f707970692f6c2f736561626f726e2e737667
+Coming soon
