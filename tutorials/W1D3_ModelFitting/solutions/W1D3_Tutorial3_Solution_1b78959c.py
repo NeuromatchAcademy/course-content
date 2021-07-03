@@ -1,3 +1,4 @@
+
 def bootstrap_estimates(x, y, n=2000):
   """Generate a set of theta_hat estimates using the bootstrap method.
 
@@ -23,8 +24,9 @@ def bootstrap_estimates(x, y, n=2000):
 
   return theta_hats
 
+# Set random seed
+np.random.seed(123)
 
-np.random.seed(123)  # set random seed for checking solutions
-
+# Get boostrap estimates
 theta_hats = bootstrap_estimates(x, y, n=2000)
 print(theta_hats[0:5])
