@@ -20,6 +20,7 @@ changes in how it handles the table of contents file we generate.
 directory:
    
 `ln -s ../tutorials book/tutorials`
+
 `ln -s ../projects book/projects`
 
 3. Prepare repo for book building
