@@ -6,16 +6,22 @@
 
 # **Project Structure**
 
+The definitive guide to project schedule and structure is in the Daily Guide to Projects, but we include some overview information here.
+
 The NMA projects are conducted over 14 days, beginning on the first project timeslot after the school opening on July 5.
 The projects are a core part of the summer school, and will teach different skills from those you learn during the course content.
 Your pod will split into two groups at the end of the first day, based on common research interests.
+
 Day 2 is a full project day to kickstart your projects: you begin with structured material during the course content (2-3h), and
 continue with structured project time to try to formulate a project proposal by the end of the day.
 You will be matched to external mentors based on this proposal, so please include as many relevant keywords as possible, all
-written in plain text. During the second week, you will continue through the process of refining your question and
+written in plain text.
+
+During the second week, you will continue through the process of refining your question and
 finding the right data analysis tools to test your hypotheses, culminating in an "abstract" that you write on day 10, which is
-again a full projects day with some structured guidance to the process of writing abstracts. Finally, week 3 is all about
-implementing your project and trying to get an answer to your question, culminating in a short presentation to your pod
+again a full projects day with some structured guidance to the process of writing abstracts.
+
+Finally, week 3 is all about implementing your project and trying to get an answer to your question, culminating in a short presentation to your pod
 on the final day 15 (3-5 slides, informal, take turns to present).
 
 
@@ -25,7 +31,7 @@ Daily project time can be:
  - Early — 3h before content (time slots 2,4)
  - Late  — 3h after content (time slots 1,3,5)
 
- For those of you whose project slot is before tutorials (Slot 2 and Slot 4), there is no project day on the first day of the course - you simply show up to tutorials that day. For those of you whose project slot is after tutorials (Slot 3 and Slot 5), there is no project day work on the last day of the course - there is a wrap up project presentation session during the tutorial block that day and the course then ends. Your project proposals (used for mentor matching) are due at the end of the project day 2 block - this is on July 6 for Slots 1,3,5 and on July 7 for Slots 2,4. See table below.
+ For those of you whose project slot is before tutorials (Slot 2 and Slot 4), there is no project time on the first day of the course - you simply show up to tutorials that day. For those of you whose project slot is after tutorials (Slot 3 and Slot 5), there is no project time on the last day of the course - there is a wrap up project presentation session during the tutorial block that day and then the course ends. Your project proposals (used for mentor matching) are due at the end of the project day 2 block - this is on July 6 for Slots 1,3,5 and on July 7 for Slots 2,4. See table below.
 
 | date | Slot 1 | Slot 2 | Slot 3 | Slot 4 | Slot 5 |
 | --- | --- | --- | --- | --- | --- |
@@ -57,7 +63,7 @@ Below we link all the relevant project materials. This duplicates the informatio
 
 # **Important deadlines**
 
-* project day 2:  by end of day, please submit a project proposal via this [Airtable link](). We will use this the same day to match your group with a mentor and project TA.  
+* project day 2:  by end of day, please submit a project proposal via this [Airtable link](). We will use this immediately to match your group with a mentor and a project TA.  
 * course day 10:  by end of day, please submit your abstract via this [Airtable link]().  
 * project day 14: by end of day, please submit your slides via this [Airtable link]().  
 
