@@ -18,11 +18,9 @@ def compute_single_neuron_isis(spike_times, neuron_idx):
 
   return isis
 
+# Compute ISIs
 single_neuron_isis = compute_single_neuron_isis(spike_times, neuron_idx=283)
 
+# Visualize ISIs
 with plt.xkcd():
-  plt.hist(single_neuron_isis, bins=50, histtype="stepfilled")
-  plt.axvline(single_neuron_isis.mean(), color="orange", label="Mean ISI")
-  plt.xlabel("ISI duration (s)")
-  plt.ylabel("Number of spikes")
-  plt.legend()
+  plot_isis(single_neuron_isis)
