@@ -24,4 +24,5 @@ def entropy(pmf):
   # return the absolute value (avoids getting a -0 result)
   return np.abs(h)
 
+# Call entropy function and print result
 print(f"{entropy(pmf):.2f} bits")
