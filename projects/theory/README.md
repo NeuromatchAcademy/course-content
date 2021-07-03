@@ -1,8 +1,6 @@
-# NeuroMatch Academy (NMA) projects
+# Guide to choosing a Theory project
 
 *July 5-23, 2021*
-
-# Guide to choosing a Theory project
 
 Pure theory projects are usually pursued by more advanced students. If your group is relatively new to neuroscience, you should consider doing a dataset project *and* include a theory component to it.
 
