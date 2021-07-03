@@ -20,7 +20,7 @@ Click on each image below to see a full browser version!
 
 # Retinotopic mapping with FMRI
 
-<img src="template_images/MouseOrofacialBehaviors.svg" width="100%">
+<img src="template_images/RetinotopicMappingFMRI.svg" width="100%">
 
 # Modelling of navigational affordances and scene-selective responses
 
