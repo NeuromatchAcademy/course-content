@@ -1,8 +1,6 @@
-# NeuroMatch Academy (NMA) projects
+# Guide to choosing an EEG/ECoG/LFP dataset
 
 *July 5-23, 2021*
-
-# Guide to choosing an EEG/ECoG/LFP dataset
 
 New in 2021, we have ECoG datasets from Kai Miller! This is a rare dataset from intracranial electrocorticographic recordings in clinical settings. Please watch Kai Miller's TED talk to familiarize yourself with this type of recording.
 

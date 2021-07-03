@@ -1,12 +1,11 @@
-# NeuroMatch Academy (NMA) projects
-
-*July 5-23, 2021*
 
 # Guide to choosing an FMRI dataset
 
+*July 5-23, 2021*
+
 * The HCP task datasets are a great overall choice, because many of the behaviors are interesting (gambling, emotion, language, social, working memory etc), and the data is already preprocessed and averaged across voxels to make brain regions. This dataset is appropriate for all levels.  
 
-* The FSL course task dataset complements the HCP one, with two additional language tasks. These data are brainwide and at the voxel level. 
+* The FSL course task dataset complements the HCP one, with two additional language tasks. These data are brainwide and at the voxel level.
 
 * HCP retinotopy is a specific kind of project that can be used to do population receptive field modelling. This might be interesting to ML-savy groups because it doesn’t require a lot of neuroscience or FMRI background, and one can visualize the hierarchy of brain areas and their responses.
 
