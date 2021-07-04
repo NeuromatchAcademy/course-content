@@ -71,7 +71,7 @@ The goal of this literature review is to situate your question in context and he
 (2.5h) Project proposal
 * Try to write a proposal for this project based on the way you understand it now. This should re-use some of the text you wrote down for the 5 steps, and should include keywords and concepts that you identified in your literature review. Don’t worry too much about the structure of this paragraph! The goal is to get as many words (200-300) on paper as possible. We have the entire day 10 to write a properly structured scientific abstract.
 * It is important to include the concepts which you identified as relevant, and the keywords that go with them. This will allow us to identify mentors whose research covers your interests.   
-* You should submit your proposal into the google form (???) at the end of this day. Remember that only an algorithm will read it, so it definitely doesn’t need to be perfect!
+* You should submit your proposal into the [Airtable form](https://airtable.com/shrZWimDB3YddpXDu) at the end of this day. Remember that only an algorithm will read it, so it definitely doesn’t need to be perfect!
 
 ## Day 3 (2-3 h)
 
