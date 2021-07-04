@@ -5,12 +5,12 @@
 
 ### HCP task datasets
 
-The HCP task datasets ([youtube-2020](https://youtube.com/watch?v=iOCcY0QFMS4), [youtube-2021](https://youtube.com/watch?v=nssSiCmbjxw)) are a great overall choice, because many of the behaviors are interesting (gambling, emotion, language, social, working memory etc), and the data is already preprocessed and averaged across voxels to make brain regions. This dataset is appropriate for all levels.  
+The HCP task datasets ([youtube-2021](https://youtube.com/watch?v=nssSiCmbjxw), [youtube-2020](https://youtube.com/watch?v=iOCcY0QFMS4)) are a great overall choice, because many of the behaviors are interesting (gambling, emotion, language, social, working memory etc), and the data is already preprocessed and averaged across voxels to make brain regions. This dataset is appropriate for all levels.  
 
 |   | Run | View |
 | - | --- | ---- |
-| Task analysis | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp_task.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp_task.ipynb?flush_cache=true) |
-| All datasets loader | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp.ipynb?flush_cache=true) |
+| HCP 2021 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp_task.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp_task.ipynb?flush_cache=true) |
+| HCP 2020 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp.ipynb?flush_cache=true) |
 
 ### FSL course task
 
