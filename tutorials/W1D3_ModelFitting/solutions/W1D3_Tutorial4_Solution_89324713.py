@@ -1,3 +1,4 @@
+
 mse_list = []
 order_list = list(range(max_order + 1))
 
@@ -16,7 +17,7 @@ for order in order_list:
 
   mse_list.append(mse)
 
+
+# Visualize MSE of fits
 with plt.xkcd():
-  fig, ax = plt.subplots()
-  ax.bar(order_list, mse_list)
-  ax.set(title='Comparing Polynomial Fits', xlabel='Polynomial order', ylabel='MSE')
+  evaluate_fits(order_list, mse_list)

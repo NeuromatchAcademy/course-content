@@ -31,5 +31,7 @@ def solve_poly_reg(x, y, max_order):
 
 max_order = 5
 theta_hats = solve_poly_reg(x, y, max_order)
+
+# Visualize
 with plt.xkcd():
   plot_fitted_polynomials(x, y, theta_hats)
