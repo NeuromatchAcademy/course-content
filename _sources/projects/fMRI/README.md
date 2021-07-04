@@ -3,12 +3,47 @@
 
 *July 5-23, 2021*
 
-* The HCP task datasets are a great overall choice, because many of the behaviors are interesting (gambling, emotion, language, social, working memory etc), and the data is already preprocessed and averaged across voxels to make brain regions. This dataset is appropriate for all levels.  
+### HCP task datasets
 
-* The FSL course task dataset complements the HCP one, with two additional language tasks. These data are brainwide and at the voxel level.
+The HCP task datasets ([youtube-2020](https://youtube.com/watch?v=iOCcY0QFMS4), [youtube-2021](https://youtube.com/watch?v=nssSiCmbjxw)) are a great overall choice, because many of the behaviors are interesting (gambling, emotion, language, social, working memory etc), and the data is already preprocessed and averaged across voxels to make brain regions. This dataset is appropriate for all levels.  
 
-* HCP retinotopy is a specific kind of project that can be used to do population receptive field modelling. This might be interesting to ML-savy groups because it doesn’t require a lot of neuroscience or FMRI background, and one can visualize the hierarchy of brain areas and their responses.
+|   | Run | View |
+| - | --- | ---- |
+| Task analysis | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp_task.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp_task.ipynb?flush_cache=true) |
+| All datasets loader | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp.ipynb?flush_cache=true) |
 
-* The Kay dataset of visual responses to natural images is intermediate, as it has many voxels in V1/V2/V3/V4 and many images annotated with object label information.
+### FSL course task
 
-* Bonner/Algonauts/Cichy are the most advanced datasets which can be used to do representational (di)similarity analyses on visual response data (static images, videos, or navigation-related images). Specifically designed to go with the two project templates comparing FMRI responses to deep neural networks.
+The FSL course task dataset ([youtube](https://youtube.com/watch?v=ZI-xFYubENw)) complements the HCP one, with two additional language tasks. These data are brainwide and at the voxel level.
+
+|   | Run | View |
+| - | --- | ---- |
+| FSL course task | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_fslcourse.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_fslcourse.ipynb?flush_cache=true) |
+
+### HCP retinotopy
+
+HCP retinotopy ([youtube](https://youtube.com/watch?v=nssSiCmbjxw)) is a specific kind of project that can be used to do population receptive field modelling. This might be interesting to ML-savy groups because it doesn’t require a lot of neuroscience or FMRI background, and one can visualize the hierarchy of brain areas and their responses.
+
+|   | Run | View |
+| - | --- | ---- |
+| HCP retinotopy | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp_retino.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp_retino.ipynb?flush_cache=true) |
+
+### Kay natural images
+
+The Kay dataset ([youtube](https://youtube.com/watch?v=LdJkLyw4yzg)) of visual responses to natural images is intermediate, as it has many voxels in V1/V2/V3/V4 and many images annotated with object label information.
+
+|   | Run | View |
+| - | --- | ---- |
+| Kay natural images | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_kay_images.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_kay_images.ipynb?flush_cache=true) |
+
+### Bonner/Algonauts/Cichy
+
+Bonner ([youtube](https://youtube.com/watch?v=7NggvUlobQQ)) / Cichy ([youtube](https://youtube.com/watch?v=I3_nA_6mq1g)) / Algonauts ([youtube](https://youtube.com/watch?v=TID48cMcneo)) are the most advanced datasets which can be used to do representational (di)similarity analyses on visual response data (static images, videos, or navigation-related images). Specifically designed to go with the two project templates comparing FMRI responses to deep neural networks.
+
+
+|   | Run | View |
+| - | --- | ---- |
+| Bonner navigation | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_bonner_navigational_affordances.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_bonner_navigational_affordances.ipynb?flush_cache=true) |
+| Cichy objects/animals | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_cichy_fMRI_MEG.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_cichy_fMRI_MEG.ipynb?flush_cache=true) |
+| Algonauts video clips | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_algonauts_videos.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_algonauts_videos.ipynb?flush_cache=true) |
+
