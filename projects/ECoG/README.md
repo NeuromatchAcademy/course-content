@@ -2,7 +2,7 @@
 
 *July 5-23, 2021*
 
-New in 2021, we have ECoG datasets from Kai Miller! This is a rare dataset from intracranial electrocorticographic recordings in clinical settings. Please watch Kai Miller's TED talk to familiarize yourself with this type of recording.
+New in 2021, we have ECoG datasets ([youtube](https://youtube.com/watch?v=rAqtrBhwS80)) from Kai Miller! This is a rare dataset from intracranial electrocorticographic recordings in clinical settings. Please watch Kai Miller's TED talk to familiarize yourself with this type of recording.
 
 * The datasets are more or less at the same difficulty level. All datasets are from the same research group, using the same recording methods and standardized protocols.
 
