@@ -10,6 +10,8 @@ New in 2021, we have ECoG datasets ([youtube](https://youtube.com/watch?v=rAqtrB
 
 * For slightly more advanced groups, you should definitely consider the LFPs from the Steinmetz dataset, which are much better suited for exploratory analyses and a wide diversity topics. They are also better for computational projects, because they provide high-dimensional data (lots of neurons) with lots of trials, and they are well supported at NMA, because the Steinmetz dataset has been well curated and annotated in general.  
 
+Credit for data curation: Marius Pachitariu
+
 |   | Run | View |
 | - | --- | ---- |
 | FacesHouses | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/ECoG/load_ECoG_faceshouses.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/ECoG/load_ECoG_faceshouses.ipynb?flush_cache=true) |
