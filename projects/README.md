@@ -6,7 +6,7 @@
 
 # **Project Structure**
 
-The definitive guide to project schedule and structure is in the Daily Guide to Projects, but we include some overview information here.
+The definitive guide to project schedule and structure is in the [Daily Guide to Projects](./projects/docs/project_guidance.md), but we include some overview information here.
 
 The NMA projects are conducted over 14 days, beginning on the first project timeslot after the school opening on July 5.
 The projects are a core part of the summer school, and will teach different skills from those you learn during the course content.
@@ -50,15 +50,15 @@ On July 23, everyone has project presentations during the second half of their t
 
 Below we link all the relevant project materials. This duplicates the information from the Project Booklet, a chapter in the NMA coursebook.
 
-1. [Daily student guide for project](https://docs.google.com/document/d/1MxRkAD-nxWWIGVadxfkDjwPgof1g6v-Ty4UUvFm1BIo/edit?usp=sharing)
+1. [Daily student guide for projects](./projects/docs/project_guidance.md)
 2. Ten steps how-to-model (in construction): <!--[steps1-4](https://colab.research.google.com/drive/1wpGnNIg1Z5DtoSlqIngWCQvAdw-0gMfd?usp=sharing), [modelling_example](https://colab.research.google.com/drive/1jY-QkGtK4CmS2tyGAUhSFhWm7Jw0as0-?usp=sharing) [data_analysis_example](https://colab.research.google.com/drive/1jY-QkGtK4CmS2tyGAUhSFhWm7Jw0as0-?usp=sharing) -->
-3. [Datasets](https://github.com/NeuromatchAcademy/course-content/tree/master/projects) + [videos](https://www.youtube.com/playlist?list=PLkBQOLLbi18ODTckxhgah98JloMLXt4oF): <!--[neurons]() / [fMRI]() / [behavior]() / [ECoG]()-->
-4. Project templates: [slides](https://docs.google.com/presentation/d/1v7fuzi9Y9RV12CysMBi5rxZKhjnWD5Js29UDEvmbzNA/edit?usp=sharing)
+3. [Datasets](./projects) + [videos](): <!--[neurons]() / [fMRI]() / [behavior]() / [ECoG]()-->
+4. Project templates: [slides](./projects/docs/project_templates.md)
 5. Project examples 2020:
    - Neurons: [stringer](https://osf.io/u9gqe/), [steinmetz1](https://osf.io/29vuq/), [steinmetz2](https://osf.io/52wja/), [steinmetz3](https://osf.io/bt4ph/)  
    - FMRI: [kay](https://osf.io/h3z4e/), [hcp1](https://osf.io/td957/), [hcp2](https://osf.io/5fmnq/)
    - Other: [theory](https://osf.io/z7p5v/), [behavior](https://osf.io/hez85/), [eeg](https://osf.io/5r96v/)
-* How to write an abstract (in construction): <!--[guide]() [paper1]() [paper2]() [paper3]()-->
+6. How to write an abstract (in construction): <!--[guide]() [paper1]() [paper2]() [paper3]()-->
 
 
 # **Important deadlines**
@@ -76,7 +76,6 @@ Below we link all the relevant project materials. This duplicates the informatio
  * PROJECTS ARE DUE PRIOR TO THE INTRO FOR W3D5!!
 
 **NMA final day** — Presentation of projects
-
   * The afternoon of the final day of NMA will include project presentations!
 
 
