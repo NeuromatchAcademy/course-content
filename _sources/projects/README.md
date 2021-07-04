@@ -63,7 +63,7 @@ Below we link all the relevant project materials. This duplicates the informatio
 
 # **Important deadlines**
 
-* project day 2:  by end of day, please submit a project proposal via this [Airtable link](). We will use this immediately to match your group with a mentor and a project TA.  
+* project day 2:  by end of day, please submit a project proposal via this [Airtable link](https://airtable.com/shrZWimDB3YddpXDu). We will use this immediately to match your group with a mentor and a project TA.  
 * course day 10:  by end of day, please submit your abstract via this [Airtable link]().  
 * project day 14: by end of day, please submit your slides via this [Airtable link]().  
 
