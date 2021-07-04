@@ -2,15 +2,19 @@
 
 *July 5-23, 2021*
 
-* Everyone should consider the behavior-only datasets that we have, which are very rich with many subjects and many trials.
+Everyone should consider the behavior-only datasets that we have, which are very rich with many subjects and many trials.
 
-* The Caltech dataset has pose-tracking data from socially-interacting mice, and is well supported with code and a project template.
+### Caltech
+
+The Caltech dataset ([youtube](https://youtube.com/watch?v=tDmhmasjPeM)) has pose-tracking data from socially-interacting mice, and is well supported with code and a project template.
 
 |   | Run | View | 
 | - | --- | ---- |
 | Loader notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/behavior/Loading_CalMS21_data.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/behavior/Loading_CalMS21_data.ipynb?flush_cache=true) |
 
-* The IBL dataset is a visual decision-making task, that is very similar to the one used in the Steinmetz dataset.
+### IBL
+
+The IBL dataset ([youtube](https://youtube.com/watch?v=NofrFH8FRZU)) is a visual decision-making task, that is very similar to the one used in the Steinmetz dataset.
 
 |   | Run | View | 
 | - | --- | ---- |
