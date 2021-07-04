@@ -1,3 +1,4 @@
+
 def ordinary_least_squares(X, y):
   """Ordinary least squares estimator for linear regression.
 

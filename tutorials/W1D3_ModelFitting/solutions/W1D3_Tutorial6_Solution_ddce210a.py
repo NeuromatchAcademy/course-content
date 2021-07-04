@@ -1,3 +1,4 @@
+
 def cross_validate(x_train, y_train, max_order, n_splits):
   """ Compute MSE for k-fold validation for each order polynomial
 
@@ -36,15 +37,11 @@ def cross_validate(x_train, y_train, max_order, n_splits):
   return mse_all
 
 
+# Cross-validate
 max_order = 5
 n_splits = 10
+mse_all = cross_validate(x_train, y_train, max_order, n_splits)
 
+# Visualize
 with plt.xkcd():
-  plt.figure()
-
-  mse_all = cross_validate(x_train, y_train, max_order, n_splits)
-  plt.boxplot(mse_all, labels=np.arange(0, max_order + 1))
-
-  plt.xlabel('Polynomial Order')
-  plt.ylabel('Validation MSE')
-  plt.title(f'Validation MSE over {n_splits} splits of the data');
+  plot_cross_validate_MSE(mse_all)

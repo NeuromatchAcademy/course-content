@@ -1,3 +1,4 @@
+
 def make_design_matrix(x, order):
   """Create the design matrix of inputs for use in polynomial regression
 
@@ -26,4 +27,5 @@ def make_design_matrix(x, order):
 
 order = 5
 X_design = make_design_matrix(x, order)
+
 print(X_design[0:2, 0:2])

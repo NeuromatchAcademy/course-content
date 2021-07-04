@@ -1,5 +1,5 @@
 
-def compute_mse(x_train,x_test,y_train,y_test,theta_hats,max_order):
+def compute_mse(x_train, x_test, y_train, y_test, theta_hats, max_order):
   """Compute MSE on training data and test data.
 
   Args:
@@ -20,14 +20,9 @@ def compute_mse(x_train,x_test,y_train,y_test,theta_hats,max_order):
   return mse_train, mse_test
 
 
+# Compute train and test MSE
 mse_train, mse_test = compute_mse(x_train, x_test, y_train, y_test, theta_hats, max_order)
 
+# Visualize
 with plt.xkcd():
-  fig, ax = plt.subplots()
-  width = .35
-
-  ax.bar(np.arange(max_order + 1) - width / 2, mse_train, width, label="train MSE")
-  ax.bar(np.arange(max_order + 1) + width / 2, mse_test , width, label="test MSE")
-
-  ax.legend()
-  ax.set(xlabel='Polynomial order', ylabel='MSE', title ='Comparing polynomial fits');
+  plot_MSE_poly_fits(mse_train, mse_test, max_order)

@@ -20,6 +20,7 @@ for order in order_list:
 
   AIC_list.append(AIC)
 
+# Visualize
 with plt.xkcd():
   plt.bar(order_list, AIC_list)
   plt.ylabel('AIC')
