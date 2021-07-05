@@ -34,9 +34,9 @@ Tips:
 * Use the project booklet like you would a conference booklet: skim through it, read a paragraph here and there, try to decide which of the videos to watch. No one is expected to read through all the materials.
 * No need to have a very concrete project after this day. You will determine the feasibility of your questions in the next few days, and you will likely change your question completely. That’s how research works!  
 
-## W1D2 coursework (Tuesday)
+## W1D2 coursework (Tuesday) + project block 2 (Tuesday for slot 1,3,5 / Wednesday for slot 2,4)
 
-The W1D2 tutorials are set up to launch your projects! Once you're done with them, you will start your literature review. Whatever you don't finish of the literature review you can work on during Project Day 2.
+The W1D2 tutorials are set up to launch your projects. Once you're done with them, you will complete your literature review. During the next available project block, you will finalize your project groups, and create your project proposal: a short, unstructured proposal about what you’d like to do. We will use the project proposal to match your group to a mentor based on their research interests (think of the matching as done by “keywords”, but in an automated manner).
 
 (3h) Complete the intro/tutorial/outro for this day
 * You will need to use your own project for some of this content. If you don’t yet have concrete ideas, or you haven’t done a research project before, use one of the provided project templates to walk through the four steps.
@@ -44,20 +44,14 @@ The W1D2 tutorials are set up to launch your projects! Once you're done with the
 * Try to write down a few sentences for each of the four steps applied to your project. You will re-use these in your proposal later today.  
 
 (2.5h) Literature review: identify interesting papers
-
 The goal of this literature review is to situate your question in context and help you acquire some keywords that you will use in your proposal today.
 * (30min) on your own, start doing a literature review using google searches and only look at abstracts to select 2-3 promising ones.  
 * (10min) report to the whole group what papers you found and pool them together. Assign one paper per person to read/skim in the next 1h.  
 * (1h) on your own, read the paper that was assigned to you. Make notes in a common google doc shared with your group, and especially write down important keywords or concepts which you might use in your proposal later today. If you are not connected to an .edu domain or a VPN, try to find full versions of papers on preprint servers like arXiv / bioRxiv. You could also ask your TA to get it for you (and they might in turn ask someone who has access to a university VPN). There might be other options too…  
 * (1h) report back to the group, and try to tell them as much as you understood about the paper. Get into details, but don’t just read to them whole sections from the paper. Ask the other students questions about the papers they are presenting to understand them better.
 
-## Project Day 2 (3-4 h)
-
-This time block happens either after coursework on Tuesday (timeslots 1,3,5) or before coursework Wednesday (timeslots 2,4).
-
-Project launch day! By the end of the project day, you should: 1) finalize group assignments; 2) have a short, unstructured proposal about what you’d like to do. We will use this to match your group to a mentor based on their research interests (think of the matching as done by “keywords”, but in an automated manner).
-
-(2.5h) Project proposal
+Project block task:
+(3h) Project proposal
 * Try to write a proposal for this project based on the way you understand it now. This should re-use some of the text you wrote down for the four steps, and should include keywords and concepts that you identified in your literature review. Don’t worry too much about the structure of this paragraph! The goal is to get as many words (200-300) on paper as possible. You have the entire day 10 to learn how to write a properly structured scientific abstract.
 * It is important to include the concepts which you identified as relevant, and the keywords that go with them. This will allow us to identify mentors whose research covers your interests.   
 * You should submit your proposal into the [Airtable form](https://airtable.com/shrZWimDB3YddpXDu) at the end of this day. Remember that only an algorithm will read it, so it definitely doesn’t need to be perfect!
