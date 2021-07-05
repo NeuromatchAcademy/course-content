@@ -55,7 +55,7 @@ On July 23, everyone has project presentations during the second half of their t
 Below we link all the relevant project materials.These are available either on github or in the jupyterbook.
 
 1. [Daily student guide for projects](./docs/project_guidance.md)
-2. Ten steps how-to-model --[steps1-4](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D2_ModelingPractice/student/W1D2_Tutorial1.ipynb), [steps5-10](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D2_ModelingPractice/student/W1D2_Tutorial1.ipynb), [modelling_example](https://colab.research.google.com/drive/1jY-QkGtK4CmS2tyGAUhSFhWm7Jw0as0-?usp=sharing) [data_analysis_example](https://colab.research.google.com/drive/1jY-QkGtK4CmS2tyGAUhSFhWm7Jw0as0-?usp=sharing)
+2. Ten steps how-to-model --[steps1-4](https://compneuro.neuromatch.io/projects/modelingsteps/ModelingSteps_1through4.html), [steps5-10](https://compneuro.neuromatch.io/projects/modelingsteps/ModelingSteps_5through10.html), [modelling_example](https://compneuro.neuromatch.io/projects/modelingsteps/TrainIllusionModel.html) [data_analysis_example](https://compneuro.neuromatch.io/projects/modelingsteps/TrainIllusionDataProject.html)
 3. Datasets + videos: [neurons](./neurons) / [fMRI](./fMRI) / [ECoG](./ECoG) / [behavior](./behavior) / [theory](./theory)
 4. Project templates: [slides](./docs/project_templates.md)
 5. Project examples 2020:
