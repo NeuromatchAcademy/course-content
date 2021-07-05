@@ -1,6 +1,6 @@
-# Project Templates
+# Project Templates 
 
-Click on each image below to see a full browser version! 
+Click on each image below to see a full browser version!
 
 # Flow of information through the brain during a sensorimotor task
 
