@@ -1,3 +1,4 @@
+
 def count_non_zero_coefs(X, y, C_values):
   """Fit models with different L1 penalty values and count non-zero coefficients.
 
@@ -18,7 +19,7 @@ def count_non_zero_coefs(X, y, C_values):
     model = LogisticRegression(penalty="l1", C=C, solver="saga", max_iter=5000)
     model.fit(X,y)
 
-    # Get the coefs of the fit model
+    # Get the coefs of the fit model (in sklearn, we can do this using model.coef_)
     coefs = model.coef_
 
     # Count the number of non-zero elements in coefs
@@ -27,10 +28,13 @@ def count_non_zero_coefs(X, y, C_values):
 
   return non_zero_coefs
 
+
 # Use log-spaced values for C
 C_values = np.logspace(-4, 4, 5)
 
+# Count non zero coefficients
 non_zero_l1 = count_non_zero_coefs(X, y, C_values)
 
+# Visualize
 with plt.xkcd():
   plot_non_zero_coefs(C_values, non_zero_l1, n_voxels=X.shape[1])

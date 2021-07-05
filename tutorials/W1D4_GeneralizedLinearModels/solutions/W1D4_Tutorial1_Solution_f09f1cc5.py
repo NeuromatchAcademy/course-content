@@ -1,3 +1,4 @@
+
 def neg_log_lik_lnp(theta, X, y):
   """Return -loglike for the Poisson GLM model.
 
@@ -43,7 +44,10 @@ def fit_lnp(stim, spikes, d=25):
   return res["x"]
 
 
+# Fit LNP model
 theta_lnp = fit_lnp(stim, spikes)
+
+# Visualize
 with plt.xkcd():
   plot_spike_filter(theta_lg[1:], dt_stim, color=".5", label="LG")
   plot_spike_filter(theta_lnp[1:], dt_stim, label="LNP")

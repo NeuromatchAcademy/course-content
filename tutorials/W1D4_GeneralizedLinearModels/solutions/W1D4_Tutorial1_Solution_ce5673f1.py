@@ -1,3 +1,4 @@
+
 def make_design_matrix(stim, d=25):
   """Create time-lag design matrix from stimulus intensity vector.
 
@@ -21,6 +22,10 @@ def make_design_matrix(stim, d=25):
 
   return X
 
+
+# Make design matrix
+X = make_design_matrix(stim)
+
+# Visualize
 with plt.xkcd():
-  X = make_design_matrix(stim)
   plot_glm_matrices(X, spikes, nt=50)
