@@ -1,5 +1,6 @@
-# Timezone widget
+ # Timezone widget
 
+```{div}
 <html lang="en">
 <head>
 <title>Slot selector</title>
@@ -18,15 +19,15 @@
         <div class="card-body">
 
 <div>
-<br/>Students and TAs work on <span style = "color:blue">coursework</span>
- and <span style = "color:red">projects</span>. Mentors help with
- <span style = "color:red">projects</span> only.
- See times for coursework and projects in each slot below
+    <br/>Students and TAs work on <span style = "color:blue"><b>synchronous coursework</b></span>
+    and <span style = "color:red"><b>projects</b></span> in times below. (Mentors help in 
+ <span style = "color:red">projects</span> time only. )
+ See times for coursework and projects in each slot below 
  in your local timezone. <br>
 <br>
 </div>
 
-<span style = "font-size:13pt; color:red; font-weight:bold"><i> CHOOSE YOUR TIMEZONE:</i></span> <select class="js-Selector" onchange="onChange()" id='timezone'>
+<span style = "font-size:13pt; color:green; font-weight:bold"><i> CHOOSE YOUR TIMEZONE:</i></span> <select class="js-Selector" onchange="onChange()" id='timezone'>
 </select>
 <br><br>
 <p><span style = "font-size:13pt;"><i> Course times:</i></span></p>
@@ -44,16 +45,16 @@
 </div>
 
 <script>
-// Adapted from https://matall.in/posts/building-an-usable-timezone-selector/
+// Adapted from https://matall.in/posts/building-an-usable-timezone-selector/ 
 
 const _t = (s) => {
     if (i18n !== void 0 && i18n[s]) {
       return i18n[s];
     }
-
+  
     return s;
   };
-
+  
   const timezones = [
     "Etc/GMT+12",
     "Pacific/Midway",
@@ -132,7 +133,7 @@ const _t = (s) => {
     "Pacific/Auckland",
     "Pacific/Tongatapu"
   ];
-
+  
   const i18n = {
     "Etc/GMT+12": "International Date Line West",
     "Pacific/Midway": "Midway Island, Samoa",
@@ -211,7 +212,7 @@ const _t = (s) => {
     "Pacific/Auckland": "Auckland, Wellington",
     "Pacific/Tongatapu": "Nuku'alofa"
   }
-
+  
   const selectorOptions = moment.tz.names()
     .filter(tz => {
       return timezones.includes(tz)
@@ -221,7 +222,7 @@ const _t = (s) => {
         name: tz,
         offset: moment.tz(tz).utcOffset()
       });
-
+      
       return memo;
     }, [])
     .sort((a, b) => {
@@ -229,24 +230,24 @@ const _t = (s) => {
     })
     .reduce((memo, tz) => {
       const timezone = tz.offset ? moment.tz(tz.name).format('Z') : '';
-
+  
       return memo.concat(`<option value="${tz.name}">(GMT${timezone}) ${_t(tz.name)}</option>`);
     }, "");
-
+    
   document.querySelector(".js-Selector").innerHTML = selectorOptions;
-
+  
   /*
   $(".js-Selector").on("change", e => {
     const timestamp = dateTimeUtc.unix();
     const offset = moment.tz(e.target.value).utcOffset() * 60;
     const dateTimeLocal = moment.unix(timestamp + offset).utc();
-
+  
     document.querySelector(".js-TimeLocal").innerHTML = dateTimeLocal.format("ddd, DD MMM YYYY HH:mm:ss");
   });
   */
-
+  
   document.querySelector(".js-Selector").value = "";
-
+  
   function formatTime(time) {
       if(time == '00:00') {
         return '00:00 (midnight)';
@@ -260,33 +261,33 @@ const _t = (s) => {
         }
     }
   }
-
+  
   function onChange() {
-    var startTimes0 = {'1': ['00:30', '9:00'],
+    var startTimes0 = {'1': ['00:30', '09:00'],
                       '2': ['04:00', '12:30'],
                       '3': ['07:30', '16:00'],
                       '4': ['14:00', '22:30'],
                       '5': ['17:30', '02:00']}
-
+    
     var startTimes = {'1': ['00:30', '05:00'],
                         '2': ['07:30', '12:00'],
                         '3': ['07:30', '12:00'],
                         '4': ['17:30', '22:00'],
                         '5': ['17:30', '22:00']}
 
-    var startTimes2 = {'1': ['06:00', '9:00'],
+    var startTimes2 = {'1': ['06:00', '09:00'],
                         '2': ['04:00', '07:00'],
                         '3': ['13:00', '16:00'],
                         '4': ['14:00', '17:00'],
                         '5': ['23:00', '02:00']}
-
+    
     var regions = {'1': 'Eastern Asia / Australia',
                    '2': 'Middle East / India',
                    '3': 'Europe / Africa',
                    '4': 'Eastern Americas',
                    '5': 'Western Americas'}
 
-
+    
 
       var deltas = []
       for(var prop in startTimes0) {
@@ -295,17 +296,17 @@ const _t = (s) => {
       deltas.push(Math.abs(fracHour - 8.6));
     }
     var bestDelta = deltas.indexOf(Math.min.apply(Math, deltas));
-
-
+  
+  
     var theStr = "<p>";
     var i = 0;
     for(var prop in startTimes) {
         var startTime = moment.tz("2021-07-13 " + startTimes[prop][0], "UTC").clone().tz(document.getElementById('timezone').value).format().substr(11, 5);
         var endTime = moment.tz("2021-07-13 " + startTimes[prop][1], "UTC").clone().tz(document.getElementById('timezone').value).format().substr(11, 5);
-
+        
         var startTime2 = moment.tz("2021-07-13 " + startTimes2[prop][0], "UTC").clone().tz(document.getElementById('timezone').value).format().substr(11, 5);
         var endTime2 = moment.tz("2021-07-13 " + startTimes2[prop][1], "UTC").clone().tz(document.getElementById('timezone').value).format().substr(11, 5);
-
+        
 
       var bold = false;
         if( bestDelta == i) {
@@ -321,28 +322,28 @@ const _t = (s) => {
           theStr += ""
       }
       if(prop.valueOf() === new String("2").valueOf() || prop.valueOf() === new String("4").valueOf()){
-        theStr += "</u> projects are " +
-                '<span style = "color:red;font-family:monospace;font-size:12pt;">' + formatTime(startTime2) + " - " +
+        theStr += "</u> projects are " + 
+                '<span style = "color:red;font-family:monospace;font-size:12pt;">' + formatTime(startTime2) + " - " + 
                   formatTime(endTime2)+'</span> local time;';
-        theStr += "<br> synchronous coursework is " +
-                '<span style = "color:blue;font-family:monospace;font-size:12pt;">' + formatTime(startTime) + " - " +
+        theStr += "<br> coursework is " + 
+                '<span style = "color:blue;font-family:monospace;font-size:12pt;">' + formatTime(startTime) + " - " + 
                   formatTime(endTime)+'</span> local time;';
     }
-    else {
-    theStr += "</u> synchronous coursework is " +
-                '<span style = "color:blue;font-family:monospace;font-size:12pt;">' + formatTime(startTime) + " - " +
+    else {    
+    theStr += "</u> coursework is " + 
+                '<span style = "color:blue;font-family:monospace;font-size:12pt;">' + formatTime(startTime) + " - " + 
                   formatTime(endTime)+'</span> local time;';
-      theStr += "<br> projects are " +
-                '<span style = "color:red;font-family:monospace;font-size:12pt;">' + formatTime(startTime2) + " - " +
+      theStr += "<br> projects are " + 
+                '<span style = "color:red;font-family:monospace;font-size:12pt;">' + formatTime(startTime2) + " - " + 
                   formatTime(endTime2)+'</span> local time;';
                 }
-
+                
     theStr += "</p>"
       i++;
     }
     document.getElementById('times').innerHTML = theStr;
   }
-
+  
   onChange();
 
 </script>
@@ -354,3 +355,4 @@ const _t = (s) => {
 </div>
 </div>
 </body></html>
+```
