@@ -1385,7 +1385,7 @@
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "32bcad39bf8e497fa1a4190491c323be"}
+{"version_major": 2, "version_minor": 0, "model_id": "8c1bce49ca88470d98c7f12be419ca2e"}
 </script></div>
 </div>
 </div>
@@ -1707,7 +1707,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3070</span><span class="o">/</span><span class="mf">1944240018.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3195</span><span class="o">/</span><span class="mf">1944240018.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">mnist</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'mnist_784'</span><span class="p">,</span> <span class="n">as_frame</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">X</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">data</span>
@@ -1763,11 +1763,46 @@
 <span class="g g-Whitespace">    </span><span class="mi">276</span>         <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="n">col_slice_x</span><span class="p">]</span>
 
 <span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/externals/_arff.py</span> in <span class="ni">decode_rows</span><span class="nt">(self, stream, conversors)</span>
-<span class="g g-Whitespace">    </span><span class="mi">473</span>                     <span class="k">raise</span> <span class="n">BadDataFormat</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">474</span> 
-<span class="ne">--&gt; </span><span class="mi">475</span>             <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode_values</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">conversors</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">476</span> 
-<span class="g g-Whitespace">    </span><span class="mi">477</span>     <span class="nd">@staticmethod</span>
+<span class="g g-Whitespace">    </span><span class="mi">460</span> 
+<span class="g g-Whitespace">    </span><span class="mi">461</span>     <span class="k">def</span> <span class="nf">decode_rows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">conversors</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">462</span>         <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">463</span>             <span class="n">values</span> <span class="o">=</span> <span class="n">_parse_values</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">464</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/externals/_arff.py</span> in <span class="ni">stream</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">863</span> 
+<span class="g g-Whitespace">    </span><span class="mi">864</span>         <span class="k">def</span> <span class="nf">stream</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">865</span>             <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">866</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_current_line</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="g g-Whitespace">    </span><span class="mi">867</span>                 <span class="n">row</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/sklearn/datasets/_openml.py</span> in <span class="ni">_stream_checksum_generator</span><span class="nt">(response)</span>
+<span class="g g-Whitespace">    </span><span class="mi">506</span> 
+<span class="g g-Whitespace">    </span><span class="mi">507</span>         <span class="k">def</span> <span class="nf">_stream_checksum_generator</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">508</span>             <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">509</span>                 <span class="n">actual_md5_checksum</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">510</span>                 <span class="k">yield</span> <span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/gzip.py</span> in <span class="ni">readline</span><span class="nt">(self, size)</span>
+<span class="g g-Whitespace">    </span><span class="mi">383</span>     <span class="k">def</span> <span class="nf">readline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">384</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_check_not_closed</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">385</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="o">.</span><span class="n">readline</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">386</span> 
+<span class="g g-Whitespace">    </span><span class="mi">387</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/_compression.py</span> in <span class="ni">readinto</span><span class="nt">(self, b)</span>
+<span class="g g-Whitespace">     </span><span class="mi">66</span>     <span class="k">def</span> <span class="nf">readinto</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span>         <span class="k">with</span> <span class="nb">memoryview</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">as</span> <span class="n">view</span><span class="p">,</span> <span class="n">view</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s2">"B"</span><span class="p">)</span> <span class="k">as</span> <span class="n">byte_view</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">68</span>             <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">byte_view</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span>             <span class="n">byte_view</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)]</span> <span class="o">=</span> <span class="n">data</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span>         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/gzip.py</span> in <span class="ni">read</span><span class="nt">(self, size)</span>
+<span class="g g-Whitespace">    </span><span class="mi">480</span>             <span class="n">buf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">DEFAULT_BUFFER_SIZE</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">481</span> 
+<span class="ne">--&gt; </span><span class="mi">482</span>             <span class="n">uncompress</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decompressor</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">483</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decompressor</span><span class="o">.</span><span class="n">unconsumed_tail</span> <span class="o">!=</span> <span class="sa">b</span><span class="s2">""</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">484</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">prepend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_decompressor</span><span class="o">.</span><span class="n">unconsumed_tail</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -1815,8 +1850,8 @@
 <div class="section" id="section-2-calculate-the-variance-explained">
 <h1>Section 2: Calculate the variance explained<a class="headerlink" href="#section-2-calculate-the-variance-explained" title="Permalink to this headline">¶</a></h1>
 <p>The scree plot suggests that most of the eigenvalues are near zero, with fewer than 100 having large values. Another common way to determine the intrinsic dimensionality is by considering the variance explained. This can be examined with a cumulative plot of the fraction of the total variance explained by the top <span class="math notranslate nohighlight">\(K\)</span> components, i.e.,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f4492384-19d3-485f-a3fd-8cf112b7925e">
-<span class="eqno">(102)<a class="headerlink" href="#equation-f4492384-19d3-485f-a3fd-8cf112b7925e" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a08d291e-35e4-49fe-b40b-0c36eadbc72b">
+<span class="eqno">(119)<a class="headerlink" href="#equation-a08d291e-35e4-49fe-b40b-0c36eadbc72b" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \text{var explained} = \frac{\sum_{i=1}^K \lambda_i}{\sum_{i=1}^N \lambda_i}
 \end{equation}\]</div>
 <p>The intrinsic dimensionality is often quantified by the <span class="math notranslate nohighlight">\(K\)</span> necessary to explain a large proportion of the total variance of the data (often a defined threshold, e.g., 90%).</p>
@@ -1895,18 +1930,18 @@
 <div class="cell tag_remove-input docutils container">
 </div>
 <p>Now we have seen that the top 100 or so principal components of the data can explain most of the variance. We can use this fact to perform <em>dimensionality reduction</em>, i.e., by storing the data using only 100 components rather than the samples of all 784 pixels. Remarkably, we will be able to reconstruct much of the structure of the data using only the top 100 components. To see this, recall that to perform PCA we projected the data <span class="math notranslate nohighlight">\(\bf X\)</span> onto the eigenvectors of the covariance matrix:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ad02c190-4b46-4c7d-80b0-af22ea8a149e">
-<span class="eqno">(103)<a class="headerlink" href="#equation-ad02c190-4b46-4c7d-80b0-af22ea8a149e" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-161ebb37-a7fb-4c4b-a43a-1e44e016b5b0">
+<span class="eqno">(120)<a class="headerlink" href="#equation-161ebb37-a7fb-4c4b-a43a-1e44e016b5b0" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \bf S = X W
 \end{equation}\]</div>
 <p>Since <span class="math notranslate nohighlight">\(\bf W\)</span> is an orthogonal matrix, <span class="math notranslate nohighlight">\({\bf W}^{-1} = {\bf W}^T\)</span>. So by multiplying by <span class="math notranslate nohighlight">\({\bf W}^T\)</span> on each side we can rewrite this equation as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c144567d-a28c-4d82-bab6-d65b644013d0">
-<span class="eqno">(104)<a class="headerlink" href="#equation-c144567d-a28c-4d82-bab6-d65b644013d0" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3be3d878-3172-4b35-9e47-87b2febe07be">
+<span class="eqno">(121)<a class="headerlink" href="#equation-3be3d878-3172-4b35-9e47-87b2febe07be" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 {\bf X = S W}^T.
 \end{equation}\]</div>
 <p>This now gives us a way to reconstruct the data matrix from the scores and loadings. To reconstruct the data from a low-dimensional approximation, we just have to truncate these matrices.  Let’s call <span class="math notranslate nohighlight">\({\bf S}_{1:K}\)</span> and <span class="math notranslate nohighlight">\({\bf W}_{1:K}\)</span> as keeping only the first <span class="math notranslate nohighlight">\(K\)</span> columns of this matrix. Then our reconstruction is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2bc42482-2188-431b-863b-391afb24d9a0">
-<span class="eqno">(105)<a class="headerlink" href="#equation-2bc42482-2188-431b-863b-391afb24d9a0" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-11893763-5362-482b-a269-a06199599d53">
+<span class="eqno">(122)<a class="headerlink" href="#equation-11893763-5362-482b-a269-a06199599d53" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 {\bf \hat X = S}_{1:K} ({\bf W}_{1:K})^T.
 \end{equation}\]</div>
 </div>
