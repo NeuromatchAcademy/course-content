@@ -30,7 +30,7 @@ Daily project time is either:
  - Early — 3h before content (time slots 2,4)
  - Late  — 3h after content (time slots 1,3,5)
 
- For those of you whose project slot is before tutorials (slots 2,4), there is no project time on the first day of the course - you simply show up to tutorials that day. For those of you whose project slot is after tutorials (slots 1,3,5), there is no project time on the last day of the course - there is a wrap up project presentation session during the tutorial block that day and then the course ends. Your project proposals (used for mentor matching) are due at the end of the project day 2 block - this is either:
+ For those of you whose project slot is before tutorials (slots 2,4), there is no project time on the first day of the course - you simply show up to tutorials that day. For those of you whose project slot is after tutorials (slots 1,3,5), there is no project time on the last day of the course - there is a wrap up project presentation session during the tutorial block that day and then the course ends. Your project proposals (used for mentor matching) are due at the end of the project block 2 - this is either:
 
  - July 6, any time for Slots 1,3,5
  - July 7, right after the projects time for Slots 2,4 (but before you start coursework on this day)
@@ -39,14 +39,14 @@ Daily project time is either:
 
 | date | Slot 1 | Slot 2 | Slot 3 | Slot 4 | Slot 5 |
 | --- | --- | --- | --- | --- | --- |
-| July 5 | project day 1 | empty | project day 1 | empty | project day 1 |
-| July 6 | project day 2 | project day 1 | project day 2 | project day 1 | project day 2 |
-| July 7 | ... | project day 2 | ... | project day 2 | ... |
+| July 5 | project block 1 | empty | project block 1 | empty | project block 1 |
+| July 6 | project block 2 | project block 1 | project block 2 | project block 1 | project block 2 |
+| July 7 | ... | project block 2 | ... | project block 2 | ... |
 | ... | ... | ... | ... | ... | ... |
 | July 16 | abstract day | abstract day | abstract day | abstract day | abstract day |
 | ... | ... | ... | ... | ... | ... |
-| July 22 | project day 14 | ... | project day 14 | ... | project day 14 |
-| July 23 | empty | project day 14 | empty | project day 14 | empty |
+| July 22 | project block 14 | ... | project block 14 | ... | project block 14 |
+| July 23 | empty | project block 14 | empty | project block 14 | empty |
 
 On July 23, everyone has project presentations during the second half of their tutorial block!
 
@@ -67,11 +67,11 @@ Below we link all the relevant project materials.These are available either on g
 
 # **Important deadlines**
 
-* project day 2:  by end of day, please submit a project proposal via this [Airtable link](https://airtable.com/shrZWimDB3YddpXDu). We will use this immediately to match your group with a mentor and a project TA.  
+* project block 2:  by end of block, please submit a project proposal via this [Airtable link](https://airtable.com/shrZWimDB3YddpXDu). We will use this immediately to match your group with a mentor and a project TA.  
 * course day 10:  by end of day, please submit your abstract via this [Airtable link]() (not yet available).  
-* project day 14: by end of day, please submit your slides via this [Airtable link]() (not yet available).  
+* project block 14: by end of block, please submit your slides via this [Airtable link]() (not yet available).  
 
-**Project day 14** — Prepare project presentation
+**Project block 14** — Prepare project presentation
  * Groups make a five minute project presentation
  * RESULTS ARE OPTIONAL! We would like you to present your experience, and results if you happen to have them
  * All group members should contribute to the presentation!
@@ -80,4 +80,4 @@ Below we link all the relevant project materials.These are available either on g
  * PROJECTS ARE DUE PRIOR TO THE INTRO FOR W3D5!!
 
 **NMA final day** — Presentation of projects
-  * The afternoon of the final day of NMA will include project presentations!
+  * The second half of W3D5 tutorial time is dedicated to project presentations!

@@ -17,7 +17,7 @@ Project TAs are a new role at NMA this year, and they are your friendly dataset 
 
 In later days, project TAs will be assigned meetings with junior groups, but can also be recruited to senior groups for meetings when you need them. For the assigned meetings, project TAs will generally come only during project times, but sometimes they might need to schedule meetings slightly earlier or later. We encourage you to reach out to them for extra meetings whenever you need them, and to post questions on discord in the #dataset-X channels. All project TAs have time set aside specifically to answer discord questions and to provide additional meetings when necessary.
 
-## Project Day 1 (3 h)
+## Project Block 1 (3 h)
 
 This time block happens either after coursework on Monday (timeslots 1,3,5) or before coursework Tuesday (timeslots 2,4).
 
