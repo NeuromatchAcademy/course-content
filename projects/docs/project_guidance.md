@@ -86,7 +86,7 @@ Over the next two weeks, you will iterate between refining your question and try
 
 ## Block 6 (2-3h)
 
-You should now have a sense of the data, and you have probably refined your hypothesis a little. You might have a vague idea of what it would take for your project to work, what tools you might use, and what the answer could look like. Let’s make these things explicit, by continuing with steps 6-9 of the modelling practice in this [steps 5-10 notebook](https://colab.research.google.com/drive/10689_o9Aea0PImoVhZ26IVxfK9sRHRuM?usp=sharing#scrollTo=r2LGmCJ5rU0J).
+You should now have a sense of the data, and you have probably refined your hypothesis a little. You might have a vague idea of what it would take for your project to work, what tools you might use, and what the answer could look like. Let’s make these things explicit, by continuing with steps 6-9 of the modelling practice in this [steps 5-10 notebook](https://compneuro.neuromatch.io/projects/modelingsteps/ModelingSteps_5through10.html).
 
 * (0.5h) Go through the first five steps again with your own refined question. Try to write down what the steps looks like for your data.
 * (1-2h) Go through steps 6-10 for the example project in the new notebook and watch the videos.
