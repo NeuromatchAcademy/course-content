@@ -6,7 +6,7 @@
 
 # **Project Structure**
 
-The definitive guide to project schedule and structure is in the [Daily Guide to Projects](./projects/docs/project_guidance.md), but we include some overview information here.
+The definitive guide to project schedule and structure is in the [Daily Guide to Projects](./docs/project_guidance.md), but we include some overview information here.
 
 The NMA projects are conducted over 14 days, beginning on the first project timeslot after the school opening on July 5.
 The projects are a core part of the summer school, and will teach different skills from those you learn during the course work.
@@ -54,10 +54,10 @@ On July 23, everyone has project presentations during the second half of their t
 
 Below we link all the relevant project materials.These are available either on github or in the jupyterbook.
 
-1. [Daily student guide for projects](./projects/docs/project_guidance.md)
+1. [Daily student guide for projects](./docs/project_guidance.md)
 2. Ten steps how-to-model --[steps1-4](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D2_ModelingPractice/student/W1D2_Tutorial1.ipynb), [steps5-10](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W1D2_ModelingPractice/student/W1D2_Tutorial1.ipynb), [modelling_example](https://colab.research.google.com/drive/1jY-QkGtK4CmS2tyGAUhSFhWm7Jw0as0-?usp=sharing) [data_analysis_example](https://colab.research.google.com/drive/1jY-QkGtK4CmS2tyGAUhSFhWm7Jw0as0-?usp=sharing)
-3. Datasets + videos: [neurons](./projects/neurons) / [fMRI](./projects/fMRI) / [ECoG](./projects/ECoG) / [behavior](./projects/behavior) / [theory](./projects/theory)
-4. Project templates: [slides](./projects/docs/project_templates.md)
+3. Datasets + videos: [neurons](./neurons) / [fMRI](./fMRI) / [ECoG](./ECoG) / [behavior](./behavior) / [theory](./theory)
+4. Project templates: [slides](./docs/project_templates.md)
 5. Project examples 2020:
    - Neurons: [stringer](https://osf.io/u9gqe/), [steinmetz1](https://osf.io/29vuq/), [steinmetz2](https://osf.io/52wja/), [steinmetz3](https://osf.io/bt4ph/)  
    - FMRI: [kay](https://osf.io/h3z4e/), [hcp1](https://osf.io/td957/), [hcp2](https://osf.io/5fmnq/)
