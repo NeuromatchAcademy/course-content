@@ -6,7 +6,7 @@
 
 The Steinmetz dataset ([youtube](https://www.youtube.com/watch?v=WXn4-FpVaOo)) contains 39 Neuropixels recordings of 400-700 neurons each from across the mouse brain during a visual behavior task. This dataset was used by the most groups last year, as it is great for exploratory analyses and is relatively well supported with code and many included experimental and behavioral variables. You should still try to ask specific questions, i.e.: "does the superior colliculus offer a parallel or complementary visual processing pathway to visual cortex?"
 
-Credit for data curation: Marius Pachitariu
+Credit for data curation: Marius Pachitariu, Scott Linderman
 
 |   | Run | View |
 | - | --- | ---- |
