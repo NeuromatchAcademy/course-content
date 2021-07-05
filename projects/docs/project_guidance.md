@@ -56,7 +56,7 @@ Project block task:
 * It is important to include the concepts which you identified as relevant, and the keywords that go with them. This will allow us to identify mentors whose research covers your interests.   
 * You should submit your proposal into the [Airtable form](https://airtable.com/shrZWimDB3YddpXDu) at the end of this day. Remember that only an algorithm will read it, so it definitely doesn’t need to be perfect!
 
-## Day 3 (2-3 h)
+## Block 3 (2-3 h)
 
 You should now get your hands dirty by running some of the notebooks provided for your dataset. There should be a loading notebook, and there should be some further analysis notebooks interspersed among the project templates. Even if you are not using a project template, they are likely to contain useful code to get you started, especially if you are doing a theory project.
 
@@ -64,7 +64,7 @@ You should now get your hands dirty by running some of the notebooks provided fo
 * Most of this day you should be getting familiar with the data/model, and making exploratory plots.
 * If all you do is run the provided notebooks that’s fine! Try to understand what is being plotted and how. Pay attention to the code libraries being used, and the way the data is accessed / binned / aligned. You will reuse some of these code elements to start doing your own analyses in later days.
 
-## Days 4-5
+## Blocks 4-5
 
 Over the next two weeks, you will iterate between refining your question and trying to answer it. Be on the lookout for interesting hypotheses. You might notice something weird in the data, and if you dig deeper it might lead you directly to a result. For this to work, you must keep an open mind about what your questions are. If you feel like your question is starting to change, go back to Steps1-5 and see if it’s easier to formulate those steps with the new question. A good question/hypothesis makes the 5 steps really easy to think through. Here are some generally useful tips & tricks:
 
@@ -84,7 +84,7 @@ Over the next two weeks, you will iterate between refining your question and try
    * There are many “nonlinear dimensionality reduction” methods like t-SNE / ISOMAP, but these are often not meant as replacements for PCA, but instead as visualization tools to try to see a clustering structure in your data. They can be useful for making hypotheses based on interesting-looking plots. You still need to validate those hypotheses using simpler methods, like clustering and PCA.
    * There are many nonlinear clustering models like hdbscan and spectral clustering, but those are fickle for high-dimensional data and difficult to interpret. You will have to carefully try different parameters, and think through what the clusters mean.
 
-## Day 6 (2-3h)
+## Block 6 (2-3h)
 
 You should now have a sense of the data, and you have probably refined your hypothesis a little. You might have a vague idea of what it would take for your project to work, what tools you might use, and what the answer could look like. Let’s make these things explicit, by continuing with steps 6-9 of the modelling practice in this [steps 5-10 notebook](https://colab.research.google.com/drive/10689_o9Aea0PImoVhZ26IVxfK9sRHRuM?usp=sharing#scrollTo=r2LGmCJ5rU0J).
 
@@ -92,7 +92,7 @@ You should now have a sense of the data, and you have probably refined your hypo
 * (1-2h) Go through steps 6-10 for the example project in the new notebook and watch the videos.
 * (1-2h) The rest of the day, start thinking what these steps would look like for your project, without actually doing the steps. Do you need to select a toolkit and where can you find some options? Do you need to implement a model? Don’t actually implement the model on this day! Try to complete the low-hanging fruit first, because you’ll have the rest of this week and next for the actual full implementation of your project.
 
-## Days 7-9 (2-3h / day)
+## Blocks 7-9 (2-3h / day)
 
 Leading up to day 10, you will implement Steps 5-9 in your project. If you are already experienced with research projects, this might just look like a continuation of last week and you don’t need to stick to the steps too closely. If you are not so experienced, you could benefit from implementing the steps one after the other, perhaps at a rate of 1 step / day.
 
@@ -121,7 +121,7 @@ Back in your group
 * (1-2h) Has the abstract refined or changed your question? Use the rest of this day to make a concrete plan for the final week of your project. If you already answered your question, then you will need to plan control analyses, maybe including some simulated data that you need to also generate yourself.
 
 
-## Days 11-14
+## Blocks 11-14
 
 Abstract writing day should have helped you narrow down what results (positive or negative) you would actually need to answer your question. You will use the rest of this time to try to get a result, or make progress towards an answer. This might not work out in such a short time, but don’t get discouraged: this part normally takes months if not years of work.
 
@@ -130,7 +130,7 @@ Abstract writing day should have helped you narrow down what results (positive o
 * If you find a negative answer to your question, that is absolutely ok! Please do report that. Then go back and think about how this affects your initial hypothesis. Does it rule it out, or could there be limitations in this particular data that lead to the negative result? What other data would you collect that would be better suited for answering this question. Try to design a new experiment in very specific detail and tell us about it. Who knows, somebody might run that experiment someday!
 * If you find a positive result to your question, then you should spend the rest of your time validating it to make absolutely sure it is really true. You will need to design controls using the data (shuffling controls), or using simulated data, and you need to check the logic of your pipeline from start to end. Did you accidentally select only neurons that were tuned to a behavior, and then showed that they respond to particular aspects of that behavior? Did you sort neurons by their peak response time and then found sequences in your data? There are some obvious and some not-so-obvious circular analyses that can catch even experienced researchers off-guard. This is what the controls are especially useful at catching.  
 
-## Day 15
+## Day 15 (Friday tutorial block for everyone)
 
 * This is the day where you tell your superpod about your project. The groups will take turns to share their screens. You can use figures and other graphics, but this is meant to be told as a story, and everyone from your group should take a turn telling a part of the story. Tell us about the different hypotheses you’ve had at different points and how you refined them using some of the tools we taught. If the tools were not useful, tell us why, and tell us what you did instead to make progress, or to get unstuck when you didn’t know what to do.
 * Most groups won’t have a result and this is absolutely normal. However, the main goal anyway is to communicate the logic of your project proposal. Did you design a smart way to test the neural binding hypothesis, but then didn’t find the data to get answers? That can also be very interesting for others to hear about! Furthermore it will make it clear that research never stops. It continues as a series of questions and answers, not just within your own project, but at the level of the entire research field. Tell us what got you excited about this particular project, and try to dream big. One day, models like yours could be used to … ?
