@@ -1,4 +1,4 @@
-# Daily guidance for projects
+# Daily guide for projects
 
 ## Summary
 
@@ -35,7 +35,7 @@ For those of you whose project slot is before tutorials (Slot 2 and Slot 4), the
 | July 22 | project day 14 | ... | project day 14 | ... | project day 14 |
 | July 23 | empty | project day 14 | empty | project day 14 | empty |
 
-## Project Day 1 (2-3 h)
+## Project Day 1 (3 h)
 
 Goal is to decide what dataset/topic to work on and to form two separate groups (4-6 students/group). TAs make a [Miro](http://miro.com) concept board for brainstorming at the beginning of this session and they invite the students to join during the brainstorming times below.
 * Introductions (30 min = 2 min/student): say a few things about yourself, then about your research area or research interests. What are you really curious about, that you might explore in your NMA project?
@@ -51,25 +51,25 @@ Tips:
 * No need to have a very concrete project after this day. You will determine the feasibility of your questions in the next few days, and you will likely change your question completely. That’s how research works!  
 
 
-## Day 2 (8 h)
+## Project Day 2 (8 h)
 
 Project launch day! This is a full day dedicated to getting you started on projects. You will set an initial direction for your project based on the tutorial materials for this day. By the end of the day, you will have a short, unstructured proposal about what you’d like to do. We will use this to match your group to a mentor based on their research interests (think of the matching as done by “keywords”, but in an automated manner).
 
 (3h) Complete the intro/tutorial/outro for this day
-* You will need to use your own project for some of this content. If you don’t yet have concrete ideas, or you haven’t done a research project before, use one of the provided project templates to walk through the 5 steps.
-* If you are using a project template, your goal is to translate the information from the slide and colab notebook into a 5-step format. Some information might not be readily available in the slide or notebook, and you might have to find it in your literature review later this day.
-* Try to write down a few sentences for each of the five steps applied to your project. You will re-use these in your proposal later today.  
+* You will need to use your own project for some of this content. If you don’t yet have concrete ideas, or you haven’t done a research project before, use one of the provided project templates to walk through the four steps.
+* If you are using a project template, your goal is to translate the information from the slide and colab notebook into a 4-step format. Some information might not be readily available in the slide or notebook, and you might have to find it in your literature review later this day.
+* Try to write down a few sentences for each of the four steps applied to your project. You will re-use these in your proposal later today.  
 
 (2.5h) Literature review: identify interesting papers
 
 The goal of this literature review is to situate your question in context and help you acquire some keywords that you will use in your proposal today.
 * (30min) on your own, start doing a literature review using google searches and only look at abstracts to select 2-3 promising ones.  
-* (10min) report to the whole group what papers you found, and assign one paper per person to read/skim in the next 1h.  
+* (10min) report to the whole group what papers you found and pool them together. Assign one paper per person to read/skim in the next 1h.  
 * (1h) on your own, read the paper that was assigned to you. Make notes in a common google doc shared with your group, and especially write down important keywords or concepts which you might use in your proposal later today. If you are not connected to an .edu domain or a VPN, try to find full versions of papers on preprint servers like arXiv / bioRxiv. You could also ask your TA to get it for you (and they might in turn ask someone who has access to a university VPN). There might be other options too…  
-* (1h) report back to the group, and try to tell them as much as you understood about the paper. Get into details, but don’t just read to them whole sections from the paper. Ask others questions about the papers they are presenting to understand them better.
+* (1h) report back to the group, and try to tell them as much as you understood about the paper. Get into details, but don’t just read to them whole sections from the paper. Ask the other students questions about the papers they are presenting to understand them better.
 
 (2.5h) Project proposal
-* Try to write a proposal for this project based on the way you understand it now. This should re-use some of the text you wrote down for the 5 steps, and should include keywords and concepts that you identified in your literature review. Don’t worry too much about the structure of this paragraph! The goal is to get as many words (200-300) on paper as possible. We have the entire day 10 to write a properly structured scientific abstract.
+* Try to write a proposal for this project based on the way you understand it now. This should re-use some of the text you wrote down for the four steps, and should include keywords and concepts that you identified in your literature review. Don’t worry too much about the structure of this paragraph! The goal is to get as many words (200-300) on paper as possible. You have the entire day 10 to learn how to write a properly structured scientific abstract.
 * It is important to include the concepts which you identified as relevant, and the keywords that go with them. This will allow us to identify mentors whose research covers your interests.   
 * You should submit your proposal into the [Airtable form](https://airtable.com/shrZWimDB3YddpXDu) at the end of this day. Remember that only an algorithm will read it, so it definitely doesn’t need to be perfect!
 
@@ -113,7 +113,7 @@ You should now have a sense of the data, and you have probably refined your hypo
 
 Leading up to day 10, you will implement Steps 5-9 in your project. If you are already experienced with research projects, this might just look like a continuation of last week and you don’t need to stick to the steps too closely. If you are not so experienced, you could benefit from implementing the steps one after the other, perhaps at a rate of 1 step / day.
 
-## Day 10 (8h)
+## Day 10 (8h, Friday for everyone)
 
 Abstract writing day! One of the best ways to understand your own research is to try to write about it. You should write early and often, not just at the end when you’re trying to write a paper or your thesis. Science conferences are a great way to present your intermediate work, and they give you a chance to write an abstract. For example, the Neuromatch Conferences are a great venue for this. However, we don’t have to wait so long to write our project abstract, we’ll do it today. If you already have an answer to your question that’s great, but it’s not necessary. Most of the components of an abstract do not in fact require results. There are several materials associated with this day, to be used loosely and when needed. The goal is to workshop your abstract with your group, and then present this to your entire pod.
 
