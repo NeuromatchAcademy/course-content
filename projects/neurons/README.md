@@ -4,7 +4,9 @@
 
 ### Steinmetz
 
-The Steinmetz dataset ([youtube](https://www.youtube.com/watch?v=WXn4-FpVaOo)) was used by the most groups last year, as it is great for exploratory analyses and is relatively well supported with code and many included experimental and behavioral variables.
+The Steinmetz dataset ([youtube](https://www.youtube.com/watch?v=WXn4-FpVaOo)) contains 39 Neuropixels recordings of 400-700 neurons each from across the mouse brain during a visual behavior task. This dataset was used by the most groups last year, as it is great for exploratory analyses and is relatively well supported with code and many included experimental and behavioral variables. You should still try to ask specific questions, i.e.: "does the superior colliculus offer a parallel or complementary visual processing pathway to visual cortex?"
+
+Credit for data curation: Marius Pachitariu, Scott Linderman
 
 |   | Run | View |
 | - | --- | ---- |
@@ -13,7 +15,9 @@ The Steinmetz dataset ([youtube](https://www.youtube.com/watch?v=WXn4-FpVaOo)) w
 
 ### Stringer
 
-The Stringer datasets ([youtube](https://www.youtube.com/watch?v=78GSgf6Dkkk)) are a little more advanced, as there are 10,000-20,000 neurons recorded simultaneously to deal with, and there is no explicit task the animals are doing. They are exciting, because they give a taste of what's to come in neuroscience.
+The Stringer datasets ([youtube](https://www.youtube.com/watch?v=78GSgf6Dkkk)) contain simultaneous recordings of 10,000 or 20,000 neurons from mouse visual cortex either during the presentation of gratings or during spontaneous behaviors like running, whisking and sniffing. These datasets are a little more advanced because you have to work with many neurons simultaneously. They are exciting, because they give a taste of what's to come in neuroscience.
+
+Credit for data curation: Marius Pachitariu
 
 |   | Run | View |
 | - | --- | ---- |
@@ -22,10 +26,11 @@ The Stringer datasets ([youtube](https://www.youtube.com/watch?v=78GSgf6Dkkk)) a
 
 ### Allen Institute
 
-The Allen Institute dataset ([youtube](https://www.youtube.com/watch?v=3YP-GYvYnuA)) is new this year, and it was designed to be very friendly for beginners. The mice do a well defined task, and the recordings are from specific neuron populations in multiple visual cortical brain areas. It is also well supported with code and the dedicated project template. This would provide a more focused experience for beginner groups than the Steinmetz dataset, with the caveat that the data is unpublished so it is harder to find supporting information for it.
+The Allen Institute dataset ([youtube](https://www.youtube.com/watch?v=3YP-GYvYnuA)) is new this year, and it was designed to be very friendly for beginners. The mice do a visual adaptation task using either familiar or novel images. The recordings are from specific neuron populations (VIP, SST etc) in multiple visual cortical brain areas. This dataset is well supported with code and a dedicated project template. This would provide a more focused experience for beginner groups than the Steinmetz dataset, with the caveat that the data is unpublished so it is harder to find supporting information for it. For more advanced groups, a separate dataloader is available using the Allen Institute SDK, which gives access to the entire dataset for more exploratory analyses.
+
+Credit for data curation: Marina Garret, Iryna Yavorska, Doug Ollerenshaw
 
 |   | Run | View |
 | - | --- | ---- |
 | Analyze one dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/neurons/load_Allen_Visual_Behavior_from_pre_processed_file.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/neurons/load_Allen_Visual_Behavior_from_pre_processed_file.ipynb?flush_cache=true) |
 | Access to all data | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/neurons/load_Allen_Visual_Behavior_from_SDK.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/neurons/load_Allen_Visual_Behavior_from_SDK.ipynb?flush_cache=true) |
-  

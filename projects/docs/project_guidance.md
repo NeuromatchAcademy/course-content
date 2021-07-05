@@ -1,41 +1,25 @@
-# Daily guidance for projects
+# Daily guide for projects
 
 ## Summary
 
-This project plan explicitly encourages the iterative nature of research as a series of questions and answers that gradually refine your hypotheses. You will start with the D1-D2 course content, which teaches you about modelling, neural data and the scientific process. You will then apply the steps taught there to a vaguely formed hypothesis or topic of interest to you. This will not be perfect, because you still don’t know much about the data or phenomenon of interest at this point. In D3-D9 you will develop your knowledge about your topic, and frequently go back to the cheat sheet of research steps taught in D2. During D10, you will know enough to be able to write a short abstract about your project, which may or may not include results, but it should at least include a testable hypothesis. For the rest of the project, D11-D15 you will focus on getting evidence for/against your hypothesis. Finally, in D15 you will meet with other groups in your pod and superpod, and tell them the story of your project. This is a low-key presentation that may include some of the plots you made along the way, but it is not meant as a real research presentation with high “production values”.
+This project plan explicitly encourages the iterative nature of research as a series of questions and answers that gradually refine your hypotheses. You will start with the D1-D2 course content, which teaches you about modelling, neural data and the scientific process. You will then apply the steps taught there to a vaguely formed hypothesis or topic of interest to you. This will not be perfect, because you still don’t know much about the data or about a phenomenon of interest at this point. In D3-D9 you will develop your knowledge about your topic, and frequently go back to the cheat sheet of research steps taught in D2. During D10, you will know enough to be able to write a short abstract about your project, which may or may not include results, but it should at least include a testable hypothesis. For the rest of the project on D11-D15 you will focus on getting evidence for/against your hypothesis. Finally, in D15 you will meet with other groups in your pod and superpod, and tell them the story of your project. This is a low-key presentation that may include some of the plots you made along the way, but it is not meant as a real research presentation with high “production values”. See some of the [examples](./docs/project_2020_highlights.html) from last year to get a sense of what the presentation will look like.
 
 ## Project templates
 
-Project templates are research ideas developed by the NMA team that can be used in conjunction with the datasets we provided. Project templates can be used in a variety of ways.
+[Project templates](./docs/project_templates.html) are research ideas developed by the NMA team that can be used in conjunction with the datasets we provided. Project templates can be used in a variety of ways.
 * For starters, you can use the project templates just to get familiarized with some of our datasets or one of the provided models. They can provide keywords for you to use in your proposal on D2, or python libraries you can reuse to answer your own questions.
-* You should use the project templates extensively if you are new to neuroscience and/or you don’t have a lot of research experience. They have been designed to give you enough structure to get started, and enough options to keep you going if you stick with the template. Or you may start on a template, use it the first week and then in the second week diverge from it as your group develops their own new idea or question to test.
+* You should use the project templates extensively if you are new to neuroscience and/or you don’t have a lot of research experience. They have been designed to give you enough structure to get started, and enough options to keep you going if you stick with the template. Or you may start with a template, use it the first week and then in the second week diverge from it as your group develops their own new idea or question to test.
 * Templates have a natural flow of questions, but don’t hesitate to skip or completely change some of these. They are meant to be used very flexibly!
-
 
 ## Project TAs
 
-Project TAs are a new role at NMA this year, and they are your friendly dataset experts to consult with on all issues related to datasets. They can however help with all stages of a project, including brainstorming, literature searches and coding. You will have a one-hour meeting with one of them on your first two project days. During this time, they will help you refine your question and hypothesis into something that can be answered with our datasets. Since they can arrive unannounced at any time (busy schedules!), please stop what you were doing to have the meeting, and then resume your work when the project TA leaves.
+Project TAs are a new role at NMA this year, and they are your friendly dataset experts to consult with on all issues related to datasets. They can also help with other aspects of a project, including brainstorming, literature searches and coding. You will have a one-hour meeting with one of them on your first two project days. During this time, they will help you refine your question and hypothesis into something that can be answered with our datasets. Since they can arrive unannounced at any time (busy schedules!), please stop what you were doing to have the meeting, and then resume your work when the project TA leaves.
 
-In later days, project TAs will be assigned meetings with junior groups, but can also be recruited by you to senior groups for meetings when you need them. For the assigned meetings, project TAs will generally come only during project times, but sometimes they might need to schedule meetings slightly earlier or later. We encourage you to reach out to them for extra meetings whenever you need them, and to post questions on discord in the #dataset- channels. All project TAs have time set aside specifically to answer discord questions and to provide additional meetings when necessary.
+In later days, project TAs will be assigned meetings with junior groups, but can also be recruited to senior groups for meetings when you need them. For the assigned meetings, project TAs will generally come only during project times, but sometimes they might need to schedule meetings slightly earlier or later. We encourage you to reach out to them for extra meetings whenever you need them, and to post questions on discord in the #dataset-X channels. All project TAs have time set aside specifically to answer discord questions and to provide additional meetings when necessary.
 
-Although their main role is to provide support broadly across groups, a few project TAs will also serve as primary mentors for some groups, since it looks like we might fall just short of having enough mentors.
+## Project Day 1 (3 h)
 
-## Project timeline logistics
-
-For those of you whose project slot is before tutorials (Slot 2 and Slot 4), there is no project day on the *first day* of the course - you simply show up to tutorials that day. For those of you whose project slot is after tutorials (Slot 3 and Slot 5), there is no project day work on the *last day* of the course - there is a wrap up project presentation session during the tutorial block that day and the course then ends. Your project proposals (used for mentor matching) are due at the end of the project day 2 block - this is on July 6 for Slots 1,3,5 and on July 7 for Slots 2,4. See image below. Note the detailed day info is a rough outline to follow that you do not need to adhere to other than days 1, 2 and abstract day on July 16.
-
-| date | Slot 1 | Slot 2 | Slot 3 | Slot 4 | Slot 5 |
-| --- | --- | --- | --- | --- | --- |
-| July 5 | project day 1 | empty | project day 1 | empty | project day 1 |
-| July 6 | project day 2 | project day 1 | project day 2 | project day 1 | project day 2 |
-| July 7 | ... | project day 2 | ... | project day 2 | ... |
-| ... | ... | ... | ... | ... | ... |
-| July 16 | abstract day | abstract day | abstract day | abstract day | abstract day |
-| ... | ... | ... | ... | ... | ... |
-| July 22 | project day 14 | ... | project day 14 | ... | project day 14 |
-| July 23 | empty | project day 14 | empty | project day 14 | empty |
-
-## Project Day 1 (2-3 h)
+This time block happens either after coursework on Monday (timeslots 1,3,5) or before coursework Tuesday (timeslots 2,4).
 
 Goal is to decide what dataset/topic to work on and to form two separate groups (4-6 students/group). TAs make a [Miro](http://miro.com) concept board for brainstorming at the beginning of this session and they invite the students to join during the brainstorming times below.
 * Introductions (30 min = 2 min/student): say a few things about yourself, then about your research area or research interests. What are you really curious about, that you might explore in your NMA project?
@@ -44,34 +28,34 @@ Goal is to decide what dataset/topic to work on and to form two separate groups 
 * Brainstorm at the pod level (60 min): do you have an idea or a rough direction? Bring it out to the group. Start recruiting others to your group!
 * The TA will pay close attention to what you all are interested in, and will produce an initial set of two topics / datasets / ideas, written down on the Miro board.
 join one of these by writing your name down underneath the topic.    
-* Separate into groups. Now brainstorm within your group (60 min, breakout rooms). Definitely choose a dataset, and try to come up with one or a few topics of interest, either by yourself or directly from the booklet (i.e. project templates).
+* Tentatively separate into groups (not final). Now brainstorm within your group (60 min, breakout rooms). Definitely choose a data type and choose a specific dataset from that data type if you can. Make sure the dataset you choose is well suited for answering the broad range of questions you are interested in. Try to come up with one or a few topics of interest, either by yourselves or directly from the booklet (i.e. project templates).
 
 Tips:
-* Use the projects booklet like you would a conference booklet: skim through it, read a paragraph here and there, try to decide which of the videos to watch. No one is expected to read through all the materials.
+* Use the project booklet like you would a conference booklet: skim through it, read a paragraph here and there, try to decide which of the videos to watch. No one is expected to read through all the materials.
 * No need to have a very concrete project after this day. You will determine the feasibility of your questions in the next few days, and you will likely change your question completely. That’s how research works!  
 
 
-## Day 2 (8 h)
+## Project Day 2 (8 h)
 
-Project launch day! This is a full day dedicated to getting you started on projects. You will set an initial direction for your project based on the tutorial materials for this day. By the end of the day, you will have a short, unstructured proposal about what you’d like to do. We will use this to match your group to a mentor based on their research interests (think of the matching as done by “keywords”, but in an automated manner).
+Project launch day! This is a full day dedicated to getting you started on projects. You will set an initial direction for your project based on the tutorial materials for this day. By the end of the day, you should: 1) finalize group assignments; 2) have a short, unstructured proposal about what you’d like to do. We will use this to match your group to a mentor based on their research interests (think of the matching as done by “keywords”, but in an automated manner).
 
 (3h) Complete the intro/tutorial/outro for this day
-* You will need to use your own project for some of this content. If you don’t yet have concrete ideas, or you haven’t done a research project before, use one of the provided project templates to walk through the 5 steps.
-* If you are using a project template, your goal is to translate the information from the slide and colab notebook into a 5-step format. Some information might not be readily available in the slide or notebook, and you might have to find it in your literature review later this day.
-* Try to write down a few sentences for each of the five steps applied to your project. You will re-use these in your proposal later today.  
+* You will need to use your own project for some of this content. If you don’t yet have concrete ideas, or you haven’t done a research project before, use one of the provided project templates to walk through the four steps.
+* If you are using a project template, your goal is to translate the information from the slide and colab notebook into a 4-step format. Some information might not be readily available in the slide or notebook, and you might have to find it in your literature review later this day.
+* Try to write down a few sentences for each of the four steps applied to your project. You will re-use these in your proposal later today.  
 
 (2.5h) Literature review: identify interesting papers
 
 The goal of this literature review is to situate your question in context and help you acquire some keywords that you will use in your proposal today.
 * (30min) on your own, start doing a literature review using google searches and only look at abstracts to select 2-3 promising ones.  
-* (10min) report to the whole group what papers you found, and assign one paper per person to read/skim in the next 1h.  
+* (10min) report to the whole group what papers you found and pool them together. Assign one paper per person to read/skim in the next 1h.  
 * (1h) on your own, read the paper that was assigned to you. Make notes in a common google doc shared with your group, and especially write down important keywords or concepts which you might use in your proposal later today. If you are not connected to an .edu domain or a VPN, try to find full versions of papers on preprint servers like arXiv / bioRxiv. You could also ask your TA to get it for you (and they might in turn ask someone who has access to a university VPN). There might be other options too…  
-* (1h) report back to the group, and try to tell them as much as you understood about the paper. Get into details, but don’t just read to them whole sections from the paper. Ask others questions about the papers they are presenting to understand them better.
+* (1h) report back to the group, and try to tell them as much as you understood about the paper. Get into details, but don’t just read to them whole sections from the paper. Ask the other students questions about the papers they are presenting to understand them better.
 
 (2.5h) Project proposal
-* Try to write a proposal for this project based on the way you understand it now. This should re-use some of the text you wrote down for the 5 steps, and should include keywords and concepts that you identified in your literature review. Don’t worry too much about the structure of this paragraph! The goal is to get as many words (200-300) on paper as possible. We have the entire day 10 to write a properly structured scientific abstract.
+* Try to write a proposal for this project based on the way you understand it now. This should re-use some of the text you wrote down for the four steps, and should include keywords and concepts that you identified in your literature review. Don’t worry too much about the structure of this paragraph! The goal is to get as many words (200-300) on paper as possible. You have the entire day 10 to learn how to write a properly structured scientific abstract.
 * It is important to include the concepts which you identified as relevant, and the keywords that go with them. This will allow us to identify mentors whose research covers your interests.   
-* You should submit your proposal into the google form (???) at the end of this day. Remember that only an algorithm will read it, so it definitely doesn’t need to be perfect!
+* You should submit your proposal into the [Airtable form](https://airtable.com/shrZWimDB3YddpXDu) at the end of this day. Remember that only an algorithm will read it, so it definitely doesn’t need to be perfect!
 
 ## Day 3 (2-3 h)
 
@@ -103,7 +87,7 @@ Over the next two weeks, you will iterate between refining your question and try
 
 ## Day 6 (2-3h)
 
-You should now have a sense of the data, and you have probably refined your hypothesis a little. You might have a vague idea of what it would take for your project to work, what tools you might use, and what the answer could look like. Let’s make these things explicit, by continuing with steps 6-9 of the modelling practice in this [new notebook](https://colab.research.google.com/drive/10689_o9Aea0PImoVhZ26IVxfK9sRHRuM?usp=sharing#scrollTo=r2LGmCJ5rU0J).
+You should now have a sense of the data, and you have probably refined your hypothesis a little. You might have a vague idea of what it would take for your project to work, what tools you might use, and what the answer could look like. Let’s make these things explicit, by continuing with steps 6-9 of the modelling practice in this [steps 5-10 notebook](https://colab.research.google.com/drive/10689_o9Aea0PImoVhZ26IVxfK9sRHRuM?usp=sharing#scrollTo=r2LGmCJ5rU0J).
 
 * (0.5h) Go through the first five steps again with your own refined question. Try to write down what the steps looks like for your data.
 * (1-2h) Go through steps 6-10 for the example project in the new notebook and watch the videos.
@@ -113,7 +97,7 @@ You should now have a sense of the data, and you have probably refined your hypo
 
 Leading up to day 10, you will implement Steps 5-9 in your project. If you are already experienced with research projects, this might just look like a continuation of last week and you don’t need to stick to the steps too closely. If you are not so experienced, you could benefit from implementing the steps one after the other, perhaps at a rate of 1 step / day.
 
-## Day 10 (8h)
+## Day 10 (8h, Friday for everyone)
 
 Abstract writing day! One of the best ways to understand your own research is to try to write about it. You should write early and often, not just at the end when you’re trying to write a paper or your thesis. Science conferences are a great way to present your intermediate work, and they give you a chance to write an abstract. For example, the Neuromatch Conferences are a great venue for this. However, we don’t have to wait so long to write our project abstract, we’ll do it today. If you already have an answer to your question that’s great, but it’s not necessary. Most of the components of an abstract do not in fact require results. There are several materials associated with this day, to be used loosely and when needed. The goal is to workshop your abstract with your group, and then present this to your entire pod.
 
