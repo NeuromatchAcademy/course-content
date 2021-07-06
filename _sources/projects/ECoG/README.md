@@ -10,7 +10,7 @@ New in 2021, we have ECoG datasets ([youtube](https://youtube.com/watch?v=rAqtrB
 
 * For slightly more advanced groups, you should definitely consider the LFPs from the Steinmetz dataset, which are much better suited for exploratory analyses and a wide diversity topics. They are also better for computational projects, because they provide high-dimensional data (lots of neurons) with lots of trials, and they are well supported at NMA, because the Steinmetz dataset has been well curated and annotated in general.  
 
-Credit for data curation: Marius Pachitariu
+Credit for data curation: Marius Pachitariu and the project TAs
 
 |   | Run | View |
 | - | --- | ---- |
