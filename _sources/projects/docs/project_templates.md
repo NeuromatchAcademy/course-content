@@ -1,6 +1,6 @@
-# Project Templates 
+# Project Templates
 
-Click on each image below to see a full browser version! 
+Click on each image below to see a full browser version!
 
 # Flow of information through the brain during a sensorimotor task
 
@@ -46,5 +46,6 @@ Click on each image below to see a full browser version!
 
 <img src="template_images/NeuralBasisOfFacePerception.svg" width="100%">
 
-# The structure of mouse social behavior 
+# The structure of mouse social behavior
 
+<img src="template_images/MouseSocialBehavior.svg" width="100%">
