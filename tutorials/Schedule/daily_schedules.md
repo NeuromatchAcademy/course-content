@@ -63,8 +63,7 @@ On W1D2 (project launch day):
 |    Time (Hour)   |    Lecture                            |
 |------------------|---------------------------------------|
 |    0:00-0:30\*   |    Intro video & text   |   
-|    **0:30**-0:45**     |    Pod discussion I                   |                                      
-|    0:45-2:30     |    Tutorials + nano-lectures I        |    
+|    **0:30**-2:30**     |    Tutorials + nano-lectures I                   |                                      
 |    2:30-2:45     |    Outro           |
 |    2:45-3:45     |    Big break                 |    
 |    3:45-5:30     |    Literature review   |

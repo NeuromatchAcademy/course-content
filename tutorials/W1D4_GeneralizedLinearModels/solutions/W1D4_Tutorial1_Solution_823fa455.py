@@ -21,8 +21,13 @@ def predict_spike_counts_lg(stim, spikes, d=25):
 
   # Compute predicted spike counts
   yhat = X @ theta
+
   return yhat
 
+
+# Predict spike counts
 predicted_counts = predict_spike_counts_lg(stim, spikes)
+
+# Visualize
 with plt.xkcd():
   plot_spikes_with_prediction(spikes, predicted_counts, dt_stim)

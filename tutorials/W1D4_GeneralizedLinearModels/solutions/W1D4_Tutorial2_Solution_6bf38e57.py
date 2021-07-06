@@ -1,3 +1,4 @@
+
 def model_selection(X, y, C_values):
   """Compute CV accuracy for each C value.
 
@@ -17,7 +18,7 @@ def model_selection(X, y, C_values):
     # (Hint, you may need to set max_iter)
     model = LogisticRegression(penalty="l2", C=C, max_iter=5000)
 
-    # Get the accuracy for each test split
+    # Get the accuracy for each test split using cross-validation
     accs = cross_val_score(model, X, y, cv=8)
 
     # Store the average test accuracy for this value of C
@@ -25,9 +26,13 @@ def model_selection(X, y, C_values):
 
   return accuracies
 
+
 # Use log-spaced values for C
 C_values = np.logspace(-4, 4, 9)
 
+# Compute accuracies
 accuracies = model_selection(X, y, C_values)
+
+# Visualize
 with plt.xkcd():
   plot_model_selection(C_values, accuracies)

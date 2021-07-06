@@ -1,3 +1,4 @@
+
 def predict_spike_counts_lnp(stim, spikes, theta=None, d=25):
   """Compute a vector of predicted spike counts given the stimulus.
 
@@ -20,6 +21,10 @@ def predict_spike_counts_lnp(stim, spikes, theta=None, d=25):
   yhat = np.exp(X @ theta)
   return yhat
 
+
+# Predict spike counts
 yhat = predict_spike_counts_lnp(stim, spikes, theta_lnp)
+
+# Visualize
 with plt.xkcd():
   plot_spikes_with_prediction(spikes, yhat, dt_stim)
