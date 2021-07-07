@@ -1,6 +1,7 @@
 
 mse_list = []
 order_list = list(range(max_order + 1))
+theta_hat = solve_poly_reg(x, y, order)
 
 for order in order_list:
 
