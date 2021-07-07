@@ -13,7 +13,7 @@ def explore_perplexity(values):
 
   for perp in values:
 
-    # perform t-SNE
+    # Perform t-SNE
     tsne_model = TSNE(n_components=2, perplexity=perp, random_state=2020)
 
     embed = tsne_model.fit_transform(X)
@@ -22,7 +22,7 @@ def explore_perplexity(values):
     plt.show()
 
 
-# Uncomment when you complete the function
+# Visualize
 values = [50, 5, 2]
 with plt.xkcd():
   explore_perplexity(values)

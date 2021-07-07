@@ -1,3 +1,4 @@
+
 def change_of_basis(X, W):
   """
   Projects data onto new basis W.
@@ -12,13 +13,15 @@ def change_of_basis(X, W):
     (numpy array of floats)    : Data matrix expressed in new basis
   """
 
-  # project data onto new basis described by W
-  Y = np.matmul(X, W)
+  # Project data onto new basis described by W
+  Y = X @ W
 
   return Y
 
 
-# Unomment below to transform the data by projecting it into the new basis
+# Project data to new basis
 Y = change_of_basis(X, W)
+
+# Visualize
 with plt.xkcd():
   plot_data_new_basis(Y)

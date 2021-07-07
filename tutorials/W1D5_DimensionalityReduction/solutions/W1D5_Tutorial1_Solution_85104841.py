@@ -1,3 +1,4 @@
+
 def calculate_cov_matrix(var_1, var_2, corr_coef):
   """
   Calculates the covariance matrix based on the variances and correlation
@@ -20,13 +21,18 @@ def calculate_cov_matrix(var_1, var_2, corr_coef):
   return cov_matrix
 
 
+# Set parameters
 np.random.seed(2020)  # set random seed
 variance_1 = 1
 variance_2 = 1
 corr_coef = 0.8
 
-# Uncomment to test your code and plot
+# Compute covariance matrix
 cov_matrix = calculate_cov_matrix(variance_1, variance_2, corr_coef)
+
+# Generate data with this covariance matrix
 X = get_data(cov_matrix)
+
+# Visualize
 with plt.xkcd():
   plot_data(X)
