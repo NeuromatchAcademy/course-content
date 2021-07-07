@@ -1,3 +1,4 @@
+
 def get_variance_explained(evals):
   """
   Plots eigenvalues.
@@ -10,15 +11,18 @@ def get_variance_explained(evals):
 
   """
 
-  # cumulatively sum the eigenvalues
+  # Cumulatively sum the eigenvalues
   csum = np.cumsum(evals)
-  # normalize by the sum of eigenvalues
+
+  # Normalize by the sum of eigenvalues
   variance_explained = csum / np.sum(evals)
 
   return variance_explained
 
 
-# calculate the variance explained
+# Calculate the variance explained
 variance_explained = get_variance_explained(evals)
+
+# Visualize
 with plt.xkcd():
   plot_variance_explained(variance_explained)

@@ -1,4 +1,5 @@
-# perform t-SNE
+
+# Perform t-SNE
 embed = tsne_model.fit_transform(X)
 
 # Visualize the data
