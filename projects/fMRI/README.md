@@ -11,8 +11,9 @@ Credit for data curation: John Murray, Saad Jbabdi
 
 |   | Run | View |
 | - | --- | ---- |
+| HCP 2021 + behavior| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp_task_with_behaviour.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp_task_with_behaviour.ipynb?flush_cache=true) |
 | HCP 2021 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp_task.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp_task.ipynb?flush_cache=true) |
-| HCP 2020 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuroNaselaris, Thomas, et al. "Bayesian reconstruction of natural images from human brain activity." Neuron 63.6 (2009): 902-915.matchAcademy/course-content/blob/master/projects/fMRI/load_hcp.ipynb?flush_cache=true) |
+| HCP 2020 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp.ipynb?flush_cache=true) |
 
 References:
 
