@@ -17,7 +17,7 @@ Project TAs are a new role at NMA this year, and they are your friendly dataset 
 
 In later days, project TAs will be assigned meetings with junior groups, but can also be recruited to senior groups for meetings when you need them. For the assigned meetings, project TAs will generally come only during project times, but sometimes they might need to schedule meetings slightly earlier or later. We encourage you to reach out to them for extra meetings whenever you need them, and to post questions on discord in the #dataset-X channels. All project TAs have time set aside specifically to answer discord questions and to provide additional meetings when necessary.
 
-## Project Day 1 (3 h)
+## Project Block 1 (3 h)
 
 This time block happens either after coursework on Monday (timeslots 1,3,5) or before coursework Tuesday (timeslots 2,4).
 
@@ -34,10 +34,9 @@ Tips:
 * Use the project booklet like you would a conference booklet: skim through it, read a paragraph here and there, try to decide which of the videos to watch. No one is expected to read through all the materials.
 * No need to have a very concrete project after this day. You will determine the feasibility of your questions in the next few days, and you will likely change your question completely. That’s how research works!  
 
+## W1D2 coursework (Tuesday) + project block 2 (Tuesday for slot 1,3,5 / Wednesday for slot 2,4)
 
-## Project Day 2 (8 h)
-
-Project launch day! This is a full day dedicated to getting you started on projects. You will set an initial direction for your project based on the tutorial materials for this day. By the end of the day, you should: 1) finalize group assignments; 2) have a short, unstructured proposal about what you’d like to do. We will use this to match your group to a mentor based on their research interests (think of the matching as done by “keywords”, but in an automated manner).
+The W1D2 tutorials are set up to launch your projects. Once you're done with them, you will complete your literature review. During the next available project block, you will finalize your project groups, and create your project proposal: a short, unstructured proposal about what you’d like to do. We will use the project proposal to match your group to a mentor based on their research interests (think of the matching as done by “keywords”, but in an automated manner).
 
 (3h) Complete the intro/tutorial/outro for this day
 * You will need to use your own project for some of this content. If you don’t yet have concrete ideas, or you haven’t done a research project before, use one of the provided project templates to walk through the four steps.
@@ -45,19 +44,19 @@ Project launch day! This is a full day dedicated to getting you started on proje
 * Try to write down a few sentences for each of the four steps applied to your project. You will re-use these in your proposal later today.  
 
 (2.5h) Literature review: identify interesting papers
-
 The goal of this literature review is to situate your question in context and help you acquire some keywords that you will use in your proposal today.
 * (30min) on your own, start doing a literature review using google searches and only look at abstracts to select 2-3 promising ones.  
 * (10min) report to the whole group what papers you found and pool them together. Assign one paper per person to read/skim in the next 1h.  
 * (1h) on your own, read the paper that was assigned to you. Make notes in a common google doc shared with your group, and especially write down important keywords or concepts which you might use in your proposal later today. If you are not connected to an .edu domain or a VPN, try to find full versions of papers on preprint servers like arXiv / bioRxiv. You could also ask your TA to get it for you (and they might in turn ask someone who has access to a university VPN). There might be other options too…  
 * (1h) report back to the group, and try to tell them as much as you understood about the paper. Get into details, but don’t just read to them whole sections from the paper. Ask the other students questions about the papers they are presenting to understand them better.
 
-(2.5h) Project proposal
+Project block task:
+(3h) Project proposal
 * Try to write a proposal for this project based on the way you understand it now. This should re-use some of the text you wrote down for the four steps, and should include keywords and concepts that you identified in your literature review. Don’t worry too much about the structure of this paragraph! The goal is to get as many words (200-300) on paper as possible. You have the entire day 10 to learn how to write a properly structured scientific abstract.
 * It is important to include the concepts which you identified as relevant, and the keywords that go with them. This will allow us to identify mentors whose research covers your interests.   
 * You should submit your proposal into the [Airtable form](https://airtable.com/shrZWimDB3YddpXDu) at the end of this day. Remember that only an algorithm will read it, so it definitely doesn’t need to be perfect!
 
-## Day 3 (2-3 h)
+## Block 3 (2-3 h)
 
 You should now get your hands dirty by running some of the notebooks provided for your dataset. There should be a loading notebook, and there should be some further analysis notebooks interspersed among the project templates. Even if you are not using a project template, they are likely to contain useful code to get you started, especially if you are doing a theory project.
 
@@ -65,7 +64,7 @@ You should now get your hands dirty by running some of the notebooks provided fo
 * Most of this day you should be getting familiar with the data/model, and making exploratory plots.
 * If all you do is run the provided notebooks that’s fine! Try to understand what is being plotted and how. Pay attention to the code libraries being used, and the way the data is accessed / binned / aligned. You will reuse some of these code elements to start doing your own analyses in later days.
 
-## Days 4-5
+## Blocks 4-5
 
 Over the next two weeks, you will iterate between refining your question and trying to answer it. Be on the lookout for interesting hypotheses. You might notice something weird in the data, and if you dig deeper it might lead you directly to a result. For this to work, you must keep an open mind about what your questions are. If you feel like your question is starting to change, go back to Steps1-5 and see if it’s easier to formulate those steps with the new question. A good question/hypothesis makes the 5 steps really easy to think through. Here are some generally useful tips & tricks:
 
@@ -73,7 +72,7 @@ Over the next two weeks, you will iterate between refining your question and try
 * For theory projects, wrestling with your model can be equally challenging. If your model generates data, for example a neural network simulation, then you can still use some of the tricks below to analyze that data.
 * If your model makes a hypothesis that needs to be tested, then your theory project might become a data project. The opposite may also happen: you may find something interesting in the data, and realize that you need a model to understand it better.  
 * Always be on the lookout for bugs in your code, or ”bugs” in your analysis plan. If a plot/result looks too good to be true, it might be! Make sure you always split your data train/test, even for simple analyses where you think it might not matter (i.e. for making tuning curves).
-* If your question does change, remember to always do a quick literature survey (i.e. google search) to see if others thought about your question in the past. You don’t need to come up with a completely original question! Do however situate your research within the relevant literature, and try to get hints/suggestions from other papers.  
+* If your question does change, remember to always do a quick literature survey (i.e. google search) to see if others thought about your question in the past. You don’t need to come up with a completely original question! Do however situate your research within the relevant literature, and try to get hints/suggestions from other papers.
 * Depending how complex your question is, there could be several data analysis steps:
    * data wrangling: some questions can be answered simply by plotting the right variable from the data! Some generally useful strategies: make PSTHs and tuning curves; try scatter plots of different variables; plot across neurons or across trials; select the most tuned neurons and look just at those; if there are multiple sessions pick a good one and dig deep into that one.
    * simple, linear analyses: most questions can be answered at this stage. This is often needed if you are doing a “population analysis”, i.e. trying to determine if a set of neurons or voxels collectively encode a certain variable. By far, the most used linear analyses are linear regression, PCA and k-means clustering.
@@ -85,15 +84,15 @@ Over the next two weeks, you will iterate between refining your question and try
    * There are many “nonlinear dimensionality reduction” methods like t-SNE / ISOMAP, but these are often not meant as replacements for PCA, but instead as visualization tools to try to see a clustering structure in your data. They can be useful for making hypotheses based on interesting-looking plots. You still need to validate those hypotheses using simpler methods, like clustering and PCA.
    * There are many nonlinear clustering models like hdbscan and spectral clustering, but those are fickle for high-dimensional data and difficult to interpret. You will have to carefully try different parameters, and think through what the clusters mean.
 
-## Day 6 (2-3h)
+## Block 6 (2-3h)
 
-You should now have a sense of the data, and you have probably refined your hypothesis a little. You might have a vague idea of what it would take for your project to work, what tools you might use, and what the answer could look like. Let’s make these things explicit, by continuing with steps 6-9 of the modelling practice in this [steps 5-10 notebook](https://colab.research.google.com/drive/10689_o9Aea0PImoVhZ26IVxfK9sRHRuM?usp=sharing#scrollTo=r2LGmCJ5rU0J).
+You should now have a sense of the data, and you have probably refined your hypothesis a little. You might have a vague idea of what it would take for your project to work, what tools you might use, and what the answer could look like. Let’s make these things explicit, by continuing with steps 6-9 of the modelling practice in this [steps 5-10 notebook](https://compneuro.neuromatch.io/projects/modelingsteps/ModelingSteps_5through10.html).
 
 * (0.5h) Go through the first five steps again with your own refined question. Try to write down what the steps looks like for your data.
 * (1-2h) Go through steps 6-10 for the example project in the new notebook and watch the videos.
 * (1-2h) The rest of the day, start thinking what these steps would look like for your project, without actually doing the steps. Do you need to select a toolkit and where can you find some options? Do you need to implement a model? Don’t actually implement the model on this day! Try to complete the low-hanging fruit first, because you’ll have the rest of this week and next for the actual full implementation of your project.
 
-## Days 7-9 (2-3h / day)
+## Blocks 7-9 (2-3h / day)
 
 Leading up to day 10, you will implement Steps 5-9 in your project. If you are already experienced with research projects, this might just look like a continuation of last week and you don’t need to stick to the steps too closely. If you are not so experienced, you could benefit from implementing the steps one after the other, perhaps at a rate of 1 step / day.
 
@@ -122,7 +121,7 @@ Back in your group
 * (1-2h) Has the abstract refined or changed your question? Use the rest of this day to make a concrete plan for the final week of your project. If you already answered your question, then you will need to plan control analyses, maybe including some simulated data that you need to also generate yourself.
 
 
-## Days 11-14
+## Blocks 11-14
 
 Abstract writing day should have helped you narrow down what results (positive or negative) you would actually need to answer your question. You will use the rest of this time to try to get a result, or make progress towards an answer. This might not work out in such a short time, but don’t get discouraged: this part normally takes months if not years of work.
 
@@ -131,7 +130,7 @@ Abstract writing day should have helped you narrow down what results (positive o
 * If you find a negative answer to your question, that is absolutely ok! Please do report that. Then go back and think about how this affects your initial hypothesis. Does it rule it out, or could there be limitations in this particular data that lead to the negative result? What other data would you collect that would be better suited for answering this question. Try to design a new experiment in very specific detail and tell us about it. Who knows, somebody might run that experiment someday!
 * If you find a positive result to your question, then you should spend the rest of your time validating it to make absolutely sure it is really true. You will need to design controls using the data (shuffling controls), or using simulated data, and you need to check the logic of your pipeline from start to end. Did you accidentally select only neurons that were tuned to a behavior, and then showed that they respond to particular aspects of that behavior? Did you sort neurons by their peak response time and then found sequences in your data? There are some obvious and some not-so-obvious circular analyses that can catch even experienced researchers off-guard. This is what the controls are especially useful at catching.  
 
-## Day 15
+## Day 15 (Friday tutorial block for everyone)
 
 * This is the day where you tell your superpod about your project. The groups will take turns to share their screens. You can use figures and other graphics, but this is meant to be told as a story, and everyone from your group should take a turn telling a part of the story. Tell us about the different hypotheses you’ve had at different points and how you refined them using some of the tools we taught. If the tools were not useful, tell us why, and tell us what you did instead to make progress, or to get unstuck when you didn’t know what to do.
 * Most groups won’t have a result and this is absolutely normal. However, the main goal anyway is to communicate the logic of your project proposal. Did you design a smart way to test the neural binding hypothesis, but then didn’t find the data to get answers? That can also be very interesting for others to hear about! Furthermore it will make it clear that research never stops. It continues as a series of questions and answers, not just within your own project, but at the level of the entire research field. Tell us what got you excited about this particular project, and try to dream big. One day, models like yours could be used to … ?

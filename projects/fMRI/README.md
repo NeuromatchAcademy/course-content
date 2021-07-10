@@ -9,14 +9,15 @@ The HCP task datasets ([youtube-2021](https://youtube.com/watch?v=nssSiCmbjxw), 
 
 Credit for data curation: John Murray, Saad Jbabdi
 
-Credit for data curation: John Murray, Saad Jbabdi
-
-Credit for data curation: John Murray, Saad Jbabdi
-
 |   | Run | View |
 | - | --- | ---- |
+| HCP 2021 + behavior| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp_task_with_behaviour.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp_task_with_behaviour.ipynb?flush_cache=true) |
 | HCP 2021 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp_task.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp_task.ipynb?flush_cache=true) |
 | HCP 2020 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp.ipynb?flush_cache=true) |
+
+References:
+
+ Barch, Deanna M., et al. "Function in the human connectome: task-fMRI and individual differences in behavior." Neuroimage 80 (2013): 169-189.
 
 ### FSL course task
 
@@ -28,6 +29,8 @@ Credit for data curation: Saad Jbabdi
 | - | --- | ---- |
 | FSL course task | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_fslcourse.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_fslcourse.ipynb?flush_cache=true) |
 
+References: none, this dataset only has one subject per task and was never used in a paper, just was used in another summer course
+
 ### HCP retinotopy
 
 HCP retinotopy ([youtube](https://youtube.com/watch?v=nssSiCmbjxw)) is a specific kind of project that can be used to do population receptive field modelling. This might be interesting to ML-savy groups because it doesn’t require a lot of neuroscience or FMRI background, and one can visualize the hierarchy of brain areas and their responses.
@@ -38,6 +41,10 @@ Credit for data curation: Saad Jbabdi
 | - | --- | ---- |
 | HCP retinotopy | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp_retino.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_hcp_retino.ipynb?flush_cache=true) |
 
+References:
+
+Benson, Noah C., et al. "The Human Connectome Project 7 Tesla retinotopy dataset: Description and population receptive field analysis." Journal of vision 18.13 (2018): 23-23.
+
 ### Kay natural images
 
 Credit for data curation: Michael Waskom, Marius Pachitariu
@@ -47,6 +54,13 @@ The Kay dataset ([youtube](https://youtube.com/watch?v=LdJkLyw4yzg)) of visual r
 |   | Run | View |
 | - | --- | ---- |
 | Kay natural images | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_kay_images.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_kay_images.ipynb?flush_cache=true) |
+
+References:
+
+Kay, Kendrick N., et al. "Identifying natural images from human brain activity." Nature 452.7185 (2008): 352-355.
+
+Naselaris, Thomas, et al. "Bayesian reconstruction of natural images from human brain activity." Neuron 63.6 (2009): 902-915.
+
 
 ### Bonner/Algonauts/Cichy
 
@@ -59,3 +73,13 @@ Credit for data curation: Kshitij Dwivedi
 | Bonner navigation | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_bonner_navigational_affordances.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_bonner_navigational_affordances.ipynb?flush_cache=true) |
 | Cichy objects/animals | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_cichy_fMRI_MEG.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_cichy_fMRI_MEG.ipynb?flush_cache=true) |
 | Algonauts video clips | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_algonauts_videos.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/fMRI/load_algonauts_videos.ipynb?flush_cache=true) |
+
+References:
+
+Kriegeskorte, Nikolaus, Marieke Mur, and Peter A. Bandettini. "Representational similarity analysis-connecting the branches of systems neuroscience." Frontiers in systems neuroscience 2 (2008): 4.
+
+Bonner, Michael F., and Russell A. Epstein. "Coding of navigational affordances in the human visual system." Proceedings of the National Academy of Sciences 114.18 (2017): 4793-4798.
+
+Cichy, Radoslaw Martin, Dimitrios Pantazis, and Aude Oliva. "Resolving human object recognition in space and time." Nature neuroscience 17.3 (2014): 455-462.
+
+http://algonauts.csail.mit.edu/challenge.html

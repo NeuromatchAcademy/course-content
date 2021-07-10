@@ -41,3 +41,11 @@ Click on each image below to see a full browser version!
 # Attractor models of working memory
 
 <img src="template_images/WorkingMemoryAttractorModels.svg" width="100%">
+
+# Does neural activity reflect face perception?
+
+<img src="template_images/NeuralBasisOfFacePerception.svg" width="100%">
+
+# The structure of mouse social behavior
+
+<img src="template_images/MouseSocialBehavior.svg" width="100%">
