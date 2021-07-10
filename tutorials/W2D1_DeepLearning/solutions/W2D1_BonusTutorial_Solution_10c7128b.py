@@ -8,7 +8,7 @@ determining whether the stimulus is 0 or 360 degrees.
 
 We can modify the deep network to avoid this problem in a few different ways.
 One approach would be to predict a sine and a cosine of the angle and then taking
- the predicted angle as the angle of the complex number $sin(\theta) + i cos(\theta)$.
+the predicted angle as the angle of the complex number $sin(\theta) + i cos(\theta)$.
 
 An alternative approach is to bin the stimulus responses and predict the bin of the stimulus.
 This turns the problem into a classification problem rather than a regression problem,
