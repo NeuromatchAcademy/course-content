@@ -68,9 +68,4 @@ train_loss = train(net, loss_fn, resp_train, stimuli_train)
 
 # Plot the training loss over iterations of GD
 with plt.xkcd():
-  plt.plot(train_loss)
-  plt.xlim([0, None])
-  plt.ylim([0, None])
-  plt.xlabel('iterations of gradient descent')
-  plt.ylabel('mean squared error')
-  plt.show()
+  plot_train_loss(train_loss)
