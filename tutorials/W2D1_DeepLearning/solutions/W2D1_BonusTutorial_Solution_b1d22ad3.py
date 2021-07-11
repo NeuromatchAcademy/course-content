@@ -35,13 +35,12 @@ class ConvFC(nn.Module):
     """ Predict neural responses to stimuli s
 
     Args:
-        s (torch.Tensor): p x L tensor with stimuli
+        s (torch.Tensor): n_stimuli x c_in x h x w tensor with stimuli
 
     Returns:
-        torch.Tensor: p x N tensor with convolutional layer unit activations.
+        y (torch.Tensor): n_stimuli x n_neurons tensor with predicted neural responses
 
     """
-    s = s.unsqueeze(1)  # p x 1 x W x H, add a singleton dimension for the single channel
     a = self.conv(s)  # output of convolutional layer
     a = a.view(-1, np.prod(self.dims))  # flatten each convolutional layer output into a vector
     y = self.out_layer(a)
@@ -57,9 +56,10 @@ device = torch.device('cpu')
 
 # Initialize network
 n_neurons = resp_train.shape[1]
-K = 7
-# we will initialize with the same filters as above
-net = ConvFC(n_neurons, filters=filters(K))
+## Initialize with filters from Tutorial 2
+example_filters = filters(out_channels=6, K=7)
+
+net = ConvFC(n_neurons, filters = example_filters)
 net = net.to(device)
 
 # Run GD on training set data
@@ -70,6 +70,6 @@ train_loss, test_loss = train(net, regularized_MSE_loss,
                               n_iter=200, learning_rate=2,
                               L2_penalty=5e-4, L1_penalty=1e-6)
 
-# Plot the training loss over iterations of GD
+# Visualize
 with plt.xkcd():
   plot_training_curves(train_loss, test_loss)

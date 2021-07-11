@@ -28,5 +28,7 @@ rdm_v1 = rdm_model.pop('V1 data')
 
 # Correlate off-diagonal terms of dissimilarity matrices
 rdm_sim = {label: correlate_rdms(rdm_v1, rdm) for label, rdm in rdm_model.items()}
+
+# Visualize
 with plt.xkcd():
   plot_rdm_rdm_correlations(rdm_sim)

@@ -17,7 +17,8 @@ def RDM(resp):
 
   return RDM
 
-# Compute RDMs
+
+# Compute RDMs for each layer
 rdm_dict = {label: RDM(resp) for label, resp in resp_dict.items()}
 
 # Plot RDMs
