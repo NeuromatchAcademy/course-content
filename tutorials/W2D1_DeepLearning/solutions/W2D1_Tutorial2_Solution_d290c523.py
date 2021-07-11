@@ -7,6 +7,7 @@ employ a strategy called pooling layers, which combine units in a small region a
 take the maximum value of their activations as the output. We will see these
 layers in the next tutorial, where we will try to decode orientation directly from
 images.
+
 2. A cell that responds to multiple orientations would have to be a sum of multiple
 convolutional channels. In the next bonus section, we will hook up this convolutional
 layer to a fully connected layer.
