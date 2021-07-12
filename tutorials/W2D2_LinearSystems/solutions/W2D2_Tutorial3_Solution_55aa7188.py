@@ -7,5 +7,4 @@ proportional to the magnitude of mu.
 The variance of the solutions increases linearly in time. The slope of the
 increase is proportional to the std of the Gaussian distribution at each step.
 
-
 """;

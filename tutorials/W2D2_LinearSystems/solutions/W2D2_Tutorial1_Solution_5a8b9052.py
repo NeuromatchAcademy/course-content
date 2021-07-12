@@ -1,3 +1,4 @@
+
 """
 In top-left A, both eigenvalues are imaginary (no real component, the two
 eigenvalues are complex conjugate pairs), so the solutions are all stable

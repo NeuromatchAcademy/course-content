@@ -21,12 +21,14 @@ def simulate_prob_prop(A, x0, dt, T):
   for k in range(len(t)-1):
       # Compute the state of x at time k+1
       x_kp1 = np.dot(A, x[-1,:])
+
       # Stack (append) this new state onto x to keep track of x through time steps
       x = np.vstack((x, x_kp1))
 
   return x, t
 
-# parameters
+
+# Set parameters
 T = 500     # total Time duration
 dt = 0.1   # timestep of our simulation
 
@@ -38,10 +40,12 @@ o2c = 0.1
 A = np.array([[1 - c2o*dt, o2c*dt],
               [c2o*dt,     1 - o2c*dt]])
 
-# initial condition: start as Closed
+# Initial condition: start as Closed
 x0 = np.array([[1, 0]])
 
-# Uncomment this to plot the probabilities
+# Simulate probabilities propagation
 x, t = simulate_prob_prop(A, x0, dt, T)
+
+# Visualize
 with plt.xkcd():
   plot_state_probabilities(t,x)

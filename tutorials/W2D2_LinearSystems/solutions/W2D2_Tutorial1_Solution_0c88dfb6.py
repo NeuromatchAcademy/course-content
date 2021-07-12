@@ -1,8 +1,8 @@
 """
-To make the system both oscillate and grow, real has to be positive,
+1) To make the system both oscillate and grow, real has to be positive,
 and imaginary has to be not zero.
 
-Stable oscillation of 0.5 Hz (half a cycle per unit time, or one cycle per two
+2) Stable oscillation of 0.5 Hz (half a cycle per unit time, or one cycle per two
 unit time) is achieved with real = 0 and imagineary = +/- pi
 (approximately 3.1 or -3.1).
 
