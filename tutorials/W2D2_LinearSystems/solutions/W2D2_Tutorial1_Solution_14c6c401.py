@@ -28,14 +28,17 @@ def integrate_exponential(a, x0, dt, T):
 
   return x, t
 
-# choose parameters
+
+# Choose parameters
 a = -0.5    # parameter in f(x)
 T = 10      # total Time duration
 dt = 0.001  # timestep of our simulation
 x0 = 1.     # initial condition of x at time 0
 
-# Uncomment once you've filled in code above
+# Use Euler's method
 x, t = integrate_exponential(a, x0, dt, T)
+
+# Visualize
 with plt.xkcd():
   plt.plot(t, x.real)
   plt.xlabel('Time (s)')

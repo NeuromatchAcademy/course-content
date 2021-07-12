@@ -1,10 +1,10 @@
 
 """
-For a<0, the solution decays in time.
+1) For a<0, the solution decays in time.
 For a>0, the solution grows in time.
 For a=0, the solution stays at 1 (and is stable).
 
-For small-ish dt, the solution still looks the same.
+2) For small-ish dt, the solution still looks the same.
 As dt gets bigger, the solution starts to look choppier and is no longer smooth,
 but still has mostly the right trends.
 For a = 0.15, as dt gets above 0.7 or so, we start to see the forward Euler

@@ -23,9 +23,9 @@ def random_walk_simulator(N, T, mu=0, sigma=1):
 
 np.random.seed(2020) # set random seed
 
-# Uncomment the lines below once the function above is completed
 # simulate 1000 random walks for 10000 time steps
 sim = random_walk_simulator(1000, 10000,  mu=0, sigma=1)
+
 # take a peek at the first 10 simulations
 with plt.xkcd():
   plot_random_walk_sims(sim, nsims=10)
