@@ -58,7 +58,7 @@ net = DeepNetSoftmax(n_neurons, 20, n_classes)  # use M=20 hidden units
 # Initialize built-in PyTorch negative log likelihood loss function
 loss_fn = nn.NLLLoss()
 
-# Uncomment below to train network and run it on test images
+# Train network and run it on test images
 # this function uses the train function you wrote before
 train_loss, test_loss, predicted_test_labels = decode_orientation(net, n_classes, loss_fn,
                                                                   resp_train, stimuli_train, resp_test, stimuli_test)

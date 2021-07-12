@@ -32,11 +32,9 @@ n_classes = 20
 # Initialize network
 net = DeepNetSoftmax(n_neurons, 20, n_classes)  # use M=20 hidden units
 
-# Initialize built-in PyTorch MSE loss function
-loss_fn = regularized_loss
-
 # Here you can play with L2_penalty > 0, L1_penalty > 0
-train_loss, test_loss, predicted_test_labels = decode_orientation(net, n_classes, loss_fn,
+train_loss, test_loss, predicted_test_labels = decode_orientation(net, n_classes,
+                                                                  regularized_loss,
                                                                   resp_train, stimuli_train,
                                                                   resp_test, stimuli_test,
                                                                   n_iter=1000,
