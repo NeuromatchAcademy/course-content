@@ -20,7 +20,7 @@ np.random.seed(1)
 torch.manual_seed(1)
 
 # Initialize a deep network with M=200 hidden units
-net = DeepNet(n_neurons, 200)
+net = DeepNetReLU(n_neurons, 200)
 
 # Get neural responses (r) to and orientation (ori) to one stimulus in dataset
 r, ori = get_data(1, resp_train, stimuli_train)  # using helper function get_data
