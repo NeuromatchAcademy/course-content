@@ -33,7 +33,6 @@ A_plus, A_minus, tau_stdp = pars['A_plus'], pars['A_minus'], pars['tau_stdp']
 # pre_spike time - post_spike time
 time_diff = np.linspace(-5 * tau_stdp, 5 * tau_stdp, 50)
 
-# Uncomment to test your function
 dW = Delta_W(pars, A_plus, A_minus, tau_stdp)
 with plt.xkcd():
   mySTDP_plot(A_plus, A_minus, tau_stdp, time_diff, dW)
