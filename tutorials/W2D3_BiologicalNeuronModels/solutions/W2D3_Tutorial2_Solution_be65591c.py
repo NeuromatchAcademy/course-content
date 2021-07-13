@@ -13,8 +13,8 @@ output correlation are smaller than the input correlation, then the network acti
 should eventually converge to zero correlation. But that does not happen. So there
 is something missing in this model to understand origin of synchrony in the network.
 
-3. For spike trains, if we do not have explicit control over mu and sigma.
-And these two variables will be tied to the firing rate of the inputs. So the
+3. For spike trains, we do not have explicit control over mu and sigma but these
+two variables will be tied to the firing rate of the inputs. So the
 results will be qualitatively similar. But when we think of multiple spike inputs
 two different types of correlations arise (see Bujan et al. 2015 for more info)
 """;
