@@ -1,0 +1,2770 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tutorial 2: Autoencoder extensions — Neuromatch Academy: Computational Neuroscience</title>
+<link href="../../../_static/css/theme.css" rel="stylesheet"/>
+<link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet"/>
+<link href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../../_static/pygments.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/togglebutton.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/mystnb.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/sphinx-thebe.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" rel="stylesheet" type="text/css"/>
+<link as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js" rel="preload"/>
+<script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+<script src="../../../_static/jquery.js"></script>
+<script src="../../../_static/underscore.js"></script>
+<script src="../../../_static/doctools.js"></script>
+<script src="../../../_static/togglebutton.js"></script>
+<script src="../../../_static/clipboard.min.js"></script>
+<script src="../../../_static/copybutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+<script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+<script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+<script async="async" src="../../../_static/sphinx-thebe.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+<link href="../../../_static/nma-logo-square-4xp.jpg" rel="shortcut icon">
+<link href="../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../search.html" rel="search" title="Search"/>
+<link href="Bonus_Tutorial3.html" rel="next" title="Tutorial 3: Autoencoders applications"/>
+<link href="Bonus_Tutorial1.html" rel="prev" title="Tutorial 1: Intro to Autoencoders"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</link></link></link></link></head>
+<body data-offset="80" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="container-fluid" id="banner"></div>
+<div class="container-xl">
+<div class="row">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+<div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+<img alt="logo" class="logo" src="../../../_static/nma-logo-square-4xp.jpg"/>
+<h1 class="site-logo" id="site-title">Neuromatch Academy: Computational Neuroscience</h1>
+</a>
+</div><form action="../../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search this book..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search this book..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../../intro.html">
+   Introduction
+  </a>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../Schedule/schedule_intro.html">
+   Schedule
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox">
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../Schedule/daily_schedules.html">
+     General schedule
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../Schedule/shared_calendars.html">
+     Shared calendars
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../Schedule/timezone_widget.html">
+     Timezone widget
+    </a>
+</li>
+</ul>
+</input></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../TechnicalHelp/tech_intro.html">
+   Technical Help
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../../TechnicalHelp/Jupyterbook.html">
+     Using jupyterbook
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../../TechnicalHelp/Tutorial_colab.html">
+       Using Google Colab
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../TechnicalHelp/Tutorial_kaggle.html">
+       Using Kaggle
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../TechnicalHelp/Discord.html">
+     Using discord
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption">
+<span class="caption-text">
+  Pre-reqs Refresher
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D0_NeuroVideoSeries/chapter_title.html">
+   Neuro Video Series (W0D0)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial1.html">
+     Intro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial2.html">
+     Human Psychophysics
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial3.html">
+     Behavioral Readout
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial4.html">
+     Live in Lab
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial5.html">
+     Brain Signals: Spiking Activity
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial6.html">
+     Brain Signals: LFP
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial7.html">
+     Brain Signals: EEG &amp; MEG
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial8.html">
+     Brain Signals: fMRI
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial9.html">
+     Brain Signals: Calcium Imaging
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial10.html">
+     Stimulus Representation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial11.html">
+     Neurotransmitters
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial12.html">
+     Neurons to Consciousness
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D1_PythonWorkshop1/chapter_title.html">
+   Python Workshop 1 (W0D1)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
+     Tutorial: LIF Neuron Part I
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D2_PythonWorkshop2/chapter_title.html">
+   Python Workshop 2 (W0D2)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
+     Tutorial 1: LIF Neuron Part II
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/chapter_title.html">
+   Linear Algebra (W0D3)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
+     Tutorial 1: Vectors
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
+     Tutorial 2: Matrices
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
+     Bonus Tutorial: Discrete Dynamical Systems
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D3_LinearAlgebra/W0D3_Outro.html">
+     Outro
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D4_Calculus/chapter_title.html">
+   Calculus (W0D4)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
+     Tutorial 1: Differentiation and Integration
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
+     Tutorial 2: Differential Equations
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
+     Tutorial 3: Numerical Methods
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D4_Calculus/W0D4_Outro.html">
+     Outro
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W0D5_Statistics/chapter_title.html">
+   Statistics (W0D5)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
+     Tutorial 1: Probability Distributions
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
+     Tutorial 2: Statistical Inference
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W0D5_Statistics/W0D5_Outro.html">
+     Outro
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption">
+<span class="caption-text">
+  Intro to Modeling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D1_ModelTypes/chapter_title.html">
+   Model Types (W1D1)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+<label for="toctree-checkbox-10">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Intro.html">
+     Intro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
+     Tutorial 1: “What” models
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
+     Tutorial 2: “How” models
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
+     Tutorial 3: “Why” models
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial4.html">
+     Tutorial 4: Model Dicussions
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/W1D1_Outro.html">
+     Outro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D1_ModelTypes/further_reading.html">
+     Suggested further readings
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D2_ModelingPractice/chapter_title.html">
+   Modeling Practice (W1D2)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+<label for="toctree-checkbox-11">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Intro.html">
+     Intro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
+     Tutorial 1: Framing the Question
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D2_ModelingPractice/W1D2_Outro.html">
+     Outro
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption">
+<span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D3_ModelFitting/chapter_title.html">
+   Model Fitting (W1D3)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+<label for="toctree-checkbox-12">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Intro.html">
+     Intro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
+     Tutorial 1: Linear regression with MSE
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
+     Tutorial 2: Linear regression with MLE
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
+     Tutorial 3: Confidence intervals and bootstrapping
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
+     Tutorial 4: Multiple linear regression and polynomial regression
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
+     Tutorial 5: Model Selection: Bias-variance trade-off
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
+     Tutorial 6: Model Selection: Cross-validation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/W1D3_Outro.html">
+     Outro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D3_ModelFitting/further_reading.html">
+     Suggested further readings
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/chapter_title.html">
+   Generalized Linear Models (W1D4)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+<label for="toctree-checkbox-13">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Intro.html">
+     Intro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial1.html">
+     Tutorial 1: GLMs for Encoding
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial2.html">
+     Tutorial 2: Classifiers and regularizers
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/W1D4_Outro.html">
+     Outro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D4_GeneralizedLinearModels/further_reading.html">
+     Suggested further readings
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/chapter_title.html">
+   Dimensionality Reduction (W1D5)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+<label for="toctree-checkbox-14">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Intro.html">
+     Intro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
+     Tutorial 1: Geometric view of data
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
+     Tutorial 2: Principal Component Analysis
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
+     Tutorial 3: Dimensionality Reduction &amp; Reconstruction
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
+     Tutorial 4:  Nonlinear Dimensionality Reduction
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/W1D5_Outro.html">
+     Outro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W1D5_DimensionalityReduction/further_reading.html">
+     Suggested further readings
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D1_DeepLearning/chapter_title.html">
+   Deep Learning (W2D1)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+<label for="toctree-checkbox-15">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/W2D1_Intro.html">
+     Intro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
+     Tutorial 1: Decoding Neural Responses
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
+     Tutorial 2: Convolutional Neural Networks
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
+     Tutorial 3: Building and Evaluating Normative Encoding Models
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial4.html">
+     Bonus Tutorial: Diving Deeper into Decoding &amp; Encoding
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/W2D1_Outro.html">
+     Outro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D1_DeepLearning/further_reading.html">
+     Suggested further readings
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children">
+<a class="reference internal" href="../chapter_title.html">
+   Autoencoders (Bonus)
+  </a>
+<input checked="" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+<label for="toctree-checkbox-16">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul class="current">
+<li class="toctree-l2">
+<a class="reference internal" href="../Bonus_Intro.html">
+     Intro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Bonus_Tutorial1.html">
+     Tutorial 1: Intro to Autoencoders
+    </a>
+</li>
+<li class="toctree-l2 current active">
+<a class="current reference internal" href="#">
+     Tutorial 2: Autoencoder extensions
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="Bonus_Tutorial3.html">
+     Tutorial 3: Autoencoders applications
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../Bonus_Outro.html">
+     Outro
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../../Module_WrapUps/MachineLearning.html">
+   Machine Learning Wrap-Up
+  </a>
+</li>
+</ul>
+<p class="caption">
+<span class="caption-text">
+  Dynamical Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D2_LinearSystems/chapter_title.html">
+   Linear Systems (W2D2)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+<label for="toctree-checkbox-17">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Intro.html">
+     Intro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
+     Tutorial 1: Linear dynamical systems
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
+     Tutorial 2: Markov Processes
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
+     Tutorial 3: Combining determinism and stochasticity
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
+     Tutorial 4: Autoregressive models
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/W2D2_Outro.html">
+     Outro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D2_LinearSystems/further_reading.html">
+     Suggested further readings
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/chapter_title.html">
+   Biological Neuron Models (W2D3)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+<label for="toctree-checkbox-18">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Intro.html">
+     Intro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial1.html">
+     Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial2.html">
+     Tutorial 2: Effects of Input Correlation
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial3.html">
+     Tutorial 3: Synaptic transmission - Models of static and dynamic synapses
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial4.html">
+     Bonus Tutorial: Spike-timing dependent plasticity (STDP)
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/W2D3_Outro.html">
+     Outro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D3_BiologicalNeuronModels/further_reading.html">
+     Suggested further readings
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/chapter_title.html">
+   Dynamic Networks (W2D4)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+<label for="toctree-checkbox-19">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Intro.html">
+     Intro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
+     Tutorial 1: Neural Rate Models
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
+     Tutorial 2: Wilson-Cowan Model
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/W2D4_Outro.html">
+     Outro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W2D4_DynamicNetworks/further_reading.html">
+     Suggested further readings
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption">
+<span class="caption-text">
+  Stochastic Processes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/chapter_title.html">
+   Bayesian Decisions (W3D1)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+<label for="toctree-checkbox-20">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Intro.html">
+     Intro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
+     Tutorial 1: Bayes with a binary hidden state
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
+     Tutorial 2: Bayesian inference and decisions with continuous hidden state
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
+     Bonus Tutorial:Fitting to data
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/W3D1_Outro.html">
+     Outro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D1_BayesianDecisions/further_reading.html">
+     Suggested further readings
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/chapter_title.html">
+   Hidden Dynamics (W3D2)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+<label for="toctree-checkbox-21">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Intro.html">
+     Intro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
+     Tutorial 1: Sequential Probability Ratio Test
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
+     Tutorial 2: Hidden Markov Model
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
+     Tutorial 3: 1D Kalman Filter
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
+     Tutorial 4: 2D Kalman Filter
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/W3D2_Outro.html">
+     Outro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D2_HiddenDynamics/further_reading.html">
+     Suggested further readings
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D3_OptimalControl/chapter_title.html">
+   Optimal Control (W3D3)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+<label for="toctree-checkbox-22">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Intro.html">
+     Intro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
+     Tutorial 1: Optimal Control for Discrete States
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
+     Tutorial 2: Optimal Control for Continuous State
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/W3D3_Outro.html">
+     Outro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D3_OptimalControl/further_reading.html">
+     Suggested further readings
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/chapter_title.html">
+   Reinforcement Learning (W3D4)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+<label for="toctree-checkbox-23">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Intro.html">
+     Intro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
+     Tutorial 1: Learning to Predict
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
+     Tutorial 2: Learning to Act: Multi-Armed Bandits
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
+     Tutorial 3: Learning to Act: Q-Learning
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
+     Tutorial 4: From Reinforcement Learning to Planning
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/W3D4_Outro.html">
+     Outro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D4_ReinforcementLearning/further_reading.html">
+     Suggested further readings
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../W3D5_NetworkCausality/chapter_title.html">
+   Network Causality (W3D5)
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+<label for="toctree-checkbox-24">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Intro.html">
+     Intro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial1.html">
+     Tutorial 1: Interventions
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial2.html">
+     Tutorial 2: Correlations
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial3.html">
+     Tutorial 3: Simultaneous fitting/regression
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/student/W3D5_Tutorial4.html">
+     Tutorial 4: Instrumental Variables
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/W3D5_Outro.html">
+     Outro
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../W3D5_NetworkCausality/further_reading.html">
+     Suggested further readings
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption">
+<span class="caption-text">
+  Project Booklet
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../../../projects/README.html">
+   Introduction to projects
+  </a>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../../../projects/docs/project_guidance.html">
+   Daily guide for projects
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../../projects/modelingsteps/intro.html">
+   Modeling Step-by-Step Guide
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+<label for="toctree-checkbox-25">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../projects/modelingsteps/ModelingSteps_1through4.html">
+     Modeling Steps 1 - 4
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../projects/modelingsteps/ModelingSteps_5through10.html">
+     Modeling Steps 5 - 10
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../projects/modelingsteps/TrainIllusionModel.html">
+     Example Model Project: the Train Illusion
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../projects/modelingsteps/TrainIllusionDataProject.html">
+     Example Data Project: the Train Illusion
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../../projects/docs/datasets_overview.html">
+   Datasets
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+<label for="toctree-checkbox-26">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../../../projects/docs/neurons.html">
+     Neurons
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+<label for="toctree-checkbox-27">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../projects/neurons/README.html">
+       Guide
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../projects/neurons/neurons_videos.html">
+       Overview videos
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../../../projects/docs/fMRI.html">
+     fMRI
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+<label for="toctree-checkbox-28">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../projects/fMRI/README.html">
+       Guide
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../projects/fMRI/fMRI_videos.html">
+       Overview videos
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../../../projects/docs/ECoG.html">
+     ECoG
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+<label for="toctree-checkbox-29">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../projects/ECoG/README.html">
+       Guide
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../projects/ECoG/ECoG_videos.html">
+       Overview videos
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../../../projects/docs/behavior.html">
+     Behavior
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+<label for="toctree-checkbox-30">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../projects/behavior/README.html">
+       Guide
+      </a>
+</li>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../projects/behavior/behavior_videos.html">
+       Overview videos
+      </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children">
+<a class="reference internal" href="../../../projects/docs/theory.html">
+     Theory
+    </a>
+<input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+<label for="toctree-checkbox-31">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l3">
+<a class="reference internal" href="../../../projects/theory/README.html">
+       Guide
+      </a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../../../projects/docs/project_templates.html">
+   Project Templates
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../../projects/docs/project_2020_highlights.html">
+   Projects 2020
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/>
+<label for="toctree-checkbox-32">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../projects/docs/projects_2020/neurons.html">
+     Neurons
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../projects/docs/projects_2020/theory.html">
+     Theory
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../projects/docs/projects_2020/behavior.html">
+     Behavior
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../projects/docs/projects_2020/fMRI.html">
+     fMRI
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../../projects/docs/projects_2020/eeg.html">
+     EEG
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../../../projects/docs/abstract_guidance.html">
+   How to write an abstract
+  </a>
+</li>
+</ul>
+</div>
+</nav> <!-- To handle the deprecated key -->
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+</div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<div class="topbar container-xl fixed-top">
+<div class="topbar-contents row">
+<div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+<div class="col pl-md-4 topbar-main">
+<button aria-controls="site-navigation" aria-expanded="true" aria-label="Toggle navigation" class="navbar-toggler ml-0" data-placement="left" data-target=".site-navigation" data-toggle="tooltip" id="navbar-toggler" title="Toggle navigation" type="button">
+<i class="fas fa-bars"></i>
+<i class="fas fa-arrow-left"></i>
+<i class="fas fa-arrow-up"></i>
+</button>
+<div class="dropdown-buttons-trigger">
+<button aria-label="Download this page" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-download"></i></button>
+<div class="dropdown-buttons">
+<!-- ipynb file if we had a myst markdown file -->
+<!-- Download raw file -->
+<a class="dropdown-buttons" href="../../../_sources/tutorials/Bonus_Autoencoders/student/Bonus_Tutorial2.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.ipynb</button></a>
+<!-- Download PDF via print -->
+<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
+</div>
+</div>
+<!-- Source interaction buttons -->
+<div class="dropdown-buttons-trigger">
+<button aria-label="Connect with source repository" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fab fa-github"></i></button>
+<div class="dropdown-buttons sourcebuttons">
+<a class="repository-button" href="https://github.com/NeuromatchAcademy/course-content"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Source repository" type="button"><i class="fab fa-github"></i>repository</button></a>
+<a class="issues-button" href="https://github.com/NeuromatchAcademy/course-content/issues/new?title=Issue%20on%20page%20%2Ftutorials/Bonus_Autoencoders/student/Bonus_Tutorial2.html&amp;body=Your%20issue%20content%20here."><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Open an issue" type="button"><i class="fas fa-lightbulb"></i>open issue</button></a>
+</div>
+</div>
+<!-- Full screen (wrap in <a> to have style consistency -->
+<a class="full-screen-button"><button aria-label="Fullscreen mode" class="btn btn-secondary topbarbtn" data-placement="bottom" data-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode" type="button"><i class="fas fa-expand"></i></button></a>
+<!-- Launch buttons -->
+</div>
+<!-- Table of contents -->
+<div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+<i class="fas fa-list"></i> Contents
+            </div>
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#">
+   Tutorial 2: Autoencoder extensions
+  </a>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#tutorial-objectives">
+   Tutorial Objectives
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#architecture">
+     Architecture
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-1-extensions">
+     Video 1: Extensions
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#figure-settings">
+     Figure settings
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#helper-functions">
+     Helper functions
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-1-download-and-prepare-mnist-dataset">
+   Section 1: Download  and prepare MNIST dataset
+  </a>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-2-deeper-autoencoder-2d">
+   Section 2: Deeper autoencoder (2D)
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-1-build-deeper-autoencoder-2d">
+     Exercise 1: Build deeper autoencoder (2D)
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#train-the-autoencoder">
+     Train the autoencoder
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-spherical-latent-space">
+   Section 3: Spherical latent space
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-1-build-and-train-autoencoder-3d">
+     Section 3.1: Build and train autoencoder (3D)
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-2-train-the-autoencoder">
+     Section 3.2: Train the autoencoder
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-3-visualize-the-latent-space-in-3d">
+     Section 3.3: Visualize the latent space in 3D
+    </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-2-build-deep-autoencoder-2d-with-latent-spherical-space">
+       Exercise 2: Build deep autoencoder (2D) with latent spherical space
+      </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-4-train-the-autoencoder">
+     Section 3.4: Train the autoencoder
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-5-visualize-latent-space-on-surface-of-s-2">
+     Section 3.5: Visualize latent space on surface of
+     <span class="math notranslate nohighlight">
+      \(S_2\)
+     </span>
+</a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-2-wrap-up">
+     Video 2: Wrap-up
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus">
+   Bonus
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#deep-and-thick-autoencoder">
+     Deep and thick autoencoder
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="row" id="main-content">
+<div class="col-12 col-md-9 pl-md-3 pr-md-0">
+<div>
+<p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/Bonus_Autoencoders/Bonus_Tutorial2.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></p>
+<div class="section" id="tutorial-2-autoencoder-extensions">
+<h1>Tutorial 2: Autoencoder extensions<a class="headerlink" href="#tutorial-2-autoencoder-extensions" title="Permalink to this headline">¶</a></h1>
+<p><strong>Bonus Day: Autoencoders</strong></p>
+<p><strong>By Neuromatch Academy</strong></p>
+<p><strong>Content creators:</strong> Marco Brigham and the <a class="reference external" href="https://www.ccnss.org/">CCNSS</a> team (2014-2018)</p>
+<p><strong>Content reviewers:</strong> Itzel Olivos, Karen Schroeder, Karolina Stosio, Kshitij Dwivedi, Spiros Chavlis, Michael Waskom</p>
+</div>
+<hr class="docutils"/>
+<div class="section" id="tutorial-objectives">
+<h1>Tutorial Objectives<a class="headerlink" href="#tutorial-objectives" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
+<p>How can we improve the internal representation of shallow autoencoder with 2D bottleneck layer?</p>
+<p>We may try the following architecture changes:</p>
+<ul class="simple">
+<li><p>Introducing additional hidden layers</p></li>
+<li><p>Wrapping latent space as a sphere</p></li>
+</ul>
+<p> </p>
+<p><img alt="Deep ANN autoencoder" src="https://github.com/mpbrigham/colaboratory-figures/raw/master/nma/autoencoders/ae-ann-3h.png"/></p>
+<p>Adding hidden layers increases the number of learnable parameters to better use non-linear operations in encoding/decoding. Spherical geometry of latent space forces the network to use these additional degrees of freedom more efficiently.</p>
+<p>Let’s dive deeper into the technical aspects of autoencoders and improve their internal representations to reach the levels required for the <em>MNIST cognitive task</em>.</p>
+<p>In this tutorial, you will:</p>
+<ul class="simple">
+<li><p>Increase the capacity of the network by introducing additional hidden layers</p></li>
+<li><p>Understand the effect of constraints in the geometry of latent space</p></li>
+</ul>
+</div>
+<div class="section" id="video-1-extensions">
+<h2>Video 1: Extensions<a class="headerlink" href="#video-1-extensions" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "8f680ccb1b6e415c8adc04a103800535"}
+</script></div>
+</div>
+</div>
+</div>
+<hr class="docutils"/>
+<div class="section" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<p>Please execute the cell(s) below to initialize the notebook environment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span><span class="p">,</span> <span class="n">optim</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="figure-settings">
+<h2>Figure settings<a class="headerlink" href="#figure-settings" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Figure settings</span>
+<span class="o">!</span>pip install plotly --quiet
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+<span class="kn">from</span> <span class="nn">plotly.colors</span> <span class="kn">import</span> <span class="n">qualitative</span>
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = 'retina'
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/NeuromatchAcademy/course-content/NMA2020/nma.mplstyle"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="helper-functions">
+<h2>Helper functions<a class="headerlink" href="#helper-functions" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Helper functions</span>
+
+
+<span class="k">def</span> <span class="nf">downloadMNIST</span><span class="p">():</span>
+  <span class="sd">"""</span>
+<span class="sd">  Download MNIST dataset and transform it to torch.Tensor</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    None</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    x_train : training images (torch.Tensor) (60000, 28, 28)</span>
+<span class="sd">    x_test  : test images (torch.Tensor) (10000, 28, 28)</span>
+<span class="sd">    y_train : training labels (torch.Tensor) (60000, )</span>
+<span class="sd">    y_train : test labels (torch.Tensor) (10000, )</span>
+<span class="sd">  """</span>
+  <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="s1">'mnist_784'</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+  <span class="c1"># Trunk the data</span>
+  <span class="n">n_train</span> <span class="o">=</span> <span class="mi">60000</span>
+  <span class="n">n_test</span> <span class="o">=</span> <span class="mi">10000</span>
+
+  <span class="n">train_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_train</span><span class="p">)</span>
+  <span class="n">test_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_train</span><span class="p">,</span> <span class="n">n_train</span> <span class="o">+</span> <span class="n">n_test</span><span class="p">)</span>
+
+  <span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span>
+  <span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">test_idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span>
+
+  <span class="c1"># Transform np.ndarrays to torch.Tensor</span>
+  <span class="n">x_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span>
+                                        <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_train</span><span class="p">),</span>
+                                         <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+  <span class="n">x_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span>
+                                       <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_test</span><span class="p">),</span>
+                                        <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+
+  <span class="n">y_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+  <span class="n">y_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">init_weights_kaiming_uniform</span><span class="p">(</span><span class="n">layer</span><span class="p">):</span>
+  <span class="sd">"""</span>
+<span class="sd">  Initializes weights from linear PyTorch layer</span>
+<span class="sd">  with kaiming uniform distribution.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    layer (torch.Module)</span>
+<span class="sd">        Pytorch layer</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Nothing.</span>
+<span class="sd">  """</span>
+  <span class="c1"># check for linear PyTorch layer</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">):</span>
+    <span class="c1"># initialize weights with kaiming uniform distribution</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">kaiming_uniform_</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">init_weights_kaiming_normal</span><span class="p">(</span><span class="n">layer</span><span class="p">):</span>
+  <span class="sd">"""</span>
+<span class="sd">  Initializes weights from linear PyTorch layer</span>
+<span class="sd">  with kaiming normal distribution.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    layer (torch.Module)</span>
+<span class="sd">        Pytorch layer</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Nothing.</span>
+<span class="sd">  """</span>
+  <span class="c1"># check for linear PyTorch layer</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">):</span>
+    <span class="c1"># initialize weights with kaiming normal distribution</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">kaiming_normal_</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_layer_weights</span><span class="p">(</span><span class="n">layer</span><span class="p">):</span>
+  <span class="sd">"""</span>
+<span class="sd">  Retrieves learnable parameters from PyTorch layer.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    layer (torch.Module)</span>
+<span class="sd">        Pytorch layer</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    list with learnable parameters</span>
+<span class="sd">  """</span>
+  <span class="c1"># initialize output list</span>
+  <span class="n">weights</span> <span class="o">=</span> <span class="p">[]</span>
+
+  <span class="c1"># check whether layer has learnable parameters</span>
+  <span class="k">if</span> <span class="n">layer</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+    <span class="c1"># copy numpy array representation of each set of learnable parameters</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+      <span class="n">weights</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+
+  <span class="k">return</span> <span class="n">weights</span>
+
+
+<span class="k">def</span> <span class="nf">print_parameter_count</span><span class="p">(</span><span class="n">net</span><span class="p">):</span>
+  <span class="sd">"""</span>
+<span class="sd">  Prints count of learnable parameters per layer from PyTorch network.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    net (torch.Sequential)</span>
+<span class="sd">        Pytorch network</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Nothing.</span>
+<span class="sd">  """</span>
+
+  <span class="n">params_n</span> <span class="o">=</span> <span class="mi">0</span>
+
+  <span class="c1"># loop all layers in network</span>
+  <span class="k">for</span> <span class="n">layer_idx</span><span class="p">,</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">net</span><span class="p">):</span>
+
+    <span class="c1"># retrieve learnable parameters</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="n">get_layer_weights</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+    <span class="n">params_layer_n</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># loop list of learnable parameters and count them</span>
+    <span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">weights</span><span class="p">:</span>
+      <span class="n">params_layer_n</span> <span class="o">+=</span> <span class="n">params</span><span class="o">.</span><span class="n">size</span>
+
+    <span class="n">params_n</span> <span class="o">+=</span> <span class="n">params_layer_n</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">layer_idx</span><span class="si">}</span><span class="se">\t</span><span class="s1"> </span><span class="si">{</span><span class="n">params_layer_n</span><span class="si">}</span><span class="se">\t</span><span class="s1"> </span><span class="si">{</span><span class="n">layer</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Total:</span><span class="se">\t</span><span class="s1"> </span><span class="si">{</span><span class="n">params_n</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">eval_mse</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">):</span>
+  <span class="sd">"""</span>
+<span class="sd">  Evaluates mean square error (MSE) between y_pred and y_true</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    y_pred (torch.Tensor)</span>
+<span class="sd">        prediction samples</span>
+
+<span class="sd">    v (numpy array of floats)</span>
+<span class="sd">        ground truth samples</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    MSE(y_pred, y_true)</span>
+<span class="sd">  """</span>
+
+  <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+      <span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+      <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">eval_bce</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">):</span>
+  <span class="sd">"""</span>
+<span class="sd">  Evaluates binary cross-entropy (BCE) between y_pred and y_true</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    y_pred (torch.Tensor)</span>
+<span class="sd">        prediction samples</span>
+
+<span class="sd">    v (numpy array of floats)</span>
+<span class="sd">        ground truth samples</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    BCE(y_pred, y_true)</span>
+<span class="sd">  """</span>
+
+  <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BCELoss</span><span class="p">()</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plot_row</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">show_n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">image_shape</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">"""</span>
+<span class="sd">  Plots rows of images from list of iterables (iterables: list, numpy array</span>
+<span class="sd">  or torch.Tensor). Also accepts single iterable.</span>
+<span class="sd">  Randomly selects images in each list element if item count &gt; show_n.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    images (iterable or list of iterables)</span>
+<span class="sd">        single iterable with images, or list of iterables</span>
+
+<span class="sd">    show_n (integer)</span>
+<span class="sd">        maximum number of images per row</span>
+
+<span class="sd">    image_shape (tuple or list)</span>
+<span class="sd">        original shape of image if vectorized form</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Nothing.</span>
+<span class="sd">  """</span>
+
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+    <span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="n">images</span><span class="p">]</span>
+
+  <span class="k">for</span> <span class="n">items_idx</span><span class="p">,</span> <span class="n">items</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">images</span><span class="p">):</span>
+
+    <span class="n">items</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">items</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="n">items</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">show_n</span><span class="p">:</span>
+      <span class="n">selected</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">),</span> <span class="n">show_n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+      <span class="n">items</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="n">selected</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">image_shape</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">items</span> <span class="o">=</span> <span class="n">items</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="nb">list</span><span class="p">(</span><span class="n">image_shape</span><span class="p">))</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">image_idx</span><span class="p">,</span> <span class="n">image</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+
+      <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">),</span> <span class="n">image_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+      <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">to_s2</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+  <span class="sd">"""</span>
+<span class="sd">  Projects 3D coordinates to spherical coordinates (theta, phi) surface of</span>
+<span class="sd">  unit sphere S2.</span>
+<span class="sd">  theta: [0, pi]</span>
+<span class="sd">  phi: [-pi, pi]</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    u (list, numpy array or torch.Tensor of floats)</span>
+<span class="sd">        3D coordinates</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Sperical coordinates (theta, phi) on surface of unit sphere S2.</span>
+<span class="sd">  """</span>
+
+  <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">u</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">u</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span>
+  <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">z</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+  <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">z</span> <span class="o">/</span> <span class="n">r</span><span class="p">)</span>
+  <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">theta</span><span class="p">,</span> <span class="n">phi</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+
+
+<span class="k">def</span> <span class="nf">to_u3</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+  <span class="sd">"""</span>
+<span class="sd">  Converts from 2D coordinates on surface of unit sphere S2 to 3D coordinates</span>
+<span class="sd">  (on surface of S2), i.e. (theta, phi) ---&gt; (1, theta, phi).</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    s (list, numpy array or torch.Tensor of floats)</span>
+<span class="sd">        2D coordinates on unit sphere S_2</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    3D coordinates on surface of unit sphere S_2</span>
+<span class="sd">  """</span>
+
+  <span class="n">theta</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="p">(</span><span class="n">s</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+  <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+
+
+<span class="k">def</span> <span class="nf">xy_lim</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="sd">"""</span>
+<span class="sd">  Return arguments for plt.xlim and plt.ylim calculated from minimum</span>
+<span class="sd">  and maximum of x.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x (list, numpy array or torch.Tensor of floats)</span>
+<span class="sd">        data to be plotted</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Nothing.</span>
+<span class="sd">  """</span>
+
+  <span class="n">x_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+  <span class="n">x_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+  <span class="n">x_min</span> <span class="o">=</span> <span class="n">x_min</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x_max</span> <span class="o">-</span> <span class="n">x_min</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.05</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
+  <span class="n">x_max</span> <span class="o">=</span> <span class="n">x_max</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x_max</span> <span class="o">-</span> <span class="n">x_min</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.05</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
+
+  <span class="k">return</span> <span class="p">[</span><span class="n">x_min</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_max</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">x_min</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">x_max</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+
+
+<span class="k">def</span> <span class="nf">plot_generative</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">decoder_fn</span><span class="p">,</span> <span class="n">image_shape</span><span class="p">,</span> <span class="n">n_row</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">s2</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+  <span class="sd">"""</span>
+<span class="sd">  Plots images reconstructed by decoder_fn from a 2D grid in</span>
+<span class="sd">  latent space that is determined by minimum and maximum values in x.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x (list, numpy array or torch.Tensor of floats)</span>
+<span class="sd">        2D or 3D coordinates in latent space</span>
+
+<span class="sd">    decoder_fn (integer)</span>
+<span class="sd">        function returning vectorized images from 2D latent space coordinates</span>
+
+<span class="sd">    image_shape (tuple or list)</span>
+<span class="sd">        original shape of image</span>
+
+<span class="sd">    n_row (integer)</span>
+<span class="sd">        number of rows in grid</span>
+
+<span class="sd">    s2 (boolean)</span>
+<span class="sd">        convert 3D coordinates (x, y, z) to spherical coordinates (theta, phi)</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Nothing.</span>
+<span class="sd">  """</span>
+
+  <span class="k">if</span> <span class="n">s2</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">to_s2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+  <span class="n">xlim</span><span class="p">,</span> <span class="n">ylim</span> <span class="o">=</span> <span class="n">xy_lim</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+  <span class="n">dx</span> <span class="o">=</span> <span class="p">(</span><span class="n">xlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">xlim</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">n_row</span>
+  <span class="n">grid</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ylim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">dx</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ylim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">dx</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">n_row</span><span class="p">),</span>
+          <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xlim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">dx</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">xlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">dx</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">n_row</span><span class="p">)]</span>
+
+  <span class="n">canvas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">image_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_row</span><span class="p">,</span> <span class="n">image_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_row</span><span class="p">))</span>
+
+  <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">'gray'</span><span class="p">)</span>
+
+  <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">latent_y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">latent_x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+
+      <span class="n">latent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">latent_x</span><span class="p">,</span> <span class="n">latent_y</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+      <span class="k">if</span> <span class="n">s2</span><span class="p">:</span>
+        <span class="n">latent</span> <span class="o">=</span> <span class="n">to_u3</span><span class="p">(</span><span class="n">latent</span><span class="p">)</span>
+
+      <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">x_decoded</span> <span class="o">=</span> <span class="n">decoder_fn</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">latent</span><span class="p">))</span>
+
+      <span class="n">x_decoded</span> <span class="o">=</span> <span class="n">x_decoded</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">image_shape</span><span class="p">)</span>
+
+      <span class="n">canvas</span><span class="p">[</span><span class="n">j</span> <span class="o">*</span> <span class="n">image_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">image_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+             <span class="n">i</span> <span class="o">*</span> <span class="n">image_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">image_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">x_decoded</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">canvas</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">canvas</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">canvas</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plot_latent</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">show_n</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">s2</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xy_labels</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">"""</span>
+<span class="sd">  Plots digit class of each sample in 2D latent space coordinates.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x (list, numpy array or torch.Tensor of floats)</span>
+<span class="sd">        2D coordinates in latent space</span>
+
+<span class="sd">    y (list, numpy array or torch.Tensor of floats)</span>
+<span class="sd">        digit class of each sample</span>
+
+<span class="sd">    n_row (integer)</span>
+<span class="sd">        number of samples</span>
+
+<span class="sd">    s2 (boolean)</span>
+<span class="sd">        convert 3D coordinates (x, y, z) to spherical coordinates (theta, phi)</span>
+
+<span class="sd">    fontdict (dictionary)</span>
+<span class="sd">        style option for plt.text</span>
+
+<span class="sd">    xy_labels (list)</span>
+<span class="sd">        optional list with [xlabel, ylabel]</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Nothing.</span>
+<span class="sd">  """</span>
+
+  <span class="k">if</span> <span class="n">fontdict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">fontdict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'weight'</span><span class="p">:</span> <span class="s1">'bold'</span><span class="p">,</span> <span class="s1">'size'</span><span class="p">:</span> <span class="mi">12</span><span class="p">}</span>
+
+  <span class="k">if</span> <span class="n">s2</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">to_s2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+  <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">'tab10'</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">show_n</span><span class="p">:</span>
+    <span class="n">selected</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">show_n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">selected</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">selected</span><span class="p">]</span>
+
+  <span class="k">for</span> <span class="n">my_x</span><span class="p">,</span> <span class="n">my_y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">my_x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">my_x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">my_y</span><span class="p">)),</span>
+             <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">my_y</span><span class="p">)</span> <span class="o">/</span> <span class="mf">10.</span><span class="p">),</span>
+             <span class="n">fontdict</span><span class="o">=</span><span class="n">fontdict</span><span class="p">,</span>
+             <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span>
+             <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span>
+             <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+  <span class="n">xlim</span><span class="p">,</span> <span class="n">ylim</span> <span class="o">=</span> <span class="n">xy_lim</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">s2</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">xy_labels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">xy_labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">'$\varphi$'</span><span class="p">,</span> <span class="sa">r</span><span class="s1">'$\theta$'</span><span class="p">]</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">6</span><span class="p">),</span>
+               <span class="p">[</span><span class="s1">'0'</span><span class="p">,</span> <span class="s1">'$\pi/6$'</span><span class="p">,</span> <span class="s1">'$\pi/3$'</span><span class="p">,</span> <span class="s1">'$\pi/2$'</span><span class="p">,</span>
+                <span class="s1">'$2\pi/3$'</span><span class="p">,</span> <span class="s1">'$5\pi/6$'</span><span class="p">,</span> <span class="s1">'$\pi$'</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">3</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">3</span><span class="p">),</span>
+               <span class="p">[</span><span class="s1">'$-\pi$'</span><span class="p">,</span> <span class="s1">'$-2\pi/3$'</span><span class="p">,</span> <span class="s1">'$-\pi/3$'</span><span class="p">,</span> <span class="s1">'0'</span><span class="p">,</span>
+                <span class="s1">'$\pi/3$'</span><span class="p">,</span> <span class="s1">'$2\pi/3$'</span><span class="p">,</span> <span class="s1">'$\pi$'</span><span class="p">])</span>
+
+  <span class="k">if</span> <span class="n">xy_labels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">xy_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'$Z_1$'</span><span class="p">,</span> <span class="s1">'$Z_2$'</span><span class="p">]</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xy_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">xy_labels</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">plot_latent_generative</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">decoder_fn</span><span class="p">,</span> <span class="n">image_shape</span><span class="p">,</span> <span class="n">s2</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                           <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xy_labels</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">"""</span>
+<span class="sd">  Two horizontal subplots generated with encoder map and decoder grid.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x (list, numpy array or torch.Tensor of floats)</span>
+<span class="sd">        2D coordinates in latent space</span>
+
+<span class="sd">    y (list, numpy array or torch.Tensor of floats)</span>
+<span class="sd">        digit class of each sample</span>
+
+<span class="sd">    decoder_fn (integer)</span>
+<span class="sd">        function returning vectorized images from 2D latent space coordinates</span>
+
+<span class="sd">    image_shape (tuple or list)</span>
+<span class="sd">        original shape of image</span>
+
+<span class="sd">    s2 (boolean)</span>
+<span class="sd">        convert 3D coordinates (x, y, z) to spherical coordinates (theta, phi)</span>
+
+<span class="sd">    title (string)</span>
+<span class="sd">        plot title</span>
+
+<span class="sd">    xy_labels (list)</span>
+<span class="sd">        optional list with [xlabel, ylabel]</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Nothing.</span>
+<span class="sd">  """</span>
+
+  <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+  <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
+
+  <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Encoder map'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
+  <span class="n">plot_latent</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s2</span><span class="o">=</span><span class="n">s2</span><span class="p">,</span> <span class="n">xy_labels</span><span class="o">=</span><span class="n">xy_labels</span><span class="p">)</span>
+
+  <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Decoder grid'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
+  <span class="n">plot_generative</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">decoder_fn</span><span class="p">,</span> <span class="n">image_shape</span><span class="p">,</span> <span class="n">s2</span><span class="o">=</span><span class="n">s2</span><span class="p">)</span>
+
+  <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">plot_latent_3d</span><span class="p">(</span><span class="n">my_x</span><span class="p">,</span> <span class="n">my_y</span><span class="p">,</span> <span class="n">show_text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_n</span><span class="o">=</span><span class="mi">500</span><span class="p">):</span>
+  <span class="sd">"""</span>
+<span class="sd">  Plot digit class or marker in 3D latent space coordinates.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    my_x (list, numpy array or torch.Tensor of floats)</span>
+<span class="sd">        2D coordinates in latent space</span>
+
+<span class="sd">    my_y (list, numpy array or torch.Tensor of floats)</span>
+<span class="sd">        digit class of each sample</span>
+
+<span class="sd">    show_text (boolean)</span>
+<span class="sd">        whether to show text</span>
+
+<span class="sd">    image_shape (tuple or list)</span>
+<span class="sd">        original shape of image</span>
+
+<span class="sd">    s2 (boolean)</span>
+<span class="sd">        convert 3D coordinates (x, y, z) to spherical coordinates (theta, phi)</span>
+
+<span class="sd">    title (string)</span>
+<span class="sd">        plot title</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Nothing.</span>
+<span class="sd">  """</span>
+
+  <span class="n">layout</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'margin'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'l'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">'t'</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+            <span class="s1">'scene'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'xaxis'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'showspikes'</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                                <span class="s1">'title'</span><span class="p">:</span> <span class="s1">'z1'</span><span class="p">},</span>
+                      <span class="s1">'yaxis'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'showspikes'</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                                <span class="s1">'title'</span><span class="p">:</span> <span class="s1">'z2'</span><span class="p">},</span>
+                      <span class="s1">'zaxis'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'showspikes'</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                                <span class="s1">'title'</span><span class="p">:</span> <span class="s1">'z3'</span><span class="p">}}</span>
+            <span class="p">}</span>
+
+  <span class="n">selected_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">my_x</span><span class="p">),</span> <span class="n">show_n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+  <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">qualitative</span><span class="o">.</span><span class="n">T10</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">my_y</span><span class="p">[</span><span class="n">selected_idx</span><span class="p">]]</span>
+
+  <span class="n">x</span> <span class="o">=</span> <span class="n">my_x</span><span class="p">[</span><span class="n">selected_idx</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">my_x</span><span class="p">[</span><span class="n">selected_idx</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+  <span class="n">z</span> <span class="o">=</span> <span class="n">my_x</span><span class="p">[</span><span class="n">selected_idx</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+  <span class="n">text</span> <span class="o">=</span> <span class="n">my_y</span><span class="p">[</span><span class="n">selected_idx</span><span class="p">]</span>
+
+  <span class="k">if</span> <span class="n">show_text</span><span class="p">:</span>
+
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">,</span>
+                         <span class="n">mode</span><span class="o">=</span><span class="s1">'text'</span><span class="p">,</span>
+                         <span class="n">textfont</span><span class="o">=</span><span class="p">{</span><span class="s1">'color'</span><span class="p">:</span> <span class="n">colors</span><span class="p">,</span> <span class="s1">'size'</span><span class="p">:</span> <span class="mi">12</span><span class="p">}</span>
+                         <span class="p">)</span>
+
+    <span class="n">layout</span><span class="p">[</span><span class="s1">'hovermode'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+
+  <span class="k">else</span><span class="p">:</span>
+
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">,</span>
+                         <span class="n">hoverinfo</span><span class="o">=</span><span class="s1">'text'</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'markers'</span><span class="p">,</span>
+                         <span class="n">marker</span><span class="o">=</span><span class="p">{</span><span class="s1">'size'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">'color'</span><span class="p">:</span> <span class="n">colors</span><span class="p">,</span> <span class="s1">'opacity'</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">}</span>
+                         <span class="p">)</span>
+
+  <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">trace</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+
+  <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">runSGD</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">input_train</span><span class="p">,</span> <span class="n">input_test</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">'bce'</span><span class="p">,</span>
+           <span class="n">n_epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+  <span class="sd">"""</span>
+<span class="sd">  Trains autoencoder network with stochastic gradient descent with Adam</span>
+<span class="sd">  optimizer and loss criterion. Train samples are shuffled, and loss is</span>
+<span class="sd">  displayed at the end of each opoch for both MSE and BCE. Plots training loss</span>
+<span class="sd">  at each minibatch (maximum of 500 randomly selected values).</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    net (torch network)</span>
+<span class="sd">        ANN object (nn.Module)</span>
+
+<span class="sd">    input_train (torch.Tensor)</span>
+<span class="sd">        vectorized input images from train set</span>
+
+<span class="sd">    input_test (torch.Tensor)</span>
+<span class="sd">        vectorized input images from test set</span>
+
+<span class="sd">    criterion (string)</span>
+<span class="sd">        train loss: 'bce' or 'mse'</span>
+
+<span class="sd">    n_epochs (boolean)</span>
+<span class="sd">        number of full iterations of training data</span>
+
+<span class="sd">    batch_size (integer)</span>
+<span class="sd">        number of element in mini-batches</span>
+
+<span class="sd">    verbose (boolean)</span>
+<span class="sd">        print final loss</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Nothing.</span>
+<span class="sd">  """</span>
+
+  <span class="c1"># Initialize loss function</span>
+  <span class="k">if</span> <span class="n">criterion</span> <span class="o">==</span> <span class="s1">'mse'</span><span class="p">:</span>
+    <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+  <span class="k">elif</span> <span class="n">criterion</span> <span class="o">==</span> <span class="s1">'bce'</span><span class="p">:</span>
+    <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BCELoss</span><span class="p">()</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Please specify either "mse" or "bce" for loss criterion'</span><span class="p">)</span>
+
+  <span class="c1"># Initialize SGD optimizer</span>
+  <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+
+  <span class="c1"># Placeholder for loss</span>
+  <span class="n">track_loss</span> <span class="o">=</span> <span class="p">[]</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Epoch'</span><span class="p">,</span> <span class="s1">'</span><span class="se">\t</span><span class="s1">'</span><span class="p">,</span> <span class="s1">'Loss train'</span><span class="p">,</span> <span class="s1">'</span><span class="se">\t</span><span class="s1">'</span><span class="p">,</span> <span class="s1">'Loss test'</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">):</span>
+
+    <span class="n">shuffle_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">input_train</span><span class="p">))</span>
+    <span class="n">batches</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">input_train</span><span class="p">[</span><span class="n">shuffle_idx</span><span class="p">],</span> <span class="n">batch_size</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">batches</span><span class="p">:</span>
+
+      <span class="n">output_train</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+      <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">output_train</span><span class="p">,</span> <span class="n">batch</span><span class="p">)</span>
+      <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+      <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+      <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+      <span class="c1"># Keep track of loss at each epoch</span>
+      <span class="n">track_loss</span> <span class="o">+=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">loss</span><span class="p">)]</span>
+
+    <span class="n">loss_epoch</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">n_epochs</span><span class="si">}</span><span class="s1">'</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+      <span class="n">output_train</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">input_train</span><span class="p">)</span>
+      <span class="n">loss_train</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">output_train</span><span class="p">,</span> <span class="n">input_train</span><span class="p">)</span>
+      <span class="n">loss_epoch</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">'</span><span class="se">\t</span><span class="s1"> </span><span class="si">{</span><span class="n">loss_train</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">'</span>
+
+      <span class="n">output_test</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">input_test</span><span class="p">)</span>
+      <span class="n">loss_test</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">output_test</span><span class="p">,</span> <span class="n">input_test</span><span class="p">)</span>
+      <span class="n">loss_epoch</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">'</span><span class="se">\t\t</span><span class="s1"> </span><span class="si">{</span><span class="n">loss_test</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">'</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">loss_epoch</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="c1"># Print loss</span>
+    <span class="n">loss_mse</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">MSE</span><span class="se">\t</span><span class="s1"> </span><span class="si">{</span><span class="n">eval_mse</span><span class="p">(</span><span class="n">output_train</span><span class="p">,</span> <span class="n">input_train</span><span class="p">)</span><span class="si">:</span><span class="s1">0.4f</span><span class="si">}</span><span class="s1">'</span>
+    <span class="n">loss_mse</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">'</span><span class="se">\t\t</span><span class="s1"> </span><span class="si">{</span><span class="n">eval_mse</span><span class="p">(</span><span class="n">output_test</span><span class="p">,</span> <span class="n">input_test</span><span class="p">)</span><span class="si">:</span><span class="s1">0.4f</span><span class="si">}</span><span class="s1">'</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">loss_mse</span><span class="p">)</span>
+
+    <span class="n">loss_bce</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'BCE</span><span class="se">\t</span><span class="s1"> </span><span class="si">{</span><span class="n">eval_bce</span><span class="p">(</span><span class="n">output_train</span><span class="p">,</span> <span class="n">input_train</span><span class="p">)</span><span class="si">:</span><span class="s1">0.4f</span><span class="si">}</span><span class="s1">'</span>
+    <span class="n">loss_bce</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">'</span><span class="se">\t\t</span><span class="s1"> </span><span class="si">{</span><span class="n">eval_bce</span><span class="p">(</span><span class="n">output_test</span><span class="p">,</span> <span class="n">input_test</span><span class="p">)</span><span class="si">:</span><span class="s1">0.4f</span><span class="si">}</span><span class="s1">'</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">loss_bce</span><span class="p">)</span>
+
+  <span class="c1"># Plot loss</span>
+  <span class="n">step</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">track_loss</span><span class="p">)</span> <span class="o">/</span> <span class="mi">500</span><span class="p">))</span>
+  <span class="n">x_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">track_loss</span><span class="p">),</span> <span class="n">step</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">track_loss</span><span class="p">[::</span><span class="n">step</span><span class="p">],</span> <span class="s1">'C0'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Iterations'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Loss'</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">NormalizeLayer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+  <span class="sd">"""</span>
+<span class="sd">  pyTorch layer (nn.Module) that normalizes activations by their L2 norm.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">      None.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">      Object inherited from nn.Module class.</span>
+<span class="sd">  """</span>
+
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+  <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils"/>
+<div class="section" id="section-1-download-and-prepare-mnist-dataset">
+<h1>Section 1: Download  and prepare MNIST dataset<a class="headerlink" href="#section-1-download-and-prepare-mnist-dataset" title="Permalink to this headline">¶</a></h1>
+<p>We use the helper function <code class="docutils literal notranslate"><span class="pre">downloadMNIST</span></code> to download the dataset and transform it into <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> and assign train and test sets to (<code class="docutils literal notranslate"><span class="pre">x_train</span></code>, <code class="docutils literal notranslate"><span class="pre">y_train</span></code>) and (<code class="docutils literal notranslate"><span class="pre">x_test</span></code>, <code class="docutils literal notranslate"><span class="pre">y_test</span></code>).</p>
+<p>The variable <code class="docutils literal notranslate"><span class="pre">input_size</span></code> stores the length of <em>vectorized</em> versions of the images <code class="docutils literal notranslate"><span class="pre">input_train</span></code> and <code class="docutils literal notranslate"><span class="pre">input_test</span></code> for training and test images.</p>
+<p><strong>Instructions:</strong></p>
+<ul class="simple">
+<li><p>Please execute the cell below</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download MNIST</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">downloadMNIST</span><span class="p">()</span>
+
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span> <span class="o">/</span> <span class="mi">255</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span> <span class="o">/</span> <span class="mi">255</span>
+
+<span class="n">image_shape</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+<span class="n">input_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">image_shape</span><span class="p">)</span>
+
+<span class="n">input_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">input_size</span><span class="p">])</span>
+<span class="n">input_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">input_size</span><span class="p">])</span>
+
+<span class="n">test_selected_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_test</span><span class="p">),</span> <span class="mi">10</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">train_selected_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_train</span><span class="p">),</span> <span class="mi">10</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'shape image </span><span class="se">\t</span><span class="s1"> </span><span class="se">\t</span><span class="s1"> </span><span class="si">{</span><span class="n">image_shape</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'shape input_train </span><span class="se">\t</span><span class="s1"> </span><span class="si">{</span><span class="n">input_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'shape input_test </span><span class="se">\t</span><span class="s1"> </span><span class="si">{</span><span class="n">input_test</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape image 	 	 torch.Size([28, 28])
+shape input_train 	 torch.Size([60000, 784])
+shape input_test 	 torch.Size([10000, 784])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils"/>
+<div class="section" id="section-2-deeper-autoencoder-2d">
+<h1>Section 2: Deeper autoencoder (2D)<a class="headerlink" href="#section-2-deeper-autoencoder-2d" title="Permalink to this headline">¶</a></h1>
+<p>The internal representation of shallow autoencoder with 2D latent space is similar to PCA, which shows that the autoencoder is not fully leveraging non-linear capabilities to model data. Adding capacity in terms of learnable parameters takes advantage of non-linear operations in encoding/decoding to capture non-linear patterns in data.</p>
+<p>Adding hidden layers enables us to introduce additional parameters, either layerwise or depthwise. The same amount <span class="math notranslate nohighlight">\(N\)</span> of additional parameters can be added in a single layer or distributed among several layers. Adding several hidden layers reduces the compression/decompression ratio of each layer.</p>
+<div class="section" id="exercise-1-build-deeper-autoencoder-2d">
+<h2>Exercise 1: Build deeper autoencoder (2D)<a class="headerlink" href="#exercise-1-build-deeper-autoencoder-2d" title="Permalink to this headline">¶</a></h2>
+<p>Implement this deeper version of the ANN autoencoder by adding four hidden layers. The number of units per layer in the encoder is the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">784</span> <span class="o">-&gt;</span> <span class="mi">392</span> <span class="o">-&gt;</span> <span class="mi">64</span> <span class="o">-&gt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>The shallow autoencoder has a compression ratio of <strong>784:2 = 392:1</strong>. The first additional hidden layer has a compression ratio of <strong>2:1</strong>,  followed by a hidden layer that sets the bottleneck compression ratio of <strong>32:1</strong>.</p>
+<p>The choice of hidden layer size aims to reduce the compression rate in the bottleneck layer while increasing the count of trainable parameters.  For example, if the compression rate of the first hidden layer doubles from <strong>2:1</strong> to <strong>4:1</strong>, the count of trainable parameters halves from 667K to 333K.</p>
+<p> </p>
+<p>This deep autoencoder’s performance may be further improved by adding additional hidden layers and by increasing the count of trainable parameters in each layer. These improvements have a diminishing return due to challenges associated with training under high parameter count and depth. One option explored in the <em>Bonus</em> section is to add a first hidden layer with 2x - 3x the input size. This size increase results in millions of parameters at the cost of longer training time.</p>
+<p> </p>
+<p>Weight initialization is particularly important in deep networks. The availability of large datasets and weight initialization likely drove the deep learning revolution of 2010. We’ll implement Kaiming normal as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">init_weights_kaiming_normal</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Instructions:</strong></p>
+<ul class="simple">
+<li><p>Add four additional layers and activation functions to the network</p></li>
+<li><p>Adjust the definitions of <code class="docutils literal notranslate"><span class="pre">encoder</span></code> and <code class="docutils literal notranslate"><span class="pre">decoder</span></code></p></li>
+<li><p>Check learnable parameter count for this autoencoder by executing the last cell</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">encoding_size</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">input_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">PReLU</span><span class="p">(),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">input_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="n">encoding_size</span> <span class="o">*</span> <span class="mi">32</span><span class="p">),</span>
+    <span class="c1">#################################################</span>
+    <span class="c1">## TODO for students: add layers to build deeper autoencoder</span>
+    <span class="c1">#################################################</span>
+    <span class="c1"># Add activation function</span>
+    <span class="c1"># ...,</span>
+    <span class="c1"># Add another layer</span>
+    <span class="c1"># nn.Linear(..., ...),</span>
+    <span class="c1"># Add activation function</span>
+    <span class="c1"># ...,</span>
+    <span class="c1"># Add another layer</span>
+    <span class="c1"># nn.Linear(..., ...),</span>
+    <span class="c1"># Add activation function</span>
+    <span class="c1"># ...,</span>
+    <span class="c1"># Add another layer</span>
+    <span class="c1"># nn.Linear(..., ...),</span>
+    <span class="c1"># Add activation function</span>
+    <span class="c1"># ...,</span>
+    <span class="c1"># Add another layer</span>
+    <span class="c1"># nn.Linear(..., ...),</span>
+    <span class="c1"># Add activation function</span>
+    <span class="c1"># ....</span>
+    <span class="p">)</span>
+
+<span class="n">model</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">init_weights_kaiming_normal</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Autoencoder </span><span class="se">\n\n</span><span class="s1"> </span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+
+<span class="c1"># Adjust the value n_l to split your model correctly</span>
+<span class="c1"># n_l = ...</span>
+
+<span class="c1"># uncomment when you fill the code</span>
+<span class="c1"># encoder = model[:n_l]</span>
+<span class="c1"># decoder = model[n_l:]</span>
+<span class="c1"># print(f'Encoder \n\n {encoder}\n')</span>
+<span class="c1"># print(f'Decoder \n\n {decoder}')</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Autoencoder 
+
+ Sequential(
+  (0): Linear(in_features=784, out_features=392, bias=True)
+  (1): PReLU(num_parameters=1)
+  (2): Linear(in_features=392, out_features=64, bias=True)
+)
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/Bonus_Autoencoders/solutions/Bonus_Tutorial2_Solution_0d50004f.py"><em>Click for solution</em></a></p>
+<p><strong>Helper function:</strong> <code class="docutils literal notranslate"><span class="pre">print_parameter_count</span></code></p>
+<p>Please uncomment the line below to inspect this function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># help(print_parameter_count)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="train-the-autoencoder">
+<h2>Train the autoencoder<a class="headerlink" href="#train-the-autoencoder" title="Permalink to this headline">¶</a></h2>
+<p>Train the network for <code class="docutils literal notranslate"><span class="pre">n_epochs=10</span></code> epochs with <code class="docutils literal notranslate"><span class="pre">batch_size=128</span></code>, and observe how the internal representation successfully captures additional digit classes.</p>
+<p>The encoder map shows well-separated clusters that correspond to the associated digits in the decoder grid. The decoder grid also shows that the network is robust to digit skewness, i.e., digits leaning to the left or the right are recognized in the same digit class.</p>
+<p><strong>Instructions:</strong></p>
+<ul class="simple">
+<li><p>Please execute the cells below</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
+
+<span class="n">runSGD</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">input_train</span><span class="p">,</span> <span class="n">input_test</span><span class="p">,</span> <span class="n">n_epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span>
+       <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 	 Loss train 	 Loss test
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2300</span><span class="o">/</span><span class="mf">285641839.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">runSGD</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">input_train</span><span class="p">,</span> <span class="n">input_test</span><span class="p">,</span> <span class="n">n_epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>        <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+
+<span class="nn">/tmp/ipykernel_2300/3487241110.py</span> in <span class="ni">runSGD</span><span class="nt">(net, input_train, input_test, criterion, n_epochs, batch_size, verbose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">586</span> 
+<span class="g g-Whitespace">    </span><span class="mi">587</span>       <span class="n">output_train</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">588</span>       <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">output_train</span><span class="p">,</span> <span class="n">batch</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">589</span>       <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">590</span>       <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/torch/nn/modules/module.py</span> in <span class="ni">_call_impl</span><span class="nt">(self, *input, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1049</span>         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_pre_hooks</span> <span class="ow">or</span> <span class="n">_global_backward_hooks</span>
+<span class="g g-Whitespace">   </span><span class="mi">1050</span>                 <span class="ow">or</span> <span class="n">_global_forward_hooks</span> <span class="ow">or</span> <span class="n">_global_forward_pre_hooks</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1051</span>             <span class="k">return</span> <span class="n">forward_call</span><span class="p">(</span><span class="o">*</span><span class="nb">input</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1052</span>         <span class="c1"># Do not call functions when jit is used</span>
+<span class="g g-Whitespace">   </span><span class="mi">1053</span>         <span class="n">full_backward_hooks</span><span class="p">,</span> <span class="n">non_full_backward_hooks</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/torch/nn/modules/loss.py</span> in <span class="ni">forward</span><span class="nt">(self, input, target)</span>
+<span class="g g-Whitespace">    </span><span class="mi">610</span> 
+<span class="g g-Whitespace">    </span><span class="mi">611</span>     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">612</span>         <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">binary_cross_entropy</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reduction</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">613</span> 
+<span class="g g-Whitespace">    </span><span class="mi">614</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/torch/nn/functional.py</span> in <span class="ni">binary_cross_entropy</span><span class="nt">(input, target, weight, size_average, reduce, reduction)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2884</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2885</span>             <span class="s2">"Using a target size (</span><span class="si">{}</span><span class="s2">) that is different to the input size (</span><span class="si">{}</span><span class="s2">) is deprecated. "</span>
+<span class="ne">-&gt; </span><span class="mi">2886</span>             <span class="s2">"Please ensure they have the same size."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">size</span><span class="p">(),</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+<span class="g g-Whitespace">   </span><span class="mi">2887</span>         <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2888</span> 
+
+<span class="ne">ValueError</span>: Using a target size (torch.Size([128, 784])) that is different to the input size (torch.Size([128, 64])) is deprecated. Please ensure they have the same size.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+  <span class="n">output_test</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_test</span><span class="p">)</span>
+  <span class="n">latent_test</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">(</span><span class="n">input_test</span><span class="p">)</span>
+
+<span class="n">plot_row</span><span class="p">([</span><span class="n">input_test</span><span class="p">[</span><span class="n">test_selected_idx</span><span class="p">],</span> <span class="n">output_test</span><span class="p">[</span><span class="n">test_selected_idx</span><span class="p">]],</span>
+         <span class="n">image_shape</span><span class="o">=</span><span class="n">image_shape</span><span class="p">)</span>
+
+<span class="n">plot_latent_generative</span><span class="p">(</span><span class="n">latent_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">decoder</span><span class="p">,</span> <span class="n">image_shape</span><span class="o">=</span><span class="n">image_shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<hr class="docutils"/>
+<div class="section" id="section-3-spherical-latent-space">
+<h1>Section 3: Spherical latent space<a class="headerlink" href="#section-3-spherical-latent-space" title="Permalink to this headline">¶</a></h1>
+<p>The previous architecture generates representations that typically spread in different directions from coordinate <span class="math notranslate nohighlight">\((z_1, z_2)=(0,0)\)</span>. This effect is due to the initialization of weights distributed randomly around <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<p>Adding a third unit to the bottleneck layer defines a coordinate <span class="math notranslate nohighlight">\((z_1, z_2, z_3)\)</span> in 3D space. The latent space from such a network will still spread out from <span class="math notranslate nohighlight">\((z_1, z_2, z_3)=(0, 0, 0)\)</span>.</p>
+<p>Collapsing the latent space on the surface of a sphere removes the possibility of spreading indefinitely from the origin <span class="math notranslate nohighlight">\((0, 0, 0)\)</span> in any direction since this will eventually lead back to the origin. This constraint generates a representation that fills the surface of the sphere.</p>
+<p> </p>
+<p><img alt="Unit sphere S2" src="https://github.com/mpbrigham/colaboratory-figures/raw/master/nma/autoencoders/unit_sphere.png"/></p>
+<p> </p>
+<p>Projecting to the surface of the sphere is implemented by dividing the coordinates <span class="math notranslate nohighlight">\((z_1, z_2, z_3)\)</span> by their <span class="math notranslate nohighlight">\(L_2\)</span> norm.</p>
+<p><span class="math notranslate nohighlight">\((z_1, z_2, z_3)\longmapsto (s_1, s_2, s_3)=(z_1, z_2, z_3)/\|(z_1, z_2, z_3)\|_2=(z_1, z_2, z_3)/ \sqrt{z_1^2+z_2^2+z_3^2}\)</span></p>
+<p>This mapping projects to the surface of the <a class="reference external" href="https://en.wikipedia.org/wiki/N-sphere"><span class="math notranslate nohighlight">\(S_2\)</span> sphere</a> with unit radius. (Why?)</p>
+<div class="section" id="section-3-1-build-and-train-autoencoder-3d">
+<h2>Section 3.1: Build and train autoencoder (3D)<a class="headerlink" href="#section-3-1-build-and-train-autoencoder-3d" title="Permalink to this headline">¶</a></h2>
+<p>We start by adding one unit to the bottleneck layer and visualize the latent space in 3D.</p>
+<p>Please execute the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">encoding_size</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">input_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">PReLU</span><span class="p">(),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">input_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="n">encoding_size</span> <span class="o">*</span> <span class="mi">32</span><span class="p">),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">PReLU</span><span class="p">(),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">encoding_size</span> <span class="o">*</span> <span class="mi">32</span><span class="p">,</span> <span class="n">encoding_size</span><span class="p">),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">PReLU</span><span class="p">(),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">encoding_size</span><span class="p">,</span> <span class="n">encoding_size</span> <span class="o">*</span> <span class="mi">32</span><span class="p">),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">PReLU</span><span class="p">(),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">encoding_size</span> <span class="o">*</span> <span class="mi">32</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">input_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">PReLU</span><span class="p">(),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">input_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="n">input_size</span><span class="p">),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span>
+    <span class="p">)</span>
+
+<span class="n">model</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">init_weights_kaiming_normal</span><span class="p">)</span>
+
+<span class="n">encoder</span> <span class="o">=</span> <span class="n">model</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">decoder</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="mi">6</span><span class="p">:]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Autoencoder </span><span class="se">\n\n</span><span class="s1"> </span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Autoencoder 
+
+ Sequential(
+  (0): Linear(in_features=784, out_features=392, bias=True)
+  (1): PReLU(num_parameters=1)
+  (2): Linear(in_features=392, out_features=96, bias=True)
+  (3): PReLU(num_parameters=1)
+  (4): Linear(in_features=96, out_features=3, bias=True)
+  (5): PReLU(num_parameters=1)
+  (6): Linear(in_features=3, out_features=96, bias=True)
+  (7): PReLU(num_parameters=1)
+  (8): Linear(in_features=96, out_features=392, bias=True)
+  (9): PReLU(num_parameters=1)
+  (10): Linear(in_features=392, out_features=784, bias=True)
+  (11): Sigmoid()
+)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="section-3-2-train-the-autoencoder">
+<h2>Section 3.2: Train the autoencoder<a class="headerlink" href="#section-3-2-train-the-autoencoder" title="Permalink to this headline">¶</a></h2>
+<p>Train the network for <code class="docutils literal notranslate"><span class="pre">n_epochs=10</span></code> epochs with <code class="docutils literal notranslate"><span class="pre">batch_size=128</span></code>. Observe how the internal representation spreads from the origin and reaches much lower loss due to the additional degree of freedom in the bottleneck layer.</p>
+<p><strong>Instructions:</strong></p>
+<ul class="simple">
+<li><p>Please execute the cell below</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
+
+<span class="n">runSGD</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">input_train</span><span class="p">,</span> <span class="n">input_test</span><span class="p">,</span> <span class="n">n_epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span>
+       <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 	 Loss train 	 Loss test
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/10	 0.1858		 0.1859
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2/10	 0.1762		 0.1763
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3/10	 0.1701		 0.1707
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2300</span><span class="o">/</span><span class="mf">285641839.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">runSGD</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">input_train</span><span class="p">,</span> <span class="n">input_test</span><span class="p">,</span> <span class="n">n_epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>        <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+
+<span class="nn">/tmp/ipykernel_2300/3487241110.py</span> in <span class="ni">runSGD</span><span class="nt">(net, input_train, input_test, criterion, n_epochs, batch_size, verbose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">597</span>     <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">598</span>       <span class="n">output_train</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">input_train</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">599</span>       <span class="n">loss_train</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">output_train</span><span class="p">,</span> <span class="n">input_train</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">600</span>       <span class="n">loss_epoch</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">'</span><span class="se">\t</span><span class="s1"> </span><span class="si">{</span><span class="n">loss_train</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">'</span>
+<span class="g g-Whitespace">    </span><span class="mi">601</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/torch/nn/modules/module.py</span> in <span class="ni">_call_impl</span><span class="nt">(self, *input, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1049</span>         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_pre_hooks</span> <span class="ow">or</span> <span class="n">_global_backward_hooks</span>
+<span class="g g-Whitespace">   </span><span class="mi">1050</span>                 <span class="ow">or</span> <span class="n">_global_forward_hooks</span> <span class="ow">or</span> <span class="n">_global_forward_pre_hooks</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1051</span>             <span class="k">return</span> <span class="n">forward_call</span><span class="p">(</span><span class="o">*</span><span class="nb">input</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1052</span>         <span class="c1"># Do not call functions when jit is used</span>
+<span class="g g-Whitespace">   </span><span class="mi">1053</span>         <span class="n">full_backward_hooks</span><span class="p">,</span> <span class="n">non_full_backward_hooks</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/torch/nn/modules/loss.py</span> in <span class="ni">forward</span><span class="nt">(self, input, target)</span>
+<span class="g g-Whitespace">    </span><span class="mi">610</span> 
+<span class="g g-Whitespace">    </span><span class="mi">611</span>     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">612</span>         <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">binary_cross_entropy</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reduction</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">613</span> 
+<span class="g g-Whitespace">    </span><span class="mi">614</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/torch/nn/functional.py</span> in <span class="ni">binary_cross_entropy</span><span class="nt">(input, target, weight, size_average, reduce, reduction)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2891</span>         <span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">new_size</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2892</span> 
+<span class="ne">-&gt; </span><span class="mi">2893</span>     <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">_C</span><span class="o">.</span><span class="n">_nn</span><span class="o">.</span><span class="n">binary_cross_entropy</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">reduction_enum</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2894</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2895</span> 
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="section-3-3-visualize-the-latent-space-in-3d">
+<h2>Section 3.3: Visualize the latent space in 3D<a class="headerlink" href="#section-3-3-visualize-the-latent-space-in-3d" title="Permalink to this headline">¶</a></h2>
+<p><strong>Helper function</strong>: <code class="docutils literal notranslate"><span class="pre">plot_latent_3d</span></code></p>
+<p>Please uncomment the line below to inspect this function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># help(plot_latent_3d)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+  <span class="n">latent_test</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">(</span><span class="n">input_test</span><span class="p">)</span>
+
+<span class="n">plot_latent_3d</span><span class="p">(</span><span class="n">latent_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-2-build-deep-autoencoder-2d-with-latent-spherical-space">
+<h3>Exercise 2: Build deep autoencoder (2D) with latent spherical space<a class="headerlink" href="#exercise-2-build-deep-autoencoder-2d-with-latent-spherical-space" title="Permalink to this headline">¶</a></h3>
+<p>We now constrain the latent space to the surface of a sphere <span class="math notranslate nohighlight">\(S_2\)</span>.</p>
+<p><strong>Instructions:</strong></p>
+<ul class="simple">
+<li><p>Add the custom layer <code class="docutils literal notranslate"><span class="pre">NormalizeLayer</span></code> after the bottleneck layer</p></li>
+<li><p>Adjust the definitions of <code class="docutils literal notranslate"><span class="pre">encoder</span></code> and <code class="docutils literal notranslate"><span class="pre">decoder</span></code></p></li>
+<li><p>Experiment with keyword <code class="docutils literal notranslate"><span class="pre">show_text=False</span></code> for <code class="docutils literal notranslate"><span class="pre">plot_latent_3d</span></code></p></li>
+</ul>
+<p><strong>Helper function</strong>: <code class="docutils literal notranslate"><span class="pre">NormalizeLayer</span></code></p>
+<p>Please uncomment the line below to inspect this function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># help(NormalizeLayer)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">encoding_size</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">input_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">PReLU</span><span class="p">(),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">input_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="n">encoding_size</span> <span class="o">*</span> <span class="mi">32</span><span class="p">),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">PReLU</span><span class="p">(),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">encoding_size</span> <span class="o">*</span> <span class="mi">32</span><span class="p">,</span> <span class="n">encoding_size</span><span class="p">),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">PReLU</span><span class="p">(),</span>
+    <span class="c1">#################################################</span>
+    <span class="c1">## TODO for students: add custom normalize layer</span>
+    <span class="c1">#################################################</span>
+    <span class="c1"># add the normalization layer</span>
+    <span class="c1"># ...,</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">encoding_size</span><span class="p">,</span> <span class="n">encoding_size</span> <span class="o">*</span> <span class="mi">32</span><span class="p">),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">PReLU</span><span class="p">(),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">encoding_size</span> <span class="o">*</span> <span class="mi">32</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">input_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">PReLU</span><span class="p">(),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">input_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="n">input_size</span><span class="p">),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span>
+    <span class="p">)</span>
+
+<span class="n">model</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">init_weights_kaiming_normal</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Autoencoder </span><span class="se">\n\n</span><span class="s1"> </span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+
+<span class="c1"># Adjust the value n_l to split your model correctly</span>
+<span class="c1"># n_l = ...</span>
+
+<span class="c1"># uncomment when you fill the code</span>
+<span class="c1"># encoder = model[:n_l]</span>
+<span class="c1"># decoder = model[n_l:]</span>
+<span class="c1"># print(f'Encoder \n\n {encoder}\n')</span>
+<span class="c1"># print(f'Decoder \n\n {decoder}')</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/Bonus_Autoencoders/solutions/Bonus_Tutorial2_Solution_f82e3b9c.py"><em>Click for solution</em></a></p>
+</div>
+</div>
+<div class="section" id="section-3-4-train-the-autoencoder">
+<h2>Section 3.4: Train the autoencoder<a class="headerlink" href="#section-3-4-train-the-autoencoder" title="Permalink to this headline">¶</a></h2>
+<p>Train the network for <code class="docutils literal notranslate"><span class="pre">n_epochs=10</span></code> epochs with <code class="docutils literal notranslate"><span class="pre">batch_size=128</span></code> and observe how loss raises again and is comparable to the model with 2D latent space.</p>
+<p><strong>Instructions:</strong></p>
+<ul class="simple">
+<li><p>Please execute the cell below</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
+
+<span class="n">runSGD</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">input_train</span><span class="p">,</span> <span class="n">input_test</span><span class="p">,</span> <span class="n">n_epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span>
+       <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+  <span class="n">latent_test</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">(</span><span class="n">input_test</span><span class="p">)</span>
+
+<span class="n">plot_latent_3d</span><span class="p">(</span><span class="n">latent_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="section-3-5-visualize-latent-space-on-surface-of-s-2">
+<h2>Section 3.5: Visualize latent space on surface of <span class="math notranslate nohighlight">\(S_2\)</span><a class="headerlink" href="#section-3-5-visualize-latent-space-on-surface-of-s-2" title="Permalink to this headline">¶</a></h2>
+<p>The 3D coordinates <span class="math notranslate nohighlight">\((s_1, s_2, s_3)\)</span> on the surface of the unit sphere <span class="math notranslate nohighlight">\(S_2\)</span>  can be mapped to <a class="reference external" href="https://en.wikipedia.org/wiki/Spherical_coordinate_system">spherical coordinates</a> <span class="math notranslate nohighlight">\((r, \theta, \phi)\)</span>, as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+r &amp;= \sqrt{s_1^2 + s_2^2 + s_3^2} \\
+\phi &amp;= \arctan \frac{s_2}{s_1} \\
+\theta &amp;= \arccos\frac{s_3}{r}
+\end{aligned}
+\end{split}\]</div>
+<p><img alt="Spherical coordinates" src="https://github.com/mpbrigham/colaboratory-figures/raw/master/nma/autoencoders/spherical_coords.png"/></p>
+<p>What is the domain (numerical range) spanned by (<span class="math notranslate nohighlight">\(\theta, \phi)\)</span>?</p>
+<p>We return to a 2D representation since the angles <span class="math notranslate nohighlight">\((\theta, \phi)\)</span> are the only degrees of freedom on the surface of the sphere. Add the keyword <code class="docutils literal notranslate"><span class="pre">s2=True</span></code> to <code class="docutils literal notranslate"><span class="pre">plot_latent_generative</span></code> to un-wrap the sphere’s surface similar to a world map.</p>
+<p>Task: Check the numerical range of the plot axis to help identify <span class="math notranslate nohighlight">\(\theta\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span>, and visualize the unfolding of the 3D plot from the previous exercise.</p>
+<p><strong>Instructions:</strong></p>
+<ul class="simple">
+<li><p>Please execute the cells below</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+  <span class="n">output_test</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_test</span><span class="p">)</span>
+
+<span class="n">plot_row</span><span class="p">([</span><span class="n">input_test</span><span class="p">[</span><span class="n">test_selected_idx</span><span class="p">],</span> <span class="n">output_test</span><span class="p">[</span><span class="n">test_selected_idx</span><span class="p">]],</span>
+         <span class="n">image_shape</span><span class="o">=</span><span class="n">image_shape</span><span class="p">)</span>
+
+<span class="n">plot_latent_generative</span><span class="p">(</span><span class="n">latent_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">decoder</span><span class="p">,</span>
+                       <span class="n">image_shape</span><span class="o">=</span><span class="n">image_shape</span><span class="p">,</span> <span class="n">s2</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils"/>
+<div class="section" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<p>We learned two techniques to improve representation capacity: adding a few hidden layers and projecting latent space on the sphere <span class="math notranslate nohighlight">\(S_2\)</span>.</p>
+<p>The expressive power of autoencoder improves with additional hidden layers. Projecting latent space on the surface of <span class="math notranslate nohighlight">\(S_2\)</span> spreads out digits classes in a more visually pleasing way but may not always produce a lower loss.</p>
+<p><strong>Deep autoencoder architectures have rich internal representations to deal with sophisticated tasks such as the MNIST cognitive task.</strong></p>
+<p>We now have powerful tools to explore how simple algorithms build robust models of the world by capturing relevant data patterns.</p>
+<div class="section" id="video-2-wrap-up">
+<h2>Video 2: Wrap-up<a class="headerlink" href="#video-2-wrap-up" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+</div>
+</div>
+</div>
+<hr class="docutils"/>
+<div class="section" id="bonus">
+<h1>Bonus<a class="headerlink" href="#bonus" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="deep-and-thick-autoencoder">
+<h2>Deep and thick autoencoder<a class="headerlink" href="#deep-and-thick-autoencoder" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise, we first expand the first hidden layer to double the input size, followed by compression to half the input size leading to 3.8M parameters. Please <strong>do not train this network during tutorial</strong> due to long training time.</p>
+<p><strong>Instructions:</strong></p>
+<ul class="simple">
+<li><p>Please uncomment and execute the cells below</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># encoding_size = 3</span>
+
+<span class="c1"># model = nn.Sequential(</span>
+<span class="c1">#     nn.Linear(input_size, int(input_size * 2)),</span>
+<span class="c1">#     nn.PReLU(),</span>
+<span class="c1">#     nn.Linear(int(input_size * 2), int(input_size / 2)),</span>
+<span class="c1">#     nn.PReLU(),</span>
+<span class="c1">#     nn.Linear(int(input_size / 2), encoding_size * 32),</span>
+<span class="c1">#     nn.PReLU(),</span>
+<span class="c1">#     nn.Linear(encoding_size * 32, encoding_size),</span>
+<span class="c1">#     nn.PReLU(),</span>
+<span class="c1">#     NormalizeLayer(),</span>
+<span class="c1">#     nn.Linear(encoding_size, encoding_size * 32),</span>
+<span class="c1">#     nn.PReLU(),</span>
+<span class="c1">#     nn.Linear(encoding_size * 32, int(input_size / 2)),</span>
+<span class="c1">#     nn.PReLU(),</span>
+<span class="c1">#     nn.Linear(int(input_size / 2), int(input_size * 2)),</span>
+<span class="c1">#     nn.PReLU(),</span>
+<span class="c1">#     nn.Linear(int(input_size * 2), input_size),</span>
+<span class="c1">#     nn.Sigmoid()</span>
+<span class="c1">#     )</span>
+
+<span class="c1"># model[:-2].apply(init_weights_kaiming_normal)</span>
+
+<span class="c1"># encoder = model[:9]</span>
+<span class="c1"># decoder = model[9:]</span>
+
+<span class="c1"># print_parameter_count(model)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># n_epochs = 5</span>
+<span class="c1"># batch_size = 128</span>
+
+<span class="c1"># runSGD(model, input_train, input_test, n_epochs=n_epochs,</span>
+<span class="c1">#        batch_size=batch_size)</span>
+
+<span class="c1"># Visualization</span>
+<span class="c1"># with torch.no_grad():</span>
+<span class="c1">#   output_test = model(input_test)</span>
+
+<span class="c1"># plot_row([input_test[test_selected_idx], output_test[test_selected_idx]],</span>
+<span class="c1">#          image_shape=image_shape)</span>
+
+<span class="c1"># plot_latent_generative(latent_test, y_test, decoder,</span>
+<span class="c1">#                        image_shape=image_shape, s2=True)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/Bonus_Autoencoders/student"
+        },
+        predefinedOutput: true
+    }
+    </script>
+<script>kernelName = 'python3'</script>
+</div>
+<div class="prev-next-bottom">
+<a class="left-prev" href="Bonus_Tutorial1.html" id="prev-link" title="previous page">Tutorial 1: Intro to Autoencoders</a>
+<a class="right-next" href="Bonus_Tutorial3.html" id="next-link" title="next page">Tutorial 3: Autoencoders applications</a>
+</div>
+</div>
+</div>
+<footer class="footer mt-5 mt-md-0">
+<div class="container">
+<p>
+        
+          By Neuromatch<br/>
+        
+            © Copyright 2021.<br/>
+</p>
+</div>
+</footer>
+</main>
+</div>
+</div>
+<script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+</body>
+</html>
