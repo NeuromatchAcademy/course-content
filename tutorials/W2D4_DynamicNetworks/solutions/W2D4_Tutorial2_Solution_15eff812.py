@@ -37,9 +37,12 @@ def simulate_wc(tau_E, a_E, theta_E, tau_I, a_I, theta_I,
 
 pars = default_pars()
 
-# Here are two trajectories with close intial values
+# Simulate first trajectory
 rE1, rI1 = simulate_wc(**default_pars(rE_init=.32, rI_init=.15))
+
+# Simulate second trajectory
 rE2, rI2 = simulate_wc(**default_pars(rE_init=.33, rI_init=.15))
 
+# Visualize
 with plt.xkcd():
   my_test_plot(pars['range_t'], rE1, rI1, rE2, rI2)

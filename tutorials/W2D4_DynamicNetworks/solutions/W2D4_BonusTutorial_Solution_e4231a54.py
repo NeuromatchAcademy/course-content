@@ -24,6 +24,7 @@ def get_eig_Jacobian(fp,
   return evals
 
 
+# Compute eigenvalues of Jacobian
 eig_1 = get_eig_Jacobian(x_fp_1, **pars)
 eig_2 = get_eig_Jacobian(x_fp_2, **pars)
 eig_3 = get_eig_Jacobian(x_fp_3, **pars)

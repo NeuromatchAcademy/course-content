@@ -1,6 +1,6 @@
 def get_dGdE(fp, tau_E, a_E, theta_E, wEE, wEI, I_ext_E, **other_pars):
   """
-  Simulate the Wilson-Cowan equations
+  Compute dGdE
 
   Args:
     fp   : fixed point (E, I), array
@@ -17,11 +17,13 @@ def get_dGdE(fp, tau_E, a_E, theta_E, wEE, wEI, I_ext_E, **other_pars):
   return dGdrE
 
 
+# Get fixed points
 pars = default_pars()
 x_fp_1 = my_fp(pars, 0.1, 0.1)
 x_fp_2 = my_fp(pars, 0.3, 0.3)
 x_fp_3 = my_fp(pars, 0.8, 0.6)
 
+# Compute dGdE
 dGdrE1 = get_dGdE(x_fp_1, **pars)
 dGdrE2 = get_dGdE(x_fp_2, **pars)
 dGdrE3 = get_dGdE(x_fp_3, **pars)

@@ -1,6 +1,5 @@
 
 """
-Discussion:
 
 1. Because the middle fixed point is unstable. Trajectories only point to stable
 fixed points.

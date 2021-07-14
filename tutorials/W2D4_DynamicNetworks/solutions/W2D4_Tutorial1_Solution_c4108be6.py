@@ -1,3 +1,4 @@
+
 def compute_drdt(r, I_ext, w, a, theta, tau, **other_pars):
   """Given parameters, compute dr/dt as a function of r.
 
@@ -19,6 +20,9 @@ def compute_drdt(r, I_ext, w, a, theta, tau, **other_pars):
 r = np.linspace(0, 1, 1000)
 pars = default_pars_single(I_ext=0.5, w=5)
 
+# Compute dr/dt
 drdt = compute_drdt(r, **pars)
+
+# Visualize
 with plt.xkcd():
   plot_dr_r(r, drdt)

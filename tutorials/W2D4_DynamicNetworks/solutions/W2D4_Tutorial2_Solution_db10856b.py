@@ -34,13 +34,15 @@ def get_I_nullcline(rI, a_I, theta_I, wIE, wII, I_ext_I, **other_pars):
   return rE
 
 
+# Set parameters
 pars = default_pars()
 Exc_null_rE = np.linspace(-0.01, 0.96, 100)
 Inh_null_rI = np.linspace(-.01, 0.8, 100)
 
-# Uncomment these lines to test your functions
+# Compute nullclines
 Exc_null_rI = get_E_nullcline(Exc_null_rE, **pars)
 Inh_null_rE = get_I_nullcline(Inh_null_rI, **pars)
 
+# Visualize
 with plt.xkcd():
   plot_nullclines(Exc_null_rE, Exc_null_rI, Inh_null_rE, Inh_null_rI)

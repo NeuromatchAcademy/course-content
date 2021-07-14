@@ -14,8 +14,11 @@ def F_inv(x, a, theta):
 
   return F_inverse
 
+
+# Set parameters
 pars = default_pars()
 x = np.linspace(1e-6, 1, 100)
 
+# Get inverse and visualize
 with plt.xkcd():
   plot_FI_inverse(x, a=1, theta=3)

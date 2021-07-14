@@ -1,10 +1,9 @@
 
 """
-Discussion:
 
-For the function we have chosen to model the F-I curve (eq 2),
-- a determines the slope (gain) of the rising phase of the F-I curve
-- theta determines the input at which the function F(x) reaches its mid-value (0.5).
+1)  a determines the slope (gain) of the rising phase of the F-I curve
+
+2) theta determines the input at which the function F(x) reaches its mid-value (0.5).
 That is, theta shifts the F-I curve along the horizontal axis.
 
 For our neurons we are using in this tutorial:
