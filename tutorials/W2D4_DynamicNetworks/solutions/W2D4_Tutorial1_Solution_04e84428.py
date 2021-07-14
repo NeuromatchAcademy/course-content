@@ -1,3 +1,4 @@
+
 def F(x, a, theta):
   """
   Population activation function.
@@ -17,11 +18,13 @@ def F(x, a, theta):
   return f
 
 
+# Set parameters
 pars = default_pars_single()  # get default parameters
 x = np.arange(0, 10, .1)      # set the range of input
 
-# Uncomment below to test your function
+# Compute transfer function
 f = F(x, pars['a'], pars['theta'])
 
+# Visualize
 with plt.xkcd():
   plot_fI(x, f)
