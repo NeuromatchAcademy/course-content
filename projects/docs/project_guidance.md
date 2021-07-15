@@ -107,7 +107,7 @@ Your starting point for workshopping your abstract should be step 10 from the "M
 With your group
 * (30 min) use the ABC...G questions from the example model/data projects to write your own answers and build a first version of your abstract.
 * (30 min) by yourself, read the [Ten simple rules for structuring papers](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619). Pay close attention to figure 1, and how it specifies the same overall structure for the abstract, for each paragraph in the paper, and for the paper as a whole.  
-* (1h) workshop your abstract together as a group. Say what you like and what you don’t like about it.
+* (1h) workshop your abstract together as a group. Say what you like and what you don’t like about it. 
 
 1h break
 
@@ -126,7 +126,6 @@ Back in your group
 * (1-2h) Has the abstract refined or changed your question? Use the rest of this day to make a concrete plan for the final week of your project. If you already answered your question, then you will need to plan control analyses, maybe including some simulated data that you need to also generate yourself.
 
 Once you are done, please submit the abstract [HERE](https://airtable.com/shrITSzD4fgFCGiWI). We won't use this for further matching or anything like that, but we will keep a record of it to help us track the progress of all groups.
-
 
 ## Blocks 11-14
 
