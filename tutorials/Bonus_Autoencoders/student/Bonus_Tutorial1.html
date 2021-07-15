@@ -1516,7 +1516,7 @@
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "2434b7d1b5f14d1db69188d05847325a"}
+{"version_major": 2, "version_minor": 0, "model_id": "26db41f0da6543ddb4fb4ee801c052ac"}
 </script></div>
 </div>
 </div>
@@ -2150,7 +2150,7 @@
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "a3e5a883cdaa4e9cb645d0c6d0eb2954"}
+{"version_major": 2, "version_minor": 0, "model_id": "333d59e0fb38451db08f42fbbc927dfd"}
 </script></div>
 </div>
 <p>This tutorial introduces typical elements of autoencoders, that learn low dimensional representations of data through an auxiliary task of compression and decompression. In general, these networks are characterized by an equal number of input and output units and a <em>bottleneck layer</em> with fewer units.</p>
@@ -2222,23 +2222,11 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2024</span><span class="o">/</span><span class="mf">760635969.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Download MNIST</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">downloadMNIST</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span> <span class="o">/</span> <span class="mi">255</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span> <span class="o">/</span> <span class="mi">255</span>
-
-<span class="nn">/tmp/ipykernel_2024/1528605679.py</span> in <span class="ni">downloadMNIST</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>   <span class="n">test_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_train</span><span class="p">,</span> <span class="n">n_train</span> <span class="o">+</span> <span class="n">n_test</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span> 
-<span class="ne">---&gt; </span><span class="mi">25</span>   <span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span>   <span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">test_idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span> 
-
-<span class="ne">KeyboardInterrupt</span>: 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape x_train 		 torch.Size([60000, 28, 28])
+shape x_test 		 torch.Size([10000, 28, 28])
+shape image 		 torch.Size([28, 28])
+shape input_train 	 torch.Size([60000, 784])
+shape input_test 	 torch.Size([10000, 784])
 </pre></div>
 </div>
 </div>
@@ -2261,6 +2249,10 @@
 <span class="n">plot_row</span><span class="p">([</span><span class="n">x_test</span><span class="p">,</span> <span class="n">x_test</span><span class="p">[</span><span class="n">test_selected_idx</span><span class="p">]])</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/Bonus_Tutorial1_21_0.png" src="../../../_images/Bonus_Tutorial1_21_0.png"/>
+<img alt="../../../_images/Bonus_Tutorial1_21_1.png" src="../../../_images/Bonus_Tutorial1_21_1.png"/>
 </div>
 </div>
 </div>
@@ -2324,6 +2316,36 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function plot_latent_generative in module __main__:
+
+plot_latent_generative(x, y, decoder_fn, image_shape, title=None, xy_labels=None)
+    Two horizontal subplots generated with encoder map and decoder grid.
+    
+    Args:
+      x (list, numpy array or torch.Tensor of floats)
+          2D coordinates in latent space
+    
+      y (list, numpy array or torch.Tensor of floats)
+          digit class of each sample
+    
+      decoder_fn (integer)
+          function returning vectorized images from 2D latent space coordinates
+    
+      image_shape (tuple or list)
+          original shape of image
+    
+      title (string)
+          plot title
+    
+      xy_labels (list)
+          optional lsit with [xlabel, ylabel]
+    
+    Returns:
+      Nothing.
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2374,6 +2396,7 @@
 </pre></div>
 </div>
 </div>
+
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2383,6 +2406,7 @@
 </pre></div>
 </div>
 </div>
+
 </div>
 </div>
 </div>
@@ -2442,6 +2466,16 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model structure 
+
+ Sequential(
+  (0): Linear(in_features=784, out_features=32, bias=True)
+  (1): ReLU()
+)
+</pre></div>
+</div>
+</div>
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/Bonus_Autoencoders/solutions/Bonus_Tutorial1_Solution_e7182519.py"><em>Click for solution</em></a></p>
 <p><strong>SAMPLE OUTPUT</strong></p>
@@ -2461,6 +2495,26 @@
 <span class="n">plot_row</span><span class="p">([</span><span class="n">input_test</span><span class="o">.</span><span class="n">float</span><span class="p">(),</span> <span class="n">output_test</span><span class="p">],</span> <span class="n">image_shape</span><span class="o">=</span><span class="n">image_shape</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2043</span><span class="o">/</span><span class="mf">2898546608.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>   <span class="n">output_test</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_test</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">plot_row</span><span class="p">([</span><span class="n">input_test</span><span class="o">.</span><span class="n">float</span><span class="p">(),</span> <span class="n">output_test</span><span class="p">],</span> <span class="n">image_shape</span><span class="o">=</span><span class="n">image_shape</span><span class="p">)</span>
+
+<span class="nn">/tmp/ipykernel_2043/1528605679.py</span> in <span class="ni">plot_row</span><span class="nt">(images, show_n, image_shape)</span>
+<span class="g g-Whitespace">    </span><span class="mi">249</span> 
+<span class="g g-Whitespace">    </span><span class="mi">250</span>     <span class="k">if</span> <span class="n">image_shape</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">251</span>       <span class="n">items</span> <span class="o">=</span> <span class="n">items</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">image_shape</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">252</span> 
+<span class="g g-Whitespace">    </span><span class="mi">253</span>     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="ne">ValueError</span>: cannot reshape array of size 320 into shape (28,28)
+</pre></div>
+</div>
+<img alt="../../../_images/Bonus_Tutorial1_40_1.png" src="../../../_images/Bonus_Tutorial1_40_1.png"/>
 </div>
 </div>
 </div>
@@ -2492,6 +2546,42 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 	 Loss train 	 Loss test
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 / 10	 0.0264		 0.0260
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 / 10	 0.0195		 0.0190
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3 / 10	 0.0158		 0.0154
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4 / 10	 0.0141		 0.0137
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5 / 10	 0.0136		 0.0132
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6 / 10	 0.0134		 0.0131
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7 / 10	 0.0133		 0.0130
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8 / 10	 0.0132		 0.0128
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9 / 10	 0.0131		 0.0128
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 / 10	 0.0131		 0.0127
+</pre></div>
+</div>
+<img alt="../../../_images/Bonus_Tutorial1_42_11.png" src="../../../_images/Bonus_Tutorial1_42_11.png"/>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2502,6 +2592,10 @@
          <span class="n">image_shape</span><span class="o">=</span><span class="n">image_shape</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/Bonus_Tutorial1_43_0.png" src="../../../_images/Bonus_Tutorial1_43_0.png"/>
+<img alt="../../../_images/Bonus_Tutorial1_43_1.png" src="../../../_images/Bonus_Tutorial1_43_1.png"/>
 </div>
 </div>
 </div>
@@ -2536,6 +2630,23 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 	 Loss train 	 Loss test
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 / 2	 0.0271		 0.0267
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 / 2	 0.0198		 0.0193
+
+MSE	 0.0198		 0.0193
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BCE	 0.1371		 0.1352
+</pre></div>
+</div>
+<img alt="../../../_images/Bonus_Tutorial1_45_4.png" src="../../../_images/Bonus_Tutorial1_45_4.png"/>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2546,6 +2657,10 @@
          <span class="n">image_shape</span><span class="o">=</span><span class="n">image_shape</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/Bonus_Tutorial1_46_0.png" src="../../../_images/Bonus_Tutorial1_46_0.png"/>
+<img alt="../../../_images/Bonus_Tutorial1_46_1.png" src="../../../_images/Bonus_Tutorial1_46_1.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -2566,6 +2681,23 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 	 Loss train 	 Loss test
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 / 2	 0.1495		 0.1483
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 / 2	 0.1248		 0.1233
+
+MSE	 0.0197		 0.0194
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BCE	 0.1248		 0.1233
+</pre></div>
+</div>
+<img alt="../../../_images/Bonus_Tutorial1_47_4.png" src="../../../_images/Bonus_Tutorial1_47_4.png"/>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2576,6 +2708,10 @@
          <span class="n">image_shape</span><span class="o">=</span><span class="n">image_shape</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/Bonus_Tutorial1_48_0.png" src="../../../_images/Bonus_Tutorial1_48_0.png"/>
+<img alt="../../../_images/Bonus_Tutorial1_48_1.png" src="../../../_images/Bonus_Tutorial1_48_1.png"/>
 </div>
 </div>
 </div>
@@ -2616,6 +2752,18 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Autoencoder 
+
+ Sequential(
+  (0): Linear(in_features=784, out_features=2, bias=True)
+  (1): PReLU(num_parameters=1)
+  (2): Linear(in_features=2, out_features=784, bias=True)
+  (3): Sigmoid()
+)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2623,10 +2771,30 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Encoder 
+
+ Sequential(
+  (0): Linear(in_features=784, out_features=2, bias=True)
+  (1): PReLU(num_parameters=1)
+)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Decoder </span><span class="se">\n\n</span><span class="s1"> </span><span class="si">{</span><span class="n">decoder</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Decoder 
+
+ Sequential(
+  (2): Linear(in_features=2, out_features=784, bias=True)
+  (3): Sigmoid()
+)
 </pre></div>
 </div>
 </div>
@@ -2647,6 +2815,42 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 	 Loss train 	 Loss test
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 / 10	 0.2638		 0.2638
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 / 10	 0.2579		 0.2577
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3 / 10	 0.2526		 0.2525
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4 / 10	 0.2464		 0.2458
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5 / 10	 0.2404		 0.2396
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6 / 10	 0.2362		 0.2354
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7 / 10	 0.2333		 0.2323
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8 / 10	 0.2313		 0.2302
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9 / 10	 0.2298		 0.2287
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 / 10	 0.2288		 0.2276
+</pre></div>
+</div>
+<img alt="../../../_images/Bonus_Tutorial1_54_11.png" src="../../../_images/Bonus_Tutorial1_54_11.png"/>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2657,6 +2861,9 @@
                        <span class="n">image_shape</span><span class="o">=</span><span class="n">image_shape</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/Bonus_Tutorial1_55_0.png" src="../../../_images/Bonus_Tutorial1_55_0.png"/>
 </div>
 </div>
 </div>
@@ -2673,6 +2880,7 @@
 </pre></div>
 </div>
 </div>
+
 </div>
 </div>
 </div>
@@ -2686,6 +2894,10 @@
 <div class="section" id="video-3-wrap-up">
 <h2>Video 3: Wrap-up<a class="headerlink" href="#video-3-wrap-up" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "4164f1f2391a4721b700278cfe91a872"}
+</script></div>
 </div>
 </div>
 </div>
@@ -2759,6 +2971,42 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 	 Loss train 	 Loss test
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 / 10	 0.2654		 0.2651
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 / 10	 0.2600		 0.2598
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3 / 10	 0.2573		 0.2572
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4 / 10	 0.2554		 0.2552
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5 / 10	 0.2539		 0.2538
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6 / 10	 0.2524		 0.2523
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7 / 10	 0.2509		 0.2508
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8 / 10	 0.2493		 0.2491
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9 / 10	 0.2476		 0.2474
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 / 10	 0.2460		 0.2458
+</pre></div>
+</div>
+<img alt="../../../_images/Bonus_Tutorial1_63_11.png" src="../../../_images/Bonus_Tutorial1_63_11.png"/>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2773,6 +3021,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/Bonus_Tutorial1_64_0.png" src="../../../_images/Bonus_Tutorial1_64_0.png"/>
+<img alt="../../../_images/Bonus_Tutorial1_64_1.png" src="../../../_images/Bonus_Tutorial1_64_1.png"/>
+<img alt="../../../_images/Bonus_Tutorial1_64_2.png" src="../../../_images/Bonus_Tutorial1_64_2.png"/>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2780,6 +3033,9 @@
                 <span class="n">decoder_w_train</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/Bonus_Tutorial1_65_0.png" src="../../../_images/Bonus_Tutorial1_65_0.png"/>
 </div>
 </div>
 <div class="section" id="exercise-3-choosing-weight-initialization">
@@ -2851,6 +3107,42 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 	 Loss train 	 Loss test
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 / 10	 0.2654		 0.2651
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 / 10	 0.2600		 0.2598
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3 / 10	 0.2573		 0.2572
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4 / 10	 0.2554		 0.2552
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5 / 10	 0.2539		 0.2538
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6 / 10	 0.2524		 0.2523
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7 / 10	 0.2509		 0.2508
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8 / 10	 0.2493		 0.2491
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9 / 10	 0.2476		 0.2474
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 / 10	 0.2460		 0.2458
+</pre></div>
+</div>
+<img alt="../../../_images/Bonus_Tutorial1_67_11.png" src="../../../_images/Bonus_Tutorial1_67_11.png"/>
+</div>
 </div>
 <p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/Bonus_Autoencoders/solutions/Bonus_Tutorial1_Solution_9d6c1017.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
@@ -2869,6 +3161,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/Bonus_Tutorial1_69_0.png" src="../../../_images/Bonus_Tutorial1_69_0.png"/>
+<img alt="../../../_images/Bonus_Tutorial1_69_1.png" src="../../../_images/Bonus_Tutorial1_69_1.png"/>
+<img alt="../../../_images/Bonus_Tutorial1_69_2.png" src="../../../_images/Bonus_Tutorial1_69_2.png"/>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2876,6 +3173,9 @@
                 <span class="n">decoder_w_train</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/Bonus_Tutorial1_70_0.png" src="../../../_images/Bonus_Tutorial1_70_0.png"/>
 </div>
 </div>
 </div>
@@ -2930,6 +3230,42 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 	 Loss train 	 Loss test
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 / 10	 0.2622		 0.2619
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 / 10	 0.2560		 0.2558
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3 / 10	 0.2509		 0.2505
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4 / 10	 0.2457		 0.2451
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5 / 10	 0.2411		 0.2405
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6 / 10	 0.2378		 0.2373
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7 / 10	 0.2356		 0.2352
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8 / 10	 0.2340		 0.2337
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9 / 10	 0.2327		 0.2325
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 / 10	 0.2318		 0.2319
+</pre></div>
+</div>
+<img alt="../../../_images/Bonus_Tutorial1_72_11.png" src="../../../_images/Bonus_Tutorial1_72_11.png"/>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2940,6 +3276,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/Bonus_Tutorial1_73_0.png" src="../../../_images/Bonus_Tutorial1_73_0.png"/>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2947,6 +3286,9 @@
                 <span class="n">decoder_w_train</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/Bonus_Tutorial1_74_0.png" src="../../../_images/Bonus_Tutorial1_74_0.png"/>
 </div>
 </div>
 </div>
@@ -2970,6 +3312,76 @@
 
 <span class="n">plot_latent_generative</span><span class="p">(</span><span class="n">nmf_latent_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">nmf</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">,</span>
                        <span class="n">image_shape</span><span class="o">=</span><span class="n">image_shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2043</span><span class="o">/</span><span class="mf">1930777134.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">nmf</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">NMF</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s1">'random'</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">nmf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">input_train</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">nmf_latent_test</span> <span class="o">=</span> <span class="n">nmf</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">input_test</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/sklearn/decomposition/_nmf.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y, **params)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1340</span>         <span class="bp">self</span>
+<span class="g g-Whitespace">   </span><span class="mi">1341</span>         <span class="s2">"""</span>
+<span class="ne">-&gt; </span><span class="mi">1342</span><span class="s2">         self.fit_transform(X, **params)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1343</span><span class="s2">         return self</span>
+<span class="g g-Whitespace">   </span><span class="mi">1344</span><span class="s2"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/sklearn/decomposition/_nmf.py</span> in <span class="ni">fit_transform</span><span class="nt">(self, X, y, W, H)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1315</span><span class="s2">                 l1_ratio=self.l1_ratio, regularization=self.regularization,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1316</span><span class="s2">                 random_state=self.random_state, verbose=self.verbose,</span>
+<span class="ne">-&gt; </span><span class="mi">1317</span><span class="s2">                 shuffle=self.shuffle)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1318</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1319</span><span class="s2">         self.reconstruction_err_ = _beta_divergence(X, W, H, self.beta_loss,</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/sklearn/utils/validation.py</span> in <span class="ni">inner_f</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span><span class="s2">             extra_args = len(args) - len(all_args)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span><span class="s2">             if extra_args &lt;= 0:</span>
+<span class="ne">---&gt; </span><span class="mi">63</span><span class="s2">                 return f(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span><span class="s2">             # extra_args &gt; 0</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/sklearn/decomposition/_nmf.py</span> in <span class="ni">non_negative_factorization</span><span class="nt">(X, W, H, n_components, init, update_H, solver, beta_loss, tol, max_iter, alpha, l1_ratio, regularization, random_state, verbose, shuffle)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1077</span><span class="s2">                                                verbose=verbose,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1078</span><span class="s2">                                                shuffle=shuffle,</span>
+<span class="ne">-&gt; </span><span class="mi">1079</span><span class="s2">                                                random_state=random_state)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1080</span><span class="s2">     elif solver == 'mu':</span>
+<span class="g g-Whitespace">   </span><span class="mi">1081</span><span class="s2">         W, H, n_iter = _fit_multiplicative_update(X, W, H, beta_loss, max_iter,</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/sklearn/decomposition/_nmf.py</span> in <span class="ni">_fit_coordinate_descent</span><span class="nt">(X, W, H, tol, max_iter, l1_reg_W, l1_reg_H, l2_reg_W, l2_reg_H, update_H, verbose, shuffle, random_state)</span>
+<span class="g g-Whitespace">    </span><span class="mi">520</span><span class="s2">         if update_H:</span>
+<span class="g g-Whitespace">    </span><span class="mi">521</span><span class="s2">             violation += _update_coordinate_descent(X.T, Ht, W, l1_reg_H,</span>
+<span class="ne">--&gt; </span><span class="mi">522</span><span class="s2">                                                     l2_reg_H, shuffle, rng)</span>
+<span class="g g-Whitespace">    </span><span class="mi">523</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">524</span><span class="s2">         if n_iter == 1:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/sklearn/decomposition/_nmf.py</span> in <span class="ni">_update_coordinate_descent</span><span class="nt">(X, W, Ht, l1_reg, l2_reg, shuffle, random_state)</span>
+<span class="g g-Whitespace">    </span><span class="mi">414</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">415</span><span class="s2">     HHt = np.dot(Ht.T, Ht)</span>
+<span class="ne">--&gt; </span><span class="mi">416</span><span class="s2">     XHt = safe_sparse_dot(X, Ht)</span>
+<span class="g g-Whitespace">    </span><span class="mi">417</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">418</span><span class="s2">     # L2 regularization corresponds to increase of the diagonal of HHt</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/sklearn/utils/validation.py</span> in <span class="ni">inner_f</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span><span class="s2">             extra_args = len(args) - len(all_args)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span><span class="s2">             if extra_args &lt;= 0:</span>
+<span class="ne">---&gt; </span><span class="mi">63</span><span class="s2">                 return f(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span><span class="s2">             # extra_args &gt; 0</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/sklearn/utils/extmath.py</span> in <span class="ni">safe_sparse_dot</span><span class="nt">(a, b, dense_output)</span>
+<span class="g g-Whitespace">    </span><span class="mi">150</span><span class="s2">             ret = np.dot(a, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">151</span><span class="s2">     else:</span>
+<span class="ne">--&gt; </span><span class="mi">152</span><span class="s2">         ret = a @ b</span>
+<span class="g g-Whitespace">    </span><span class="mi">153</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">154</span><span class="s2">     if (sparse.issparse(a) and sparse.issparse(b)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
