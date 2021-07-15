@@ -107,24 +107,25 @@ Your starting point for workshopping your abstract should be step 10 from the "M
 With your group
 * (30 min) use the ABC...G questions from the example model/data projects to write your own answers and build a first version of your abstract.
 * (30 min) by yourself, read the [Ten simple rules for structuring papers](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619). Pay close attention to figure 1, and how it specifies the same overall structure for the abstract, for each paragraph in the paper, and for the paper as a whole.  
-* (1h) workshop your abstract together as a group. Say what you like and what you don’t like about it.
+* (1h) workshop your abstract together as a group. Say what you like and what you don’t like about it. 
 
 1h break
 
-* (30 min) Edit the abstract individually in your own google doc. At this stage, it is also important to control the flow of the abstract, in addition to keeping the structure from the 10 rules-paper. The flow relates to the “writing style”, which is generally no different for scientists than for other writers. Most importantly, make sure each sentence picks up where the previous one left, and do not use jargon without defining it first. Use this quick reference about writing, and make a note to check some of these great books about writing later (book1, book2, book3).
+* (30-60 min) Edit the abstract individually in your own google doc. At this stage, it is also important to control the flow of the abstract, in addition to keeping the structure from the 10 rules-paper. The flow relates to the “writing style”, which is generally no different for scientists than for other writers. Most importantly, make sure each sentence continues from where the previous one left, and do not use jargon without defining it first. Make a note to check this great book about writing later ([book](https://sites.duke.edu/niou/files/2014/07/WilliamsJosephM1990StyleTowardClarityandGrace.pdf). If you don't know what to do right now, you can start reading chapter 3 about "cohesion" and flow.
+
 * (30 min) You should now have as many copies of your abstract as there are students in your group. Put them all into the same google doc, and try to see what you all did the same / differently. What sounds better? Pick and choose different sentences from different abstracts.
 
 With your mentor (timing is not precise!)
-* (30-60min) Try to schedule a meeting with your mentor to be about now (or any time in the second half of this day). Show them your abstract. Try to get explicit feedback and edit the abstract together in the google doc.
+* (30-60min) Try to schedule a meeting with your mentor to be about now (or any time in the second half of this day). Show them your abstract. Try to get explicit feedback and edit the abstract together in a google doc.
 
-With the pod
-* (30min / group = 1.5h) It is always revealing to present your research to someone who has never heard about it. Take turns in your pod to read each other’s abstracts (out loud and shared google doc). Tell others what you understand and what you don’t from their research project.
+Last 3h, with the pod, this could be Monday for some of you and that's fine.
+
+* (30min / group = 1h) It is always revealing to present your research to someone who has never heard about it. Take turns in your pod to read each other’s abstracts and provide feedback on them. Tell the other group what you understand and what you don’t from their research project. Give detailed writing feedback if you can (use "suggestion mode" in google docs).
 
 Back in your group
 * (1-2h) Has the abstract refined or changed your question? Use the rest of this day to make a concrete plan for the final week of your project. If you already answered your question, then you will need to plan control analyses, maybe including some simulated data that you need to also generate yourself.
 
-Once you are done, please submit the abstract [HERE](https://airtable.com/shrITSzD4fgFCGiWI). We won't use this during the summer school, but we will keep a record of it to help us track the progress of all groups.
-
+Once you are done, please submit the abstract [HERE](https://airtable.com/shrITSzD4fgFCGiWI). We won't use this for further matching or anything like that, but we will keep a record of it to help us track the progress of all groups.
 
 ## Blocks 11-14
 
