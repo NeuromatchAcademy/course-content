@@ -32,13 +32,13 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-# @markdown Execute this cell to simulate a large system
+nmf = decomposition.NMF(n_components=2, init='random')
 
-n_neurons = 256
-timesteps = 10000
-random_state = 42
+nmf.fit(input_train + 0.5)
 
-A = create_connectivity(n_neurons, random_state)
-X = simulate_neurons(A, timesteps)
+nmf_latent_test = nmf.transform(input_test + 0.5)
+
+plot_latent_generative(nmf_latent_test, y_test, nmf.inverse_transform,
+                       image_shape=image_shape)
 -------------------
 
