@@ -116,8 +116,8 @@ With your group
 1h break
 
 * (30-60 min) Edit the abstract individually in your own google doc. At this stage, it is also important to control the flow of the abstract, in addition to keeping the structure from the 10 rules-paper. The flow relates to the “writing style”, which is generally no different for scientists than for other writers. Most importantly, make sure each sentence continues from where the previous one left, and do not use jargon without defining it first. Check out this book about writing if you have time ([book](https://sites.duke.edu/niou/files/2014/07/WilliamsJosephM1990StyleTowardClarityandGrace.pdf), especially chapter 3 about "cohesion" and flow.
-
 * (30 min) You should now have as many copies of your abstract as there are students in your group. Put them all into the same google doc, and try to see what you all did the same / differently. What sounds better? Pick and choose different sentences from different abstracts.
+
 
 With your mentor (timing is not precise!)
 * (30-60min) Try to schedule a meeting with your mentor to be about now (or any time in the second half of this day). Show them your abstract. Try to get explicit feedback and edit the abstract together in a google doc.
@@ -155,8 +155,6 @@ Writing an abstract is also a good time to reflect on how your work relates to s
 9. Theories of Band Power (i.e. what is "alpha" band power associated with? what is gamma power associated with? etc.)
 
 10. Labeled Lines -- is information encoded by specific, dedicated neurons, or distributed across a population of cells responding to more than one thing? See eg https://www.annualreviews.org/doi/abs/10.1146/annurev.neuro.26.041002.131022, https://www.sciencedirect.com/science/article/pii/S1044743106001692
-
-
 
 ## Blocks 11-14
 
