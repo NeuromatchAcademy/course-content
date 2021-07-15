@@ -102,30 +102,59 @@ Abstract writing day! One of the best ways to understand your own research is to
 
 If you have been using a project template, this is a good time to branch out and pursue your own questions. The template was only meant to get you started on some concrete analyses, so that you become familiar with the data, but now that you have more knowledge, you should be able to come up with your own question. Practice the 4-steps again if necessary, they should be easier once you have a good question.
 
-Your starting point for workshopping your abstract should be step 10 from the "Modeling steps 5-10" notebook, and especially the example model/data projects which show how you can build an abstract if you have been following the 10 steps.
+If you think your abstract is lacking the computational "oomph" to make it sound good, check out the "Day 10 (bonus)" section below. Take the time to find interesting modelling or computational facets to your project, because this will make the abstract writing easier and more enjoyable since you can talk about big, interesting ideas and then gradually focus on the very specific work that you've done.  
+
+Your starting point for workshopping your abstract should be step 10 from the [Modeling steps 5-10](https://compneuro.neuromatch.io/projects/modelingsteps/ModelingSteps_5through10.html) notebook, and especially the example projects ([model project](https://compneuro.neuromatch.io/projects/modelingsteps/TrainIllusionModel.html) and [data project](https://compneuro.neuromatch.io/projects/modelingsteps/TrainIllusionDataProject.html)) which show how you can build an abstract if you have been following the 10 steps.
+
+Note: the timings for this day are just suggestions. You can spend more or less time on different parts depending on how much work you think your abstract needs. Also, take as much time as you need in the beginning of this day to carefully go through the modelling steps notebooks (including the example projects) and/or to explore/think about the big picture topics from the "Day 10 (bonus)" section below. 
 
 With your group
 * (30 min) use the ABC...G questions from the example model/data projects to write your own answers and build a first version of your abstract.
 * (30 min) by yourself, read the [Ten simple rules for structuring papers](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619). Pay close attention to figure 1, and how it specifies the same overall structure for the abstract, for each paragraph in the paper, and for the paper as a whole.  
-* (1h) workshop your abstract together as a group. Say what you like and what you don’t like about it. 
+* (1h) workshop your abstract together as a group. Say what you like and what you don’t like about it. Try to refer back to the principles from the "Ten simple rules" paper in order to find problems with your abstract and follow the recommended solutions from the paper.   
 
 1h break
 
-* (30-60 min) Edit the abstract individually in your own google doc. At this stage, it is also important to control the flow of the abstract, in addition to keeping the structure from the 10 rules-paper. The flow relates to the “writing style”, which is generally no different for scientists than for other writers. Most importantly, make sure each sentence continues from where the previous one left, and do not use jargon without defining it first. Make a note to check this great book about writing later ([book](https://sites.duke.edu/niou/files/2014/07/WilliamsJosephM1990StyleTowardClarityandGrace.pdf). If you don't know what to do right now, you can start reading chapter 3 about "cohesion" and flow.
-
+* (30-60 min) Edit the abstract individually in your own google doc. At this stage, it is also important to control the flow of the abstract, in addition to keeping the structure from the 10 rules-paper. The flow relates to the “writing style”, which is generally no different for scientists than for other writers. Most importantly, make sure each sentence continues from where the previous one left, and do not use jargon without defining it first. Check out this book about writing if you have time ([book](https://sites.duke.edu/niou/files/2014/07/WilliamsJosephM1990StyleTowardClarityandGrace.pdf), especially chapter 3 about "cohesion" and flow.
 * (30 min) You should now have as many copies of your abstract as there are students in your group. Put them all into the same google doc, and try to see what you all did the same / differently. What sounds better? Pick and choose different sentences from different abstracts.
+
 
 With your mentor (timing is not precise!)
 * (30-60min) Try to schedule a meeting with your mentor to be about now (or any time in the second half of this day). Show them your abstract. Try to get explicit feedback and edit the abstract together in a google doc.
 
 Last 3h, with the pod, this could be Monday for some of you and that's fine.
 
-* (30min / group = 1h) It is always revealing to present your research to someone who has never heard about it. Take turns in your pod to read each other’s abstracts and provide feedback on them. Tell the other group what you understand and what you don’t from their research project. Give detailed writing feedback if you can (use "suggestion mode" in google docs).
+* (30min / group = 1h) It is always revealing to present your research to someone who has never heard about it. Take turns in your pod to read each other’s abstracts and provide feedback on them. Tell the other group what you understand and what you don’t from their research project. Give detailed writing feedback if you can (use "suggestion mode" in google docs). If there is no other project group in your pod, ask your TA to reach out to other pods to find a group you can workshop your abstract with.
 
 Back in your group
-* (1-2h) Has the abstract refined or changed your question? Use the rest of this day to make a concrete plan for the final week of your project. If you already answered your question, then you will need to plan control analyses, maybe including some simulated data that you need to also generate yourself.
+* (1-2h) Has the abstract refined or changed your question? Use the rest of this day to make a concrete plan for the final week of your project. If you already answered your question, then you will need to plan for control analyses, maybe including some simulated data that you need to also generate yourself.
 
 Once you are done, please submit the abstract [HERE](https://airtable.com/shrITSzD4fgFCGiWI). We won't use this for further matching or anything like that, but we will keep a record of it to help us track the progress of all groups.
+
+
+## Day 10 (bonus)
+
+Writing an abstract is also a good time to reflect on how your work relates to some of the big computational ideas in neuroscience. Relating your work to big ideas is a good way to get lots of people interested in your work! It is also a good way to find inspiration for what to do next. Maybe you have unknowingly proven an important theory? Think through the predictions that theory would make and see if you can steer your analyses towards validating or invalidating those predictions. Here is a list of big ideas the project team put together to think about. Some of them are covered in the course material (potentially next week). Don't be afraid to ask your TA (or project TA) if you are not familiar with some of these ideas, for example "why is sparsity such an important concept in neuroscience?". These kinds of questions usually spark good discussions.
+
+1. Sparsity ([paper](https://www.nature.com/articles/381607a0.pdf?origin=ppub))
+
+2. Mixed selectivity -- having individual neurons respond to multiple elements of a task/context/stimulus can increase the dimensionality of population activity and facilitate learning of arbitrary transformations ()[paper](https://www.nature.com/articles/nature12160)). Modelling idea: make toy model neuron populations based on your data that show either mixed selectivity or are pure labeled lines. How do things like decoder performance (especially for combinations of signals) differ between the two populations?
+
+3. Predictive coding -- rather than encoding sensory input directly, it might be more efficient to encode differences between new and past sensory inputs ([paper]( https://onlinelibrary.wiley.com/doi/full/10.1002/wcs.142))
+
+4. Computing through dynamics ([paper](https://www.annualreviews.org/doi/abs/10.1146/annurev-neuro-092619-094115))
+
+5. Integrate-and-fire Network Models -- See Ch 5 of Dayan and Abbott, Theoretical Neuroscience
+
+6. Generative models of neural activity -- evaluate critically the assumptions made about the generative model which is implied by your analysis method. What does it mean for principles of neural coding/ behavior? E.g. does the linear decoder do as well as a nonlinear decoder - does it suggest that encoding of this variable is likely linear in this brain region?
+
+7. Transfer learning: can the linear (?) combination of basis sets learned from Data A be used to decode Data B? If so, then you might have found a fundamental "dictionary" of neural features (or "ensembles", or "clusters" or "syllables").
+
+8. Generalization across days or individuals -- same as the transfer learning one, but across individuals. If the generalization works, have you found a "universal" set of sufficient features for a certain task?
+
+9. Theories of Band Power (i.e. what is "alpha" band power associated with? what is gamma power associated with? etc.)
+
+10. Labeled Lines -- is information encoded by specific, dedicated neurons, or distributed across a population of cells responding to more than one thing? See eg https://www.annualreviews.org/doi/abs/10.1146/annurev.neuro.26.041002.131022, https://www.sciencedirect.com/science/article/pii/S1044743106001692
 
 ## Blocks 11-14
 
