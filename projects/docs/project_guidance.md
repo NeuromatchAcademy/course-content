@@ -98,21 +98,24 @@ Leading up to day 10, you will implement Steps 5-9 in your project. If you are a
 
 ## Day 10 (8h, Friday for everyone)
 
-Abstract writing day! One of the best ways to understand your own research is to try to write about it. You should write early and often, not just at the end when you’re trying to write a paper or your thesis. Science conferences are a great way to present your intermediate work, and they give you a chance to write an abstract. For example, the Neuromatch Conferences are a great venue for this. However, we don’t have to wait so long to write our project abstract, we’ll do it today. If you already have an answer to your question that’s great, but it’s not necessary. Most of the components of an abstract do not in fact require results. There are several materials associated with this day, to be used loosely and when needed. The goal is to workshop your abstract with your group, and then present this to your entire pod.
+Abstract writing day! One of the best ways to understand your own research is to try to write about it. You should write early and often, not just at the end when you’re trying to write a paper or your thesis. Science conferences are a great way to present your intermediate work, and they give you a chance to write an abstract. For example, the Neuromatch Conferences are a great venue for this. However, you don’t have to wait so long to write your project abstract, you’ll do it today. If you already have an answer to your question that’s great, but it’s not necessary. Most of the components of an abstract do not in fact require results. The goal for this day is to workshop your abstract with your group, and then present this to your entire pod.
 
-If you have been using a project template, this is a good time to branch out and pursue your own questions. The template was only meant to get you started on some concrete analyses, so that you become familiar with the data, but now that you have more knowledge, you should be able to come up with your own question. Practice the 4-steps again if necessary, they should be easier once you have a good question.  
+If you have been using a project template, this is a good time to branch out and pursue your own questions. The template was only meant to get you started on some concrete analyses, so that you become familiar with the data, but now that you have more knowledge, you should be able to come up with your own question. Practice the 4-steps again if necessary, they should be easier once you have a good question.
+
+Your starting point for workshopping your abstract should be step 10 from the "Modeling steps 5-10" notebook, and especially the example model/data projects which show how you can build an abstract if you have been following the 10 steps.
 
 With your group
-* (20 min) discuss situations in which you’ve had to write an abstract before. This “short format” is not only used in academia, but also in industry. If you feel confident, show this abstract to your group.
-* (30 min) by yourself, read the “10-steps to writing a paper”. Those are also the 10 steps to writing an abstract.
-* (30 min) workshop together one of the provided abstracts from some of the papers of our mentors. Say what you like and what you don’t like about it. Does it follow the 10-steps recipe closely and if not, can you re-write it in such a way that it does?
-* (1h) As a group try to write a first draft of your abstract in a google doc.
-30min break
-* (1h) Edit the abstract individually in your own google doc. At this stage, it is also important to control the flow of the abstract, in addition to keeping the structure from the 10 steps-paper. The flow relates to the “writing style”, which is generally no different for scientists than for other writers. Most importantly, make sure each sentence picks up where the previous one left, and do not use jargon without defining it first. Use this quick reference about writing, and make a note to check some of these great books about writing later (book1, book2, book3).
+* (30 min) use the ABC...G questions from the example model/data projects to write your own answers and build a first version of your abstract.
+* (30 min) by yourself, read the [Ten simple rules for structuring papers](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619). Pay close attention to figure 1, and how it specifies the same overall structure for the abstract, for each paragraph in the paper, and for the paper as a whole.  
+* (1h) workshop your abstract together as a group. Say what you like and what you don’t like about it.
+
+1h break
+
+* (30 min) Edit the abstract individually in your own google doc. At this stage, it is also important to control the flow of the abstract, in addition to keeping the structure from the 10 rules-paper. The flow relates to the “writing style”, which is generally no different for scientists than for other writers. Most importantly, make sure each sentence picks up where the previous one left, and do not use jargon without defining it first. Use this quick reference about writing, and make a note to check some of these great books about writing later (book1, book2, book3).
 * (30 min) You should now have as many copies of your abstract as there are students in your group. Put them all into the same google doc, and try to see what you all did the same / differently. What sounds better? Pick and choose different sentences from different abstracts.
 
 With your mentor (timing is not precise!)
-* (30-60min) Try to schedule a meeting with your mentor to be about now (or any time in the second half of this day). Show them your abstract. Try to get explicit feedback, and ask them to edit their own version of the abstract.
+* (30-60min) Try to schedule a meeting with your mentor to be about now (or any time in the second half of this day). Show them your abstract. Try to get explicit feedback and edit the abstract together in the google doc.
 
 With the pod
 * (30min / group = 1.5h) It is always revealing to present your research to someone who has never heard about it. Take turns in your pod to read each other’s abstracts (out loud and shared google doc). Tell others what you understand and what you don’t from their research project.
@@ -120,7 +123,7 @@ With the pod
 Back in your group
 * (1-2h) Has the abstract refined or changed your question? Use the rest of this day to make a concrete plan for the final week of your project. If you already answered your question, then you will need to plan control analyses, maybe including some simulated data that you need to also generate yourself.
 
-Once you are done, please submit the abstract [HERE](https://airtable.com/shrITSzD4fgFCGiWI). We won't use this during the summer school, but we will keep a record of it to help us track the progress of all groups. 
+Once you are done, please submit the abstract [HERE](https://airtable.com/shrITSzD4fgFCGiWI). We won't use this during the summer school, but we will keep a record of it to help us track the progress of all groups.
 
 
 ## Blocks 11-14

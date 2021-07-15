@@ -62,7 +62,6 @@ Below we link all the relevant project materials.These are available either on g
    - Neurons: [stringer](https://osf.io/u9gqe/), [steinmetz1](https://osf.io/29vuq/), [steinmetz2](https://osf.io/52wja/), [steinmetz3](https://osf.io/bt4ph/)  
    - FMRI: [kay](https://osf.io/h3z4e/), [hcp1](https://osf.io/td957/), [hcp2](https://osf.io/5fmnq/)
    - Other: [theory](https://osf.io/z7p5v/), [behavior](https://osf.io/hez85/), [eeg](https://osf.io/5r96v/)
-6. How to write an abstract (in construction): <!--[guide]() [paper1]() [paper2]() [paper3]()-->
 
 
 # **Important deadlines**
