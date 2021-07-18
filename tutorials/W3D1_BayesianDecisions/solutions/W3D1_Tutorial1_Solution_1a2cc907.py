@@ -24,6 +24,7 @@ def compute_posterior(likelihood, prior):
 
   return posterior
 
+
 # Make prior
 prior = np.array([0.3, 0.7]).reshape((2, 1)) # first row is s = left, second row is s = right
 
