@@ -1,9 +1,10 @@
-def simulate_SPRT_fixedtime(sigma, stop_time, true_dist = 1):
+def simulate_SPRT_fixedtime(mu, sigma, stop_time, true_dist = 1):
   """Simulate a Sequential Probability Ratio Test with fixed time stopping
   rule. Two observation models are 1D Gaussian distributions N(1,sigma^2) and
   N(-1,sigma^2).
 
   Args:
+    mu (float): absolute mean value of the symmetric observation distributions
     sigma (float): Standard deviation of observation models
     stop_time (int): Number of samples to take before stopping
     true_dist (1 or -1): Which state is the true state.
@@ -16,8 +17,9 @@ def simulate_SPRT_fixedtime(sigma, stop_time, true_dist = 1):
   """
 
   # Set means of observation distributions
-  mu_pos = 1.0
-  mu_neg = -1.0
+  assert mu > 0, "Mu should be > 0"
+  mu_pos = mu
+  mu_neg = -mu
 
   # Make observation distributions
   p_pos = stats.norm(loc = mu_pos, scale = sigma)
@@ -32,19 +34,11 @@ def simulate_SPRT_fixedtime(sigma, stop_time, true_dist = 1):
   # Calculate log likelihood ratio for each measurement (delta_t)
   ll_ratio_vec = log_likelihood_ratio(Mvec, p_neg, p_pos)
 
-  # Calculate cumulated evidence (S) given a vector of individual evidences (hint: np.cumsum)
+  # STEP 1: Calculate accumulated evidence (S) given a time series of evidence (hint: np.cumsum)
   evidence_history = np.cumsum(ll_ratio_vec)
 
-  # Make decision
-  if evidence_history[-1] > 0:
-    # Decision given positive S_t (last value of evidence history)
-    decision = 1
-  elif evidence_history[-1] < 0:
-    # Decision given negative S_t (last value of evidence history)
-    decision = -1
-  else:
-    # Random decision if S_t is 0
-    decision = np.random.randint(2)
+  # STEP 2: Make decision based on the sign of the evidence at the final time.
+  decision = np.sign(evidence_history[-1])
 
   return evidence_history, decision, Mvec
 
@@ -53,9 +47,11 @@ def simulate_SPRT_fixedtime(sigma, stop_time, true_dist = 1):
 np.random.seed(100)
 
 # Set model parameters
+mu = .2
 sigma = 3.5  # standard deviation for p+ and p-
 num_sample = 10  # number of simulations to run
 stop_time = 150 # number of steps before stopping
 
+# Simulate and visualize
 with plt.xkcd():
-  simulate_and_plot_SPRT_fixedtime(sigma, stop_time, num_sample)
+  simulate_and_plot_SPRT_fixedtime(mu, sigma, stop_time, num_sample)
