@@ -1,11 +1,11 @@
 
-# 1. Using Bayes rule, we know that P(s = left | m = catch fish) = P(m = catch fish | s = left)P(s = left) / P(m = catch fish)
-#.   Let's first compute P(m = catch fish):
-#.   P(m = catch fish) =  P(m = catch fish | s = left)P(s = left) +  P(m = catch fish | s = right)P(s = right)
+# 1. Using Bayes rule, we know that P(s = left | m = fish) = P(m = fish | s = left)P(s = left) / P(m = fish)
+#.   Let's first compute P(m = fish):
+#.   P(m = fish) =  P(m = fish | s = left)P(s = left) +  P(m = fish | s = right)P(s = right)
 #                      = 0.5 * 0.3 + .1*.7
 #                      = 0.22
 #.   Now we can plug in all parts of Bayes rule:
-#    P(s = left | m = catch fish) = P(m = catch fish | s = left)P(s = left) / P(m = catch fish)
+#    P(s = left | m = fish) = P(m = fish | s = left)P(s = left) / P(m = fish)
 #                                 = 0.5*0.3/0.22
 #                                 = 0.68
 
