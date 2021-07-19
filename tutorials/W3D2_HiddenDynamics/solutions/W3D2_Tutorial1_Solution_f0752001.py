@@ -1,4 +1,3 @@
-from scipy.special import erf
 
 def simulate_accuracy_vs_stoptime(mu, sigma, stop_time_list, num_sample, no_numerical=False):
   """Calculate the average decision accuracy vs. stopping time by running
