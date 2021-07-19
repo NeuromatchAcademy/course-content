@@ -19,7 +19,7 @@ def create_HMM(switch_prob=0.1, noise_level=1e-1, startprob=[1.0, 0.0]):
   startprob_vec = np.asarray(startprob)
 
   # STEP 1: Transition probabilities
-  transmat_mat = np.array([[1. - switch_prob, switch_prob], [switch_prob, 1. - switch_prob]])
+  transmat_mat = np.array([[1. - switch_prob, switch_prob], [switch_prob, 1. - switch_prob]]) # # np.array([[...], [...]])
 
   # STEP 2: Measurement probabilities
 
@@ -73,7 +73,6 @@ def sample(model, T):
   # Since measurements are independent of each other given the latent states, we could calculate them as a batch
   means = model.means[S]
   scales = np.sqrt(model.vars[S])
-  np.random.seed(int(100*model.transmat[0,1]))
   M = np.random.normal(loc=means, scale=scales, size=(T,))
 
   return M, S
@@ -88,10 +87,12 @@ noise_level = 2.0
 
 # Create HMM
 model = create_HMM(switch_prob=switch_prob, noise_level=noise_level)
-print(model)
+
+# Sample from HMM
 M, S = sample(model,T)
 assert M.shape==(T,)
 assert S.shape==(T,)
 
+# Print values
 print(M[:5])
 print(S[:5])
