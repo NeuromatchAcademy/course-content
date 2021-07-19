@@ -36,11 +36,14 @@ def simulate_accuracy_vs_threshold(mu, sigma, threshold_list, num_sample):
   return accuracy_list, decision_speed_list
 
 
+# Set parameters
 np.random.seed(100)
 mu = 1.0
 sigma = 3.75
 num_sample = 200
 alpha_list = np.logspace(-2, -0.1, 8)
 threshold_list = threshold_from_errorrate(alpha_list)
+
+# Simulate and visualize
 with plt.xkcd():
   simulate_and_plot_accuracy_vs_threshold(mu, sigma, threshold_list, num_sample)

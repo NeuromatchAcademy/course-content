@@ -61,6 +61,7 @@ def simulate_SPRT_threshold(mu, sigma, threshold , true_dist=1):
   return evidence_history, decision, data_history
 
 
+# Set parameters
 np.random.seed(100)
 mu = 1.0
 sigma = 2.8
