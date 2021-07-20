@@ -32,13 +32,13 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-n_epochs = 3
-batch_size = 32
+nmf = decomposition.NMF(n_components=2, init='random')
 
-model.train()
+nmf.fit(input_train + 0.5)
 
-runSGD(model, input_train_noisy, input_test_noisy,
-       out_train=input_train, out_test=input_test,
-       n_epochs=n_epochs, batch_size=batch_size)
+nmf_latent_test = nmf.transform(input_test + 0.5)
+
+plot_latent_generative(nmf_latent_test, y_test, nmf.inverse_transform,
+                       image_shape=image_shape)
 -------------------
 
