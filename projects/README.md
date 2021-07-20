@@ -70,13 +70,17 @@ Below we link all the relevant project materials.These are available either on g
 * course day 10:  by end of day, please submit your abstract via this [Airtable link](https://airtable.com/shrITSzD4fgFCGiWI).  
 * project block 14: by end of block, please submit your slides via this [Airtable link]() (not yet available).  
 
-**Project block 14** — Prepare project presentation
- * Groups make a five minute project presentation
+**Project block 14** — Prepare project presentation (see more detailed guidance in the [Student Guide to Projects](./docs/project_guidance.md))
+ * Groups make a five minute project presentation: approx 1 minute / 1 slide / 1 person
+ * All group members should give a part of the presentation!
  * RESULTS ARE OPTIONAL! We would like you to present your experience, and results if you happen to have them
- * All group members should contribute to the presentation!
  * [Example project video one](https://youtu.be/zMphz4yvyfc) (*notice how quickly our mascot black cat jumps continents!*)
  * [Example project video two](https://www.youtube.com/watch?v=pvfy0_v12wI)
  * PROJECTS ARE DUE PRIOR TO THE INTRO FOR W3D5!!
 
+ * Use this presentation style ([google slides](https://docs.google.com/presentation/d/10l0hh5hD8JW7HQTTANeC5DxYfXf_3JGHURqvGy0FESU/edit?usp=sharing) or [powerpoint](https://osf.io/ky6fj/download)) or create your own style!
+
 **NMA final day** — Presentation of projects
-  * The second half of W3D5 tutorial time is dedicated to project presentations!
+  * This happens during hours 6:10-7:10 relative to start of tutorials on the last day.
+  * For each group, we will send an email invitation to the following people: TA, project TA, mentor and primary student contact.
+  * More about logistics in the [Student Guide to Projects](./docs/project_guidance.md))
