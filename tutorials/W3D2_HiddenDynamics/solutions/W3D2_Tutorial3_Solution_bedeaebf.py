@@ -1,5 +1,8 @@
 
-# choose parameters
+# Set random seed
+np.random.seed(0)
+
+# Set parameters
 T = 50                  # Time duration
 tau = 25                # dynamics time constant
 process_noise = 2       # process noise in Astrocat's propulsion unit (standard deviation)
@@ -9,6 +12,7 @@ measurement_noise = 9   # measurement noise in Astrocat's collar (standard devia
 process_noise_cov = process_noise**2          # process noise in Astrocat's propulsion unit (variance)
 measurement_noise_cov = measurement_noise**2  # measurement noise in Astrocat's collar (variance)
 
+# Initialize arrays
 t = np.arange(0, T, 1)   # timeline
 s = np.zeros(T)          # states
 D = np.exp(-1/tau)       # dynamics multiplier (matrix if s is vector)
@@ -17,16 +21,21 @@ m = np.zeros(T)          # measurement
 s_ = np.zeros(T)         # estimate (posterior mean)
 cov_ = np.zeros(T)       # uncertainty (posterior covariance)
 
+# Initial guess of the posterior at time 0
 initial_guess = gaussian(0, process_noise_cov/(1-D**2))    # In this case, the initial guess (posterior distribution
                                                            # at time 0) is the equilibrium distribution, but feel free to
                                                            # experiment with other gaussians
-
 posterior = initial_guess
+
+# Sample initial conditions
 s[0] = posterior.mean + np.sqrt(posterior.cov) * np.random.randn()   # Sample initial condition from posterior distribution at time 0
 s_[0] = posterior.mean
 cov_[0] = posterior.cov
 
+# Loop over steps
 for i in range(1, T):
+
+    # Sample true states and corresponding measurements
     s[i] = D * s[i-1] + np.random.normal(0, process_noise)    # variable `s` records the true position of Astrocat
     m[i] = s[i] + np.random.normal(0, measurement_noise)      # variable `m` records the measurements of Astrocat's collar
 
@@ -56,5 +65,6 @@ for i in range(1, T):
     s_[i] = posterior.mean
     cov_[i] = posterior.cov
 
+# Visualize
 with plt.xkcd():
   paintMyFilter(D, initial_guess, process_noise_cov, measurement_noise_cov, s, m, s_, cov_)
