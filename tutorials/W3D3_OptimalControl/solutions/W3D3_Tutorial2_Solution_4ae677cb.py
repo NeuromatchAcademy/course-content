@@ -1,3 +1,4 @@
+
 """
 In Exercise 1.2, you should have noticed the following:
 
