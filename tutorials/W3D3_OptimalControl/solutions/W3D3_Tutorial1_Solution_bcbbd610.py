@@ -25,4 +25,5 @@ def policy_threshold(threshold, belief, loc):
   return act
 
 
+# Test your function
 test_policy_threshold()

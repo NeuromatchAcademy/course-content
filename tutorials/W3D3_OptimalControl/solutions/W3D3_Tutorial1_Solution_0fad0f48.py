@@ -19,4 +19,6 @@ def value_function(measurement, act, cost_sw):
 
   return value
 
+
+# Test your function
 test_value_function()

@@ -28,5 +28,5 @@ class LQR(LDS):
 
     return J_control
 
-
+# Test class
 test_lqr_class(LQR)
