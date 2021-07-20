@@ -40,10 +40,6 @@ def simulate_accuracy_vs_stoptime(mu, sigma, stop_time_list, num_sample, no_nume
         # Log decision
         decisions[i] = decision
 
-
-        # Log decision
-        decisions[i] = decision
-
       # STEP 2: Calculate accuracy by averaging over trials
       accuracies[i_stop_time] = np.sum(decisions == true_dist) / decisions.shape[0]
 
@@ -54,7 +50,6 @@ def simulate_accuracy_vs_stoptime(mu, sigma, stop_time_list, num_sample, no_nume
     # S_t is a normal variable with SNR scale as sqrt(stop_time)
     sigma_sum_gaussian = sigma / np.sqrt(stop_time)
     accuracies_analytical[i_stop_time] = 0.5 + 0.5 * erf(mu / np.sqrt(2) / sigma_sum_gaussian)
-
 
   return accuracies, accuracies_analytical, decisions_list
 
