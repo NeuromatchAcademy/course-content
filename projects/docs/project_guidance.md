@@ -180,7 +180,7 @@ At the end of your last project block, you should also submit your slides via th
 
 * You will present to the groups in your superpod (4-5 pods = 6-8 groups). An email will be sent with the zoom room of one of the pods where everyone goes for one hour corresponding to 6:10-7:10 relative to the start of your normal tutorial time. There is a hard cutoff at the one hour mark, so the TAs must ensure everyone gets a turn to present.  
 
-* Use this presentation style ([google slides](https://docs.google.com/presentation/d/10l0hh5hD8JW7HQTTANeC5DxYfXf_3JGHURqvGy0FESU/edit?usp=sharing) or [powerpoint](https://osf.io/ky6fj/download)) or create your own style!
+* Use this presentation style ([google slides](https://docs.google.com/presentation/d/1A1uaYarVot9YyCdbAAB4VDvsQfK6emqq-TwIZ9xVNwo/edit?usp=sharing) or [powerpoint](https://osf.io/ky6fj/download)) or create your own style!
 
 * One minute per person and one slide per person only! This is primarily to ensure that everyone in your superpod gets to go before the hard cutoff at the one hour mark.
 
