@@ -81,6 +81,6 @@ Below we link all the relevant project materials.These are available either on g
  * Use this presentation style ([google slides](https://docs.google.com/presentation/d/1A1uaYarVot9YyCdbAAB4VDvsQfK6emqq-TwIZ9xVNwo/edit?usp=sharing) or [powerpoint](https://osf.io/ky6fj/download)) or create your own style!
 
 **NMA final day** — Presentation of projects
-  * This happens during hours 6:10-7:10 relative to start of tutorials on the last day.
+  * This happens either in the last hour of project time (timeslots 2,4) or during 6:10-7:10 relative to start of tutorials on the last day (timeslots 1,3,5). If it's not clear, check the [calendar](https://academy.neuromatch.io/calendar-summer-2021).
   * For each group, we will send an email invitation to the following people: TA, project TA, mentor and primary student contact.
-  * More about logistics in the [Student Guide to Projects](./docs/project_guidance.md))
+  * More about scheduling and logistics in the [Student Guide to Projects](./docs/project_guidance.md))
