@@ -27,3 +27,29 @@ def q_learning(state, action, reward, next_state, value, params):
   value[state, action] = q + params['alpha'] * td_error
 
   return value
+
+
+# set for reproducibility, comment out / change seed value for different results
+np.random.seed(1)
+
+# parameters needed by our policy and learning rule
+params = {
+  'epsilon': 0.1,  # epsilon-greedy policy
+  'alpha': 0.1,  # learning rate
+  'gamma': 1.0,  # discount factor
+}
+
+# episodes/trials
+n_episodes = 500
+max_steps = 1000
+
+# environment initialization
+env = CliffWorld()
+
+# solve Cliff World using Q-learning
+results = learn_environment(env, q_learning, params, max_steps, n_episodes)
+value_qlearning, reward_sums_qlearning = results
+
+# Plot results
+with plt.xkcd():
+  plot_performance(env, value_qlearning, reward_sums_qlearning)
