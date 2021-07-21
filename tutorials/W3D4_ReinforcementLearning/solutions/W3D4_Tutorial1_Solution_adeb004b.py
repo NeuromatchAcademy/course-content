@@ -14,10 +14,13 @@ def td_learner(env, n_trials, gamma=0.98, alpha=0.001):
   TDE = np.zeros((env.n_steps, n_trials)) # Array to store TD errors
 
   for n in range(n_trials):
+
     state = 0 # Initial state
     for t in range(env.n_steps):
+
       # Get next state and next reward
       next_state, reward = env.get_outcome(state)
+
       # Is the current state in the delay period (after CS)?
       is_delay = env.state_dict[state][0]
 
@@ -33,7 +36,12 @@ def td_learner(env, n_trials, gamma=0.98, alpha=0.001):
   return V, TDE
 
 
+# Initialize classical conditioning class
 env = ClassicalConditioning(n_steps=40, reward_magnitude=10, reward_time=10)
+
+# Perform temporal difference learning
 V, TDE = td_learner(env, n_trials=20000)
+
+# Visualize
 with plt.xkcd():
   learning_summary_plot(V, TDE)
