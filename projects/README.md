@@ -78,7 +78,7 @@ Below we link all the relevant project materials.These are available either on g
  * [Example project video two](https://www.youtube.com/watch?v=pvfy0_v12wI)
  * PROJECTS ARE DUE PRIOR TO THE INTRO FOR W3D5!!
 
- * Use this presentation style ([google slides](https://docs.google.com/presentation/d/10l0hh5hD8JW7HQTTANeC5DxYfXf_3JGHURqvGy0FESU/edit?usp=sharing) or [powerpoint](https://osf.io/ky6fj/download)) or create your own style!
+ * Use this presentation style ([google slides](https://docs.google.com/presentation/d/1A1uaYarVot9YyCdbAAB4VDvsQfK6emqq-TwIZ9xVNwo/edit?usp=sharing) or [powerpoint](https://osf.io/ky6fj/download)) or create your own style!
 
 **NMA final day** — Presentation of projects
   * This happens during hours 6:10-7:10 relative to start of tutorials on the last day.
