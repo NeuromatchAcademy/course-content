@@ -1,3 +1,4 @@
+
 def dyna_q_planning(model, value, params):
   """ Dyna-Q planning
 
@@ -31,3 +32,30 @@ def dyna_q_planning(model, value, params):
     value = q_learning(state, action, reward, next_state, value, params)
 
   return value
+
+
+# set for reproducibility, comment out / change seed value for different results
+np.random.seed(1)
+
+# parameters needed by our policy and learning rule
+params = {
+  'epsilon': 0.05,  # epsilon-greedy policy
+  'alpha': 0.5,  # learning rate
+  'gamma': 0.8,  # temporal discount factor
+  'k': 10,  # number of Dyna-Q planning steps
+}
+
+# episodes/trials
+n_episodes = 500
+max_steps = 1000
+
+# environment initialization
+env = QuentinsWorld()
+
+# solve Quentin's World using Dyna-Q
+results = learn_environment(env, dyna_q_model_update, dyna_q_planning,
+                            params, max_steps, n_episodes)
+value, reward_sums, episode_steps = results
+
+with plt.xkcd():
+  plot_performance(env, value, reward_sums)

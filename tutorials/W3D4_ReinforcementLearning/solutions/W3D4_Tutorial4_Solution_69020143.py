@@ -1,3 +1,4 @@
+
 def dyna_q_model_update(model, state, action, reward, next_state):
   """ Dyna-Q model update
 

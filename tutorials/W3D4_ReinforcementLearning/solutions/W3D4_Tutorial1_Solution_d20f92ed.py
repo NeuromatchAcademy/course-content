@@ -1,3 +1,4 @@
+
 """
 Alpha determines how fast the model learns. In the simple, deterministic world
 we're using here, this allows the moodel to quickly converge onto the "true"
