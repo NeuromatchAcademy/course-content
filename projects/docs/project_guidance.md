@@ -167,7 +167,7 @@ Abstract writing day should have helped you narrow down what results (positive o
 
 ## Day 15 project work
 
-Only for timeslots 2 & 4! You have an extra project block at the beginning of this day before tutorials (which makes up for the lack of project time on W1D1). Use it to finalize your presentation.
+Only for timeslots 2 & 4! You have an extra project block at the beginning of this day before tutorials (which makes up for the lack of project time on W1D1). Use it to finalize your presentation. The last hour of this block (just before coursework starts) is your project presentation (as per update on Wed, July 21). Check the [calendar](https://academy.neuromatch.io/calendar-summer-2021) and the email invitation we are sending to the mentors to be confirm the time.
 
 ## Day 15 Presentations (Friday tutorial block for everyone)
 
@@ -179,7 +179,7 @@ At the end of your last project block, you should also submit your slides via th
 
 * 10 minutes of meet & greet. Do a round of introductions (one TA calls out names from the zoom list). Everyone says their name, pod name, position, university and subject of study, as well as one interesting fact about themselves "Hi, I'm Jonny from the wiggly caterpillars and I am a PhD student at University of Notre Dame in Paris. I do neuroscience experiments in flies, and in my free time I like to go on long bike rides".
 
-* 30 minutes of presentations, including questions. Each group should speak for 5 minutes, and then take questions for 1-2 minutes. The order of presentations should be the one from the email. 
+* 30 minutes of presentations, including questions. Each group should speak for 5 minutes, and then take questions for 1-2 minutes. The order of presentations should be the one from the email.
 
 * 20 minutes of discussion. Use the following questions to guide the group discussion. Spend 3-5 minutes on each question.  
   * What was missing in the dataset that you would have really liked to have?
@@ -192,7 +192,10 @@ At the end of your last project block, you should also submit your slides via th
 
 ### Logistics:
 
-* You will present to other groups (3-5 groups per room). An email will be sent with the zoom room of one of the pods where everyone goes for one hour corresponding to 6:10-7:10 relative to the start of your normal tutorial time (check the [calendar](https://academy.neuromatch.io/calendar-summer-2021)). There is a hard cutoff at the one hour mark, so the TAs must ensure everyone gets a turn to present.  
+* You will present to other groups (3-5 groups per room). An email will be sent with the zoom room of one of the pods where everyone goes for one hour corresponding to either:
+  * timeslots 2,4:   last hour of project time, -1:00 to 0:00 relative to start of your normal tutorial time (check the [calendar](https://academy.neuromatch.io/calendar-summer-2021)).
+  * timeslots 1,3,5: 6:10-7:10 relative to the start of your normal tutorial time (check the [calendar](https://academy.neuromatch.io/calendar-summer-2021)).
+  There is a hard cutoff at the one hour mark, so the TAs must ensure everyone gets a turn to present.  
 
 * Use this presentation style ([google slides](https://docs.google.com/presentation/d/1A1uaYarVot9YyCdbAAB4VDvsQfK6emqq-TwIZ9xVNwo/edit?usp=sharing) or [powerpoint](https://osf.io/ky6fj/download)) or create your own style!
 
