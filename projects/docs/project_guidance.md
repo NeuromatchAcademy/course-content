@@ -179,7 +179,7 @@ At the end of your last project block, you should also submit your slides via th
 
 * 10 minutes of meet & greet. Do a round of introductions (one TA calls out names from the zoom list). Everyone says their name, pod name, position, university and subject of study, as well as one interesting fact about themselves "Hi, I'm Jonny from the wiggly caterpillars and I am a PhD student at University of Notre Dame in Paris. I do neuroscience experiments in flies, and in my free time I like to go on long bike rides".
 
-* 30 minutes of presentations, including questions. Each group should speak for 5 minutes, and then take questions for 1-2 minutes. The order of presentations should be the one from the email.
+* 30 minutes of presentations, including questions. Each group should speak for approx 5 minutes (depending on group size), and then take questions for 1-2 minutes. The order of presentations should be the one from the email.
 
 * 20 minutes of discussion. Use the following questions to guide the group discussion. Spend 3-5 minutes on each question.  
   * What was missing in the dataset that you would have really liked to have?
