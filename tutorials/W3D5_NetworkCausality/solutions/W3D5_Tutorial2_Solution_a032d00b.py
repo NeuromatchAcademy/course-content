@@ -1,3 +1,4 @@
+
 def get_coarse_corr(n_groups, X):
     """
     A wrapper function for our correlation calculations between coarsely sampled
@@ -32,7 +33,9 @@ def get_coarse_corr(n_groups, X):
 
 n_groups = 16
 
-# Uncomment below to test your function
+# Call function
 corr, R, coarse_A = get_coarse_corr(n_groups, X)
-plot_true_vs_estimated_connectivity(R, coarse_A)
-print("Correlation: {}".format(corr))
+
+# Visualize
+with plt.xkcd():
+  plot_true_vs_estimated_connectivity(R, coarse_A)

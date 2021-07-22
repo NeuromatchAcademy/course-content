@@ -42,7 +42,9 @@ selected_neuron = 1
 A = create_connectivity(n_neurons, random_state)
 X = simulate_neurons(A, timesteps, random_state)
 
-# Uncomment below to test your function
+# Estimate Granger causality
 reject_null, p_vals = get_granger_causality(X, selected_neuron)
+
+# Visualize
 with plt.xkcd():
   compare_granger_connectivity(A, reject_null, selected_neuron)

@@ -27,15 +27,15 @@ def simulate_neurons_iv(n_neurons, timesteps, eta, random_state=42):
 
     return A, X, Z
 
-# Parameters
+
+# Set parameters
 timesteps = 5000  # Simulate for 5000 timesteps.
 n_neurons = 100  # the size of our system
 eta = 2  # the strength of our instrument, higher is stronger
 
-
-# Uncomment below to test your function
-
 # Simulate our dynamical system for the given amount of time
 A, X, Z = simulate_neurons_iv(n_neurons, timesteps, eta)
+
+# Visualize
 with plt.xkcd():
   plot_neural_activity(X)

@@ -22,10 +22,13 @@ def fit_first_stage(T, Z):
     return T_hat
 
 
-# Uncomment below to test your function
+# Estimate T_hat
 T_hat = fit_first_stage(T, Z)
 
+# Get correlations
 T_C_corr = np.corrcoef(T.transpose(), C.transpose())[0, 1]
 T_hat_C_corr = np.corrcoef(T_hat.transpose(), C.transpose())[0, 1]
+
+# Print correlations
 print("Correlation between T and C: {:.3f}".format(T_C_corr))
 print("Correlation between T_hat and C: {:.3f}".format(T_hat_C_corr))

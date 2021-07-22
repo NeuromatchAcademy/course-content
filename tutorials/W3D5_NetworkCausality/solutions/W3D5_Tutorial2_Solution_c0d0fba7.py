@@ -33,6 +33,7 @@ def compute_connectivity_from_single_neuron(X, selected_neuron):
 
     return estimated_connectivity
 
+
 # Simulate a 6 neuron system for 5000 timesteps again.
 n_neurons = 6
 timesteps = 5000
@@ -44,8 +45,9 @@ A = create_connectivity(n_neurons)
 # Invoke a helper function that simulates the neural activity
 X = simulate_neurons(A, timesteps)
 
-# Uncomment below to test your function
+# Estimate connectivity
 estimated_connectivity = compute_connectivity_from_single_neuron(X, selected_neuron)
 
+# Visualize
 with plt.xkcd():
   plot_true_vs_estimated_connectivity(estimated_connectivity, A, selected_neuron)

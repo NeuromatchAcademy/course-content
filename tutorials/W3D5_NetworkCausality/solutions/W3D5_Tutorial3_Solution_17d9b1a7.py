@@ -27,17 +27,18 @@ def get_regression_estimate(X, neuron_idx):
 
     return V
 
-# Parameters
+
+# Set parameters
 n_neurons = 50  # the size of our system
 timesteps = 10000  # the number of timesteps to take
 random_state = 42
 neuron_idx = 1
 
+# Set up system and simulate
 A = create_connectivity(n_neurons, random_state)
 X = simulate_neurons(A, timesteps)
 
-
-# Uncomment below to test your function
+# Estimate causality with regression
 V = get_regression_estimate(X, neuron_idx)
 
 print("Regression: correlation of estimated connectivity with true connectivity: {:.3f}".format(np.corrcoef(A[neuron_idx, :], V)[1, 0]))

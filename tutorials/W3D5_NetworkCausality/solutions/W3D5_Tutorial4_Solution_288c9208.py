@@ -34,13 +34,16 @@ def instrument_strength_effect(etas, n_neurons, timesteps, n_trials):
 
   return corr_data
 
+
 # Parameters of system
 n_neurons = 20
 timesteps = 10000
 n_trials = 3
 etas = [2, 1, 0.5, 0.25, 0.12]  # instrument strengths to search over
 
-# Uncomment below to test your function
+# Get IV estimate performances
 corr_data = instrument_strength_effect(etas, n_neurons, timesteps, n_trials)
+
+# Visualize
 with plt.xkcd():
   plot_performance_vs_eta(etas, corr_data)
