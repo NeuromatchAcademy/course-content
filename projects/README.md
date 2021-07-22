@@ -35,7 +35,7 @@ Daily project time is either:
  - July 6, any time for Slots 1,3,5
  - July 7, right after the projects time for Slots 2,4 (but before you start coursework on this day)
 
- Here is a table summary of the schedule:
+ Here is a table summary of the schedule: 
 
 | date | Slot 1 | Slot 2 | Slot 3 | Slot 4 | Slot 5 |
 | --- | --- | --- | --- | --- | --- |
