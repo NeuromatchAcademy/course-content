@@ -35,10 +35,9 @@ def simulate_neurons(A, timesteps, random_state=42):
 # Set simulation length
 timesteps = 5000
 
-# Uncomment below to test your function
-
 # Simulate our dynamical system
 X = simulate_neurons(A, timesteps)
 
+# Visualize
 with plt.xkcd():
   plot_neural_activity(X)

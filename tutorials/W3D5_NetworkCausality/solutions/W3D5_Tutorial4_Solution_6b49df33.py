@@ -19,7 +19,11 @@ def fit_second_stage(T_hat, Y):
     return stage2.coef_
 
 
-# Uncomment below to test your function
+# Fit first stage
 T_hat = fit_first_stage(T, Z)
+
+# Fit second stage
 beta = fit_second_stage(T_hat, Y)
+
+# Print
 print("Estimated causal effect is: {:.3f}".format(beta[0, 0]))
