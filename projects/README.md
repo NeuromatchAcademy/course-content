@@ -35,7 +35,7 @@ Daily project time is either:
  - July 6, any time for Slots 1,3,5
  - July 7, right after the projects time for Slots 2,4 (but before you start coursework on this day)
 
- Here is a table summary of the schedule:
+ Here is a table summary of the schedule: 
 
 | date | Slot 1 | Slot 2 | Slot 3 | Slot 4 | Slot 5 |
 | --- | --- | --- | --- | --- | --- |
@@ -68,7 +68,7 @@ Below we link all the relevant project materials.These are available either on g
 
 * project block 2:  by end of block, please submit a project proposal via this [Airtable link](https://airtable.com/shrZWimDB3YddpXDu). We will use this immediately to match your group with a mentor and a project TA.  
 * course day 10:  by end of day, please submit your abstract via this [Airtable link](https://airtable.com/shrITSzD4fgFCGiWI).  
-* project block 14: by end of block, please submit your slides via this [Airtable link]() (not yet available).  
+* project block 14: by end of block, please submit your slides via this [Airtable link](https://airtable.com/shr9Ge6A94JB7TOPI).  
 
 **Project block 14** — Prepare project presentation (see more detailed guidance in the [Student Guide to Projects](./docs/project_guidance.md))
  * Groups make a five minute project presentation: approx 1 minute / 1 slide / 1 person
