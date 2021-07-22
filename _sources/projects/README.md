@@ -71,7 +71,7 @@ Below we link all the relevant project materials.These are available either on g
 * project block 14: by end of block, please submit your slides via this [Airtable link](https://airtable.com/shr9Ge6A94JB7TOPI).  
 
 **Project block 14** — Prepare project presentation (see more detailed guidance in the [Student Guide to Projects](./docs/project_guidance.md))
- * Groups make a five minute project presentation: approx 1 minute / 1 slide / 1 person
+ * Groups make an approx five minute project presentation: 1 minute / 1 slide / 1 person
  * All group members should give a part of the presentation!
  * RESULTS ARE OPTIONAL! We would like you to present your experience, and results if you happen to have them
  * [Example project video one](https://youtu.be/zMphz4yvyfc) (*notice how quickly our mascot black cat jumps continents!*)
