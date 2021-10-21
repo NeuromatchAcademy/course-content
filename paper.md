@@ -728,13 +728,23 @@ Materials consist of highly curated recorded lectures and tutorials, organized i
 | W1D4  _Machine Learning: GLM_    | W2D4  _Optimal Control_        | W3D4  _Deep Learning 1_   |
 | W1D5  _Dimensionality Reduction_ | W2D5  _Reinforcement Learning_ | W3D5  _Deep Learning 2_   |
 
-**Table 1. Neuromatch Academy Topics.** _Organized chronologically by week (W) and day of week (D), e.g. week 2 day 4 = W2D4. In addition, there are two days of preparatory instruction in coding Python, the materials for which can be found in W0D1._
+**Table 1. 2020 Neuromatch Academy Topics.** _Organized chronologically by week (W) and day of week (D), e.g. week 2 day 4 = W2D4. In addition, there are two days of preparatory instruction in coding Python, the materials for which can be found in W0D1 for 2020. In 2021 we changed the program, integrating "Modeling Practice" with a first "Project Day" and dropping "Deep Learning 2" to get a second "Project Day". The order of days was changed in 2021 to better group topics together conceptually._
+
+|         **Week 1**                |         **Week 2**               |         **Week 3**             |
+| --------------------------------- | -------------------------------- | ------------------------------ |
+| W1D1  _Model Types_               | W2D1  _Deep Learning_            | W3D1  _Bayesian Decision_      |
+| W1D2  _Project Day 1_             | W2D2  _Linear Systems_           | W3D2  _Hidden Dynamics_        |
+| W1D3  _Model Fitting_             | W2D3  _Biological Neuron Models_ | W3D3  _Optimal Control_        |
+| W1D4  _Generalized Linear Models_ | W2D4  _Dynamic Networks_         | W3D4  _Reinforcement Learning_ |
+| W1D5  _Dimensionality Reduction_  | W2D5  _Project Day 2_            | W3D5  _Network Causality_      |
+
+**Table 1. 2021 Neuromatch Academy Topics.** _Organized chronologically by week (W) and day of week (D), e.g. week 2 day 4 = W2D4. In addition, there are two days of preparatory instruction in coding Python, the materials for which can be found in W0D1 for 2020. The schedule shown here is from 2021, which was updated by dropping Modeling Practice day and a second Deep Learning day in favour of two dedicated project days and changing the order to group topics better conceptually._
 
 Each instruction module (day) consists of 1) an introductory lecture (~30 minutes) that broaches the topic to students and explains the general approach, followed by 2) hands-on tutorials in the form of several ipython notebooks (~3 hours) with code-completion assignments and answers, and further instruction through embedded micro-lectures, and finally 3) an outro lecture (~30 minutes) to recapitulate the covered material and provide an outlook on its applicability to neuroscience research. Each day is meant to instruct the basics of a given topic and further readings are supplied.
 
-All tutorials with embedded lectures are available online as a [permanent archive](permalink), and the most up-to-date material as a [Jupyter Book](https://compneuro.neuromatch.io). The material is largely self sufficient and could be used for self-study. For guidance on how to use the material, a readme.md can be found XXXXXXXXXX. This describes how to use materials for self-study, as well as on how to adapt the materials for teaching, either in a summer school or in a class.
+All tutorials with embedded lectures are available online in a [permanent archive](https://osf.io/93wna) of the 2021 edition of NMA, and the most up-to-date material is planned to stay available as a [Jupyter Book](https://compneuro.neuromatch.io). The material is largely self sufficient and could be used for self-study. For guidance on how to use the material, a readme.md can be found XXXXXXXXXX. This describes how to use materials for self-study, as well as on how to adapt the materials for teaching, either in a summer school or in a class.
 
-For attendees to apply what they learn, we also provide materials for individual or group projects and five curated data sets (see table 2) to use for these projects, including videos describing the data and ipython notebooks to get started.
+For attendees to apply what they learn, we also provide materials for individual or group projects and five curated data sets (see table 2) to use for these projects in 2020, including videos describing the data and ipython notebooks to get started.
 
 | **Data set**          | **Contains**          | **Possible projects** |
 | --------------------- | --------------------- | --------------------- |
@@ -745,6 +755,31 @@ For attendees to apply what they learn, we also provide materials for individual
 | IBL data [@ibl2021] | very large behavioral data of mice doing a visual detection task with a bias | fit models to predict the choice of the animal; model individual differences |
 
 **Table 2. Data sets for group projects.** _The data sets are available through the Neuromatch Academy repository._
+
+In 2021 we increased the number of curated data sets, and grouped them conceptually.
+
+| **Category**                   | **Data set**                                 | **Contains** |
+| ------------------------- | -------------------------------------------- | ------------ |
+| Neurons                   | Steinmetz data [@steinmetz2019]              | neuropixels recording (waveforms, task events, spikes) in mice doing a visual discrimination task |
+|                           | Stringer data [@stringer2019; @stringer2021] | activity from ~10,000 V1 neurons, recorded with calcium imaging from a mouse in total darkness | discover structure of cortical column; relate activity to spontaneous behavior |
+|                           | Allen Institute data (no citation)           | recordings from VIP, SST, etc from mice doing a visual adaptation task, with novel or familiar images |
+| fMRI                      | HCP data [@hcp2013; @barch2013] |  fMRI time series in 7 tasks and resting state for 340 human participants, and parcellation in ROIs |
+|                           | FSL course task (no citation) | complements HCP data with 2 language tasks, data at voxel level |
+|                           | HCP retinotopy [@benson2018] | allows visualizing receptive fields across brain regions |
+|                           | Kay natural images [@kay2008; @naselaris2009] | voxels from V1/V2/V3/V4, and annotated objects |
+|                           | Bonner navigation data [@bonner2017]     | activity from 12 participants watching scenes or navigation sequences |
+|                           | Algonauts video clip data [@kriegeskorte2008] | activity in 10 participants watching 1000+ video clips [algonauts](http://algonauts.csail.mit.edu/challenge.html) |
+|                           | Cichy objects/animals data [@cichy2014] | activity in 16 participants watching 92 images |
+| EEG/ECoG/LFP              | Miller face/house data [@miller2017; @miller2015; @miller2016] | ECoG recordings from participants watching faces and houses |
+|                           | Miller finger flex data [@miller2009; @miller2012] | ECoG recordings from participants moving their fingers |
+|                           | Schalk joystick track data [@schalk2007; @schalk2008] | ECoG recordings from participants moving a joystick on 2D trajectories |
+|                           | Memory N-back data (no citation) | ECoG recordings in participants responding to repeated house images 0, 1 or 2 stimuli back |
+|                           | Miller motor imagery data [@miller2010] | ECoG recordings from participants   |
+| Behavior                  | Caltech data set (no citation) | pose-tracking from socially interacting mice |
+|                           | IBL data [@ibl2021] | behavior of mice doing a visual detection task with a bias |
+
+**Table 2. Data sets for group projects.** _The data sets are available through the Neuromatch Academy (OSF repository)[]._
+ 
 
 ## Statement of Need
 
