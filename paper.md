@@ -7,7 +7,7 @@ tags:
   - summer school
 date: 14 Februari 2021
 authors:
- - name: Bernard Marius "'t Hart"
+ - name: Bernard Marius 't&nbsp;Hart
    orcid: 0000-0002-0045-3769
    affiliation: 1
  - name: Titipat Achakulvisut
