@@ -7,7 +7,7 @@ tags:
   - summer school
 date: 14 Februari 2021
 authors:
- - name: Bernard Marius 't Hart
+ - name: Bernard Marius {'t Hart}
    orcid: 0000-0002-0045-3769
    affiliation: 1
  - name: Titipat Achakulvisut
@@ -716,9 +716,9 @@ bibliography: bibliography.bib
 
 ## Summary
 
-Neuromatch Academy ([*https://neuromatch.io/academy*](https://neuromatch.io/academy) [@viegen2021] was designed as an online summer school to cover the basics of computational neuroscience in three weeks. The materials cover dominant and emerging computational neuroscience tools, how they complement one another, and specifically focus on how they can help us to better understand how the brain functions. An original component of the materials is its focus on modeling choices, i.e. how do we choose the right approach, how do we build models, and how can we evaluate models to determine if they provide real (meaningful) insight. This meta-modeling component of the instructional materials asks what questions can be answered by different techniques, and how to apply them meaningfully to get insight about brain function.
+Neuromatch Academy ([*https://neuromatch.io/academy*](https://neuromatch.io/academy); [@viegen2021]) was designed as an online summer school to cover the basics of computational neuroscience in three weeks. The materials cover dominant and emerging computational neuroscience tools, how they complement one another, and specifically focus on how they can help us to better understand how the brain functions. An original component of the materials is its focus on modeling choices, i.e. how do we choose the right approach, how do we build models, and how can we evaluate models to determine if they provide real (meaningful) insight. This meta-modeling component of the instructional materials asks what questions can be answered by different techniques, and how to apply them meaningfully to get insight about brain function.
 
-Materials consist of highly curated recorded lectures and tutorials, organized in ‘days’, as well as 5 data sets for group projects. Each day constitutes one teaching module and covers one topic in computational neuroscience (see table 1). While the content is organized as a 3-week crash-course (and optional introduction days) of consecutive teaching modules that build on one another, it can be rolled out at any pace, in its entirety or as stand-alone parts, provided prerequisites for each part are met. Most days can be used as separate, independent modules and can, for example, be combined with other instructional content. To facilitate this, we not only provide general prerequisites for the entire course but also daily topic-specific prerequisites (see appendix 1). The material is meant to either be taught to small groups of ~10 attendees guided by a teaching assistant, for instruction in a classroom, or for usage in other (potentially for-profit) events.
+Materials consist of highly curated recorded lectures and tutorials, organized in ‘days’, as well as a growing number of data sets with starter notebooks for group projects (5 in 2020; 17 in 2021). Each day constitutes one teaching module and covers one topic in computational neuroscience (see table 1). While the content is organized as a 3-week crash-course (and optional introduction days) of consecutive teaching modules that build on one another, it can be rolled out at any pace, in its entirety or as stand-alone parts, provided prerequisites for each part are met. Most days can be used as separate, independent modules and can, for example, be combined with other instructional content. To facilitate this, we not only provide general prerequisites for the entire course but also daily topic-specific prerequisites (see appendix 1). The material is meant to either be taught to small groups of ~10 attendees guided by a teaching assistant, for instruction in a classroom, or for usage in other (potentially for-profit) events.
 
 |         **Week 1**               |         **Week 2**             |         **Week 3**        |
 | -------------------------------- | ------------------------------ | ------------------------- |
@@ -738,7 +738,7 @@ Materials consist of highly curated recorded lectures and tutorials, organized i
 | W1D4  _Generalized Linear Models_ | W2D4  _Dynamic Networks_         | W3D4  _Reinforcement Learning_ |
 | W1D5  _Dimensionality Reduction_  | W2D5  _Project Day 2_            | W3D5  _Network Causality_      |
 
-**Table 1. 2021 Neuromatch Academy Topics.** _Organized chronologically by week (W) and day of week (D), e.g. week 2 day 4 = W2D4. In addition, there are two days of preparatory instruction in coding Python, the materials for which can be found in W0D1 for 2020. The schedule shown here is from 2021, which was updated by dropping Modeling Practice day and a second Deep Learning day in favour of two dedicated project days and changing the order to group topics better conceptually._
+**Table 1. 2021 Neuromatch Academy Topics.** _Organized chronologically by week (W) and day of week (D), e.g. week 2 day 4 = W2D4. In addition, there are two days of preparatory instruction in coding Python, the materials for which can be found in W0D1 for 2020. The schedule shown here is from 2021, which was updated by dropping Modeling Practice day (old W1D2) and a second Deep Learning day (old W3D5) in favour of two dedicated project days and changing the order to group topics better conceptually. The content for these two days can still be found [here](https://github.com/NeuromatchAcademy/course-content/releases/tag/NMA2020)._
 
 Each instruction module (day) consists of 1) an introductory lecture (~30 minutes) that broaches the topic to students and explains the general approach, followed by 2) hands-on tutorials in the form of several ipython notebooks (~3 hours) with code-completion assignments and answers, and further instruction through embedded micro-lectures, and finally 3) an outro lecture (~30 minutes) to recapitulate the covered material and provide an outlook on its applicability to neuroscience research. Each day is meant to instruct the basics of a given topic and further readings are supplied.
 
@@ -770,7 +770,7 @@ In 2021 we increased the number of curated data sets, and grouped them conceptua
 |                           | Bonner navigation data [@bonner2017]     | activity from 12 participants watching scenes or navigation sequences |
 |                           | Algonauts video clip data [@kriegeskorte2008] | activity in 10 participants watching 1000+ video clips [algonauts](http://algonauts.csail.mit.edu/challenge.html) |
 |                           | Cichy objects/animals data [@cichy2014] | activity in 16 participants watching 92 images |
-| EEG/ECoG/LFP              | Miller face/house data [@miller2017; @miller2015; @miller2016] | ECoG recordings from participants watching faces and houses |
+| ECoG/EEG              | Miller face/house data [@miller2017; @miller2015; @miller2016] | ECoG recordings from participants watching faces and houses |
 |                           | Miller finger flex data [@miller2009; @miller2012] | ECoG recordings from participants moving their fingers |
 |                           | Schalk joystick track data [@schalk2007; @schalk2008] | ECoG recordings from participants moving a joystick on 2D trajectories |
 |                           | Memory N-back data (no citation) | ECoG recordings in participants responding to repeated house images 0, 1 or 2 stimuli back |
@@ -778,7 +778,7 @@ In 2021 we increased the number of curated data sets, and grouped them conceptua
 | Behavior                  | Caltech data set (no citation) | pose-tracking from socially interacting mice |
 |                           | IBL data [@ibl2021] | behavior of mice doing a visual detection task with a bias |
 
-**Table 2. Data sets for group projects.** _The data sets are available through the Neuromatch Academy (OSF repository)[]._
+**Table 2. Data sets for group projects.** _The data sets are available through the Neuromatch Academy [OSF repository](https://osf.io/hygbm/)._
  
 
 ## Statement of Need
@@ -797,9 +797,9 @@ In early 2020, the organizers of the in-person summer school “CoSMo” ([*Co*m
 
 A first step in building an accessible content base was to recruit a pool of lecturers and content creators with an eye towards maximizing diversity in dimensions such as gender, race and career status. This helps to reduce intrinsic forms of bias within the lectures and exercises, and also helps to broadcast the accessibility of the discipline to a wider audience.
 
-The materials (intro, outro and micro-lectures as well as tutorials) went through several instances of quality control, before we used it in our own summer school. First, a group of content reviewers provided feedback on the material which was integrated by the primary content creators. Second, a group of skilled programmers served as tutorial editors who went through the tutorials to review and edit code and make sure it all adhered to our standards. For example, they made sure code was as simple as possible and that all plots used the same look. Third, two separate groups of content testers independently went through all the material as if they were students, providing feedback to tutorial writers who integrated this feedback. They reported errors and omissions and provided pedagogical advice on confusing or misleading parts to the rest of the team. They also made sure the micro-lectures connected with the material in the tutorials. For example, we made sure the hands-on tutorials are do-able within the time frame, while providing bonus materials for faster attendees. After this step, videos of lectures were finalized. Fourth, the tutorial and code editors once again made sure all tutorials worked, used the same style and connected with the rest of the material. For future rounds of our summer school, we also had content testers provide structured feedback on the material during the actual summer school, and about ~90% of attendees and TA’s filled in end-of-day surveys during the actual summer school. We will use this feedback to further improve the materials. The most recent version can be found on GitHub ([*https://github.com/NeuromatchAcademy/)*](https://github.com/NeuromatchAcademy/course-content).
+The materials (intro, outro and micro-lectures as well as tutorials) went through several instances of quality control, before we used it in our own summer school. First, a group of content reviewers provided feedback on the material which was integrated by the primary content creators. Second, a group of skilled programmers served as tutorial editors who went through the tutorials to review and edit code and make sure it all adhered to our standards. For example, they made sure code was as simple as possible and that all plots used the same look. Third, two separate groups of content testers independently went through all the material as if they were students, providing feedback to tutorial writers who integrated this feedback. They reported errors and omissions and provided pedagogical advice on confusing or misleading parts to the rest of the team. They also made sure the micro-lectures connected with the material in the tutorials. For example, we made sure the hands-on tutorials are do-able within the time frame, while providing bonus materials for faster attendees. After this step, videos of lectures were finalized. Fourth, the tutorial and code editors once again made sure all tutorials worked, used the same style and connected with the rest of the material. For future rounds of our summer school, we also had content testers provide structured feedback on the material during the actual summer school, and about ~90% of attendees and TA’s filled in end-of-day surveys during the actual summer school in 2020. We have and will use this feedback to further improve the materials and organization of the summer school. The most recent version of the materials can be found on GitHub [https://github.com/NeuromatchAcademy/](https://github.com/NeuromatchAcademy/course-content) and in this [Jupyter Book](https://compneuro.neuromatch.io).
 
-Our quality-control processes ensured that the course content was well received. During the summer of 2020, we taught the Neuromatch Academy Computational Neuroscience material to 1757 interactive students in 64 countries with 191 teaching assistants, and in the summer of 2021 we taught 1873 students from 87 countries with 198 teaching assistents guiding a pod, augmented with 28 teaching assistents who specialized in project supervision. In 2020 there were also ~6000 registered observer students, and >9000 in 2021. In both years, the summer school ran 24/7 across all timezones with no major glitches. The percentage of interactive students that completed at least 50% of classes was 86% in 2020 and 53% in 2021. In 2020, of all respondents to the end-of-day survey, 94% would recommend NMA to a friend, and in 2021 we asked "Overall, how was your experience with NMA?" to which 88% of responses was either Very Good or Excellent.
+Our quality-control processes ensured that the course content was well received. During the summer of 2020, we taught the Neuromatch Academy Computational Neuroscience material to 1757 interactive students in 64 countries with 191 teaching assistants, and in the summer of 2021 we taught 1873 students from 87 countries with 198 teaching assistents guiding a pod, augmented with 28 teaching assistents who specialized in project supervision. In 2020 there were also ~6000 registered observer students, and >9000 in 2021. In both years, the summer school ran 24/7 across all timezones with no major glitches. The percentage of interactive students that completed at least 50% of classes was 86% in 2020 and 58% in 2021. In 2020, of all respondents to the end-of-day survey, 94% would recommend NMA to a friend, and in 2021 we asked "Overall, how was your experience with NMA?" to which 88% of responses was either Very Good or Excellent.
 
 ## Acknowledgements
 
@@ -855,6 +855,48 @@ For self-study or mixing the NMA course content with other content, we provide a
 |      |                          | Gradient descent                                                                                     | W3D4 |
 
 **Table A1: Prerequisites for each module of Neuromatch Academy.** _This can be used to guide self study or help integrate the material with other content._
+
+
+| Day | Topic | Prerequisites | How they are met |
+| --- | ----- | ------------- | ---------------- |
+| W1D1 | Model Types | Basic neuroscience knowledge | NMA prereqs |
+|      |             | Basic python | NMA prereqs |
+| W1D3 | Model Fitting | Knowledge of linear algebra and convex optimization | NMA prereqs |
+| W1D4 | Generalized Linear Models | Encoding, model fitting | W1D3 |
+|      |                       | Basic probability | NMA prereqs |
+|      |                       | Linear algebra (vectors, matrices) and calculus (derivatives) | NMA prereqs |
+| W1D5 | Dimensionality Reduction | Basic linear algebra: vectors, matrices, eigenvectors | NMA prereqs |
+| W2D1 | Deep Learning          | Cross-validation and model fitting basics with linear models                                         | W1D3 |
+|      |                          | Matrix multiplication                                                                                | NMA prereqs |
+|      |                          | Correlation matrices                                                                                 | NMA prereqs |
+| W2D2 | Linear Systems           | Basics of linear algebra: eigenvalue |                                                                 NMA prereqs |
+|      |                          | Basics of calculus: derivatives and integrals |                                                        NMA prereqs |
+|      |                          | Understanding of mean and covariance          |                                                        NMA prereqs |
+| W2D3 | Biological Neuron Models | Knowledge of Model Types                      |                                                        W1D1 |
+|      |                          | Basics of calculus: ODE                       |                                                        NMA prereqs |
+|      |                          | Understanding of elementary statistics and random processes, correlations |                            NMA prereqs, W2D2 |
+|      |                          | Basic neuroscience knowledge: Neurons, spikes and synapses (not necessarily the mathematical models) | NMA prereqs |
+| W2D4 | Dynamic Networks         | Knowledge of Model Types                                                                             | W1D1 |
+|      |                          | Basics of calculus: ODE                                                                              | NMA prereqs |
+|      |                          | Basic linear algebra: vectors, matrices, eigenvectors                                                | NMA prereqs |
+| W3D1 | Bayesian Decision | Basics of probability | Prereqs of NMA |
+|      |                     | Basics of predictive models and their evaluation | W1D3 |
+|      |                     | Basics of constructing models | W1D1 |
+| W3D2 | Hidden Dynamics          | Bayes’ rule                                   |                                                        W3D1 |
+|      |                          | Markov Chains                                 |                                                        W2D2 |
+|      |                          | Basic probability                             |                                                        NMA prereqs |
+| W3D3 | Optimal Control          | Bayes’ rule                                   |                                                        W3D1 |
+|      |                          | Markov Chains, linear stochastic dynamics     |                                                        W2D2 |
+|      |                          | Hidden Markov Models, Kalman filter           |                                                        W3D2 |
+|      |                          | Basic probability                             |                                                        NMA prereqs |
+| W3D4 | Reinforcement Learning   | State spaces                                  |                                                        W2D2 |
+|      |                          | Markov Decision Processes                     |                                                        W3D2, W3D3 |
+|      |                          | Bayesian statistics                           |                                                        W3D1 |
+|      |                          | Optimal Control                               |                                                        W3D3 |
+| W3D5 | Network Causality        | Basics of regression                                                                                 | W1D3, W1D4 |
+
+2021 VERSION
+
 
 ## Appendix 2: Author Contributions
 
