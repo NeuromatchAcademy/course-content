@@ -7,19 +7,19 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Bonus Tutorial 4: The Kalman Filter, part 2 — Neuromatch Academy: Computational Neuroscience</title>
 <link href="../../../_static/css/theme.css" rel="stylesheet"/>
-<link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet"/>
+<link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet"/>
 <link href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
 <link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
 <link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
 <link href="../../../_static/pygments.css" rel="stylesheet" type="text/css">
-<link href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" rel="stylesheet" type="text/css">
 <link href="../../../_static/togglebutton.css" rel="stylesheet" type="text/css">
-<link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../../../_static/mystnb.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css">
+<link href="../../../_static/mystnb.css" rel="stylesheet" type="text/css">
 <link href="../../../_static/sphinx-thebe.css" rel="stylesheet" type="text/css"/>
 <link href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" rel="stylesheet" type="text/css"/>
 <link href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" rel="stylesheet" type="text/css"/>
-<link as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js" rel="preload"/>
+<link as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js" rel="preload"/>
 <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
 <script src="../../../_static/jquery.js"></script>
 <script src="../../../_static/underscore.js"></script>
@@ -31,23 +31,24 @@
 <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-<script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+<script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
 <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
 <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
 <link href="../../../_static/nma-logo-square-4xp.jpg" rel="shortcut icon">
 <link href="../../../genindex.html" rel="index" title="Index"/>
 <link href="../../../search.html" rel="search" title="Search"/>
 <link href="W3D2_Tutorial5.html" rel="next" title="Bonus Tutorial 5: Expectation Maximization for spiking neurons"/>
 <link href="W3D2_Tutorial3.html" rel="prev" title="Tutorial 3: The Kalman Filter"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="en" name="docsearch:language"/>
-</link></link></link></link></head>
+<meta content="None" name="docsearch:language"/>
+<!-- Google Analytics -->
+</link></link></link></link></link></link></head>
 <body data-offset="80" data-spy="scroll" data-target="#bd-toc-nav">
 <div class="container-fluid" id="banner"></div>
 <div class="container-xl">
@@ -55,13 +56,14 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
 <div class="navbar-brand-box">
 <a class="navbar-brand text-wrap" href="../../../index.html">
+<!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
 <img alt="logo" class="logo" src="../../../_static/nma-logo-square-4xp.jpg"/>
 <h1 class="site-logo" id="site-title">Neuromatch Academy: Computational Neuroscience</h1>
 </a>
 </div><form action="../../../search.html" class="bd-search d-flex align-items-center" method="get">
 <i class="icon fas fa-search"></i>
 <input aria-label="Search this book..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search this book..." type="search"/>
-</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+</form><nav aria-label="Main" class="bd-links" id="bd-docs-nav">
 <div class="bd-toc-item active">
 <ul class="nav bd-sidenav">
 <li class="toctree-l1">
@@ -1298,7 +1300,7 @@
 <div class="tocsection onthispage pt-5 pb-3">
 <i class="fas fa-list"></i> Contents
             </div>
-<nav id="bd-toc-nav">
+<nav aria-label="Page" id="bd-toc-nav">
 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry">
 <a class="reference internal nav-link" href="#">
@@ -1771,14 +1773,50 @@ This means that the notation and standards are slightly different. We include it
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done
-Solving environment: | 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
+Solving environment: - 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ 
@@ -1824,6 +1862,29 @@ Solving environment: |
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: 2 possible package resolutions (only showing differing packages):
+  - conda-forge/noarch::packaging-21.0-pyhd8ed1ab_0, conda-forge/noarch::pyparsing-3.0.6-pyhd8ed1ab_0
+  - conda-forge/noarch::packaging-21.2-pyhd8ed1ab_1, conda-forge/noarch::pyparsing-2.4.7-pyhd8ed1ab_1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done
@@ -1841,225 +1902,442 @@ The following packages will be downloaded:
 
     package                    |            build
     ---------------------------|-----------------
-    argon2-cffi-20.1.0         |   py39h3811e60_2          48 KB  conda-forge
-    async_generator-1.10       |             py_0          18 KB  conda-forge
     attrs-21.2.0               |     pyhd8ed1ab_0          44 KB  conda-forge
     backcall-0.2.0             |     pyh9f0ad1d_0          13 KB  conda-forge
     backports-1.0              |             py_2           4 KB  conda-forge
     backports.functools_lru_cache-1.6.4|     pyhd8ed1ab_0           9 KB  conda-forge
-    bleach-4.0.0               |     pyhd8ed1ab_0         111 KB  conda-forge
-    ca-certificates-2021.5.30  |       ha878542_0         136 KB  conda-forge
-    certifi-2021.5.30          |   py39hf3d152e_0         141 KB  conda-forge
-    conda-4.10.3               |   py39hf3d152e_0         3.1 MB  conda-forge
-    debugpy-1.4.1              |   py39he80948d_0         2.0 MB  conda-forge
-    decorator-5.0.9            |     pyhd8ed1ab_0          11 KB  conda-forge
+    bleach-4.1.0               |     pyhd8ed1ab_0         121 KB  conda-forge
+    ca-certificates-2021.10.8  |       ha878542_0         139 KB  conda-forge
+    certifi-2021.10.8          |   py39hf3d152e_1         145 KB  conda-forge
+    conda-4.10.3               |   py39hf3d152e_3         3.1 MB  conda-forge
+    decorator-5.1.0            |     pyhd8ed1ab_0          11 KB  conda-forge
     defusedxml-0.7.1           |     pyhd8ed1ab_0          23 KB  conda-forge
     entrypoints-0.3            |  pyhd8ed1ab_1003           8 KB  conda-forge
-    importlib-metadata-4.6.4   |   py39hf3d152e_0          31 KB  conda-forge
-    ipykernel-6.2.0            |   py39hef51801_0         172 KB  conda-forge
-    ipython-7.26.0             |   py39hef51801_0         1.1 MB  conda-forge
+    importlib-metadata-4.8.2   |   py39hf3d152e_0          33 KB  conda-forge
+    importlib_resources-5.4.0  |     pyhd8ed1ab_0          21 KB  conda-forge
+    ipykernel-5.5.5            |   py39hef51801_0         167 KB  conda-forge
+    ipython-7.29.0             |   py39hef51801_2         1.1 MB  conda-forge
     ipython_genutils-0.2.0     |             py_1          21 KB  conda-forge
-    ipywidgets-7.6.3           |     pyhd3deb0d_0         101 KB  conda-forge
-    jedi-0.18.0                |   py39hf3d152e_2         922 KB  conda-forge
-    jinja2-3.0.1               |     pyhd8ed1ab_0          99 KB  conda-forge
-    jsonschema-3.2.0           |     pyhd8ed1ab_3          45 KB  conda-forge
-    jupyter_client-6.1.12      |     pyhd8ed1ab_0          79 KB  conda-forge
-    jupyter_core-4.7.1         |   py39hf3d152e_0          72 KB  conda-forge
-    jupyterlab_pygments-0.1.2  |     pyh9f0ad1d_0           8 KB  conda-forge
-    jupyterlab_widgets-1.0.0   |     pyhd8ed1ab_1         130 KB  conda-forge
+    ipywidgets-7.6.5           |     pyhd8ed1ab_0         101 KB  conda-forge
+    jedi-0.18.0                |   py39hf3d152e_3         939 KB  conda-forge
+    jinja2-3.0.3               |     pyhd8ed1ab_0          99 KB  conda-forge
+    jsonschema-4.2.1           |     pyhd8ed1ab_0         118 KB  conda-forge
+    jupyter_client-7.0.6       |     pyhd8ed1ab_0          87 KB  conda-forge
+    jupyter_core-4.9.1         |   py39hf3d152e_1          80 KB  conda-forge
+    jupyterlab_widgets-1.0.2   |     pyhd8ed1ab_0         130 KB  conda-forge
     libsodium-1.0.18           |       h36c2ea0_1         366 KB  conda-forge
     markupsafe-2.0.1           |   py39h3811e60_0          22 KB  conda-forge
-    matplotlib-inline-0.1.2    |     pyhd8ed1ab_2          11 KB  conda-forge
+    matplotlib-inline-0.1.3    |     pyhd8ed1ab_0          11 KB  conda-forge
     mistune-0.8.4              |py39h3811e60_1004          54 KB  conda-forge
-    nbclient-0.5.4             |     pyhd8ed1ab_0          60 KB  conda-forge
-    nbconvert-6.1.0            |   py39hf3d152e_0         547 KB  conda-forge
+    nbconvert-5.6.1            |     pyhd8ed1ab_2         373 KB  conda-forge
     nbformat-5.1.3             |     pyhd8ed1ab_0          47 KB  conda-forge
     nest-asyncio-1.5.1         |     pyhd8ed1ab_0           9 KB  conda-forge
-    notebook-6.4.3             |     pyha770c72_0         6.3 MB  conda-forge
-    openssl-1.1.1k             |       h7f98852_0         2.1 MB  conda-forge
+    notebook-5.7.11            |   py39hf3d152e_0         7.9 MB  conda-forge
+    openssl-1.1.1l             |       h7f8727e_0         2.5 MB
     packaging-21.0             |     pyhd8ed1ab_0          35 KB  conda-forge
-    pandoc-2.14.1              |       h7f98852_0        12.0 MB  conda-forge
-    pandocfilters-1.4.2        |             py_1           9 KB  conda-forge
+    pandocfilters-1.5.0        |     pyhd8ed1ab_0          11 KB  conda-forge
     parso-0.8.2                |     pyhd8ed1ab_0          68 KB  conda-forge
     pexpect-4.8.0              |     pyh9f0ad1d_2          47 KB  conda-forge
     pickleshare-0.7.5          |          py_1003           9 KB  conda-forge
-    prometheus_client-0.11.0   |     pyhd8ed1ab_0          46 KB  conda-forge
-    prompt-toolkit-3.0.19      |     pyha770c72_0         244 KB  conda-forge
+    prometheus_client-0.12.0   |     pyhd8ed1ab_0          47 KB  conda-forge
+    prompt-toolkit-3.0.22      |     pyha770c72_0         249 KB  conda-forge
     ptyprocess-0.7.0           |     pyhd3deb0d_0          16 KB  conda-forge
     pygments-2.10.0            |     pyhd8ed1ab_0         760 KB  conda-forge
-    pyparsing-2.4.7            |     pyh9f0ad1d_0          60 KB  conda-forge
-    pyrsistent-0.17.3          |   py39h3811e60_2          90 KB  conda-forge
+    pyparsing-3.0.6            |     pyhd8ed1ab_0          79 KB  conda-forge
+    pyrsistent-0.18.0          |   py39heee7806_0          94 KB
     python-dateutil-2.8.2      |     pyhd8ed1ab_0         240 KB  conda-forge
     python_abi-3.9             |           2_cp39           4 KB  conda-forge
     pyzmq-19.0.2               |   py39hb69f2a1_2         479 KB  conda-forge
     send2trash-1.8.0           |     pyhd8ed1ab_0          17 KB  conda-forge
-    terminado-0.10.1           |   py39hf3d152e_0          26 KB  conda-forge
+    terminado-0.12.1           |   py39hf3d152e_1          28 KB  conda-forge
     testpath-0.5.0             |     pyhd8ed1ab_0          86 KB  conda-forge
     tornado-6.1                |   py39h3811e60_1         646 KB  conda-forge
-    traitlets-5.0.5            |             py_0          81 KB  conda-forge
+    traitlets-5.1.1            |     pyhd8ed1ab_0          82 KB  conda-forge
     wcwidth-0.2.5              |     pyh9f0ad1d_2          33 KB  conda-forge
     webencodings-0.5.1         |             py_1          12 KB  conda-forge
-    widgetsnbextension-3.5.1   |   py39hf3d152e_4         1.8 MB  conda-forge
+    widgetsnbextension-3.5.2   |   py39hf3d152e_0         1.3 MB  conda-forge
     zeromq-4.3.4               |       h9c3ff4c_0         352 KB  conda-forge
-    zipp-3.5.0                 |     pyhd8ed1ab_0          12 KB  conda-forge
+    zipp-3.6.0                 |     pyhd8ed1ab_0          12 KB  conda-forge
     ------------------------------------------------------------
-                                           Total:        35.0 MB
+                                           Total:        22.3 MB
 
 The following NEW packages will be INSTALLED:
 
-  argon2-cffi        conda-forge/linux-64::argon2-cffi-20.1.0-py39h3811e60_2
-  async_generator    conda-forge/noarch::async_generator-1.10-py_0
   attrs              conda-forge/noarch::attrs-21.2.0-pyhd8ed1ab_0
   backcall           conda-forge/noarch::backcall-0.2.0-pyh9f0ad1d_0
   backports          conda-forge/noarch::backports-1.0-py_2
   backports.functoo~ conda-forge/noarch::backports.functools_lru_cache-1.6.4-pyhd8ed1ab_0
-  bleach             conda-forge/noarch::bleach-4.0.0-pyhd8ed1ab_0
-  debugpy            conda-forge/linux-64::debugpy-1.4.1-py39he80948d_0
-  decorator          conda-forge/noarch::decorator-5.0.9-pyhd8ed1ab_0
+  bleach             conda-forge/noarch::bleach-4.1.0-pyhd8ed1ab_0
+  decorator          conda-forge/noarch::decorator-5.1.0-pyhd8ed1ab_0
   defusedxml         conda-forge/noarch::defusedxml-0.7.1-pyhd8ed1ab_0
   entrypoints        conda-forge/noarch::entrypoints-0.3-pyhd8ed1ab_1003
-  importlib-metadata conda-forge/linux-64::importlib-metadata-4.6.4-py39hf3d152e_0
-  ipykernel          conda-forge/linux-64::ipykernel-6.2.0-py39hef51801_0
-  ipython            conda-forge/linux-64::ipython-7.26.0-py39hef51801_0
+  importlib-metadata conda-forge/linux-64::importlib-metadata-4.8.2-py39hf3d152e_0
+  importlib_resourc~ conda-forge/noarch::importlib_resources-5.4.0-pyhd8ed1ab_0
+  ipykernel          conda-forge/linux-64::ipykernel-5.5.5-py39hef51801_0
+  ipython            conda-forge/linux-64::ipython-7.29.0-py39hef51801_2
   ipython_genutils   conda-forge/noarch::ipython_genutils-0.2.0-py_1
-  ipywidgets         conda-forge/noarch::ipywidgets-7.6.3-pyhd3deb0d_0
-  jedi               conda-forge/linux-64::jedi-0.18.0-py39hf3d152e_2
-  jinja2             conda-forge/noarch::jinja2-3.0.1-pyhd8ed1ab_0
-  jsonschema         conda-forge/noarch::jsonschema-3.2.0-pyhd8ed1ab_3
-  jupyter_client     conda-forge/noarch::jupyter_client-6.1.12-pyhd8ed1ab_0
-  jupyter_core       conda-forge/linux-64::jupyter_core-4.7.1-py39hf3d152e_0
-  jupyterlab_pygmen~ conda-forge/noarch::jupyterlab_pygments-0.1.2-pyh9f0ad1d_0
-  jupyterlab_widgets conda-forge/noarch::jupyterlab_widgets-1.0.0-pyhd8ed1ab_1
+  ipywidgets         conda-forge/noarch::ipywidgets-7.6.5-pyhd8ed1ab_0
+  jedi               conda-forge/linux-64::jedi-0.18.0-py39hf3d152e_3
+  jinja2             conda-forge/noarch::jinja2-3.0.3-pyhd8ed1ab_0
+  jsonschema         conda-forge/noarch::jsonschema-4.2.1-pyhd8ed1ab_0
+  jupyter_client     conda-forge/noarch::jupyter_client-7.0.6-pyhd8ed1ab_0
+  jupyter_core       conda-forge/linux-64::jupyter_core-4.9.1-py39hf3d152e_1
+  jupyterlab_widgets conda-forge/noarch::jupyterlab_widgets-1.0.2-pyhd8ed1ab_0
   libsodium          conda-forge/linux-64::libsodium-1.0.18-h36c2ea0_1
   markupsafe         conda-forge/linux-64::markupsafe-2.0.1-py39h3811e60_0
-  matplotlib-inline  conda-forge/noarch::matplotlib-inline-0.1.2-pyhd8ed1ab_2
+  matplotlib-inline  conda-forge/noarch::matplotlib-inline-0.1.3-pyhd8ed1ab_0
   mistune            conda-forge/linux-64::mistune-0.8.4-py39h3811e60_1004
-  nbclient           conda-forge/noarch::nbclient-0.5.4-pyhd8ed1ab_0
-  nbconvert          conda-forge/linux-64::nbconvert-6.1.0-py39hf3d152e_0
+  nbconvert          conda-forge/noarch::nbconvert-5.6.1-pyhd8ed1ab_2
   nbformat           conda-forge/noarch::nbformat-5.1.3-pyhd8ed1ab_0
   nest-asyncio       conda-forge/noarch::nest-asyncio-1.5.1-pyhd8ed1ab_0
-  notebook           conda-forge/noarch::notebook-6.4.3-pyha770c72_0
+  notebook           conda-forge/linux-64::notebook-5.7.11-py39hf3d152e_0
   packaging          conda-forge/noarch::packaging-21.0-pyhd8ed1ab_0
-  pandoc             conda-forge/linux-64::pandoc-2.14.1-h7f98852_0
-  pandocfilters      conda-forge/noarch::pandocfilters-1.4.2-py_1
+  pandocfilters      conda-forge/noarch::pandocfilters-1.5.0-pyhd8ed1ab_0
   parso              conda-forge/noarch::parso-0.8.2-pyhd8ed1ab_0
   pexpect            conda-forge/noarch::pexpect-4.8.0-pyh9f0ad1d_2
   pickleshare        conda-forge/noarch::pickleshare-0.7.5-py_1003
-  prometheus_client  conda-forge/noarch::prometheus_client-0.11.0-pyhd8ed1ab_0
-  prompt-toolkit     conda-forge/noarch::prompt-toolkit-3.0.19-pyha770c72_0
+  prometheus_client  conda-forge/noarch::prometheus_client-0.12.0-pyhd8ed1ab_0
+  prompt-toolkit     conda-forge/noarch::prompt-toolkit-3.0.22-pyha770c72_0
   ptyprocess         conda-forge/noarch::ptyprocess-0.7.0-pyhd3deb0d_0
   pygments           conda-forge/noarch::pygments-2.10.0-pyhd8ed1ab_0
-  pyparsing          conda-forge/noarch::pyparsing-2.4.7-pyh9f0ad1d_0
-  pyrsistent         conda-forge/linux-64::pyrsistent-0.17.3-py39h3811e60_2
+  pyparsing          conda-forge/noarch::pyparsing-3.0.6-pyhd8ed1ab_0
+  pyrsistent         pkgs/main/linux-64::pyrsistent-0.18.0-py39heee7806_0
   python-dateutil    conda-forge/noarch::python-dateutil-2.8.2-pyhd8ed1ab_0
   python_abi         conda-forge/linux-64::python_abi-3.9-2_cp39
   pyzmq              conda-forge/linux-64::pyzmq-19.0.2-py39hb69f2a1_2
   send2trash         conda-forge/noarch::send2trash-1.8.0-pyhd8ed1ab_0
-  terminado          conda-forge/linux-64::terminado-0.10.1-py39hf3d152e_0
+  terminado          conda-forge/linux-64::terminado-0.12.1-py39hf3d152e_1
   testpath           conda-forge/noarch::testpath-0.5.0-pyhd8ed1ab_0
   tornado            conda-forge/linux-64::tornado-6.1-py39h3811e60_1
-  traitlets          conda-forge/noarch::traitlets-5.0.5-py_0
+  traitlets          conda-forge/noarch::traitlets-5.1.1-pyhd8ed1ab_0
   wcwidth            conda-forge/noarch::wcwidth-0.2.5-pyh9f0ad1d_2
   webencodings       conda-forge/noarch::webencodings-0.5.1-py_1
-  widgetsnbextension conda-forge/linux-64::widgetsnbextension-3.5.1-py39hf3d152e_4
+  widgetsnbextension conda-forge/linux-64::widgetsnbextension-3.5.2-py39hf3d152e_0
   zeromq             conda-forge/linux-64::zeromq-4.3.4-h9c3ff4c_0
-  zipp               conda-forge/noarch::zipp-3.5.0-pyhd8ed1ab_0
+  zipp               conda-forge/noarch::zipp-3.6.0-pyhd8ed1ab_0
 
-The following packages will be SUPERSEDED by a higher-priority channel:
+The following packages will be UPDATED:
 
-  ca-certificates    pkgs/main::ca-certificates-2021.7.5-h~ --&gt; conda-forge::ca-certificates-2021.5.30-ha878542_0
-  certifi            pkgs/main::certifi-2021.5.30-py39h06a~ --&gt; conda-forge::certifi-2021.5.30-py39hf3d152e_0
-  conda              pkgs/main::conda-4.10.3-py39h06a4308_0 --&gt; conda-forge::conda-4.10.3-py39hf3d152e_0
-  openssl              pkgs/main::openssl-1.1.1k-h27cfd23_0 --&gt; conda-forge::openssl-1.1.1k-h7f98852_0
+  ca-certificates    pkgs/main::ca-certificates-2021.7.5-h~ --&gt; conda-forge::ca-certificates-2021.10.8-ha878542_0
+  certifi            pkgs/main::certifi-2021.5.30-py39h06a~ --&gt; conda-forge::certifi-2021.10.8-py39hf3d152e_1
+  conda              pkgs/main::conda-4.10.3-py39h06a4308_0 --&gt; conda-forge::conda-4.10.3-py39hf3d152e_3
+  openssl                                 1.1.1k-h27cfd23_0 --&gt; 1.1.1l-h7f8727e_0
 
 
 
 Downloading and Extracting Packages
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bleach-4.0.0         | 111 KB    |                                       |   0% 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>webencodings-0.5.1   | 12 KB     |                                       |   0% 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bleach-4.0.0         | 111 KB    | #####3                                |  14% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bleach-4.0.0         | 111 KB    | ##################################### | 100% 
-bleach-4.0.0         | 111 KB    | ##################################### | 100% 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>webencodings-0.5.1   | 12 KB     | ##################################### | 100% 
+webencodings-0.5.1   | 12 KB     | ##################################### | 100% 
 
-jedi-0.18.0          | 922 KB    |                                       |   0% 
+certifi-2021.10.8    | 145 KB    |                                       |   0% 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jedi-0.18.0          | 922 KB    | ##################################### | 100% 
-jedi-0.18.0          | 922 KB    | ##################################### | 100% 
-
-pyrsistent-0.17.3    | 90 KB     |                                       |   0% 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>certifi-2021.10.8    | 145 KB    | ########1                             |  22% 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pyrsistent-0.17.3    | 90 KB     | ##################################### | 100% 
-pyrsistent-0.17.3    | 90 KB     | ##################################### | 100% 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>certifi-2021.10.8    | 145 KB    | ##################################### | 100% 
 
-ca-certificates-2021 | 136 KB    |                                       |   0% 
+ipykernel-5.5.5      | 167 KB    |                                       |   0% 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ca-certificates-2021 | 136 KB    | ##################################### | 100% 
-
-importlib-metadata-4 | 31 KB     |                                       |   0% 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ipykernel-5.5.5      | 167 KB    | ###5                                  |  10% 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>importlib-metadata-4 | 31 KB     | ##################################### | 100% 
-
-markupsafe-2.0.1     | 22 KB     |                                       |   0% 
-markupsafe-2.0.1     | 22 KB     | ##################################### | 100% 
-
-jsonschema-3.2.0     | 45 KB     |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jsonschema-3.2.0     | 45 KB     | ##################################### | 100% 
-
-entrypoints-0.3      | 8 KB      |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>entrypoints-0.3      | 8 KB      | ##################################### | 100% 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ipykernel-5.5.5      | 167 KB    | ##################################### | 100% 
 
 pickleshare-0.7.5    | 9 KB      |                                       |   0% 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pickleshare-0.7.5    | 9 KB      | ##################################### | 100% 
 
-jupyter_client-6.1.1 | 79 KB     |                                       |   0% 
+traitlets-5.1.1      | 82 KB     |                                       |   0% 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jupyter_client-6.1.1 | 79 KB     | ##################################### | 100% 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>traitlets-5.1.1      | 82 KB     | ##################################### | 100% 
 
-notebook-6.4.3       | 6.3 MB    |                                       |   0% 
+terminado-0.12.1     | 28 KB     |                                       |   0% 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>notebook-6.4.3       | 6.3 MB    | ##################################### | 100% 
-notebook-6.4.3       | 6.3 MB    | ##################################### | 100% 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>terminado-0.12.1     | 28 KB     | ##################################### | 100% 
+
+importlib-metadata-4 | 33 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>importlib-metadata-4 | 33 KB     | ##################################### | 100% 
+
+backports-1.0        | 4 KB      |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>backports-1.0        | 4 KB      | ##################################### | 100% 
+
+mistune-0.8.4        | 54 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mistune-0.8.4        | 54 KB     | ##################################### | 100% 
+mistune-0.8.4        | 54 KB     | ##################################### | 100% 
+
+jsonschema-4.2.1     | 118 KB    |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jsonschema-4.2.1     | 118 KB    | ##################################### | 100% 
+jsonschema-4.2.1     | 118 KB    | ##################################### | 100% 
+
+packaging-21.0       | 35 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>packaging-21.0       | 35 KB     | ##################################### | 100% 
+
+jedi-0.18.0          | 939 KB    |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jedi-0.18.0          | 939 KB    | ##########                            |  27% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jedi-0.18.0          | 939 KB    | ##################################### | 100% 
+jedi-0.18.0          | 939 KB    | ##################################### | 100% 
+
+matplotlib-inline-0. | 11 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>matplotlib-inline-0. | 11 KB     | ##################################### | 100% 
+
+pygments-2.10.0      | 760 KB    |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pygments-2.10.0      | 760 KB    | #################9                    |  48% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pygments-2.10.0      | 760 KB    | ##################################### | 100% 
+pygments-2.10.0      | 760 KB    | ##################################### | 100% 
+
+notebook-5.7.11      | 7.9 MB    |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>notebook-5.7.11      | 7.9 MB    |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>notebook-5.7.11      | 7.9 MB    | ##########2                           |  28% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>notebook-5.7.11      | 7.9 MB    | #################9                    |  48% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>notebook-5.7.11      | 7.9 MB    | ###############################3      |  85% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>notebook-5.7.11      | 7.9 MB    | ##################################### | 100% 
 
 ipython_genutils-0.2 | 21 KB     |                                       |   0% 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ipython_genutils-0.2 | 21 KB     | ##################################### | 100% 
 
+defusedxml-0.7.1     | 23 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>defusedxml-0.7.1     | 23 KB     | ##################################### | 100% 
+
+attrs-21.2.0         | 44 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>attrs-21.2.0         | 44 KB     | ##################################### | 100% 
+
+ipython-7.29.0       | 1.1 MB    |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ipython-7.29.0       | 1.1 MB    | ##################################### | 100% 
+ipython-7.29.0       | 1.1 MB    | ##################################### | 100% 
+
+ca-certificates-2021 | 139 KB    |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ca-certificates-2021 | 139 KB    | ##################################### | 100% 
+
+testpath-0.5.0       | 86 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>testpath-0.5.0       | 86 KB     | ##################################### | 100% 
+
+prometheus_client-0. | 47 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>prometheus_client-0. | 47 KB     | ##################################### | 100% 
+
+jupyterlab_widgets-1 | 130 KB    |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jupyterlab_widgets-1 | 130 KB    | ##################################### | 100% 
+jupyterlab_widgets-1 | 130 KB    | ##################################### | 100% 
+
+python-dateutil-2.8. | 240 KB    |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>python-dateutil-2.8. | 240 KB    | ##################################### | 100% 
+
+pandocfilters-1.5.0  | 11 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandocfilters-1.5.0  | 11 KB     | ##################################### | 100% 
+
+importlib_resources- | 21 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>importlib_resources- | 21 KB     | ##################################### | 100% 
+
+entrypoints-0.3      | 8 KB      |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>entrypoints-0.3      | 8 KB      | ##################################### | 100% 
+
+zipp-3.6.0           | 12 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zipp-3.6.0           | 12 KB     | ##################################### | 100% 
+
+prompt-toolkit-3.0.2 | 249 KB    |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>prompt-toolkit-3.0.2 | 249 KB    | ##################################### | 100% 
+prompt-toolkit-3.0.2 | 249 KB    | ##################################### | 100% 
+
+pyzmq-19.0.2         | 479 KB    |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pyzmq-19.0.2         | 479 KB    | #2                                    |   3% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pyzmq-19.0.2         | 479 KB    | ##################################### | 100% 
+pyzmq-19.0.2         | 479 KB    | ##################################### | 100% 
+
+nest-asyncio-1.5.1   | 9 KB      |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nest-asyncio-1.5.1   | 9 KB      | ##################################### | 100% 
+
+pyrsistent-0.18.0    | 94 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pyrsistent-0.18.0    | 94 KB     | ######2                               |  17% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pyrsistent-0.18.0    | 94 KB     | ##################################### | 100% 
+pyrsistent-0.18.0    | 94 KB     | ##################################### | 100% 
+
+bleach-4.1.0         | 121 KB    |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bleach-4.1.0         | 121 KB    | ##################################### | 100% 
+bleach-4.1.0         | 121 KB    | ##################################### | 100% 
+
+nbconvert-5.6.1      | 373 KB    |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nbconvert-5.6.1      | 373 KB    | #5                                    |   4% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nbconvert-5.6.1      | 373 KB    | ##################################### | 100% 
+
 nbformat-5.1.3       | 47 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nbformat-5.1.3       | 47 KB     | ############6                         |  34% 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nbformat-5.1.3       | 47 KB     | ##################################### | 100% 
 
-prometheus_client-0. | 46 KB     |                                       |   0% 
-prometheus_client-0. | 46 KB     | ##################################### | 100% 
+markupsafe-2.0.1     | 22 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>markupsafe-2.0.1     | 22 KB     | ##################################### | 100% 
+
+pexpect-4.8.0        | 47 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pexpect-4.8.0        | 47 KB     | ##################################### | 100% 
+
+wcwidth-0.2.5        | 33 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>wcwidth-0.2.5        | 33 KB     | ##################################### | 100% 
+
+backports.functools_ | 9 KB      |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>backports.functools_ | 9 KB      | ##################################### | 100% 
+
+jupyter_client-7.0.6 | 87 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jupyter_client-7.0.6 | 87 KB     | ##################################### | 100% 
+
+ipywidgets-7.6.5     | 101 KB    |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ipywidgets-7.6.5     | 101 KB    | ##################################### | 100% 
+
+pyparsing-3.0.6      | 79 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pyparsing-3.0.6      | 79 KB     | ##################################### | 100% 
+
+backcall-0.2.0       | 13 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>backcall-0.2.0       | 13 KB     | ##################################### | 100% 
+
+openssl-1.1.1l       | 2.5 MB    |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>openssl-1.1.1l       | 2.5 MB    | ##################################### | 100% 
+openssl-1.1.1l       | 2.5 MB    | ##################################### | 100% 
+
+jupyter_core-4.9.1   | 80 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jupyter_core-4.9.1   | 80 KB     | ##################################### | 100% 
+
+send2trash-1.8.0     | 17 KB     |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>send2trash-1.8.0     | 17 KB     | ##################################### | 100% 
+
+zeromq-4.3.4         | 352 KB    |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeromq-4.3.4         | 352 KB    | #6                                    |   5% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeromq-4.3.4         | 352 KB    | ##################################### | 100% 
+
+conda-4.10.3         | 3.1 MB    |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>conda-4.10.3         | 3.1 MB    | ######                                |  16% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>conda-4.10.3         | 3.1 MB    | ##################################### | 100% 
+conda-4.10.3         | 3.1 MB    | ##################################### | 100% 
 
 libsodium-1.0.18     | 366 KB    |                                       |   0% 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>libsodium-1.0.18     | 366 KB    | ##################################### | 100% 
+libsodium-1.0.18     | 366 KB    | ##################################### | 100% 
 
-ipython-7.26.0       | 1.1 MB    |                                       |   0% 
+ptyprocess-0.7.0     | 16 KB     |                                       |   0% 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ipython-7.26.0       | 1.1 MB    | ##################################### | 100% 
-ipython-7.26.0       | 1.1 MB    | ##################################### | 100% 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ptyprocess-0.7.0     | 16 KB     | ##################################### | 100% 
+
+python_abi-3.9       | 4 KB      |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>python_abi-3.9       | 4 KB      | ##################################### | 100% 
 
 tornado-6.1          | 646 KB    |                                       |   0% 
 </pre></div>
@@ -2067,235 +2345,44 @@ tornado-6.1          | 646 KB    |                                       |   0%
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tornado-6.1          | 646 KB    | ##################################### | 100% 
 tornado-6.1          | 646 KB    | ##################################### | 100% 
 
-nbclient-0.5.4       | 60 KB     |                                       |   0% 
+widgetsnbextension-3 | 1.3 MB    |                                       |   0% 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nbclient-0.5.4       | 60 KB     | ##################################### | 100% 
-
-defusedxml-0.7.1     | 23 KB     |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>defusedxml-0.7.1     | 23 KB     | ##################################### | 100% 
-
-mistune-0.8.4        | 54 KB     |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mistune-0.8.4        | 54 KB     | ##################################### | 100% 
-
-pexpect-4.8.0        | 47 KB     |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pexpect-4.8.0        | 47 KB     | ##################################### | 100% 
-
-pandoc-2.14.1        | 12.0 MB   |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandoc-2.14.1        | 12.0 MB   | ####################                  |  54% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandoc-2.14.1        | 12.0 MB   | ##################################### | 100% 
-
-pandocfilters-1.4.2  | 9 KB      |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandocfilters-1.4.2  | 9 KB      | ##################################### | 100% 
-
-ptyprocess-0.7.0     | 16 KB     |                                       |   0% 
-ptyprocess-0.7.0     | 16 KB     | ##################################### | 100% 
-
-conda-4.10.3         | 3.1 MB    |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>conda-4.10.3         | 3.1 MB    | ##################################### | 100% 
-conda-4.10.3         | 3.1 MB    | ##################################### | 100% 
-
-python-dateutil-2.8. | 240 KB    |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>python-dateutil-2.8. | 240 KB    | ##################################### | 100% 
-
-argon2-cffi-20.1.0   | 48 KB     |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>argon2-cffi-20.1.0   | 48 KB     | ##################################### | 100% 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>widgetsnbextension-3 | 1.3 MB    | ##################################### | 100% 
+widgetsnbextension-3 | 1.3 MB    | ##################################### | 100% 
 
 parso-0.8.2          | 68 KB     |                                       |   0% 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>parso-0.8.2          | 68 KB     | ##################################### | 100% 
 
-backports.functools_ | 9 KB      |                                       |   0% 
+jinja2-3.0.3         | 99 KB     |                                       |   0% 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>backports.functools_ | 9 KB      | ##################################### | 100% 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jinja2-3.0.3         | 99 KB     | ##################################### | 100% 
+jinja2-3.0.3         | 99 KB     | ##################################### | 100% 
 
-zipp-3.5.0           | 12 KB     |                                       |   0% 
+decorator-5.1.0      | 11 KB     |                                       |   0% 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zipp-3.5.0           | 12 KB     | ##################################### | 100% 
-
-ipykernel-6.2.0      | 172 KB    |                                       |   0% 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>decorator-5.1.0      | 11 KB     | ##################################### | 100% 
+Preparing transaction: / 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ipykernel-6.2.0      | 172 KB    | ##################################### | 100% 
-
-webencodings-0.5.1   | 12 KB     |                                       |   0% 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>webencodings-0.5.1   | 12 KB     | ##################################### | 100% 
-
-pyzmq-19.0.2         | 479 KB    |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pyzmq-19.0.2         | 479 KB    | ##################################### | 100% 
-pyzmq-19.0.2         | 479 KB    | ##################################### | 100% 
-
-nest-asyncio-1.5.1   | 9 KB      |                                       |   0% 
-nest-asyncio-1.5.1   | 9 KB      | ##################################### | 100% 
-
-jupyter_core-4.7.1   | 72 KB     |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jupyter_core-4.7.1   | 72 KB     | ##################################### | 100% 
-
-matplotlib-inline-0. | 11 KB     |                                       |   0% 
-matplotlib-inline-0. | 11 KB     | ##################################### | 100% 
-
-widgetsnbextension-3 | 1.8 MB    |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>widgetsnbextension-3 | 1.8 MB    | ##################################### | 100% 
-widgetsnbextension-3 | 1.8 MB    | ##################################### | 100% 
-
-send2trash-1.8.0     | 17 KB     |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>send2trash-1.8.0     | 17 KB     | ##################################### | 100% 
-
-wcwidth-0.2.5        | 33 KB     |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>wcwidth-0.2.5        | 33 KB     | ##################################### | 100% 
-
-terminado-0.10.1     | 26 KB     |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>terminado-0.10.1     | 26 KB     | ##################################### | 100% 
-
-attrs-21.2.0         | 44 KB     |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>attrs-21.2.0         | 44 KB     | ##################################### | 100% 
-
-async_generator-1.10 | 18 KB     |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>async_generator-1.10 | 18 KB     | ##################################### | 100% 
-
-openssl-1.1.1k       | 2.1 MB    |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>openssl-1.1.1k       | 2.1 MB    | ##################################### | 100% 
-openssl-1.1.1k       | 2.1 MB    | ##################################### | 100% 
-
-debugpy-1.4.1        | 2.0 MB    |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>debugpy-1.4.1        | 2.0 MB    | ##################################### | 100% 
-debugpy-1.4.1        | 2.0 MB    | ##################################### | 100% 
-
-pygments-2.10.0      | 760 KB    |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pygments-2.10.0      | 760 KB    | ##################################### | 100% 
-pygments-2.10.0      | 760 KB    | ##################################### | 100% 
-
-nbconvert-6.1.0      | 547 KB    |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nbconvert-6.1.0      | 547 KB    | ##################################### | 100% 
-nbconvert-6.1.0      | 547 KB    | ##################################### | 100% 
-
-packaging-21.0       | 35 KB     |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>packaging-21.0       | 35 KB     | ##################################### | 100% 
-
-traitlets-5.0.5      | 81 KB     |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>traitlets-5.0.5      | 81 KB     | ##################################### | 100% 
-
-backports-1.0        | 4 KB      |                                       |   0% 
-backports-1.0        | 4 KB      | ##################################### | 100% 
-
-testpath-0.5.0       | 86 KB     |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>testpath-0.5.0       | 86 KB     | ##################################### | 100% 
-
-prompt-toolkit-3.0.1 | 244 KB    |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>prompt-toolkit-3.0.1 | 244 KB    | ##################################### | 100% 
-
-ipywidgets-7.6.3     | 101 KB    |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ipywidgets-7.6.3     | 101 KB    | ##################################### | 100% 
-
-zeromq-4.3.4         | 352 KB    |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zeromq-4.3.4         | 352 KB    | ##################################### | 100% 
-
-decorator-5.0.9      | 11 KB     |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>decorator-5.0.9      | 11 KB     | ##################################### | 100% 
-
-pyparsing-2.4.7      | 60 KB     |                                       |   0% 
-pyparsing-2.4.7      | 60 KB     | ##################################### | 100% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jinja2-3.0.1         | 99 KB     |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jinja2-3.0.1         | 99 KB     | ##################################### | 100% 
-
-python_abi-3.9       | 4 KB      |                                       |   0% 
-python_abi-3.9       | 4 KB      | ##################################### | 100% 
-
-jupyterlab_pygments- | 8 KB      |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jupyterlab_pygments- | 8 KB      | ##################################### | 100% 
-
-backcall-0.2.0       | 13 KB     |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>backcall-0.2.0       | 13 KB     | ##################################### | 100% 
-
-jupyterlab_widgets-1 | 130 KB    |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jupyterlab_widgets-1 | 130 KB    | ##################################### | 100% 
-
-certifi-2021.5.30    | 141 KB    |                                       |   0% 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>certifi-2021.5.30    | 141 KB    | ##################################### | 100% 
-Preparing transaction: \ 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done
-Verifying transaction: \ 
+Verifying transaction: - 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
@@ -2311,22 +2398,10 @@ Verifying transaction: \
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done
-Executing transaction: \ 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
+Executing transaction: - 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ 
@@ -2347,77 +2422,21 @@ Executing transaction: \
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Enabling notebook extension jupyter-js-widgets/extension...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ Enabling notebook extension jupyter-js-widgets/extension...
       - Validating: <span class="-Color -Color-Green">OK</span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ 
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ ^C
+- \ 
 </pre></div>
 </div>
 </div>
@@ -2587,8 +2606,8 @@ $<span class="math notranslate nohighlight">\(s_t = Ds_{t-1}+w_t\)</span>$</p>
 <p>Sensory measurements <span class="math notranslate nohighlight">\(m_t\)</span> (observations) are noisy linear projections of the latent state:
 $<span class="math notranslate nohighlight">\(m_t = Hs_{t}+\eta_t\)</span>$</p>
 <p>Both states and measurements have Gaussian variability, often called noise: ‘process noise’ <span class="math notranslate nohighlight">\(w_t\)</span> for the states, and ‘measurement’ or ‘observation noise’ <span class="math notranslate nohighlight">\(\eta_t\)</span> for the measurements. The initial state is also Gaussian distributed. These quantites have means and covariances:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-470bec2c-ea8d-42fe-bfc5-0552d729f34d">
-<span class="eqno">(220)<a class="headerlink" href="#equation-470bec2c-ea8d-42fe-bfc5-0552d729f34d" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-4827ac51-da96-4d43-baf1-91515ccbd93a">
+<span class="eqno">(220)<a class="headerlink" href="#equation-4827ac51-da96-4d43-baf1-91515ccbd93a" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 w_t &amp; \sim &amp; \mathcal{N}(0, Q) \\
 \eta_t &amp; \sim &amp; \mathcal{N}(0, R) \\
 s_0 &amp; \sim &amp; \mathcal{N}(\mu_0, \Sigma_0)
@@ -2736,15 +2755,15 @@ s_0 &amp; \sim &amp; \mathcal{N}(\mu_0, \Sigma_0)
 <div class="math notranslate nohighlight">
 \[s_t^{\rm pred}\sim \mathcal{N}(\hat{\mu}_t^{\rm pred},\hat{\Sigma}_t^{\rm pred})\]</div>
 <p>Where <span class="math notranslate nohighlight">\(\hat{\mu}_t^{\rm pred}\)</span> and <span class="math notranslate nohighlight">\(\hat{\Sigma}_t^{\rm pred}\)</span> are derived as follows:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2863b629-1d49-45bc-aa47-89d1fc5c99af">
-<span class="eqno">(221)<a class="headerlink" href="#equation-2863b629-1d49-45bc-aa47-89d1fc5c99af" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-61c79df2-de8f-491b-a2d2-c30196c4ce1b">
+<span class="eqno">(221)<a class="headerlink" href="#equation-61c79df2-de8f-491b-a2d2-c30196c4ce1b" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 \hat{\mu}_1^{\rm pred} &amp; = &amp; D\hat{\mu}_{0} \\
 \hat{\mu}_t^{\rm pred} &amp; = &amp; D\hat{\mu}_{t-1}
 \end{eqnarray}\]</div>
 <p>This is the prediction for <span class="math notranslate nohighlight">\(s_t\)</span> obtained simply by taking the expected value of <span class="math notranslate nohighlight">\(s_{t-1}\)</span> and projecting it forward one step using the transition matrix <span class="math notranslate nohighlight">\(D\)</span>.
 We do the same for the covariance, taking into account the noise covariance <span class="math notranslate nohighlight">\(Q\)</span> and the fact that scaling a variable by <span class="math notranslate nohighlight">\(D\)</span> scales its covariance <span class="math notranslate nohighlight">\(\Sigma\)</span> as <span class="math notranslate nohighlight">\(D\Sigma D^T\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-93c73573-beaa-4679-8c6b-4af7ac5c4303">
-<span class="eqno">(222)<a class="headerlink" href="#equation-93c73573-beaa-4679-8c6b-4af7ac5c4303" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-5b803703-e9b9-4b72-aeda-254525b35af4">
+<span class="eqno">(222)<a class="headerlink" href="#equation-5b803703-e9b9-4b72-aeda-254525b35af4" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 \hat{\Sigma}_0^{\rm pred} &amp; = &amp; D\hat{\Sigma}_{0}D^T+Q \\
 \hat{\Sigma}_t^{\rm pred} &amp; = &amp; D\hat{\Sigma}_{t-1}D^T+Q
 \end{eqnarray}\]</div>
@@ -2752,8 +2771,8 @@ We do the same for the covariance, taking into account the noise covariance <spa
 <p>Project our prediction to observational space:
 $<span class="math notranslate nohighlight">\(m_t^{\rm pred}\sim \mathcal{N}(H\hat{\mu}_t^{\rm pred}, H\hat{\Sigma}_t^{\rm pred}H^T+R)\)</span>$</p>
 <p>update prediction by actual data:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c632ef4e-6693-46af-be97-eda69437a0e4">
-<span class="eqno">(223)<a class="headerlink" href="#equation-c632ef4e-6693-46af-be97-eda69437a0e4" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-1e26b855-cbee-4a64-83ec-c5c2dee6d396">
+<span class="eqno">(223)<a class="headerlink" href="#equation-1e26b855-cbee-4a64-83ec-c5c2dee6d396" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 s_t^{\rm filter} &amp; \sim &amp; \mathcal{N}(\hat{\mu}_t^{\rm filter}, \hat{\Sigma}_t^{\rm filter}) \\
 \hat{\mu}_t^{\rm filter} &amp; = &amp; \hat{\mu}_t^{\rm pred}+K_t(m_t-H\hat{\mu}_t^{\rm pred}) \\
 \hat{\Sigma}_t^{\rm filter} &amp; = &amp; (I-K_tH)\hat{\Sigma}_t^{\rm pred}
@@ -3022,19 +3041,19 @@ R &amp;:\texttt{observation_covariance}\\
 <div class="section" id="review-on-gaussian-joint-marginal-and-conditional-distributions">
 <h2>Review on Gaussian joint, marginal and conditional distributions<a class="headerlink" href="#review-on-gaussian-joint-marginal-and-conditional-distributions" title="Permalink to this headline">¶</a></h2>
 <p>Assume</p>
-<div class="amsmath math notranslate nohighlight" id="equation-19b5d964-5795-48bb-bf45-c6cb954c418d">
-<span class="eqno">(224)<a class="headerlink" href="#equation-19b5d964-5795-48bb-bf45-c6cb954c418d" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-72d7a0a6-73af-4da6-8485-14aae7853ee4">
+<span class="eqno">(224)<a class="headerlink" href="#equation-72d7a0a6-73af-4da6-8485-14aae7853ee4" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 z &amp; = &amp; \begin{bmatrix}x \\y\end{bmatrix}\sim N\left(\begin{bmatrix}a \\b\end{bmatrix}, \begin{bmatrix}A &amp; C \\C^T &amp; B\end{bmatrix}\right)
 \end{eqnarray}\]</div>
 <p>then the marginal distributions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7d0d6743-6f0b-4642-b0e2-34041e8023cd">
-<span class="eqno">(225)<a class="headerlink" href="#equation-7d0d6743-6f0b-4642-b0e2-34041e8023cd" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-c1d50fe3-a62c-4a34-8f85-24b5ddcbcb4d">
+<span class="eqno">(225)<a class="headerlink" href="#equation-c1d50fe3-a62c-4a34-8f85-24b5ddcbcb4d" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 x &amp; \sim &amp; \mathcal{N}(a, A) \\
 y &amp; \sim &amp; \mathcal{N}(b,B)
 \end{eqnarray}\]</div>
 <p>and the conditional distributions are</p>
-<div class="amsmath math notranslate nohighlight" id="equation-aa6a1586-8c92-49b4-8d16-6a9e1c50f75c">
-<span class="eqno">(226)<a class="headerlink" href="#equation-aa6a1586-8c92-49b4-8d16-6a9e1c50f75c" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-ceeb08b7-f51b-4779-a9b0-d093edbe387d">
+<span class="eqno">(226)<a class="headerlink" href="#equation-ceeb08b7-f51b-4779-a9b0-d093edbe387d" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 x|y &amp; \sim &amp; \mathcal{N}(a+CB^{-1}(y-b), A-CB^{-1}C^T) \\
 y|x &amp; \sim &amp; \mathcal{N}(b+C^TA^{-1}(x-a), B-C^TA^{-1}C)
 \end{eqnarray}\]</div>
@@ -3047,16 +3066,16 @@ y|x &amp; \sim &amp; \mathcal{N}(b+C^TA^{-1}(x-a), B-C^TA^{-1}C)
 <div class="cell tag_remove-input docutils container">
 </div>
 <p>Obtain estimates by propagating from <span class="math notranslate nohighlight">\(y_T\)</span> back to <span class="math notranslate nohighlight">\(y_0\)</span> using results of forward pass (<span class="math notranslate nohighlight">\(\hat{\mu}_t^{\rm filter}, \hat{\Sigma}_t^{\rm filter}, P_t=\hat{\Sigma}_{t+1}^{\rm pred}\)</span>)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-29c344de-c2c6-406c-a37b-60a526d025eb">
-<span class="eqno">(227)<a class="headerlink" href="#equation-29c344de-c2c6-406c-a37b-60a526d025eb" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-b3410f32-ac5b-490d-a6ee-8d93aacc5700">
+<span class="eqno">(227)<a class="headerlink" href="#equation-b3410f32-ac5b-490d-a6ee-8d93aacc5700" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 s_t &amp; \sim &amp; \mathcal{N}(\hat{\mu}_t^{\rm smooth}, \hat{\Sigma}_t^{\rm smooth}) \\
 \hat{\mu}_t^{\rm smooth} &amp; = &amp; \hat{\mu}_t^{\rm filter}+J_t(\hat{\mu}_{t+1}^{\rm smooth}-D\hat{\mu}_t^{\rm filter}) \\
 \hat{\Sigma}_t^{\rm smooth} &amp; = &amp; \hat{\Sigma}_t^{\rm filter}+J_t(\hat{\Sigma}_{t+1}^{\rm smooth}-P_t)J_t^T \\
 J_t &amp; = &amp; \hat{\Sigma}_t^{\rm filter}D^T P_t^{-1}
 \end{eqnarray}\]</div>
 <p>This gives us the final estimate for <span class="math notranslate nohighlight">\(z_t\)</span>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-51fe5057-e780-4845-bfd2-61bc725931b8">
-<span class="eqno">(228)<a class="headerlink" href="#equation-51fe5057-e780-4845-bfd2-61bc725931b8" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-7beaf22b-5d73-4169-94a2-f9dc960a8f08">
+<span class="eqno">(228)<a class="headerlink" href="#equation-7beaf22b-5d73-4169-94a2-f9dc960a8f08" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 \hat{\mu}_t &amp; = &amp; \hat{\mu}_t^{\rm smooth} \\
 \hat{\Sigma}_t &amp; = &amp; \hat{\Sigma}_t^{\rm smooth}
 \end{eqnarray}\]</div>
@@ -3196,16 +3215,16 @@ E(s_ts_{t}^T) &amp;=&amp; \hat{\Sigma}_t+\hat{\mu}_t\hat{\mu}_{t}^T
 <p><strong>Update parameters</strong></p>
 <p>Initial parameters
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8da649d5-51f1-4b1b-a623-05beb946f25c">
-<span class="eqno">(229)<a class="headerlink" href="#equation-8da649d5-51f1-4b1b-a623-05beb946f25c" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-6a1d88ad-e6dd-4a6b-abab-55ce8d0bfb02">
+<span class="eqno">(229)<a class="headerlink" href="#equation-6a1d88ad-e6dd-4a6b-abab-55ce8d0bfb02" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 \mu_0^{\rm new}&amp;=&amp; E(s_0)\\
 Q_0^{\rm new} &amp;=&amp; E(s_0s_0^T)-E(s_0)E(s_0^T) \\
 \end{eqnarray}\]</div>
 <div class="math notranslate nohighlight">
 \[Hidden (latent) state parameters
 \]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-dd56af8c-f2cb-4190-93d6-8aa4b3e7c33a">
-<span class="eqno">(230)<a class="headerlink" href="#equation-dd56af8c-f2cb-4190-93d6-8aa4b3e7c33a" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-46e81607-e387-4277-b814-0179f310a5d3">
+<span class="eqno">(230)<a class="headerlink" href="#equation-46e81607-e387-4277-b814-0179f310a5d3" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 D^{\rm new} &amp;=&amp; \left(\sum_{t=2}^N E(s_ts_{t-1}^T)\right)\left(\sum_{t=2}^N E(s_{t-1}s_{t-1}^T)\right)^{-1} \\
 Q^{\rm new} &amp;=&amp; \frac{1}{T-1} \sum_{t=2}^N E\big(s_ts_t^T\big) - D^{\rm new}E\big(s_{t-1}s_{t}^T\big) - E\big(s_ts_{t-1}^T\big)D^{\rm new}+D^{\rm new}E\big(s_{t-1}s_{t-1}^T\big)\big(D^{\rm new}\big)^{T}\\
 \end{eqnarray}\]</div>
@@ -3237,13 +3256,26 @@ $$H^{\rm new}=\left(\sum_{t=1}^N y_t E(s_t^T)\right)\left(\sum_{t=1}^N E(s_t s_t
     </script>
 <script>kernelName = 'python3'</script>
 </div>
-<div class="prev-next-bottom">
-<a class="left-prev" href="W3D2_Tutorial3.html" id="prev-link" title="previous page">Tutorial 3: The Kalman Filter</a>
-<a class="right-next" href="W3D2_Tutorial5.html" id="next-link" title="next page">Bonus Tutorial 5: Expectation Maximization for spiking neurons</a>
+<!-- Previous / next buttons -->
+<div class="prev-next-area">
+<a class="left-prev" href="W3D2_Tutorial3.html" id="prev-link" title="previous page">
+<i class="fas fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">Tutorial 3: The Kalman Filter</p>
+</div>
+</a>
+<a class="right-next" href="W3D2_Tutorial5.html" id="next-link" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">Bonus Tutorial 5: Expectation Maximization for spiking neurons</p>
+</div>
+<i class="fas fa-angle-right"></i>
+</a>
 </div>
 </div>
 </div>
-<footer class="footer mt-5 mt-md-0">
+<footer class="footer">
 <div class="container">
 <p>
         
@@ -3256,6 +3288,6 @@ $$H^{\rm new}=\left(\sum_{t=1}^N y_t E(s_t^T)\right)\left(\sum_{t=1}^N E(s_t s_t
 </main>
 </div>
 </div>
-<script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+<script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 </body>
 </html>
