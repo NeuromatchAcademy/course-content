@@ -12,7 +12,7 @@
 <link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
 <link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
 <link href="../../../_static/pygments.css" rel="stylesheet" type="text/css">
-<link href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" rel="stylesheet" type="text/css">
+<link href="../../../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" rel="stylesheet" type="text/css">
 <link href="../../../_static/togglebutton.css" rel="stylesheet" type="text/css">
 <link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css">
 <link href="../../../_static/mystnb.css" rel="stylesheet" type="text/css">
@@ -28,7 +28,7 @@
 <script src="../../../_static/clipboard.min.js"></script>
 <script src="../../../_static/copybutton.js"></script>
 <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-<script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+<script src="../../../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
 <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -53,7 +53,12 @@
 <div class="container-fluid" id="banner"></div>
 <div class="container-xl">
 <div class="row">
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+<!-- Checkboxes to toggle the left sidebar -->
+<input aria-label="Toggle navigation sidebar" class="sidebar-toggle" id="__navigation" name="__navigation" type="checkbox"/>
+<label class="overlay" for="__navigation">
+<div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation" id="site-navigation">
 <div class="navbar-brand-box">
 <a class="navbar-brand text-wrap" href="../../../index.html">
 <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -106,7 +111,7 @@
 <a class="reference internal" href="../../TechnicalHelp/tech_intro.html">
    Technical Help
   </a>
-<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox">
 <label for="toctree-checkbox-2">
 <i class="fas fa-chevron-down">
 </i>
@@ -140,7 +145,7 @@
     </a>
 </li>
 </ul>
-</li>
+</input></li>
 </ul>
 <p class="caption">
 <span class="caption-text">
@@ -309,11 +314,6 @@
 <li class="toctree-l2">
 <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
      Tutorial 3: Numerical Methods
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../../W0D4_Calculus/W0D4_Outro.html">
-     Outro
     </a>
 </li>
 </ul>
@@ -1263,16 +1263,19 @@
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
 </div>
 </div>
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
 <div class="topbar container-xl fixed-top">
 <div class="topbar-contents row">
 <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
 <div class="col pl-md-4 topbar-main">
-<button aria-controls="site-navigation" aria-expanded="true" aria-label="Toggle navigation" class="navbar-toggler ml-0" data-placement="left" data-target=".site-navigation" data-toggle="tooltip" id="navbar-toggler" title="Toggle navigation" type="button">
+<div class="topbar-left">
+<label class="nav-toggle-button" for="__navigation">
+<div class="visually-hidden">Toggle navigation</div>
 <i class="fas fa-bars"></i>
-<i class="fas fa-arrow-left"></i>
-<i class="fas fa-arrow-up"></i>
-</button>
+</label>
+</div>
 <div class="dropdown-buttons-trigger">
 <button aria-label="Download this page" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-download"></i></button>
 <div class="dropdown-buttons">
@@ -1280,7 +1283,7 @@
 <!-- Download raw file -->
 <a class="dropdown-buttons" href="../../../_sources/tutorials/W3D5_NetworkCausality/student/W3D5_Tutorial2.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.ipynb</button></a>
 <!-- Download PDF via print -->
-<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
+<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="printPdf(this)" title="Print to PDF" type="button">.pdf</button>
 </div>
 </div>
 <!-- Source interaction buttons -->
@@ -1296,7 +1299,7 @@
 <!-- Launch buttons -->
 </div>
 <!-- Table of contents -->
-<div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="d-none d-md-block col-md-2 bd-toc show noprint">
 <div class="tocsection onthispage pt-5 pb-3">
 <i class="fas fa-list"></i> Contents
             </div>
@@ -1481,6 +1484,194 @@
 </div>
 <div class="row" id="main-content">
 <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+<!-- Table of contents that is only displayed when printing the page -->
+<div class="onlyprint" id="jb-print-docs-body">
+<h1>Tutorial 2: Correlations</h1>
+<!-- Table of contents -->
+<div id="print-main-content">
+<div id="jb-print-toc">
+<div>
+<h2> Contents </h2>
+</div>
+<nav aria-label="Page">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#">
+   Tutorial 2: Correlations
+  </a>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#tutorial-objectives">
+   Tutorial objectives
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#tutorial-2-objectives">
+     Tutorial 2 objectives
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#tutorial-2-setting">
+     Tutorial 2 setting
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#tutorial-slides">
+     Tutorial slides
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#figure-settings">
+     Figure Settings
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#plotting-functions">
+     Plotting Functions
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#helper-functions">
+     Helper Functions
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-1-small-systems">
+   Section 1: Small systems
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-1-correlation-vs-causation">
+     Video 1: Correlation vs causation
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#coding-exercise-1-try-to-approximate-causation-with-correlation">
+     Coding Exercise 1: Try to approximate causation with correlation
+    </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-2-correlation-causation-for-small-systems">
+       Video 2: Correlation ~ causation for small systems
+      </a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-2-large-systems">
+   Section 2: Large systems
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-2-1-failure-of-correlation-in-complex-systems">
+     Section 2.1: Failure of correlation in complex systems
+    </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-3-correlation-vs-causation-in-large-systems">
+       Video 3: Correlation vs causation in large systems
+      </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-2-2-correlation-as-a-function-of-network-size">
+     Section 2.2: Correlation as a function of network size
+    </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#interactive-demo-2-2-1-connectivity-estimation-as-a-function-of-number-of-neurons">
+       Interactive Demo 2.2.1: Connectivity estimation as a function of number of neurons
+      </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#interactive-demo-2-2-2-connectivity-estimation-as-a-function-of-the-sparsity-of-a">
+       Interactive Demo 2.2.2: Connectivity estimation as a function of the sparsity of
+       <span class="math notranslate nohighlight">
+        \(A\)
+       </span>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-reflecting-on-causality">
+   Section 3: Reflecting on causality
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#think-3-reflecting-on-causality">
+     Think! 3: Reflecting on causality
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-4-summary">
+     Video 4: Summary
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus">
+   Bonus
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus-section-1-correlation-as-similarity-metric">
+     Bonus Section 1: Correlation as similarity metric
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus-section-2-low-resolution-systems">
+     Bonus Section 2: Low resolution systems
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#simulate-a-large-system">
+     Simulate a large system
+    </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus-section-1-1-coarsely-sample-the-system">
+       Bonus Section 1.1: Coarsely sample the system
+      </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus-coding-exercise-1-1-compute-average-activity-across-groups-and-compare-resulting-connectivity-to-the-truth">
+         Bonus Coding Exercise 1.1: Compute average activity across groups and compare resulting connectivity to the truth
+        </a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
 <div>
 <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W3D5_NetworkCausality/student/W3D5_Tutorial2.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></p>
 <div class="section" id="tutorial-2-correlations">
@@ -1775,7 +1966,7 @@
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "9dd9fd4b406b4fccb002f829be6662eb"}
+{"version_major": 2, "version_minor": 0, "model_id": "52b7d2f54d8c4a4d94856354c4c1bc72"}
 </script></div>
 </div>
 </div>
@@ -1922,7 +2113,7 @@
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "4edc543db6734f9f9a0f5b4f4bd14dd2"}
+{"version_major": 2, "version_minor": 0, "model_id": "c2557f6f054a4a7399d64410c237277a"}
 </script></div>
 </div>
 <p><strong>Video correction</strong>: the connectivity graph plots and associated explanations in this and other videos show the wrong direction of connectivity (the arrows should be pointing the opposite direction). This has been fixed in the figures above.</p>
@@ -1962,7 +2153,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correlation matrix of A and R: 0.3629329824177816
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correlation matrix of A and R: 0.36293298241778194
 </pre></div>
 </div>
 <img alt="../../../_images/W3D5_Tutorial2_36_1.png" src="../../../_images/W3D5_Tutorial2_36_1.png"/>
@@ -1973,7 +2164,7 @@
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "b1a0a80013b14c5eaa73dd8fbf1f9100"}
+{"version_major": 2, "version_minor": 0, "model_id": "5189e3fe350a4ef8a46d7525d815ea51"}
 </script></div>
 </div>
 </div>
@@ -2007,7 +2198,7 @@
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "8ee986e7aac54c3ba3d279872f64e4b6"}
+{"version_major": 2, "version_minor": 0, "model_id": "a9f25031798148ef92266b67e9680541"}
 </script></div>
 </div>
 <p>Of course there is some variability due to randomness in <span class="math notranslate nohighlight">\(A\)</span>. Let’s average over a few trials and find the relationship.</p>
@@ -2074,7 +2265,7 @@
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "2af70d8865924e9f9075a3a135be6a23"}
+{"version_major": 2, "version_minor": 0, "model_id": "5b9bf48d3d8740c28831e60f45607ab7"}
 </script></div>
 </div>
 </div>
@@ -2104,7 +2295,7 @@
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "9a9831b8418b45c5b71fbee9d7062e57"}
+{"version_major": 2, "version_minor": 0, "model_id": "c7aa8242f3664fdca9014ca8d1e3cd44"}
 </script></div>
 </div>
 <p>Now for the takeaway. We know that for large systems correlation ≠ causation. But what about when we coarsely sample the large system? Do we get better at estimating the <em>effective</em> causal interaction between groups (=average of weights) from the correlation between the groups?</p>
@@ -2155,12 +2346,12 @@ We are assuming that the connectivity is random. In real brains, the neurons tha
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_5761</span><span class="o">/</span><span class="mf">4113217855.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_6351</span><span class="o">/</span><span class="mf">4113217855.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> 
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">A</span> <span class="o">=</span> <span class="n">create_connectivity</span><span class="p">(</span><span class="n">n_neurons</span><span class="p">,</span> <span class="n">random_state</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">X</span> <span class="o">=</span> <span class="n">simulate_neurons</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">timesteps</span><span class="p">)</span>
 
-<span class="nn">/tmp/ipykernel_5761/2993435089.py</span> in <span class="ni">simulate_neurons</span><span class="nt">(A, timesteps, random_state)</span>
+<span class="nn">/tmp/ipykernel_6351/2993435089.py</span> in <span class="ni">simulate_neurons</span><span class="nt">(A, timesteps, random_state)</span>
 <span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">timesteps</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
 <span class="g g-Whitespace">     </span><span class="mi">57</span>         <span class="c1"># solution</span>
 <span class="ne">---&gt; </span><span class="mi">58</span>         <span class="n">epsilon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_neurons</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_neurons</span><span class="p">))</span>
@@ -2336,14 +2527,12 @@ We are assuming that the connectivity is random. In real brains, the neurons tha
 </div>
 </div>
 <footer class="footer">
-<div class="container">
 <p>
-        
-          By Neuromatch<br/>
-        
-            © Copyright 2021.<br/>
+    
+      By Neuromatch<br/>
+    
+        © Copyright 2021.<br/>
 </p>
-</div>
 </footer>
 </main>
 </div>

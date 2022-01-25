@@ -12,7 +12,7 @@
 <link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
 <link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
 <link href="../../../_static/pygments.css" rel="stylesheet" type="text/css">
-<link href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" rel="stylesheet" type="text/css">
+<link href="../../../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" rel="stylesheet" type="text/css">
 <link href="../../../_static/togglebutton.css" rel="stylesheet" type="text/css">
 <link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css">
 <link href="../../../_static/mystnb.css" rel="stylesheet" type="text/css">
@@ -28,7 +28,7 @@
 <script src="../../../_static/clipboard.min.js"></script>
 <script src="../../../_static/copybutton.js"></script>
 <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-<script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+<script src="../../../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
 <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -53,7 +53,12 @@
 <div class="container-fluid" id="banner"></div>
 <div class="container-xl">
 <div class="row">
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+<!-- Checkboxes to toggle the left sidebar -->
+<input aria-label="Toggle navigation sidebar" class="sidebar-toggle" id="__navigation" name="__navigation" type="checkbox"/>
+<label class="overlay" for="__navigation">
+<div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation" id="site-navigation">
 <div class="navbar-brand-box">
 <a class="navbar-brand text-wrap" href="../../../index.html">
 <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -106,7 +111,7 @@
 <a class="reference internal" href="../../TechnicalHelp/tech_intro.html">
    Technical Help
   </a>
-<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox">
 <label for="toctree-checkbox-2">
 <i class="fas fa-chevron-down">
 </i>
@@ -140,7 +145,7 @@
     </a>
 </li>
 </ul>
-</li>
+</input></li>
 </ul>
 <p class="caption">
 <span class="caption-text">
@@ -309,11 +314,6 @@
 <li class="toctree-l2">
 <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
      Tutorial 3: Numerical Methods
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../../W0D4_Calculus/W0D4_Outro.html">
-     Outro
     </a>
 </li>
 </ul>
@@ -1263,16 +1263,19 @@
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
 </div>
 </div>
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
 <div class="topbar container-xl fixed-top">
 <div class="topbar-contents row">
 <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
 <div class="col pl-md-4 topbar-main">
-<button aria-controls="site-navigation" aria-expanded="true" aria-label="Toggle navigation" class="navbar-toggler ml-0" data-placement="left" data-target=".site-navigation" data-toggle="tooltip" id="navbar-toggler" title="Toggle navigation" type="button">
+<div class="topbar-left">
+<label class="nav-toggle-button" for="__navigation">
+<div class="visually-hidden">Toggle navigation</div>
 <i class="fas fa-bars"></i>
-<i class="fas fa-arrow-left"></i>
-<i class="fas fa-arrow-up"></i>
-</button>
+</label>
+</div>
 <div class="dropdown-buttons-trigger">
 <button aria-label="Download this page" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-download"></i></button>
 <div class="dropdown-buttons">
@@ -1280,7 +1283,7 @@
 <!-- Download raw file -->
 <a class="dropdown-buttons" href="../../../_sources/tutorials/Bonus_Autoencoders/student/Bonus_Tutorial3.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.ipynb</button></a>
 <!-- Download PDF via print -->
-<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
+<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="printPdf(this)" title="Print to PDF" type="button">.pdf</button>
 </div>
 </div>
 <!-- Source interaction buttons -->
@@ -1296,7 +1299,7 @@
 <!-- Launch buttons -->
 </div>
 <!-- Table of contents -->
-<div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="d-none d-md-block col-md-2 bd-toc show noprint">
 <div class="tocsection onthispage pt-5 pb-3">
 <i class="fas fa-list"></i> Contents
             </div>
@@ -1455,6 +1458,168 @@
 </div>
 <div class="row" id="main-content">
 <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+<!-- Table of contents that is only displayed when printing the page -->
+<div class="onlyprint" id="jb-print-docs-body">
+<h1>Tutorial 3: Autoencoders applications</h1>
+<!-- Table of contents -->
+<div id="print-main-content">
+<div id="jb-print-toc">
+<div>
+<h2> Contents </h2>
+</div>
+<nav aria-label="Page">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#">
+   Tutorial 3: Autoencoders applications
+  </a>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#tutorial-objectives">
+   Tutorial Objectives
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#autoencoder-applications">
+     Autoencoder applications
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-1-applications">
+     Video 1: Applications
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#figure-settings">
+     Figure settings
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#helper-functions">
+     Helper functions
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-1-download-and-prepare-mnist-dataset">
+   Section 1: Download  and prepare MNIST dataset
+  </a>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-2-download-a-pre-trained-model">
+   Section 2: Download a pre-trained model
+  </a>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-applications-of-autoencoders">
+   Section 3: Applications of autoencoders
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#application-1-image-noise">
+     Application 1 - Image noise
+    </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#reconstructions-before-fine-tuning">
+       Reconstructions before fine-tuning
+      </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#latent-space-before-fine-tuning">
+       Latent space before fine-tuning
+      </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#fine-tuning-the-autoencoder-with-noisy-images">
+       Fine-tuning the autoencoder with noisy images
+      </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#global-latent-space-shift">
+       Global latent space shift
+      </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#application-2-image-occlusion">
+     Application 2 - Image occlusion
+    </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#before-fine-tuning">
+       Before fine-tuning
+      </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#after-fine-tuning">
+       After fine-tuning
+      </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#application-3-image-rotation">
+     Application 3 - Image rotation
+    </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id1">
+       Before fine-tuning
+      </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#id2">
+       After fine-tuning
+      </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#application-4-what-would-digit-6-look-like-if-we-had-never-seen-it-before">
+     Application 4 - What would digit “6” look like if we had never seen it before?
+    </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-1-removing-the-most-dominant-digit-classes">
+       Exercise 1: Removing the most dominant digit classes
+      </a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-4-anns-same-but-different">
+   Section 4: ANNs? Same but different!
+  </a>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-2-wrap-up">
+     Video 2: Wrap-up
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
 <div>
 <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/Bonus_Autoencoders/Bonus_Tutorial3.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></p>
 <div class="section" id="tutorial-3-autoencoders-applications">
@@ -1488,7 +1653,7 @@
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "b446182b1da84f38bba8c460b18a431c"}
+{"version_major": 2, "version_minor": 0, "model_id": "15f8988027704188857c9d371dcb2f61"}
 </script></div>
 </div>
 </div>
@@ -2474,17 +2639,17 @@ shape input_test 	 torch.Size([10000, 784])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2021-11-13 23:02:14--  https://github.com/mpbrigham/colaboratory-figures/raw/master/nma/autoencoders/ae_6h_prelu_bce_adam_25e_32b_s2.pt
-Resolving github.com (github.com)... 140.82.113.3
-Connecting to github.com (github.com)|140.82.113.3|:443... connected.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-01-25 22:11:01--  https://github.com/mpbrigham/colaboratory-figures/raw/master/nma/autoencoders/ae_6h_prelu_bce_adam_25e_32b_s2.pt
+Resolving github.com (github.com)... 140.82.114.4
+Connecting to github.com (github.com)|140.82.114.4|:443... connected.
 HTTP request sent, awaiting response... 
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>302 Found
 Location: https://raw.githubusercontent.com/mpbrigham/colaboratory-figures/master/nma/autoencoders/ae_6h_prelu_bce_adam_25e_32b_s2.pt [following]
---2021-11-13 23:02:15--  https://raw.githubusercontent.com/mpbrigham/colaboratory-figures/master/nma/autoencoders/ae_6h_prelu_bce_adam_25e_32b_s2.pt
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.109.133, 185.199.108.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... connected.
+--2022-01-25 22:11:01--  https://raw.githubusercontent.com/mpbrigham/colaboratory-figures/master/nma/autoencoders/ae_6h_prelu_bce_adam_25e_32b_s2.pt
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.110.133, 185.199.109.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... connected.
 HTTP request sent, awaiting response... 
 </pre></div>
 </div>
@@ -2492,171 +2657,171 @@ HTTP request sent, awaiting response...
 Length: 8313616 (7.9M) [application/octet-stream]
 Saving to: ‘ae_6h_prelu_bce_adam_25e_32b_s2.pt’
 
-     0K .......... .......... .......... .......... ..........  0% 3.53M 2s
-    50K .......... .......... .......... .......... ..........  1% 3.67M 2s
-   100K .......... .......... .......... .......... ..........  1% 9.21M 2s
-   150K .......... .......... .......... .......... ..........  2% 11.6M 1s
-   200K .......... .......... .......... .......... ..........  3% 10.4M 1s
-   250K .......... .......... .......... .......... ..........  3% 16.9M 1s
-   300K .......... .......... .......... .......... ..........  4% 16.0M 1s
-   350K .......... .......... .......... .......... ..........  4% 15.5M 1s
-   400K .......... .......... .......... .......... ..........  5% 17.8M 1s
-   450K .......... .......... .......... .......... ..........  6% 14.3M 1s
-   500K .......... .......... .......... .......... ..........  6% 25.3M 1s
-   550K .......... .......... .......... .......... ..........  7% 71.5M 1s
-   600K .......... .......... .......... .......... ..........  8% 25.2M 1s
-   650K .......... .......... .......... .......... ..........  8% 38.7M 1s
-   700K .......... .......... .......... .......... ..........  9% 28.2M 1s
-   750K .......... .......... .......... .......... ..........  9% 66.6M 1s
-   800K .......... .......... .......... .......... .......... 10% 24.9M 1s
-   850K .......... .......... .......... .......... .......... 11% 40.6M 1s
-   900K .......... .......... .......... .......... .......... 11% 34.9M 1s
-   950K .......... .......... .......... .......... .......... 12% 64.7M 0s
-  1000K .......... .......... .......... .......... .......... 12% 62.2M 0s
-  1050K .......... .......... .......... .......... .......... 13% 45.4M 0s
-  1100K .......... .......... .......... .......... .......... 14% 38.1M 0s
-  1150K .......... .......... .......... .......... .......... 14% 60.7M 0s
-  1200K .......... .......... .......... .......... .......... 15%  105M 0s
-  1250K .......... .......... .......... .......... .......... 16% 34.0M 0s
-  1300K .......... .......... .......... .......... .......... 16% 51.0M 0s
-  1350K .......... .......... .......... .......... .......... 17% 90.7M 0s
-  1400K .......... .......... .......... .......... .......... 17%  173M 0s
-  1450K .......... .......... .......... .......... .......... 18% 46.1M 0s
-  1500K .......... .......... .......... .......... .......... 19% 47.2M 0s
-  1550K .......... .......... .......... .......... .......... 19% 84.5M 0s
-  1600K .......... .......... .......... .......... .......... 20% 86.6M 0s
-  1650K .......... .......... .......... .......... .......... 20% 47.3M 0s
-  1700K .......... .......... .......... .......... .......... 21% 72.2M 0s
-  1750K .......... .......... .......... .......... .......... 22% 34.8M 0s
-  1800K .......... .......... .......... .......... .......... 22% 31.4M 0s
-  1850K .......... .......... .......... .......... .......... 23% 49.3M 0s
-  1900K .......... .......... .......... .......... .......... 24%  116M 0s
-  1950K .......... .......... .......... .......... .......... 24%  262M 0s
-  2000K .......... .......... .......... .......... .......... 25% 63.2M 0s
-  2050K .......... .......... .......... .......... .......... 25%  182M 0s
-  2100K .......... .......... .......... .......... .......... 26% 77.7M 0s
-  2150K .......... .......... .......... .......... .......... 27%  263M 0s
-  2200K .......... .......... .......... .......... .......... 27%  117M 0s
-  2250K .......... .......... .......... .......... .......... 28% 69.4M 0s
-  2300K .......... .......... .......... .......... .......... 28%  111M 0s
-  2350K .......... .......... .......... .......... .......... 29% 76.2M 0s
-  2400K .......... .......... .......... .......... .......... 30%  273M 0s
-  2450K .......... .......... .......... .......... .......... 30%  249M 0s
-  2500K .......... .......... .......... .......... .......... 31% 88.9M 0s
-  2550K .......... .......... .......... .......... .......... 32%  282M 0s
-  2600K .......... .......... .......... .......... .......... 32%  121M 0s
-  2650K .......... .......... .......... .......... .......... 33% 58.5M 0s
-  2700K .......... .......... .......... .......... .......... 33%  151M 0s
-  2750K .......... .......... .......... .......... .......... 34%  294M 0s
-  2800K .......... .......... .......... .......... .......... 35%  297M 0s
-  2850K .......... .......... .......... .......... .......... 35% 81.4M 0s
-  2900K .......... .......... .......... .......... .......... 36% 61.8M 0s
-  2950K .......... .......... .......... .......... .......... 36% 85.8M 0s
-  3000K .......... .......... .......... .......... .......... 37%  290M 0s
-  3050K .......... .......... .......... .......... .......... 38%  245M 0s
-  3100K .......... .......... .......... .......... .......... 38%  286M 0s
-  3150K .......... .......... .......... .......... .......... 39%  283M 0s
-  3200K .......... .......... .......... .......... .......... 40% 33.1M 0s
-  3250K .......... .......... .......... .......... .......... 40% 63.6M 0s
-  3300K .......... .......... .......... .......... .......... 41% 59.6M 0s
-  3350K .......... .......... .......... .......... .......... 41% 68.5M 0s
-  3400K .......... .......... .......... .......... .......... 42% 76.8M 0s
-  3450K .......... .......... .......... .......... .......... 43% 67.1M 0s
-  3500K .......... .......... .......... .......... .......... 43% 46.1M 0s
-  3550K .......... .......... .......... .......... .......... 44% 68.7M 0s
-  3600K .......... .......... .......... .......... .......... 44% 74.1M 0s
-  3650K .......... .......... .......... .......... .......... 45% 66.8M 0s
-  3700K .......... .......... .......... .......... .......... 46% 82.1M 0s
-  3750K .......... .......... .......... .......... .......... 46% 70.3M 0s
-  3800K .......... .......... .......... .......... .......... 47% 81.8M 0s
-  3850K .......... .......... .......... .......... .......... 48% 89.5M 0s
-  3900K .......... .......... .......... .......... .......... 48% 41.3M 0s
-  3950K .......... .......... .......... .......... .......... 49% 86.1M 0s
-  4000K .......... .......... .......... .......... .......... 49%  122M 0s
-  4050K .......... .......... .......... .......... .......... 50% 46.8M 0s
-  4100K .......... .......... .......... .......... .......... 51%  257M 0s
-  4150K .......... .......... .......... .......... .......... 51% 47.4M 0s
-  4200K .......... .......... .......... .......... .......... 52% 73.1M 0s
-  4250K .......... .......... .......... .......... .......... 52%  121M 0s
-  4300K .......... .......... .......... .......... .......... 53% 50.9M 0s
-  4350K .......... .......... .......... .......... .......... 54% 61.8M 0s
-  4400K .......... .......... .......... .......... .......... 54% 79.5M 0s
-  4450K .......... .......... .......... .......... .......... 55% 58.0M 0s
-  4500K .......... .......... .......... .......... .......... 56% 78.1M 0s
-  4550K .......... .......... .......... .......... .......... 56% 84.5M 0s
-  4600K .......... .......... .......... .......... .......... 57% 53.3M 0s
-  4650K .......... .......... .......... .......... .......... 57%  109M 0s
-  4700K .......... .......... .......... .......... .......... 58% 53.1M 0s
-  4750K .......... .......... .......... .......... .......... 59% 77.7M 0s
-  4800K .......... .......... .......... .......... .......... 59% 79.2M 0s
-  4850K .......... .......... .......... .......... .......... 60%  203M 0s
-  4900K .......... .......... .......... .......... .......... 60%  248M 0s
-  4950K .......... .......... .......... .......... .......... 61%  253M 0s
-  5000K .......... .......... .......... .......... .......... 62% 57.0M 0s
-  5050K .......... .......... .......... .......... .......... 62% 80.6M 0s
-  5100K .......... .......... .......... .......... .......... 63% 76.1M 0s
-  5150K .......... .......... .......... .......... .......... 64% 83.1M 0s
-  5200K .......... .......... .......... .......... .......... 64% 76.9M 0s
-  5250K .......... .......... .......... .......... .......... 65% 76.6M 0s
-  5300K .......... .......... .......... .......... .......... 65% 70.8M 0s
-  5350K .......... .......... .......... .......... .......... 66% 73.1M 0s
-  5400K .......... .......... .......... .......... .......... 67%  116M 0s
-  5450K .......... .......... .......... .......... .......... 67% 98.1M 0s
-  5500K .......... .......... .......... .......... .......... 68% 70.0M 0s
-  5550K .......... .......... .......... .......... .......... 68% 76.0M 0s
-  5600K .......... .......... .......... .......... .......... 69% 73.1M 0s
-  5650K .......... .......... .......... .......... .......... 70%  116M 0s
-  5700K .......... .......... .......... .......... .......... 70% 47.5M 0s
-  5750K .......... .......... .......... .......... .......... 71% 80.0M 0s
-  5800K .......... .......... .......... .......... .......... 72%  139M 0s
-  5850K .......... .......... .......... .......... .......... 72% 52.0M 0s
-  5900K .......... .......... .......... .......... .......... 73% 72.1M 0s
-  5950K .......... .......... .......... .......... .......... 73%  144M 0s
-  6000K .......... .......... .......... .......... .......... 74% 55.2M 0s
-  6050K .......... .......... .......... .......... .......... 75% 79.5M 0s
-  6100K .......... .......... .......... .......... .......... 75%  146M 0s
-  6150K .......... .......... .......... .......... .......... 76% 53.1M 0s
-  6200K .......... .......... .......... .......... .......... 76%  192M 0s
-  6250K .......... .......... .......... .......... .......... 77% 43.5M 0s
-  6300K .......... .......... .......... .......... .......... 78%  159M 0s
-  6350K .......... .......... .......... .......... .......... 78% 57.8M 0s
-  6400K .......... .......... .......... .......... .......... 79%  189M 0s
-  6450K .......... .......... .......... .......... .......... 80% 57.8M 0s
-  6500K .......... .......... .......... .......... .......... 80%  184M 0s
-  6550K .......... .......... .......... .......... .......... 81%  186M 0s
-  6600K .......... .......... .......... .......... .......... 81%  150M 0s
-  6650K .......... .......... .......... .......... .......... 82%  102M 0s
-  6700K .......... .......... .......... .......... .......... 83%  298M 0s
-  6750K .......... .......... .......... .......... .......... 83%  309M 0s
-  6800K .......... .......... .......... .......... .......... 84%  307M 0s
-  6850K .......... .......... .......... .......... .......... 84%  260M 0s
-  6900K .......... .......... .......... .......... .......... 85%  306M 0s
-  6950K .......... .......... .......... .......... .......... 86%  306M 0s
-  7000K .......... .......... .......... .......... .......... 86%  314M 0s
-  7050K .......... .......... .......... .......... .......... 87%  277M 0s
-  7100K .......... .......... .......... .......... .......... 88%  316M 0s
-  7150K .......... .......... .......... .......... .......... 88%  307M 0s
-  7200K .......... .......... .......... .......... .......... 89%  315M 0s
-  7250K .......... .......... .......... .......... .......... 89%  263M 0s
-  7300K .......... .......... .......... .......... .......... 90%  314M 0s
-  7350K .......... .......... .......... .......... .......... 91%  316M 0s
-  7400K .......... .......... .......... .......... .......... 91%  295M 0s
-  7450K .......... .......... .......... .......... .......... 92%  259M 0s
-  7500K .......... .......... .......... .......... .......... 92%  308M 0s
-  7550K .......... .......... .......... .......... .......... 93%  265M 0s
-  7600K .......... .......... .......... .......... .......... 94%  290M 0s
-  7650K .......... .......... .......... .......... .......... 94%  245M 0s
-  7700K .......... .......... .......... .......... .......... 95%  298M 0s
-  7750K .......... .......... .......... .......... .......... 96%  299M 0s
-  7800K .......... .......... .......... .......... .......... 96%  219M 0s
-  7850K .......... .......... .......... .......... .......... 97%  104M 0s
-  7900K .......... .......... .......... .......... .......... 97%  286M 0s
-  7950K .......... .......... .......... .......... .......... 98%  295M 0s
-  8000K .......... .......... .......... .......... .......... 99%  293M 0s
-  8050K .......... .......... .......... .......... .......... 99%  234M 0s
-  8100K .......... ........                                   100%  352M=0.1s
+     0K .......... .......... .......... .......... ..........  0% 9.83M 1s
+    50K .......... .......... .......... .......... ..........  1% 8.87M 1s
+   100K .......... .......... .......... .......... ..........  1% 67.9M 1s
+   150K .......... .......... .......... .......... ..........  2% 11.2M 1s
+   200K .......... .......... .......... .......... ..........  3% 45.0M 1s
+   250K .......... .......... .......... .......... ..........  3% 98.7M 0s
+   300K .......... .......... .......... .......... ..........  4% 61.2M 0s
+   350K .......... .......... .......... .......... ..........  4% 14.1M 0s
+   400K .......... .......... .......... .......... ..........  5%  286M 0s
+   450K .......... .......... .......... .......... ..........  6%  142M 0s
+   500K .......... .......... .......... .......... ..........  6%  307M 0s
+   550K .......... .......... .......... .......... ..........  7% 81.7M 0s
+   600K .......... .......... .......... .......... ..........  8% 79.6M 0s
+   650K .......... .......... .......... .......... ..........  8%  127M 0s
+   700K .......... .......... .......... .......... ..........  9%  141M 0s
+   750K .......... .......... .......... .......... ..........  9% 19.2M 0s
+   800K .......... .......... .......... .......... .......... 10% 60.6M 0s
+   850K .......... .......... .......... .......... .......... 11% 72.1M 0s
+   900K .......... .......... .......... .......... .......... 11% 40.4M 0s
+   950K .......... .......... .......... .......... .......... 12% 75.1M 0s
+  1000K .......... .......... .......... .......... .......... 12% 68.3M 0s
+  1050K .......... .......... .......... .......... .......... 13% 96.6M 0s
+  1100K .......... .......... .......... .......... .......... 14% 67.8M 0s
+  1150K .......... .......... .......... .......... .......... 14% 75.1M 0s
+  1200K .......... .......... .......... .......... .......... 15% 51.5M 0s
+  1250K .......... .......... .......... .......... .......... 16% 85.7M 0s
+  1300K .......... .......... .......... .......... .......... 16% 58.0M 0s
+  1350K .......... .......... .......... .......... .......... 17% 82.2M 0s
+  1400K .......... .......... .......... .......... .......... 17%  334M 0s
+  1450K .......... .......... .......... .......... .......... 18%  149M 0s
+  1500K .......... .......... .......... .......... .......... 19%  108M 0s
+  1550K .......... .......... .......... .......... .......... 19% 88.7M 0s
+  1600K .......... .......... .......... .......... .......... 20%  142M 0s
+  1650K .......... .......... .......... .......... .......... 20%  153M 0s
+  1700K .......... .......... .......... .......... .......... 21% 93.4M 0s
+  1750K .......... .......... .......... .......... .......... 22% 91.5M 0s
+  1800K .......... .......... .......... .......... .......... 22%  130M 0s
+  1850K .......... .......... .......... .......... .......... 23% 86.9M 0s
+  1900K .......... .......... .......... .......... .......... 24% 94.9M 0s
+  1950K .......... .......... .......... .......... .......... 24%  131M 0s
+  2000K .......... .......... .......... .......... .......... 25% 95.1M 0s
+  2050K .......... .......... .......... .......... .......... 25%  147M 0s
+  2100K .......... .......... .......... .......... .......... 26% 93.5M 0s
+  2150K .......... .......... .......... .......... .......... 27% 89.3M 0s
+  2200K .......... .......... .......... .......... .......... 27%  128M 0s
+  2250K .......... .......... .......... .......... .......... 28%  335M 0s
+  2300K .......... .......... .......... .......... .......... 28% 89.7M 0s
+  2350K .......... .......... .......... .......... .......... 29% 80.0M 0s
+  2400K .......... .......... .......... .......... .......... 30% 87.4M 0s
+  2450K .......... .......... .......... .......... .......... 30% 85.7M 0s
+  2500K .......... .......... .......... .......... .......... 31% 82.1M 0s
+  2550K .......... .......... .......... .......... .......... 32% 91.7M 0s
+  2600K .......... .......... .......... .......... .......... 32%  102M 0s
+  2650K .......... .......... .......... .......... .......... 33% 79.1M 0s
+  2700K .......... .......... .......... .......... .......... 33%  147M 0s
+  2750K .......... .......... .......... .......... .......... 34%  116M 0s
+  2800K .......... .......... .......... .......... .......... 35%  109M 0s
+  2850K .......... .......... .......... .......... .......... 35% 88.9M 0s
+  2900K .......... .......... .......... .......... .......... 36% 89.7M 0s
+  2950K .......... .......... .......... .......... .......... 36%  104M 0s
+  3000K .......... .......... .......... .......... .......... 37%  114M 0s
+  3050K .......... .......... .......... .......... .......... 38% 88.0M 0s
+  3100K .......... .......... .......... .......... .......... 38%  102M 0s
+  3150K .......... .......... .......... .......... .......... 39%  102M 0s
+  3200K .......... .......... .......... .......... .......... 40%  113M 0s
+  3250K .......... .......... .......... .......... .......... 40% 96.1M 0s
+  3300K .......... .......... .......... .......... .......... 41% 91.4M 0s
+  3350K .......... .......... .......... .......... .......... 41%  111M 0s
+  3400K .......... .......... .......... .......... .......... 42% 87.3M 0s
+  3450K .......... .......... .......... .......... .......... 43%  137M 0s
+  3500K .......... .......... .......... .......... .......... 43%  111M 0s
+  3550K .......... .......... .......... .......... .......... 44% 99.7M 0s
+  3600K .......... .......... .......... .......... .......... 44%  103M 0s
+  3650K .......... .......... .......... .......... .......... 45%  101M 0s
+  3700K .......... .......... .......... .......... .......... 46%  131M 0s
+  3750K .......... .......... .......... .......... .......... 46% 87.9M 0s
+  3800K .......... .......... .......... .......... .......... 47%  135M 0s
+  3850K .......... .......... .......... .......... .......... 48%  109M 0s
+  3900K .......... .......... .......... .......... .......... 48%  138M 0s
+  3950K .......... .......... .......... .......... .......... 49%  107M 0s
+  4000K .......... .......... .......... .......... .......... 49% 99.1M 0s
+  4050K .......... .......... .......... .......... .......... 50%  102M 0s
+  4100K .......... .......... .......... .......... .......... 51%  107M 0s
+  4150K .......... .......... .......... .......... .......... 51%  100M 0s
+  4200K .......... .......... .......... .......... .......... 52% 89.2M 0s
+  4250K .......... .......... .......... .......... .......... 52%  116M 0s
+  4300K .......... .......... .......... .......... .......... 53%  118M 0s
+  4350K .......... .......... .......... .......... .......... 54%  108M 0s
+  4400K .......... .......... .......... .......... .......... 54% 80.7M 0s
+  4450K .......... .......... .......... .......... .......... 55%  130M 0s
+  4500K .......... .......... .......... .......... .......... 56%  126M 0s
+  4550K .......... .......... .......... .......... .......... 56%  120M 0s
+  4600K .......... .......... .......... .......... .......... 57% 77.1M 0s
+  4650K .......... .......... .......... .......... .......... 57%  114M 0s
+  4700K .......... .......... .......... .......... .......... 58% 99.1M 0s
+  4750K .......... .......... .......... .......... .......... 59%  126M 0s
+  4800K .......... .......... .......... .......... .......... 59%  103M 0s
+  4850K .......... .......... .......... .......... .......... 60%  107M 0s
+  4900K .......... .......... .......... .......... .......... 60%  124M 0s
+  4950K .......... .......... .......... .......... .......... 61%  135M 0s
+  5000K .......... .......... .......... .......... .......... 62%  116M 0s
+  5050K .......... .......... .......... .......... .......... 62%  123M 0s
+  5100K .......... .......... .......... .......... .......... 63%  106M 0s
+  5150K .......... .......... .......... .......... .......... 64%  104M 0s
+  5200K .......... .......... .......... .......... .......... 64%  128M 0s
+  5250K .......... .......... .......... .......... .......... 65%  112M 0s
+  5300K .......... .......... .......... .......... .......... 65%  134M 0s
+  5350K .......... .......... .......... .......... .......... 66%  141M 0s
+  5400K .......... .......... .......... .......... .......... 67%  111M 0s
+  5450K .......... .......... .......... .......... .......... 67%  123M 0s
+  5500K .......... .......... .......... .......... .......... 68%  140M 0s
+  5550K .......... .......... .......... .......... .......... 68%  131M 0s
+  5600K .......... .......... .......... .......... .......... 69%  136M 0s
+  5650K .......... .......... .......... .......... .......... 70%  141M 0s
+  5700K .......... .......... .......... .......... .......... 70%  108M 0s
+  5750K .......... .......... .......... .......... .......... 71%  136M 0s
+  5800K .......... .......... .......... .......... .......... 72%  130M 0s
+  5850K .......... .......... .......... .......... .......... 72%  134M 0s
+  5900K .......... .......... .......... .......... .......... 73%  122M 0s
+  5950K .......... .......... .......... .......... .......... 73%  132M 0s
+  6000K .......... .......... .......... .......... .......... 74%  133M 0s
+  6050K .......... .......... .......... .......... .......... 75%  121M 0s
+  6100K .......... .......... .......... .......... .......... 75%  139M 0s
+  6150K .......... .......... .......... .......... .......... 76%  133M 0s
+  6200K .......... .......... .......... .......... .......... 76%  119M 0s
+  6250K .......... .......... .......... .......... .......... 77%  116M 0s
+  6300K .......... .......... .......... .......... .......... 78%  140M 0s
+  6350K .......... .......... .......... .......... .......... 78%  105M 0s
+  6400K .......... .......... .......... .......... .......... 79%  128M 0s
+  6450K .......... .......... .......... .......... .......... 80%  142M 0s
+  6500K .......... .......... .......... .......... .......... 80%  141M 0s
+  6550K .......... .......... .......... .......... .......... 81%  115M 0s
+  6600K .......... .......... .......... .......... .......... 81%  132M 0s
+  6650K .......... .......... .......... .......... .......... 82%  121M 0s
+  6700K .......... .......... .......... .......... .......... 83%  129M 0s
+  6750K .......... .......... .......... .......... .......... 83%  129M 0s
+  6800K .......... .......... .......... .......... .......... 84%  146M 0s
+  6850K .......... .......... .......... .......... .......... 84%  121M 0s
+  6900K .......... .......... .......... .......... .......... 85%  136M 0s
+  6950K .......... .......... .......... .......... .......... 86%  132M 0s
+  7000K .......... .......... .......... .......... .......... 86%  121M 0s
+  7050K .......... .......... .......... .......... .......... 87%  128M 0s
+  7100K .......... .......... .......... .......... .......... 88%  127M 0s
+  7150K .......... .......... .......... .......... .......... 88%  138M 0s
+  7200K .......... .......... .......... .......... .......... 89%  120M 0s
+  7250K .......... .......... .......... .......... .......... 89%  128M 0s
+  7300K .......... .......... .......... .......... .......... 90%  129M 0s
+  7350K .......... .......... .......... .......... .......... 91%  137M 0s
+  7400K .......... .......... .......... .......... .......... 91%  109M 0s
+  7450K .......... .......... .......... .......... .......... 92%  137M 0s
+  7500K .......... .......... .......... .......... .......... 92%  130M 0s
+  7550K .......... .......... .......... .......... .......... 93%  121M 0s
+  7600K .......... .......... .......... .......... .......... 94%  136M 0s
+  7650K .......... .......... .......... .......... .......... 94%  124M 0s
+  7700K .......... .......... .......... .......... .......... 95%  124M 0s
+  7750K .......... .......... .......... .......... .......... 96%  135M 0s
+  7800K .......... .......... .......... .......... .......... 96%  144M 0s
+  7850K .......... .......... .......... .......... .......... 97%  125M 0s
+  7900K .......... .......... .......... .......... .......... 97%  126M 0s
+  7950K .......... .......... .......... .......... .......... 98%  136M 0s
+  8000K .......... .......... .......... .......... .......... 99%  142M 0s
+  8050K .......... .......... .......... .......... .......... 99%  114M 0s
+  8100K .......... ........                                   100% 88.3M=0.09s
 
-2021-11-13 23:02:15 (53.8 MB/s) - ‘ae_6h_prelu_bce_adam_25e_32b_s2.pt’ saved [8313616/8313616]
+2022-01-25 22:11:01 (85.6 MB/s) - ‘ae_6h_prelu_bce_adam_25e_32b_s2.pt’ saved [8313616/8313616]
 </pre></div>
 </div>
 </div>
@@ -2824,56 +2989,16 @@ Saving to: ‘ae_6h_prelu_bce_adam_25e_32b_s2.pt’
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 	 Loss train 	 Loss test
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/3	 0.1743		 0.1751
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/3	 0.1748		 0.1759
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2/3	 0.1732		 0.1741
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2/3	 0.1730		 0.1742
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2406</span><span class="o">/</span><span class="mf">3330903004.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">runSGD</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">input_train_noisy</span><span class="p">,</span> <span class="n">input_test_noisy</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>        <span class="n">out_train</span><span class="o">=</span><span class="n">input_train</span><span class="p">,</span> <span class="n">out_test</span><span class="o">=</span><span class="n">input_test</span><span class="p">,</span>
-<span class="ne">----&gt; </span><span class="mi">8</span>        <span class="n">n_epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
-
-<span class="nn">/tmp/ipykernel_2406/56036000.py</span> in <span class="ni">runSGD</span><span class="nt">(net, input_train, input_test, out_train, out_test, optimizer, criterion, n_epochs, batch_size, verbose)</span>
-<span class="g g-Whitespace">    </span><span class="mi">580</span>       <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">581</span>       <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">582</span>       <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">583</span> 
-<span class="g g-Whitespace">    </span><span class="mi">584</span>       <span class="c1"># Keep track of loss at each epoch</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/torch/optim/optimizer.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">86</span>                 <span class="n">profile_name</span> <span class="o">=</span> <span class="s2">"Optimizer.step#</span><span class="si">{}</span><span class="s2">.step"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">87</span>                 <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">profiler</span><span class="o">.</span><span class="n">record_function</span><span class="p">(</span><span class="n">profile_name</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">88</span>                     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">89</span>             <span class="k">return</span> <span class="n">wrapper</span>
-<span class="g g-Whitespace">     </span><span class="mi">90</span> 
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/torch/autograd/grad_mode.py</span> in <span class="ni">decorate_context</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span>         <span class="k">def</span> <span class="nf">decorate_context</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">():</span>
-<span class="ne">---&gt; </span><span class="mi">28</span>                 <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span>         <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">decorate_context</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span> 
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/torch/optim/adam.py</span> in <span class="ni">step</span><span class="nt">(self, closure)</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span>                    <span class="n">lr</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s1">'lr'</span><span class="p">],</span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span>                    <span class="n">weight_decay</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s1">'weight_decay'</span><span class="p">],</span>
-<span class="ne">--&gt; </span><span class="mi">144</span>                    <span class="n">eps</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s1">'eps'</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span>         <span class="k">return</span> <span class="n">loss</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/torch/optim/_functional.py</span> in <span class="ni">adam</span><span class="nt">(params, grads, exp_avgs, exp_avg_sqs, max_exp_avg_sqs, state_steps, amsgrad, beta1, beta2, lr, weight_decay, eps)</span>
-<span class="g g-Whitespace">     </span><span class="mi">96</span>         <span class="n">step_size</span> <span class="o">=</span> <span class="n">lr</span> <span class="o">/</span> <span class="n">bias_correction1</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span> 
-<span class="ne">---&gt; </span><span class="mi">98</span>         <span class="n">param</span><span class="o">.</span><span class="n">addcdiv_</span><span class="p">(</span><span class="n">exp_avg</span><span class="p">,</span> <span class="n">denom</span><span class="p">,</span> <span class="n">value</span><span class="o">=-</span><span class="n">step_size</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">99</span> 
-<span class="g g-Whitespace">    </span><span class="mi">100</span> 
-
-<span class="ne">KeyboardInterrupt</span>: 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3/3	 0.1718		 0.1730
 </pre></div>
 </div>
+<img alt="../../../_images/Bonus_Tutorial3_27_4.png" src="../../../_images/Bonus_Tutorial3_27_4.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -2892,6 +3017,12 @@ Saving to: ‘ae_6h_prelu_bce_adam_25e_32b_s2.pt’
                <span class="n">title_b</span><span class="o">=</span><span class="s1">'After fine-tuning'</span><span class="p">,</span> <span class="n">s2</span><span class="o">=</span><span class="n">s2</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/Bonus_Tutorial3_28_0.png" src="../../../_images/Bonus_Tutorial3_28_0.png"/>
+<img alt="../../../_images/Bonus_Tutorial3_28_1.png" src="../../../_images/Bonus_Tutorial3_28_1.png"/>
+<img alt="../../../_images/Bonus_Tutorial3_28_2.png" src="../../../_images/Bonus_Tutorial3_28_2.png"/>
+<img alt="../../../_images/Bonus_Tutorial3_28_3.png" src="../../../_images/Bonus_Tutorial3_28_3.png"/>
 </div>
 </div>
 </div>
@@ -2913,6 +3044,9 @@ Saving to: ‘ae_6h_prelu_bce_adam_25e_32b_s2.pt’
                <span class="n">title_b</span><span class="o">=</span><span class="s1">'After fine-tuning'</span><span class="p">,</span> <span class="n">s2</span><span class="o">=</span><span class="n">s2</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/Bonus_Tutorial3_30_0.png" src="../../../_images/Bonus_Tutorial3_30_0.png"/>
 </div>
 </div>
 </div>
@@ -2972,6 +3106,12 @@ Saving to: ‘ae_6h_prelu_bce_adam_25e_32b_s2.pt’
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/Bonus_Tutorial3_35_0.png" src="../../../_images/Bonus_Tutorial3_35_0.png"/>
+<img alt="../../../_images/Bonus_Tutorial3_35_1.png" src="../../../_images/Bonus_Tutorial3_35_1.png"/>
+<img alt="../../../_images/Bonus_Tutorial3_35_2.png" src="../../../_images/Bonus_Tutorial3_35_2.png"/>
+<img alt="../../../_images/Bonus_Tutorial3_35_3.png" src="../../../_images/Bonus_Tutorial3_35_3.png"/>
+</div>
 </div>
 </div>
 <div class="section" id="after-fine-tuning">
@@ -2988,6 +3128,21 @@ Saving to: ‘ae_6h_prelu_bce_adam_25e_32b_s2.pt’
        <span class="n">n_epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 	 Loss train 	 Loss test
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/3	 0.1725		 0.1735
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2/3	 0.1710		 0.1721
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3/3	 0.1711		 0.1724
+</pre></div>
+</div>
+<img alt="../../../_images/Bonus_Tutorial3_37_4.png" src="../../../_images/Bonus_Tutorial3_37_4.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -3007,6 +3162,12 @@ Saving to: ‘ae_6h_prelu_bce_adam_25e_32b_s2.pt’
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/Bonus_Tutorial3_38_0.png" src="../../../_images/Bonus_Tutorial3_38_0.png"/>
+<img alt="../../../_images/Bonus_Tutorial3_38_1.png" src="../../../_images/Bonus_Tutorial3_38_1.png"/>
+<img alt="../../../_images/Bonus_Tutorial3_38_2.png" src="../../../_images/Bonus_Tutorial3_38_2.png"/>
+<img alt="../../../_images/Bonus_Tutorial3_38_3.png" src="../../../_images/Bonus_Tutorial3_38_3.png"/>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3018,6 +3179,9 @@ Saving to: ‘ae_6h_prelu_bce_adam_25e_32b_s2.pt’
                <span class="n">title_b</span><span class="o">=</span><span class="s1">'After fine-tuning'</span><span class="p">,</span> <span class="n">s2</span><span class="o">=</span><span class="n">s2</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/Bonus_Tutorial3_39_0.png" src="../../../_images/Bonus_Tutorial3_39_0.png"/>
 </div>
 </div>
 </div>
@@ -3077,6 +3241,12 @@ Saving to: ‘ae_6h_prelu_bce_adam_25e_32b_s2.pt’
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/Bonus_Tutorial3_44_0.png" src="../../../_images/Bonus_Tutorial3_44_0.png"/>
+<img alt="../../../_images/Bonus_Tutorial3_44_1.png" src="../../../_images/Bonus_Tutorial3_44_1.png"/>
+<img alt="../../../_images/Bonus_Tutorial3_44_2.png" src="../../../_images/Bonus_Tutorial3_44_2.png"/>
+<img alt="../../../_images/Bonus_Tutorial3_44_3.png" src="../../../_images/Bonus_Tutorial3_44_3.png"/>
+</div>
 </div>
 </div>
 <div class="section" id="id2">
@@ -3095,6 +3265,64 @@ Saving to: ‘ae_6h_prelu_bce_adam_25e_32b_s2.pt’
 <span class="n">runSGD</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">input_train_rotation</span><span class="p">,</span> <span class="n">input_test_rotation</span><span class="p">,</span>
        <span class="n">out_train</span><span class="o">=</span><span class="n">input_train</span><span class="p">,</span> <span class="n">out_test</span><span class="o">=</span><span class="n">input_test</span><span class="p">,</span>
        <span class="n">n_epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 	 Loss train 	 Loss test
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/5	 0.2202		 0.2200
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2/5	 0.2131		 0.2133
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3/5	 0.2095		 0.2100
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2393</span><span class="o">/</span><span class="mf">2310652347.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">runSGD</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">input_train_rotation</span><span class="p">,</span> <span class="n">input_test_rotation</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>        <span class="n">out_train</span><span class="o">=</span><span class="n">input_train</span><span class="p">,</span> <span class="n">out_test</span><span class="o">=</span><span class="n">input_test</span><span class="p">,</span>
+<span class="ne">----&gt; </span><span class="mi">8</span>        <span class="n">n_epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+
+<span class="nn">/tmp/ipykernel_2393/56036000.py</span> in <span class="ni">runSGD</span><span class="nt">(net, input_train, input_test, out_train, out_test, optimizer, criterion, n_epochs, batch_size, verbose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">580</span>       <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">581</span>       <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">582</span>       <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">583</span> 
+<span class="g g-Whitespace">    </span><span class="mi">584</span>       <span class="c1"># Keep track of loss at each epoch</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/torch/optim/optimizer.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span>                 <span class="n">profile_name</span> <span class="o">=</span> <span class="s2">"Optimizer.step#</span><span class="si">{}</span><span class="s2">.step"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">87</span>                 <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">profiler</span><span class="o">.</span><span class="n">record_function</span><span class="p">(</span><span class="n">profile_name</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">88</span>                     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span>             <span class="k">return</span> <span class="n">wrapper</span>
+<span class="g g-Whitespace">     </span><span class="mi">90</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/torch/autograd/grad_mode.py</span> in <span class="ni">decorate_context</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span>         <span class="k">def</span> <span class="nf">decorate_context</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">():</span>
+<span class="ne">---&gt; </span><span class="mi">28</span>                 <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span>         <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">decorate_context</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/torch/optim/adam.py</span> in <span class="ni">step</span><span class="nt">(self, closure)</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span>                    <span class="n">lr</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s1">'lr'</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span>                    <span class="n">weight_decay</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s1">'weight_decay'</span><span class="p">],</span>
+<span class="ne">--&gt; </span><span class="mi">144</span>                    <span class="n">eps</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s1">'eps'</span><span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span>         <span class="k">return</span> <span class="n">loss</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/torch/optim/_functional.py</span> in <span class="ni">adam</span><span class="nt">(params, grads, exp_avgs, exp_avg_sqs, max_exp_avg_sqs, state_steps, amsgrad, beta1, beta2, lr, weight_decay, eps)</span>
+<span class="g g-Whitespace">     </span><span class="mi">84</span> 
+<span class="g g-Whitespace">     </span><span class="mi">85</span>         <span class="c1"># Decay the first and second moment running average coefficient</span>
+<span class="ne">---&gt; </span><span class="mi">86</span>         <span class="n">exp_avg</span><span class="o">.</span><span class="n">mul_</span><span class="p">(</span><span class="n">beta1</span><span class="p">)</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="n">grad</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="n">beta1</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">87</span>         <span class="n">exp_avg_sq</span><span class="o">.</span><span class="n">mul_</span><span class="p">(</span><span class="n">beta2</span><span class="p">)</span><span class="o">.</span><span class="n">addcmul_</span><span class="p">(</span><span class="n">grad</span><span class="p">,</span> <span class="n">grad</span><span class="o">.</span><span class="n">conj</span><span class="p">(),</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="n">beta2</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">88</span>         <span class="k">if</span> <span class="n">amsgrad</span><span class="p">:</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -3434,14 +3662,12 @@ Saving to: ‘ae_6h_prelu_bce_adam_25e_32b_s2.pt’
 </div>
 </div>
 <footer class="footer">
-<div class="container">
 <p>
-        
-          By Neuromatch<br/>
-        
-            © Copyright 2021.<br/>
+    
+      By Neuromatch<br/>
+    
+        © Copyright 2021.<br/>
 </p>
-</div>
 </footer>
 </main>
 </div>

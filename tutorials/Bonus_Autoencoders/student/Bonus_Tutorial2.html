@@ -12,7 +12,7 @@
 <link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
 <link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
 <link href="../../../_static/pygments.css" rel="stylesheet" type="text/css">
-<link href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" rel="stylesheet" type="text/css">
+<link href="../../../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" rel="stylesheet" type="text/css">
 <link href="../../../_static/togglebutton.css" rel="stylesheet" type="text/css">
 <link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css">
 <link href="../../../_static/mystnb.css" rel="stylesheet" type="text/css">
@@ -28,7 +28,7 @@
 <script src="../../../_static/clipboard.min.js"></script>
 <script src="../../../_static/copybutton.js"></script>
 <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-<script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+<script src="../../../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
 <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -53,7 +53,12 @@
 <div class="container-fluid" id="banner"></div>
 <div class="container-xl">
 <div class="row">
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+<!-- Checkboxes to toggle the left sidebar -->
+<input aria-label="Toggle navigation sidebar" class="sidebar-toggle" id="__navigation" name="__navigation" type="checkbox"/>
+<label class="overlay" for="__navigation">
+<div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation" id="site-navigation">
 <div class="navbar-brand-box">
 <a class="navbar-brand text-wrap" href="../../../index.html">
 <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -106,7 +111,7 @@
 <a class="reference internal" href="../../TechnicalHelp/tech_intro.html">
    Technical Help
   </a>
-<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox">
 <label for="toctree-checkbox-2">
 <i class="fas fa-chevron-down">
 </i>
@@ -140,7 +145,7 @@
     </a>
 </li>
 </ul>
-</li>
+</input></li>
 </ul>
 <p class="caption">
 <span class="caption-text">
@@ -309,11 +314,6 @@
 <li class="toctree-l2">
 <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
      Tutorial 3: Numerical Methods
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../../W0D4_Calculus/W0D4_Outro.html">
-     Outro
     </a>
 </li>
 </ul>
@@ -1263,16 +1263,19 @@
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
 </div>
 </div>
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
 <div class="topbar container-xl fixed-top">
 <div class="topbar-contents row">
 <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
 <div class="col pl-md-4 topbar-main">
-<button aria-controls="site-navigation" aria-expanded="true" aria-label="Toggle navigation" class="navbar-toggler ml-0" data-placement="left" data-target=".site-navigation" data-toggle="tooltip" id="navbar-toggler" title="Toggle navigation" type="button">
+<div class="topbar-left">
+<label class="nav-toggle-button" for="__navigation">
+<div class="visually-hidden">Toggle navigation</div>
 <i class="fas fa-bars"></i>
-<i class="fas fa-arrow-left"></i>
-<i class="fas fa-arrow-up"></i>
-</button>
+</label>
+</div>
 <div class="dropdown-buttons-trigger">
 <button aria-label="Download this page" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-download"></i></button>
 <div class="dropdown-buttons">
@@ -1280,7 +1283,7 @@
 <!-- Download raw file -->
 <a class="dropdown-buttons" href="../../../_sources/tutorials/Bonus_Autoencoders/student/Bonus_Tutorial2.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.ipynb</button></a>
 <!-- Download PDF via print -->
-<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
+<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="printPdf(this)" title="Print to PDF" type="button">.pdf</button>
 </div>
 </div>
 <!-- Source interaction buttons -->
@@ -1296,7 +1299,7 @@
 <!-- Launch buttons -->
 </div>
 <!-- Table of contents -->
-<div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="d-none d-md-block col-md-2 bd-toc show noprint">
 <div class="tocsection onthispage pt-5 pb-3">
 <i class="fas fa-list"></i> Contents
             </div>
@@ -1436,6 +1439,149 @@
 </div>
 <div class="row" id="main-content">
 <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+<!-- Table of contents that is only displayed when printing the page -->
+<div class="onlyprint" id="jb-print-docs-body">
+<h1>Tutorial 2: Autoencoder extensions</h1>
+<!-- Table of contents -->
+<div id="print-main-content">
+<div id="jb-print-toc">
+<div>
+<h2> Contents </h2>
+</div>
+<nav aria-label="Page">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#">
+   Tutorial 2: Autoencoder extensions
+  </a>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#tutorial-objectives">
+   Tutorial Objectives
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#architecture">
+     Architecture
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-1-extensions">
+     Video 1: Extensions
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#setup">
+   Setup
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#figure-settings">
+     Figure settings
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#helper-functions">
+     Helper functions
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-1-download-and-prepare-mnist-dataset">
+   Section 1: Download  and prepare MNIST dataset
+  </a>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-2-deeper-autoencoder-2d">
+   Section 2: Deeper autoencoder (2D)
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-1-build-deeper-autoencoder-2d">
+     Exercise 1: Build deeper autoencoder (2D)
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#train-the-autoencoder">
+     Train the autoencoder
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-spherical-latent-space">
+   Section 3: Spherical latent space
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-1-build-and-train-autoencoder-3d">
+     Section 3.1: Build and train autoencoder (3D)
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-2-train-the-autoencoder">
+     Section 3.2: Train the autoencoder
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-3-visualize-the-latent-space-in-3d">
+     Section 3.3: Visualize the latent space in 3D
+    </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#exercise-2-build-deep-autoencoder-2d-with-latent-spherical-space">
+       Exercise 2: Build deep autoencoder (2D) with latent spherical space
+      </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-4-train-the-autoencoder">
+     Section 3.4: Train the autoencoder
+    </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#section-3-5-visualize-latent-space-on-surface-of-s-2">
+     Section 3.5: Visualize latent space on surface of
+     <span class="math notranslate nohighlight">
+      \(S_2\)
+     </span>
+</a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#video-2-wrap-up">
+     Video 2: Wrap-up
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bonus">
+   Bonus
+  </a>
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#deep-and-thick-autoencoder">
+     Deep and thick autoencoder
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
 <div>
 <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/Bonus_Autoencoders/Bonus_Tutorial2.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></p>
 <div class="section" id="tutorial-2-autoencoder-extensions">
@@ -1471,7 +1617,7 @@
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "b8bc1f5d976a4c029fbd47b41989da30"}
+{"version_major": 2, "version_minor": 0, "model_id": "9aecbd45cd094906a65fb9c6cca9846a"}
 </script></div>
 </div>
 </div>
@@ -2325,12 +2471,12 @@ shape input_test 	 torch.Size([10000, 784])
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2338</span><span class="o">/</span><span class="mf">285641839.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2334</span><span class="o">/</span><span class="mf">285641839.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> 
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">runSGD</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">input_train</span><span class="p">,</span> <span class="n">input_test</span><span class="p">,</span> <span class="n">n_epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span>
 <span class="ne">----&gt; </span><span class="mi">5</span>        <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
 
-<span class="nn">/tmp/ipykernel_2338/3487241110.py</span> in <span class="ni">runSGD</span><span class="nt">(net, input_train, input_test, criterion, n_epochs, batch_size, verbose)</span>
+<span class="nn">/tmp/ipykernel_2334/3487241110.py</span> in <span class="ni">runSGD</span><span class="nt">(net, input_train, input_test, criterion, n_epochs, batch_size, verbose)</span>
 <span class="g g-Whitespace">    </span><span class="mi">586</span> 
 <span class="g g-Whitespace">    </span><span class="mi">587</span>       <span class="n">output_train</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
 <span class="ne">--&gt; </span><span class="mi">588</span>       <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">output_train</span><span class="p">,</span> <span class="n">batch</span><span class="p">)</span>
@@ -2467,31 +2613,40 @@ shape input_test 	 torch.Size([10000, 784])
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 	 Loss train 	 Loss test
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/10	 0.1859		 0.1856
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1/10	 0.1856		 0.1850
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2/10	 0.1724		 0.1724
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2/10	 0.1755		 0.1752
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3/10	 0.1658		 0.1662
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3/10	 0.1701		 0.1705
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4/10	 0.1621		 0.1628
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4/10	 0.1666		 0.1673
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5/10	 0.1630		 0.1640
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6/10	 0.1610		 0.1625
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7/10	 0.1591		 0.1606
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2338</span><span class="o">/</span><span class="mf">285641839.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2334</span><span class="o">/</span><span class="mf">285641839.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> 
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">runSGD</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">input_train</span><span class="p">,</span> <span class="n">input_test</span><span class="p">,</span> <span class="n">n_epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span>
 <span class="ne">----&gt; </span><span class="mi">5</span>        <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
 
-<span class="nn">/tmp/ipykernel_2338/3487241110.py</span> in <span class="ni">runSGD</span><span class="nt">(net, input_train, input_test, criterion, n_epochs, batch_size, verbose)</span>
-<span class="g g-Whitespace">    </span><span class="mi">597</span>     <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
-<span class="g g-Whitespace">    </span><span class="mi">598</span>       <span class="n">output_train</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">input_train</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">599</span>       <span class="n">loss_train</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">output_train</span><span class="p">,</span> <span class="n">input_train</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">600</span>       <span class="n">loss_epoch</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">'</span><span class="se">\t</span><span class="s1"> </span><span class="si">{</span><span class="n">loss_train</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">'</span>
-<span class="g g-Whitespace">    </span><span class="mi">601</span> 
+<span class="nn">/tmp/ipykernel_2334/3487241110.py</span> in <span class="ni">runSGD</span><span class="nt">(net, input_train, input_test, criterion, n_epochs, batch_size, verbose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span>     <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">batches</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">586</span> 
+<span class="ne">--&gt; </span><span class="mi">587</span>       <span class="n">output_train</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">588</span>       <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">output_train</span><span class="p">,</span> <span class="n">batch</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">589</span>       <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 
 <span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/torch/nn/modules/module.py</span> in <span class="ni">_call_impl</span><span class="nt">(self, *input, **kwargs)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1100</span>         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_pre_hooks</span> <span class="ow">or</span> <span class="n">_global_backward_hooks</span>
@@ -2500,19 +2655,33 @@ shape input_test 	 torch.Size([10000, 784])
 <span class="g g-Whitespace">   </span><span class="mi">1103</span>         <span class="c1"># Do not call functions when jit is used</span>
 <span class="g g-Whitespace">   </span><span class="mi">1104</span>         <span class="n">full_backward_hooks</span><span class="p">,</span> <span class="n">non_full_backward_hooks</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/torch/nn/modules/loss.py</span> in <span class="ni">forward</span><span class="nt">(self, input, target)</span>
-<span class="g g-Whitespace">    </span><span class="mi">601</span> 
-<span class="g g-Whitespace">    </span><span class="mi">602</span>     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">603</span>         <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">binary_cross_entropy</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reduction</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">604</span> 
-<span class="g g-Whitespace">    </span><span class="mi">605</span> 
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/torch/nn/modules/container.py</span> in <span class="ni">forward</span><span class="nt">(self, input)</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span>         <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">141</span>             <span class="nb">input</span> <span class="o">=</span> <span class="n">module</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span>         <span class="k">return</span> <span class="nb">input</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span> 
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/torch/nn/functional.py</span> in <span class="ni">binary_cross_entropy</span><span class="nt">(input, target, weight, size_average, reduce, reduction)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2913</span>         <span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">new_size</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2914</span> 
-<span class="ne">-&gt; </span><span class="mi">2915</span>     <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">_C</span><span class="o">.</span><span class="n">_nn</span><span class="o">.</span><span class="n">binary_cross_entropy</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">reduction_enum</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2916</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2917</span> 
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/torch/nn/modules/module.py</span> in <span class="ni">_call_impl</span><span class="nt">(self, *input, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1100</span>         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_pre_hooks</span> <span class="ow">or</span> <span class="n">_global_backward_hooks</span>
+<span class="g g-Whitespace">   </span><span class="mi">1101</span>                 <span class="ow">or</span> <span class="n">_global_forward_hooks</span> <span class="ow">or</span> <span class="n">_global_forward_pre_hooks</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1102</span>             <span class="k">return</span> <span class="n">forward_call</span><span class="p">(</span><span class="o">*</span><span class="nb">input</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1103</span>         <span class="c1"># Do not call functions when jit is used</span>
+<span class="g g-Whitespace">   </span><span class="mi">1104</span>         <span class="n">full_backward_hooks</span><span class="p">,</span> <span class="n">non_full_backward_hooks</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/torch/nn/modules/linear.py</span> in <span class="ni">forward</span><span class="nt">(self, input)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> 
+<span class="g g-Whitespace">    </span><span class="mi">102</span>     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">103</span>         <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bias</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span> 
+<span class="g g-Whitespace">    </span><span class="mi">105</span>     <span class="k">def</span> <span class="nf">extra_repr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/torch/nn/functional.py</span> in <span class="ni">linear</span><span class="nt">(input, weight, bias)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1846</span>     <span class="k">if</span> <span class="n">has_torch_function_variadic</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">bias</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1847</span>         <span class="k">return</span> <span class="n">handle_torch_function</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">bias</span><span class="p">),</span> <span class="nb">input</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1848</span>     <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">_C</span><span class="o">.</span><span class="n">_nn</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">bias</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1849</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1850</span> 
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -2786,14 +2955,12 @@ r &amp;= \sqrt{s_1^2 + s_2^2 + s_3^2} \\
 </div>
 </div>
 <footer class="footer">
-<div class="container">
 <p>
-        
-          By Neuromatch<br/>
-        
-            © Copyright 2021.<br/>
+    
+      By Neuromatch<br/>
+    
+        © Copyright 2021.<br/>
 </p>
-</div>
 </footer>
 </main>
 </div>
