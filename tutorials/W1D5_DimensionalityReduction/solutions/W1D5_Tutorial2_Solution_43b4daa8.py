@@ -15,7 +15,7 @@ def get_sample_cov_matrix(X):
   X = X - np.mean(X, 0)
 
   # Calculate the covariance matrix (hint: use np.matmul)
-  cov_matrix = cov_matrix = 1 / X.shape[0] * np.matmul(X.T, X)
+  cov_matrix = 1 / X.shape[0] * np.matmul(X.T, X)
 
   return cov_matrix
 

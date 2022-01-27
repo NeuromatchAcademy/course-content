@@ -14,7 +14,7 @@ def make_design_matrix(stim, d=25):
   padded_stim = np.concatenate([np.zeros(d - 1), stim])
 
   # Construct a matrix where each row has the d frames of
-  # the stimulus proceeding and including timepoint t
+  # the stimulus preceding and including timepoint t
   T = len(stim)  # Total number of timepoints (hint: number of stimulus frames)
   X = np.zeros((T, d))
   for t in range(T):
