@@ -1,10 +1,12 @@
-def explore_perplexity(values):
+def explore_perplexity(values, X, labels):
   """
   Plots a 2D representation of the data for visualization with categories
   labelled as different colors using different perplexities.
 
   Args:
     values (list of floats) : list with perplexities to be visualized
+    X (np.ndarray of floats) : matrix with the dataset
+    labels (np.ndarray of int) : array with the labels
 
   Returns:
     Nothing.
@@ -25,4 +27,4 @@ def explore_perplexity(values):
 # Visualize
 values = [50, 5, 2]
 with plt.xkcd():
-  explore_perplexity(values)
+  explore_perplexity(values, X, labels)
