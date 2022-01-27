@@ -1,4 +1,3 @@
-
 # Guide to choosing an FMRI dataset
 
 *July 5-23, 2021*
