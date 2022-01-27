@@ -11,7 +11,7 @@ class LQR(LDS):
     for t in range(self.T - 1):
         P_t_1 = P[self.T - t - 1]
         P[self.T - t-2] = (1 + P_t_1 * D**2 - D * P_t_1 * B / (
-                rho + P_t_1 * B) * B**2 * P_t_1 * D)
+                rho + P_t_1 * B**2) * B * P_t_1 * D)
 
         L[self.T - t-2] = - (1 / (rho + P_t_1 * B**2) * B * P_t_1 * D)
     return L

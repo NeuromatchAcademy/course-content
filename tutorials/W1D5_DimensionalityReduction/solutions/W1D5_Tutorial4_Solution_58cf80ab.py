@@ -1,6 +1,6 @@
 
 # Take only the first 2000 samples with the corresponding labels
-X, labels = X[:2000, :], labels[:2000]
+X, labels = X_all[:2000, :], labels_all[:2000]
 
 # Perform PCA
 scores = pca_model.transform(X)
