@@ -1411,8 +1411,8 @@
       </a>
 </li>
 <li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#exercise-1-implement-the-m-step">
-       EXERCISE 1: Implement the M-step
+<a class="reference internal nav-link" href="#coding-exercise-2-implement-the-m-step">
+       Coding Exercise 2: Implement the M-step
       </a>
 <ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry">
@@ -1429,13 +1429,6 @@
      Run EM
     </a>
 </li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry">
-<a class="reference internal nav-link" href="#id1">
-   —
-  </a>
-<ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry">
 <a class="reference internal nav-link" href="#plotting-the-training-process-and-learnt-model">
      Plotting the training process and learnt model
@@ -1579,8 +1572,8 @@
       </a>
 </li>
 <li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#exercise-1-implement-the-m-step">
-       EXERCISE 1: Implement the M-step
+<a class="reference internal nav-link" href="#coding-exercise-2-implement-the-m-step">
+       Coding Exercise 2: Implement the M-step
       </a>
 <ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry">
@@ -1597,13 +1590,6 @@
      Run EM
     </a>
 </li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry">
-<a class="reference internal nav-link" href="#id1">
-   —
-  </a>
-<ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry">
 <a class="reference internal nav-link" href="#plotting-the-training-process-and-learnt-model">
      Plotting the training process and learnt model
@@ -2161,11 +2147,16 @@ New initial probabilities and parameters of the emission models are also given b
 <p>In this section you will read through the code for the forward-backward algorithm and understand how to implement the computation efficiently in <code class="docutils literal notranslate"><span class="pre">numpy</span></code> by calculating the recursion for all trials at once.</p>
 <hr class="docutils"/>
 <p>Let’s re-write the forward and backward recursions in a more compact form:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-7abae240-e4a7-41d5-b681-40aac4a7b39c">
+<span class="eqno">(325)<a class="headerlink" href="#equation-7abae240-e4a7-41d5-b681-40aac4a7b39c" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+a_i^t &amp;=&amp; \sum_j A_{ji}o_j^t a_j^{t-1}\\
+b^t_i &amp;=&amp; \sum_j A_{ij} o_j^{t+1}b_j^{t+1} \text{, where } o_j^{t}=p(y_{t}|x_{t}=j)
+\end{eqnarray}\]</div>
+<p>Let’s take the backward recursion for example. In practice we will handle all trials together since they are independent of each other. After adding a trial index <span class="math notranslate nohighlight">\(l\)</span> to the recursion equations, the backward recursion becomes:</p>
 <div class="math notranslate nohighlight">
-\[ a_i^t = \sum_j A_{ji}o_j^t a_j^{t-1}  \]</div>
-<div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}b^t_i = \sum_j A_{ij} o_j^{t+1}b_j^{t+1} $$ where $o_j^{t}=p(y_{t}|x_{t}=j)$.\\
-Let's take the backward recursion for example. In practice we will handle all trials together since they are independent of each other. After adding a trial index $l$ to the recursion equations, the backward recursion becomes:\\$$b^t_{li} = \sum_j A_{ij} o_{lj}^{t+1}b_{lj}^{t+1} \end{aligned}\end{align} \]</div>
+\[
+b^t_{li} = \sum_j A_{ij} o_{lj}^{t+1}b_{lj}^{t+1}
+\]</div>
 <p>What we have in hand are:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">A</span></code>: matrix of size <code class="docutils literal notranslate"><span class="pre">(K,K)</span></code></p></li>
@@ -2175,7 +2166,9 @@ Let's take the backward recursion for example. In practice we will handle all tr
 <p>where <code class="docutils literal notranslate"><span class="pre">N</span></code> stands for the number of trials.</p>
 <p>The index size and meaning doesn’t match for these three arrays: the index is <span class="math notranslate nohighlight">\(i\)</span> for <span class="math notranslate nohighlight">\(A\)</span> in the first dimension and is <span class="math notranslate nohighlight">\(l\)</span> for <span class="math notranslate nohighlight">\(o\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, so we can’t just multiply them together. However, we can do this by viewing vectors <span class="math notranslate nohighlight">\(o^{t+1}_{l\cdot}\)</span> and <span class="math notranslate nohighlight">\(b^{t+1}_{l\cdot}\)</span> as a matrix with 1 row and re-write the backward equation as:</p>
 <div class="math notranslate nohighlight">
-\[b^t_{li} = \sum_j A_{ij} o_{l1j}^{t+1}b_{l1j}^{t+1} \]</div>
+\[
+b^t_{li} = \sum_j A_{ij} o_{l1j}^{t+1}b_{l1j}^{t+1}
+\]</div>
 <p>Now we can just multiply these three arrays element-wise and sum over the last dimension.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, we can achieve this by indexing the array with <code class="docutils literal notranslate"><span class="pre">None</span></code> at the location we want to insert a dimension. Take <code class="docutils literal notranslate"><span class="pre">b</span></code> with size <code class="docutils literal notranslate"><span class="pre">(N,T,K)</span></code> for example,<code class="docutils literal notranslate"><span class="pre">b[:,t,:]</span></code> will have shape <code class="docutils literal notranslate"><span class="pre">(N,K)</span></code>, <code class="docutils literal notranslate"><span class="pre">b[:,t,None,:]</span></code> will have shape <code class="docutils literal notranslate"><span class="pre">(N,1,K)</span></code> and <code class="docutils literal notranslate"><span class="pre">b[:,t,:,None]</span></code> will have shape <code class="docutils literal notranslate"><span class="pre">(N,K,1)</span></code>.</p>
 <p>So the backward recursion computation can be implemented as</p>
@@ -2184,10 +2177,7 @@ Let's take the backward recursion for example. In practice we will handle all tr
 </div>
 <hr class="docutils"/>
 <p>In addition to the trick introduced above, in this exercise we will work in the <strong>log scale</strong> for numerical stability.</p>
-<p><strong>Suggestions</strong></p>
-<ol class="simple">
-<li><p>Take a look at the code for the forward recursion and backward recursion.</p></li>
-</ol>
+<p><strong>Suggestions:</strong> Take a look at the code for the forward recursion and backward recursion.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">e_step</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">psi</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
@@ -2258,25 +2248,32 @@ Let's take the backward recursion for example. In practice we will handle all tr
 </div></div>
 </div>
 </div>
-<div class="section" id="exercise-1-implement-the-m-step">
-<h3>EXERCISE 1: Implement the M-step<a class="headerlink" href="#exercise-1-implement-the-m-step" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="coding-exercise-2-implement-the-m-step">
+<h3>Coding Exercise 2: Implement the M-step<a class="headerlink" href="#coding-exercise-2-implement-the-m-step" title="Permalink to this headline">¶</a></h3>
 <p>In this exercise you will complete the M-step for this HMM using closed form solutions mentioned before.</p>
 <p><strong>Suggestions</strong></p>
 <ol class="simple">
 <li><p>Calculate new initial probabilities as empirical counts of singleton marginals</p></li>
 </ol>
 <div class="math notranslate nohighlight">
-\[ \psi_i = \frac{1}{N}\sum_{trials}\gamma_i(1) \]</div>
+\[
+\psi_i = \frac{1}{N}\sum_{trials}\gamma_i(1)
+\]</div>
 <ol class="simple">
 <li><p>Remember the extra trial dimension and average over all trials</p></li>
 </ol>
+<br/>
 <p><strong>For reference:</strong></p>
 <p>New transition matrix is calculated as empirical counts of transition events from marginals</p>
 <div class="math notranslate nohighlight">
-\[ A_{ij} =\frac{\sum_{t=1}^{T-1} \xi_{i j}(t)}{\sum_{t=1}^{T-1} \gamma_{i}(t)}\]</div>
+\[
+A_{ij} =\frac{\sum_{t=1}^{T-1} \xi_{i j}(t)}{\sum_{t=1}^{T-1} \gamma_{i}(t)}
+\]</div>
 <p>New spiking rates for each cell and each state are given by</p>
 <div class="math notranslate nohighlight">
-\[  \lambda_{i}^{c}=\frac{\sum_{t} \gamma_{i}(t) y_{t}^{c}}{\sum_{t} \gamma_{i}(t) d t} \]</div>
+\[
+\lambda_{i}^{c}=\frac{\sum_{t} \gamma_{i}(t) y_{t}^{c}}{\sum_{t} \gamma_{i}(t) d t}
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">m_step</span><span class="p">(</span><span class="n">gamma</span><span class="p">,</span> <span class="n">xi</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
@@ -2385,9 +2382,6 @@ Let's take the backward recursion for example. In practice we will handle all tr
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id1">
-<h1>—<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="plotting-the-training-process-and-learnt-model">
 <h2>Plotting the training process and learnt model<a class="headerlink" href="#plotting-the-training-process-and-learnt-model" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="plotting-progress-during-em">
@@ -2395,7 +2389,7 @@ Let's take the backward recursion for example. In practice we will handle all tr
 <p>Now you can</p>
 <ul class="simple">
 <li><p>Plot the likelihood during training</p></li>
-<li><p>Plot the M-step log likelihood versus expected complete log likelihood(ECLL) to get an intuition of how EM works and the convexity of ECLL</p></li>
+<li><p>Plot the M-step log likelihood versus expected complete log likelihood(ECLL)to get an intuition of how EM works and the convexity of ECLL</p></li>
 <li><p>Plot learnt parameters versus true parameters</p></li>
 </ul>
 <div class="cell docutils container">
@@ -2422,7 +2416,7 @@ Let's take the backward recursion for example. In practice we will handle all tr
 </div>
 <div class="section" id="plot-learnt-parameters-vs-true-parameters">
 <h3>Plot learnt parameters vs. true parameters<a class="headerlink" href="#plot-learnt-parameters-vs-true-parameters" title="Permalink to this headline">¶</a></h3>
-<p>Now we will plot the (sorted) learnt parameters with true parameters to see if we successfully recovered all the parameters</p>
+<p>Now we will plot the (sorted) learnt parameters with true parameters to see if we successfully recovered all the parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare true and learnt parameters</span>
@@ -2486,8 +2480,8 @@ findfont: Font family ['xkcd', 'xkcd Script', 'Humor Sans', 'Comic Neue', 'Comic
     
       By Neuromatch<br>
     
-        © Copyright 2021.<br/>
-</br></p>
+        © Copyright 2021.<br>
+</br></br></p>
 </footer>
 </main>
 </div>
