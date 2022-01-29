@@ -1589,7 +1589,7 @@
             
               <div>
                 
-  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/projects-fixes/projects/modelingsteps/TrainIllusionModel.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/modelingsteps/TrainIllusionModel.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a href="https://kaggle.com/kernels/welcome?src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/projects/modelingsteps/TrainIllusionModel.ipynb" target="_blank"><img alt="Open in Kaggle" src="https://kaggle.com/static/images/open-in-kaggle.svg" /></a></p>
 <div class="section" id="example-model-project-the-train-illusion">
 <h1>Example Model Project: the Train Illusion<a class="headerlink" href="#example-model-project-the-train-illusion" title="Permalink to this headline">¶</a></h1>
 <p>Marius t’Hart, Megan Peters, Paul Schrater, Gunnar Blohm</p>
@@ -1649,8 +1649,8 @@
 <p><em>Part of step 5</em></p>
 <p>We chose to use a <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2474742/">Drift-Diffusion Model (DDM)</a> because it is a well-established framework that allows us to model decision making in the case of 2 alternative choices (here: self-motion vs. other train motion).</p>
 <p>For our purposes simplest equation looks something like this:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-da719884-9103-409c-ad28-113978cdd2ce">
-<span class="eqno">(349)<a class="headerlink" href="#equation-da719884-9103-409c-ad28-113978cdd2ce" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ee2153c2-5831-460a-a16b-cb94d2613144">
+<span class="eqno">(349)<a class="headerlink" href="#equation-ee2153c2-5831-460a-a16b-cb94d2613144" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \dot e = \frac{de}{dt}= -c \cdot e + v
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(e\)</span> is the accumulated evidence and <span class="math notranslate nohighlight">\(v\)</span> is our vestibular input already containing the noise (so we don’t need to add more noise?). <span class="math notranslate nohighlight">\(c\)</span> is the leakage constant, i.e. <span class="math notranslate nohighlight">\(c=0\)</span> means perfect integration; <span class="math notranslate nohighlight">\(c=1\)</span> means no integration (perfect leakage).</p>
@@ -1691,7 +1691,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">vestibular_signal</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">mov</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">  Computes a vestibular signal that corresponds to the acceleration of the </span>
+<span class="sd">  Computes a vestibular signal that corresponds to the acceleration of the</span>
 <span class="sd">  train with different amplitudes of noise</span>
 <span class="sd">  Args:</span>
 <span class="sd">    sig: scalar SD of noise</span>
@@ -1749,7 +1749,6 @@
     <span class="n">e</span> <span class="o">+=</span> <span class="o">-</span><span class="n">c</span><span class="o">*</span><span class="n">e</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="mf">0.001</span>
     <span class="n">E</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
   <span class="k">return</span> <span class="n">E</span>
-    
 </pre></div>
 </div>
 </div>
@@ -1913,7 +1912,7 @@
     <span class="n">axs</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">,</span> <span class="n">c_n</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">450</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Noise level $\sigma$&quot;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Proportion motion judgment&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span> 
+<span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
@@ -1936,12 +1935,11 @@
     <span class="n">d0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">run_model</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">thr</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
     <span class="n">d1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">run_model</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">thr</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> Motion detected for no-motion =&#39;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">d0</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;%; and motion =&#39;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;%&#39;</span><span class="p">)</span>
-     
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Motion detected for no-motion = 29.6 %; and motion = 58.1 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Motion detected for no-motion = 31.0 %; and motion = 59.5 %
 </pre></div>
 </div>
 </div>

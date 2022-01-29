@@ -1575,7 +1575,7 @@
             
               <div>
                 
-  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/projects-fixes/projects/modelingsteps/TrainIllusionDataProject.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/modelingsteps/TrainIllusionDataProject.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a href="https://kaggle.com/kernels/welcome?src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/projects/modelingsteps/TrainIllusionDataProject.ipynb" target="_blank"><img alt="Open in Kaggle" src="https://kaggle.com/static/images/open-in-kaggle.svg" /></a></p>
 <div class="section" id="example-data-project-the-train-illusion">
 <h1>Example Data Project: the Train Illusion<a class="headerlink" href="#example-data-project-the-train-illusion" title="Permalink to this headline">¶</a></h1>
 <p>Marius ‘t Hart, Megan Peters, Paul Schrater, Jean Laurens, Gunnar Blohm</p>
@@ -1610,7 +1610,7 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Generate Data</span>
 
 <span class="k">def</span> <span class="nf">generateSpikeTrains</span><span class="p">():</span>
-  
+
   <span class="n">gain</span>        <span class="o">=</span> <span class="mi">2</span>
   <span class="n">neurons</span>     <span class="o">=</span> <span class="mi">50</span>
   <span class="n">movements</span>   <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
@@ -1624,32 +1624,32 @@
   <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">+</span><span class="n">dt</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>                                            <span class="c1"># a time interval</span>
   <span class="n">Velocity_sigma</span> <span class="o">=</span> <span class="mf">0.5</span>                                                         <span class="c1"># std dev of the velocity profile</span>
   <span class="n">Velocity_Profile</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">Velocity_sigma</span><span class="p">)</span><span class="o">/</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">Velocity_sigma</span><span class="p">)</span> <span class="c1"># The Gaussian velocity profile, normalized to a peak of 1</span>
-  
+
   <span class="c1"># set up the neuron properties:</span>
   <span class="n">Gains</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">neurons</span><span class="p">)</span> <span class="o">*</span> <span class="n">gain</span>          <span class="c1"># random sensitivity between 0 and `gain`</span>
   <span class="n">FRs</span>   <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">neurons</span><span class="p">)</span> <span class="o">*</span> <span class="mi">60</span> <span class="p">)</span> <span class="o">-</span> <span class="mi">10</span>    <span class="c1"># random base firing rate between -10 and 50</span>
-  
+
   <span class="c1"># output matrix will have this shape:</span>
   <span class="n">target_shape</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">movements</span><span class="p">),</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">neurons</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">Velocity_Profile</span><span class="p">)]</span>
 
   <span class="c1"># build matrix for spikes, first, they depend on the velocity profile:</span>
   <span class="n">Spikes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">Velocity_Profile</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">Velocity_Profile</span><span class="p">)]),</span><span class="nb">len</span><span class="p">(</span><span class="n">movements</span><span class="p">)</span><span class="o">*</span><span class="n">repetitions</span><span class="o">*</span><span class="n">neurons</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">target_shape</span><span class="p">)</span>
-  
+
   <span class="c1"># multiplied by gains:</span>
   <span class="n">S_gains</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">Gains</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">neurons</span><span class="p">]),</span> <span class="nb">len</span><span class="p">(</span><span class="n">movements</span><span class="p">)</span><span class="o">*</span><span class="n">repetitions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">target_shape</span><span class="p">[:</span><span class="mi">3</span><span class="p">]),</span> <span class="nb">len</span><span class="p">(</span><span class="n">Velocity_Profile</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">target_shape</span><span class="p">)</span>
   <span class="n">Spikes</span> <span class="o">=</span> <span class="n">Spikes</span> <span class="o">*</span> <span class="n">S_gains</span>
-  
+
   <span class="c1"># and multiplied by the movement:</span>
   <span class="n">S_moves</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">movements</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">movements</span><span class="p">),</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span> <span class="n">repetitions</span><span class="o">*</span><span class="n">neurons</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Velocity_Profile</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">3</span> <span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">target_shape</span><span class="p">)</span>
   <span class="n">Spikes</span> <span class="o">=</span> <span class="n">Spikes</span> <span class="o">*</span> <span class="n">S_moves</span>
-  
+
   <span class="c1"># on top of a baseline firing rate:</span>
   <span class="n">S_FR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">FRs</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">neurons</span><span class="p">]),</span> <span class="nb">len</span><span class="p">(</span><span class="n">movements</span><span class="p">)</span><span class="o">*</span><span class="n">repetitions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">target_shape</span><span class="p">[:</span><span class="mi">3</span><span class="p">]),</span> <span class="nb">len</span><span class="p">(</span><span class="n">Velocity_Profile</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">target_shape</span><span class="p">)</span>
   <span class="n">Spikes</span> <span class="o">=</span> <span class="n">Spikes</span> <span class="o">+</span> <span class="n">S_FR</span>
-  
+
   <span class="c1"># can not run the poisson random number generator on input lower than 0:</span>
   <span class="n">Spikes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Spikes</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Spikes</span><span class="p">)</span>
-  
+
   <span class="c1"># so far, these were expected firing rates per second, correct for dt:</span>
   <span class="n">Spikes</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">Spikes</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
 
@@ -1657,12 +1657,12 @@
 
 
 <span class="k">def</span> <span class="nf">subsetPerception</span><span class="p">(</span><span class="n">spikes</span><span class="p">):</span>
-  
+
   <span class="n">movements</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
   <span class="n">split</span>     <span class="o">=</span> <span class="mi">400</span>
   <span class="n">subset</span>    <span class="o">=</span> <span class="mi">40</span>
   <span class="n">hwin</span>      <span class="o">=</span> <span class="mi">3</span>
-  
+
   <span class="p">[</span><span class="n">num_movements</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">neurons</span><span class="p">,</span> <span class="n">timepoints</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">spikes</span><span class="p">)</span>
 
   <span class="n">decision</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">num_movements</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">])</span>
@@ -1673,16 +1673,16 @@
 
   <span class="n">m_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">movements</span><span class="p">,</span> <span class="n">split</span><span class="p">)</span>
   <span class="n">m_test</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">movements</span><span class="p">,</span> <span class="n">split</span><span class="p">)</span>
-  
+
   <span class="c1"># reproduce the time points:</span>
   <span class="n">dt</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">100</span>
   <span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span>
-  <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">+</span><span class="n">dt</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span> 
-  
+  <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">+</span><span class="n">dt</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+
   <span class="n">w_idx</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">hwin</span><span class="o">*</span><span class="n">dt</span><span class="p">))</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
   <span class="n">w_0</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">w_idx</span><span class="p">)</span>
   <span class="n">w_1</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">w_idx</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>  <span class="c1"># python...</span>
-  
+
   <span class="c1"># get the total spike counts from stationary and movement trials:</span>
   <span class="n">spikes_stat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="n">spikes</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,:,:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
   <span class="n">spikes_move</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="n">spikes</span><span class="p">[</span><span class="mi">1</span><span class="p">:,:,:,:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -1692,11 +1692,11 @@
 
   <span class="n">test_spikes_stat</span> <span class="o">=</span> <span class="n">spikes_stat</span><span class="p">[</span><span class="n">split</span><span class="p">:,:]</span>
   <span class="n">test_spikes_move</span> <span class="o">=</span> <span class="n">spikes_move</span><span class="p">[:,</span><span class="n">split</span><span class="p">:,:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">neurons</span><span class="p">])</span>
-    
+
   <span class="c1"># data to use to predict y:</span>
   <span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">train_spikes_stat</span><span class="p">,</span> <span class="n">train_spikes_move</span><span class="p">))</span>
   <span class="n">x_test</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span> <span class="n">test_spikes_stat</span><span class="p">,</span>  <span class="n">test_spikes_move</span><span class="p">))</span>
-  
+
   <span class="c1"># this line creates a logistics regression model object, and immediately fits it:</span>
   <span class="n">population_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;liblinear&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
@@ -1704,7 +1704,7 @@
   <span class="c1"># some of those require certain other options</span>
   <span class="c1">#print(population_model.coef_)       # slope</span>
   <span class="c1">#print(population_model.intercept_)  # intercept</span>
-    
+
   <span class="n">ground_truth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">population_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">))</span>
   <span class="n">ground_truth</span> <span class="o">=</span> <span class="n">ground_truth</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 
@@ -1716,13 +1716,13 @@
 
 
 <span class="k">def</span> <span class="nf">getData</span><span class="p">():</span>
-  
+
   <span class="n">spikes</span> <span class="o">=</span> <span class="n">generateSpikeTrains</span><span class="p">()</span>
 
   <span class="n">dataset</span> <span class="o">=</span> <span class="n">subsetPerception</span><span class="p">(</span><span class="n">spikes</span><span class="o">=</span><span class="n">spikes</span><span class="p">)</span>
-  
+
   <span class="k">return</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-  
+
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">getData</span><span class="p">()</span>
 <span class="n">perception</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;perception&#39;</span><span class="p">]</span>
 <span class="n">spikes</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;spikes&#39;</span><span class="p">]</span>
@@ -1740,11 +1740,11 @@
 <span class="k">def</span> <span class="nf">rasterplot</span><span class="p">(</span><span class="n">spikes</span><span class="p">,</span><span class="n">movement</span><span class="p">,</span><span class="n">trial</span><span class="p">):</span>
 
   <span class="p">[</span><span class="n">movements</span><span class="p">,</span> <span class="n">trials</span><span class="p">,</span> <span class="n">neurons</span><span class="p">,</span> <span class="n">timepoints</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">spikes</span><span class="p">)</span>
-  
+
   <span class="n">trial_spikes</span> <span class="o">=</span> <span class="n">spikes</span><span class="p">[</span><span class="n">movement</span><span class="p">,</span><span class="n">trial</span><span class="p">,:,:]</span>
 
   <span class="n">trial_events</span> <span class="o">=</span> <span class="p">[((</span><span class="n">trial_spikes</span><span class="p">[</span><span class="n">x</span><span class="p">,:]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">150</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">neurons</span><span class="p">)]</span>
-  
+
   <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
   <span class="n">dt</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">100</span>
   <span class="n">plt</span><span class="o">.</span><span class="n">eventplot</span><span class="p">(</span><span class="n">trial_events</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
@@ -1781,8 +1781,8 @@
 <p><em>Part of Step 1</em></p>
 <p>We assume that we have build the train illusion model (see the other example project colab). That model predicts that accumulated sensory evidence from vestibular signals determines the decision of whether self-motion is experienced or not. We now have vestibular neuron data (simulated in our case, but let’s pretend) and would like to see if that prediction holds true.</p>
 <p>The data contains <span class="math notranslate nohighlight">\(N\)</span> neurons and <span class="math notranslate nohighlight">\(M\)</span> trials for each of 3 motion conditions: no self-motion, slowly accelerating self-motion and faster accelerating self-motion.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3d253f03-dc07-4be8-b6a8-ba4f36b8766d">
-<span class="eqno">(350)<a class="headerlink" href="#equation-3d253f03-dc07-4be8-b6a8-ba4f36b8766d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-891f461a-8c21-4a92-94d9-a7ad0ff5f68d">
+<span class="eqno">(350)<a class="headerlink" href="#equation-891f461a-8c21-4a92-94d9-a7ad0ff5f68d" title="Permalink to this equation">¶</a></span>\[\begin{align}
 N &amp;= 40\\
 M &amp;= 400\\
 \end{align}\]</div>
@@ -1823,7 +1823,7 @@ M &amp;= 400\\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe31abba050&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fa71774fb10&gt;
 </pre></div>
 </div>
 <img alt="../../_images/TrainIllusionDataProject_16_1.png" src="../../_images/TrainIllusionDataProject_16_1.png" />
@@ -1923,8 +1923,8 @@ M &amp;= 400\\
 <span class="sd">        conditions, 2) 400 trials, 3) 40 neurons, 4) 301 time bins</span>
 <span class="sd">        motions (list): motion conditions to include, any subset of [0,1,2]</span>
 <span class="sd">        classes (list): list of length 3 * 400 with classes to use for the</span>
-<span class="sd">        logistic regression </span>
-<span class="sd">        halfwin (None or float): None to use the whole 3 s time interval, or a </span>
+<span class="sd">        logistic regression</span>
+<span class="sd">        halfwin (None or float): None to use the whole 3 s time interval, or a</span>
 <span class="sd">        value between 0 and 1.5 seconds as the extent of the window from 0 (when</span>
 <span class="sd">        acceleration peaks) in both directions.</span>
 
@@ -2008,7 +2008,7 @@ M &amp;= 400\\
 <span class="sd">        spikes (numpy.ndarray): a 4d matrix with spike counts for 1) three motion</span>
 <span class="sd">        conditions, 2) 400 trials, 3) 40 neurons, 4) 301 time bins</span>
 <span class="sd">        classes (list): list of length 3 * 400 with classes to use for the</span>
-<span class="sd">        logistic regression </span>
+<span class="sd">        logistic regression</span>
 <span class="sd">        halfwin: None to use the whole 3 s time interval, or a value between 0</span>
 <span class="sd">        and 0.750 seconds as the extent of the window from 0 (when acceleration</span>
 <span class="sd">        peaks)</span>
@@ -2026,7 +2026,7 @@ M &amp;= 400\\
 
   <span class="c1"># get the right design matrix:</span>
   <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">getDesignMatrix</span><span class="p">(</span><span class="n">spikes</span><span class="p">,</span> <span class="n">motions</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span> <span class="n">halfwin</span><span class="o">=</span><span class="n">halfwin</span><span class="p">)</span>
-  
+
   <span class="c1"># right now, we are not using regularization:</span>
   <span class="k">return</span><span class="p">(</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;liblinear&#39;</span><span class="p">),</span> <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">)</span> <span class="p">)</span>
 
@@ -2065,15 +2065,15 @@ M &amp;= 400\\
 <span class="sd">    Args:</span>
 <span class="sd">        spikes (numpy.ndarray): a 4d matrix with spike counts for 1) three motion</span>
 <span class="sd">        conditions, 2) 400 trials, 3) 40 neurons, 4) 301 time bins</span>
-<span class="sd">        </span>
+
 <span class="sd">    Returns:</span>
-<span class="sd">        (numpy.ndarray): array of shape (2, 2, 3, 12), where the first dimension </span>
+<span class="sd">        (numpy.ndarray): array of shape (2, 2, 3, 12), where the first dimension</span>
 <span class="sd">        denotes full interval or 100 ms window, the second dimension denotes</span>
 <span class="sd">        real motion or self-motion judgements, the third dimension denotes slow,</span>
 <span class="sd">        fast or all data, and for each there 12 prediction accuracies for each</span>
 <span class="sd">        of the 12 cross validations</span>
 
-<span class="sd">    This function uses our classifyMotionFromSpikes()) function according to </span>
+<span class="sd">    This function uses our classifyMotionFromSpikes()) function according to</span>
 <span class="sd">    specification for all the different ways we want to classify the data and</span>
 <span class="sd">    gives us the classification performance.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
@@ -2088,7 +2088,7 @@ M &amp;= 400\\
 
   <span class="c1"># empty array to collect classification performance:</span>
   <span class="n">accuracies</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">halfwins</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">class_sets</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">motions</span><span class="p">),</span><span class="n">cv</span><span class="p">])</span>
-  
+
   <span class="k">for</span> <span class="n">halfwin_no</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">halfwins</span><span class="p">)):</span>
 
     <span class="n">halfwin</span> <span class="o">=</span> <span class="n">halfwins</span><span class="p">[</span><span class="n">halfwin_no</span><span class="p">]</span>
@@ -2102,17 +2102,17 @@ M &amp;= 400\\
       <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;purple&#39;</span><span class="p">][</span><span class="n">classes_no</span><span class="p">]</span>
 
       <span class="k">for</span> <span class="n">motions_no</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">motions</span><span class="p">)):</span>
-      
+
         <span class="n">motion</span> <span class="o">=</span> <span class="n">motions</span><span class="p">[</span><span class="n">motions_no</span><span class="p">]</span>
-        <span class="n">cond_acc</span> <span class="o">=</span> <span class="n">classifyMotionFromSpikes</span><span class="p">(</span><span class="n">spikes</span>  <span class="o">=</span> <span class="n">spikes</span><span class="p">,</span> 
-                                            <span class="n">classes</span> <span class="o">=</span> <span class="n">classes</span><span class="p">,</span> 
+        <span class="n">cond_acc</span> <span class="o">=</span> <span class="n">classifyMotionFromSpikes</span><span class="p">(</span><span class="n">spikes</span>  <span class="o">=</span> <span class="n">spikes</span><span class="p">,</span>
+                                            <span class="n">classes</span> <span class="o">=</span> <span class="n">classes</span><span class="p">,</span>
                                             <span class="n">halfwin</span> <span class="o">=</span> <span class="n">halfwin</span><span class="p">,</span>
-                                            <span class="n">motions</span> <span class="o">=</span> <span class="n">motion</span><span class="p">,</span> 
+                                            <span class="n">motions</span> <span class="o">=</span> <span class="n">motion</span><span class="p">,</span>
                                             <span class="n">cv</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
         <span class="n">accuracies</span><span class="p">[</span><span class="n">halfwin_no</span><span class="p">,</span><span class="n">classes_no</span><span class="p">,</span><span class="n">motions_no</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">cond_acc</span>
-      
+
       <span class="n">m_acc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">accuracies</span><span class="p">[</span><span class="n">halfwin_no</span><span class="p">,</span><span class="n">classes_no</span><span class="p">,:,:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-  
+
   <span class="k">return</span><span class="p">(</span><span class="n">accuracies</span><span class="p">)</span>
 
 <span class="c1"># here we run the above function and store the output:</span>
@@ -2129,13 +2129,13 @@ M &amp;= 400\\
 <span class="sd">    Plot the accuracies from our main fitting function.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        accuarcies (numpy.ndarray): a 4d matrix with performance accuracy for </span>
-<span class="sd">        1) full interval or 100 ms window, 2) real motion or self-motion </span>
+<span class="sd">        accuarcies (numpy.ndarray): a 4d matrix with performance accuracy for</span>
+<span class="sd">        1) full interval or 100 ms window, 2) real motion or self-motion</span>
 <span class="sd">        judgements, 3) slow, fast or all conditions, and 4) the 12 cross</span>
 <span class="sd">        validations</span>
-<span class="sd">        </span>
+
 <span class="sd">    Returns:</span>
-<span class="sd">    </span>
+
 <span class="sd">    This function plots the output of our data analysis pipeline and does not</span>
 <span class="sd">    return anything.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
@@ -2155,10 +2155,10 @@ M &amp;= 400\\
 
       <span class="n">leg_class</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;real&#39;</span><span class="p">,</span> <span class="s1">&#39;judgements&#39;</span><span class="p">][</span><span class="n">classes_no</span><span class="p">]</span>
       <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;purple&#39;</span><span class="p">][</span><span class="n">classes_no</span><span class="p">]</span>
-      
+
       <span class="n">m_acc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">accuracies</span><span class="p">[</span><span class="n">halfwin_no</span><span class="p">,</span><span class="n">classes_no</span><span class="p">,:,:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-      <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">m_acc</span><span class="p">,</span> <span class="n">lty</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">leg_class</span><span class="o">+</span><span class="s1">&#39; &#39;</span><span class="o">+</span><span class="n">leg_hw</span><span class="p">)</span>    
-  
+      <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">m_acc</span><span class="p">,</span> <span class="n">lty</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">leg_class</span><span class="o">+</span><span class="s1">&#39; &#39;</span><span class="o">+</span><span class="n">leg_hw</span><span class="p">)</span>
+
   <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;slow ($1 m/s^2$)&#39;</span><span class="p">,</span><span class="s1">&#39;fast ($2 m/s^2$)&#39;</span><span class="p">,</span><span class="s1">&#39;both&#39;</span><span class="p">])</span>
   <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
   <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
