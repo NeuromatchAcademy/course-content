@@ -72,7 +72,12 @@ jobs:
         run: |
           branch=${{ github.event.pull_request.head.ref }}
           nbs=`python ci/select_notebooks.py ${{ steps.changes.outputs.files }}`
-          python ci/process_notebooks.py $nbs --execute
+          if ${{ contains(env.COMMIT_MESSAGE, 'ci:check') }}; then
+            execflag="--check-execution";
+          else
+            execflag="--execute";
+          fi
+          python ci/process_notebooks.py $nbs $execflag
           python ci/verify_exercises.py $nbs --c "$COMMIT_MESSAGE"
           python ci/make_pr_comment.py $nbs --branch $branch --o comment.txt
 
