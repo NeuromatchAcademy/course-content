@@ -718,65 +718,43 @@ bibliography: bibliography.bib
 
 Neuromatch Academy ([*https://neuromatch.io/academy*](https://neuromatch.io/academy); [@viegen2021]) was designed as an online summer school to cover the basics of computational neuroscience in three weeks. The materials cover dominant and emerging computational neuroscience tools, how they complement one another, and specifically focus on how they can help us to better understand how the brain functions. An original component of the materials is its focus on modeling choices, i.e. how do we choose the right approach, how do we build models, and how can we evaluate models to determine if they provide real (meaningful) insight. This meta-modeling component of the instructional materials asks what questions can be answered by different techniques, and how to apply them meaningfully to get insight about brain function.
 
-Materials consist of highly curated recorded lectures and tutorials, organized in ‘days’, as well as a growing number of data sets with starter notebooks for group projects (5 in 2020; 17 in 2021). Each day constitutes one teaching module and covers one topic in computational neuroscience (see table 1). While the content is organized as a 3-week crash-course (and optional introduction days) of consecutive teaching modules that build on one another, it can be rolled out at any pace, in its entirety or as stand-alone parts, provided prerequisites for each part are met. Most days can be used as separate, independent modules and can, for example, be combined with other instructional content. To facilitate this, we not only provide general prerequisites for the entire course but also daily topic-specific prerequisites (see appendix 1). The material is meant to either be taught to small groups of ~10 attendees guided by a teaching assistant, for instruction in a classroom, or for usage in other (potentially for-profit) events.
+Materials consist of highly curated recorded lectures and tutorials, organized in ‘days’, as well as a growing number of data sets with starter notebooks for group projects (5 in 2020; 17 in 2021). Each day constitutes one teaching module and covers one topic in computational neuroscience (see table 1). While the content is organized as a 3-week crash-course of consecutive teaching modules that build on one another, it can be rolled out at any pace, in its entirety or as stand-alone parts, provided prerequisites for each part are met. Most days can be used as separate, independent modules and can, for example, be combined with other instructional content. To facilitate this, we not only provide general prerequisites for the entire course but also daily topic-specific prerequisites (see appendix 1). The material is meant to either be taught to small groups of ~10 attendees guided by a teaching assistant, for instruction in a classroom, or for usage in other (potentially for-profit) events.
 
-|         **Week 1**               |         **Week 2**             |         **Week 3**        |
-| -------------------------------- | ------------------------------ | ------------------------- |
-| W1D1  _Model Types_              | W2D1  _Bayesian Statistics_    | W3D1  _Real Neurons_      |
-| W1D2  _Modeling Practice_        | W2D2  _Linear Systems_         | W3D2  _Dynamic Networks_  |
-| W1D3  _Model Fitting_            | W2D3  _Decision Making_        | W3D3  _Network Causality_ |
-| W1D4  _Machine Learning: GLM_    | W2D4  _Optimal Control_        | W3D4  _Deep Learning 1_   |
-| W1D5  _Dimensionality Reduction_ | W2D5  _Reinforcement Learning_ | W3D5  _Deep Learning 2_   |
-
-**Table 1. 2020 Neuromatch Academy Topics.** _Organized chronologically by week (W) and day of week (D), e.g. week 2 day 4 = W2D4. In addition, there are two days of preparatory instruction in coding Python, the materials for which can be found in W0D1 for 2020. In 2021 we changed the program, integrating "Modeling Practice" with a first "Project Day" and dropping "Deep Learning 2" to get a second "Project Day". The order of days was changed in 2021 to better group topics together conceptually._
-
-|         **Week 1**                |         **Week 2**               |         **Week 3**             |
-| --------------------------------- | -------------------------------- | ------------------------------ |
-| W1D1  _Model Types_               | W2D1  _Deep Learning_            | W3D1  _Bayesian Decision_      |
-| W1D2  _Project Day 1_             | W2D2  _Linear Systems_           | W3D2  _Hidden Dynamics_        |
-| W1D3  _Model Fitting_             | W2D3  _Biological Neuron Models_ | W3D3  _Optimal Control_        |
-| W1D4  _Generalized Linear Models_ | W2D4  _Dynamic Networks_         | W3D4  _Reinforcement Learning_ |
-| W1D5  _Dimensionality Reduction_  | W2D5  _Project Day 2_            | W3D5  _Network Causality_      |
+|         **Week 1**                |         **Week 2**                |         **Week 3**                |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| W1D1  _Model Types_               | W2D1  _Deep Learning_             | W3D1  _Bayesian Decision_         |
+| W1D2  _Project Day 1_             | W2D2  _Linear Systems_            | W3D2  _Hidden Dynamics_           |
+| W1D3  _Model Fitting_             | W2D3  _Biological Neuron Models_  | W3D3  _Optimal Control_           |
+| W1D4  _Generalized Linear Models_ | W2D4  _Dynamic Networks_          | W3D4  _Reinforcement Learning_    |
+| W1D5  _Dimensionality Reduction_  | W2D5  _Project Day 2_             | W3D5  _Network Causality_         |
 
 **Table 1. 2021 Neuromatch Academy Topics.** _Organized chronologically by week (W) and day of week (D), e.g. week 2 day 4 = W2D4. In addition, there are two days of preparatory instruction in coding Python, the materials for which can be found in W0D1 for 2020. The schedule shown here is from 2021, which was updated by dropping Modeling Practice day (old W1D2) and a second Deep Learning day (old W3D5) in favour of two dedicated project days and changing the order to group topics better conceptually. The content for these two days can still be found [here](https://github.com/NeuromatchAcademy/course-content/releases/tag/NMA2020)._
 
 Each instruction module (day) consists of 1) an introductory lecture (~30 minutes) that broaches the topic to students and explains the general approach, followed by 2) hands-on tutorials in the form of several ipython notebooks (~3 hours) with code-completion assignments and answers, and further instruction through embedded micro-lectures, and finally 3) an outro lecture (~30 minutes) to recapitulate the covered material and provide an outlook on its applicability to neuroscience research. Each day is meant to instruct the basics of a given topic and further readings are supplied.
 
-All tutorials with embedded lectures are available online in a [permanent archive](https://osf.io/93wna) of the 2021 edition of NMA, and the most up-to-date material is planned to stay available as a [Jupyter Book](https://compneuro.neuromatch.io). The material is largely self sufficient and could be used for self-study. For guidance on how to use the material, a readme.md can be found XXXXXXXXXX. This describes how to use materials for self-study, as well as on how to adapt the materials for teaching, either in a summer school or in a class.
+All tutorials are available online in a [permanent archive](https://osf.io/93wna) of the 2021 edition of NMA, with a backup of videos in a [separate acrhive]() and the most up-to-date material is planned to stay available as a [Jupyter Book](https://compneuro.neuromatch.io). The material is largely self sufficient and could be used for self-study. For guidance on how to use the material, a readme.md can be found XXXXXXXXXX. This describes how to use materials for self-study, as well as on how to adapt the materials for teaching, either in a summer school or in a class.
 
-For attendees to apply what they learn, we also provide materials for individual or group projects and five curated data sets (see table 2) to use for these projects in 2020, including videos describing the data and ipython notebooks to get started.
+For attendees to apply what they learn they do group projects, and in 2020 we provided five curated data sets (see table 2) to use for these projects, including videos describing the data and ipython notebooks to get started. In 2021 we increased the number of curated data sets, and grouped them conceptually.
 
-| **Data set**          | **Contains**          | **Possible projects** |
-| --------------------- | --------------------- | --------------------- |
-| Stringer data [@stringer2019; @stringer2021] | activity from ~10,000 V1 neurons, recorded with calcium imaging from a mouse in total darkness | discover structure of cortical column; relate activity to spontaneous behavior |
-| Steinmetz data [@steinmetz2019] | neuropixels recording (waveforms, task events, spikes) in mice doing a visual discrimination task | predict task performance from neural data; reconstruct face, eye or paw movement from neural data |
-| Kay/Gallant data [@kay2008] | fMRI during viewing of natural images | reconstruct or predict images from brain activity in separate regions |
-| HCP data [@hcp2013] | fMRI time series in 7 tasks and resting state for 340 human participants, and parcellation in ROIs | identify a set of brain areas differentially involved in various tasks |
-| IBL data [@ibl2021] | very large behavioral data of mice doing a visual detection task with a bias | fit models to predict the choice of the animal; model individual differences |
-
-**Table 2. Data sets for group projects.** _The data sets are available through the Neuromatch Academy repository._
-
-In 2021 we increased the number of curated data sets, and grouped them conceptually.
-
-| **Category**                   | **Data set**                                 | **Contains** |
-| ------------------------- | -------------------------------------------- | ------------ |
-| Neurons                   | Steinmetz data [@steinmetz2019]              | neuropixels recording (waveforms, task events, spikes) in mice doing a visual discrimination task |
-|                           | Stringer data [@stringer2019; @stringer2021] | activity from ~10,000 V1 neurons, recorded with calcium imaging from a mouse in total darkness | discover structure of cortical column; relate activity to spontaneous behavior |
-|                           | Allen Institute data (no citation)           | recordings from VIP, SST, etc from mice doing a visual adaptation task, with novel or familiar images |
-| fMRI                      | HCP data [@hcp2013; @barch2013] |  fMRI time series in 7 tasks and resting state for 340 human participants, and parcellation in ROIs |
-|                           | FSL course task (no citation) | complements HCP data with 2 language tasks, data at voxel level |
-|                           | HCP retinotopy [@benson2018] | allows visualizing receptive fields across brain regions |
-|                           | Kay natural images [@kay2008; @naselaris2009] | voxels from V1/V2/V3/V4, and annotated objects |
-|                           | Bonner navigation data [@bonner2017]     | activity from 12 participants watching scenes or navigation sequences |
-|                           | Algonauts video clip data [@kriegeskorte2008] | activity in 10 participants watching 1000+ video clips [algonauts](http://algonauts.csail.mit.edu/challenge.html) |
-|                           | Cichy objects/animals data [@cichy2014] | activity in 16 participants watching 92 images |
-| ECoG/EEG              | Miller face/house data [@miller2017; @miller2015; @miller2016] | ECoG recordings from participants watching faces and houses |
-|                           | Miller finger flex data [@miller2009; @miller2012] | ECoG recordings from participants moving their fingers |
-|                           | Schalk joystick track data [@schalk2007; @schalk2008] | ECoG recordings from participants moving a joystick on 2D trajectories |
-|                           | Memory N-back data (no citation) | ECoG recordings in participants responding to repeated house images 0, 1 or 2 stimuli back |
-|                           | Miller motor imagery data [@miller2010] | ECoG recordings from participants   |
-| Behavior                  | Caltech data set (no citation) | pose-tracking from socially interacting mice |
-|                           | IBL data [@ibl2021] | behavior of mice doing a visual detection task with a bias |
+| **Category** | **Data set**             | **Year** | **Contains**                         |
+| ---------- | ------------------------ | --- | -------------------------------------- |
+| Neurons      | Steinmetz data [@steinmetz2019]                    | _2020_ | neuropixels recording (waveforms, task events, spikes) in mice doing a visual discrimination task |
+|              | Stringer data [@stringer2019; @stringer2021]       | _2020_ | activity from ~10,000 V1 neurons, recorded with calcium imaging from a mouse in total darkness |
+|              | Allen Institute data (no citation)                 | 2021 | recordings from VIP, SST, etc from mice doing a visual adaptation task, with novel or familiar images |
+| fMRI         | HCP data [@hcp2013; @barch2013]                    | _2020_ | fMRI time series in 7 tasks and resting state for 340 human participants, and parcellation in ROIs |
+|              | FSL course task (no citation)                      | 2021 | complements HCP data with 2 language tasks, data at voxel level |
+|              | HCP retinotopy [@benson2018]                       | 2021 | allows visualizing receptive fields across brain regions |
+|              | Kay natural images [@kay2008; @naselaris2009]      | _2020_ | voxels from V1/V2/V3/V4, and annotated objects |
+|              | Bonner navigation data [@bonner2017]               | 2021 | activity from 12 participants watching scenes or navigation sequences |
+|              | Algonauts video clip data [@kriegeskorte2008]      | 2021 | activity in 10 participants watching 1000+ video clips [algonauts](http://algonauts.csail.mit.edu/challenge.html) |
+|              | Cichy objects/animals data [@cichy2014]            | 2021 | activity in 16 participants watching 92 images |
+| ECoG/EEG     | Miller face/house data [@miller2017; @miller2015; @miller2016] | 2021 | ECoG recordings from participants watching faces and houses |
+|              | Miller finger flex data [@miller2009; @miller2012]    | 2021 | ECoG recordings from participants moving their fingers |
+|              | Schalk joystick track data [@schalk2007; @schalk2008] | 2021 | ECoG recordings from participants moving a joystick on 2D trajectories |
+|              | Memory N-back data (no citation)                      | 2021 | ECoG recordings in participants responding to repeated house images 0, 1 or 2 stimuli back |
+|              | Miller motor imagery data [@miller2010]               | 2021 | ECoG recordings from participants   |
+| Behavior     | Caltech data set (no citation)                        | 2021 | pose-tracking from socially interacting mice |
+|              | IBL data [@ibl2021]                                   | _2020_ | behavior of mice doing a visual detection task with a bias |
 
 **Table 2. Data sets for group projects.** _The data sets are available through the Neuromatch Academy [OSF repository](https://osf.io/hygbm/)._
  
@@ -808,54 +786,6 @@ The Neuromatch Academy summer school also crucially relied on many teaching assi
 ## Appendix 1: Prerequisites
 
 For self-study or mixing the NMA course content with other content, we provide a list of prerequisites for each day of content (table A1). The overall prerequisites are described in the repository, with readings for self-study.
-
-| Day | Topic | Prerequisites | How they are met |
-| --- | ----- | ------------- | ---------------- |
-| W0D1 | Python Introduction | Basic knowledge of linear algebra, probability, and neuroscience | NMA prereqs |
-| W1D1 | Model Types | Basic neuroscience knowledge | NMA prereqs |
-|      |             | Basic python | NMA prereqs |
-| W1D2 | Modeling Practice | Basic neuroscience knowledge | NMA prereqs |
-|      |                   | Knowledge of Model Types | W1D1 |
-| W1D3 | Model Fitting | Knowledge of linear algebra and convex optimization | NMA prereqs |
-| W1D4 | Machine Learning: GLM | Encoding, model fitting | W1D3 |
-|      |                       | Basic probability | NMA prereqs |
-|      |                       | Linear algebra (vectors, matrices) and calculus (derivatives) | NMA prereqs |
-| W1D5 | Dimensionality Reduction | Basic linear algebra: vectors, matrices, eigenvectors | NMA prereqs |
-| W2D1 | Bayesian Statistics | Basics of probability | Prereqs of NMA |
-|      |                     | Basic normative models | W1D2 |
-|      |                     | Basics of predictive models and their evaluation | W1D3 |
-|      |                     | Basics of constructing models | W1D2 |
-| W2D2 | Linear Systems           | Basics of linear algebra: eigenvalue |                                                                 NMA prereqs |
-|      |                          | Basics of calculus: derivatives and integrals |                                                        NMA prereqs |
-|      |                          | Understanding of mean and covariance          |                                                        NMA prereqs |
-| W2D3 | Decision Making          | Bayes’ rule                                   |                                                        W2D1 |
-|      |                          | Markov Chains                                 |                                                        W2D2 |
-|      |                          | Basic probability                             |                                                        NMA prereqs |
-| W2D4 | Optimal Control          | Bayes’ rule                                   |                                                        W2D1 |
-|      |                          | Markov Chains, linear stochastic dynamics     |                                                        W2D2 |
-|      |                          | Hidden Markov Models, Kalman filter           |                                                        W2D3 |
-|      |                          | Basic probability                             |                                                        NMA prereqs |
-| W2D5 | Reinforcement Learning   | State spaces                                  |                                                        W2D2 |
-|      |                          | Markov Decision Processes                     |                                                        W2D3, W2D4 |
-|      |                          | Bayesian statistics                           |                                                        W2D1 |
-|      |                          | Optimal Control                               |                                                        W2D4 |
-| W3D1 | Real Neurons             | Knowledge of Model Types                      |                                                        W1D1 |
-|      |                          | Basics of calculus: ODE                       |                                                        NMA prereqs |
-|      |                          | Understanding of elementary statistics and random processes, correlations |                            NMA prereqs, W2D2 |
-|      |                          | Basic neuroscience knowledge: Neurons, spikes and synapses (not necessarily the mathematical models) | NMA prereqs |
-| W3D2 | Dynamic Networks         | Knowledge of Model Types                                                                             | W1D1 |
-|      |                          | Basics of calculus: ODE                                                                              | NMA prereqs |
-|      |                          | Basic linear algebra: vectors, matrices, eigenvectors                                                | NMA prereqs |
-| W3D3 | Network Causality        | Basics of regression                                                                                 | W1D3, W1D4 |
-| W3D4 | Deep Learning 1          | Cross-validation and model fitting basics with linear models                                         | W1D3 |
-|      |                          | Matrix multiplication                                                                                | NMA prereqs |
-|      |                          | Correlation matrices                                                                                 | NMA prereqs |
-| W3D5 | Deep Learning 2          | Some knowledge of DL                                                                                 | W3D4 |
-|      |                          | Dimensionality reduction                                                                             | W1D5 |
-|      |                          | Gradient descent                                                                                     | W3D4 |
-
-**Table A1: Prerequisites for each module of Neuromatch Academy.** _This can be used to guide self study or help integrate the material with other content._
-
 
 | Day | Topic | Prerequisites | How they are met |
 | --- | ----- | ------------- | ---------------- |
@@ -895,8 +825,7 @@ For self-study or mixing the NMA course content with other content, we provide a
 |      |                          | Optimal Control                               |                                                        W3D3 |
 | W3D5 | Network Causality        | Basics of regression                                                                                 | W1D3, W1D4 |
 
-2021 VERSION
-
+**Table A1: Prerequisites for each module of Neuromatch Academy.** _This can be used to guide self study or help integrate the material with other content._
 
 ## Appendix 2: Author Contributions
 
