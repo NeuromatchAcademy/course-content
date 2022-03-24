@@ -11,7 +11,7 @@ def neg_log_lik_lnp(theta, X, y):
     number: Negative log likelihood.
 
   """
-  # Compute the Poisson log likeliood
+  # Compute the Poisson log likelihood
   rate = np.exp(X @ theta)
   log_lik = y @ np.log(rate) - rate.sum()
   return -log_lik

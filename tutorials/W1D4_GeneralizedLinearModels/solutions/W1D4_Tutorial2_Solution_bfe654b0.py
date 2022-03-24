@@ -18,6 +18,6 @@ def compute_accuracy(X, y, model):
   return accuracy
 
 
-# Compute train accurcy
+# Compute train accuracy
 train_accuracy = compute_accuracy(X, y, log_reg)
 print(f"Accuracy on the training data: {train_accuracy:.2%}")

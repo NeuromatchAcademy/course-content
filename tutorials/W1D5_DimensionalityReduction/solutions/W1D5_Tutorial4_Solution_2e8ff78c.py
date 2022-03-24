@@ -1,7 +1,7 @@
 def explore_perplexity(values, X, labels):
   """
   Plots a 2D representation of the data for visualization with categories
-  labelled as different colors using different perplexities.
+  labeled as different colors using different perplexities.
 
   Args:
     values (list of floats) : list with perplexities to be visualized
