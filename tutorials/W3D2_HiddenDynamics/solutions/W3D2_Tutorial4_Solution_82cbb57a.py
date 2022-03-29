@@ -4,7 +4,7 @@ def sample_lds(n_timesteps, params, seed=0):
 
   Args:
   n_timesteps (int): the number of time steps to simulate
-  params (dict): a dictionary of model paramters: (D, Q, H, R, mu_0, sigma_0)
+  params (dict): a dictionary of model parameters: (D, Q, H, R, mu_0, sigma_0)
   seed (int): a random seed to use for reproducibility checks
 
   Returns:

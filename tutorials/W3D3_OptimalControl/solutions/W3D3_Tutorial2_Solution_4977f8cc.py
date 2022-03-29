@@ -8,7 +8,7 @@ In Exercise 1.2, you should have noticed the following:
   noticed that the 'no control' state (blue curve) rapidly explodes
   (i.e., heads off to infinity)
 
-* Open-loop control: While the open-loop state (green curve) often reachs the goal
+* Open-loop control: While the open-loop state (green curve) often reaches the goal
   quickly, it may not stay there. Under high noise conditions, it tends to
   drift away from the goal, though you may not see this in every simulation.
 

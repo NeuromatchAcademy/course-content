@@ -5,7 +5,7 @@ def calculate_binary_decision_array(x_points, posterior_array):
     for i in range(len(posterior_array)):
         # calculate mean of posterior using 'moments_myfunc'
         mean, _, _ = moments_myfunc(x_points, posterior_array[i])
-        # find the postion of mean in x_points (closest position)
+        # find the position of mean in x_points (closest position)
         idx = np.argmin(np.abs(x_points - mean))
         binary_decision_array[i, idx] = 1
 

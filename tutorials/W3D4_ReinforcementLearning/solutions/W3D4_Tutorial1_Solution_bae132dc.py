@@ -1,7 +1,7 @@
 """
-The multi-reward and probabilistic reward enviroments are the same. You
+The multi-reward and probabilistic reward environments are the same. You
 could simulate a probabilistic reward of 10 units, delivered 50% of the time,
-by having a mixture of 10 and 0 unit rewards, or vice versa. The takehome message
+by having a mixture of 10 and 0 unit rewards, or vice versa. The take home message
 from these last three exercises is that the *average* or expected reward is
 what matters during TD learning.
 

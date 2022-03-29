@@ -12,7 +12,7 @@
 
 3)  Similarly to the prior, the likelihood exerts the most influence when it is informative: when catching
     a fish tells you a lot of information about which state is likely. For example, if the probability of the
-    fisherperson catching a fish if he is fishing on the right side and the school is on the left is 0
+    fisher-person catching a fish if he is fishing on the right side and the school is on the left is 0
     (p fish | s = left) = 0 and the probability of catching a fish if the school is on the right is 1, the
      prior does not affect the posterior at all. The measurement tells you the hidden state completely.
 """
