@@ -3,8 +3,8 @@ def kalman_smooth(data, params):
   system parameters.
 
   Args:
-    data (ndarray): a sequence of osbervations of shape(n_timesteps, n_dim_obs)
-    params (dict): a dictionary of model paramters: (D, Q, H, R, mu_0, sigma_0)
+    data (ndarray): a sequence of observations of shape(n_timesteps, n_dim_obs)
+    params (dict): a dictionary of model parameters: (D, Q, H, R, mu_0, sigma_0)
 
   Returns:
     ndarray, ndarray: the smoothed system means and noise covariance values

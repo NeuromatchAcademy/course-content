@@ -13,12 +13,12 @@
    even when its parameters cause the values just above x = 0 to be large. In fact, the
    the Exponential distribution, Erlang distribution, and chi-square distribution are
    special cases of the gamma distribution. In our example, you can see that the posterior
-   also incoreporates the hard truncation.
+   also incorporates the hard truncation.
 
 4) We have only changed the prior, but the prior and the likelihood are just probability
    distributions. In principle, they can be any properly defined probability distribution.
-   An example that may seem bizare is the Driac (delta) function, which is a PDF, that has
-   all it's probability density in one location, desite being continuous. But in the case
+   An example that may seem bizarre is the Driac (delta) function, which is a PDF, that has
+   all its probability density in one location, despite being continuous. But in the case
    of the brain, it's possible that strange likelihood distributions could be used. However,
    for the same reasons we, as scientists, like exponential family distributions, it may be
    that evolution selected only ways of representing probability distributions that had useful

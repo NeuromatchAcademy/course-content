@@ -7,6 +7,6 @@ On the other hand, as you increase the measurement noise, you will notice that
 it is harder to estimate the states, and this also may make it harder to keep the
 state close to the goal.
 
-Which has a larger effect? How does this effect the required action a[t]?
+Which has a larger effect? How does this affect the required action a[t]?
 We will quantify these in the next section.
 """;

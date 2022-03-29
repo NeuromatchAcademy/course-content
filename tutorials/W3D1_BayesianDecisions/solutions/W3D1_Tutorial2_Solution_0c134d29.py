@@ -14,6 +14,6 @@
 
 3) The prior and posterior can both be thought of as having information, as we
    described earlier. So this means you can think of the weighting applied to each
-   as proportional to the amount of information each contain. For Gaussians, you
+   as proportional to the amount of information each contains. For Gaussians, you
    know how to calculate this directly.
 """

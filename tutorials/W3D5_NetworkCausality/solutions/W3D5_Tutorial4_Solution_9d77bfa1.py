@@ -9,7 +9,7 @@ def instrument_strength_effect(etas, n_neurons, timesteps, n_trials):
 
   Returns:
     ndarray: n_trials x len(etas) array where each element is the correlation
-        between true and estimated connectivity matries for that trial and
+        between true and estimated connectivity matrices for that trial and
         instrument strength
   """
 
@@ -20,7 +20,7 @@ def instrument_strength_effect(etas, n_neurons, timesteps, n_trials):
   for trial in range(n_trials):
       print("Trial {} of {}".format(trial + 1, n_trials))
 
-      # Loop over instrument strenghs
+      # Loop over instrument strengths
       for j, eta in enumerate(etas):
 
           # Simulate system

@@ -12,7 +12,7 @@
    second variable (or hidden state) by measuring a value from the other.
 
 3) The variable (hidden state) with the lower variance will produce a narrower
-   conditional probabilty for the other variable! As you shift the correlation, you will see
+   conditional probability for the other variable! As you shift the correlation, you will see
    small changes in the variable with the low variance shifting the conditional mean of the
   variable with the large variance! (So, if X has low variance, changing CY has a big effect.)
 """

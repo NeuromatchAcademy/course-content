@@ -1,6 +1,6 @@
 
 """
-1) The fisherperson is on the left side so:
+1) The fisher-person is on the left side so:
       - P(m = fish | s = left) = 0.7 because they have a 70% chance of catching
         a fish when on the same side as the school
       - P(m = no fish | s = left) = 0.3 because the probability of catching a fish
@@ -9,12 +9,12 @@
       - P(m = fish | s = right) = 0.2
       - P(m = no fish | s = right) = 0.8
 
-2) If the fisherperson catches a fish, you would guess the school of fish is on the
+2) If the fisher-person catches a fish, you would guess the school of fish is on the
     left side. This is because the probability of catching a fish given that the
    school is on the left side (0.7) is higher than the probability given that
    the school is on the right side (0.2).
 
-3) If the fisherperson does not catch a fish, you would guess the school of fish is on the
+3) If the fisher-person does not catch a fish, you would guess the school of fish is on the
     right side. This is because the probability of not catching a fish given that the
    school is on the right side (0.8) is higher than the probability given that
    the school is on the right side (0.3).

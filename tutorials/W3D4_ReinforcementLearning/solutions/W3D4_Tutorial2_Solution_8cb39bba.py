@@ -1,5 +1,5 @@
 def epsilon_greedy(q, epsilon):
-  """Epsilon-greedy policy: selects the maximum value action with probabilty
+  """Epsilon-greedy policy: selects the maximum value action with probability
   (1-epsilon) and selects randomly with epsilon probability.
 
   Args:

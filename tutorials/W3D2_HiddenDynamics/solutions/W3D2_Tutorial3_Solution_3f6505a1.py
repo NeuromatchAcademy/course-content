@@ -4,7 +4,7 @@ def simulate(D, s0, sigma_p, T):
 
   Args:
     D (scalar): dynamics multiplier
-    s0 (scalar): initial postion
+    s0 (scalar): initial position
     sigma_p (scalar): amount of noise in the system (standard deviation)
     T (scalar): total duration of the simulation
 
