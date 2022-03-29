@@ -15,10 +15,10 @@ In the bottom-left A, both eigenvalues are negative, so they are both decaying.
 All solutions decay towards the origin [0, 0]. The red eigenvalue is larger in
 magnitude, so decay is faster along the red eigenvector.
 
-In the bottm-right A, one eigenvalue is positive (red) and one eigenvalue is negative
+In the bottom-right A, one eigenvalue is positive (red) and one eigenvalue is negative
 (blue). This makes the shape of the landscape the shape of a saddle (named after
 the saddle that one puts on a horse for a rider). Trajectories decay along the
-blue eigenvector but grow along the red eigenvector.
+blue eigenvector but grows along the red eigenvector.
 
 
 """;

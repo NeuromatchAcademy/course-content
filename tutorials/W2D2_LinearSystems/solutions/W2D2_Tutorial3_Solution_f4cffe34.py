@@ -13,14 +13,14 @@ def simulate_ddm(lam, sig, x0, xinfty, T):
     ndarray, ndarray: `x` for all simulation steps and the time `t` at each step
   """
 
-  # initiatialize variables
+  # initialize variables
   t = np.arange(0, T, 1.)
   x = np.zeros_like(t)
   x[0] = x0
 
   # Step through in time
   for k in range(len(t)-1):
-      # update x at time k+1 with a determinstic and a stochastic component
+      # update x at time k+1 with a deterministic and a stochastic component
       # hint: the deterministic component will be like above, and
       #   the stochastic component is drawn from a scaled normal distribution
       x[k+1] = xinfty + lam * (x[k] - xinfty) + sig * np.random.standard_normal(size=1)

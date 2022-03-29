@@ -1,7 +1,7 @@
 
 def train(net, loss_fn, train_data, train_labels,
           n_epochs=50, learning_rate=1e-4):
-  """Run gradient descent to opimize parameters of a given network
+  """Run gradient descent to optimize parameters of a given network
 
   Args:
     net (nn.Module): PyTorch network whose parameters to optimize

@@ -5,7 +5,7 @@ def eig_single(fp, tau, a, theta, w, I_ext, **other_pars):
     tau, a, theta, w, I_ext : Simulation parameters
 
   Returns:
-    eig : eigevalue of the linearized system
+    eig : eigenvalue of the linearized system
   """
   # Compute the eigenvalue
   eig = (-1. + w * dF(w * fp + I_ext, a, theta)) / tau

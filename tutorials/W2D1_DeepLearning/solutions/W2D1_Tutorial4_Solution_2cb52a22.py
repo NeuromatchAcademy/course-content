@@ -7,7 +7,7 @@ def regularized_loss(output, target, weights, L2_penalty=0, L1_penalty=0):
     target (torch.Tensor): neural response network is trying to predict
     weights (torch.Tensor): linear layer weights from neurons to hidden units (net.in_layer.weight)
     L2_penalty : scaling factor of sum of squared weights
-    L1_penalty : scalaing factor for sum of absolute weights
+    L1_penalty : scaling factor for sum of absolute weights
 
   Returns:
     (torch.Tensor) mean-squared error with L1 and L2 penalties added
