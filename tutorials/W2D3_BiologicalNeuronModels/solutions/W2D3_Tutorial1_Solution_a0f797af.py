@@ -1,6 +1,5 @@
 
 """
-
 In a limiting case, when the time constant of the OU process is very long and the
 input current is almost flat, we expect the firing rate to decrease and neuron
 will spike more regularly. So as the OU process time constant increases, we expect

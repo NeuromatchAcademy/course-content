@@ -3,7 +3,7 @@
 and imaginary has to be not zero.
 
 2) Stable oscillation of 0.5 Hz (half a cycle per unit time, or one cycle per two
-unit time) is achieved with real = 0 and imagineary = +/- pi
+unit time) is achieved with real = 0 and imaginary = +/- pi
 (approximately 3.1 or -3.1).
 
 Note: For really large values of the imaginary component, the numerical

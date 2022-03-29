@@ -11,7 +11,7 @@ output correlation.
 2. These observations pose an interesting problem at the network level. If the
 output correlation are smaller than the input correlation, then the network activity
 should eventually converge to zero correlation. But that does not happen. So there
-is something missing in this model to understand origin of synchrony in the network.
+is something missing in this model to understand the origin of synchrony in the network.
 
 3. For spike trains, we do not have explicit control over mu and sigma but these
 two variables will be tied to the firing rate of the inputs. So the
