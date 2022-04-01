@@ -1688,10 +1688,10 @@ const thebe_selector_output = ".output, .cell_output"
 <p><strong>By Neuromatch Academy</strong></p>
 <div class="section" id="note-this-material-was-developed-in-nma-2020-and-has-not-been-revised-according-to-the-standards-of-the-hidden-dynamics-material">
 <h2><strong>Note: this material was developed in NMA 2020 and has not been revised according to the standards of the Hidden Dynamics material.</strong><a class="headerlink" href="#note-this-material-was-developed-in-nma-2020-and-has-not-been-revised-according-to-the-standards-of-the-hidden-dynamics-material" title="Permalink to this headline">¶</a></h2>
-<p><strong>Content creators:</strong> Yicheng Fei with help from Jesse Livezey</p>
-<p><strong>Content reviewers:</strong> John Butler, Matt Krause, Meenakshi Khosla, Spiros Chavlis, Michael Waskom</p>
-<p><strong>Acknowledgement</strong></p>
-<p>This tutorial is based on code originally created by Sean Escola.</p>
+<p><strong>Content Creators:</strong> Yicheng Fei with help from Jesse Livezey</p>
+<p><strong>Content Reviewers:</strong> John Butler, Matt Krause, Meenakshi Khosla, Spiros Chavlis, Michael Waskom</p>
+<p><strong>Post-Production Team:</strong> Gagana B, Spiros Chavlis</p>
+<p><strong>Acknowledgement</strong>: This tutorial is based on code originally created by Sean Escola.</p>
 </div>
 </div>
 <hr class="docutils"/>
@@ -2087,7 +2087,7 @@ We have a network of <span class="math notranslate nohighlight">\(C\)</span> neu
 </div>
 <div class="section" id="generate-data-with-frozen-sequence-and-plot">
 <h3>Generate data with frozen sequence and plot<a class="headerlink" href="#generate-data-with-frozen-sequence-and-plot" title="Permalink to this headline">¶</a></h3>
-<p>Given a state sequence <code class="docutils literal notranslate"><span class="pre">[0,1,1,3,2,...]</span></code>, we’ll first convert each state in to sequence in to the so-called “one-hot” coding. For example, with 5 total states, the one-hot coding of state <code class="docutils literal notranslate"><span class="pre">0</span></code> is <code class="docutils literal notranslate"><span class="pre">[1,0,0,0,0]</span></code> and the coding for state <code class="docutils literal notranslate"><span class="pre">3</span></code> is <code class="docutils literal notranslate"><span class="pre">[0,0,0,1,0]</span></code>. Suppose we now have a sequence of length <code class="docutils literal notranslate"><span class="pre">T</span></code>, the one-hot coding of this sequence <code class="docutils literal notranslate"><span class="pre">Xf</span></code> will have shape <code class="docutils literal notranslate"><span class="pre">(T,K)</span></code></p>
+<p>Given a state sequence <code class="docutils literal notranslate"><span class="pre">[0,1,1,3,2,...]</span></code>, we’ll first convert each state into sequence - the so-called “one-hot” coding. For example, with 5 total states, the one-hot coding of state <code class="docutils literal notranslate"><span class="pre">0</span></code> is <code class="docutils literal notranslate"><span class="pre">[1,0,0,0,0]</span></code> and the coding for state <code class="docutils literal notranslate"><span class="pre">3</span></code> is <code class="docutils literal notranslate"><span class="pre">[0,0,0,1,0]</span></code>. Suppose we now have a sequence of length <code class="docutils literal notranslate"><span class="pre">T</span></code>, the one-hot coding of this sequence <code class="docutils literal notranslate"><span class="pre">Xf</span></code> will have shape <code class="docutils literal notranslate"><span class="pre">(T,K)</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
@@ -2167,7 +2167,7 @@ We have a network of <span class="math notranslate nohighlight">\(C\)</span> neu
 <iframe allowfullscreen="" frameborder="0" height="410" src="https://www.youtube.com/embed/umU4wUWlKvg?fs=1" width="730"></iframe>
 </div></div>
 </div>
-<p>Finding the optimal values of parameters that maximizes the data likelihood is practically infeasible since we need to integrating out all latent variables <span class="math notranslate nohighlight">\(x_{1:T}\)</span>. The time needed is exponential to <span class="math notranslate nohighlight">\(T\)</span>. Thus as an alternative approach, we use the Expectation-Maximization algorithm, which iteratively performing a E-step followed by a M-step and is guaranteed to not decrease(usually increase) the data likelihood after each EM cycle.</p>
+<p>Finding the optimal values of parameters that maximizes the data likelihood is practically infeasible since we need to integrating out all latent variables <span class="math notranslate nohighlight">\(x_{1:T}\)</span>. The time needed is exponential to <span class="math notranslate nohighlight">\(T\)</span>. Thus as an alternative approach, we use the Expectation-Maximization algorithm, which iteratively performs an E-step followed by a M-step and is guaranteed to not decrease(usually increase) the data likelihood after each EM cycle.</p>
 <p>In this section we will briefly review the EM algorithm  for HMM and list</p>
 <ul class="simple">
 <li><p>Recursive equations for forward and backward probabilities <span class="math notranslate nohighlight">\(a_i(t)\)</span> and <span class="math notranslate nohighlight">\(b_i(t)\)</span></p></li>
@@ -2213,8 +2213,8 @@ New initial probabilities and parameters of the emission models are also given b
 <p>In this section you will read through the code for the forward-backward algorithm and understand how to implement the computation efficiently in <code class="docutils literal notranslate"><span class="pre">numpy</span></code> by calculating the recursion for all trials at once.</p>
 <hr class="docutils"/>
 <p>Let’s re-write the forward and backward recursions in a more compact form:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0d55e937-5ae4-41f6-9d63-37fb2fd41adb">
-<span class="eqno">(325)<a class="headerlink" href="#equation-0d55e937-5ae4-41f6-9d63-37fb2fd41adb" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-e83c01a6-aad6-4f80-b372-e97434d6f8fc">
+<span class="eqno">(325)<a class="headerlink" href="#equation-e83c01a6-aad6-4f80-b372-e97434d6f8fc" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 a_i^t &amp;=&amp; \sum_j A_{ji}o_j^t a_j^{t-1}\\
 b^t_i &amp;=&amp; \sum_j A_{ij} o_j^{t+1}b_j^{t+1} \text{, where } o_j^{t}=p(y_{t}|x_{t}=j)
 \end{eqnarray}\]</div>
@@ -2242,7 +2242,7 @@ b^t_{li} = \sum_j A_{ij} o_{l1j}^{t+1}b_{l1j}^{t+1}
 </pre></div>
 </div>
 <hr class="docutils"/>
-<p>In addition to the trick introduced above, in this exercise we will work in the <strong>log scale</strong> for numerical stability.</p>
+<p>In addition to the trick introduced above, in this exercise we will work on the <strong>log scale</strong> for numerical stability.</p>
 <p><strong>Suggestions:</strong> Take a look at the code for the forward recursion and backward recursion.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

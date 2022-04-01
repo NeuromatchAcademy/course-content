@@ -1,7 +1,6 @@
 # Using Google Colab 
 
-If you have access to Google Colab,
-you can click the "Open in Colab" button at the top of each page to launch it in an interactive environment where you can write and run code.
+If you have access to Google Colab, you can click the "Open in Colab" button at the top of each page to launch it in an interactive environment where you can write and run code.
 
 ## Advice for using Colab
 *  Make a local copy to your Drive: otherwise changes you make (e.g. notes you take, code you write, etc) will not be saved

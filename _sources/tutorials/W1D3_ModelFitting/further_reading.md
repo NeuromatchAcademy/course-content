@@ -2,29 +2,28 @@
 
 ### Generic tips on model fitting in neuroscience: 
 
-Wilson, Robert C. & Collins, Anne. 2019. “Ten Simple Rules for the Computational Modeling of Behavioral Data.” eLife 8 (November). https://doi.org/10.7554/eLife.49547.
+Palminteri, S., Wyart, V., and Koechlin, E. (2017). The importance of falsification in computational cognitive modeling. Trends in cognitive sciences, 21(6), 425-433. doi: [10.1016/j.tics.2017.03.011](https://doi.org/10.1016/j.tics.2017.03.011).
 
-Palminteri, S., Wyart, V., & Koechlin, E. (2017, June 1). The Importance of Falsification in Computational Cognitive Modeling. Trends in Cognitive Sciences, Vol. 21, pp. 425–433. https://doi.org/10.1016/j.tics.2017.03.011 
+Wilson, R. C., and Collins, A. G. (2019). Ten simple rules for the computational modeling of behavioral data. Elife, 8, e49547. doi: [10.7554/eLife.49547](https://doi.org/10.7554/eLife.49547).
 
 ### On linear regression: 
 
-Section 3.1 of Christopher Bishop’s textbook Pattern recognition and machine learning. Provides all mathematical derivations in depth. Freely available at https://www.microsoft.com/en-us/research/people/cmbishop/ 
+Bishop, C. M., and Nasrabadi, N. M. (2006). Pattern recognition and machine learning (Vol. 4, No. 4, p. 738). New York: springer. Section 3.1 provides all mathematical derivations in depth. Freely available at [microsoft.com/en-us/research/people/cmbishop/ ](https://www.microsoft.com/en-us/research/people/cmbishop/).
 
-Chapter 22 (Log-likelihood maximization) of David MacKay's very comprehensive textbook Information Theory, Inference, and Learning Algorithms. Freely available at https://www.inference.org.uk/itprnn/book.pdf 
+MacKay, D. J. (2003). Information theory, inference and learning algorithms. Cambridge university press. Chapter 22 (Log-likelihood maximization). Freely available at [www.inference.org.uk/itprnn](https://www.inference.org.uk/itprnn/book.pdf).
 
 ### On model selection: 
 
-Chapter 28 (Model selection and Occam’s razor) of David MacKay's very comprehensive textbook Information Theory, Inference, and Learning Algorithms. Freely available at https://www.inference.org.uk/itprnn/book.pdf
+Arlot, S., & Celisse, A. (2010). A survey of cross-validation procedures for model selection. Statistics surveys, 4, 40-79. doi: [10.1214/09-SS054](https://doi.org/10.1214/09-SS054).
 
-Arlot, S., & Celisse, A. (2009). A survey of cross-validation procedures for model selection. Statistics Surveys, 4(0), 40–79. https://doi.org/10.1214/09-SS054 
+MacKay, D. J. (2003). Information theory, inference and learning algorithms. Cambridge university press. Chapter 28 (Model selection and Occam’s razor) . Freely available at [www.inference.org.uk/itprnn](https://www.inference.org.uk/itprnn/book.pdf).
 
 ### On optimization methods (for LLH maximization or MSE minimization): 
 
-Boyd, S. & Vandenberghe, L. - Convex Optimization. Textbook,great resource for convex optimization in general, available at https://web.stanford.edu/~boyd/cvxbook/
+Acerbi, L., and Ma, W. J. (2017). Practical Bayesian optimization for model fitting with Bayesian adaptive direct search. Advances in neural information processing systems, 30. Algorithm for optimization problems, with Matlab toolbox available at [github.com/lacerbi/bads](https://github.com/lacerbi/bads).
 
-Acerbi, L., & Ma, W. J. (2017). Practical Bayesian Optimization for Model Fitting with Bayesian Adaptive Direct Search. NeurIPS 2017. Algorithm for optimization problems, with Matlab toolbox available at https://github.com/lacerbi/bads. 
+Boyd, S., Boyd, S. P., & Vandenberghe, L. (2004). Convex optimization. Cambridge university press. Freely available at [web.stanford.edu/~boyd/cvxbook](https://web.stanford.edu/~boyd/cvxbook).
 
 ### Research example developed in outro:
 
-Wei, K., & K rding, K. (2009). Relevance of error: What drives motor adaptation? Journal of Neurophysiology, 101(2), 655–664. https://doi.org/10.1152/jn.90545.2008
-
+Wei, K., & Kording, K. (2009). Relevance of error: what drives motor adaptation?. Journal of neurophysiology, 101(2), 655-664. doi: [10.1152/jn.90545.2008](https://doi.org/10.1152/jn.90545.2008).
