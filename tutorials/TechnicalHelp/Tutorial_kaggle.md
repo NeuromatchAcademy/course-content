@@ -1,7 +1,6 @@
 # Using Kaggle
 
-If you are in China or another region with difficult 
-access to Google Colab, you can use Kaggle as a substitute for launching an interactive coding environment where you can write and run code. Please note that we recommend Google colab if you can access it.
+If you are in China or another region with difficult  access to Google Colab, you can use Kaggle as a substitute for launching an interactive coding environment where you can write and run code. Please note that we recommend Google colab if you can access it.
 
 ## STEPS:
 **1.** First, [sign in](https://www.kaggle.com/account/login) to your Kaggle account. If you don't have a Kaggle account, create one by registering for it by clicking [here](https://www.kaggle.com/account/login?phase=startRegisterTab&returnUrl=%2F). 
@@ -33,4 +32,3 @@ access to Google Colab, you can use Kaggle as a substitute for launching an inte
 Once your phone number has been verified, on the left sidebar under **Settings** panel, select **Accelerator** to **GPU** from **None** using the drop down menu.
 
 ![Step 6.2](../static/kaggle_step6_2.png)
-

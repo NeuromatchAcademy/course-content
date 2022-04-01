@@ -1,24 +1,19 @@
 # Suggested further readings
 
-
 ### Hidden Markov Models
 
-HMMs can be used to understand the statistical structure of birdsong. Katahira, et al., Complex Sequencing Rules of Birdsong Can be Explained by Simple Hidden Markov Processes https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0024516
+HMMs can be used to understand the statistical structure of birdsong. Katahira, K., Suzuki, K., Okanoya, K., & Okada, M. (2011). Complex sequencing rules of birdsong can be explained by simple hidden Markov processes. PloS one, 6(9), e24516. doi: [10.1371/journal.pone.0024516](https://doi.org/10.1371/journal.pone.0024516).
 
 ### Kalman Filter
 
-KFs have been used to decode cursor movement from neural activity in brain-computer interfaces. 
-Wu, et al., Neural Decoding of Cursor Motion Using a Kalman Filter https://proceedings.neurips.cc/paper/2002/file/169779d3852b32ce8b1a1724dbf5217d-Paper.pdf
+KFs have been used to decode cursor movement from neural activity in brain-computer interfaces. Wu, W., Black, M., Gao, Y., Serruya, M., Shaikhouni, A., Donoghue, J., & Bienenstock, E. (2002). Neural decoding of cursor motion using a Kalman filter. Advances in neural information processing systems, 15. URL: [https://proceedings.neurips.cc/paper/2002/file/169779d3852b32ce8b1a1724dbf5217d-Paper.pdf](https://proceedings.neurips.cc/paper/2002/file/169779d3852b32ce8b1a1724dbf5217d-Paper.pdf).
 
 ### Decision making
 
-Drift-diffusion models are really used as models of decision making! Milosavljevic, et al., The Drift Diffusion Model can account for the accuracy and reaction time of value-based choices under high and low time pressure
-https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1901533
+Drift-diffusion models are really used as models of decision making! Mormann, M. M., Malmaud, J., Huth, A., Koch, C., & Rangel, A. (2010). The drift diffusion model can account for the accuracy and reaction time of value-based choices under high and low time pressure. Judgment and Decision Making, 5(6), 437-449. doi: [10.2139/ssrn.1901533](https://dx.doi.org/10.2139/ssrn.1901533).
 
-
-But things might be more complicated! Zoltowski, et al., Discrete Stepping and Nonlinear Ramping Dynamics Underlie Spiking Responses of LIP Neurons during Decision-Making https://www.sciencedirect.com/science/article/pii/S0896627319303885
+But things might be more complicated! Zoltowski, D. M., Latimer, K. W., Yates, J. L., Huk, A. C., & Pillow, J. W. (2019). Discrete stepping and nonlinear ramping dynamics underlie spiking responses of LIP neurons during decision-making. Neuron, 102(6), 1249-1258. doi: [10.1016/j.neuron.2019.04.031](https://doi.org/10.1016/j.neuron.2019.04.031).
 
 ### Technical aspects of the models
 
-Chen and Gupta, EM Demystified: An Expectation-Maximization Tutorial https://vannevar.ece.uw.edu/techsite/papers/documents/UWEETR-2010-0002.pdf
-
+Chen, Y., & Gupta, M. R. (2010, February). Em demystified: An expectation-maximization tutorial. In Electrical Engineering. URL: [https://vannevar.ece.uw.edu/techsite/papers/documents/UWEETR-2010-0002.pdf](https://vannevar.ece.uw.edu/techsite/papers/documents/UWEETR-2010-0002.pdf).
