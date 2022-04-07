@@ -17,13 +17,13 @@ Harris, K. D., Aravkin, A., Rao, R., & Brunton, B. W. (2021). Time-Varying Autor
 Hodgkin, A. L., & Huxley, A. F. (1952). A quantitative description of membrane current and its application
 to conduction and excitation in nerve. The Journal of physiology, 117(4), 500–544. doi: [10.1113/jphysiol.1952.sp004764](https://doi.org/10.1113/jphysiol.1952.sp004764).
 
-Hu, Y., Brunton, S. L., Cain, N., Mihalas, S., Kutz, J. N., & Shea-Brown, E. (2018). Feedback through graph motifs relates structure and function in complex networks. Physical Review E, 98(6), 062312. doi: doi: [10.1103/physreve.98.062312](https://doi.org/10.1103/physreve.98.062312).
+Hu, Y., Brunton, S. L., Cain, N., Mihalas, S., Kutz, J. N., & Shea-Brown, E. (2018). Feedback through graph motifs relates structure and function in complex networks. Physical Review E, 98(6), 062312. doi: [10.1103/physreve.98.062312](https://doi.org/10.1103/physreve.98.062312).
 
 Izhikevich, E.M. (2007). Dynamical Systems in Neuroscience: The Geometry of Excitability and Bursting. MIT Press.
 
 Linderman, S. W., Miller, A. C., Adams, R. P., Blei, D. M., Paninski, L., & Johnson, M. J. (2016). Recurrent switching linear dynamical systems. arXiv preprint. [arXiv:1610.08466](http://arxiv.org/abs/1610.08466).
 
-Mante, V., Sussillo, D., Shenoy, K. V., & Newsome, W. T. (2013). Context-dependent computation by recurrent dynamics in prefrontal cortex. nature, 503(7474), 78-84. https://doi.org/10.1038/nature12742
+Mante, V., Sussillo, D., Shenoy, K. V., & Newsome, W. T. (2013). Context-dependent computation by recurrent dynamics in prefrontal cortex. Nature, 503(7474), 78-84. doi: [10.1038/nature12742](https://doi.org/10.1038/nature12742)
 
 Morrison, K., & Curto, C. (2019). Predicting neural network dynamics via graphical analysis. In: Algebraic and Combinatorial Computational Biology (pp. 241-277). Academic Press. doi: [10.1016/B978-0-12-814066-6.00008-8](https://doi.org/10.1016/B978-0-12-814066-6.00008-8) or [arxiv:1804.01487](http://arxiv.org/abs/1804.01487).
 

@@ -13,7 +13,7 @@ Pearl, J. (2009). Causality. Cambridge university press. (Foundational book for 
 
 ### Econometrics:
 
-Angrist, J. D., & Pischke, J. S. (2014). Mastering'metrics: The path from cause to effect. Princeton university press. (Vry readable book for practical causal inference.)
+Angrist, J. D., & Pischke, J. S. (2014). Mastering'metrics: The path from cause to effect. Princeton university press. (Very readable book for practical causal inference.)
 
 Angrist, J. D., & Pischke, J. S. (2008). Mostly harmless econometrics. Princeton university press. (Beautiful book highlighting the ways we can use real world data to get at causal estimates with strong computational treatments.)
 

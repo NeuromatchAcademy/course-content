@@ -2,7 +2,7 @@
 
 
 ### Pytorch - papers: 
-Automatic differentiation library; some tutorials [https://openreview.net/pdf?id=BJJsrmfCZ](openreview.net/pdf?id=BJJsrmfCZ).
+Automatic differentiation library; some tutorials [openreview.net/pdf?id=BJJsrmfCZ](https://openreview.net/pdf?id=BJJsrmfCZ).
 
 ### Recommended review papers:
 
@@ -45,7 +45,7 @@ Guclu, U., and van Gerven, M. A. (2015). Deep neural networks reveal a gradient 
 
 Khaligh-Razavi, S. M., and Kriegeskorte, N. (2014). Deep supervised, but not unsupervised, models may explain IT cortical representation. PLoS computational biology, 10(11), e1003915. doi: [10.1371/journal.pcbi.1003915](https://doi.org/10.1371/journal.pcbi.1003915).
 
-Kriegeskorte, N., Mur, M., and Bandettini, P. A. (2008). Representational similarity analysis-connecting the branches of systems neuroscience. Frontiers in systems neuroscience, 2, 4.
+Kriegeskorte, N., Mur, M., and Bandettini, P. A. (2008). Representational similarity analysis-connecting the branches of systems neuroscience. Frontiers in systems neuroscience, 2, 4. doi: [10.3389/neuro.06.004.2008](https://doi.org/10.3389/neuro.06.004.2008).
 
 Mohsenzadeh, Y., Mullin, C., Lahner, B., and Oliva, A. (2020). Emergence of Visual center-periphery Spatial organization in Deep convolutional neural networks. Scientific Reports, 10(1), 1-8. doi: [10.1038/s41598-020-61409-0](https://doi.org/10.1038/s41598-020-61409-0).
 
@@ -53,7 +53,7 @@ Yamins, D. L., Hong, H., Cadieu, C. F., Solomon, E. A., Seibert, D., & DiCarlo, 
 
 
 #### Deep learning:
-Goh, G. (2017). Why momentum really works. Distill, 2(4), e6. doi: [10.23915/distill.00006](http://doi.org/10.23915/distill.00006).
+Goh, G. (2017). Why momentum really works. Distill, 2(4), e6. doi: [10.23915/distill.00006](https://doi.org/10.23915/distill.00006).
 
 He, K., Zhang, X., Ren, S., and Sun, J. (2016). Deep residual learning for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 770-778).
 
@@ -61,7 +61,7 @@ Ioffe, S., and Szegedy, C. (2015). Batch normalization: Accelerating deep networ
 
 Li, H., Xu, Z., Taylor, G., Studer, C., & Goldstein, T. (2018). Visualizing the loss landscape of neural nets. Advances in neural information processing systems, 31.
 
-Nielsen, M. (2016). A visual proof that neural nets can compute any function. URL: [http://neuralnetworksanddeeplearning.com/chap4.html](neuralnetworksanddeeplearning.com/chap4.html).
+Nielsen, M. (2016). A visual proof that neural nets can compute any function. URL: [neuralnetworksanddeeplearning.com/chap4.html](http://neuralnetworksanddeeplearning.com/chap4.html).
 
 Olah, C. (2014). Conv nets: A modular perspective. URL: [colah.github.io/posts/2014-07-Conv-Nets-Modular](http://colah.github.io/posts/2014-07-Conv-Nets-Modular).
 

@@ -4,7 +4,7 @@ Gerwinn, S., Bethge, M., Macke, J. H., and Seeger, M. (2007). Bayesian inference
 
 Glaser, J. I., Benjamin, A. S., Farhoodi, R., & Kording, K. P. (2019). The roles of supervised machine learning in systems neuroscience. Progress in neurobiology, 175, 126-137. doi: [10.1016/j.pneurobio.2019.01.008](https://doi.org/10.1016/j.pneurobio.2019.01.008).
 
-Glaser, J. I., Benjamin, A. S., Chowdhury, R. H., Perich, M. G., Miller, L. E., & Kording, K. P. (2020). Machine learning for neural decoding. Eneuro, 7(4). doi: [10.1523%2FENEURO.0506-19.2020](https://dx.doi.org/10.1523%2FENEURO.0506-19.2020).
+Glaser, J. I., Benjamin, A. S., Chowdhury, R. H., Perich, M. G., Miller, L. E., & Kording, K. P. (2020). Machine learning for neural decoding. Eneuro, 7(4). doi: [10.1523/ENEURO.0506-19.2020](https://doi.org/10.1523/ENEURO.0506-19.2020).
 
 Hardcastle, K., Maheswaranathan, N., Ganguli, S., and Giocomo, L. M. (2017). A multiplexed, heterogeneous, and adaptive code for navigation in medial entorhinal cortex. Neuron, 94(2), 375-387. doi: [10.1016/j.neuron.2017.03.025](https://doi.org/10.1016/j.neuron.2017.03.025).
 

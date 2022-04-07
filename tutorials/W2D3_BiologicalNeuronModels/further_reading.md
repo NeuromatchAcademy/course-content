@@ -8,13 +8,13 @@ Gerstner, W., Kistler, W. M., Naud, R., & Paninski, L. (2014). Chapter In: Dynam
 
 ### Hodgkin-Huxley neuron model (how spike is generated):
 
-Hodgkin, A. L., & Huxley, A. F. (1952). A quantitative description of membrane current and its application to conduction and excitation in nerve. The Journal of physiology, 117(4), 500. doi: [10.1113%2Fjphysiol.1952.sp004764](https://dx.doi.org/10.1113%2Fjphysiol.1952.sp004764).
+Hodgkin, A. L., & Huxley, A. F. (1952). A quantitative description of membrane current and its application to conduction and excitation in nerve. The Journal of physiology, 117(4), 500. doi: [10.1113/jphysiol.1952.sp004764](https://doi.org/10.1113/jphysiol.1952.sp004764).
 
-Hodgkin, A. L., Huxley, A. F., & Katz, B. (1952). Measurement of current-voltage relations in the membrane of the giant axon of Loligo. The Journal of physiology, 116(4), 424. doi: [10.1113%2Fjphysiol.1952.sp004716](https://dx.doi.org/10.1113%2Fjphysiol.1952.sp004716).
+Hodgkin, A. L., Huxley, A. F., & Katz, B. (1952). Measurement of current-voltage relations in the membrane of the giant axon of Loligo. The Journal of physiology, 116(4), 424. doi: [10.1113/jphysiol.1952.sp004716](https://doi.org/10.1113/jphysiol.1952.sp004716).
 
 ### But what is a spike
 
-Izhikevich, E. M., & FitzHugh, R. (2006). Fitzhugh-nagumo model. Scholarpedia, 1(9), 1349. doi: [10.4249/scholarpedia.1349](http://dx.doi.org/10.4249/scholarpedia.1349).
+Izhikevich, E. M., & FitzHugh, R. (2006). Fitzhugh-nagumo model. Scholarpedia, 1(9), 1349. doi: [10.4249/scholarpedia.1349](http://doi.org/10.4249/scholarpedia.1349).
 
 FitzHugh, R. (1955). Mathematical models of threshold phenomena in the nerve membrane. The bulletin of mathematical biophysics, 17(4), 257-278. doi: [10.1007/BF02477753](https://doi.org/10.1007/BF02477753).
 

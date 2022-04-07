@@ -4,7 +4,7 @@ Bassett, D. S., Zurn, P., and Gold, J. I. (2018). On the nature and use of model
 
 Bennett, M. R., and Hacker, P. M. S. (2003). Philosophical Foundations of Neuroscience, Wiley-Blackwell.
 
-Blohm, G., Kording, K. P., and Schrater, P. R. (2020). A how-to-model guide for Neuroscience. Eneuro, 7(1). doi : [10.1523/ENEURO.0352-19.2019](https://doi.org/10.1523/ENEURO.0352-19.2019).
+Blohm, G., Kording, K. P., and Schrater, P. R. (2020). A how-to-model guide for Neuroscience. Eneuro, 7(1). doi: [10.1523/ENEURO.0352-19.2019](https://doi.org/10.1523/ENEURO.0352-19.2019).
 
 Burgess, J. (1998). Occam’s razor and scientific method. In The Philosophy of Mathematics Today (pp. 195–214). Clarendon Press, Oxford. 
 
@@ -30,7 +30,7 @@ Jonas, E., and Kording, K. P. (2017). Could a neuroscientist understand a microp
 
 Josephson, J. R., and Josephson, S. G. (Eds.). (1996). Abductive inference: Computation, philosophy, technology. Cambridge University Press.
 
-Kaplan, D. M. (2011). Explanation and description in computational neuroscience. Synthese, 183(3), 339-373. doi: [https://doi.org/10.1007/s11229-011-9970-0](10.1007/s11229-011-9970-0). 
+Kaplan, D. M. (2011). Explanation and description in computational neuroscience. Synthese, 183(3), 339-373. doi: [10.1007/s11229-011-9970-0](https://doi.org/10.1007/s11229-011-9970-0).
     
 Kording, K., Blohm, G., Schrater, P., and Kay, K. (2018). Appreciating diversity of goals in computational neuroscience. doi: [10.31219/osf.io/3vy69](https://doi.org/10.31219/osf.io/3vy69).
 
@@ -46,7 +46,7 @@ Pearl, J., and Mackenzie, D. (2018). The Book of Why: The New Science of Cause a
 
 Russell, B. (1917). Mysticism and logic, and other essays. doi: [10.5962/bhl.title.19230](https://doi.org/10.5962/bhl.title.19230).
 
-Schrater, P., Kording, K., & Blohm, G. (2019). Modeling in Neuroscience as a Decision Process. OSF Preprints. Retrieved from https://osf.io/w56vt	 
+Schrater, P., Kording, K., & Blohm, G. (2019). Modeling in Neuroscience as a Decision Process. OSF Preprints. Retrieved from <https://osf.io/w56vt>
 
 Simon, H. A. (1969). The sciences of the artificial MIT Press. Cambridge, MA.
 
