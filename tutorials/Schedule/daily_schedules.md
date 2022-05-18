@@ -1,4 +1,4 @@
-# General schedule
+# General schedule (2021)
 
 ## Course overview
 * Week 0 (Optional)
