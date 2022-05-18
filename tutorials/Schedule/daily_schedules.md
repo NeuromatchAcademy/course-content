@@ -1,4 +1,4 @@
-# General schedule (2021)
+# General schedule (This pages refers to the course schedule of NMA-CN 2021. We will update the new schedule as soon as possible.)
 
 ## Course overview
 * Week 0 (Optional)
