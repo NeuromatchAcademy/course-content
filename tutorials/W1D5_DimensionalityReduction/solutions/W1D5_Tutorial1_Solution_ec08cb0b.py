@@ -1,6 +1,4 @@
-
 """
-
 1) As you rotate the basis vectors, the look of the cloud of projected data changes.
 Specifically, the correlations and variances of the projected data change.
 
@@ -13,5 +11,4 @@ for basis vector 1 and smaller variance for basis vector 2. Past theta of 45, th
 the variances start becoming more similar.
 
 3) If theta is 45 degrees, the projected data is uncorrelated.
-
-"""
+""";
