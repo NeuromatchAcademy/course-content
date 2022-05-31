@@ -8,7 +8,7 @@ Every group can bring up and discuss theory projects. We have two example projec
 
 |   | Run | View |
 | - | --- | ---- |
-| Working memory | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/theory/RNN_working_memory.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/theory/RNN_working_memory.ipynb?flush_cache=true) |
+| Working memory | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/theory/RNN_working_memory.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/theory/RNN_working_memory.ipynb?flush_cache=true) |
 
 ## Databases of models
 ​

@@ -10,14 +10,14 @@ Credit for data curation: Marius Pachitariu, Scott Linderman
 
 |   | Run | View |
 | - | --- | ---- |
-| Main notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/neurons/load_steinmetz_decisions.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/neurons/load_steinmetz_decisions.ipynb?flush_cache=true) |
-| LFP and waveform notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/neurons/load_steinmetz_extra.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/neurons/load_steinmetz_extra.ipynb?flush_cache=true) |
+| Main notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_steinmetz_decisions.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_steinmetz_decisions.ipynb?flush_cache=true) |
+| LFP and waveform notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_steinmetz_extra.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_steinmetz_extra.ipynb?flush_cache=true) |
 
-References:
+#### References:
 
-Steinmetz, Nicholas A., et al. "Distributed coding of choice, action and engagement across the mouse brain." Nature 576.7786 (2019): 266-273.
+- Steinmetz, Nicholas A., et al. (2019) Distributed coding of choice, action and engagement across the mouse brain. _Nature_ **576**(7786): 266-273. doi: [10.1038/s41586-019-1787-x](https://doi.org/10.1038/s41586-019-1787-x)
 
-https://neurostars.org/t/steinmetz-et-al-2019-dataset-questions/14539/72
+- https://neurostars.org/t/steinmetz-et-al-2019-dataset-questions/14539/72
 
 ### Stringer
 
@@ -27,14 +27,14 @@ Credit for data curation: Marius Pachitariu
 
 |   | Run | View |
 | - | --- | ---- |
-| Orientation stimuli + running | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/neurons/load_stringer_orientations.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/neurons/load_stringer_orientations.ipynb?flush_cache=true) |
-| High-dimensional spontaneous behaviors | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/neurons/load_stringer_spontaneous.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/neurons/load_stringer_spontaneous.ipynb?flush_cache=true) |
+| Orientation stimuli + running | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_stringer_orientations.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_stringer_orientations.ipynb?flush_cache=true) |
+| High-dimensional spontaneous behaviors | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_stringer_spontaneous.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_stringer_spontaneous.ipynb?flush_cache=true) |
 
-References:
+#### References:
 
-Stringer, Carsen, et al. "Spontaneous behaviors drive multidimensional, brainwide activity." Science 364.6437 (2019).
+- Stringer, Carsen, et al. (2019). Spontaneous behaviors drive multidimensional, brainwide activity. _Science_ **364**(6437): 255. doi: [10.1126/science.aav7893](https://doi.org/10.1126/science.aav7893)
 
-Stringer, Carsen, et al. "High-precision coding in visual cortex." Cell 184.10 (2021): 2767-2778.
+- Stringer, Carsen, et al. (2021). High-precision coding in visual cortex. _Cell_ **184**(10): 2767-2778. doi: [10.1016/j.cell.2021.03.042](https://doi.org/10.1016/j.cell.2021.03.042)
 
 ### Allen Institute
 
@@ -44,11 +44,11 @@ Credit for data curation: Marina Garret, Iryna Yavorska, Doug Ollerenshaw
 
 |   | Run | View |
 | - | --- | ---- |
-| Analyze one dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/neurons/load_Allen_Visual_Behavior_from_pre_processed_file.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/neurons/load_Allen_Visual_Behavior_from_pre_processed_file.ipynb?flush_cache=true) |
-| Access to all data | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/projects/neurons/load_Allen_Visual_Behavior_from_SDK.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/master/projects/neurons/load_Allen_Visual_Behavior_from_SDK.ipynb?flush_cache=true) |
+| Analyze one dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_Allen_Visual_Behavior_from_pre_processed_file.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_Allen_Visual_Behavior_from_pre_processed_file.ipynb?flush_cache=true) |
+| Access to all data | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_Allen_Visual_Behavior_from_SDK.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_Allen_Visual_Behavior_from_SDK.ipynb?flush_cache=true) |
 
-References: none yet for this dataset, but see:
+#### References: none yet for this dataset, but see:
 
-de Vries, Saskia EJ, et al. "A large-scale standardized physiological survey reveals functional organization of the mouse visual cortex." Nature Neuroscience 23.1 (2020): 138-151.
+- de Vries, Saskia E.J., et al. (2020). A large-scale standardized physiological survey reveals functional organization of the mouse visual cortex. _Nature Neuroscience_ **23**(1): 138-151. doi: [10.1038/s41593-019-0550-9](https://doi.org/10.1038/s41593-019-0550-9)
 
-Siegle, Joshua H., et al. "Survey of spiking in the mouse visual system reveals functional hierarchy." Nature 592.7852 (2021): 86-92.
+- Siegle, Joshua H., et al. (2021). Survey of spiking in the mouse visual system reveals functional hierarchy. _Nature_ **592**(7852): 86-92. doi: [10.1038/s41586-020-03171-x](https://doi.org/10.1038/s41586-020-03171-x)
