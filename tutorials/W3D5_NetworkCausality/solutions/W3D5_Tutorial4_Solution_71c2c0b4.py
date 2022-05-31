@@ -18,19 +18,19 @@ def instrument_strength_effect(etas, n_neurons, timesteps, n_trials):
 
   # Loop over trials
   for trial in range(n_trials):
-      print("Trial {} of {}".format(trial + 1, n_trials))
+    print("Trial {} of {}".format(trial + 1, n_trials))
 
-      # Loop over instrument strengths
-      for j, eta in enumerate(etas):
+    # Loop over instrument strengths
+    for j, eta in enumerate(etas):
 
-          # Simulate system
-          A, X, Z = simulate_neurons_iv(n_neurons, timesteps, eta, trial)
+      # Simulate system
+      A, X, Z = simulate_neurons_iv(n_neurons, timesteps, eta, trial)
 
-          # Compute IV estimate
-          iv_V = get_iv_estimate_network(X, Z)
+      # Compute IV estimate
+      iv_V = get_iv_estimate_network(X, Z)
 
-          # Compute correlation
-          corr_data[trial, j] =  np.corrcoef(A.flatten(), iv_V.flatten())[1, 0]
+      # Compute correlation
+      corr_data[trial, j] =  np.corrcoef(A.flatten(), iv_V.flatten())[1, 0]
 
   return corr_data
 
