@@ -1,4 +1,3 @@
-
 """
 Discussion:
 
@@ -13,5 +12,4 @@ constant as you vary the input rate.
 exc. and inh. rates. But if synapses are modeled as conductance as opposed to
 currents, fluctuations may start decrease at high input rates because neuron time
 constant will drop.
-
 """;
