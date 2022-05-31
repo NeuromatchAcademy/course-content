@@ -1,4 +1,9 @@
 
+np.random.seed(2020)  # set random seed
+
+# Add noise to data
+X_noisy = add_noise(X, .2)
+
 # Compute mean of noise-corrupted data
 X_noisy_mean = np.mean(X_noisy, 0)
 
