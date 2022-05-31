@@ -12,5 +12,4 @@ even when real=0. This is a numerical artifact of the forward Euler scheme.
 Some of the students may discover this if they push the parameters, but I've
 tried to constrain the widget so that it is not obvious, as it is not the point
 of this exercise.
-
 """;

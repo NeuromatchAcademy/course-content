@@ -1,4 +1,3 @@
-
 def simulate_ddm(lam, sig, x0, xinfty, T):
   """
   Simulate the drift-diffusion model with given parameters and initial condition.
@@ -20,12 +19,13 @@ def simulate_ddm(lam, sig, x0, xinfty, T):
 
   # Step through in time
   for k in range(len(t)-1):
-      # update x at time k+1 with a deterministic and a stochastic component
-      # hint: the deterministic component will be like above, and
-      #   the stochastic component is drawn from a scaled normal distribution
-      x[k+1] = xinfty + lam * (x[k] - xinfty) + sig * np.random.standard_normal(size=1)
+    # update x at time k+1 with a deterministic and a stochastic component
+    # hint: the deterministic component will be like above, and
+    #   the stochastic component is drawn from a scaled normal distribution
+    x[k+1] = xinfty + lam * (x[k] - xinfty) + sig * np.random.standard_normal(size=1)
 
   return t, x
+
 
 lam = 0.9    # decay rate
 sig = 0.1   # standard deviation of diffusive process

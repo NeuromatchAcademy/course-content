@@ -1,4 +1,3 @@
-
 # hint: see np.diff()
 inter_switch_intervals = np.diff(switch_times)
 

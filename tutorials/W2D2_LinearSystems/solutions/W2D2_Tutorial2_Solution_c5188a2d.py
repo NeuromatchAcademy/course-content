@@ -19,11 +19,11 @@ def simulate_prob_prop(A, x0, dt, T):
 
   # Step through the system in time
   for k in range(len(t)-1):
-      # Compute the state of x at time k+1
-      x_kp1 = np.dot(A, x[-1,:])
+    # Compute the state of x at time k+1
+    x_kp1 = np.dot(A, x[-1,:])
 
-      # Stack (append) this new state onto x to keep track of x through time steps
-      x = np.vstack((x, x_kp1))
+    # Stack (append) this new state onto x to keep track of x through time steps
+    x = np.vstack((x, x_kp1))
 
   return x, t
 

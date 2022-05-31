@@ -1,4 +1,3 @@
-
 """
 1) For a<0, the solution decays in time.
 For a>0, the solution grows in time.
