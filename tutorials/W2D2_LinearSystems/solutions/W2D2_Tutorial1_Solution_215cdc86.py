@@ -1,4 +1,3 @@
-
 """
 In top-left A, both eigenvalues are imaginary (no real component, the two
 eigenvalues are complex conjugate pairs), so the solutions are all stable
@@ -19,6 +18,4 @@ In the bottom-right A, one eigenvalue is positive (red) and one eigenvalue is ne
 (blue). This makes the shape of the landscape the shape of a saddle (named after
 the saddle that one puts on a horse for a rider). Trajectories decay along the
 blue eigenvector but grows along the red eigenvector.
-
-
 """;

@@ -1,4 +1,3 @@
-
 """
 It appears that the errors are larger at 0 and 360 degrees. The errors are biased
 in the positive direction at 0 degrees and in the negative direction at 360 degrees.

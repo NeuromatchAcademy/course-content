@@ -1,4 +1,3 @@
-
 """
 1. It seems like the model did not learn any weights for those hidden units.
 Perhaps the random initialization of the W_out weights for those hidden units
