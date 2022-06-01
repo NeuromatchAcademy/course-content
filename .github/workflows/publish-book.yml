@@ -62,12 +62,11 @@ jobs:
 
       - name: Build student book
         run: |
-          arg = "student"
-          python ci/generate_book.py $arg
+          python ci/generate_book.py student
           ln -s ../tutorials book/tutorials
           ln -s ../projects book/projects
           jupyter-book build book
-          python ci/parse_html_for_errors.py $arg
+          python ci/parse_html_for_errors.py student
 
       - name: Commit book
         run: |
