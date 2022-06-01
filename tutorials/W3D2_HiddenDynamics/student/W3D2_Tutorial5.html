@@ -1376,15 +1376,6 @@ const thebe_selector_output = ".output, .cell_output"
 <a class="reference internal nav-link" href="#">
    Bonus Tutorial 5: Expectation Maximization for spiking neurons
   </a>
-<ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry">
-<a class="reference internal nav-link" href="#note-this-material-was-developed-in-nma-2020-and-has-not-been-revised-according-to-the-standards-of-the-hidden-dynamics-material">
-<strong>
-      Note: this material was developed in NMA 2020 and has not been revised according to the standards of the Hidden Dynamics material.
-     </strong>
-</a>
-</li>
-</ul>
 </li>
 <li class="toc-h1 nav-item toc-entry">
 <a class="reference internal nav-link" href="#tutorial-objectives">
@@ -1536,15 +1527,6 @@ const thebe_selector_output = ".output, .cell_output"
 <a class="reference internal nav-link" href="#">
    Bonus Tutorial 5: Expectation Maximization for spiking neurons
   </a>
-<ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry">
-<a class="reference internal nav-link" href="#note-this-material-was-developed-in-nma-2020-and-has-not-been-revised-according-to-the-standards-of-the-hidden-dynamics-material">
-<strong>
-      Note: this material was developed in NMA 2020 and has not been revised according to the standards of the Hidden Dynamics material.
-     </strong>
-</a>
-</li>
-</ul>
 </li>
 <li class="toc-h1 nav-item toc-entry">
 <a class="reference internal nav-link" href="#tutorial-objectives">
@@ -1682,18 +1664,18 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <main id="main-content" role="main">
 <div>
-<p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W3D2_HiddenDynamics/student/W3D2_Tutorial5.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a>   <a href="https://kaggle.com/kernels/welcome?src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W3D2_HiddenDynamics/student/W3D2_Tutorial5.ipynb" target="_blank"><img alt="Open in Kaggle" src="https://kaggle.com/static/images/open-in-kaggle.svg"/></a></p>
+<p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/tutorials/W3D2_HiddenDynamics/student/W3D2_Tutorial5.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a>   <a href="https://kaggle.com/kernels/welcome?src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/main/tutorials/W3D2_HiddenDynamics/student/W3D2_Tutorial5.ipynb" target="_blank"><img alt="Open in Kaggle" src="https://kaggle.com/static/images/open-in-kaggle.svg"/></a></p>
 <div class="section" id="bonus-tutorial-5-expectation-maximization-for-spiking-neurons">
 <h1>Bonus Tutorial 5: Expectation Maximization for spiking neurons<a class="headerlink" href="#bonus-tutorial-5-expectation-maximization-for-spiking-neurons" title="Permalink to this headline">¶</a></h1>
 <p><strong>Week 3, Day 2: Hidden Dynamics</strong></p>
 <p><strong>By Neuromatch Academy</strong></p>
-<div class="section" id="note-this-material-was-developed-in-nma-2020-and-has-not-been-revised-according-to-the-standards-of-the-hidden-dynamics-material">
-<h2><strong>Note: this material was developed in NMA 2020 and has not been revised according to the standards of the Hidden Dynamics material.</strong><a class="headerlink" href="#note-this-material-was-developed-in-nma-2020-and-has-not-been-revised-according-to-the-standards-of-the-hidden-dynamics-material" title="Permalink to this headline">¶</a></h2>
 <p><strong>Content Creators:</strong> Yicheng Fei with help from Jesse Livezey</p>
 <p><strong>Content Reviewers:</strong> John Butler, Matt Krause, Meenakshi Khosla, Spiros Chavlis, Michael Waskom</p>
 <p><strong>Post-Production Team:</strong> Gagana B, Spiros Chavlis</p>
-<p><strong>Acknowledgement</strong>: This tutorial is based on code originally created by Sean Escola.</p>
-</div>
+<br/>
+<p><strong>Important Note:</strong> this material was developed in NMA 2020 and has not been revised according to the standards of the Hidden Dynamics material.</p>
+<br/>
+<p><strong>Acknowledgements:</strong> This tutorial is based on code originally created by Sean Escola.</p>
 </div>
 <hr class="docutils"/>
 <div class="section" id="tutorial-objectives">
@@ -2096,7 +2078,7 @@ We have a network of <span class="math notranslate nohighlight">\(C\)</span> neu
 <span class="n">Xf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
 <span class="n">Xf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">psi</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">())</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
-    <span class="n">Xf</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">Xf</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],:]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">())</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span>
+  <span class="n">Xf</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">Xf</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],:]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">())</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span>
 
 <span class="c1"># switch to one-hot encoding of the state</span>
 <span class="n">Xf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)[</span><span class="n">Xf</span><span class="p">]</span>  <span class="c1"># (T,K)</span>
@@ -2175,55 +2157,61 @@ We have a network of <span class="math notranslate nohighlight">\(C\)</span> neu
 <li><p>Expressions for singleton and pairwise marginal distributions after seeing data: <span class="math notranslate nohighlight">\(\gamma_{i}(t):=p_{\theta}\left(x_{t}=i | Y_{1: T}\right)\)</span> and <span class="math notranslate nohighlight">\(\xi_{i j}(t) = p_{\theta}(x_t=i,x_{t+1}=j|Y_{1:T})\)</span></p></li>
 <li><p>Closed-form solutions for updated values of <span class="math notranslate nohighlight">\(A,\psi,\lambda\)</span> which increases data likelihood</p></li>
 </ul>
-<hr class="docutils"/>
 </div>
 <div class="section" id="e-step-forward-backward-algorithm">
 <h2>E-step: Forward-backward algorithm<a class="headerlink" href="#e-step-forward-backward-algorithm" title="Permalink to this headline">¶</a></h2>
 <p>In the forward pass, we calculate the <strong>forward probabilities</strong>, or the joint probability of <span class="math notranslate nohighlight">\(x_t\)</span> and current and past data <span class="math notranslate nohighlight">\(Y_{1:t}\)</span>: <span class="math notranslate nohighlight">\(a_i(t):=p(x_t=i,Y_{1:t})\)</span> recursively by</p>
-<div class="math notranslate nohighlight">
-\[a_i(t) = p_(y_t|x_i=t)\sum_j A_{ji} a_j(t-1)\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-cad26217-aa5a-4cc7-9073-09c7acf07e79">
+<span class="eqno">(391)<a class="headerlink" href="#equation-cad26217-aa5a-4cc7-9073-09c7acf07e79" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+a_i(t) = p_(y_t|x_i=t)\sum_j A_{ji} a_j(t-1)
+\end{equation}\]</div>
 <p>In contrast to the intro, now <span class="math notranslate nohighlight">\(A_{ji}\)</span> means <strong>the transition probability from state <span class="math notranslate nohighlight">\(j\)</span> to state <span class="math notranslate nohighlight">\(i\)</span>.</strong></p>
 <p>The backward pass calculate the <strong>backward probabilities</strong> <span class="math notranslate nohighlight">\(b_i(t):=p_{\theta}(Y_{t+1:T}|x_t=i)\)</span>, which is the likelihood of observing all future data points given current state <span class="math notranslate nohighlight">\(x_t\)</span>. The recursion of <span class="math notranslate nohighlight">\(b_i(t)\)</span> is given by</p>
-<div class="math notranslate nohighlight">
-\[ b_i(t) = \sum_j p_{\theta}(y_{t+1}|x_{t+1}=j)b_j(t+1)A_{ij} \]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-70a6c177-f81c-4318-b4f5-9093ca9746dd">
+<span class="eqno">(392)<a class="headerlink" href="#equation-70a6c177-f81c-4318-b4f5-9093ca9746dd" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+b_i(t) = \sum_j p_{\theta}(y_{t+1}|x_{t+1}=j)b_j(t+1)A_{ij}
+\end{equation}\]</div>
 <p>Combining all past and future information, the <strong>singleton and pairwise marginal distributions</strong> are given by</p>
-<div class="math notranslate nohighlight">
-\[ \gamma_{i}(t):=p_{\theta}\left(x_{t}=i | Y_{1: T}\right)=\frac{a_{i}(t) b_{i}(t)}{p_{\theta}\left(Y_{1: T}\right)} \]</div>
-<div class="math notranslate nohighlight">
-\[  \xi_{i j}(t) = p_{\theta}(x_t=i,x_{t+1}=j|Y_{1:T}) =\frac{b_{j}(t+1)p_{\theta}\left(y_{t+1} | x_{t+1}=j\right) A_{i j} a_{i}(t)}{p_{\theta}\left(Y_{1: T}\right)} \]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-c1114ef6-5f85-4e46-a637-1ceeeb9d6e21">
+<span class="eqno">(393)<a class="headerlink" href="#equation-c1114ef6-5f85-4e46-a637-1ceeeb9d6e21" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+\gamma_{i}(t):=p_{\theta}\left(x_{t}=i | Y_{1: T}\right)=\frac{a_{i}(t) b_{i}(t)}{p_{\theta}\left(Y_{1: T}\right)}
+\end{equation}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-b17134ac-94f6-4223-97b7-825b1210c61b">
+<span class="eqno">(394)<a class="headerlink" href="#equation-b17134ac-94f6-4223-97b7-825b1210c61b" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+\xi_{i j}(t) = p_{\theta}(x_t=i,x_{t+1}=j|Y_{1:T}) =\frac{b_{j}(t+1)p_{\theta}\left(y_{t+1} | x_{t+1}=j\right) A_{i j} a_{i}(t)}{p_{\theta}\left(Y_{1: T}\right)}
+\end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(p_{\theta}(Y_{1:T})=\sum_i a_i(T)\)</span>.</p>
 </div>
-<hr class="docutils"/>
 <div class="section" id="m-step">
 <h2>M-step<a class="headerlink" href="#m-step" title="Permalink to this headline">¶</a></h2>
-<p>The M-step for HMM has a closed-form solution. First the new transition matrix is given by
-$<span class="math notranslate nohighlight">\( 
- A_{ij} =\frac{\sum_{t=1}^{T-1} \xi_{i j}(t)}{\sum_{t=1}^{T-1} \gamma_{i}(t)}
-\)</span>$</p>
+<p>The M-step for HMM has a closed-form solution. First the new transition matrix is given by</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8b9b91ee-78ee-4328-983a-8d576cf0020e">
+<span class="eqno">(395)<a class="headerlink" href="#equation-8b9b91ee-78ee-4328-983a-8d576cf0020e" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+A_{ij} =\frac{\sum_{t=1}^{T-1} \xi_{i j}(t)}{\sum_{t=1}^{T-1} \gamma_{i}(t)}
+\end{equation}\]</div>
 <p>which is the expected empirical transition probabilities.
 New initial probabilities and parameters of the emission models are also given by their empirical values given single and pairwise marginal distributions:</p>
-<div class="math notranslate nohighlight">
-\[ \psi_i = \frac{1}{N}\sum_{trials}\gamma_i(1) \]</div>
-<div class="math notranslate nohighlight">
-\[ \lambda_{i}^{c}=\frac{\sum_{t} \gamma_{i}(t) y_{t}^{c}}{\sum_{t} \gamma_{i}(t) d t}\]</div>
-<hr class="docutils"/>
+<div class="amsmath math notranslate nohighlight" id="equation-86834df9-e70e-4062-8ca0-014a7f90bcb4">
+<span class="eqno">(396)<a class="headerlink" href="#equation-86834df9-e70e-4062-8ca0-014a7f90bcb4" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\psi_i &amp;= \frac{1}{N}\sum_{trials}\gamma_i(1) \\
+\lambda_{i}^{c} &amp;= \frac{\sum_{t} \gamma_{i}(t) y_{t}^{c}}{\sum_{t} \gamma_{i}(t) d t}
+\end{align}\]</div>
 </div>
 <div class="section" id="e-step-forward-and-backward-algorithm">
 <h2>E-step: forward and backward algorithm<a class="headerlink" href="#e-step-forward-and-backward-algorithm" title="Permalink to this headline">¶</a></h2>
 <p><strong>(Optional)</strong></p>
 <p>In this section you will read through the code for the forward-backward algorithm and understand how to implement the computation efficiently in <code class="docutils literal notranslate"><span class="pre">numpy</span></code> by calculating the recursion for all trials at once.</p>
-<hr class="docutils"/>
 <p>Let’s re-write the forward and backward recursions in a more compact form:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-76a4e093-a1f7-490f-8310-926ddaa5830f">
-<span class="eqno">(329)<a class="headerlink" href="#equation-76a4e093-a1f7-490f-8310-926ddaa5830f" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-f3f3d718-d3fe-4afc-941d-0160244b3a42">
+<span class="eqno">(397)<a class="headerlink" href="#equation-f3f3d718-d3fe-4afc-941d-0160244b3a42" title="Permalink to this equation">¶</a></span>\[\begin{eqnarray}
 a_i^t &amp;=&amp; \sum_j A_{ji}o_j^t a_j^{t-1}\\
 b^t_i &amp;=&amp; \sum_j A_{ij} o_j^{t+1}b_j^{t+1} \text{, where } o_j^{t}=p(y_{t}|x_{t}=j)
 \end{eqnarray}\]</div>
 <p>Let’s take the backward recursion for example. In practice we will handle all trials together since they are independent of each other. After adding a trial index <span class="math notranslate nohighlight">\(l\)</span> to the recursion equations, the backward recursion becomes:</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="amsmath math notranslate nohighlight" id="equation-8b4a2d8d-97a9-4103-b8ba-a5a7f97049b2">
+<span class="eqno">(398)<a class="headerlink" href="#equation-8b4a2d8d-97a9-4103-b8ba-a5a7f97049b2" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 b^t_{li} = \sum_j A_{ij} o_{lj}^{t+1}b_{lj}^{t+1}
-\]</div>
+\end{equation}\]</div>
 <p>What we have in hand are:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">A</span></code>: matrix of size <code class="docutils literal notranslate"><span class="pre">(K,K)</span></code></p></li>
@@ -2232,17 +2220,17 @@ b^t_{li} = \sum_j A_{ij} o_{lj}^{t+1}b_{lj}^{t+1}
 </ul>
 <p>where <code class="docutils literal notranslate"><span class="pre">N</span></code> stands for the number of trials.</p>
 <p>The index size and meaning doesn’t match for these three arrays: the index is <span class="math notranslate nohighlight">\(i\)</span> for <span class="math notranslate nohighlight">\(A\)</span> in the first dimension and is <span class="math notranslate nohighlight">\(l\)</span> for <span class="math notranslate nohighlight">\(o\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, so we can’t just multiply them together. However, we can do this by viewing vectors <span class="math notranslate nohighlight">\(o^{t+1}_{l\cdot}\)</span> and <span class="math notranslate nohighlight">\(b^{t+1}_{l\cdot}\)</span> as a matrix with 1 row and re-write the backward equation as:</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="amsmath math notranslate nohighlight" id="equation-0510975b-8a27-4ffc-9dc3-ac0fbf0fcecb">
+<span class="eqno">(399)<a class="headerlink" href="#equation-0510975b-8a27-4ffc-9dc3-ac0fbf0fcecb" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 b^t_{li} = \sum_j A_{ij} o_{l1j}^{t+1}b_{l1j}^{t+1}
-\]</div>
+\end{equation}\]</div>
 <p>Now we can just multiply these three arrays element-wise and sum over the last dimension.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, we can achieve this by indexing the array with <code class="docutils literal notranslate"><span class="pre">None</span></code> at the location we want to insert a dimension. Take <code class="docutils literal notranslate"><span class="pre">b</span></code> with size <code class="docutils literal notranslate"><span class="pre">(N,T,K)</span></code> for example,<code class="docutils literal notranslate"><span class="pre">b[:,t,:]</span></code> will have shape <code class="docutils literal notranslate"><span class="pre">(N,K)</span></code>, <code class="docutils literal notranslate"><span class="pre">b[:,t,None,:]</span></code> will have shape <code class="docutils literal notranslate"><span class="pre">(N,1,K)</span></code> and <code class="docutils literal notranslate"><span class="pre">b[:,t,:,None]</span></code> will have shape <code class="docutils literal notranslate"><span class="pre">(N,K,1)</span></code>.</p>
 <p>So the backward recursion computation can be implemented as</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="p">[:,</span><span class="n">t</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span> <span class="o">*</span> <span class="n">o</span><span class="p">[:,</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="kc">None</span><span class="p">,:]</span> <span class="o">*</span> <span class="n">b</span><span class="p">[:,</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="kc">None</span><span class="p">,:])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<hr class="docutils"/>
+<br/>
 <p>In addition to the trick introduced above, in this exercise we will work on the <strong>log scale</strong> for numerical stability.</p>
 <p><strong>Suggestions:</strong> Take a look at the code for the forward recursion and backward recursion.</p>
 <div class="cell docutils container">
@@ -2322,25 +2310,25 @@ b^t_{li} = \sum_j A_{ij} o_{l1j}^{t+1}b_{l1j}^{t+1}
 <ol class="simple">
 <li><p>Calculate new initial probabilities as empirical counts of singleton marginals</p></li>
 </ol>
-<div class="math notranslate nohighlight">
-\[
+<div class="amsmath math notranslate nohighlight" id="equation-2e6348c1-b2b8-4228-89ac-b1033751a64e">
+<span class="eqno">(400)<a class="headerlink" href="#equation-2e6348c1-b2b8-4228-89ac-b1033751a64e" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \psi_i = \frac{1}{N}\sum_{trials}\gamma_i(1)
-\]</div>
+\end{equation}\]</div>
 <ol class="simple">
 <li><p>Remember the extra trial dimension and average over all trials</p></li>
 </ol>
 <br/>
 <p><strong>For reference:</strong></p>
 <p>New transition matrix is calculated as empirical counts of transition events from marginals</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="amsmath math notranslate nohighlight" id="equation-0ecc7678-c42f-4474-90b3-36bd704316bb">
+<span class="eqno">(401)<a class="headerlink" href="#equation-0ecc7678-c42f-4474-90b3-36bd704316bb" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 A_{ij} =\frac{\sum_{t=1}^{T-1} \xi_{i j}(t)}{\sum_{t=1}^{T-1} \gamma_{i}(t)}
-\]</div>
+\end{equation}\]</div>
 <p>New spiking rates for each cell and each state are given by</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="amsmath math notranslate nohighlight" id="equation-96ab70f7-66a7-46f5-9638-a775ee875198">
+<span class="eqno">(402)<a class="headerlink" href="#equation-96ab70f7-66a7-46f5-9638-a775ee875198" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \lambda_{i}^{c}=\frac{\sum_{t} \gamma_{i}(t) y_{t}^{c}}{\sum_{t} \gamma_{i}(t) d t}
-\]</div>
+\end{equation}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">m_step</span><span class="p">(</span><span class="n">gamma</span><span class="p">,</span> <span class="n">xi</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
@@ -2377,7 +2365,7 @@ A_{ij} =\frac{\sum_{t=1}^{T-1} \xi_{i j}(t)}{\sum_{t=1}^{T-1} \gamma_{i}(t)}
 </div>
 </div>
 </div>
-<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W3D2_HiddenDynamics/solutions/W3D2_Tutorial5_Solution_ab737584.py"><em>Click for solution</em></a></p>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/main//tutorials/W3D2_HiddenDynamics/solutions/W3D2_Tutorial5_Solution_ab737584.py"><em>Click for solution</em></a></p>
 <div class="section" id="video-5-running-and-plotting-em">
 <h4>Video 5: Running and plotting EM<a class="headerlink" href="#video-5-running-and-plotting-em" title="Permalink to this headline">¶</a></h4>
 <div class="cell tag_remove-input docutils container">
