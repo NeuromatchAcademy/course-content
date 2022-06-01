@@ -1740,7 +1740,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <main id="main-content" role="main">
 <div>
-<p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/W3D5_NetworkCausality/student/W3D5_Tutorial2.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a>   <a href="https://kaggle.com/kernels/welcome?src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W3D5_NetworkCausality/student/W3D5_Tutorial2.ipynb" target="_blank"><img alt="Open in Kaggle" src="https://kaggle.com/static/images/open-in-kaggle.svg"/></a></p>
+<p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/tutorials/W3D5_NetworkCausality/student/W3D5_Tutorial2.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a>   <a href="https://kaggle.com/kernels/welcome?src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/main/tutorials/W3D5_NetworkCausality/student/W3D5_Tutorial2.ipynb" target="_blank"><img alt="Open in Kaggle" src="https://kaggle.com/static/images/open-in-kaggle.svg"/></a></p>
 <div class="section" id="tutorial-2-correlations">
 <h1>Tutorial 2: Correlations<a class="headerlink" href="#tutorial-2-correlations" title="Permalink to this headline">¶</a></h1>
 <p><strong>Week 3, Day 5: Network Causality</strong></p>
@@ -1797,7 +1797,6 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
-
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
@@ -2037,13 +2036,13 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "a87e16756b5847e4828e89369d97c2ed"}
+{"version_major": 2, "version_minor": 0, "model_id": "1c833165685f44728809af2497337c7a"}
 </script></div>
 </div>
 </div>
 <div class="section" id="coding-exercise-1-try-to-approximate-causation-with-correlation">
 <h2>Coding Exercise 1: Try to approximate causation with correlation<a class="headerlink" href="#coding-exercise-1-try-to-approximate-causation-with-correlation" title="Permalink to this headline">¶</a></h2>
-<p>In small systems, correlation can look like causation. Let’s attempt to recover the true connectivity matrix (A) just by correlating the neural state at each timestep with the previous state: <span class="math notranslate nohighlight">\(C=\vec{x_t}{\vec{x_{t+1}}^T}\)</span>.</p>
+<p>In small systems, correlation can look like causation. Let’s attempt to recover the true connectivity matrix (A) just by correlating the neural state at each timestep with the previous state: <span class="math notranslate nohighlight">\(C=\vec{x_t}{\vec{x_{t+1}}^\top}\)</span>.</p>
 <p>Complete this function to estimate the connectivity matrix of a single neuron by calculating the correlation coefficients with every other neuron at the next timestep. That is, please correlate two vectors: 1) the activity of a selected neuron at time <span class="math notranslate nohighlight">\(t\)</span> 2) The activity of all other neurons at time <span class="math notranslate nohighlight">\(t+1\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2114,9 +2113,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 
 </div>
-<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W3D5_NetworkCausality/solutions/W3D5_Tutorial2_Solution_c0d0fba7.py"><em>Click for solution</em></a></p>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/main//tutorials/W3D5_NetworkCausality/solutions/W3D5_Tutorial2_Solution_c0d0fba7.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W3D5_NetworkCausality/static/W3D5_Tutorial2_Solution_c0d0fba7_0.png"><img align="center" alt="Solution hint" class="align-center" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W3D5_NetworkCausality/static/W3D5_Tutorial2_Solution_c0d0fba7_0.png" style="width: 972.0px; height: 683.0px;"/></a>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/main/tutorials/W3D5_NetworkCausality/static/W3D5_Tutorial2_Solution_c0d0fba7_0.png"><img align="center" alt="Solution hint" class="align-center" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/main/tutorials/W3D5_NetworkCausality/static/W3D5_Tutorial2_Solution_c0d0fba7_0.png" style="width: 917.0px; height: 683.0px;"/></a>
 <p>Hopefully you saw that it pretty much worked. We wrote a function that does what you just did but in matrix form, so it’s a little faster. It also does all neurons at the same time (helper function <code class="docutils literal notranslate"><span class="pre">correlation_for_all_neurons</span></code>).</p>
 <p>Execute this cell get helper function <code class="docutils literal notranslate"><span class="pre">correlation_for_all_neurons</span></code></p>
 <div class="cell tag_hide-input docutils container">
@@ -2184,7 +2183,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "36023296668947e5a0550e9555d44a26"}
+{"version_major": 2, "version_minor": 0, "model_id": "70988f91fc9542e0a527d43e265800f0"}
 </script></div>
 </div>
 <p><strong>Video correction</strong>: the connectivity graph plots and associated explanations in this and other videos show the wrong direction of connectivity (the arrows should be pointing the opposite direction). This has been fixed in the figures above.</p>
@@ -2235,7 +2234,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "1618a60d13f84598afb7101ce3f69268"}
+{"version_major": 2, "version_minor": 0, "model_id": "bc81fc289ad2425e82bf95edeb65715c"}
 </script></div>
 </div>
 </div>
@@ -2269,7 +2268,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "8fd0367e7d5b4a8781a3bb5ea265c80f"}
+{"version_major": 2, "version_minor": 0, "model_id": "786665f73d244275b317efd5b417956e"}
 </script></div>
 </div>
 <p>Of course there is some variability due to randomness in <span class="math notranslate nohighlight">\(A\)</span>. Let’s average over a few trials and find the relationship.</p>
@@ -2336,7 +2335,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "a759a6eb720445d28f5a6995bfb169b4"}
+{"version_major": 2, "version_minor": 0, "model_id": "562fcb6c88df4b308eb6e12246b11c98"}
 </script></div>
 </div>
 </div>
@@ -2366,7 +2365,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "63e0cc7fdf874bc7a939fc0acb57a4ce"}
+{"version_major": 2, "version_minor": 0, "model_id": "4d3eaf690a56457b9a15bedbe803495c"}
 </script></div>
 </div>
 <p>Now for the takeaway. We know that for large systems correlation ≠ causation. But what about when we coarsely sample the large system? Do we get better at estimating the <em>effective</em> causal interaction between groups (=average of weights) from the correlation between the groups?</p>
@@ -2417,12 +2416,12 @@ We are assuming that the connectivity is random. In real brains, the neurons tha
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_5664</span><span class="o">/</span><span class="mf">4113217855.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_6253</span><span class="o">/</span><span class="mf">4113217855.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> 
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">A</span> <span class="o">=</span> <span class="n">create_connectivity</span><span class="p">(</span><span class="n">n_neurons</span><span class="p">,</span> <span class="n">random_state</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">X</span> <span class="o">=</span> <span class="n">simulate_neurons</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">timesteps</span><span class="p">)</span>
 
-<span class="nn">/tmp/ipykernel_5664/2993435089.py</span> in <span class="ni">simulate_neurons</span><span class="nt">(A, timesteps, random_state)</span>
+<span class="nn">/tmp/ipykernel_6253/2993435089.py</span> in <span class="ni">simulate_neurons</span><span class="nt">(A, timesteps, random_state)</span>
 <span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">timesteps</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
 <span class="g g-Whitespace">     </span><span class="mi">57</span>         <span class="c1"># solution</span>
 <span class="ne">---&gt; </span><span class="mi">58</span>         <span class="n">epsilon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_neurons</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_neurons</span><span class="p">))</span>
@@ -2502,9 +2501,9 @@ We are assuming that the connectivity is random. In real brains, the neurons tha
 </div>
 </div>
 </div>
-<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/master//tutorials/W3D5_NetworkCausality/solutions/W3D5_Tutorial2_Solution_a032d00b.py"><em>Click for solution</em></a></p>
+<p><a class="reference external" href="https://github.com/NeuromatchAcademy/course-content/tree/main//tutorials/W3D5_NetworkCausality/solutions/W3D5_Tutorial2_Solution_a032d00b.py"><em>Click for solution</em></a></p>
 <p><em>Example output:</em></p>
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W3D5_NetworkCausality/static/W3D5_Tutorial2_Solution_a032d00b_0.png"><img align="center" alt="Solution hint" class="align-center" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/master/tutorials/W3D5_NetworkCausality/static/W3D5_Tutorial2_Solution_a032d00b_0.png" style="width: 1398.0px; height: 604.0px;"/></a>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/main/tutorials/W3D5_NetworkCausality/static/W3D5_Tutorial2_Solution_a032d00b_0.png"><img align="center" alt="Solution hint" class="align-center" src="https://raw.githubusercontent.com/NeuromatchAcademy/course-content/main/tutorials/W3D5_NetworkCausality/static/W3D5_Tutorial2_Solution_a032d00b_0.png" style="width: 971.0px; height: 420.0px;"/></a>
 <p>How close is the estimated coarse connectivity matrix to the truth?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
