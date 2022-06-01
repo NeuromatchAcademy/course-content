@@ -60,13 +60,14 @@ jobs:
           rm -r precourse-$BRANCH
           rm -r $BRANCH.tar.gz
 
-      - name: Build the book
+      - name: Build student book
         run: |
-          python ci/generate_book.py student
+          arg = student
+          python ci/generate_book.py $arg
           ln -s ../tutorials book/tutorials
           ln -s ../projects book/projects
           jupyter-book build book
-          python ci/parse_html_for_errors.py
+          python ci/parse_html_for_errors.py $arg
 
       - name: Commit book
         run: |
