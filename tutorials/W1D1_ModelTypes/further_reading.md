@@ -1,6 +1,6 @@
 # Suggested further readings 
 
-Bassett, D. S., Zurn, P., and Gold, J. I. (2018). On the nature and use of models in network neuroscience. Nature Reviews Neuroscience 19(9):566-578.  doi: [10.1038/s41583-018-0038-8](https://doi.org/10.1038/s41583-018-0038-8) {{ closed_access }} (postprint: [europepmc.org/articles/pmc6466618?pdf=render](https://europepmc.org/articles/pmc6466618?pdf=render) {{ open_access }}).
+Bassett, D. S., Zurn, P., and Gold, J. I. (2018). On the nature and use of models in network neuroscience. Nature Reviews Neuroscience 19(9):566-578.  doi: [10.1038/s41583-018-0038-8](https://doi.org/10.1038/s41583-018-0038-8) {{ closed_access }} (postprint: [europepmc.org/articles/pmc6466618](https://europepmc.org/articles/pmc6466618) {{ open_access }}).
 
 Bennett, M. R., and Hacker, P. M. S. (2003). Philosophical Foundations of Neuroscience, Wiley-Blackwell.
 
@@ -20,7 +20,7 @@ Cichy, R. M., and Kaiser, D. (2019). Deep neural networks as scientific models. 
 
 Dayan, P. (2005). Theoretical Neuroscience: Computational And Mathematical Modeling of Neural Systems. MIT Press.
 
-Feldman, J. (2016). The simplicity principle in perception and cognition. Wiley Interdisciplinary Reviews: Cognitive Science 7(5): 330-340. doi: [10.1002/wcs.1406](https://doi.org/10.1002/wcs.1406) {{ closed_access }} (postprint: [europepmc.org/articles/pmc5125387?pdf=render](https://europepmc.org/articles/pmc5125387?pdf=render) {{ open_access }}).
+Feldman, J. (2016). The simplicity principle in perception and cognition. Wiley Interdisciplinary Reviews: Cognitive Science 7(5): 330-340. doi: [10.1002/wcs.1406](https://doi.org/10.1002/wcs.1406) {{ closed_access }} (postprint: [europepmc.org/articles/pmc5125387](https://europepmc.org/articles/pmc5125387) {{ open_access }}).
 
 Gillett, C. (2016). Reduction and Emergence in Science and Philosophy. Cambridge University Press.
 
@@ -34,7 +34,7 @@ Kaplan, D. M. (2011). Explanation and description in computational neuroscience.
     
 Kording, K., Blohm, G., Schrater, P., and Kay, K. (2018). Appreciating diversity of goals in computational neuroscience. doi: [10.31219/osf.io/3vy69](https://doi.org/10.31219/osf.io/3vy69) {{ open_access }}.
 
-Lee, M. D., Criss, A. H., Devezer, B., Donkin, C., Etz, A., Leite, F. P., ..., and Vandekerckhove, J. (2019). Robust modeling in cognitive science. Computational Brain & Behavior 2(3): 141-153. doi: [10.31234/osf.io/dmfhk](https://doi.org/10.31234/osf.io/dmfhk) {{ open_access }}.
+Lee, M. D., Criss, A. H., Devezer, B., Donkin, C., Etz, A., Leite, F. P., ... and Vandekerckhove, J. (2019). Robust modeling in cognitive science. Computational Brain & Behavior 2(3): 141-153. doi: [10.31234/osf.io/dmfhk](https://doi.org/10.31234/osf.io/dmfhk) {{ open_access }}.
 
 Lombrozo, T. (2012). Explanation and Abductive Inference. Oxford Handbooks Online. doi: [10.1093/oxfordhb/9780199734689.013.0014](https://doi.org/10.1093/oxfordhb/9780199734689.013.0014) {{ closed_access }}.
 
@@ -46,7 +46,7 @@ Pearl, J., and Mackenzie, D. (2018). The Book of Why: The New Science of Cause a
 
 Russell, B. (1917). Mysticism and logic, and other essays. doi: [10.5962/bhl.title.19230](https://doi.org/10.5962/bhl.title.19230) {{ closed_access }} (postprint: [archive.org/download/mysticismlogicot00russiala/mysticismlogicot00russiala_bw.pdf](https://archive.org/download/mysticismlogicot00russiala/mysticismlogicot00russiala_bw.pdf) {{ open_access }}).
 
-Schrater, P., Kording, K., and Blohm, G. (2019). Modeling in Neuroscience as a Decision Process. OSF Preprints. Retrieved from <https://osf.io/w56vt>
+Schrater, P., Kording, K., and Blohm, G. (2019). Modeling in Neuroscience as a Decision Process. OSF Preprints. url: [osf.io/w56vt](https://osf.io/w56vt)
 
 Simon, H. A. (1969). The sciences of the artificial MIT Press. Cambridge, MA.
 
