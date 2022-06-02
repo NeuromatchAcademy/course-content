@@ -1,16 +1,16 @@
 # Suggested further readings
 
 
-## Pytorch - papers: 
+### Pytorch - papers: 
 Automatic differentiation library; some tutorials [openreview.net/pdf?id=BJJsrmfCZ](https://openreview.net/pdf?id=BJJsrmfCZ).
 
-## Recommended review papers:
+### Recommended review papers:
 
 Richards, B. A., Lillicrap, T. P., Beaudoin, P., Bengio, Y., Bogacz, R., Christensen, A., ... and Kording, K. P. (2019). A deep learning framework for neuroscience. Nature neuroscience 22(11): 1761-1770. doi: [10.1038/s41593-019-0520-2](https://doi.org/10.1038/s41593-019-0520-2) {{ closed_access }} (postprint: [www.ncbi.nlm.nih.gov/pmc/articles/PMC7115933](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7115933) {{ open_access }}).
 
-Lindsay, G. W. (2021). Convolutional neural networks as a model of the visual system: Past, present, and future. Journal of cognitive neuroscience 33(10): 2017-2031. doi: [10.1162/jocn_a_01544](https://doi.org/10.1162/jocn_a_01544) {{ closed_access }} (preprint: [arxiv.org/pdf/2001.07092](http://arxiv.org/pdf/2001.07092) {{ open_access }}).
+Lindsay, G. W. (2021). Convolutional neural networks as a model of the visual system: Past, present, and future. Journal of cognitive neuroscience 33(10): 2017-2031. doi: [10.1162/jocn_a_01544](https://doi.org/10.1162/jocn_a_01544) {{ closed_access }} (preprint: [arxiv:2001.07092](http://arxiv.org/abs/2001.07092) {{ open_access }}).
 
-## Intro:
+### Intro:
 
 Large list of papers comparing DNNs and the brain:
 
@@ -24,21 +24,21 @@ Zhou, B., Khosla, A., Lapedriza, A., Oliva, A., and Torralba, A. (2015). Object 
 
 Zhou, B., Bau, D., Oliva, A., and Torralba, A. (2018). Interpreting deep visual representations via network dissection. IEEE transactions on pattern analysis and machine intelligence 41(9): 2131-2145. doi: [10.1109/TPAMI.2018.2858759](https://doi.org/10.1109/TPAMI.2018.2858759) {{ open_access }}.
 
-## Tutorials:
+### Tutorials:
 
-### Dataset:
+#### Dataset:
 Stringer, C., Michaelos, M., Tsyboulski, D., Lindo, S. E., and Pachitariu, M. (2021). High-precision coding in visual cortex. Cell 184(10): 2767–2778.e15. doi: [10.1016/j.cell.2021.03.042](https://doi.org/10.1016/j.cell.2021.03.042) {{ closed_access }} (preprint: [www.biorxiv.org/content/biorxiv/early/2019/11/04/679324.full.pdf](https://www.biorxiv.org/content/biorxiv/early/2019/11/04/679324.full.pdf) {{ open_access }}).
 
-### Deep learning used for encoding models:
-Batty, E., Merel, J., Brackbill, N., Heitman, A., Sher, A., Litke, A., ... and Paninski, L. (2017). Multilayer recurrent network models of primate retinal ganglion cell responses. ICLR 2017, Toulon, France.
+#### Deep learning used for encoding models:
+Batty, E., Merel, J., Brackbill, N., Heitman, A., Sher, A., Litke, A., ... and Paninski, L. (2017). Multilayer recurrent network models of primate retinal ganglion cell responses. ICLR 2017, Toulon, France. url: [openreview.net/forum?id=HkEI22jeg](https://openreview.net/forum?id=HkEI22jeg)
 
 Cadena, S. A., Denfield, G. H., Walker, E. Y., Gatys, L. A., Tolias, A. S., Bethge, M., and Ecker, A. S. (2019). Deep convolutional models improve predictions of macaque V1 responses to natural images. PLoS computational biology 15(4): e1006897. doi: [10.1371/journal.pcbi.1006897](https://doi.org/10.1371/journal.pcbi.1006897) {{ open_access }}.
 
-McIntosh, L., Maheswaranathan, N., Nayebi, A., Ganguli, S., and Baccus, S. (2016). Deep learning models of the retinal response to natural scenes. Advances in neural information processing systems, 29. url: [NIPS2016](https://papers.nips.cc/paper/2016/hash/a1d33d0dfec820b41b54430b50e96b5c-Abstract.html)
+McIntosh, L., Maheswaranathan, N., Nayebi, A., Ganguli, S., and Baccus, S. (2016). Deep learning models of the retinal response to natural scenes. Advances in neural information processing systems, 29. url: [papers.nips.cc/paper/2016/hash/a1d33d0dfec820b41b54430b50e96b5c-Abstract.html](https://papers.nips.cc/paper/2016/hash/a1d33d0dfec820b41b54430b50e96b5c-Abstract.html)
 
 Walker, E. Y., Sinz, F. H., Cobos, E., Muhammad, T., Froudarakis, E., Fahey, P. G., ... and Tolias, A. S. (2019). Inception loops discover what excites neurons most using deep predictive models. Nature neuroscience 22(12): 2060-2065. doi: [10.1038/s41593-019-0517-x](https://doi.org/10.1038/s41593-019-0517-x) {{ closed_access }}.
 
-### Comparing deep networks and the brain:
+#### Comparing deep networks and the brain:
 
 Guclu, U., and van Gerven, M. A. (2015). Deep neural networks reveal a gradient in the complexity of neural representations across the ventral stream. Journal of Neuroscience 35(27): 10005-10014. doi: [10.1523/JNEUROSCI.5023-14.2015](https://doi.org/10.1523/JNEUROSCI.5023-14.2015) {{ open_access }}.
 
@@ -50,20 +50,20 @@ Mohsenzadeh, Y., Mullin, C., Lahner, B., and Oliva, A. (2020). Emergence of Visu
 
 Yamins, D. L., Hong, H., Cadieu, C. F., Solomon, E. A., Seibert, D., and DiCarlo, J. J. (2014). Performance-optimized hierarchical models predict neural responses in higher visual cortex. Proceedings of the national academy of sciences 111(23): 8619-8624. doi: [10.1073/pnas.1403112111](https://doi.org/10.1073/pnas.1403112111) {{ closed_access }} (postprint: [europepmc.org/articles/pmc4060707?pdf=render](https://europepmc.org/articles/pmc4060707?pdf=render) {{ open_access }}).
 
-### Deep learning:
+#### Deep learning:
 Goh, G. (2017). Why momentum really works. Distill 2(4): e6. doi: [10.23915/distill.00006](https://doi.org/10.23915/distill.00006) {{ open_access }}.
 
-He, K., Zhang, X., Ren, S., and Sun, J. (2016). Deep residual learning for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 770-778).
+He, K., Zhang, X., Ren, S., and Sun, J. (2016). Deep residual learning for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 770-778). url: [https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7780459](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7780459)
 
-Ioffe, S., and Szegedy, C. (2015). Batch normalization: Accelerating deep network training by reducing internal covariate shift. In International conference on machine learning (pp. 448-456). PMLR.
+Ioffe, S., and Szegedy, C. (2015). Batch normalization: Accelerating deep network training by reducing internal covariate shift. In International conference on machine learning (pp. 448-456). PMLR. url: [proceedings.mlr.press/v37/ioffe15.html](https://proceedings.mlr.press/v37/ioffe15.html)
 
-Li, H., Xu, Z., Taylor, G., Studer, C., and Goldstein, T. (2018). Visualizing the loss landscape of neural nets. Advances in neural information processing systems, 31. url: [NIPS2018](https://papers.nips.cc/paper/2018/hash/a41b3bb3e6b050b6c9067c67f663b915-Abstract.html)
+Li, H., Xu, Z., Taylor, G., Studer, C., and Goldstein, T. (2018). Visualizing the loss landscape of neural nets. Advances in neural information processing systems, 31. url: [papers.nips.cc/paper/2018/hash/a41b3bb3e6b050b6c9067c67f663b915-Abstract.html](https://papers.nips.cc/paper/2018/hash/a41b3bb3e6b050b6c9067c67f663b915-Abstract.html)
 
 Nielsen, M. (2016). A visual proof that neural nets can compute any function. url: [neuralnetworksanddeeplearning.com/chap4.html](http://neuralnetworksanddeeplearning.com/chap4.html).
 
 Olah, C. (2014). Conv nets: A modular perspective. url: [colah.github.io/posts/2014-07-Conv-Nets-Modular](http://colah.github.io/posts/2014-07-Conv-Nets-Modular).
 
-## Outro 1
+### Outro 1
 
 Jozwik, K. M., Kriegeskorte, N., Storrs, K. R., and Mur, M. (2017). Deep convolutional neural networks outperform feature-based but not categorical models in explaining object similarity judgments. Frontiers in psychology 8: 1726. doi: [10.3389/fpsyg.2017.01726](https://doi.org/10.3389/fpsyg.2017.01726) {{ open_access }}.
 
@@ -85,6 +85,6 @@ Storrs, K. R., Kietzmann, T. C., Walther, A., Mehrer, J., and Kriegeskorte, N. (
 
 Tang, H., Schrimpf, M., Lotter, W., Moerman, C., Paredes, A., Caro, J. O., ... and Kreiman, G. (2018). Recurrent computations for visual pattern completion. Proceedings of the National Academy of Sciences 115(35): 8835-8840. doi: [10.1073/pnas.1719397115](https://doi.org/10.1073/pnas.1719397115) {{ open_access }}.
 
-## Outro 2
+### Outro 2
 
 Chambers, C., Seethapathi, N., Saluja, R., Loeb, H., Pierce, S. R., Bogen, D. K., ... and Kording, K. P. (2020). Computer vision to automatically assess infant neuromotor risk. IEEE Transactions on Neural Systems and Rehabilitation Engineering 28(11): 2431-2442. doi: [10.1109/TNSRE.2020.3029121](https://doi.org/10.1109/TNSRE.2020.3029121) {{ closed_access }} (postprint: [www.ncbi.nlm.nih.gov/pmc/articles/PMC8011647](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8011647) {{ open_access }}).
