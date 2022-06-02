@@ -4,7 +4,7 @@
 
 ----
 
-# **Project Structure**
+## **Project Structure**
 
 The definitive guide to project schedule and structure is in the [Daily Guide to Projects](./docs/project_guidance.md), but we include some overview information here.
 
@@ -24,7 +24,7 @@ Finally, week 3 is all about implementing your project and trying to get an answ
 on the final day 15 (5 minutes, 3-5 slides, informal, take turns to present).
 
 
-# **Daily Schedule**
+## **Daily Schedule**
 
 Daily project time is either:
  - Early — 3h before content (time slots 2,4)
@@ -50,7 +50,7 @@ Daily project time is either:
 
 On July 23, everyone has project presentations during the second half of their tutorial block!
 
-# **Project Materials**
+## **Project Materials**
 
 Below we link all the relevant project materials.These are available either on github or in the jupyterbook.
 
@@ -64,7 +64,7 @@ Below we link all the relevant project materials.These are available either on g
    - Other: [theory](https://osf.io/z7p5v/), [behavior](https://osf.io/hez85/), [eeg](https://osf.io/5r96v/)
 
 
-# **Important deadlines**
+## **Important deadlines**
 
 * project block 2:  by end of block, please submit a project proposal via this [Airtable link](https://airtable.com/shrZWimDB3YddpXDu). We will use this immediately to match your group with a mentor and a project TA.  
 * course day 10:  by end of day, please submit your abstract via this [Airtable link](https://airtable.com/shrITSzD4fgFCGiWI).  
