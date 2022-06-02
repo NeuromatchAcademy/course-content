@@ -1,0 +1,1644 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intro &#8212; Neuromatch Academy: Computational Neuroscience</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <link rel="shortcut icon" href="../../../_static/nma-logo-square-4xp.jpg"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Tutorial 1: Interventions" href="W3D5_Tutorial1.html" />
+    <link rel="prev" title="Network Causality" href="../chapter_title.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/nma-logo-square-4xp.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Neuromatch Academy: Computational Neuroscience</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Schedule/schedule_intro.html">
+   Schedule
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Schedule/daily_schedules.html">
+     General schedule
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Schedule/shared_calendars.html">
+     Shared calendars
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Schedule/timezone_widget.html">
+     Timezone widget
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../TechnicalHelp/tech_intro.html">
+   Technical Help
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../TechnicalHelp/Jupyterbook.html">
+     Using jupyterbook
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../TechnicalHelp/Tutorial_colab.html">
+       Using Google Colab
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../TechnicalHelp/Tutorial_kaggle.html">
+       Using Kaggle
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../TechnicalHelp/Discord.html">
+     Using discord
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Pre-reqs Refresher
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D0_NeuroVideoSeries/chapter_title.html">
+   Neuro Video Series (W0D0)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial1.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial2.html">
+     Human Psychophysics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial3.html">
+     Behavioral Readout
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial4.html">
+     Live in Lab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial5.html">
+     Brain Signals: Spiking Activity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial6.html">
+     Brain Signals: LFP
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial7.html">
+     Brain Signals: EEG &amp; MEG
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial8.html">
+     Brain Signals: fMRI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial9.html">
+     Brain Signals: Calcium Imaging
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial10.html">
+     Stimulus Representation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial11.html">
+     Neurotransmitters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D0_NeuroVideoSeries/student/W0D0_Tutorial12.html">
+     Neurons to Consciousness
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D1_PythonWorkshop1/chapter_title.html">
+   Python Workshop 1 (W0D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D1_PythonWorkshop1/student/W0D1_Tutorial1.html">
+     Tutorial: LIF Neuron Part I
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D2_PythonWorkshop2/chapter_title.html">
+   Python Workshop 2 (W0D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D2_PythonWorkshop2/student/W0D2_Tutorial1.html">
+     Tutorial 1: LIF Neuron Part II
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D3_LinearAlgebra/chapter_title.html">
+   Linear Algebra (W0D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial1.html">
+     Tutorial 1: Vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial2.html">
+     Tutorial 2: Matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Tutorial3.html">
+     Bonus Tutorial: Discrete Dynamical Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D3_LinearAlgebra/student/W0D3_Outro.html">
+     Outro
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D4_Calculus/chapter_title.html">
+   Calculus (W0D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial1.html">
+     Tutorial 1: Differentiation and Integration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial2.html">
+     Tutorial 2: Differential Equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D4_Calculus/student/W0D4_Tutorial3.html">
+     Tutorial 3: Numerical Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W0D5_Statistics/chapter_title.html">
+   Statistics (W0D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial1.html">
+     Tutorial 1: Probability Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Tutorial2.html">
+     Tutorial 2: Statistical Inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W0D5_Statistics/student/W0D5_Outro.html">
+     Outro
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Intro to Modeling
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D1_ModelTypes/chapter_title.html">
+   Model Types (W1D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial1.html">
+     Tutorial 1: “What” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial2.html">
+     Tutorial 2: “How” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial3.html">
+     Tutorial 3: “Why” models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Tutorial4.html">
+     Tutorial 4: Model Discussions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/student/W1D1_Outro.html">
+     Outro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D1_ModelTypes/further_reading.html">
+     Suggested further readings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D2_ModelingPractice/chapter_title.html">
+   Modeling Practice (W1D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Tutorial1.html">
+     Tutorial 1: Framing the Question
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D2_ModelingPractice/student/W1D2_Outro.html">
+     Outro
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D3_ModelFitting/chapter_title.html">
+   Model Fitting (W1D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial1.html">
+     Tutorial 1: Linear regression with MSE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial2.html">
+     Tutorial 2: Linear regression with MLE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial3.html">
+     Tutorial 3: Confidence intervals and bootstrapping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial4.html">
+     Tutorial 4: Multiple linear regression and polynomial regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial5.html">
+     Tutorial 5: Model Selection: Bias-variance trade-off
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Tutorial6.html">
+     Tutorial 6: Model Selection: Cross-validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/student/W1D3_Outro.html">
+     Outro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D3_ModelFitting/further_reading.html">
+     Suggested further readings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/chapter_title.html">
+   Generalized Linear Models (W1D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial1.html">
+     Tutorial 1: GLMs for Encoding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Tutorial2.html">
+     Tutorial 2: Classifiers and regularizers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/student/W1D4_Outro.html">
+     Outro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D4_GeneralizedLinearModels/further_reading.html">
+     Suggested further readings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W1D5_DimensionalityReduction/chapter_title.html">
+   Dimensionality Reduction (W1D5)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial1.html">
+     Tutorial 1: Geometric view of data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial2.html">
+     Tutorial 2: Principal Component Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial3.html">
+     Tutorial 3: Dimensionality Reduction &amp; Reconstruction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Tutorial4.html">
+     Tutorial 4:  Nonlinear Dimensionality Reduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/student/W1D5_Outro.html">
+     Outro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W1D5_DimensionalityReduction/further_reading.html">
+     Suggested further readings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D1_DeepLearning/chapter_title.html">
+   Deep Learning (W2D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial1.html">
+     Tutorial 1: Decoding Neural Responses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial2.html">
+     Tutorial 2: Convolutional Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial3.html">
+     Tutorial 3: Building and Evaluating Normative Encoding Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Tutorial4.html">
+     Bonus Tutorial: Diving Deeper into Decoding &amp; Encoding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/student/W2D1_Outro.html">
+     Outro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D1_DeepLearning/further_reading.html">
+     Suggested further readings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Bonus_Autoencoders/chapter_title.html">
+   Autoencoders (Bonus)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Bonus_Autoencoders/student/Bonus_Intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Bonus_Autoencoders/student/Bonus_Tutorial1.html">
+     Tutorial 1: Intro to Autoencoders
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Bonus_Autoencoders/student/Bonus_Tutorial2.html">
+     Tutorial 2: Autoencoder extensions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Bonus_Autoencoders/student/Bonus_Tutorial3.html">
+     Tutorial 3: Autoencoders applications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Bonus_Autoencoders/student/Bonus_Outro.html">
+     Outro
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Module_WrapUps/MachineLearning.html">
+   Machine Learning Wrap-Up
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Dynamical Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D2_LinearSystems/chapter_title.html">
+   Linear Systems (W2D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial1.html">
+     Tutorial 1: Linear dynamical systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial2.html">
+     Tutorial 2: Markov Processes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial3.html">
+     Tutorial 3: Combining determinism and stochasticity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Tutorial4.html">
+     Tutorial 4: Autoregressive models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/student/W2D2_Outro.html">
+     Outro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D2_LinearSystems/further_reading.html">
+     Suggested further readings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/chapter_title.html">
+   Biological Neuron Models (W2D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial1.html">
+     Tutorial 1: The Leaky Integrate-and-Fire (LIF) Neuron Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial2.html">
+     Tutorial 2: Effects of Input Correlation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial3.html">
+     Tutorial 3: Synaptic transmission - Models of static and dynamic synapses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Tutorial4.html">
+     Bonus Tutorial: Spike-timing dependent plasticity (STDP)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/student/W2D3_Outro.html">
+     Outro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D3_BiologicalNeuronModels/further_reading.html">
+     Suggested further readings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W2D4_DynamicNetworks/chapter_title.html">
+   Dynamic Networks (W2D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial1.html">
+     Tutorial 1: Neural Rate Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial2.html">
+     Tutorial 2: Wilson-Cowan Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Tutorial3.html">
+     Bonus Tutorial: Extending the Wilson-Cowan Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/student/W2D4_Outro.html">
+     Outro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W2D4_DynamicNetworks/further_reading.html">
+     Suggested further readings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Module_WrapUps/DynamicalSystems.html">
+   Dynamical Systems Wrap-Up
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Stochastic Processes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D1_BayesianDecisions/chapter_title.html">
+   Bayesian Decisions (W3D1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial1.html">
+     Tutorial 1: Bayes with a binary hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial2.html">
+     Tutorial 2: Bayesian inference and decisions with continuous hidden state
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Tutorial3.html">
+     Bonus Tutorial : Fitting to data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/student/W3D1_Outro.html">
+     Outro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D1_BayesianDecisions/further_reading.html">
+     Suggested further readings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D2_HiddenDynamics/chapter_title.html">
+   Hidden Dynamics (W3D2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial1.html">
+     Tutorial 1: Sequential Probability Ratio Test
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial2.html">
+     Tutorial 2: Hidden Markov Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial3.html">
+     Tutorial 3: The Kalman Filter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial4.html">
+     Bonus Tutorial 4: The Kalman Filter, part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Tutorial5.html">
+     Bonus Tutorial 5: Expectation Maximization for spiking neurons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/student/W3D2_Outro.html">
+     Outro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D2_HiddenDynamics/further_reading.html">
+     Suggested further readings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D3_OptimalControl/chapter_title.html">
+   Optimal Control (W3D3)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial1.html">
+     Tutorial 1: Optimal Control for Discrete States
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Tutorial2.html">
+     Tutorial 2: Optimal Control for Continuous State
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/student/W3D3_Outro.html">
+     Outro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D3_OptimalControl/further_reading.html">
+     Suggested further readings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../W3D4_ReinforcementLearning/chapter_title.html">
+   Reinforcement Learning (W3D4)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial1.html">
+     Tutorial 1: Learning to Predict
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial2.html">
+     Tutorial 2: Learning to Act: Multi-Armed Bandits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial3.html">
+     Tutorial 3: Learning to Act: Q-Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Tutorial4.html">
+     Tutorial 4: From Reinforcement Learning to Planning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/student/W3D4_Outro.html">
+     Outro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../W3D4_ReinforcementLearning/further_reading.html">
+     Suggested further readings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../chapter_title.html">
+   Network Causality (W3D5)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+  <label for="toctree-checkbox-24">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W3D5_Tutorial1.html">
+     Tutorial 1: Interventions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W3D5_Tutorial2.html">
+     Tutorial 2: Correlations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W3D5_Tutorial3.html">
+     Tutorial 3: Simultaneous fitting/regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W3D5_Tutorial4.html">
+     Tutorial 4: Instrumental Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="W3D5_Outro.html">
+     Outro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../further_reading.html">
+     Suggested further readings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Module_WrapUps/StochasticProcesses.html">
+   Stochastic Processes Wrap-Up
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Project Booklet
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../projects/README.html">
+   Introduction to projects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../projects/docs/project_guidance.html">
+   Daily guide for projects
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../projects/modelingsteps/intro.html">
+   Modeling Step-by-Step Guide
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+  <label for="toctree-checkbox-25">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../projects/modelingsteps/ModelingSteps_1through4.html">
+     Modeling Steps 1 - 4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../projects/modelingsteps/ModelingSteps_5through10.html">
+     Modeling Steps 5 - 10
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../projects/modelingsteps/TrainIllusionModel.html">
+     Example Model Project: the Train Illusion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../projects/modelingsteps/TrainIllusionDataProject.html">
+     Example Data Project: the Train Illusion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../projects/docs/datasets_overview.html">
+   Datasets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+  <label for="toctree-checkbox-26">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../projects/docs/neurons.html">
+     Neurons
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+    <label for="toctree-checkbox-27">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../projects/neurons/README.html">
+       Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../projects/neurons/neurons_videos.html">
+       Overview videos
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../projects/docs/fMRI.html">
+     fMRI
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
+    <label for="toctree-checkbox-28">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../projects/fMRI/README.html">
+       Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../projects/fMRI/fMRI_videos.html">
+       Overview videos
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../projects/docs/ECoG.html">
+     ECoG
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/>
+    <label for="toctree-checkbox-29">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../projects/ECoG/README.html">
+       Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../projects/ECoG/ECoG_videos.html">
+       Overview videos
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../projects/docs/behavior.html">
+     Behavior
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/>
+    <label for="toctree-checkbox-30">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../projects/behavior/README.html">
+       Guide
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../projects/behavior/behavior_videos.html">
+       Overview videos
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../projects/docs/theory.html">
+     Theory
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/>
+    <label for="toctree-checkbox-31">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../projects/theory/README.html">
+       Guide
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../projects/docs/project_templates.html">
+   Project Templates
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../projects/docs/project_2020_highlights.html">
+   Projects 2020
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/>
+  <label for="toctree-checkbox-32">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../projects/docs/projects_2020/neurons.html">
+     Neurons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../projects/docs/projects_2020/theory.html">
+     Theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../projects/docs/projects_2020/behavior.html">
+     Behavior
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../projects/docs/projects_2020/fMRI.html">
+     fMRI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../projects/docs/projects_2020/eeg.html">
+     EEG
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/NeuromatchAcademy/course-content"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/NeuromatchAcademy/course-content/issues/new?title=Issue%20on%20page%20%2Ftutorials/W3D5_NetworkCausality/student/W3D5_Intro.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/tutorials/W3D5_NetworkCausality/student/W3D5_Intro.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#video">
+   Video
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#slides">
+   Slides
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Intro</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#video">
+   Video
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#slides">
+   Slides
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/tutorials/W3D5_NetworkCausality/student/W3D5_Intro.ipynb" target="_blank"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a href="https://kaggle.com/kernels/welcome?src=https://raw.githubusercontent.com/NeuromatchAcademy/course-content/main/tutorials/W3D5_NetworkCausality/student/W3D5_Intro.ipynb" target="_blank"><img alt="Open in Kaggle" src="https://kaggle.com/static/images/open-in-kaggle.svg" /></a></p>
+<div class="section" id="intro">
+<h1>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h1>
+<p><strong>Our 2021 Sponsors, including Presenting Sponsor Facebook Reality Labs</strong></p>
+<p align='center'><img src='https://github.com/NeuromatchAcademy/widgets/blob/master/sponsors.png?raw=True'/></p><div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Today we will talk about causality, the tools we use to ask if and how a variable influences other variables. Causal questions are everywhere in neuroscience. How do neurons influence one another? How does a drug affect neurons? How does a stimulus affect behavior? We will talk about how we can answer questions of a causal kind. In tutorial 1 we will learn about the definition of causality and see how it naturally emerges from the consideration of perturbations to a system. In tutorial 2 we will learn how correlations often seem to be a proxy for causality but also how for larger systems this intuition is typically misleading. In tutorial 3 we will see the standard approach, where we correct for unmeasured variables with regression and we will see the biases introduced by this. Lastly, in tutorial 4 we will learn about instrumental variables, a strategy that sometimes allows us to learn about causality in an unbiased way. The intro teaches the basic concepts while the outro gives a rather broad overview about the need to do careful science. Overall, the day  teaches the unavoidable problems that come with asking causal questions and teaches approaches that can sometimes make it possible to estimate.</p>
+<p>Causal questions are important all across neuroscience. For example, model fitting (W1D3), machine learning (W1D4), and dimensionality reduction (W1D5), are often used to argue for or against causal models. For example, a regression may be used to argue that a brain region influences another brain region based on fMRI data. Today’s materials give us a better understanding of the problems that come with the approach. There are tight links between causality and Bayesian statistics (W3D1) where Bayesian techniques are used for the estimation of causality (see e.g. the work of Judea Pearl). Causality is often seen as the bedrock of science, today’s materials above all produce clarity about what it is.</p>
+<p>Causality approaches are central across neuroscience. When we run experiments, we often randomly assign them to treatment groups vs control. Alternatively we stimulate animals at random points of time. These methods are all versions of randomized perturbations that we talk about in tutorial 1 and probably constitute a good part of all of neuroscience. We also use model fitting (see tutorials 2 and 3) frequently to drive arguments about how brains work. This is common for spike data, EEG data, imaging data etc. Lastly, we should be able to sometimes use instrumental variable techniques to estimate the effects of e.g. treatments with drugs. Today’s materials are simultaneously at the heart of the field and are frequently ignored.</p>
+</div>
+<div class="section" id="video">
+<h2>Video<a class="headerlink" href="#video" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "ab7f822130054d09a85b2b226bb1b613"}
+</script></div>
+</div>
+</div>
+<div class="section" id="slides">
+<h2>Slides<a class="headerlink" href="#slides" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "57ea868a421249b98a8ef0b0888b2a8b"}
+</script></div>
+</div>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"588d2f5232d947f9a8fb29a3ab534349": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7509959362d046dfb3c567980bbfb3f6": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_588d2f5232d947f9a8fb29a3ab534349", "msg_id": "", "outputs": [{"output_type": "stream", "name": "stdout", "text": "Video available at https://www.bilibili.com/video/BV1U5411a7vy\n"}, {"output_type": "display_data", "metadata": {}, "data": {"text/plain": "<__main__.BiliVideo at 0x7f51f0b3b250>", "text/html": "\n        <iframe\n            width=\"730\"\n            height=\"410\"\n            src=\"https://player.bilibili.com/player.html?bvid=BV1U5411a7vy&page=1?fs=1\"\n            frameborder=\"0\"\n            allowfullscreen\n            \n        ></iframe>\n        "}}]}}, "ef0d2c1faa49473c974d4aa3a340c808": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "804bdead1574452ab13f2a0e1c708ee3": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_ef0d2c1faa49473c974d4aa3a340c808", "msg_id": "", "outputs": [{"output_type": "stream", "name": "stdout", "text": "Video available at https://youtube.com/watch?v=GjZfhXfn42w\n"}, {"output_type": "display_data", "metadata": {}, "data": {"text/plain": "<IPython.lib.display.YouTubeVideo at 0x7f51f0aa9c90>", "text/html": "\n        <iframe\n            width=\"730\"\n            height=\"410\"\n            src=\"https://www.youtube.com/embed/GjZfhXfn42w?fs=1&rel=0\"\n            frameborder=\"0\"\n            allowfullscreen\n            \n        ></iframe>\n        ", "image/jpeg": "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\n"}}]}}, "3ba5a4ca595845e28a1286f4f396051e": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ab7f822130054d09a85b2b226bb1b613": {"model_name": "TabModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "TabModel", "_titles": {"0": "Youtube", "1": "Bilibili"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "TabView", "box_style": "", "children": ["IPY_MODEL_804bdead1574452ab13f2a0e1c708ee3", "IPY_MODEL_7509959362d046dfb3c567980bbfb3f6"], "layout": "IPY_MODEL_3ba5a4ca595845e28a1286f4f396051e", "selected_index": 0}}, "3879e085a9174082975f4f88735acf44": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "57ea868a421249b98a8ef0b0888b2a8b": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_3879e085a9174082975f4f88735acf44", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "<IPython.lib.display.IFrame at 0x7f51f0a64710>", "text/html": "\n        <iframe\n            width=\"730\"\n            height=\"410\"\n            src=\"https://mfr.ca-1.osf.io/render?url=https://osf.io/fsxkt/?direct%26mode=render%26action=download%26mode=rende\"\n            frameborder=\"0\"\n            allowfullscreen\n            \n        ></iframe>\n        "}}]}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/W3D5_NetworkCausality/student"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../chapter_title.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Network Causality</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="W3D5_Tutorial1.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tutorial 1: Interventions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Neuromatch<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
