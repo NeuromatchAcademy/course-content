@@ -1,6 +1,6 @@
 # Suggested further readings
 
-## Further reading on linear dynamical systems models in neuroscience:
+### Further reading on linear dynamical systems models in neuroscience:
 
 Costa, A. C., Ahamed, T., and Stephens, G. J. (2019). Adaptive, locally linear models of complex dynamics. Proceedings of the National Academy of Sciences 116(5): 1501-1510. doi: [10.1073/pnas.1813476116](https://doi.org/10.1073/pnas.1813476116) {{ open_access }}.
 
@@ -37,7 +37,7 @@ Seung, H. S. (1996). How the brain keeps the eyes still. Proceedings of the Nati
 
 Usher, M., and McClelland, J. L. (2001). The time course of perceptual choice: the leaky, competing accumulator model. Psychological review 108(3): 550. doi: [10.1037/0033-295X.108.3.550](https://doi.org/10.1037/0033-295X.108.3.550) {{ closed_access }}.
 
-## Further reading from Outro lecture:
+### Further reading from Outro lecture:
 
 Ames, K. C., Ryu, S. I., and Shenoy, K. V. (2019). Simultaneous motor preparation and execution in a last-moment reach correction task. Nature communications 10(1): 1-13. doi: [10.1038/s41467-019-10772-2](https://doi.org/10.1038/s41467-019-10772-2) {{ open_access }}.
 
