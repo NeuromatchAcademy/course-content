@@ -4,7 +4,7 @@
 
 Everyone should consider the behavior-only datasets that we have, which are very rich with many subjects and many trials.
 
-### Caltech
+## Caltech
 
 The Caltech dataset ([youtube](https://youtube.com/watch?v=tDmhmasjPeM)) has pose-tracking data from socially-interacting mice, and is well supported with code and a project template.
 
@@ -14,7 +14,7 @@ Credit for data curation: Ann Kennedy
 | - | --- | ---- |
 | Loader notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/behavior/Loading_CalMS21_data.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/behavior/Loading_CalMS21_data.ipynb?flush_cache=true) |
 
-### IBL
+## IBL
 
 The IBL dataset ([youtube](https://youtube.com/watch?v=NofrFH8FRZU)) is a visual decision-making task, that is very similar to the one used in the Steinmetz dataset.
 
