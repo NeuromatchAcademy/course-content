@@ -1,6 +1,6 @@
 # Suggested further readings
 
-Gerwinn, S., Bethge, M., Macke, J. H., and Seeger, M. (2007). Bayesian inference for spiking neuron models with a sparsity prior. Advances in neural information processing systems, 20. url: [NIPS 2007](https://proceedings.neurips.cc/paper/2007/hash/46ba9f2a6976570b0353203ec4474217-Abstract.html).
+Gerwinn, S., Bethge, M., Macke, J. H., and Seeger, M. (2007). Bayesian inference for spiking neuron models with a sparsity prior. Advances in neural information processing systems, 20. url: [proceedings.neurips.cc/paper/2007/hash/46ba9f2a6976570b0353203ec4474217-Abstract.html](https://proceedings.neurips.cc/paper/2007/hash/46ba9f2a6976570b0353203ec4474217-Abstract.html).
 
 Glaser, J. I., Benjamin, A. S., Farhoodi, R., and Kording, K. P. (2019). The roles of supervised machine learning in systems neuroscience. Progress in neurobiology 175: 126-137. doi: [10.1016/j.pneurobio.2019.01.008](https://doi.org/10.1016/j.pneurobio.2019.01.008) {{ closed_access }} (postprint: [europepmc.org/articles/pmc8454059?pdf=render](https://europepmc.org/articles/pmc8454059?pdf=render) {{ open_access }}).
 
@@ -10,7 +10,7 @@ Hardcastle, K., Maheswaranathan, N., Ganguli, S., and Giocomo, L. M. (2017). A m
 
 Latimer, K. W., Rieke, F., and Pillow, J. W. (2019). Inferring synaptic inputs from spikes with a conductance-based neural encoding model. Elife 8: e47012. doi: [10.7554/eLife.47012](https://doi.org/10.7554/eLife.47012) {{ open_access }}.
 
-Macke, J. H., Buesing, L., Cunningham, J. P., Yu, B. M., Shenoy, K. V., and Sahani, M. (2011). Empirical models of spiking in neural populations. Advances in neural information processing systems, 24. url: [NIPS2011](https://papers.nips.cc/paper/2011/hash/7143d7fbadfa4693b9eec507d9d37443-Abstract.html).
+Macke, J. H., Buesing, L., Cunningham, J. P., Yu, B. M., Shenoy, K. V., and Sahani, M. (2011). Empirical models of spiking in neural populations. Advances in neural information processing systems, 24. url: [papers.nips.cc/paper/2011/hash/7143d7fbadfa4693b9eec507d9d37443-Abstract.html](https://papers.nips.cc/paper/2011/hash/7143d7fbadfa4693b9eec507d9d37443-Abstract.html).
 
 Maheswaranathan, N., Kastner, D. B., Baccus, S. A., and Ganguli, S. (2018). Inferring hidden structure in multilayered neural circuits. PLoS computational biology 14(8): e1006291. doi: [10.1371/journal.pcbi.1006291](https://doi.org/10.1371/journal.pcbi.1006291) {{ open_access }}.
 
@@ -22,7 +22,7 @@ Paninski, L. (2004). Maximum likelihood estimation of cascade point-process neur
 
 Panzeri, S., Harvey, C. D., Piasini, E., Latham, P. E., and Fellin, T. (2017). Cracking the neural code for sensory perception by combining statistics, intervention, and behavior. Neuron 93(3): 491-507. doi: [10.1016/j.neuron.2016.12.036](https://doi.org/10.1016/j.neuron.2016.12.036) {{ open_access }}.
 
-Park, I. M., and Pillow, J. (2011). Bayesian spike-triggered covariance analysis. Advances in neural information processing systems, 24. url: [NIPS2011](https://papers.nips.cc/paper/2011/hash/6395ebd0f4b478145ecfbaf939454fa4-Abstract.html).
+Park, I. M., and Pillow, J. (2011). Bayesian spike-triggered covariance analysis. Advances in neural information processing systems, 24. url: [papers.nips.cc/paper/2011/hash/6395ebd0f4b478145ecfbaf939454fa4-Abstract.html](https://papers.nips.cc/paper/2011/hash/6395ebd0f4b478145ecfbaf939454fa4-Abstract.html).
 
 Park, M., and Pillow, J. W. (2011). Receptive field inference with localized priors. PLoS computational biology 7(10): e1002219. doi: [10.1371/journal.pcbi.1002219](https://doi.org/10.1371/journal.pcbi.1002219) {{ open_access }}.
 
@@ -32,9 +32,9 @@ Pillow, J. W., Paninski, L., Uzzell, V. J., Simoncelli, E. P., and Chichilnisky,
 
 Pillow, J. W., Shlens, J., Paninski, L., Sher, A., Litke, A. M., Chichilnisky, E. J., and Simoncelli, E. P. (2008). Spatio-temporal correlations and visual signalling in a complete neuronal population. Nature, 454(7207), 995-999. doi: [10.1038/nature07140](https://doi.org/10.1038/nature07140) {{ closed_access }} (postprint: [europepmc.org/articles/pmc2684455?pdf=render](https://europepmc.org/articles/pmc2684455?pdf=render) {{ open_access }}).
 
-Pillow, J., and Scott, J. (2012). Fully Bayesian inference for neural models with negative-binomial spiking. Advances in neural information processing systems, 25. url: [NIPS2012](https://proceedings.neurips.cc/paper/2012/hash/b55ec28c52d5f6205684a473a2193564-Abstract.html).
+Pillow, J., and Scott, J. (2012). Fully Bayesian inference for neural models with negative-binomial spiking. Advances in neural information processing systems, 25. url: [proceedings.neurips.cc/paper/2012/hash/b55ec28c52d5f6205684a473a2193564-Abstract.html](https://proceedings.neurips.cc/paper/2012/hash/b55ec28c52d5f6205684a473a2193564-Abstract.html).
 
-Shlens, J. (2014). Notes on generalized linear models of neurons. arXiv preprint [arXiv:1404.1999](https://arxiv.org/abs/1404.1999).
+Shlens, J. (2014). Notes on generalized linear models of neurons. arXiv preprint [arxiv:1404.1999](https://arxiv.org/abs/1404.1999).
 
 Simoncelli, E. P., Paninski, L., Pillow, J., and Schwartz, O. (2004). Characterization of neural responses with stochastic stimuli. The cognitive neurosciences, 3(327-338), 1. In M. S. Gazzaniga (Ed.), The Cognitive Neurosciences III. The MIT Press.
 
@@ -44,6 +44,6 @@ Truccolo, W., Eden, U. T., Fellows, M. R., Donoghue, J. P., and Brown, E. N. (20
 
 Vidne, M., Ahmadian, Y., Shlens, J., Pillow, J. W., Kulkarni, J., Litke, A. M., ..., and Paninski, L. (2012). Modeling the impact of common noise inputs on the network activity of retinal ganglion cells. Journal of computational neuroscience 33(1): 97-121. doi: [10.1007/s10827-011-0376-2](https://doi.org/10.1007/s10827-011-0376-2) {{ closed_access }} (postprint: [europepmc.org/articles/pmc3560841?pdf=render](https://europepmc.org/articles/pmc3560841?pdf=render) {{ open_access }}).
 
-Weber, A. I., and Pillow, J. W. (2017). Capturing the dynamical repertoire of single neurons with generalized linear models. Neural computation 29(12): 3260-3289. doi: [10.1162/neco_a_01021](https://doi.org/10.1162/neco_a_01021) {{ closed_access }} (preprint: [arxiv.org/pdf/1602.07389](http://arxiv.org/pdf/1602.07389) {{ open_access }}).
+Weber, A. I., and Pillow, J. W. (2017). Capturing the dynamical repertoire of single neurons with generalized linear models. Neural computation 29(12): 3260-3289. doi: [10.1162/neco_a_01021](https://doi.org/10.1162/neco_a_01021) {{ closed_access }} (preprint: [arxiv:1602.07389](http://arxiv.org/abs/1602.07389) {{ open_access }}).
 
 Zhao, M., and Iyengar, S. (2010). Nonconvergence in logistic and poisson models for neural spiking. Neural computation 22(5): 1231-1244. doi: [10.1162/neco.2010.03-09-982](https://doi.org/10.1162/neco.2010.03-09-982) {{ closed_access }}.
