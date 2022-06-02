@@ -10,8 +10,7 @@ Bellman, R. (1966). Dynamic programming. Science 153(3731): 34-37. doi: [10.1126
 
 Charnov, E. L. (1976). Optimal foraging, the marginal value theorem. Theoretical population biology 9(2): 129-136.
 
-Doyle, J. C. (1978). Guaranteed margins for LQG regulators. IEEE Transactions on automatic Control 23(4): 756-757. doi: [10.1109/TAC.1978.1101812](https://doi.org/10.1109/TAC.1978.1101812) {{ closed_access }}.
- - Abstract is definitely worth reading
+Doyle, J. C. (1978). Guaranteed margins for LQG regulators. IEEE Transactions on automatic Control 23(4): 756-757. doi: [10.1109/TAC.1978.1101812](https://doi.org/10.1109/TAC.1978.1101812) {{ closed_access }}. _Note: Abstract is definitely worth reading._
 
 Kalman, R. E. (1960). Contributions to the theory of optimal control. Boletin de la sociedad matematica mexicana 5(2): 102-119.
 
