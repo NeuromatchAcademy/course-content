@@ -24,26 +24,25 @@ Group projects are offered for the *interactive track* only and will be running 
     * Fri, July 2nd: Probability & Statistics (Mandatory for all Tutorial TAs). Project TAs have separate training.
 
 * Week 1
-    * Mon, July 5: Model Types
-    * Tue, July 6: Model Fitting
-    * Wed, July 7: Generalized Linear Models
-    * Thu, July 8: Dimensionality Reduction
-    * Fri, July 9: Deep Learning
+    * Mon, July 11: Model Types
+    * Tue, July 12: Model Fitting
+    * Wed, July 13: Generalized Linear Models
+    * Thu, July 14: Dimensionality Reduction
+    * Fri, July 15: Deep Learning
 
 * Week 2
-    * Mon, July 12: Modeling Practice & Half project day 
-    * Tue, July 13: Linear Systems
-    * Wed, July 14: Biological Neuron Models
-    * Thu, July 15: Dynamic Networks
-    * Fri, July 16: Project Day (Abstract Writing Day)!
+    * Mon, July 18: Modeling Practice & Half project day 
+    * Tue, July 19: Linear Systems
+    * Wed, July 20: Biological Neuron Models
+    * Thu, July 21: Dynamic Networks
+    * Fri, July 22: Project Day (Abstract Writing Day)!
 
 * Week 3
-    * Mon, July 19: Bayesian Decisions
-    * Tue, July 20: Hidden Dynamics
-    * Wed, July 21: Optimal Control
-    * Thu, July 22: Reinforcement Learning
-    * Fri, July 23: Network Causality
-
+    * Mon, July 25: Bayesian Decisions
+    * Tue, July 26: Hidden Dynamics
+    * Wed, July 27: Optimal Control
+    * Thu, July 28: Reinforcement Learning
+    * Fri, July 29: Network Causality
 
 ----
 
