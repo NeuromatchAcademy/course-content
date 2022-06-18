@@ -19,7 +19,7 @@ Please remember that the content was produced by humans who volunteered their ti
 
 It is very important to be as clear and complete in your report as possible. Please make sure that you include:
 
-1. The day code (e.g. W1D2), the tutorial number (e.g. Tutorial 2), and a description of the location in the notebook that is as precise as possible.
+1. The day name (e.g. W1D2_ModelFitting), the tutorial number (e.g. Tutorial 2), and a description of the location in the notebook that is as precise as possible.
 2. *Exactly* what it says in the version of the notebook that you are looking at.
 3. *Exactly* what you think it should say.
 4. (If reporting an issue with the Python code), the exact code that was run and the exact output (error or incorrect value) that occurred.
