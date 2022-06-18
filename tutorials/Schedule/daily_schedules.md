@@ -40,16 +40,16 @@ All days (except W2D1, W2D5, and W3D5) will follow this schedule for course time
 |    Time (Hour)   |    Lecture                            |
 |------------------|---------------------------------------|
 |   -0:30-0:00\*   |    Intro video & text                 |
-|    0:00-0:15     |    Pod Discussion I                   |
+|    0:00-0:15\**  |    Pod Discussion I                   |
 |    0:15-1:45     |    Tutorials I                        |
 |    1:45-2:45     |    Big break                          |
 |    2:45-4:15     |    Tutorials II                       |
 |    4:15-4:25     |    Pod Discussion II                  |
 |    4:25-4:30     |    Reflections & content checks       |
 
-\* The intro and outro will be watched asynchronously, which means that you can watch this lecture before and after the start of the synchronous session
+\* : The intro and outro will be watched asynchronously, which means that you can watch this lecture before and after the start of the synchronous session
 
-\** Note that the synchronous session starts at 0:00 with the first pod discussion!
+\** : Note that the synchronous session starts at 0:00 with the first pod discussion!
 
 ### Schedule of Specific Days
 
