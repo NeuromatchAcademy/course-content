@@ -46,88 +46,82 @@ Group projects are offered for the *interactive track* only and will be running 
 
 ----
 
-# Daily schedule
-All days (except W1D2, W2D5, and W3D5) will follow this schedule for course time:
+## Daily coursework schedule
+
+### General schedule
+All days (except W2D1, W2D5, and W3D5) will follow this schedule for course time:
+ 
+|    Time (Hour)   |    Lecture                            |
+|------------------|---------------------------------------|
+|   -0:30-0:00\*   |    Intro video & text                 |
+|    0:00-0:15\**  |    Pod Discussion I                   |
+|    0:15-1:45     |    Tutorials I                        |
+|    1:45-2:45     |    Big break                          |
+|    2:45-4:15     |    Tutorials II                       |
+|    4:15-4:25     |    Pod Discussion II                  |
+|    4:25-4:30     |    Reflections & content checks       |
+
+\* : The intro and outro will be watched asynchronously, which means that you can watch this lecture before and after the start of the synchronous session
+
+\** : Note that the synchronous session starts at 0:00 with the first pod discussion!
+
+### Schedule of Specific Days
+
+#### W2D1: Modeling Practice & Half project day (project proposals)
 
 |    Time (Hour)   |    Lecture                            |
 |------------------|---------------------------------------|
-|    0:00-0:30\*   |    Intro video & text   |   
-|    **0:30**-0:45**     |    Pod discussion I                   |                                      
-|    0:45-2:15     |    Tutorials + nano-lectures I        |    
-|    2:15-3:15     |    Big break                 |    
-|    3:15-4:45     |    Tutorials + nano-lectures II      |   
-|    4:45-4:55    |    Pod dicussion II       |    
-|    4:55-5:00    |    Reflections & content checks               |    
-|    5:05-5:35\*     |    Outro                              |
+|    0:00-0:30\*   |    Intro video & text                 |
+|    0:30-2:30\**  |    Tutorials I                        |
+|    2:30-2:45     |    Outro                              |
+|    2:45-3:45     |    Big break                          |
+|    3:45-5:30     |    Literature Review                  |
+|    5:30-5:45     |    Break                              |
+|    5:45-8:30\*** |    Project proposal                   |
 
-\* The intro and outro will be watched asynchronously, which means that you can watch this lecture before and after the start of the synchronous session
+\* : The intro and outro will be watched asynchronously, which means that you can watch this lecture before and after the start of the synchronous session.
 
-\** Note that the synchronous session starts at 0:30 with the first pod discussion!
+\** : Note that the synchronous session starts at 0:30 with the first pod discussion!
 
-On W2D1, W2D4, and W3D4:
-|    Time (Hour)   |    Lecture                            |
-|------------------|---------------------------------------|
-|    5:40-6:40     |    Live Q&A                                |   
+\*** : Note that this includes the next available project time, which may be on the next day.
 
-
-On W1D2 (project launch day):
+#### W2D5: Project Day (Abstract Writing Day)
 
 |    Time (Hour)   |    Lecture                            |
 |------------------|---------------------------------------|
-|    0:00-0:30\*   |    Intro video & text   |   
-|    **0:30**-2:30**     |    Tutorials + nano-lectures I                  |                                      
-|    2:30-2:45     |    Outro           |
-|    2:45-3:45     |    Big break                 |    
-|    3:45-5:30     |    Literature review   |
-|    5:30-5:45     |    Break     |
-|    5:45-8:30***   |    Project proposal    |
+|    0:00-2:20\*   |    Abstract workshop                  |
+|    2:20-2:50     |    Break                              |
+|    2:50-4:20     |    Individual abstract editing        |
+|    4:20-5:05     |    Mentor meeting                     |
+|    5:05-5:25     |    Break                              |
+|    5:25-6:25     |    Pod abstract swap                  |
+|    6:25-8:00     |    Finalize abstract                  |
 
-\* The intro and outro will be watched asynchronously, which means that you can watch this lecture before and after the start of the synchronous session
+\* : This day is completely *asynchronous*, so you should combine tutorial and project time for a total of 8 hours.
 
-\** Note that the synchronous session starts at 0:30 with the first pod discussion!
+#### Last day (W3D5)
 
-\*** Note that this includes the next available project time, which may be on the next day.
+|    Time (Hour)   |    Lecture                               |
+|------------------|------------------------------------------|
+|   -1:30~-0:30\*  |    Project presentations (slots 1, 3, 4) |
+|   -0:30-0:00     |    Break (slots 1, 3, 4)                 |
+|    0:00-0:15     |    Pod Discussion I                      |
+|    0:15-1:45     |    Tutorials I                           |
+|    1:45-2:45     |    Big break                             |
+|    2:45-4:15     |    Tutorials II                          |
+|    4:15-4:30     |    Pod Discussion II                     |
+|    4:30-4:45     |    Break                                 |
+|    4:45-5:10     |    Evaluation report                     |
+|    5:10-6:10     |    Project presentations (slots 3, 5)    |
+|    6:10-6:25     |    Pod farewell                          |
+|    6:25-7:15     |    Closing ceremony\*                    |
 
-On W2D5 (abstract writing day):
 
-|    Time (Hour)   |    Lecture                            |
-|------------------|---------------------------------------|
-|  0:00-2:00\*     |    Abstract workshop                  |
-|  2:00-2:50     |    Big Break                              |
-|  2:50-4:20     |    Individual abstract editing        |
-|  4:20-5:05     |    Mentor meeting (flexible time)       |
-|  5:05-5:25     |    Break                              |
-|  5:25-6:25     |    Pod abstract swap                  |
-|  6:25-8:00     |    Finalize abstract                  |
-
-* This day is completely asynchronous, so you should combine tutorial and project time for a total of 8 hours.
-
-On W3D5 (final day!), we will have an extra celebration and pod wrap-ups after the material:
-|    Time (Hour)   |    Lecture                            |
-|------------------|---------------------------------------|
-|    0:00-0:30\*   |    Intro video & text   |   
-|    **0:30**-0:45**     |    Pod discussion I                   |                                      
-|    0:45-2:15     |    Tutorials + nano-lectures I        |    
-|    2:15-3:15     |    Big break                 |    
-|    3:15-4:45     |    Tutorials + nano-lectures II      |   
-|    4:45-4:55    |    Pod dicussion II       |    
-|    4:55-5:00    |    Reflections & content checks               |    
-|    5:05-5:35\*     |    Outro                              |
-|    5:35-5:45     |    Break                        |
-|    5:45-6:10    |    Evaluation report                      |
-|    6:10-7:10    |    Project presentations                      |
-|    7:10-7:25    |    Pod farewell                      |
-|    7:25-8:15    |    Closing ceremony                      |
-
-\* The intro and outro will be watched asynchronously, which means that you can watch this lecture before and after the start of the synchronous session
-
-\** Note that the synchronous session starts at 0:30 with the first pod discussion!
+\* : For slots 1 & 2 this would occur at 6:55 AM EST, for slot 3 at 1:25 PM EST, and for slots 4 & 5 at 7:25 PM EST.
 
 
 
-
-
-
+---
 
 ## Licensing
 
