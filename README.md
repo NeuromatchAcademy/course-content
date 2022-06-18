@@ -25,17 +25,17 @@ Group projects are offered for the *interactive track* only and will be running 
 
 * Week 1
     * Mon, July 5: Model Types
-    * Tue, July 6: Modeling Practice
-    * Wed, July 7: Model Fitting
-    * Thu, July 8: Generalized Linear Models
-    * Fri, July 9: Dimensionality Reduction
+    * Tue, July 6: Model Fitting
+    * Wed, July 7: Generalized Linear Models
+    * Thu, July 8: Dimensionality Reduction
+    * Fri, July 9: Deep Learning
 
 * Week 2
-    * Mon, July 12: Deep Learning
+    * Mon, July 12: Modeling Practice & Half project day 
     * Tue, July 13: Linear Systems
     * Wed, July 14: Biological Neuron Models
     * Thu, July 15: Dynamic Networks
-    * Fri, July 16: Project day!
+    * Fri, July 16: Project Day (Abstract Writing Day)!
 
 * Week 3
     * Mon, July 19: Bayesian Decisions
