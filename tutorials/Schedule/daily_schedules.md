@@ -2,7 +2,7 @@
 
 ## Course overview
 
-    * Sun, July 10: Convocation (optional live event, times to come)
+Sun, July 10: Convocation (optional live event, times to come)
     
 * Week 1
     * Mon, July 11: Model Types
@@ -23,7 +23,7 @@
     * Tue, July 26: Hidden Dynamics
     * Wed, July 27: Optimal Control
     * Thu, July 28: Reinforcement Learning
-    * Fri, July 29: Network Causality
+    * Fri, July 29: Network Causality & Commencement
 
 
 ----
