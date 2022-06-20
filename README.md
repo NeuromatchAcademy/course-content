@@ -1,6 +1,10 @@
 # NeuroMatch Academy (NMA) Computational Neuroscience syllabus
 
-**The content should primarily be accessed from our ebook: https://compneuro.neuromatch.io/**
+*July 11-29, 2022*
+
+Please check out [expected prerequisites here](https://github.com/NeuromatchAcademy/precourse/blob/main/prereqs/ComputationalNeuroscience.md)!
+
+**The content should primarily be accessed from our ebook: https://compneuro.neuromatch.io/ [under continuous development]**
 
 **Schedule for 2022: https://github.com/NeuromatchAcademy/course-content/blob/schedule_updates/tutorials/Schedule/daily_schedules.md**
 
