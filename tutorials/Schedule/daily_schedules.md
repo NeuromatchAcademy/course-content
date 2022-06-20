@@ -94,7 +94,7 @@ All days except W2D1, W2D5, and W3D5 will follow this schedule for course time:
 |    4:15-4:30     |    Pod Discussion II                     |
 |    4:30-4:45     |    Break                                 |
 |    4:45-5:10     |    Evaluation report                     |
-|    5:10-6:10     |    Project presentations (slots 3, 5)    |
+|    5:10-6:10     |    Project presentations (slots 2, 5)    |
 |    6:10-6:25     |    Pod farewell                          |
 |    6:25-7:15     |    Commencement                          |
 
