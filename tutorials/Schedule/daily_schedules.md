@@ -1,12 +1,8 @@
 # General schedule
 
 ## Course overview
-* Week 0 (Optional)
-    * Asynchronous: Python Workshop Part 1 for students + Mandatory TA training for **ALL TAs**
-    * Asynchronous: Python Workshop Part 2 for students + Mandatory TA training for **ALL TAs**
-    * Wed, July 6: Linear Algebra (Mandatory for all Tutorial TAs). Project TAs have separate training.
-    * Thu, July 7: Calculus (Mandatory for all Tutorial TAs). Project TAs have separate training.
-    * Fri, July 8 Probability & Statistics (Mandatory for all Tutorial TAs). Project TAs have separate training.
+
+Sun, July 10: Convocation (optional live event, times to come)
     
 * Week 1
     * Mon, July 11: Model Types
@@ -16,7 +12,7 @@
     * Fri, July 15: Deep Learning
      
 * Week 2
-    * Mon, July 18:Modeling Practice
+    * Mon, July 18: Modeling Practice
     * Tue, July 19: Linear Systems
     * Wed, July 20: Biological Neuron Models
     * Thu, July 21: Dynamic Networks
@@ -27,7 +23,7 @@
     * Tue, July 26: Hidden Dynamics
     * Wed, July 27: Optimal Control
     * Thu, July 28: Reinforcement Learning
-    * Fri, July 29: Network Causality
+    * Fri, July 29: Network Causality & Commencement
 
 
 ----
@@ -35,7 +31,7 @@
 ## Daily coursework schedule
 
 ### General schedule
-All days (except W2D1, W2D5, and W3D5) will follow this schedule for course time:
+All days except W2D1, W2D5, and W3D5 will follow this schedule for course time:
  
 |    Time (Hour)   |    Lecture                            |
 |------------------|---------------------------------------|
@@ -47,7 +43,7 @@ All days (except W2D1, W2D5, and W3D5) will follow this schedule for course time
 |    4:15-4:25     |    Pod Discussion II                  |
 |    4:25-4:30     |    Reflections & content checks       |
 
-\* : The intro and outro will be watched asynchronously, which means that you can watch this lecture before and after the start of the synchronous session
+\* : The intro and optional outro will be watched asynchronously, which means that you can watch this lecture before and after the start of the synchronous session
 
 \** : Note that the synchronous session starts at 0:00 with the first pod discussion!
 
@@ -65,7 +61,7 @@ All days (except W2D1, W2D5, and W3D5) will follow this schedule for course time
 |    5:30-5:45     |    Break                              |
 |    5:45-8:30\*** |    Project proposal                   |
 
-\* : The intro and outro will be watched asynchronously, which means that you can watch this lecture before and after the start of the synchronous session.
+\* : The intro and optional outro will be watched asynchronously, which means that you can watch this lecture before and after the start of the synchronous session.
 
 \** : Note that the synchronous session starts at 0:30 with the first pod discussion!
 
@@ -83,7 +79,7 @@ All days (except W2D1, W2D5, and W3D5) will follow this schedule for course time
 |    5:25-6:25     |    Pod abstract swap                  |
 |    6:25-8:00     |    Finalize abstract                  |
 
-\* : This day is completely *asynchronous*, so you should combine tutorial and project time for a total of 8 hours.
+\* : This day is completely *asynchronous*, so you should combine tutorial and project time for a total of 7.5 hours.
 
 #### Last day (W3D5)
 
@@ -98,9 +94,8 @@ All days (except W2D1, W2D5, and W3D5) will follow this schedule for course time
 |    4:15-4:30     |    Pod Discussion II                     |
 |    4:30-4:45     |    Break                                 |
 |    4:45-5:10     |    Evaluation report                     |
-|    5:10-6:10     |    Project presentations (slots 3, 5)    |
+|    5:10-6:10     |    Project presentations (slots 2, 5)    |
 |    6:10-6:25     |    Pod farewell                          |
-|    6:25-7:15     |    Closing ceremony\*                    |
+|    6:25-7:15     |    Commencement                          |
 
 
-\* : For slots 1 & 2 this would occur at 6:55 AM EST, for slot 3 at 1:25 PM EST, and for slots 4 & 5 at 7:25 PM EST.
