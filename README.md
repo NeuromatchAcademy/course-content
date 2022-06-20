@@ -2,7 +2,8 @@
 
 **The content should primarily be accessed from our ebook: https://compneuro.neuromatch.io/**
 
-Schedule for 2022: https://github.com/NeuromatchAcademy/course-content/blob/schedule_updates/tutorials/Schedule/daily_schedules.md
+**Schedule for 2022: https://github.com/NeuromatchAcademy/course-content/blob/schedule_updates/tutorials/Schedule/daily_schedules.md**
+
 ---
 
 ## Licensing
