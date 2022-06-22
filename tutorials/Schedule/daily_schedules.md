@@ -36,7 +36,7 @@ These schedules refer to the coursework time.
 ### General schedule
 All days except W2D1, W2D5, and W3D5 will follow this schedule for course time:
  
-|    Time (Hour)   |    Lecture                            |
+|    Time (Hour)   |    Component                          |
 |------------------|---------------------------------------|
 |   -0:30-0:00\*   |    Intro video & text                 |
 |    0:00-0:15\**  |    Pod discussion I                   |
@@ -53,8 +53,9 @@ All days except W2D1, W2D5, and W3D5 will follow this schedule for course time:
 ### Schedule of specific days
 
 #### W2D1: Modeling Practice & Half Project Day (Project Proposals)
+*For more info on the components of this day, please see the daily guide for projects [here](https://compneuro.neuromatch.io/projects/docs/project_guidance.html#w1d2-coursework-tuesday-project-block-2-tuesday-for-slot-1-3-5-wednesday-for-slot-2-4)*
 
-|    Time (Hour)   |    Lecture                            |
+|    Time (Hour)   |    Component                          |
 |------------------|---------------------------------------|
 |   -0:30-0:00     |    Intro video & text                 |
 |    0:00-2:00     |    Tutorial                           |
@@ -66,34 +67,62 @@ All days except W2D1, W2D5, and W3D5 will follow this schedule for course time:
 
 During next available project time (which could be on the next day):
 
-|    Time (Hour)   |    Lecture                            |
+|    Time (Hour)   |    Component                          |
 |------------------|---------------------------------------|
-|    0:00-0:30\*   |    Finish literature review           |
-|    0:30-3:00     |    Project proposal                   |
+|    0:00-0:45\*   |    Finish literature review           |
+|    0:45-3:00     |    Project proposal                   |
 
 \* : Note that this refers to the start of the projects time, not the coursework time like usual
 
 #### W2D5: Project Day (Abstract Writing Day)
+*For more info on the components of this day, please see the daily guide for projects [here](https://compneuro.neuromatch.io/projects/docs/project_guidance.html#day-10-8h-friday-for-everyone)*
 
 **Slots 1/3/4:**
 
 During project time:
 
-|    Time (Hour)   |    Lecture                            |
+|    Time (Hour)   |    Component                          |
 |------------------|---------------------------------------|
-|    0:00-2:20\*   |    Abstract workshop                  |
-|    2:20-2:50     |    Break                              |
+|    0:00-2:00\*   |    Abstract workshop                  |
+|    2:00-2:15     |    Break                              |
+|    2:15-3:00     |    Individual abstract editing        |
 
 \* : Note that this refers to the start of the projects time, not the coursework time like usual
 
 During coursework time:
-|    2:50-4:20     |    Individual abstract editing        |
-|    4:20-5:05     |    Mentor meeting                     |
-|    5:05-5:25     |    Break                              |
-|    5:25-6:25     |    Pod abstract swap                  |
-|    6:25-8:00     |    Finalize abstract                  |
 
-\* : This day is completely *asynchronous*, so you should combine tutorial and project time for a total of 7.5 hours.
+|    Time (Hour)   |    Component                          |
+|------------------|---------------------------------------|
+|    0:00-0:45     |    Individual abstract editing II     |
+|    0:45-1:30\*   |    Mentor meeting                     |
+|    1:30-2:30     |    Big break                          |
+|    2:30-3:30     |    Pod abstract swap                  |
+|    3:30-4:30     |    Finalize abstract                  |
+
+\* : Timing of this mentor meeting may need to vary based on mentor availability
+
+**Slots 2/5:**
+
+During coursework time:
+
+|    Time (Hour)   |    Component                          |
+|------------------|---------------------------------------|
+|    0:00-2:00\*   |    Abstract workshop                  |
+|    2:00-3:00     |    Big break                          |
+|    3:05-4:30     |    Individual abstract editing        |
+
+
+During project time:
+
+|    Time (Hour)   |    Component                          |
+|------------------|---------------------------------------|
+|    0:00-0:45\* \**  |    Mentor meeting                  |
+|    0:45-1:45     |    Pod abstract swap                  |
+|    1:45-2:00     |    Break                              |
+|    2:00-3:00     |   Finalize abstract                   |
+
+\* : Note that this refers to the start of the projects time, not the coursework time like usual
+\** : Timing of this mentor meeting may need to vary based on mentor availability
 
 #### W3D5: Final Day of Course
 
@@ -117,6 +146,7 @@ During coursework time:
 \** : Note that these events occur after the normal coursework time.
 
 **Slots 2/5:**
+
 |    Time (Hour)   |    Lecture                               |
 |------------------|------------------------------------------|
 |    0:00-0:15     |    Pod Discussion I                      |
@@ -124,11 +154,15 @@ During coursework time:
 |    1:45-2:45     |    Big break                             |
 |    2:45-4:15     |    Tutorials II                          |
 |    4:15-4:30     |    Pod Discussion II                     |
-|    4:30-4:45     |    Break                                 |
-|    4:45-5:15**   |    Evaluation report                     |
-|    5:15-5:30**   |    Pod farewell                          |
-|    5:30-6:30**   |    Graduation                            |
 
+During project time:
+|    0:00-0:30\*   |    Evaluation report                     |
+|    0:30-1:30     |    Project presentation                  |
+|    1:30-1:45     |    Pod farewell                          |
+|    1:45-2:00     |    Break                                 |
+|    2:00-3:00     |    Graduation                            |
+
+\* : This is the start of projects time
 
 ### Professional Development Panels
 *Note that these have been scheduled to be before or after the coursework time for each time slot. In some cases, they overlap by 15 - 30 minutes with projects time - please start on projects time late or end early in order to attend these events*
