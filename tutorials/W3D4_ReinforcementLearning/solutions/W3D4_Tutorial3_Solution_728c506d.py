@@ -46,10 +46,10 @@ max_steps = 1000
 # environment initialization
 env = CliffWorld()
 
-# solve Cliff World using Q-learning
+## solve Cliff World using Q-learning -- uncomment to check your solution!
 results = learn_environment(env, q_learning, params, max_steps, n_episodes)
 value_qlearning, reward_sums_qlearning = results
 
-# Plot results
+## Plot results
 with plt.xkcd():
   plot_performance(env, value_qlearning, reward_sums_qlearning)
