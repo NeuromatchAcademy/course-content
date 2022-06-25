@@ -38,7 +38,7 @@ In order to build the book locally, you will need to do the following:
 
 `cp ../precourse/tutorials/W0D* tutorials/`
 
-`python ../nmaci/scripts/generate_book.py`
+`python ../nmaci/scripts/generate_book.py .`
 
 This will use the modified tutorials/materials.yml to create the `_toc.yml` file in the book directory. It will also be responsible for creating any additional markdown files or modifying any tutorial notebooks specifically for book generation. 
 
