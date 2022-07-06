@@ -8,25 +8,23 @@ In order to build the book locally, you will need to do the following:
 
 1. Clone course-content repo
 
-`git clone https://github.com/NeuromatchAcademy/course-content.git`
+`git clone https://github.com/NeuromatchAcademy/course-content.git --depth=1`
 
 2. Download nmaci repo (main branch)
 
 `wget https://github.com/NeuromatchAcademy/nmaci/archive/refs/heads/main.tar.gz`
 
-`tar -xzf main.tar.gz`
-
-`rm -rf main.tar.gz`
+`tar -xzf main.tar.gz; rm -rf main.tar.gz`
 
 3. Download precourse repo (main branch)
 
 `wget https://github.com/NeuromatchAcademy/precourse/archive/refs/heads/main.tar.gz`
 
-`tar -xzf main.tar.gz`
-
-`rm -rf main.tar.gz`
+`tar -xzf main.tar.gz; rm -rf main.tar.gz`
 
 3. Install dependencies
+
+`cd course-content`
 
 `pip install -r ../nmaci-main/requirements.txt`
 
@@ -36,11 +34,9 @@ In order to build the book locally, you will need to do the following:
 
 4. Copy files from precourse to `tutorials/`
 
-`cd course-content`
-
 `mv ../precourse-main/tutorials/W0D* tutorials/`
 
-`cat precourse-main/tutorials/materials.yml tutorials/materials.yml > out.yml`
+`cat ../precourse-main/tutorials/materials.yml tutorials/materials.yml > out.yml`
 
 `mv out.yml tutorials/materials.yml`
 
