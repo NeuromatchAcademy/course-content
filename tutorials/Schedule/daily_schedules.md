@@ -50,6 +50,11 @@ All days except W2D1, W2D5, and W3D5 will follow this schedule for course time:
 
 \** : Note that the synchronous coursework session starts at 0:00 with the first pod discussion
 
+### Project time
+In addition to course time, each day will have 3 hours of project time. Check the [time slot widget](https://neuromatchacademy.github.io/widgets/tz.html) to see when project time is scheduled for your slot.
+
+*Note: Slots 1, 3, and 4 **will not** have project time on W1D1.* 
+
 ### Schedule of specific days
 
 #### W2D1: Modeling Practice & Half Project Day (Project Proposals)
