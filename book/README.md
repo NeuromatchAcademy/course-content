@@ -22,7 +22,7 @@ In order to build the book locally, you will need to do the following:
 
 `tar -xzf main.tar.gz; rm -rf main.tar.gz`
 
-3. Install dependencies
+4. Install dependencies
 
 `cd course-content`
 
@@ -32,7 +32,7 @@ In order to build the book locally, you will need to do the following:
 
 **Important:** Do not install jupyter-book 0.11 or later at this point, as there are breaking changes in how it handles the table of contents file we generate.
 
-4. Copy files from precourse to `tutorials/`
+5. Copy files from precourse to `tutorials/`
 
 `mv ../precourse-main/tutorials/W0D* tutorials/`
 
@@ -40,13 +40,13 @@ In order to build the book locally, you will need to do the following:
 
 `mv out.yml tutorials/materials.yml`
 
-5. Create a symlink in the book dir to the tutorials dir. From the repo (i.e., course-content) root directory:
+6. Create a symlink in the book dir to the tutorials dir. From the repo (i.e., course-content) root directory:
 
 `ln -s ../tutorials book/tutorials`
 
 `ln -s ../projects book/projects`
 
-6. Prepare repo for book building 
+7. Prepare repo for book building 
 
 `python ../nmaci-main/scripts/generate_book.py arg`
 
@@ -56,7 +56,7 @@ This will use the modified tutorials/materials.yml to create the `_toc.yml` file
 
 **No changes created by this script should be committed to the repo.**
 
-7. Build the book
+8. Build the book
 
 `jupyter-book build book`
 
