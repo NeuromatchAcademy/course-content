@@ -48,6 +48,8 @@ In order to build the book locally, you will need to do the following:
 
 `ln -s ../projects book/projects`
 
+`ln -s ../prereqs book/prereqs`
+
 7. Prepare repo for book building 
 
 `python ../nmaci-main/scripts/generate_book.py arg`
