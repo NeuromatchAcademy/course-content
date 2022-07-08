@@ -2,6 +2,8 @@
 
 There are a number of different logical positions in which treatments of Bayesian statistics started that are relevant to NMA.
 
+Ma, W. J., Kording, K., and Goldreich, D. (2022) Bayesian models of perception and action. MIT press. url: [www.cns.nyu.edu/malab/bayesianbook](https://www.cns.nyu.edu/malab/bayesianbook.html). _Note: The only text book explicitly developed for the nma community._
+
 ### Statistics:
 
 MacKay, D. J. C. (2003). Information theory, inference and learning algorithms. Cambridge university press. url: [inference.org.uk/itprnn](https://www.inference.org.uk/itprnn/book.pdf). _Note: Beautiful combination of Bayesian statistics with information theory by the late David MacKay. The book is available for free online. Simply beautiful._
