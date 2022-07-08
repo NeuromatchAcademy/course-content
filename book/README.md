@@ -40,6 +40,8 @@ In order to build the book locally, you will need to do the following:
 
 `mv out.yml tutorials/materials.yml`
 
+`mv ../precourse-main/prereqs/ .`
+
 6. Create a symlink in the book dir to the tutorials dir. From the repo (i.e., course-content) root directory:
 
 `ln -s ../tutorials book/tutorials`
