@@ -27,4 +27,8 @@ Students who participate in this course will gain a certificate of completion fo
 
 ### Projects attendance policy
 
-Projects are an integral part of the Neuromatch Academy experience. Students who participate in projects and miss no more than two days of projects work will gain a certificate of completion for the projects. If there are exceptional circumstances that make it difficult to attend the projects portion of the course, students can request to drop out of projects by filling out the project exemption form (link coming soon). If their request is granted, the student can continue to attend the coursework sections and gain a coursework certificate if eligible (see above), but not participate in the projects work.
+Projects are an integral part of the Neuromatch Academy experience. Students who participate in projects and miss no more than two days of projects work will gain a certificate of completion for the projects. 
+
+If there are exceptional circumstances that make it difficult to attend the projects portion of the course, students can request to drop out of projects by filling out the project exemption form (link coming soon). If their request is granted, the student can continue to attend the coursework sections and gain a coursework certificate if eligible (see above), but not participate in the projects work.
+
+If the student participates in projects but misses more than two days due to exceptional circumstances, they can request to get the projects certificate anyway by filling out the attendance exemption form (link coming soon) **at least two days prior to the end of course**. Please note these requests may not be granted.
