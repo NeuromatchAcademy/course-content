@@ -4,6 +4,10 @@
 
 Course materials: https://compneuro.neuromatch.io/
 
+Portal: https://portal.neuromatchacademy.org/
+
+Website: https://academy.neuromatch.io/
+
 Crowdcast: https://www.crowdcast.io/e/neuromatch-academy-2022-
 
 Code of Conduct Violations Form: https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAASlhytdUMUdaSkZXQzRCV1lFWEdaSFhUMDdSWkUwUC4u
