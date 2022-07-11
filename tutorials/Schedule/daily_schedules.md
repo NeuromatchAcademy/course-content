@@ -182,6 +182,6 @@ During project time:
 * Wed, July 20: Academia Panel
     * 9:30 am UTC
     * 9:45 pm UTC
-* Wed, July 27: DEI Panel
+* Wed, July 27: Accessibility & Inclusion Panel
     * 9:30 am UTC
     * 9:45 pm UTC
