@@ -14,8 +14,7 @@ Code of Conduct Violations Form: https://forms.office.com/Pages/ResponsePage.asp
 
 Project Exemption Form: Coming soon
 
-Attendance Exemption Form: Coming soon
-
+Attendance Exemption Form: https://airtable.com/shrlp9uktPR5o9U28
 
 
 
