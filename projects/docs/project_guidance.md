@@ -82,8 +82,7 @@ The goal of this literature review is to situate your question in context and he
 Project block task:
 (3h) Project proposal
 * Try to write a proposal for this project based on the way you understand it now. This should re-use some of the text you wrote down for the four steps, and should include keywords and concepts that you identified in your literature review. Don’t worry too much about the structure of this paragraph! The goal is to get as many words (200-300) on paper as possible. You have the entire day 10 to learn how to write a properly structured scientific abstract.
-* It is important to include the concepts which you identified as relevant, and the keywords that go with them. This will allow us to identify mentors whose research covers your interests.   
-* You should submit your proposal into the [Airtable form](https://airtable.com/shrZWimDB3YddpXDu) at the end of this day. Remember that only an algorithm will read it, so it definitely doesn’t need to be perfect!
+* It is important to include the concepts which you identified as relevant, and the keywords that go with them. This will allow us to identify mentors whose research covers your interests.
 
 ###  W2D2
 
