@@ -27,12 +27,12 @@ Project mentors are more senior figures in the field, typically senior postdocs,
 
 ## W1 Project Time
 
-You'll have 2-3 hours each day to work on projects. The goal during the first week is to learn about the research process and start brainstorming ideas. To simplify logistics, we have already broken you into project groups. Moreover, we've organized the pods (and the groups within them) so that everyone is interested in the same type of data (fMRI, Neurons, Behavior, etc.). 
+You'll have 2-3 hours each day to work on projects. The goal during the first week is to learn about the research process and start brainstorming ideas. To simplify logistics, we have already broken you into project groups. Moreover, we've organized the pods (and the groups within them) so that everyone is interested in the same type of data (fMRI, Neurons, Behavior, etc.).
 
-### W1D1 
+### W1D1
 Spend the first few sessions getting to know one another and learning about projects.
 * Introductions: say a few things about yourself, then about your research area or research interests. What are you really curious about, that you might explore in your NMA project?
-* Listen carefully as others talk about their interests. If you are curious about something, ask them. 
+* Listen carefully as others talk about their interests. If you are curious about something, ask them.
 * Individual reading time: browse the projects booklet which includes dataset details and project template details. Watch some of the videos that are of interest to you.
 
 ### W1D2
@@ -82,8 +82,8 @@ The goal of this literature review is to situate your question in context and he
 Project block task:
 (3h) Project proposal
 * Try to write a proposal for this project based on the way you understand it now. This should re-use some of the text you wrote down for the four steps, and should include keywords and concepts that you identified in your literature review. Don’t worry too much about the structure of this paragraph! The goal is to get as many words (200-300) on paper as possible. You have the entire day 10 to learn how to write a properly structured scientific abstract.
-* It is important to include the concepts which you identified as relevant, and the keywords that go with them. This will allow us to identify mentors whose research covers your interests.
-* When you are ready, please submit your proposal [here](https://airtable.com/shrcYuFYMPh4jGIng) so we have it. This is not mandatory and can be submitted at any time. 
+* It is important to include the concepts which you identified as relevant, and the keywords that go with them.
+* When you are ready, please submit your proposal [here](https://airtable.com/shrcYuFYMPh4jGIng) so we have it. This is not mandatory and can be submitted at any time.
 
 ###  W2D2
 
