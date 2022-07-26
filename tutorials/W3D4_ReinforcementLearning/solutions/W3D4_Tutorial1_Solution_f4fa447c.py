@@ -8,5 +8,5 @@ behavior is actually correct, because the model is learning the time until the
 *next* reward, and State 37 is closer to a reward than State 21 or 22.
 
 In an actual experiment, the animal often just wants rewards; it doesn't care about
-/your/ experiment or trial structure!
+your experiment or trial structure!
 """;
