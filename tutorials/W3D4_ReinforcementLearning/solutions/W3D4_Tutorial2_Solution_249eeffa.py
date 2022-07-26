@@ -23,6 +23,6 @@ q = [-2, 5, 0, 1]
 action = 2
 print(f"Original q({action}) value = {q[action]}")
 
-## Update action - uncomment to check your solution!
+# Update action
 q[action] = update_action_value(q, 2, 10, 0.01)
 print(f"Updated q({action}) value = {q[action]}")

@@ -52,11 +52,11 @@ max_steps = 1000
 # environment initialization
 env = QuentinsWorld()
 
-## solve Quentin's World using Dyna-Q -- uncomment to check your solution
+# solve Quentin's World using Dyna-Q
 results = learn_environment(env, dyna_q_model_update, dyna_q_planning,
                             params, max_steps, n_episodes)
 value, reward_sums, episode_steps = results
 
-## Plot the results
+# Plot the results
 with plt.xkcd():
   plot_performance(env, value, reward_sums)
