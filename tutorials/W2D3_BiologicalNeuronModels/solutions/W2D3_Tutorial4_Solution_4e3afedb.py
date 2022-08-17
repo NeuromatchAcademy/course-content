@@ -31,4 +31,4 @@ pars = default_pars_STDP(T=200., dt=1.)
 pre_spike_train_ex = Poisson_generator(pars, rate=10, n=5, myseed=2020)
 P = generate_P(pars, pre_spike_train_ex)
 with plt.xkcd():
-  my_example_P()
+  my_example_P(pre_spike_train_ex, pars, P)
