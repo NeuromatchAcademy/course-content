@@ -17,5 +17,5 @@
 3) If the fisher-person does not catch a fish, you would guess the school of fish is on the
     right side. This is because the probability of not catching a fish given that the
    school is on the right side (0.8) is higher than the probability given that
-   the school is on the right side (0.3).
+   the school is on the left side (0.3).
 """;
