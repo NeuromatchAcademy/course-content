@@ -7,16 +7,16 @@ def corr_coeff_pairs(pars, rate, c, trials, bins):
       pars   : parameter dictionary
       rate   : rate of poisson inputs
       c      : correlation coefficient ~ [0, 1]
-      trials  : number of realizations
+      trials : number of realizations
       bins   : vector with bins for time discretization
 
   Returns:
     r12      : correlation coefficient of a pair of inputs
   """
 
-  r12 = np.zeros(n_trials)
+  r12 = np.zeros(trials)
 
-  for i in range(n_trials):
+  for i in range(trials):
     # Generate correlated Poisson inputs
     sp1, sp2 = generate_corr_Poisson(pars, poi_rate, c, myseed=2020+i)
 
