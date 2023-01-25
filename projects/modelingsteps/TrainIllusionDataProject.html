@@ -1805,7 +1805,7 @@ title="Print to PDF"
 <span class="c1"># for logistic regression:</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
-<span class="o">!</span>pip install tqdm --quiet
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>tqdm<span class="w"> </span>--quiet
 </pre></div>
 </div>
 </div>
@@ -1989,8 +1989,8 @@ title="Print to PDF"
 <p><em>Part of Step 1</em></p>
 <p>We assume that we have build the train illusion model (see the other example project colab). That model predicts that accumulated sensory evidence from vestibular signals determines the decision of whether self-motion is experienced or not. We now have vestibular neuron data (simulated in our case, but let’s pretend) and would like to see if that prediction holds true.</p>
 <p>The data contains <span class="math notranslate nohighlight">\(N\)</span> neurons and <span class="math notranslate nohighlight">\(M\)</span> trials for each of 3 motion conditions: no self-motion, slowly accelerating self-motion and faster accelerating self-motion.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3bcc8f98-62a0-4f19-b769-dd845af0e354">
-<span class="eqno">(467)<a class="headerlink" href="#equation-3bcc8f98-62a0-4f19-b769-dd845af0e354" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-539c09f2-8ee3-4e1b-9a89-ae41d2423ae2">
+<span class="eqno">(467)<a class="headerlink" href="#equation-539c09f2-8ee3-4e1b-9a89-ae41d2423ae2" title="Permalink to this equation">¶</a></span>\[\begin{align}
 N &amp;= 40\\
 M &amp;= 400\\
 \end{align}\]</div>
@@ -2012,7 +2012,7 @@ M &amp;= 400\\
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3, 400, 40, 301)
 (3, 400)
-[0.355  0.7575 0.975 ]
+[0.36   0.7575 0.975 ]
 </pre></div>
 </div>
 </div>
@@ -2031,7 +2031,7 @@ M &amp;= 400\\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd97d534810&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f1a1ff1c210&gt;
 </pre></div>
 </div>
 <img alt="../../_images/TrainIllusionDataProject_16_1.png" src="../../_images/TrainIllusionDataProject_16_1.png" />
@@ -2123,7 +2123,7 @@ M &amp;= 400\\
 <span class="n">a_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="mi">400</span><span class="p">)</span> <span class="c1"># for grouping in cross validation? maybe not</span>
 
 <span class="k">def</span> <span class="nf">getDesignMatrix</span><span class="p">(</span><span class="n">spikes</span><span class="p">,</span> <span class="n">motions</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">halfwin</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the design matrix and vector of classes for a logistic regression.</span>
 
 <span class="sd">    Args:</span>
@@ -2209,7 +2209,7 @@ M &amp;= 400\\
 <span class="n">m_p</span> <span class="o">=</span> <span class="n">perception</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="k">def</span> <span class="nf">classifyMotionFromSpikes</span><span class="p">(</span><span class="n">spikes</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">halfwin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">motions</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">cv</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Runs one logistic regression using the specified parameters.</span>
 
 <span class="sd">    Args:</span>
@@ -2267,7 +2267,7 @@ M &amp;= 400\\
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">runAnalysis</span><span class="p">(</span><span class="n">spikes</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Runs one logistic regression using the specified parameters.</span>
 
 <span class="sd">    Args:</span>
@@ -2333,7 +2333,7 @@ M &amp;= 400\\
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plotAccuracies</span><span class="p">(</span><span class="n">accuracies</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Plot the accuracies from our main fitting function.</span>
 
 <span class="sd">    Args:</span>
