@@ -130,7 +130,7 @@ Last 3h, with the pod.
 Back in your group
 * (1-2h) Has the abstract refined or changed your question? Use the rest of this day to make a concrete plan for the final week of your project. If you already answered your question, then you will need to plan for control analyses, maybe including some simulated data that you need to also generate yourself.
 
-Once you are done, please submit the abstract [HERE](https://airtable.com/shrITSzD4fgFCGiWI). We won't use this for further matching or anything like that, but we will keep a record of it to help us track the progress of all groups. If you really need/want to, the abstract can also be submitted on Monday (especially for timeslots 2,4 who have had one less project day so far).
+Once you are done, please submit the abstract [here](https://airtable.com/shrITSzD4fgFCGiWI). We won't use this for further matching or anything like that, but we will keep a record of it to help us track the progress of all groups. If you really need/want to, the abstract can also be submitted on Monday (especially for timeslots 2,4 who have had one less project day so far).
 
 
 ### W2D5 (bonus)
@@ -155,7 +155,7 @@ Writing an abstract is also a good time to reflect on how your work relates to s
 
 9. Theories of Band Power (i.e. what is "alpha" band power associated with? what is gamma power associated with? etc.)
 
-10. Labeled Lines -- is information encoded by specific, dedicated neurons, or distributed across a population of cells responding to more than one thing? See eg https://www.annualreviews.org/doi/abs/10.1146/annurev.neuro.26.041002.131022, https://www.sciencedirect.com/science/article/pii/S1044743106001692
+10. Labeled Lines -- is information encoded by specific, dedicated neurons, or distributed across a population of cells responding to more than one thing? See for example [10.1146/annurev.neuro.26.041002.131022](https://www.annualreviews.org/doi/abs/10.1146/annurev.neuro.26.041002.131022), [10.1016/j.mcn.2006.08.001](https://doi.org/10.1016/j.mcn.2006.08.001).
 
 ## W3 Project Time
 
