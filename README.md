@@ -1,6 +1,6 @@
 # NeuroMatch Academy (NMA) Computational Neuroscience syllabus
 
-*July 11-29, 2022*
+*July 10-28, 2023*
 
 Please check out [expected prerequisites here](https://github.com/NeuromatchAcademy/precourse/blob/main/prereqs/ComputationalNeuroscience.md)!
 
