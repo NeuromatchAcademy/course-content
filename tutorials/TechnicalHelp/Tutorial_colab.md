@@ -8,3 +8,4 @@ If you have access to Google Colab, you can click the "Open in Colab" button at 
 *  Colab does not have version control! Use git for this if you want to collaborate (on a group project colab for example)
 
 To learn the basics of Colab, please check out this Colab notebook: https://colab.research.google.com/notebooks/intro.ipynb
+

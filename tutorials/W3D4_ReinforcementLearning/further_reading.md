@@ -21,3 +21,4 @@ Dabney, W., Kurth-Nelson, Z., Uchida, N., Starkweather, C. K., Hassabis, D., Mun
 Mnih, V., Kavukcuoglu, K., Silver, D., Rusu, A. A., Veness, J., Bellemare, M. G., ... and Hassabis, D. (2015). Human-level control through deep reinforcement learning. Nature 518(7540): 529-533. doi: [10.1038/nature14236](https://doi.org/10.1038/nature14236) {{ closed_access }}.
 
 Silver, D., Huang, A., Maddison, C. J., Guez, A., Sifre, L., Van Den Driessche, G., ... and Hassabis, D. (2016). Mastering the game of Go with deep neural networks and tree search. Nature 529(7587): 484-489. doi: [10.1038/nature16961](https://doi.org/10.1038/nature16961) {{ closed_access }}.
+

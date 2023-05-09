@@ -25,3 +25,4 @@ Welchman, A. E., Trommershauser, J., Kording, K., and Landy, M. S. (2011). Decod
 ### Analysis of neural data:
 
 Kass, R. E., Eden, U. T., & Brown, E. N. (2014). Analysis of neural data (Vol. 491). New York: Springer. _Note: This book contains a good treatment of Bayesian approaches to the analysis of neural data._
+

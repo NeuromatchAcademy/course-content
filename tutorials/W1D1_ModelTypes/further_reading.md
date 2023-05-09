@@ -53,3 +53,4 @@ Simon, H. A. (1969). The sciences of the artificial MIT Press. Cambridge, MA.
 Trappenberg, T. (2009). Fundamentals of computational neuroscience. OUP Oxford.
 
 Wilson, R. C., and Collins, A. G. (2019). Ten simple rules for the computational modeling of behavioral data. Elife 8: e49547. doi: [10.7554/eLife.49547](https://doi.org/10.7554/eLife.49547) {{ open_access }}
+

@@ -21,3 +21,4 @@ Zoltowski, D. M., Latimer, K. W., Yates, J. L., Huk, A. C., and Pillow, J. W. (2
 ### Technical aspects of the models
 
 Chen, Y., and Gupta, M. R. (2010). EM demystified: An expectation-maximization tutorial. In Electrical Engineering. url: [vannevar.ece.uw.edu/techsite/papers/documents/UWEETR-2010-0002.pdf](https://vannevar.ece.uw.edu/techsite/papers/documents/UWEETR-2010-0002.pdf).
+

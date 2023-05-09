@@ -78,3 +78,4 @@ Willett, F. R., Deo, D. R., Avansino, D. T., Rezaii, P., Hochberg, L. R., Hender
 Williams, A. H., Kim, T. H., Wang, F., Vyas, S., Ryu, S. I., Shenoy, K. V., ... and Ganguli, S. (2018). Unsupervised discovery of demixed, low-dimensional neural dynamics across multiple timescales through tensor component analysis. Neuron 98(6): 1099-1115. doi: [10.1016/j.neuron.2018.05.015](https://doi.org/10.1016/j.neuron.2018.05.015) {{ open_access }}.
 
 Yu, B. M., Cunningham, J. P., Santhanam, G., Ryu, S., Shenoy, K. V., and Sahani, M. (2008). Gaussian-process factor analysis for low-dimensional single-trial analysis of neural population activity. Advances in neural information processing systems, 21. url: [NIPS2008](https://proceedings.neurips.cc/paper/2008/hash/ad972f10e0800b49d76fed33a21f6698-Abstract.html).
+

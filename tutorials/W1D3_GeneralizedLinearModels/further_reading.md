@@ -47,3 +47,4 @@ Vidne, M., Ahmadian, Y., Shlens, J., Pillow, J. W., Kulkarni, J., Litke, A. M., 
 Weber, A. I., and Pillow, J. W. (2017). Capturing the dynamical repertoire of single neurons with generalized linear models. Neural computation 29(12): 3260-3289. doi: [10.1162/neco_a_01021](https://doi.org/10.1162/neco_a_01021) {{ closed_access }} (preprint: [arxiv:1602.07389](http://arxiv.org/abs/1602.07389) {{ open_access }}).
 
 Zhao, M., and Iyengar, S. (2010). Nonconvergence in logistic and poisson models for neural spiking. Neural computation 22(5): 1231-1244. doi: [10.1162/neco.2010.03-09-982](https://doi.org/10.1162/neco.2010.03-09-982) {{ closed_access }}.
+

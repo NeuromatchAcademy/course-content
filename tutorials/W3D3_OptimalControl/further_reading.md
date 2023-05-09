@@ -43,3 +43,4 @@ Xu-Wilson, M., Zee, D. S., and Shadmehr, R. (2009). The intrinsic value of visua
 Yoon, T., Geary, R. B., Ahmed, A. A., & Shadmehr, R. (2018). Control of movement vigor and decision making during foraging. Proceedings of the National Academy of Sciences 115(44): E10476-E10485. doi: [10.1073/pnas.1812979115](https://doi.org/10.1073/pnas.1812979115) {{ closed_access }} (postprint: [europepmc.org/articles/pmc6217431](https://europepmc.org/articles/pmc6217431) {{ open_access }}).
 
 Yoon, T., Jaleel, A., Ahmed, A. A., and Shadmehr, R. (2020). Saccade vigor and the subjective economic value of visual stimuli. Journal of neurophysiology 123(6): 2161-2172. doi: [10.1152/jn.00700.2019](https://doi.org/10.1152/jn.00700.2019) {{ open_access }}.
+

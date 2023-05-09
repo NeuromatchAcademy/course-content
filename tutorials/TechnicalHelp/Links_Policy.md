@@ -10,7 +10,7 @@ Website: [https://academy.neuromatch.io/](https://academy.neuromatch.io/)
 
 Crowdcast: [https://www.crowdcast.io/e/neuromatch-academy-2022-](https://www.crowdcast.io/e/neuromatch-academy-2022-)
 
-Code of Conduct and Code of Conduct Violations Form: [https://github.com/NeuromatchAcademy/precourse/blob/main/CODE_OF_CONDUCT.md](https://github.com/NeuromatchAcademy/precourse/blob/main/CODE_OF_CONDUCT.md)
+Code of Conduct and Code of Conduct Violations Form: [https://github.com/NeuromatchAcademy/precourse/blob/NMACN2022/CODE_OF_CONDUCT.md](https://github.com/NeuromatchAcademy/precourse/blob/NMACN2022/CODE_OF_CONDUCT.md)
 
 Project Exemption Form: [https://airtable.com/shrubhlgsWJ8DuA7E](https://airtable.com/shrubhlgsWJ8DuA7E)
 
@@ -31,3 +31,4 @@ Projects are an integral part of the Neuromatch Academy experience. Students who
 If there are exceptional circumstances that make it difficult to attend the projects portion of the course, students can request to drop out of projects by filling out the project exemption form ([https://airtable.com/shrubhlgsWJ8DuA7E](https://airtable.com/shrubhlgsWJ8DuA7E)). If their request is granted, the student can continue to attend the coursework sections and gain a coursework certificate if eligible (see above), but not participate in the projects work.
 
 If the student participates in projects but misses more than two days due to exceptional circumstances, they can request to get the projects certificate anyway by filling out the attendance exemption form ([https://airtable.com/shrlp9uktPR5o9U28](https://airtable.com/shrlp9uktPR5o9U28)) **at least two days prior to the end of course**. Please note these requests may not be granted.
+

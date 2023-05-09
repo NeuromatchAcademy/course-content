@@ -55,3 +55,4 @@ Abbott, L. F., and Nelson, S. B. (2000). Synaptic plasticity: taming the beast. 
 Bi, G. Q., and Poo, M. M. (1998). Synaptic modifications in cultured hippocampal neurons: dependence on spike timing, synaptic strength, and postsynaptic cell type. Journal of neuroscience 18(24): 10464-10472. doi: [10.1523/JNEUROSCI.18-24-10464.1998](https://doi.org/10.1523/JNEUROSCI.18-24-10464.1998) {{ open_access }}.
 
 Song, S., Miller, K. D., and Abbott, L. F. (2000). Competitive Hebbian learning through spike-timing-dependent synaptic plasticity. Nature neuroscience 3(9): 919-926. doi: [10.1038/78829](https://doi.org/10.1038/78829) {{ closed_access }}.
+

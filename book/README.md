@@ -12,13 +12,13 @@ In order to build the book locally, you will need to do the following:
 
 2. Download nmaci repo (main branch)
 
-`wget https://github.com/NeuromatchAcademy/nmaci/archive/refs/heads/main.tar.gz`
+`wget https://github.com/NeuromatchAcademy/nmaci/archive/refs/heads/NMACN2022.tar.gz`
 
 `tar -xzf main.tar.gz; rm -rf main.tar.gz`
 
 3. Download precourse repo (main branch)
 
-`wget https://github.com/NeuromatchAcademy/precourse/archive/refs/heads/main.tar.gz`
+`wget https://github.com/NeuromatchAcademy/precourse/archive/refs/heads/NMACN2022.tar.gz`
 
 `tar -xzf main.tar.gz; rm -rf main.tar.gz`
 
@@ -67,3 +67,4 @@ This will use the modified tutorials/materials.yml to create the `_toc.yml` file
 `jupyter-book build book`
 
 This will create a `book/_build` directory. You can open the `index.html` in any browser to verify the book.
+

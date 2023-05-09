@@ -27,3 +27,4 @@ Boyd, S., Boyd, S. P., and Vandenberghe, L. (2004). Convex optimization. Cambrid
 #### Research example developed in outro:
 
 Wei, K., and Kording, K. (2009). Relevance of error: what drives motor adaptation?. Journal of neurophysiology 101(2): 655-664. doi: [10.1152/jn.90545.2008](https://doi.org/10.1152/jn.90545.2008) {{ open_access }}.
+

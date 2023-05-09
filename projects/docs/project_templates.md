@@ -49,3 +49,4 @@ Click on each image below to see a full browser version!
 # The structure of mouse social behavior
 
 <img src="template_images/MouseSocialBehavior.svg" width="100%">
+

@@ -4,7 +4,7 @@ If you are in China or another region with difficult  access to Google Colab, yo
 
 ## STEPS:
 
-**1.** First, [sign in](https://www.kaggle.com/account/login) to your Kaggle account. If you don't have a Kaggle account, create one by registering for it by clicking [here](https://www.kaggle.com/account/login?phase=startRegisterTab&returnUrl=%2F). 
+**1.** First, [sign in](https://www.kaggle.com/account/login) to your Kaggle account. If you don't have a Kaggle account, create one by registering for it by clicking [here](https://www.kaggle.com/account/login?phase=startRegisterTab&returnUrl=%2F).
 ![Step 1](../static/kaggle_step1.png)
 
 **2.** Once you're logged into your account, click the kaggle button found on top of every page containing a tutorial.
@@ -27,3 +27,4 @@ Go to *Settings* -> *Internet* and select *Internet connected*. Your Kernels ses
 Once your phone number has been verified, on the left sidebar under **Settings** panel, select **Accelerator** to **GPU** from **None** using the drop down menu.
 
 ![Step 4.1](../static/kaggle_step6_2.png)
+

@@ -37,3 +37,4 @@ Point (1) is important so that your issue can be triaged properly and fixed effi
 
 - If you find multiple small issues (typos, etc.) in the content, please collate them into a single issue.
 - Different content creators are responsible for each day, so issues should be specific to a single day's material.
+

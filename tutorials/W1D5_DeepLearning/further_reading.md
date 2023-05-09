@@ -88,3 +88,4 @@ Tang, H., Schrimpf, M., Lotter, W., Moerman, C., Paredes, A., Caro, J. O., ... a
 ### Outro 2
 
 Chambers, C., Seethapathi, N., Saluja, R., Loeb, H., Pierce, S. R., Bogen, D. K., ... and Kording, K. P. (2020). Computer vision to automatically assess infant neuromotor risk. IEEE Transactions on Neural Systems and Rehabilitation Engineering 28(11): 2431-2442. doi: [10.1109/TNSRE.2020.3029121](https://doi.org/10.1109/TNSRE.2020.3029121) {{ closed_access }} (postprint: [www.ncbi.nlm.nih.gov/pmc/articles/PMC8011647](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8011647) {{ open_access }}).
+

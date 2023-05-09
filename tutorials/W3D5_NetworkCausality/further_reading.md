@@ -48,3 +48,4 @@ Shimizu, S., Hoyer, P. O., Hyvärinen, A., Kerminen, A., and Jordan, M. (2006). 
 Spirtes, P., Glymour, C. N., Scheines, R., and Heckerman, D. (2000). Causation, prediction, and search. MIT press.
 
 Triantafillou, S., and Tsamardinos, I. (2015). Constraint-based causal discovery from multiple interventions over overlapping variable sets. The Journal of Machine Learning Research 16(1): 2147-2205. url: [jmlr.org/papers/v16/triantafillou15a.html](https://www.jmlr.org/papers/v16/triantafillou15a.html).
+

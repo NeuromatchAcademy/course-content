@@ -42,3 +42,4 @@ Van Vreeswijk, C., and Sompolinsky, H. (1996). Chaos in neuronal networks with b
 Brunel, N. (2000). Dynamics of sparsely connected networks of excitatory and inhibitory spiking neurons. Journal of computational neuroscience, 8(3), 183-208. doi: [10.1023/A:1008925309027](https://doi.org/10.1023/A:1008925309027) {{ closed_access }}.
 
 Brunel, N., and Wang, X. J. (2003). What determines the frequency of fast network oscillations with irregular neural discharges? I. Synaptic dynamics and excitation-inhibition balance. Journal of neurophysiology 90(1): 415-430. doi: [10.1152/jn.01095.2002](https://doi.org/10.1152/jn.01095.2002) {{ closed_access }}.
+
