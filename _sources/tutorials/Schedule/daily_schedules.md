@@ -4,32 +4,30 @@
 
 ## Course overview
 
-* Sun, July 10: Opening Ceremonies
+* Sun, July 9: Opening Ceremonies
     * 7:00 am UTC
     * 3:00 pm UTC
     
 * Week 1
-    * Mon, July 11: Model Types
-    * Tue, July 12: Model Fitting
-    * Wed, July 13: Generalized Linear Models  
-    * Thu, July 14: Dimensionality Reduction
-    * Fri, July 15: Deep Learning
+    * Mon, July 10: Model Types
+    * Tue, July 11: Model Fitting
+    * Wed, July 12: Generalized Linear Models  
+    * Thu, July 13: Dimensionality Reduction
+    * Fri, July 14: Deep Learning
      
 * Week 2
-    * Mon, July 18: Modeling Practice & Half Project Day (Projects Proposal)
-    * Tue, July 19: Linear Systems
-    * Wed, July 20: Biological Neuron Models
-    * Thu, July 21: Dynamic Networks
-    * Fri, July 22: Project day (Abstract Writing)
+    * Mon, July 17: Modeling Practice & Half Project Day (Projects Proposal)
+    * Tue, July 18: Linear Systems
+    * Wed, July 19: Biological Neuron Models
+    * Thu, July 20: Dynamic Networks
+    * Fri, July 21: Project day (Abstract Writing)
     
 * Week 3
-    * Mon, July 25: Bayesian Decisions
-    * Tue, July 26: Hidden Dynamics
-    * Wed, July 27: Optimal Control
-    * Thu, July 28: Reinforcement Learning
-    * Fri, July 29: Network Causality & Graduation
-
-
+    * Mon, July 24: Bayesian Decisions
+    * Tue, July 25: Hidden Dynamics
+    * Wed, July 26: Optimal Control
+    * Thu, July 27: Reinforcement Learning
+    * Fri, July 28: Network Causality & Graduation
 ----
 
 ## Daily coursework schedule
@@ -192,12 +190,4 @@ Closing Ceremony/Graduation: We will do this all together on crowdcast.
 ### Professional Development Panels
 *Note that these have been scheduled to be before or after the coursework time for each time slot. In some cases, they overlap by 15 - 30 minutes with projects time - please start on projects time late or end early in order to attend these events*
 
-* Wed, July 13: Industry Panel
-    * 9:30 am UTC
-    * 9:45 pm UTC
-* Wed, July 20: Academia Panel
-    * 9:30 am UTC
-    * 9:45 pm UTC
-* Wed, July 27: Accessibility & Inclusion Panel
-    * 9:30 am UTC
-    * 9:45 pm UTC
+Course live events: TBD — will update
