@@ -55,8 +55,9 @@ jobs:
         if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
         run: |
           sudo apt-get update -yq
-          sudo sh -c "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections"
-          sudo apt-get install msttcorefonts -qq
+          wget http://archive.ubuntu.com/ubuntu/pool/universe/f/fonts-humor-sans/fonts-humor-sans_1.0-4_all.deb
+          sudo dpkg -i --force-all fonts-humor-sans_1.0-4_all.deb <<< 'yes'
+          sudo apt install -fy
           rm -f $HOME/.matplotlib/fontList.cache
 
       - name: Get changed files
