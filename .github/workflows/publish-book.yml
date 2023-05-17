@@ -48,6 +48,15 @@ jobs:
           pip install jupyter-book==0.10.2 ghp-import
           pip install jupyter_client==7.3.5  # downgrade jupyter-client to fix hangs
 
+      - name: Install XKCD fonts
+        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
+        run: |
+          sudo apt-get update -yq
+          wget http://archive.ubuntu.com/ubuntu/pool/universe/f/fonts-humor-sans/fonts-humor-sans_1.0-4_all.deb
+          sudo dpkg -i --force-all fonts-humor-sans_1.0-4_all.deb <<< 'yes'
+          sudo apt install -fy
+          rm -f $HOME/.matplotlib/fontList.cache
+
       - name: Copy tutorials from precourse repo
         if: "!contains(env.COMMIT_MESSAGE, 'skip precourse')"
         run: |
