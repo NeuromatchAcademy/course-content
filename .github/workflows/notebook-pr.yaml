@@ -17,7 +17,7 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           persist-credentials: false
           fetch-depth: 0
@@ -30,9 +30,9 @@ jobs:
 
       - name: Set up Python
         if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.7
+          python-version: 3.9
 
       - name: Install CI tools
         if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
@@ -55,23 +55,28 @@ jobs:
         if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
         run: |
           sudo apt-get update -yq
-          sudo sh -c "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections"
-          sudo apt-get install msttcorefonts -qq
+          wget http://archive.ubuntu.com/ubuntu/pool/universe/f/fonts-humor-sans/fonts-humor-sans_1.0-4_all.deb
+          sudo dpkg -i --force-all fonts-humor-sans_1.0-4_all.deb <<< 'yes'
+          sudo apt install -fy
           rm -f $HOME/.matplotlib/fontList.cache
 
       - name: Get changed files
         if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
-        id: changes
-        uses: trilom/file-changes-action@v1.2.4
-        with:
-          output: " "
+        id: changed-files
+        uses: tj-actions/changed-files@v35
+        
+      - name: List all changed files
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "$file was changed."
+          done
 
       - name: Process notebooks
         if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
         id: process_notebooks
         run: |
           branch=${{ github.event.pull_request.head.ref }}
-          nbs=`python ci/select_notebooks.py ${{ steps.changes.outputs.files }}`
+          nbs=`python ci/select_notebooks.py ${{ steps.changed-files.outputs.all_changed_files }}`
           if ${{ contains(env.COMMIT_MESSAGE, 'ci:check') }}; then
             execflag="--check-execution";
           else
