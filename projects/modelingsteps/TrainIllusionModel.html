@@ -1857,8 +1857,8 @@ title="Print to PDF"
 <p><em>Part of step 5</em></p>
 <p>We chose to use a <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2474742/">Drift-Diffusion Model (DDM)</a> because it is a well-established framework that allows us to model decision making in the case of 2 alternative choices (here: self-motion vs. other train motion).</p>
 <p>For our purposes simplest equation looks something like this:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6b9368c4-b79f-49f6-b118-b3c82a55428f">
-<span class="eqno">(466)<a class="headerlink" href="#equation-6b9368c4-b79f-49f6-b118-b3c82a55428f" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-533bad41-3e3c-4c8a-a785-e63bbd3e7725">
+<span class="eqno">(466)<a class="headerlink" href="#equation-533bad41-3e3c-4c8a-a785-e63bbd3e7725" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \dot e = \frac{de}{dt}= -c \cdot e + v
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(e\)</span> is the accumulated evidence and <span class="math notranslate nohighlight">\(v\)</span> is our vestibular input already containing the noise (so we don’t need to add more noise?). <span class="math notranslate nohighlight">\(c\)</span> is the leakage constant, i.e. <span class="math notranslate nohighlight">\(c=0\)</span> means perfect integration; <span class="math notranslate nohighlight">\(c=1\)</span> means no integration (perfect leakage).</p>
@@ -2132,93 +2132,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">17</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">subdf0</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">Mov</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">c</span> <span class="o">==</span> <span class="n">c_s</span><span class="p">[</span><span class="n">c_n</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Thr</span> <span class="o">==</span> <span class="n">Thr_s</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">])]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Sig&#39;</span><span class="p">])[</span><span class="s1">&#39;Decisions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">subdf1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">Mov</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">c</span> <span class="o">==</span> <span class="n">c_s</span><span class="p">[</span><span class="n">c_n</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Thr</span> <span class="o">==</span> <span class="n">Thr_s</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">])]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Sig&#39;</span><span class="p">])[</span><span class="s1">&#39;Decisions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">17</span> <span class="n">im0</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">,</span> <span class="n">c_n</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Sig_s</span><span class="p">,</span> <span class="n">subdf0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;no motion&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">im1</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">,</span> <span class="n">c_n</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Sig_s</span><span class="p">,</span> <span class="n">subdf1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;motion&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">axs</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">,</span> <span class="n">c_n</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Thr = </span><span class="si">{}</span><span class="s2">; c = </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Thr_s</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">],</span> <span class="n">c_s</span><span class="p">[</span><span class="n">c_n</span><span class="p">]))</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/matplotlib/axes/_axes.py:1632,</span> in <span class="ni">Axes.plot</span><span class="nt">(self, scalex, scaley, data, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1390</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1391</span><span class="sd"> Plot y versus x as lines and/or markers.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1392</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1629</span><span class="sd"> (``&#39;green&#39;``) or hex strings (``&#39;#008000&#39;``).</span>
-<span class="g g-Whitespace">   </span><span class="mi">1630</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1631</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">cbook</span><span class="o">.</span><span class="n">normalize_kwargs</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">mlines</span><span class="o">.</span><span class="n">Line2D</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1632</span> <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_lines</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1633</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1634</span>     <span class="bp">self</span><span class="o">.</span><span class="n">add_line</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/matplotlib/axes/_base.py:312,</span> in <span class="ni">_process_plot_var_args.__call__</span><span class="nt">(self, data, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="n">this</span> <span class="o">+=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-<span class="g g-Whitespace">    </span><span class="mi">311</span>     <span class="n">args</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-<span class="ne">--&gt; </span><span class="mi">312</span> <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plot_args</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/matplotlib/axes/_base.py:488,</span> in <span class="ni">_process_plot_var_args._plot_args</span><span class="nt">(self, tup, kwargs, return_kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">486</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">487</span>     <span class="n">x</span> <span class="o">=</span> <span class="n">_check_1d</span><span class="p">(</span><span class="n">xy</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="ne">--&gt; </span><span class="mi">488</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">_check_1d</span><span class="p">(</span><span class="n">xy</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">489</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">490</span>     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">index_of</span><span class="p">(</span><span class="n">xy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/matplotlib/cbook/__init__.py:1327,</span> in <span class="ni">_check_1d</span><span class="nt">(x)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1321</span> <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">(</span><span class="n">record</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">w</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1322</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1323</span>         <span class="s2">&quot;always&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1324</span>         <span class="n">category</span><span class="o">=</span><span class="ne">Warning</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1325</span>         <span class="n">message</span><span class="o">=</span><span class="s1">&#39;Support for multi-dimensional indexing&#39;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1327</span>     <span class="n">ndim</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span>
-<span class="g g-Whitespace">   </span><span class="mi">1328</span>     <span class="c1"># we have definitely hit a pandas index or series object</span>
-<span class="g g-Whitespace">   </span><span class="mi">1329</span>     <span class="c1"># cast to a numpy array.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1330</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/series.py:1033,</span> in <span class="ni">Series.__getitem__</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1030</span>     <span class="n">key</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1031</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_values</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1033</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_with</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/series.py:1048,</span> in <span class="ni">Series._get_with</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1043</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1044</span>         <span class="s2">&quot;Indexing a Series with DataFrame is not &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1045</span>         <span class="s2">&quot;supported, use the appropriate DataFrame column&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1046</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1047</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1048</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_values_tuple</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1050</span> <span class="k">elif</span> <span class="ow">not</span> <span class="n">is_list_like</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1051</span>     <span class="c1"># e.g. scalars that aren&#39;t recognized by lib.is_scalar, GH#32684</span>
-<span class="g g-Whitespace">   </span><span class="mi">1052</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/series.py:1082,</span> in <span class="ni">Series._get_values_tuple</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1077</span> <span class="k">if</span> <span class="n">com</span><span class="o">.</span><span class="n">any_none</span><span class="p">(</span><span class="o">*</span><span class="n">key</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1078</span>     <span class="c1"># mpl compat if we look up e.g. ser[:, np.newaxis];</span>
-<span class="g g-Whitespace">   </span><span class="mi">1079</span>     <span class="c1">#  see tests.series.timeseries.test_mpl_compat_hack</span>
-<span class="g g-Whitespace">   </span><span class="mi">1080</span>     <span class="c1"># the asarray is needed to avoid returning a 2D DatetimeArray</span>
-<span class="g g-Whitespace">   </span><span class="mi">1081</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
-<span class="ne">-&gt; </span><span class="mi">1082</span>     <span class="n">disallow_ndim_indexing</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1083</span>     <span class="k">return</span> <span class="n">result</span>
-<span class="g g-Whitespace">   </span><span class="mi">1085</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">MultiIndex</span><span class="p">):</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/pandas/core/indexers/utils.py:343,</span> in <span class="ni">disallow_ndim_indexing</span><span class="nt">(result)</span>
-<span class="g g-Whitespace">    </span><span class="mi">335</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">336</span><span class="sd"> Helper function to disallow multi-dimensional indexing on 1D Series/Index.</span>
-<span class="g g-Whitespace">    </span><span class="mi">337</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">340</span><span class="sd"> in GH#30588.</span>
-<span class="g g-Whitespace">    </span><span class="mi">341</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">342</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">ndim</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">343</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">344</span>         <span class="s2">&quot;Multi-dimensional indexing (e.g. `obj[:, None]`) is no longer &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">345</span>         <span class="s2">&quot;supported. Convert to a numpy array before indexing instead.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">346</span>     <span class="p">)</span>
-
-<span class="ne">ValueError</span>: Multi-dimensional indexing (e.g. `obj[:, None]`) is no longer supported. Convert to a numpy array before indexing instead.
-</pre></div>
-</div>
-<img alt="../../_images/TrainIllusionModel_32_1.png" src="../../_images/TrainIllusionModel_32_1.png" />
+<img alt="../../_images/TrainIllusionModel_32_0.png" src="../../_images/TrainIllusionModel_32_0.png" />
 </div>
 </div>
 <p>There seems to be some parameter redundancy. I.e. we could chose different parameter combinations to make the model do something sensible…</p>
@@ -2239,7 +2153,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Motion detected for no-motion = 31.6 %; and motion = 58.1 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Motion detected for no-motion = 28.1 %; and motion = 58.8 %
 </pre></div>
 </div>
 </div>
