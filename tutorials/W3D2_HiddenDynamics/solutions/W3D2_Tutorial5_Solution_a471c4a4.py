@@ -1,7 +1,8 @@
 def m_step(gamma, xi, dt):
   """Calculate the M-step updates for the HMM spiking model.
   Args:
-    gamma ():       Number of epochs of EM to run
+    gamma (numpy 3d array): singleton marginal distribution.
+                            Has shape (n_trials, T, K)
     xi (numpy 3d array): Tensor of recordings, has shape (n_trials, T, C)
     dt (float):         Duration of a time bin
   Returns:
