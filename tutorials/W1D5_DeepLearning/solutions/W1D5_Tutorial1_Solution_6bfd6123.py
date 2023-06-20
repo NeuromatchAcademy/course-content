@@ -28,5 +28,5 @@ r, ori = get_data(1, resp_train, stimuli_train)  # using helper function get_dat
 # Decode orientation from these neural responses using initialized network
 out = net(r)  # compute output from network, equivalent to net.forward(r)
 
-print('decoded orientation: %.2f degrees' % out)
-print('true orientation: %.2f degrees' % ori)
+print(f'decoded orientation: {out.item():.2f} degrees')
+print(f'true orientation: {ori.item():.2f} degrees')

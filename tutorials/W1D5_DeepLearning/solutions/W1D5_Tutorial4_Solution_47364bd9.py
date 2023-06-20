@@ -44,4 +44,4 @@ train_loss, test_loss, predicted_test_labels = decode_orientation(net, n_classes
 
 # Plot results
 with plt.xkcd():
-  plot_decoded_results(train_loss, test_loss, stimuli_test, predicted_test_labels)
+  plot_decoded_results(train_loss, test_loss, stimuli_test, predicted_test_labels, n_classes)

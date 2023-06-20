@@ -1,4 +1,3 @@
-
 from scipy.ndimage import gaussian_filter1d
 
 # first let's smooth the tuning curves resp_all to make sure we get
@@ -11,9 +10,9 @@ resp_smoothed = gaussian_filter1d(resp_all, 5, axis=0)
 # aka preferred orientation for each neuron
 preferred_orientation = resp_smoothed.argmax(axis=0)
 
-## Resort W_in matrix by preferred orientation
+# Resort W_in matrix by preferred orientation
 isort = preferred_orientation.argsort()
-W_in_sorted = W_in[:,isort]
+W_in_sorted = W_in[:, isort]
 
 # plot resorted W_in matrix
 with plt.xkcd():

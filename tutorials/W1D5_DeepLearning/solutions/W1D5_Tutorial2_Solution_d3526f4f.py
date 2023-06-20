@@ -1,15 +1,15 @@
 
 # Stimulus parameters
-in_channels = 1 # how many input channels in our images
-h = 48 # height of images
-w = 64 # width of images
+in_channels = 1  # how many input channels in our images
+h = 48  # height of images
+w = 64  # width of images
 
 # Convolution layer parameters
-K = 7 # filter size
-out_channels = 6 # how many convolutional channels to have in our layer
-example_filters = filters(out_channels, K) # create filters to use
+K = 7  # filter size
+out_channels = 6  # how many convolutional channels to have in our layer
+example_filters = filters(out_channels, K)  # create filters to use
 
-convout = np.zeros(0) # assign convolutional activations to convout
+convout = np.zeros(0)  # assign convolutional activations to convout
 
 # Initialize conv layer and add weights from function filters
 # you need to specify :
