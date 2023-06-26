@@ -1,0 +1,102 @@
+name: download slides
+
+on:
+  workflow_dispatch:
+
+env:
+  NB_KERNEL: python
+  NMA_REPO: course-content
+  NMA_MAIN_BRANCH: main
+
+jobs:
+
+  download_slides:
+
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+          ref: ${{ github.head_ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Install CI tools
+        run: |
+          BRANCH=$NMA_MAIN_BRANCH
+          wget https://github.com/NeuromatchAcademy/nmaci/archive/refs/heads/$BRANCH.tar.gz
+          tar -xzf $BRANCH.tar.gz
+          pip install -r nmaci-$BRANCH/requirements.txt
+          mv nmaci-$BRANCH/scripts/ ci/
+          rm -r nmaci-$BRANCH
+          rm -r $BRANCH.tar.gz
+          echo ci/ >> .gitignore
+
+      - name: Copy tutorials from precourse repo
+        run: |
+          BRANCH=$NMA_MAIN_BRANCH
+          wget https://github.com/NeuromatchAcademy/precourse/archive/refs/heads/$BRANCH.tar.gz
+          tar -xzf $BRANCH.tar.gz
+          mv precourse-$BRANCH/tutorials/W0D* tutorials/
+          cat precourse-main/tutorials/materials.yml tutorials/materials.yml > out.yml
+          mv out.yml tutorials/materials.yml
+          mv precourse-$BRANCH/prereqs .
+          rm -r precourse-$BRANCH
+          rm -r $BRANCH.tar.gz
+
+      - name: Extract links
+        run: |
+          ln -s ../tutorials book/tutorials
+          ln -s ../projects book/projects
+          ln -s ../prereqs book/prereqs
+          python ci/extract_links.py --noyoutube $(find -L book -name '*.ipynb') > links.json
+
+      - name: Install tools
+        run: |
+          sudo apt -y install jq
+
+      - name: Download slides
+        run: |
+          mkdir slides
+          jq -r "def output: \"-O \" + .value + \" \" +.key; .slides | to_entries | map(output) | .[]" links.json > slide_urls.txt
+          cd slides
+          while read url; do echo wget --quiet $url; wget --quiet $url; done < ../slide_urls.txt
+
+      - name: Gather slides for each day
+        run: |
+          mkdir slides_by_day
+          for day in book/tutorials/W?D?*; do
+            mkdir slides_by_day/$(basename $day)-Slides
+            python ci/extract_links.py --noyoutube $(find -L $day -name '*.ipynb') > links.json
+            jq -r "def output: .value; .slides | to_entries | map(output) | .[]" links.json > slide_fnames.txt
+            for fname in $(cat slide_fnames.txt); do
+              cp slides/$fname slides_by_day/$(basename $day)-Slides
+            done
+            cd slides_by_day
+            zip -r $(basename $day)-Slides.zip $(basename $day)-Slides
+            rm -r $(basename $day)-Slides
+            cd ..
+          done
+
+      - name: Get update date
+        id: last_update
+        run: |
+          last_update=$(date -Idate --date=@${{ github.event.repository.pushed_at}})
+          echo "last_update=$last_update" >> $GITHUB_OUTPUT
+
+      - name: Upload full set of slides
+        uses: actions/upload-artifact@v3
+        with:
+          name: NMA-compneuro-slides-${{steps.last_update.outputs.last_update}}
+          path: slides
+
+      - name: Upload slides for each day
+        uses: actions/upload-artifact@v3
+        with:
+          name: NMA-compneuro-slides-by-day-${{steps.last_update.outputs.last_update}}
+          path: slides_by_day
