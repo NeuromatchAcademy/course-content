@@ -86,7 +86,7 @@ jobs:
       - name: Get update date
         id: last_update
         run: |
-          last_update=$(date -Idate --date=@${{ github.event.repository.pushed_at}})
+          last_update=$(echo ${{ github.event.repository.pushed_at}}| cut -c -10)
           echo "last_update=$last_update" >> $GITHUB_OUTPUT
 
       - name: Upload full set of slides
