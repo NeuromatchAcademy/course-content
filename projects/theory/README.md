@@ -6,9 +6,20 @@ Pure theory projects are usually pursued by more advanced students. If your grou
 
 Every group can bring up and discuss theory projects. We have two example project templates for this that include code. However, a theory project can go in any direction.
 
+## Working memory
+
 |   | Run | View |
 | - | --- | ---- |
 | Working memory | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/theory/RNN_working_memory.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/theory/RNN_working_memory.ipynb?flush_cache=true) |
+
+## Motor RNN
+
+We built on [Feulner & Clopath, Plos Computational Biology, 2021](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008621) to propose this project. Here we explore how RNN representation dynamics is linked with connectivity structure and task complexity.
+
+|   | Run | View |
+| - | --- | ---- |
+| Motor RNN | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/theory/motor_RNNs.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/theory/motor_RNNs.ipynb) |
+
 
 ## Databases of models
 ​
