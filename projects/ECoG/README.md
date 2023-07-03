@@ -19,7 +19,7 @@ Credit for data curation: Marius Pachitariu and the project TAs
 | JoystickTrack | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/ECoG/load_ECoG_joystick_track.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/ECoG/load_ECoG_joystick_track.ipynb?flush_cache=true) |
 | MemoryNback | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/ECoG/load_ECoG_memory_nback.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/ECoG/load_ECoG_memory_nback.ipynb?flush_cache=true) |
 | MotorImagery | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/ECoG/load_ECoG_motor_imagery.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/ECoG/load_ECoG_motor_imagery.ipynb?flush_cache=true) |
-
+| Exploring AJILE12 dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/ECoG/exploreAJILE12.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/ECoG/exploreAJILE12.ipynb?flush_cache=true) |
 
 ## References:
 
@@ -52,3 +52,8 @@ Credit for data curation: Marius Pachitariu and the project TAs
 ### Motor imagery:
 
 - Miller, K. J., Schalk, G., Fetz, E. E., Den Nijs, M., Ojemann, J. G., and Rao, R. P. (2010). Cortical activity during motor execution, motor imagery, and imagery-based online feedback. Proceedings of the National Academy of Sciences 107(9):4430-4435. doi: [10.1073/pnas.0913697107](https://doi.org/10.1073/pnas.0913697107)
+
+### Exploring AJILE12 dataset:
+
+- Peterson, S. M., Singh, S. H., Wang, N. X., Rao, R. P., & Brunton, B. W. (2021). Behavioral and neural variability of naturalistic arm movements. Eneuro, 8(3). doi: [10.1523/ENEURO.0007-21.2021](https://doi.org/10.1523/ENEURO.0007-21.2021)
+- Singh, S. H., Peterson, S. M., Rao, R. P., & Brunton, B. W. (2021). Mining naturalistic human behaviors in long-term video and neural recordings. Journal of Neuroscience Methods, 358, 109199. doi: [10.1016/j.jneumeth.2021.109199](https://doi.org/10.1016/j.jneumeth.2021.109199)
