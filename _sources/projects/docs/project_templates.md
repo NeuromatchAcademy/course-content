@@ -18,7 +18,7 @@ Click on each image below to see a full browser version!
 
 <img src="template_images/MappingBrainRepresentationwithfMRI.svg" width="100%">
 
-# Retinotopic mapping with FMRI
+# Retinotopic mapping with fMRI
 
 <img src="template_images/RetinotopicMappingFMRI.svg" width="100%">
 
@@ -57,3 +57,7 @@ Click on each image below to see a full browser version!
 # Linking structure, dynamics and function in recurrent neural networks (RNNs) during motor learning
 
 <img src="template_images/StructureDynamicFunctionInMotorRNN.svg" width="100%">
+
+# Exploring AJILE12 dataset
+
+<img src="template_images/NeuromatchProject_AJILE12.svg" width="100%">
