@@ -71,15 +71,18 @@ jobs:
         run: |
           mkdir slides_by_day
           for day in book/tutorials/W?D?*; do
-            mkdir slides_by_day/$(basename $day)-Slides
-            python ci/extract_links.py --noyoutube $(find -L $day -name '*.ipynb') > links.json
+            slide_dir=slides_by_day/NMA CN-$(basename $day)-Slides
+            mkdir $slide_dir
+            python ci/extract_links.py $(find -L $day -name '*.ipynb') > links.json
             jq -r "def output: .value; .slides | to_entries | map(output) | .[]" links.json > slide_fnames.txt
             for fname in $(cat slide_fnames.txt); do
-              cp slides/$fname slides_by_day/$(basename $day)-Slides
+              counter=$(ls -1 $slide_dir|wc -l)
+              prefix=$(printf "%02d" $counter)
+              cp slides/$fname "slide_dir/$prefix-$fname"
             done
             cd slides_by_day
-            zip -r $(basename $day)-Slides.zip $(basename $day)-Slides
-            rm -r $(basename $day)-Slides
+            zip -r NMA CN-$(basename $day)-Slides.zip NMA CN-$(basename $day)-Slides
+            rm -r NMA CN-$(basename $day)-Slides
             cd ..
           done
 
