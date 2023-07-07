@@ -146,7 +146,7 @@ During project time:
 |    5:15-5:30\**   |    Pod farewell                         |
 
 
-\* : This is the last hour of projects time for slots 1/3/4
+\* : This is the last hour of projects time for slots 1/4
 
 \** : Note that these events occur after the normal coursework time.
  
