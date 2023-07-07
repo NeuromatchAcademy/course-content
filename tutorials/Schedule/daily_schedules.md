@@ -200,6 +200,4 @@ Course Review & Feedback: We will have a post course survey for both students an
 Pod farewell: This is just a chance for your pod to say goodbye to each other. No structure imposed or requirements here!
 
 ### Professional Development Panels
-*Note that these have been scheduled to be before or after the coursework time for each time slot. In some cases, they overlap by 15 - 30 minutes with projects time - please start on projects time late or end early in order to attend these events*
-
 Course live events: TBD — will update
