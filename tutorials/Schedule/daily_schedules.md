@@ -140,8 +140,8 @@ During project time:
 |    0:15-1:45      |    Tutorials I                           |
 |    1:45-2:45      |    Big break                             |
 |    2:45-4:15      |    Tutorials II                          |
-|    4:15-4:25      |    Pod Discussion II                     |
-|    4:25-4:45      |    Break                                 |
+|    4:15-4:30      |    Pod Discussion II                     |
+|    4:30-4:45      |    Break                                 |
 |    4:45-5:15\**   |    Course Review & Feedback              |
 |    5:15-5:30\**   |    Pod farewell                         |
 
@@ -165,8 +165,8 @@ Pod farewell: This is just a chance for your pod to say goodbye to each other. N
 |    0:15-1:45      |    Tutorials I                           |
 |    1:45-2:45      |    Big break                             |
 |    2:45-4:15      |    Tutorials II                          |
-|    4:15-4:25      |    Pod Discussion II                     |
-|    4:25-4:45      |    Break                                 |
+|    4:15-4:30      |    Pod Discussion II                     |
+|    4:30-4:45      |    Break                                 |
 |    4:45-5:15\**   |    Course Review & Feedback              |
 |    5:15-5:30\**   |    Pod farewell                         |
 
@@ -187,7 +187,7 @@ Pod farewell: This is just a chance for your pod to say goodbye to each other. N
 |    1:45-2:45      |    Big break                             |
 |    2:45-4:15      |    Tutorials II                          |
 |    4:15-4:25      |    Pod Discussion II                     |
-|    4:25-4:45      |    Break                                 |
+|    4:30-4:45      |    Break                                 |
 |    4:45-5:15\**   |    Course Review & Feedback              |
 |    5:15-6:15\**   |    Project Presentations (slots 2/5)            |
 |    6:15-6:30\**   |    Pod farewell                         |
