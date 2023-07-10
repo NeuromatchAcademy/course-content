@@ -9,4 +9,4 @@ means lower responses.
 3. If the excitatory and inhibitory rates are equal, the average inter-spike interval
 stays the same even if you raise both. This is because they balance each other out.
 4. Yes, these ISIs look more exponential, like what we observed.
-"""
+""";
