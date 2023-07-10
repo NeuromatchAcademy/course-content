@@ -17,4 +17,4 @@ pmf = pmf_from_counts(counts)
 
 # Visualize
 with plt.xkcd():
-  plot_pmf(pmf,isi_range)
+  plot_pmf(pmf, isi_range)

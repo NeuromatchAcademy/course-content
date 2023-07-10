@@ -6,5 +6,4 @@
 These two facts make sense because they both control the size of the input affecting the neuron - more
 input means higher responses.
 4. No, the ISIs look pretty symmetrical and Gaussian (not exponential)
-
-"""
+""";
