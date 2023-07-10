@@ -1,4 +1,3 @@
-
 # Perform PCA
 score, evectors, evals = pca(X)
 

@@ -1,4 +1,3 @@
-
 np.random.seed(2020)  # set random seed
 
 # Add noise to data
