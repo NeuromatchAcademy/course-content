@@ -43,3 +43,4 @@ with plt.xkcd():
   plt.plot(t, x.real)
   plt.xlabel('Time (s)')
   plt.ylabel('x')
+  plt.show()

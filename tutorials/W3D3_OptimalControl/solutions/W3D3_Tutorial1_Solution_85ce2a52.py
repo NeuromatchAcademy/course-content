@@ -11,6 +11,7 @@ def run_policy(threshold, p_stay, low_rew_p, high_rew_p):
   _, _, actions, rewards, _ = binaryHMM_test.generate_process()
   return actions, rewards
 
+
 def get_optimal_threshold(p_stay, low_rew_p, high_rew_p, cost_sw):
   """
   Args:
@@ -37,8 +38,8 @@ def get_optimal_threshold(p_stay, low_rew_p, high_rew_p, cost_sw):
   value_array = np.zeros(len(threshold_array))
 
   for i in range(len(threshold_array)):
-      actions, rewards = run_policy(threshold_array[i], p_stay, low_rew_p, high_rew_p)
-      value_array[i] = get_value(rewards, actions, cost_sw)
+    actions, rewards = run_policy(threshold_array[i], p_stay, low_rew_p, high_rew_p)
+    value_array[i] = get_value(rewards, actions, cost_sw)
 
   # Return the array of candidate thresholds and their respective values
 
@@ -53,4 +54,5 @@ cost_sw = .1
 
 # Visually determine the threshold that obtains the maximum utility
 threshold_array, value_array = get_optimal_threshold(stay_prob, low_rew_prob, high_rew_prob, cost_sw)
-plot_value_threshold(threshold_array, value_array)
+with plt.xkcd():
+  plot_value_threshold(threshold_array, value_array)
