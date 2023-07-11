@@ -20,7 +20,7 @@ def reconstruct_data(score, evectors, X_mean, K):
   return X_reconstructed
 
 
-K = 784
+K = 784  # data dimensions
 
 # Reconstruct the data based on all components
 X_mean = np.mean(X, 0)
@@ -28,4 +28,4 @@ X_reconstructed = reconstruct_data(score, evectors, X_mean, K)
 
 # Plot the data and reconstruction
 with plt.xkcd():
-  plot_MNIST_reconstruction(X, X_reconstructed)
+  plot_MNIST_reconstruction(X, X_reconstructed, K)
