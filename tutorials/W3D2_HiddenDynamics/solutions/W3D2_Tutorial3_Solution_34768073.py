@@ -16,13 +16,14 @@ def compare(s, m):
 
   # Complete a scatter plot: true state versus measurements
   plt.scatter(s, m, marker='.', color='red', s=100)
+  plt.show()
 
 
 # Set parameters
 np.random.seed(0)
-D = 0.9    # parameter in s(t)
-T = 50      # total time duration
-s0 = 5.     # initial condition of s at time 0
+D = 0.9  # parameter in s(t)
+T = 50  # total time duration
+s0 = 5.  # initial condition of s at time 0
 sigma_p = 2 # amount of noise in the actuators of astrocat's propulsion unit
 sigma_measurements = 4 # amount of noise in astrocat's collar
 
@@ -34,4 +35,4 @@ m = read_collar(s, sigma_measurements)
 
 # Visualize true vs measured states
 with plt.xkcd():
-  compare(s,m)
+  compare(s, m)

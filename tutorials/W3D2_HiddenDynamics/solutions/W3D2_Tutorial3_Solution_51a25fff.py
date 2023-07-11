@@ -32,9 +32,9 @@ def simulate(D, s0, sigma_p, T):
 np.random.seed(0)
 
 # Set parameters
-D = 0.9    # parameter in s(t)
-T = 50      # total time duration
-s0 = 5.     # initial condition of s at time 0
+D = 0.9  # parameter in s(t)
+T = 50  # total time duration
+s0 = 5.  # initial condition of s at time 0
 sigma_p = 2 # amount of noise in the actuators of astrocat's propulsion unit
 
 # Simulate Astrocat
