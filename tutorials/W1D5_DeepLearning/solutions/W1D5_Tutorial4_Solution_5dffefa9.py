@@ -18,10 +18,10 @@ class ConvFC(nn.Module):
         h: number of stimulus bins, n_bins
     """
     super().__init__()
-    self.conv = nn.Conv2d(c_in, c_out, kernel_size=K,
-                          padding=K//2, stride=1)
+    self.conv = nn.Conv2d(c_in, c_out, kernel_size=K, padding=K//2, stride=1)
     self.dims = (c_out, b)  # dimensions of conv layer output
-    M = np.prod(self.dims) # number of hidden units
+    M = np.prod(self.dims)  # number of hidden units
+
     self.out_layer = nn.Linear(M, n_neurons)
 
     # initialize weights
@@ -29,7 +29,7 @@ class ConvFC(nn.Module):
       self.conv.weight = nn.Parameter(filters)
       self.conv.bias = nn.Parameter(torch.zeros((c_out,), dtype=torch.float32))
 
-    nn.init.normal_(self.out_layer.weight, std=0.01) # initialize weights to be small
+    nn.init.normal_(self.out_layer.weight, std=0.01)  # initialize weights to be small
 
   def forward(self, s):
     """ Predict neural responses to stimuli s
@@ -47,20 +47,12 @@ class ConvFC(nn.Module):
     return y
 
 
-device = torch.device('cpu')
-
-# (Optional) To speed up processing, go to "Runtime" menu and "Change runtime"
-# and select GPU processing, then uncomment line below, otherwise runtime will
-# be ~ 2 minutes
-# device = torch.device('cuda')
-
 # Initialize network
 n_neurons = resp_train.shape[1]
 ## Initialize with filters from Tutorial 2
 example_filters = filters(out_channels=6, K=7)
 
-net = ConvFC(n_neurons, filters = example_filters)
-net = net.to(device)
+net = ConvFC(n_neurons, filters = example_filters).to(device)
 
 # Run GD on training set data
 # ** this time we are also providing the test data to estimate the test loss

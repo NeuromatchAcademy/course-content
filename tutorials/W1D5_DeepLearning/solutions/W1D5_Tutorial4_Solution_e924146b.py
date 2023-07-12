@@ -1,7 +1,7 @@
 
 def decode_orientation(net, n_classes, loss_fn,
                        train_data, train_labels, test_data, test_labels,
-                       n_iter=1000, L2_penalty=0, L1_penalty=0):
+                       n_iter=1000, L2_penalty=0, L1_penalty=0, device='cpu'):
   """ Initialize, train, and test deep network to decode binned orientation from neural responses
 
   Args:
@@ -26,22 +26,23 @@ def decode_orientation(net, n_classes, loss_fn,
   """
 
   # Bin stimulus orientations in training set
-  train_binned_labels = stimulus_class(train_labels, n_classes)
-  test_binned_labels = stimulus_class(test_labels, n_classes)
-
+  train_binned_labels = stimulus_class(train_labels, n_classes).to(device)
+  test_binned_labels = stimulus_class(test_labels, n_classes).to(device)
+  train_data = train_data.to(device)
+  test_data = test_data.to(device)
 
   # Run GD on training set data, using learning rate of 0.1
   # (add optional arguments test_data and test_binned_labels!)
-  train_loss, test_loss = train(net, loss_fn, train_data, train_binned_labels,
+  train_loss, test_loss = train(net.to(device), loss_fn, train_data, train_binned_labels,
                                 learning_rate=0.1, test_data=test_data,
                                 test_labels=test_binned_labels, n_iter=n_iter,
                                 L2_penalty=L2_penalty, L1_penalty=L1_penalty)
 
   # Decode neural responses in testing set data
-  out = net(test_data)
-  out_labels = np.argmax(out.detach(), axis=1)  # predicted classes
+  out = net(test_data).to(device)
+  out_labels = np.argmax(out.detach().cpu(), axis=1)  # predicted classes
 
-  frac_correct = (out_labels==test_binned_labels).sum() / len(test_binned_labels)
+  frac_correct = (out_labels == test_binned_labels.cpu()).sum() / len(test_binned_labels)
   print(f'>>> fraction correct = {frac_correct:.3f}')
 
   return train_loss, test_loss, out_labels
@@ -61,8 +62,10 @@ loss_fn = nn.NLLLoss()
 
 # Train network and run it on test images
 # this function uses the train function you wrote before
-train_loss, test_loss, predicted_test_labels = decode_orientation(net, n_classes, loss_fn,
-                                                                  resp_train, stimuli_train, resp_test, stimuli_test)
+train_loss, test_loss, predicted_test_labels = decode_orientation(net, n_classes, loss_fn.to(device),
+                                                                  resp_train, stimuli_train,
+                                                                  resp_test, stimuli_test,
+                                                                  device=device)
 
 # Plot results
 with plt.xkcd():

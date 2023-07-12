@@ -18,7 +18,7 @@ def instrument_strength_effect(etas, n_neurons, timesteps, n_trials):
 
   # Loop over trials
   for trial in range(n_trials):
-    print(f"Trial {trial + 1} of {n_trials}")
+    print(f"simulation of trial {trial + 1} of {n_trials}")
 
     # Loop over instrument strengths
     for j, eta in enumerate(etas):
