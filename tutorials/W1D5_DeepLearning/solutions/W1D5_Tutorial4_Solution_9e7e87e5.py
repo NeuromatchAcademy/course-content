@@ -1,5 +1,6 @@
 
-def regularized_loss(output, target, weights, L2_penalty=0, L1_penalty=0):
+def regularized_loss(output, target, weights, L2_penalty=0, L1_penalty=0,
+                     device='cpu'):
   """loss function with L2 and L1 regularization
 
   Args:
@@ -21,7 +22,7 @@ def regularized_loss(output, target, weights, L2_penalty=0, L1_penalty=0):
   L1 = L1_penalty * torch.abs(weights).sum()
   loss += L1 + L2
 
-  return loss
+  return loss.to(device)
 
 
 # Set random seeds for reproducibility
@@ -40,7 +41,8 @@ train_loss, test_loss, predicted_test_labels = decode_orientation(net, n_classes
                                                                   resp_test, stimuli_test,
                                                                   n_iter=1000,
                                                                   L2_penalty=1e-2,
-                                                                  L1_penalty=5e-4)
+                                                                  L1_penalty=5e-4,
+                                                                  device=device)
 
 # Plot results
 with plt.xkcd():

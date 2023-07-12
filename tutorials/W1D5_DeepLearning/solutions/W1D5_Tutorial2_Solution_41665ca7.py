@@ -22,10 +22,10 @@ convLayer = ConvolutionalLayer(c_in=in_channels, c_out=out_channels, K=K, filter
 orientations = [-90, -45, 0, 45, 90]
 stimuli = torch.zeros((len(orientations), in_channels, h, w), dtype=torch.float32)
 for i,ori in enumerate(orientations):
-  stimuli[i,0] = grating(ori)
+  stimuli[i, 0] = grating(ori)
 
 convout = convLayer(stimuli)
-convout = convout.detach() # detach gradients
+convout = convout.detach()  # detach gradients
 
 with plt.xkcd():
   plot_example_activations(stimuli, convout, channels=np.arange(0, out_channels))
