@@ -174,7 +174,7 @@ Abstract writing day should have helped you narrow down what results (positive o
 
 ## W3D5: Final Presentations
 
-Please see final day schedule and shared calendars for timing details: [https://deeplearning.neuromatch.io/tutorials/Schedule/daily_schedules.html#w3d5-final-day-of-course])(https://deeplearning.neuromatch.io/tutorials/Schedule/daily_schedules.html#w3d5-final-day-of-course)
+Please see final day schedule and shared calendars for timing details: [https://compneuro.neuromatch.io/tutorials/Schedule/daily_schedules.html#w3d5-final-day-of-course])(https://compneuro.neuromatch.io/tutorials/Schedule/daily_schedules.html#w3d5-final-day-of-course)
 
 This is the day where you present your project to other groups. Your mentor and your project TAs can be invited too, but they are busy so they might not make it. The groups will take turns to share their screens. You can use figures and other graphics, but this is meant to be told as a story, and everyone from your group should take a turn telling a part of the story. Tell us about the different hypotheses you’ve had at different points and how you refined them using some of the tools we taught.
 
