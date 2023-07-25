@@ -136,7 +136,7 @@ With your mentor (timing is not precise!)
 Back in your group
 * (1-2h) Has the abstract refined or changed your question? Use the rest of this day to make a concrete plan for the final week of your project. If you already answered your question, then you will need to plan for control analyses, maybe including some simulated data that you need to also generate yourself.
 
-Once you are done, please submit the abstract [here](https://airtable.com/shrITSzD4fgFCGiWI). We won't use this for further matching or anything like that, but we will keep a record of it to help us track the progress of all groups. If you really need/want to, the abstract can also be submitted on Monday (especially for timeslots 2,4 who have had one less project day so far).
+Once you are done, please submit the abstract [here](https://airtable.com/app1MtChyjyKEDzAt/shr0ozNAhXq6K1p8o). We won't use this for further matching or anything like that, but we will keep a record of it to help us track the progress of all groups. If you really need/want to, the abstract can also be submitted on Monday (especially for timeslots 2,4 who have had one less project day so far).
 
 
 ### W2D5 (bonus)
@@ -172,11 +172,13 @@ Abstract writing day should have helped you narrow down what results (positive o
 * If you find a negative answer to your question, that is absolutely ok! Please do report that. Then go back and think about how this affects your initial hypothesis. Does it rule it out, or could there be limitations in this particular data that lead to the negative result? What other data would you collect that would be better suited for answering this question? Try to design a new experiment in very specific detail and tell us about it. Who knows, somebody might run that experiment someday!
 * If you find a positive result (i.e. the data matches your hypothesis), then you should spend the rest of your time validating it to make absolutely sure it is really true. You will need to design controls using the data (shuffling controls), or using simulated data, and you need to check the logic of your pipeline from start to end. Did you accidentally select only neurons that were tuned to a behavior, and then showed that they respond to aspects of that behavior? Did you sort neurons by their peak response time and then found sequences in your data? That is circular reasoning! There are some obvious and some not-so-obvious circular analyses that can catch even experienced researchers off-guard. This is what the controls are especially useful at catching.  
 
-## W3D5: Final Presentations (Friday tutorial block for everyone)
+## W3D5: Final Presentations
+
+Please see final day schedule and shared calendars for timing details: [https://compneuro.neuromatch.io/tutorials/Schedule/daily_schedules.html#w3d5-final-day-of-course])(https://compneuro.neuromatch.io/tutorials/Schedule/daily_schedules.html#w3d5-final-day-of-course)
 
 This is the day where you present your project to other groups. Your mentor and your project TAs can be invited too, but they are busy so they might not make it. The groups will take turns to share their screens. You can use figures and other graphics, but this is meant to be told as a story, and everyone from your group should take a turn telling a part of the story. Tell us about the different hypotheses you’ve had at different points and how you refined them using some of the tools we taught.
 
-At the end of your last project block, you should also submit your slides via this [Airtable link](https://airtable.com/shr9Ge6A94JB7TOPI).   
+At the end of your last project block, you should also submit your slides via this [Airtable link](https://airtable.com/shrvoz2N9UulAVqqU).   
 
 ### Schedule
 
