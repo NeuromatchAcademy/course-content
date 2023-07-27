@@ -184,7 +184,7 @@ At the end of your last project block, you should also submit your slides via th
 
 * 10 minutes of meet & greet. Do a round of introductions (one TA calls out names from the zoom list). Everyone says their name, pod name, position, university and subject of study, as well as one interesting fact about themselves "Hi, I'm Jonny from the wiggly caterpillars and I am a PhD student at University of Notre Dame in Paris. I do neuroscience experiments in flies, and in my free time I like to go on long bike rides".
 
-* 30-40 minutes of presentations, including questions. Each group should speak for approx 5 minutes (depending on group size), and then take questions for 1-2 minutes. The order of presentations should be the one from the email.
+* 30-40 minutes of presentations, including questions. Each group should speak for approx 5 minutes (1 minute per person + 2 minutes of intro/discussion), and then take questions for 1-2 minutes. Try not to waste too much time on logistics: join the zoom link and go to the appropriate breakout room quickly. Then the student groups can start presenting in any order. 
 
 * 10-20 minutes of general discussion. Here are some ideas for questions you could ask:
   * What was missing in the dataset that you would have really liked to have?
@@ -197,7 +197,7 @@ At the end of your last project block, you should also submit your slides via th
 
 ### Logistics:
 
-* The lead TA for your megapod will make multiple subgroups of 3-5 research teams from across the entire megapod. Each subgroup gets a separate breakout room for their session.
+* The lead TA for your megapod will make multiple subgroups of 4-5 research teams from across the entire megapod. Each subgroup gets a separate breakout room for their session. If there are too many large pods in the megapod, there may be multiple zoom links in the megapod, so make sure you have the right one for your group. 
   * timeslots 1,3,5:   last hour of project time, -1:00 to 0:00 relative to start of your normal tutorial time (check the shared calendars in jupyterbook).
   * timeslots 2,4: after the course feedback session (check the shared calendars in jupyterbook).
   There is a hard cutoff at the one hour mark, so the TAs must ensure everyone gets a turn to present.  
