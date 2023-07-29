@@ -3,8 +3,8 @@ import { EnhanceAppContext } from "vitepress";
 import Theme from "vitepress/theme";
 import "./style.css";
 
+import YouTube from "../components/YouTube.vue";
 import Layout from "./Layout.vue";
-import YouTube from "./YouTube.vue";
 
 export default {
   extends: Theme,
