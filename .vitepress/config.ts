@@ -5,7 +5,7 @@ export default defineConfig({
   lang: "ja-JP",
   title: "計算論的神経科学",
   titleTemplate: "Neuromatch Academy: Computational Neuroscience",
-  description: "Neuromatch Academy:  Computational Neuroscience",
+  description: "Neuromatch Academy: Computational Neuroscience",
   lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -22,18 +22,30 @@ export default defineConfig({
     search: {
       provider: "local",
     },
+    editLink: {
+      pattern:
+        "https://github.com/FujishigeTemma/course-content-jp/blob/main/:path",
+    },
     sidebar: {
       "/": [
         {
-          items: [{ text: "Introduction", link: "/introduction" }],
+          items: [
+            { text: "Introduction", link: "/introduction" },
+            {
+              text: "前提知識と準備資料",
+              link: "/prereqs",
+            },
+          ],
         },
       ],
       "/tutorials/": [
         {
-          text: "モデリング入門（Week1）",
+          text: "W1,W2: モデリング入門",
+          collapsed: true,
           items: [
             {
-              text: "モデルタイプ（Day1）",
+              text: "W1D1: モデルタイプ",
+              collapsed: true,
               link: "/tutorials/w1/d1/",
               items: [
                 { text: "Intro", link: "/tutorials/w1/d1/intro" },
@@ -58,7 +70,24 @@ export default defineConfig({
                 { text: "まとめ", link: "/tutorials/w1/d1/summary" },
               ],
             },
+            {
+              text: "W2D1: 実践モデリング",
+              collapsed: true,
+              link: "/tutorials/w2/d1/",
+              items: [
+                { text: "Intro", link: "/tutorials/w2/d1/intro" },
+                {
+                  text: "チュートリアル１：問いの設計",
+                  link: "/tutorials/w2/d1/p1",
+                },
+                { text: "Outro", link: "/tutorials/w2/d1/outro" },
+                { text: "まとめ", link: "/tutorials/w2/d1/summary" },
+              ],
+            },
           ],
+        },
+        {
+          text: "ニューロンモデル",
         },
       ],
     },

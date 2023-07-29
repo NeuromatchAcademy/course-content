@@ -12,8 +12,5 @@ hero:
       link: /introduction
 
 features:
----
 
-<style>
-  
-</style>
+---
