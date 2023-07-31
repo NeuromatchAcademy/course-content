@@ -1,3 +1,4 @@
+import Unocss from "unocss/vite";
 import { defineConfig } from "vitepress";
 
 // https://vitepress.dev/reference/site-config
@@ -12,6 +13,7 @@ export default defineConfig({
     nav: [
       { text: "ホーム", link: "/" },
       { text: "講義一覧", link: "/tutorials/" },
+      { text: "翻訳", link: "/members" },
     ],
     socialLinks: [
       {
@@ -91,5 +93,8 @@ export default defineConfig({
         },
       ],
     },
+  },
+  vite: {
+    plugins: [Unocss()],
   },
 });

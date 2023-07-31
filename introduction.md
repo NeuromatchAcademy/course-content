@@ -1,5 +1,11 @@
+---
+linkToOriginal: https://compneuro.neuromatch.io/tutorials/intro.html
+linkToColab: https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/intro/intro.ipynb
+---
 # イントロダクション
 Neuromatchの計算神経科学コースへようこそ！
+
+<img class="bg-white" src="./assets/sponsors.png" alt="スポンサーロゴ一覧" />
 
 ## オリエンテーションビデオ
 ビデオは以下のリンクからご覧いただけます：https://couture.com/watch?v=cV2q-vodKA
@@ -8,6 +14,8 @@ Neuromatchの計算神経科学コースへようこそ！
 ## 概念マップ
 カリキュラム全体の概念マップです。
 このイメージは、John Butlerが制作し、Isabelle Butlerが色彩をアドバイスしています。
+
+![](./assets/concept_map.png)
 
 ## カリキュラムの概要
 計算神経科学コースへようこそ！

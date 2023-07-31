@@ -5,12 +5,12 @@ layout: home
 hero:
   name: "Nueromatch Academy: Computational Neuroscience"
   text: 
-  tagline: Welcome to the Neuromatch computational neuroscience course!
+  tagline: Neuromatchの計算神経科学コースへようこそ！
   actions:
     - theme: brand
-      text: はじめる
+      text: イントロダクション
       link: /introduction
-
-features:
-
+    - theme: alt
+      text: 講義一覧
+      link: /tutorials/
 ---
