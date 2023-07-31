@@ -1,4 +1,3 @@
-
 def get_value(rewards, actions, cost_sw):
   """
   Args:
