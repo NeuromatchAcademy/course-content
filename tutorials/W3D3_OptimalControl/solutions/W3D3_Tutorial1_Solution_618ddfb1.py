@@ -1,4 +1,3 @@
-
 """
 In Interactive Demo 1, you should see the school of fish switch sides less often when `stay_prob` is high.
 
