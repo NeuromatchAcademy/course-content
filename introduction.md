@@ -1,6 +1,6 @@
 ---
-linkToOriginal: https://compneuro.neuromatch.io/tutorials/intro.html
-linkToColab: https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/intro/intro.ipynb
+original: https://compneuro.neuromatch.io/tutorials/intro.html
+colab: https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/master/tutorials/intro/intro.ipynb
 ---
 # イントロダクション
 Neuromatchの計算神経科学コースへようこそ！

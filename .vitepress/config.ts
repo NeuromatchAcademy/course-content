@@ -1,5 +1,8 @@
+import mathjax3 from "markdown-it-mathjax3";
 import Unocss from "unocss/vite";
 import { defineConfig } from "vitepress";
+
+const customElements = ["mjx-container"];
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -42,29 +45,57 @@ export default defineConfig({
       ],
       "/tutorials/": [
         {
-          text: "W1,W2: モデリング入門",
+          text: "W0：事前準備",
           collapsed: true,
           items: [
             {
-              text: "W1D1: モデルタイプ",
+              text: "W0D1：Pythonワークショップ1",
+              collapsed: true,
+              link: "/tutorials/w0/d1/",
+              items: [
+                {
+                  text: "チュートリアル：LIFニューロン Part1",
+                  link: "/tutorials/w0/d1/p1",
+                },
+              ],
+            },
+            {
+              text: "W0D2：Pythonワークショップ2",
+              collapsed: true,
+              link: "/tutorials/w0/d2/",
+              items: [
+                {
+                  text: "チュートリアル：LIFニューロン Part2",
+                  link: "/tutorials/w0/d2/p1",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          text: "W1,W2：モデリング入門",
+          collapsed: true,
+          items: [
+            {
+              text: "W1D1：モデルタイプ",
               collapsed: true,
               link: "/tutorials/w1/d1/",
               items: [
                 { text: "Intro", link: "/tutorials/w1/d1/intro" },
                 {
-                  text: 'チュートリアル１："What" モデル',
+                  text: 'チュートリアル1："What" モデル',
                   link: "/tutorials/w1/d1/p1",
                 },
                 {
-                  text: 'チュートリアル２："How" モデル',
+                  text: 'チュートリアル2："How" モデル',
                   link: "/tutorials/w1/d1/p2",
                 },
                 {
-                  text: 'チュートリアル３："Why" モデル',
+                  text: 'チュートリアル3："Why" モデル',
                   link: "/tutorials/w1/d1/p3",
                 },
                 {
-                  text: "チュートリアル４：モデルに関するディスカッション",
+                  text: "チュートリアル4：モデルに関するディスカッション",
                   link: "/tutorials/w1/d1/p4",
                 },
                 { text: "Outro", link: "/tutorials/w1/d1/outro" },
@@ -73,13 +104,13 @@ export default defineConfig({
               ],
             },
             {
-              text: "W2D1: 実践モデリング",
+              text: "W2D1：実践モデリング",
               collapsed: true,
               link: "/tutorials/w2/d1/",
               items: [
                 { text: "Intro", link: "/tutorials/w2/d1/intro" },
                 {
-                  text: "チュートリアル１：問いの設計",
+                  text: "チュートリアル1：問いの設計",
                   link: "/tutorials/w2/d1/p1",
                 },
                 { text: "Outro", link: "/tutorials/w2/d1/outro" },
@@ -96,5 +127,17 @@ export default defineConfig({
   },
   vite: {
     plugins: [Unocss()],
+  },
+  markdown: {
+    config: (md) => {
+      md.use(mathjax3);
+    },
+  },
+  vue: {
+    template: {
+      compilerOptions: {
+        isCustomElement: (tag) => customElements.includes(tag),
+      },
+    },
   },
 });

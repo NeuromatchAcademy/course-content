@@ -16,9 +16,8 @@ const members = [
   {
     avatar: "https://www.github.com/xShoka.png",
     name: "門井 翔佳",
-    title: "Member",
-    org: "NeurotechJP",
-    orgLink: "https://neurotechjp.com/",
+    title: "CEO",
+    org: "KABUTO Technologies",
     links: [
       { icon: "github", link: "https://github.com/xShoka" },
       { icon: "twitter", link: "https://twitter.com/ShokaKadoi" },

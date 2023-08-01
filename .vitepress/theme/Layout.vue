@@ -15,18 +15,15 @@ const { page, frontmatter } = useData();
     <template #aside-bottom>
       <div class="w-full flex justify-center">
         <LinkToOriginal
-          v-if="frontmatter.linkToOriginal"
-          :href="frontmatter.linkToOriginal"
+          v-if="frontmatter.original"
+          :href="frontmatter.original"
         />
       </div>
     </template>
 
     <template #doc-before>
       <div class="w-full flex mb-4">
-        <OpenInColab
-          v-if="frontmatter.linkToColab"
-          :href="frontmatter.linkToColab"
-        />
+        <OpenInColab v-if="frontmatter.colab" :href="frontmatter.colab" />
       </div>
     </template>
 
