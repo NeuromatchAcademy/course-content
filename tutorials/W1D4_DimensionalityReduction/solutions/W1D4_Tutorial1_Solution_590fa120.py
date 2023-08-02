@@ -15,7 +15,7 @@ def define_orthonormal_basis(u):
   # Normalize vector u
   u = u / np.sqrt(u[0] ** 2 + u[1] ** 2)
 
-  # Calculate vector w that is orthogonal to w
+  # Calculate vector w that is orthogonal to u
   w = np.array([-u[1], u[0]])
 
   # Put in matrix form
