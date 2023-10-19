@@ -1,23 +1,26 @@
   # Daily guide for projects
 
+[Here you can find the daily guide for projects the CN uses. Please use the same structure but change the content.]
 ## Summary
 
-This project plan explicitly encourages the iterative nature of research as a series of questions and answers that gradually refine your hypotheses. We have assigned you to pods based on your broad interests (neurons, fMRI, ECoG, theory and behavior). Each pod will split into two groups alphabetically, with the goal of making well-balanced groups. If the split is not well-balanced (for example, all the coding experts in one group), then move one or two people around.
+This project plan explicitly encourages the iterative nature of research as a series of questions and answers that gradually refine your hypotheses. We have assigned you to pods based on your broad interests (list datasets names here). Each pod will split into two groups alphabetically, with the goal of making well-balanced groups. If the split is not well-balanced (for example, all the coding experts in one group), then move one or two people around.
 
 Once you're in groups, you will start brainstorming and searching the literature for interesting papers, with the goal of forming a project question. For the rest of week 1 you will try preliminary analyses of the datasets with the goal of refining and informing your question. Week 2 day 1 (W2D1) is dedicated to projects and will teach you a general strategy for approaching projects (the "10 steps"). You will apply this strategy to your own question. 
 
 For the rest of the second week you will continue to analyze data / refine your question, with the goal of writing an abstract on W2D5, which is another project day. Your abstract may or may not include results, but it should at least include a testable hypothesis. You'll swap abstracts with another group on W2D5 and get feedback from your mentor. For the rest of the course, you will focus on getting evidence for/against your hypothesis.
 
-Finally, in W3D5 you will meet with other groups in your pod and megapod (organized by the lead TAs), and tell them the story of your project. This is a low-key presentation that may include some of the plots you made along the way, but it is not meant as a real research presentation with high “production values”. See some of the [examples](https://compneuro.neuromatch.io/projects/docs/project_2020_highlights.html)  to get a sense of what the presentation will look like.
+Finally, in W3D5 you will meet with other groups in your pod and megapod (organized by the lead TAs), and tell them the story of your project. This is a low-key presentation that may include some of the plots you made along the way, but it is not meant as a real research presentation with high “production values”. See some of the [examples](https://compneuro.neuromatch.io/projects/docs/project_2020_highlights.html) to get a sense of what the presentation will look like. (you can insert links to previous years examples or create an example. E.g., the CN link above).
 
 
 ## Submission Links
 
+Change the below links:
 - W2D5 Abstract Submission [Airtable Link](https://airtable.com/shr0ozNAhXq6K1p8o)
 - W3D5 Project Submission [Airtable Link](https://airtable.com/shrvoz2N9UulAVqqU)
 
 ## Project templates
 
+Change the project template link:
 [Project templates](https://compneuro.neuromatch.io/projects/docs/project_templates.html) are research ideas developed by the NMA team that can be used in conjunction with the datasets we provided. Project templates can be used in a variety of ways.
 * For starters, you can use the project templates just to get familiarized with some of our datasets or one of the provided models. They can provide keywords for you to use in a literature search, or python libraries you can reuse to answer your own questions.
 * You should use the project templates extensively if you are new to neuroscience and/or you don’t have a lot of research experience. They have been designed to give you enough structure to get started, and enough options to keep you going if you stick with the template. Or you may start with a template, use it the first week and then in the second week diverge from it as your group develops their own new idea or question to test.
@@ -180,22 +183,23 @@ This is the day where you present your project to other groups. Your mentor and 
 
 At the end of your last project block, you should also submit your slides via this [Airtable link](https://airtable.com/shrvoz2N9UulAVqqU).   
 
-### Schedule
+### Schedule [only 2 questions below are marked "to change" based on the course structure]
 
-* 10 minutes of meet & greet. Do a round of introductions (one TA calls out names from the zoom list). Everyone says their name, pod name, position, university and subject of study, as well as one interesting fact about themselves "Hi, I'm Jonny from the wiggly caterpillars and I am a PhD student at University of Notre Dame in Paris. I do neuroscience experiments in flies, and in my free time I like to go on long bike rides".
+* 10 minutes of meet & greet. Do a round of introductions (one Teaching Assistant calls out names from the zoom list). Everyone says their name, pod name, position, institution or other area of work, and subject of study, as well as one interesting fact about themselves. “Hi, I’m Jonny from the wiggly caterpillars and I am a PhD student at University of Notre Dame in Paris. I study the relationship between moisture and storms, and in my free time I like to go on long bike rides”.
 
-* 30-40 minutes of presentations, including questions. Each group should speak for approx 5 minutes (1 minute per person + 2 minutes of intro/discussion), and then take questions for 1-2 minutes. Try not to waste too much time on logistics: join the zoom link and go to the appropriate breakout room quickly. Then the student groups can start presenting in any order. 
+* 30-40 minutes of presentations, including questions. Each group should speak for approximately 5 minutes (depending on group size), and then take questions for 1-2 minutes. The Lead Teaching Assistant of your megapod will determine the order of presentations.
 
-* 10-20 minutes of general discussion. Here are some ideas for questions you could ask:
+* 10-20 minutes of general discussion. Use the following questions to guide the group discussion. Spend a few minutes on each question. It’s ok not to use all these questions, especially if you have your own questions to ask!
+
   * What was missing in the dataset that you would have really liked to have?
-  * Does anyone plan to continue working on this project in the future? Perhaps a few students from the multiple groups would like to continue together?
-  * Which one of the 10 steps to modeling/research was hardest and why?
-  * Based on your experience with the NMA project, what project would you most like to do next? Make up your own, or pick from the NMA projects (a different dataset or project template which you did not use).
-  * What surprised you the most about the process of doing a project? In what way was this project most different from other projects you have done in the past.
-  * What technique did you learn at NMA which you think you can immediately apply to your own project (if you are currently doing research)?  
+  * Does anyone plan to continue working on this project in the future? Perhaps a few students from the multiple groups would like to continue together? ##change this question accordingly!
+  * Which one of the 10 steps to modeling/research was hardest and why? ##change this question accordingly!
+  * Based on your experience with the project, what project would you most like to do next? Make up your own, or pick from the projects available in the course.
+  * What surprised you the most about the process of doing a project? In what way was this project most different from other projects you have done in the past?
+  * What technique did you learn in the course that you think you can immediately apply to your own project (if you are currently doing research)?  
 
 
-### Logistics:
+### Logistics: [change accordingly]
 
 * The lead TA for your megapod will make multiple subgroups of 4-5 research teams from across the entire megapod. Each subgroup gets a separate breakout room for their session. If there are too many large pods in the megapod, there may be multiple zoom links in the megapod, so make sure you have the right one for your group. 
   * timeslots 1,3,5:   last hour of project time, -1:00 to 0:00 relative to start of your normal tutorial time (check the shared calendars in jupyterbook).
@@ -211,7 +215,7 @@ At the end of your last project block, you should also submit your slides via th
 * When you are done presenting, leave the last slide up (with conclusions), and open the floor for questions.
 
 
-### Content:
+### Content:  [change accordingly]
 
 * The 1 minute, 1 slide rule might seem like an impossible limit. However, it is one of the most useful formats you can learn, often referred to as a "one minute elevator pitch". If you can become an expert at giving short pitches about your work, it will help you get the interest of a lot of people, for example when presenting posters at scientific conferences. Or when you accidentally find yourself in an elevator with Mark Zuckerberg: this could be your chance to secure a million dollars in research funds!
 
@@ -226,10 +230,10 @@ At the end of your last project block, you should also submit your slides via th
 * Most groups won’t have a result and this is absolutely normal. However, the main goal anyway is to communicate the logic of your project proposal. Did you design a smart way to test the neural binding hypothesis, but then didn’t find the data to get answers? That can also be very interesting for others to hear about! Furthermore it will make it clear that research never stops. It continues as a series of questions and answers, not just within your own project, but at the level of the entire research field. Tell us what got you excited about this particular project, and try to dream big. One day, models like yours could be used to do what?
 
 
-### Questions:
+### Questions: [DO NOT CHANGE BELOW]
 
-* If your presentation was short enough, there can be time for questions from the audience. These are a great way to get feedback on your project!
+If your presentation was short enough, there is time for questions from the audience. These are a great way to get feedback on your project!
 
-* Before you ask a question, consider whether others might be interested in that topic too. This usually means asking big picture questions, as opposed to detailed, technical questions, but there are exceptions.
+Before you ask a question, consider whether others might be interested in that topic too. This usually means asking big picture questions, as opposed to detailed, technical questions, but there are exceptions.
 
-* If you are answering the question, try to be short and concise. Rambling is very clear to the audience, and it can seem like you're avoiding to answer the question. Answering concisely is another very useful skill in "real life". It also means that you can take more questions given our time constraints.
+If you are answering the question, try to be short and concise. Your audience will notice if you start rambling, and it can seem as if you are avoiding the question. Answering concisely is another very useful skill in “real life”. It also means that you can take more questions given our time constraints.
