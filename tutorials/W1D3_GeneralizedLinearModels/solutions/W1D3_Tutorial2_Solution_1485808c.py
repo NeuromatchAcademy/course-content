@@ -13,7 +13,7 @@ def compute_accuracy(X, y, model):
 
   y_pred = model.predict(X)
 
-  accuracy = (y == y_pred).mean()
+  accuracy = (y == y_pred).sum() / len(y)
 
   return accuracy
 
