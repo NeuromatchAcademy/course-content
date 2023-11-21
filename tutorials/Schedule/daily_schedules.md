@@ -2,30 +2,29 @@
 
 ## Course overview
 
-* Sun, July 9: Opening Ceremonies
-    * 8:30 am UTC
-    * 5:30 pm UTC
+*Monday, Janurary 22: Opening Ceremonies & Student Orientation
+    * 13:00 UTC (During your first Project session) 
     
 * Week 1
-    * Mon, July 10: Model Types
-    * Tue, July 11: Model Fitting
-    * Wed, July 12: Generalized Linear Models  
-    * Thu, July 13: Dimensionality Reduction
-    * Fri, July 14: Deep Learning
+    * Mon, January 22: Model Types
+    * Tue, January 23: Model Fitting
+    * Wed, January 24: Generalized Linear Models  
+    * Thu, January 25: Dimensionality Reduction
+    * Fri, January 26: Deep Learning
      
 * Week 2
-    * Mon, July 17: Modeling Practice & Half Project Day (Projects Proposal)
-    * Tue, July 18: Linear Systems
-    * Wed, July 19: Biological Neuron Models
-    * Thu, July 20: Dynamic Networks
-    * Fri, July 21: Project day (Abstract Writing)
+    * Mon, January 29: Modeling Practice & Half Project Day (Projects Proposal)
+    * Tue, January 30: Linear Systems
+    * Wed, January 31: Biological Neuron Models
+    * Thu, February 1: Dynamic Networks
+    * Fri, February 2: Project day (Abstract Writing)
     
 * Week 3
-    * Mon, July 24: Bayesian Decisions
-    * Tue, July 25: Hidden Dynamics
-    * Wed, July 26: Optimal Control
-    * Thu, July 27: Reinforcement Learning
-    * Fri, July 28: Network Causality & Graduation
+    * Mon, February 5: Bayesian Decisions
+    * Tue, February 6: Hidden Dynamics
+    * Wed, February 7: Optimal Control
+    * Thu, February 8: Reinforcement Learning
+    * Fri, February 9: Network Causality & Graduation
 ----
 
 ## Daily coursework schedule
