@@ -2,7 +2,7 @@
 
 ## Course overview
 
-* Sun, Jan 22: Opening Ceremonies
+* Sun, Jan 22: Opening Ceremony & Student Orientation
     * 1:00 pm UTC
     
 * Week 1
@@ -50,7 +50,7 @@ All days except W2D1, W2D5, and W3D5 will follow this schedule for course time:
 ### Project time
 In addition to course time, each day will have 3 hours of project time. Check the [time slot widget](https://neuromatchacademy.github.io/widgets/tz.html) to see when project time is scheduled for your slot.
 
-*Note: Slot 4 **will not** have project time on W1D1.* 
+*Note: Slot 4 **will not** have project time on W1D1, instead that time will be used for Opening Ceremonies and Student Orientation* 
 
 ### Schedule of specific days
 
@@ -112,19 +112,16 @@ During coursework time:
 **Slot 4:**
 |    Time (Hour)   |    Lecture                               |
 |------------------|------------------------------------------|
-|   -2:00- -1:00\*  |    Project presentations (slots 1/4)  |
-|   -1:00--0:30     |    Break (slots 1/4)                  |
-|   -0:30-0:00     |    Intro video & text                    |
-|    0:00-0:15      |    Pod Discussion I                      |
-|    0:15-1:45      |    Tutorials I                           |
-|    1:45-2:45      |    Big break                             |
-|    2:45-4:15      |    Tutorials II                          |
-|    4:15-4:25      |    Pod Discussion II                     |
-|    4:25-4:45      |    Break                                 |
-|    4:45-5:15\**   |    Course Review & Feedback                     |
-|    5:15-6:15\**   |    Project presentations (slots 2/5)     | 
-|    6:15-6:30\**   |    Pod farewell                         |
-|    6:30-7:15\**   |    Closing Ceremony/Graduation           |
+|   -2:00--0:00    |    Project Time                          |
+|    0:00-1:00     |    Project Presentations                 |
+|    1:00-2:00     |    Break                                 |
+|    2:00-6:30     |    Tutorials Time                        |
+|    6:30-6:45     |    Break                                 |
+|    6:45-7:15     |    Course Review & Feedback Survey       |
+|    7:15-7:45     |    Pod Farewell                          |
+|    7:45-8:00     |    Break                                 |
+|    8:00-9:00     |    Closing Ceremony & Graduation         |
+
 
 \* : This is the last hour of projects time for slots 1/4
 
