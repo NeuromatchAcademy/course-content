@@ -112,18 +112,22 @@ During coursework time:
 **Slot 4:**
 |    Time (Hour)   |    Lecture                               |
 |------------------|------------------------------------------|
-|   -2:00--0:00    |    Project Time                          |
-|    0:00-1:00     |    Project Presentations                 |
-|    1:00-2:00     |    Break                                 |
-|    2:00-6:30     |    Tutorials Time                        |
-|    6:30-6:45     |    Break                                 |
-|    6:45-7:15     |    Course Review & Feedback Survey       |
-|    7:15-7:45     |    Pod Farewell                          |
-|    7:45-8:00     |    Break                                 |
-|    8:00-9:00     |    Closing Ceremony & Graduation         |
+|    -4:00--2:00   |    Project Time                          |
+|    -2:00--1:00*  |    Project Presentations                 |
+|    -1:00-0:30    |    Break                                 |
+|    -0:30-0:00    |    Intro video & text                    |
+|    0:00-1:45     |    Tutorials I                           |
+|    1:45-2:45     |    Big Break                             |
+|    2:45-4:15     |    Tutorials II                          |
+|    4:15-4:30     |    Pod Discussion                        |
+|    4:30-4:45     |    Break                                 |
+|    4:45-5:15**   |    Course Review & Feedback Survey       |
+|    5:15-5:45**   |    Pod Farewell                          |
+|    5:45-6:00**   |    Break                                 |
+|    6:00-7:00**   |    Closing Ceremony & Graduation         |
 
 
-\* : This is the last hour of projects time for slots 1/4
+\* : This is the last hour of projects time for slots 4
 
 \** : Note that these events occur after the normal coursework time.
  
