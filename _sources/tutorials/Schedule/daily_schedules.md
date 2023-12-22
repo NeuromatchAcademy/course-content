@@ -2,7 +2,7 @@
 
 ## Course overview
 
-* Sun, Jan 22: Opening Ceremony & Student Orientation
+* Mon, Jan 22: Opening Ceremony & Student Orientation
     * 1:00 pm UTC
     
 * Week 1
