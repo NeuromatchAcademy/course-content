@@ -23,6 +23,16 @@ Finally, in W3D5 you will meet with other groups in your pod and megapod (organi
 * You should use the project templates extensively if you are new to neuroscience and/or you don’t have a lot of research experience. They have been designed to give you enough structure to get started, and enough options to keep you going if you stick with the template. Or you may start with a template, use it the first week and then in the second week diverge from it as your group develops their own new idea or question to test.
 * Templates have a natural flow of questions, but don’t hesitate to skip or completely change some of these. They are meant to be used very flexibly!
 
+## Project TAs
+
+Project TAs are your friendly dataset experts to consult with on all issues related to datasets. They can also help with other aspects of a project, including brainstorming, literature searches and coding. You will have meetings with them approximately every two days. During this time, they will help you refine your question and hypothesis into something that can be answered with our datasets. Since they can arrive unannounced at any time (busy schedules!), please stop what you were doing to have the meeting, and then resume your work when the project TA leaves.
+
+For the assigned meetings, project TAs will generally come only during project times, but sometimes they might need to schedule meetings slightly earlier or later. We encourage you to reach out to them for extra meetings whenever you need them, and to post questions on discord in the #dataset-X channels. 
+
+## Project Mentors
+
+Project mentors are more senior figures in the field, typically senior postdocs, professors, or industry researchers. Each project group will have a mentor to help them refine their hypotheses and navigate the scientific process. They won't be around as often as the TAs, but they are another source of guidance and perspective.
+
 ##  Week 1: Getting started
 
 Depending on your time slot, you may or may not have project time on the first day of the course. Regardless of whether your first project meeting is day 1 or day 2, spend your first session doing the following:
@@ -37,13 +47,15 @@ Tips:
 * No need to have a very concrete project after this day. You will determine the feasibility of your questions in the next few days, and you will likely change your question completely. That’s how research works!
 * The exploratory work you do in week 1 will culminate in a project proposal on the first project day (peek ahead in this guide at W2D1).
 
+*Stay tuned for your mentor assignments. Once you receive them, reach out to your mentor to set up a first meeting this week. Also try to arrange a meeting for W2D1, ideally the second half of the day, when their feedback on your abstract could be useful.*
+
 ### W1D2
 Continue brainstorming! Try to come up with one or a few topics of interest, either by yourselves or directly from the project templates. Get your hands dirty by running some of the notebooks provided for your dataset. There should be a loading notebook, and there should be some further analysis notebooks interspersed among the project templates. Even if you are not using a project template, they are likely to contain useful code to get you started, especially if you are doing a theory project. If all you do is run the provided notebooks that’s fine! Try to understand what is being plotted and how. Pay attention to the code libraries being used, and the way the data is accessed / binned / aligned. You will reuse some of these code elements to start doing your own analyses in later days.
 
 ### W1D3-W1D5
 Be on the lookout for interesting hypotheses. You might notice something unexpected in the data, and if you dig deeper it might lead you directly to a result. For this to work, you must keep an open mind about what your questions are. Here are some generally useful tips & tricks:
 
-* The hardest part will be the technical challenge of wrestling with the data to try to answer your question. You can rely on your TA and the Discord channels to make this process easier.
+* The hardest part will be the technical challenge of wrestling with the data to try to answer your question. You can rely on your TA, the dedicated project TA and the Discord channels to make this process easier.
 * For theory projects, wrestling with your model can be equally challenging. If your model generates data, for example a neural network simulation, then you can still use some of the tricks below to analyze that data.
 * If your model makes a hypothesis that needs to be tested, then your theory project might become a data project. The opposite may also happen if you find something interesting in the data, and you realize that you need a model to understand it better.  
 * Always be on the lookout for bugs in your code, or ”bugs” in your analysis plan. If a result looks too good to be true, it might be! Make sure you always split your data train/test, even for simple analyses where you think it might not matter (i.e. for making tuning curves).
@@ -95,7 +107,7 @@ You should now have a sense of the data, and you have probably refined your hypo
 
 ### W2D5: Abstract Writing Day!
 
-One of the best ways to understand your own research is to try to write about it. You should write early and often, not just at the end when you’re trying to write a paper or your thesis. Science conferences are a great way to present your intermediate work, and they give you a chance to write an abstract. However, you don’t have to wait so long to write your project abstract, you’ll do it today! If you have preliminary results that’s great, but it’s not required. Most of the components of an abstract do not in fact require results. The goal for this day is to workshop your abstract with your group, and then present this to your entire pod. You can also think of it as a much more refined version of the project proposal you submitted originally.
+One of the best ways to understand your own research is to try to write about it. You should write early and often, not just at the end when you’re trying to write a paper or your thesis. Science conferences are a great way to present your intermediate work, and they give you a chance to write an abstract. For example, the Neuromatch Conferences are a great venue for this. However, you don’t have to wait so long to write your project abstract, you’ll do it today! If you have preliminary results that’s great, but it’s not required. Most of the components of an abstract do not in fact require results. The goal for this day is to workshop your abstract with your group, and then present this to your entire pod. You can also think of it as a much more refined version of the project proposal you submitted originally.
 
 If you have been using a project template, this is a good time to branch out and pursue your own questions. The template was only meant to get you started on some concrete analyses, so that you become familiar with the data, but now that you have more knowledge, you should be able to come up with your own question. Practice the 4-steps again if necessary, they should be easier once you have a good question.
 
@@ -114,6 +126,10 @@ With your group
 
 * (30-60 min) Edit the abstract individually in your own google doc. At this stage, it is also important to control the flow of the abstract, in addition to keeping the structure from the 10 rules-paper. The flow relates to the “writing style”, which is generally no different for scientists than for other writers. Most importantly, make sure each sentence continues from where the previous one left, and do not use jargon without defining it first. Check out this book about writing if you have time ([book](https://sites.duke.edu/niou/files/2014/07/WilliamsJosephM1990StyleTowardClarityandGrace.pdf), especially chapter 3 about "cohesion" and flow.
 * (30 min) You should now have as many copies of your abstract as there are students in your group. Put them all into the same google doc, and try to see what you all did the same / differently. What sounds better? Pick and choose different sentences from different abstracts.
+
+
+With your mentor (timing is not precise!)
+* (30-60min) Try to schedule a meeting with your mentor to be on this day or next day. Show them your abstract. Try to get explicit feedback and edit the abstract together in a google doc.
 
 * (30min / group = 1h) With your pod: present your research to the other group in your pod. Take turns in your pod to read each other’s abstracts and provide feedback on them. Tell the other group what you understand and what you don’t from their research project. Give detailed writing feedback if you can (use "suggestion mode" in google docs). If there is no other project group in your pod, ask your TA to reach out to other pods to find a group you can workshop your abstract with.
 
@@ -160,7 +176,7 @@ Abstract writing day should have helped you narrow down what results (positive o
 
 Please see final day schedule and shared calendars for timing details: [https://compneuro.neuromatch.io/tutorials/Schedule/daily_schedules.html#w3d5-final-day-of-course](https://compneuro.neuromatch.io/tutorials/Schedule/daily_schedules.html#w3d5-final-day-of-course)
 
-This is the day where you present your project to other groups. The groups will take turns to share their screens. You can use figures and other graphics, but this is meant to be told as a story, and everyone from your group should take a turn telling a part of the story. Tell us about the different hypotheses you’ve had at different points and how you refined them using some of the tools we taught.
+This is the day where you present your project to other groups. Your mentor and your project TAs can be invited too, but they are busy so they might not make it. The groups will take turns to share their screens. You can use figures and other graphics, but this is meant to be told as a story, and everyone from your group should take a turn telling a part of the story. Tell us about the different hypotheses you’ve had at different points and how you refined them using some of the tools we taught.
 
 At the end of your last project block, you should also submit your slides via this [Airtable link](https://airtable.com/shrvoz2N9UulAVqqU).   
 
@@ -181,9 +197,10 @@ At the end of your last project block, you should also submit your slides via th
 
 ### Logistics:
 
-* Neuromatch Staff will send a Zoom link for your megapod and then create breakout rooms for a subgroup of project groups (about 4-5 groups each). 
-  * timeslots 4: the last hour of project time (check the shared calendars in jupyterbook).
-  There is a hard cutoff at the one hour mark.  
+* The lead TA for your megapod will make multiple subgroups of 4-5 research teams from across the entire megapod. Each subgroup gets a separate breakout room for their session. If there are too many large pods in the megapod, there may be multiple zoom links in the megapod, so make sure you have the right one for your group. 
+  * timeslots 1,3,5:   last hour of project time, -1:00 to 0:00 relative to start of your normal tutorial time (check the shared calendars in jupyterbook).
+  * timeslots 2,4: after the course feedback session (check the shared calendars in jupyterbook).
+  There is a hard cutoff at the one hour mark, so the TAs must ensure everyone gets a turn to present.  
 
 * Use this presentation style ([google slides](https://docs.google.com/presentation/d/1A1uaYarVot9YyCdbAAB4VDvsQfK6emqq-TwIZ9xVNwo/edit?usp=sharing) or [powerpoint](https://osf.io/ky6fj/download)) or create your own style!
 
