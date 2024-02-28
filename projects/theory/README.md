@@ -6,9 +6,20 @@ Pure theory projects are usually pursued by more advanced students. If your grou
 
 Every group can bring up and discuss theory projects. We have two example project templates for this that include code. However, a theory project can go in any direction.
 
+## Working memory
+
 |   | Run | View |
 | - | --- | ---- |
 | Working memory | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/theory/RNN_working_memory.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/theory/RNN_working_memory.ipynb?flush_cache=true) |
+
+## Motor RNN
+
+We built on [Feulner & Clopath, Plos Computational Biology, 2021](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008621) to propose this project. Here we explore how RNN representation dynamics is linked with connectivity structure and task complexity.
+
+|   | Run | View |
+| - | --- | ---- |
+| Motor RNN | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/theory/motor_RNNs.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/theory/motor_RNNs.ipynb) |
+
 
 ## Databases of models
 ​
@@ -20,7 +31,7 @@ Here is a list of cool databases you might want to use to look for existing mode
 | [ModelDB](https://senselab.med.yale.edu/modeldb/)     | :+1:   |           |       | **ModelDB** provides an accessible location for storing and efficiently retrieving computational neuroscience models. A ModelDB entry contains a model's source code, concise description, and a citation of the article that published it. |
 | [Open Source Brain](https://www.opensourcebrain.org/) | :+1:   |           |       | **Open Source Brain** is a resource for sharing and collaboratively developing computational models of neural systems. |
 | [CRCNS](http://crcns.org/)                            | :+1:   | :+1:      | :+1:  | **CRCNS Data sharing website** is a marketplace and discussion forum for sharing tools and data in neuroscience |
-| [EEGbase](http://eegdatabase.kiv.zcu.cz/home-page)    |        | :+1:      | :+1:  | **EEGbase** is a system for storage, management, sharing and retrieval of EEG/ERP data, metadata, tools and documents related to electrophysiology. |
+| [EEGbase]([http://eegdatabase.kiv.zcu.cz/home-page](http://neuroinformatics.kiv.zcu.cz/articles/read/eegerp-portal-eegbase-_2014-12-19))    |        | :+1:      | :+1:  | **EEGbase** is a system for storage, management, sharing and retrieval of EEG/ERP data, metadata, tools and documents related to electrophysiology. |
 | [INCF resources](https://www.incf.org/resources/sbps) | :+1:   | :+1:      | :+1:  | A list of resources endorsed by **INCF**.                    |
 | [NITRC](https://www.nitrc.org/)                       | :+1:   | :+1:      | :+1:  | **NeuroImaging Tools & Resources Collaboratory** is an award-winning free web-based resource that offers comprehensive information on an ever expanding scope of neuroinformatics software and data. |
 ​

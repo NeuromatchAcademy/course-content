@@ -6,7 +6,7 @@ Please check out [expected prerequisites here](https://github.com/NeuromatchAcad
 
 **The content should primarily be accessed from our ebook: https://compneuro.neuromatch.io/ [under continuous development]**
 
-**Schedule for 2022: https://github.com/NeuromatchAcademy/course-content/blob/main/tutorials/Schedule/daily_schedules.md**
+**Schedule for 2023: https://github.com/NeuromatchAcademy/course-content/blob/main/tutorials/Schedule/daily_schedules.md**
 
 ---
 

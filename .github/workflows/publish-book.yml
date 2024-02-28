@@ -1,7 +1,6 @@
 name: publish-book
 
 on: 
-
   workflow_dispatch:
 
 env:
@@ -16,27 +15,28 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           persist-credentials: false
           fetch-depth: 0
           ref: ${{ github.head_ref }}
-          
+
       - name: Get commit message
         run: |
           readonly local msg=$(git log -1 --pretty=format:"%s")
           echo "COMMIT_MESSAGE=$msg" >> $GITHUB_ENV
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.7
+          python-version: 3.9
 
       - name: Install CI tools
         run: |
           BRANCH=`python -c 'import os, re; m = re.search(r"nmaci:([\w-]+)", os.environ["COMMIT_MESSAGE"]); print("main" if m is None else m.group(1))'`
           wget https://github.com/NeuromatchAcademy/nmaci/archive/refs/heads/$BRANCH.tar.gz
           tar -xzf $BRANCH.tar.gz
+          pip install --upgrade pip
           pip install -r nmaci-$BRANCH/requirements.txt
           mv nmaci-$BRANCH/scripts/ ci/
           rm -r nmaci-$BRANCH
@@ -46,8 +46,17 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install jupyter-book==0.10.2 ghp-import
+          pip install jupyter-book==0.14.0 ghp-import
           pip install jupyter_client==7.3.5  # downgrade jupyter-client to fix hangs
+
+      - name: Install XKCD fonts
+        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
+        run: |
+          sudo apt-get update -yq
+          wget http://archive.ubuntu.com/ubuntu/pool/universe/f/fonts-humor-sans/fonts-humor-sans_1.0-4_all.deb
+          sudo dpkg -i --force-all fonts-humor-sans_1.0-4_all.deb <<< 'yes'
+          sudo apt install -fy
+          rm -f $HOME/.matplotlib/fontList.cache
 
       - name: Copy tutorials from precourse repo
         if: "!contains(env.COMMIT_MESSAGE, 'skip precourse')"
@@ -65,6 +74,7 @@ jobs:
       - name: Build student book
         run: |
           python ci/generate_book.py student
+          jupyter-book toc migrate /home/runner/work/course-content/course-content/book/_toc.yml -o /home/runner/work/course-content/course-content/book/_toc.yml
           ln -s ../tutorials book/tutorials
           ln -s ../projects book/projects
           ln -s ../prereqs book/prereqs
