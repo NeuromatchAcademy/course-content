@@ -2,30 +2,30 @@
 
 ## Course overview
 
-* Sun, July 9: Opening Ceremonies
+* Sun, July 7: Opening Ceremonies
     * 8:30 am UTC
     * 5:30 pm UTC
     
 * Week 1
-    * Mon, July 10: Model Types
-    * Tue, July 11: Model Fitting
-    * Wed, July 12: Generalized Linear Models  
-    * Thu, July 13: Dimensionality Reduction
-    * Fri, July 14: Deep Learning
+    * Mon, July 8: Model Types
+    * Tue, July 9: Model Fitting
+    * Wed, July 10: Generalized Linear Models  
+    * Thu, July 11: Dimensionality Reduction
+    * Fri, July 12: Deep Learning
      
 * Week 2
-    * Mon, July 17: Modeling Practice & Half Project Day (Projects Proposal)
-    * Tue, July 18: Linear Systems
-    * Wed, July 19: Biological Neuron Models
-    * Thu, July 20: Dynamic Networks
-    * Fri, July 21: Project day (Abstract Writing)
+    * Mon, July 15: Modeling Practice & Half Project Day (Projects Proposal)
+    * Tue, July 15: Linear Systems
+    * Wed, July 17: Biological Neuron Models
+    * Thu, July 18: Dynamic Networks
+    * Fri, July 19: Project day (Abstract Writing)
     
 * Week 3
-    * Mon, July 24: Bayesian Decisions
-    * Tue, July 25: Hidden Dynamics
-    * Wed, July 26: Optimal Control
-    * Thu, July 27: Reinforcement Learning
-    * Fri, July 28: Network Causality & Graduation
+    * Mon, July 22: Bayesian Decisions
+    * Tue, July 23: Hidden Dynamics
+    * Wed, July 24: Optimal Control
+    * Thu, July 25: Reinforcement Learning
+    * Fri, July 26: Network Causality & Graduation
 ----
 
 ## Daily coursework schedule
@@ -119,14 +119,13 @@ During project time:
 
 |    Time (Hour)   |    Component                          |
 |------------------|---------------------------------------|
-|    0:00-0:45\*, \**  |    Mentor meeting                  |
+|    0:00-0:45\*, \**  |    Project work time                 |
 |    0:45-1:45     |    Pod abstract swap                  |
 |    1:45-2:00     |    Break                              |
 |    2:00-3:00     |   Finalize abstract                   |
 
 \* : Note that this refers to the start of the projects time, not the coursework time like usual
 
-\** : Timing of this mentor meeting may need to vary based on mentor availability
 
 #### W3D5: Final Day of Course
 
@@ -151,11 +150,11 @@ During project time:
 
 \** : Note that these events occur after the normal coursework time.
  
-Course Review & Feedback: We will have a post course survey for both students and TAs (will share the link in discord) - please fill it out during this time!
+Course Review & Feedback: We will have a post course survey for both students and TAs (will share the link in discord) - please fill it out during this time! Completing the final survey is required to access your certiicate after the coures. 
 
 Pod farewell: This is just a chance for your pod to say goodbye to each other. No structure imposed or requirements here!
 
-Closing Ceremony/Graduation: We will do this all together on crowdcast.
+Closing Ceremony/Graduation: We will do this all together on Zoom. 
 
 
 **Slot 3:**
@@ -178,11 +177,12 @@ Closing Ceremony/Graduation: We will do this all together on crowdcast.
 
 \** : Note that these events occur after the normal coursework time.
 
-Course Review & Feedback: We will have a post course survey for both students and TAs (will share the link in discord) - please fill it out during this time!
+Course Review & Feedback: We will have a post course survey for both students and TAs (will share the link in discord) - please fill it out during this time! Completing the final survey is required to access your certiicate after the coures. 
+
 
 Pod farewell: This is just a chance for your pod to say goodbye to each other. No structure imposed or requirements here!
 
-Closing Ceremony/Graduation: We will do this all together on crowdcast.
+Closing Ceremony/Graduation: We will do this all together on Zoom.
 
 
 ### Professional Development Panels
