@@ -5,7 +5,7 @@
 
 2) The means control only the location! The variances determine the spread in X and Y. The
    correlation is the only factor that controls the degree of the 'rotation', where we can think
-   about the correlation as forcing the distribution to be more along one of the diagonals or ther
+   about the correlation as forcing the distribution to be more along one of the diagonals or the
    other.
 
 3) We would need to marginalize! We will do this next.

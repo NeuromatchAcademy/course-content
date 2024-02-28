@@ -84,7 +84,7 @@ We have designed tutorials to help launch your projects. Once you're done with t
 (2h) Complete the intro/tutorial/outro for this day
 * You will need to use your group's project for some of this content. If you don’t have concrete ideas yet, or you haven’t done a research project before, use one of the provided project templates to walk through the four steps.
 * If you are using a project template, your goal is to translate the information from the slide and colab notebook into a 4-step format. Some information might not be readily available in the slide or notebook, and you might have to find it in your literature review later this day.
-* Try to write down a few sentences for each of the four steps applied to your project. You will re-use these in your proposal later today.  
+* Try to write down a few sentences for each of the four steps applied to your project. You will reuse these in your proposal later today.  
 
 (2.5h) Literature review: identify interesting papers
 The goal of this literature review is to situate your question in context and help you acquire some keywords that you will use in your proposal today.
@@ -95,7 +95,7 @@ The goal of this literature review is to situate your question in context and he
 
 Project block task:
 (3h) Project proposal
-* Try to write a proposal for this project based on the way you understand it now. This should re-use some of the text you wrote down for the four steps, and should include keywords and concepts that you identified in your literature review. Don’t worry too much about the structure of this paragraph! The goal is to get as many words (200-300) on paper as possible. You have the entire day 10 to learn how to write a properly structured scientific abstract.
+* Try to write a proposal for this project based on the way you understand it now. This should reuse some of the text you wrote down for the four steps, and should include keywords and concepts that you identified in your literature review. Don’t worry too much about the structure of this paragraph! The goal is to get as many words (200-300) on paper as possible. You have the entire day 10 to learn how to write a properly structured scientific abstract.
 * It is important to include the concepts which you identified as relevant, and the keywords that go with them.
 * When you are ready, please submit your proposal [here](https://airtable.com/shrcYuFYMPh4jGIng). This is not mandatory and can be submitted at any time. We won't evaluate this, but we will use it to keep track of the overall progress of the groups. 
 
