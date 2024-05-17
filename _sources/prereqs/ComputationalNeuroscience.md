@@ -1,6 +1,6 @@
 # Prerequisites and preparatory materials for NMA Computational Neuroscience
 
-Welcome to the [Neuromatch Academy](https://academy.neuromatch.io/)! We're really excited to bring computational neuroscience to such a wide and varied audience. We're preparing an amazing set of lectures and tutorials for you!
+Welcome to the [Neuromatch Academy](https://neuromatch.io/computational-neuroscience-course/)! We're really excited to bring computational neuroscience to such a wide and varied audience. We're preparing an amazing set of lectures and tutorials for you!
 
 ## Preparing yourself for the course
 
