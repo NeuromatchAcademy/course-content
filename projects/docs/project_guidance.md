@@ -6,7 +6,7 @@ This project plan explicitly encourages the iterative nature of research as a se
 
 Once you're in groups, you will start brainstorming and searching the literature for interesting papers, with the goal of forming a project question. For the rest of week 1 you will try preliminary analyses of the datasets with the goal of refining and informing your question. Week 2 day 1 (W2D1) is dedicated to projects and will teach you a general strategy for approaching projects (the "10 steps"). You will apply this strategy to your own question. 
 
-For the rest of the second week you will continue to analyze data / refine your question, with the goal of writing an abstract on W2D5, which is another project day. Your abstract may or may not include results, but it should at least include a testable hypothesis. You'll swap abstracts with another group on W2D5 and get feedback from your mentor. For the rest of the course, you will focus on getting evidence for/against your hypothesis.
+For the rest of the second week you will continue to analyze data / refine your question, with the goal of writing an abstract on W2D5, which is another project day. Your abstract may or may not include results, but it should at least include a testable hypothesis. You'll swap abstracts with another group on W2D5. For the rest of the course, you will focus on getting evidence for/against your hypothesis.
 
 Finally, in W3D5 you will meet with other groups in your pod and megapod (organized by the lead TAs), and tell them the story of your project. This is a low-key presentation that may include some of the plots you made along the way, but it is not meant as a real research presentation with high “production values”. See some of the [examples](https://compneuro.neuromatch.io/projects/docs/project_2020_highlights.html)  to get a sense of what the presentation will look like.
 
@@ -29,15 +29,11 @@ Project TAs are your friendly dataset experts to consult with on all issues rela
 
 For the assigned meetings, project TAs will generally come only during project times, but sometimes they might need to schedule meetings slightly earlier or later. We encourage you to reach out to them for extra meetings whenever you need them, and to post questions on discord in the #dataset-X channels. 
 
-## Project Mentors
-
-Project mentors are more senior figures in the field, typically senior postdocs, professors, or industry researchers. Each project group will have a mentor to help them refine their hypotheses and navigate the scientific process. They won't be around as often as the TAs, but they are another source of guidance and perspective.
-
 ##  Week 1: Getting started
 
 Depending on your time slot, you may or may not have project time on the first day of the course. Regardless of whether your first project meeting is day 1 or day 2, spend your first session doing the following:
 
-* Split into groups alphabetically. First sort yourselves by the first letter of your name. The first half of the students are in group 1, the second in group 2. If the split is not well-balanced, move one or two people around.
+* Split into groups. We recommend intentionally creating groups with diverse skillsets. Groups should have students who are very confident in Python and those who are just learning. Through the project, students can work together to strengthen eachother's skills. We want to make sure that all members of each group get a chance to do all parts of the project. We ask that folks who are good with Python share what they know and handoff tasks to peers who are learning so they can improve their skills. 
 * Introductions (30 min = 2 min/student): say a few things about yourself, then about your research area or research interests. What are you really curious about, that you might explore in your NMA project?
 * Listen carefully as others talk about their interests.
 * Individual reading time (30 min): browse the projects booklet which includes this guide (skim the entire thing) + project templates with slides and code + dataset videos + docs with further ideas and datasets
@@ -47,7 +43,6 @@ Tips:
 * No need to have a very concrete project after this day. You will determine the feasibility of your questions in the next few days, and you will likely change your question completely. That’s how research works!
 * The exploratory work you do in week 1 will culminate in a project proposal on the first project day (peek ahead in this guide at W2D1).
 
-*Stay tuned for your mentor assignments. Once you receive them, reach out to your mentor to set up a first meeting this week. Also try to arrange a meeting for W2D1, ideally the second half of the day, when their feedback on your abstract could be useful.*
 
 ### W1D2
 Continue brainstorming! Try to come up with one or a few topics of interest, either by yourselves or directly from the project templates. Get your hands dirty by running some of the notebooks provided for your dataset. There should be a loading notebook, and there should be some further analysis notebooks interspersed among the project templates. Even if you are not using a project template, they are likely to contain useful code to get you started, especially if you are doing a theory project. If all you do is run the provided notebooks that’s fine! Try to understand what is being plotted and how. Pay attention to the code libraries being used, and the way the data is accessed / binned / aligned. You will reuse some of these code elements to start doing your own analyses in later days.
@@ -128,8 +123,7 @@ With your group
 * (30 min) You should now have as many copies of your abstract as there are students in your group. Put them all into the same google doc, and try to see what you all did the same / differently. What sounds better? Pick and choose different sentences from different abstracts.
 
 
-With your mentor (timing is not precise!)
-* (30-60min) Try to schedule a meeting with your mentor to be on this day or next day. Show them your abstract. Try to get explicit feedback and edit the abstract together in a google doc.
+* (30-60min) Meet with your Project TA, show them your abstract. Try to get explicit feedback and edit the abstract together in a google doc.
 
 * (30min / group = 1h) With your pod: present your research to the other group in your pod. Take turns in your pod to read each other’s abstracts and provide feedback on them. Tell the other group what you understand and what you don’t from their research project. Give detailed writing feedback if you can (use "suggestion mode" in google docs). If there is no other project group in your pod, ask your TA to reach out to other pods to find a group you can workshop your abstract with.
 
@@ -176,7 +170,7 @@ Abstract writing day should have helped you narrow down what results (positive o
 
 Please see final day schedule and shared calendars for timing details: [https://compneuro.neuromatch.io/tutorials/Schedule/daily_schedules.html#w3d5-final-day-of-course](https://compneuro.neuromatch.io/tutorials/Schedule/daily_schedules.html#w3d5-final-day-of-course)
 
-This is the day where you present your project to other groups. Your mentor and your project TAs can be invited too, but they are busy so they might not make it. The groups will take turns to share their screens. You can use figures and other graphics, but this is meant to be told as a story, and everyone from your group should take a turn telling a part of the story. Tell us about the different hypotheses you’ve had at different points and how you refined them using some of the tools we taught.
+This is the day where you present your project to other groups. The groups will take turns to share their screens. You can use figures and other graphics, but this is meant to be told as a story, and everyone from your group should take a turn telling a part of the story. Tell us about the different hypotheses you’ve had at different points and how you refined them using some of the tools we taught.
 
 At the end of your last project block, you should also submit your slides via this [Airtable link](https://airtable.com/shrvoz2N9UulAVqqU).   
 
