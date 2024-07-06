@@ -2,7 +2,7 @@
 
 ## Summary
 
-This project plan explicitly encourages the iterative nature of research as a series of questions and answers that gradually refine your hypotheses. We have assigned you to pods based on your broad interests (neurons, fMRI, ECoG, theory and behavior). Each pod will split into two groups alphabetically, with the goal of making well-balanced groups. If the split is not well-balanced (for example, all the coding experts in one group), then move one or two people around.
+This project plan explicitly encourages the iterative nature of research as a series of questions and answers that gradually refine your hypotheses. We have assigned you to pods based on your broad interests (neurons, fMRI, ECoG, theory and behavior). Each pod will split into two groups, with the goal of making well-balanced groups. There is more guidance below.
 
 Once you're in groups, you will start brainstorming and searching the literature for interesting papers, with the goal of forming a project question. For the rest of week 1 you will try preliminary analyses of the datasets with the goal of refining and informing your question. Week 2 day 1 (W2D1) is dedicated to projects and will teach you a general strategy for approaching projects (the "10 steps"). You will apply this strategy to your own question. 
 
