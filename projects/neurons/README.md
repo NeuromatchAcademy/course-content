@@ -38,7 +38,7 @@ Credit for data curation: Marius Pachitariu
 
 ## Allen Institute
 
-The Allen Institute dataset ([youtube](https://www.youtube.com/watch?v=3YP-GYvYnuA)) is new this year, and it was designed to be very friendly for beginners. The mice do a visual adaptation task using either familiar or novel images. The recordings are from specific neuron populations (VIP, SST etc) in multiple visual cortical brain areas. This dataset is well supported with code and a dedicated project template. This would provide a more focused experience for beginner groups than the Steinmetz dataset, with the caveat that the data is unpublished so it is harder to find supporting information for it. For more advanced groups, a separate dataloader is available using the Allen Institute SDK, which gives access to the entire dataset for more exploratory analyses.
+The Allen Institute dataset ([youtube](https://www.youtube.com/watch?v=3YP-GYvYnuA)) is new this year, and it was designed to be very friendly for beginners. The mice do a visual change detection task using either familiar or novel images. The recordings are from specific neuron populations (Excitatory, VIP, and SST) in multiple visual cortical brain areas (V1 and LM). This dataset is well supported with code and a dedicated project template. This would provide a more focused experience for beginner groups than the Steinmetz dataset. For more advanced groups, a separate dataloader is available using the Allen Institute SDK, which gives access to the entire dataset for more exploratory analyses. You can learn more about the dataset and find additional description and helpful tools on [Allen Brain Atlas](https://allensdk.readthedocs.io/en/latest/visual_behavior_optical_physiology.html) and [SWDB databook](https://allenswdb.github.io/physiology/ophys/visual-behavior/VB-Ophys.html).
 
 Credit for data curation: Marina Garret, Iryna Yavorska, Doug Ollerenshaw
 
@@ -47,8 +47,6 @@ Credit for data curation: Marina Garret, Iryna Yavorska, Doug Ollerenshaw
 | Analyze one dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_Allen_Visual_Behavior_from_pre_processed_file.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_Allen_Visual_Behavior_from_pre_processed_file.ipynb?flush_cache=true) |
 | Access to all data | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_Allen_Visual_Behavior_from_SDK.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_Allen_Visual_Behavior_from_SDK.ipynb?flush_cache=true) |
 
-### References: none yet for this dataset, but see:
+### You can read more about scientific discoveries related to this dataset in our preprint:
 
-- de Vries, S. E., Lecoq, J. A., Buice, M. A., Groblewski, P. A., Ocker, G. K., Oliver, M., ... and Koch, C. (2020). A large-scale standardized physiological survey reveals functional organization of the mouse visual cortex. Nature neuroscience, 23(1): 138-151. doi: [10.1038/s41593-019-0550-9](https://doi.org/10.1038/s41593-019-0550-9)
-
-- Siegle, J. H., Jia, X., Durand, S., Gale, S., Bennett, C., Graddis, N., ... and Koch, C. (2021). Survey of spiking in the mouse visual system reveals functional hierarchy. Nature, 592(7852): 86-92. doi: [10.1038/s41586-020-03171-x](https://doi.org/10.1038/s41586-020-03171-x)
+- Garrett, M. et. al. (2023) Stimulus novelty uncovers coding diversity in visual cortical circuits. bioRxiv doi: [https://www.biorxiv.org/content/10.1101/2023.02.14.528085v2]
