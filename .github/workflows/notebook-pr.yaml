@@ -15,7 +15,22 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-
+      - name: Free up disk space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          # this might remove tools that are actually needed,
+          # if set to "true" but frees about 6 GB
+          tool-cache: false
+          
+          # all of these default to true, but feel free to set to
+          # "false" if necessary for your workflow
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
+          
       - name: Checkout
         uses: actions/checkout@v3
         with:
@@ -49,6 +64,7 @@ jobs:
       - name: Install dependencies
         if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
         run: |
+          sudo apt-get install python3-opencv -y
           python -m pip install --upgrade pip wheel
           pip install -r requirements.txt
           pip install jupyter_client==7.3.5  # downgrade jupyter-client to fix hangs
