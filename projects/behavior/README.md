@@ -20,6 +20,14 @@ The IBL dataset ([youtube](https://youtube.com/watch?v=NofrFH8FRZU)) is a visual
 
 Credit for data curation: Eric DeWitt and the IBL team
 
+This notebook is currently available:
+
+|   | Run | View |
+| - | --- | ---- |
+| Psychometric notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14OtLUEiyhrPTPsXetg8VQrTk1CLhBCW5) | |
+
+These will be available next week:
+
 |   | Run | View |
 | - | --- | ---- |
 | Exploration notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/int-brain-lab/nma-ibl/blob/master/01-Explore%20IBL%20behavior%20data%20pipeline.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/int-brain-lab/nma-ibl/blob/master/01-Explore%20IBL%20behavior%20data%20pipeline.ipynb?flush_cache=true) |
