@@ -4,7 +4,7 @@
 
 ## HCP task datasets
 
-The HCP task datasets ([youtube-2021](https://youtube.com/watch?v=nssSiCmbjxw), [youtube-2020](https://youtube.com/watch?v=iOCcY0QFMS4)) are a great overall choice, because many of the behaviors are interesting (gambling, emotion, language, social, working memory etc), and the data is already preprocessed and averaged across voxels to make brain regions. This dataset is appropriate for all levels.  
+The HCP task datasets ([youtube-2021](https://www.youtube.com/watch?v=i30qePz_OGY), [youtube-2020](https://youtube.com/watch?v=iOCcY0QFMS4)) are a great overall choice, because many of the behaviors are interesting (gambling, emotion, language, social, working memory etc), and the data is already preprocessed and averaged across voxels to make brain regions. This dataset is appropriate for all levels.  
 
 Credit for data curation: John Murray, Saad Jbabdi
 
