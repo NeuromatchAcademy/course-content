@@ -171,7 +171,7 @@ Closing Ceremony/Graduation: We will do this all together on Zoom.
 |    4:25-4:45      |    Break                                 |
 |    4:45-5:15\**   |    Course Review & Feedback              |
 |    5:15-5:30\**   |    Pod farewell                         |
-|    5:30-6:15\**   |    Closing Ceremony/Graduation           |
+|    6:30-7:15\**   |    Closing Ceremony/Graduation           |
 
 \* : This is the last hour and a quarter of projects time for slot 3
 
