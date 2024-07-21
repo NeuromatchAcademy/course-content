@@ -47,7 +47,7 @@ for i in range(1, T):
   #         (i.e., multiply gaussians from today's prior and likelihood)
   likelihood = gaussian(m[i], measurement_noise_cov)
 
-  # Step 2a:  To find the posterior variance, add informations (inverse variances) of prior and likelihood
+  # Step 2a:  To find the posterior variance, add information (inverse variances) of prior and likelihood
   info_prior = 1/todays_prior.cov
   info_likelihood = 1/likelihood.cov
   info_posterior = info_prior + info_likelihood

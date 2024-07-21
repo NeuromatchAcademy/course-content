@@ -38,7 +38,7 @@ def fit_lnp(stim, spikes, d=25):
   # Use a random vector of weights to start (mean 0, sd .2)
   x0 = np.random.normal(0, .2, d + 1)
 
-  # Find parameters that minmize the negative log likelihood function
+  # Find parameters that minimize the negative log likelihood function
   res = minimize(neg_log_lik_lnp, x0, args=(X, y))
 
   return res["x"]
