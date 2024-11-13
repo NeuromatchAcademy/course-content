@@ -3,13 +3,13 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-*July 10-28, 2023*
+*July 7 - 25, 2025*
 
 Please check out [expected prerequisites here](https://github.com/NeuromatchAcademy/precourse/blob/main/prereqs/ComputationalNeuroscience.md)!
 
 **The content should primarily be accessed from our ebook: https://compneuro.neuromatch.io/ [under continuous development]**
 
-**Schedule for 2023: https://github.com/NeuromatchAcademy/course-content/blob/main/tutorials/Schedule/daily_schedules.md**
+**Schedule: https://github.com/NeuromatchAcademy/course-content/blob/main/tutorials/Schedule/daily_schedules.md**
 
 ---
 
