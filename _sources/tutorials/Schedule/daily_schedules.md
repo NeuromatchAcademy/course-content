@@ -1,35 +1,32 @@
 # General schedule
 
 ## Course overview
-
-* Sun, July 7: Opening Ceremonies
-    * 8:30 am UTC
-    * 5:30 pm UTC
+### 2025 Course Dates: July 7 - 25 
     
 * Week 1
-    * Mon, July 8: Model Types
-    * Tue, July 9: Model Fitting
-    * Wed, July 10: Generalized Linear Models  
-    * Thu, July 11: Dimensionality Reduction
-    * Fri, July 12: Deep Learning
+    * Mon, July 7: Model Types
+    * Tue, July 8: Model Fitting
+    * Wed, July 9: Generalized Linear Models  
+    * Thu, July 10: Dimensionality Reduction
+    * Fri, July 11: Deep Learning
      
 * Week 2
-    * Mon, July 15: Modeling Practice & Half Project Day (Projects Proposal)
+    * Mon, July 14: Modeling Practice & Half Project Day (Projects Proposal)
     * Tue, July 15: Linear Systems
-    * Wed, July 17: Biological Neuron Models
-    * Thu, July 18: Dynamic Networks
-    * Fri, July 19: Project day (Abstract Writing)
+    * Wed, July 16: Biological Neuron Models
+    * Thu, July 17: Dynamic Networks
+    * Fri, July 18: Project day (Abstract Writing)
     
 * Week 3
-    * Mon, July 22: Bayesian Decisions
-    * Tue, July 23: Hidden Dynamics
-    * Wed, July 24: Optimal Control
-    * Thu, July 25: Reinforcement Learning
-    * Fri, July 26: Network Causality & Graduation
+    * Mon, July 21: Bayesian Decisions
+    * Tue, July 22: Hidden Dynamics
+    * Wed, July 23: Optimal Control
+    * Thu, July 24: Reinforcement Learning
+    * Fri, July 25: Network Causality & Graduation
 ----
 
 ## Daily coursework schedule
-These schedules refer to the coursework time.
+### 2025 course schedule coming soon. Below is the 2024 course schedule. 
 
 ### General schedule
 All days except W2D1, W2D5, and W3D5 will follow this schedule for course time:
