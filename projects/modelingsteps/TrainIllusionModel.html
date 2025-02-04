@@ -1888,8 +1888,8 @@ title="Print to PDF"
 <p><em>Part of step 5</em></p>
 <p>We chose to use a <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2474742/">Drift-Diffusion Model (DDM)</a> because it is a well-established framework that allows us to model decision making in the case of 2 alternative choices (here: self-motion vs. other train motion).</p>
 <p>For our purposes simplest equation looks something like this:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2c4665a3-94ca-4be2-b9c9-d300cc3c537a">
-<span class="eqno">(469)<a class="headerlink" href="#equation-2c4665a3-94ca-4be2-b9c9-d300cc3c537a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-11ac410f-98c9-40e8-831a-281a1008ba31">
+<span class="eqno">(469)<a class="headerlink" href="#equation-11ac410f-98c9-40e8-831a-281a1008ba31" title="Permalink to this equation">#</a></span>\[\begin{align}
 \dot e = \frac{de}{dt}= -c \cdot e + v
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(e\)</span> is the accumulated evidence and <span class="math notranslate nohighlight">\(v\)</span> is our vestibular input already containing the noise (so we don’t need to add more noise?). <span class="math notranslate nohighlight">\(c\)</span> is the leakage constant, i.e. <span class="math notranslate nohighlight">\(c=0\)</span> means perfect integration; <span class="math notranslate nohighlight">\(c=1\)</span> means no integration (perfect leakage).</p>
@@ -1915,9 +1915,9 @@ title="Print to PDF"
 <p>So let’s go step by step… first we need to get set up…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pandas<span class="w"> </span>--quiet
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">)</span>
 </pre></div>
@@ -1928,7 +1928,7 @@ title="Print to PDF"
 <h2>1. Vestibular signal generator<a class="headerlink" href="#vestibular-signal-generator" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">vestibular_signal</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">mov</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">vestibular_signal</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">mov</span><span class="p">):</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  Computes a vestibular signal that corresponds to the acceleration of the</span>
 <span class="sd">  train with different amplitudes of noise</span>
@@ -1965,7 +1965,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;vestibular signal (a.u.)&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/ce70d8c251815c152a3559c2b286f620ca46549f27f4c03912f8967d86324ebc.png" src="../../_images/ce70d8c251815c152a3559c2b286f620ca46549f27f4c03912f8967d86324ebc.png" />
+<img alt="../../_images/c5c5cf8e5a08c1d1d8ad9f46f2ed1e0c56839cb08c67f7b2a5e4798743cf2253.png" src="../../_images/c5c5cf8e5a08c1d1d8ad9f46f2ed1e0c56839cb08c67f7b2a5e4798743cf2253.png" />
 </div>
 </div>
 </section>
@@ -1973,7 +1973,7 @@ title="Print to PDF"
 <h2>2. integrator (DDM mechanism)<a class="headerlink" href="#integrator-ddm-mechanism" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ddm</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ddm</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  Leaky integration of vestibular signal</span>
 <span class="sd">  Args:</span>
@@ -2008,7 +2008,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;integrated evidence&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/4e0c2a512e70ff51a0f81fa0d4c94087b89900c3a753bc6b2e3ac0849e26515e.png" src="../../_images/4e0c2a512e70ff51a0f81fa0d4c94087b89900c3a753bc6b2e3ac0849e26515e.png" />
+<img alt="../../_images/bec7a61653d7d37b09ecc6d58578fe3fc6864521e36562dc07471beb5e4fd68b.png" src="../../_images/bec7a61653d7d37b09ecc6d58578fe3fc6864521e36562dc07471beb5e4fd68b.png" />
 </div>
 </div>
 </section>
@@ -2016,7 +2016,7 @@ title="Print to PDF"
 <h2>3. thresholding (decision mechanism)<a class="headerlink" href="#thresholding-decision-mechanism" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">threshold</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">thr</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">threshold</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">thr</span><span class="p">):</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  Thresholding of motion evidence</span>
 <span class="sd">  Args:</span>
@@ -2049,7 +2049,7 @@ title="Print to PDF"
 <h2>Assembling the model<a class="headerlink" href="#assembling-the-model" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_model</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">thr</span><span class="p">,</span><span class="n">mov</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">run_model</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">thr</span><span class="p">,</span><span class="n">mov</span><span class="p">):</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  runs the full model to simulate self-motion decision, e.g. for train illusion</span>
 <span class="sd">  Args:</span>
@@ -2102,7 +2102,7 @@ title="Print to PDF"
 <p>So let’s run out model in different parameter regimes and analyze the result to get some insight into the model performance</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">itertools</span> <span class="c1"># to automatically generat possible combinations of parameters</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span> <span class="c1"># to automatically generat possible combinations of parameters</span>
 
 <span class="c1"># define parameter list</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
@@ -2129,7 +2129,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># want data frames:</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Sig&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;Thr&#39;</span><span class="p">,</span><span class="s1">&#39;Mov&#39;</span><span class="p">,</span><span class="s1">&#39;Decisions&#39;</span><span class="p">])</span>
 <span class="c1"># multi panel layout:</span>
 <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
@@ -2157,7 +2157,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0119531710dddf3623806cf68c2ffca65ce57f3eb0dee3824c4f4ddef0a59539.png" src="../../_images/0119531710dddf3623806cf68c2ffca65ce57f3eb0dee3824c4f4ddef0a59539.png" />
+<img alt="../../_images/2b18dbb36b6192a7314b0dfdf16163429acc07cffd90be8c89b2376c0324af3b.png" src="../../_images/2b18dbb36b6192a7314b0dfdf16163429acc07cffd90be8c89b2376c0324af3b.png" />
 </div>
 </div>
 <p>There seems to be some parameter redundancy. I.e. we could chose different parameter combinations to make the model do something sensible…</p>
@@ -2178,7 +2178,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Motion detected for no-motion = 28.8 %; and motion = 60.2 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Motion detected for no-motion = 32.7 %; and motion = 59.0 %
 </pre></div>
 </div>
 </div>
@@ -2215,7 +2215,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/036e1c7f1827161ed67b11a291563a79224a84685712c1c1f77835cb77bf7396.png" src="../../_images/036e1c7f1827161ed67b11a291563a79224a84685712c1c1f77835cb77bf7396.png" />
+<img alt="../../_images/0539e912412d21d8381dd8097c537546bac26693e4152fbf31766f0cc8f4c9e1.png" src="../../_images/0539e912412d21d8381dd8097c537546bac26693e4152fbf31766f0cc8f4c9e1.png" />
 </div>
 </div>
 <p>Our <strong>hypothesis</strong> of linear increase of illusion strength with noise only holds true in a limited range of noise… It’s monotonic but saturating of course…</p>
