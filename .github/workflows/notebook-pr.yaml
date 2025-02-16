@@ -94,7 +94,9 @@ jobs:
         id: process_notebooks
         run: |
           branch=${{ github.event.pull_request.head.ref }}
-          nbs=`python ci/select_notebooks.py ${{ steps.changed-files.outputs.all_changed_files }}`
+          nbs="projects/*/*.ipynb";
+          # nbs="tutorials/*/*Tutorial*.ipynb";
+          # nbs=`python ci/select_notebooks.py ${{ steps.changed-files.outputs.all_changed_files }}`
           if ${{ contains(env.COMMIT_MESSAGE, 'ci:check') }}; then
             execflag="--check-execution";
           else
