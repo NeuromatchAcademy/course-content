@@ -2,14 +2,13 @@
 
 ## Summary
 
-This project plan explicitly encourages the iterative nature of research as a series of questions and answers that gradually refine your hypotheses. We have assigned you to pods based on your broad interests (neurons, fMRI, ECoG, theory and behavior). Each pod will split into two groups, with the goal of making well-balanced groups. There is more guidance below.
+The goal of the course project is to give you the opportunity to practice asking research questions and using computational tools to answer those questions. This project plan explicitly encourages the iterative nature of research as a series of questions and answers that gradually refine your hypotheses.  As part of this process you will also get practical experience dealing with data, which is often a big challenge of its own when conducting research.
 
-Once you're in groups, you will start brainstorming and searching the literature for interesting papers, with the goal of forming a project question. For the rest of week 1 you will try preliminary analyses of the datasets with the goal of refining and informing your question. Week 2 day 1 (W2D1) is dedicated to projects and will teach you a general strategy for approaching projects (the "10 steps"). You will apply this strategy to your own question. 
+We have assigned you to pods based on your broad interests (neurons, fMRI, ECoG, behavior/theory). With the help of your TA, each pod will split into two groups, with the goal of making well-balanced groups.  Once you're in groups, you will start brainstorming and searching the literature for interesting papers, with the goal of forming a project question. During week 1 you will try preliminary analyses of the datasets with the goal of refining and informing your question. Week 2 day 1 (W2D1) is dedicated to projects and will teach you a general strategy for approaching projects (the "10 steps"). You will apply this strategy to your own question. 
 
 For the rest of the second week you will continue to analyze data / refine your question, with the goal of writing an abstract on W2D5, which is another project day. Your abstract may or may not include results, but it should at least include a testable hypothesis. You'll swap abstracts with another group on W2D5. For the rest of the course, you will focus on getting evidence for/against your hypothesis.
 
 Finally, in W3D5 you will meet with other groups in your pod and megapod (organized by the lead TAs), and tell them the story of your project. This is a low-key presentation that may include some of the plots you made along the way, but it is not meant as a real research presentation with high “production values”. See some of the [examples](https://compneuro.neuromatch.io/projects/docs/project_2020_highlights.html)  to get a sense of what the presentation will look like.
-
 
 ## Submission Links
 
@@ -29,10 +28,14 @@ Project TAs are your friendly dataset experts to consult with on all issues rela
 
 For the assigned meetings, project TAs will generally come only during project times, but sometimes they might need to schedule meetings slightly earlier or later. We encourage you to reach out to them for extra meetings whenever you need them, and to post questions on discord in the #dataset-X channels. 
 
+## Project Mentors
+
+You will have a couple of scheduled meetings with a project mentor throughout the three weeks of the course.  Project Mentors are active researchers in the field of neuroscience. They may not be an expert in your dataset but they have experience guiding student research projects and can help you think about the scientific questions that you're asking and look for potential next steps or connections to interesting literature.  
+
+
 ##  Week 1: Getting started
 
-Depending on your time slot, you may or may not have project time on the first day of the course. Regardless of whether your first project meeting is day 1 or day 2, spend your first session doing the following:
-
+### W1D1
 * Split into groups. We recommend intentionally creating groups with diverse skillsets. Groups should have students who are very confident in Python and those who are just learning. Through the project, students can work together to strengthen eachother's skills. We want to make sure that all members of each group get a chance to do all parts of the project. We ask that folks who are good with Python share what they know and handoff tasks to peers who are learning so they can improve their skills. 
 * Introductions (30 min = 2 min/student): say a few things about yourself, then about your research area or research interests. What are you really curious about, that you might explore in your NMA project?
 * Listen carefully as others talk about their interests.
@@ -45,9 +48,16 @@ Tips:
 
 
 ### W1D2
-Continue brainstorming! Try to come up with one or a few topics of interest, either by yourselves or directly from the project templates. Get your hands dirty by running some of the notebooks provided for your dataset. There should be a loading notebook, and there should be some further analysis notebooks interspersed among the project templates. Even if you are not using a project template, they are likely to contain useful code to get you started, especially if you are doing a theory project. If all you do is run the provided notebooks that’s fine! Try to understand what is being plotted and how. Pay attention to the code libraries being used, and the way the data is accessed / binned / aligned. You will reuse some of these code elements to start doing your own analyses in later days.
+Continue brainstorming! Try to come up with one or a few topics of interest, either by yourselves or directly from the project templates. 
+
+It's also really important that you start to play with the data related to your topic.  One of the big challenges with these sorts of projects is actually understanding the data that you have.  
+* Start by running the provided notebooks for the dataset you're interested in. There should be a loading notebook, and some further analysis notebooks interspersed among the project templates. Even if you are not using a project template, they are likely to contain useful code to get you started, especially if you are doing a theory project.
+* Try to understand what is being plotted and how.  What is the x-axis, what is the y-axis?  Is this one neuron or many?  Are there multiple areas available to you?
+* Pay attention to the code libraries being used, and the way the data is accessed / binned / aligned. You will reuse some of these code elements to start doing your own analyses in later days.
+* Make some small changes to the code. Even if it's just to change how a plot appears.
 
 ### W1D3-W1D5
+
 Be on the lookout for interesting hypotheses. You might notice something unexpected in the data, and if you dig deeper it might lead you directly to a result. For this to work, you must keep an open mind about what your questions are. Here are some generally useful tips & tricks:
 
 * The hardest part will be the technical challenge of wrestling with the data to try to answer your question. You can rely on your TA, the dedicated project TA and the Discord channels to make this process easier.
@@ -68,25 +78,39 @@ Be on the lookout for interesting hypotheses. You might notice something unexpec
    * There are many complex clustering models like the Leiden/Louvain algorithms, hdbscan and spectral clustering, but those tend to be unstable for high-dimensional data and difficult to interpret. You will have to carefully try different parameters, and think through what the clusters mean.
    * You can still use nonlinear models very well as a *hypothesis* about what the brain is doing. For example, neural networks configured and trained in specific ways can resemble neural activity in the brain. 
 
+### W1D5 -- Looking ahead to the first project day (W2D1)
 
-## W2 Project time
+(30) -- Spend the last 30 minutes of today reflecting on the data analysis that you've done and the questions you're considering. Read through the guidance below for the first project day and identify a question (of your own or from the project template) that your group would like to use during the W2D1 project tutorial and to guide your abstract writing.
 
-Week 2 is when projects really start to ramp up.
+## Week 2: Reading, Writing, Models, and Data Analysis.
+Week 2 is when projects really start to ramp up.  
 
 ### W2D1: Project Half Day
-We have designed tutorials to help launch your projects. Once you're done with them, you will complete your literature review and work on your project proposal.
+We have designed a set of project tutorials to help launch your projects. Once you're done with them, you will complete your literature review and work on your project proposal.
 
-(2h) Complete the intro/tutorial/outro for this day
-* You will need to use your group's project for some of this content. If you don’t have concrete ideas yet, or you haven’t done a research project before, use one of the provided project templates to walk through the four steps.
+(2h) Complete the intro/tutorial/outro for W2D1:
+* This intro/tutorial/intro will introduce the first four (of ten) steps for modelling. 
+  * Step 1: Finding a phenomenon and a question to ask about it
+  * Step 2: Understanding the state of the art & background
+  * Step 3: Determining the basic ingredients
+  * Step 4: Formulating specific, mathematically defined hypotheses
+ 
+* You will need to use your group's project question for some of this content. Remember, if you don’t have concrete ideas yet, or you haven’t done a research project before, you can use one of the provided project templates to walk through the four steps. 
 * If you are using a project template, your goal is to translate the information from the slide and colab notebook into a 4-step format. Some information might not be readily available in the slide or notebook, and you might have to find it in your literature review later this day.
-* Try to write down a few sentences for each of the four steps applied to your project. You will reuse these in your proposal later today.  
+* Try to write down a few sentences for each of the four steps applied to your project. You will reuse these in your proposal later today.
+* There are two example projects available to see how the 10 steps are applied
+  * [Example Model Project](https://compneuro.neuromatch.io/projects/modelingsteps/TrainIllusionModel.html)
+  * [Example Data Project](https://compneuro.neuromatch.io/projects/modelingsteps/TrainIllusionDataProject.html)
+* The original 10 step modeling paper is available [here](https://www.eneuro.org/content/eneuro/7/1/ENEURO.0352-19.2019.full.pdf)
 
 (2.5h) Literature review: identify interesting papers
 The goal of this literature review is to situate your question in context and help you acquire some keywords that you will use in your proposal today.
-* (30min) on your own, start doing a literature review using google searches and only look at abstracts to select 2-3 promising ones.  
+* (30min) on your own, start doing a literature review using [google scholar searches](https://scholar.google.com/) and only look at abstracts to select 2-3 promising ones.  
 * (10min) report to the whole group what papers you found and pool them together. Assign one paper per person to read/skim in the next 1h.  
 * (1h) on your own, read the paper that was assigned to you. Make notes in a common google doc shared with your group, and especially write down important keywords or concepts which you might use in your proposal later today. If you are not connected to an .edu domain or a VPN, try to find full versions of papers on preprint servers like arXiv / bioRxiv. You could also ask your TA to get it for you (and they might in turn ask someone who has access to a university VPN). There might be other options too.  
 * (1h) report back to the group, and try to tell them as much as you understood about the paper. Get into details, but don’t just read to them whole sections from the paper. Ask the other students questions about the papers they are presenting to understand them better.
+
+BREAK TIME!!
 
 Project block task:
 (3h) Project proposal
@@ -96,15 +120,15 @@ Project block task:
 
 ###  W2D2
 
-You should now have a sense of the data, and you have probably refined your hypothesis a little. You might have a vague idea of what it would take for your project to work, what tools you might use, and what the answer could look like. Let’s make these things explicit, by continuing with steps 6-9 of the modeling practice in this [steps 5-10 notebook](https://compneuro.neuromatch.io/projects/modelingsteps/ModelingSteps_5through10.html).
+You should now have a sense of the data, and you have probably refined your hypothesis a little. You might have a vague idea of what it would take for your project to work, what tools you might use, and what the answer could look like. Let’s make these things explicit, by continuing with the remaining steps of the modeling practice in this [steps 5-10 notebook](https://compneuro.neuromatch.io/projects/modelingsteps/ModelingSteps_5through10.html).
 
 * (1-2h) Go through steps 6-10 for your project and watch the videos.
 
+Keep working on your projects!!
+
 ### W2D5: Abstract Writing Day!
 
-One of the best ways to understand your own research is to try to write about it. You should write early and often, not just at the end when you’re trying to write a paper or your thesis. Science conferences are a great way to present your intermediate work, and they give you a chance to write an abstract. For example, the Neuromatch Conferences are a great venue for this. However, you don’t have to wait so long to write your project abstract, you’ll do it today! If you have preliminary results that’s great, but it’s not required. Most of the components of an abstract do not in fact require results. The goal for this day is to workshop your abstract with your group, and then present this to your entire pod. You can also think of it as a much more refined version of the project proposal you submitted originally.
-
-If you have been using a project template, this is a good time to branch out and pursue your own questions. The template was only meant to get you started on some concrete analyses, so that you become familiar with the data, but now that you have more knowledge, you should be able to come up with your own question. Practice the 4-steps again if necessary, they should be easier once you have a good question.
+One of the best ways to understand your own research is to try to write about it. You should write early and often, not just at the end when you’re trying to write a paper or your thesis. Science conferences are a great way to present your intermediate work, and they give you a chance to write an abstract. However, you don’t have to wait so long to write your project abstract, you’ll do it today! If you have preliminary results that’s great, but it’s not required. Most of the components of an abstract do not in fact require results. The goal for this day is to workshop your abstract with your group, and then present this to your entire pod. You can also think of it as a much more refined version of the project proposal you submitted originally.
 
 If you think your abstract is lacking the computational "oomph" to make it sound good, check out the "W2D5 (bonus)" section below. Take the time to find interesting modeling or computational facets to your project, because this will make the abstract writing easier and more enjoyable since you can talk about big, interesting ideas and then gradually focus on the very specific work that you've done.  
 
@@ -135,7 +159,9 @@ Once you are done, please submit the abstract [here](https://airtable.com/app1Mt
 
 ### W2D5 (bonus)
 
-Writing an abstract is also a good time to reflect on how your work relates to some of the big computational ideas in neuroscience. Relating your work to big ideas is a good way to get lots of people interested in your work! It is also a good way to find inspiration for what to do next. Maybe you have unknowingly proven an important theory? Think through the predictions that theory would make and see if you can steer your analyses towards validating or invalidating those predictions. Here is a list of big ideas the project team put together to think about. Some of them are covered in the course material (potentially next week). Don't be afraid to ask your TA (or project TA) if you are not familiar with some of these ideas, for example "why is sparsity such an important concept in neuroscience?". These kinds of questions usually spark good discussions.
+Writing an abstract is also a good time to reflect on how your work relates to some of the big computational ideas in neuroscience. Relating your work to big ideas is a good way to get lots of people interested in your work! It is also a good way to find inspiration for what to do next. Maybe your question speak to one of these big ideas in neuroscience? 
+
+Here is a list of big ideas the project team put together to think about. Some of them are covered in the course material (potentially next week). Don't be afraid to ask your TA (or project TA) if you are not familiar with some of these ideas, for example "why is sparsity such an important concept in neuroscience?". These kinds of questions usually spark good discussions.
 
 1. Sparsity ([paper](https://www.nature.com/articles/381607a0.pdf?origin=ppub))
 
@@ -164,7 +190,8 @@ Abstract writing day should have helped you narrow down what results (positive o
 * If you know what analysis you need, but don’t know how to do it, the TAs are there to help you. They can point you to useful toolkits that may be difficult to find otherwise.
 * Try not to implement complicated analyses from scratch. Use existing toolkits, and learn how to use them well. This kind of knowledge is very helpful long-term.
 * If you find a negative answer to your question, that is absolutely ok! Please do report that. Then go back and think about how this affects your initial hypothesis. Does it rule it out, or could there be limitations in this particular data that lead to the negative result? What other data would you collect that would be better suited for answering this question? Try to design a new experiment in very specific detail and tell us about it. Who knows, somebody might run that experiment someday!
-* If you find a positive result (i.e. the data matches your hypothesis), then you should spend the rest of your time validating it to make absolutely sure it is really true. You will need to design controls using the data (shuffling controls), or using simulated data, and you need to check the logic of your pipeline from start to end. Did you accidentally select only neurons that were tuned to a behavior, and then showed that they respond to aspects of that behavior? Did you sort neurons by their peak response time and then found sequences in your data? That is circular reasoning! There are some obvious and some not-so-obvious circular analyses that can catch even experienced researchers off-guard. This is what the controls are especially useful at catching.  
+* If you find a positive result (i.e. the data matches your hypothesis), then you should spend the rest of your time validating it to make absolutely sure it is really true. You will need to design controls using the data (shuffling controls), or using simulated data, and you need to check the logic of your pipeline from start to end. Did you accidentally select only neurons that were tuned to a behavior, and then showed that they respond to aspects of that behavior? Did you sort neurons by their peak response time and then found sequences in your data? That is circular reasoning! There are some obvious and some not-so-obvious circular analyses that can catch even experienced researchers off-guard. This is what the controls are especially useful at catching.
+* If you have been using a project template, this is a good time to branch out and pursue your own questions. Now that you've become familiar with the data, and have more knowledge, you might be able to come up with your own question. Practice the 4-steps again if necessary, they should be easier once you have a good question.
 
 ## W3D5: Final Presentations
 
@@ -191,10 +218,7 @@ At the end of your last project block, you should also submit your slides via th
 
 ### Logistics:
 
-* The lead TA for your megapod will make multiple subgroups of 4-5 research teams from across the entire megapod. Each subgroup gets a separate breakout room for their session. If there are too many large pods in the megapod, there may be multiple zoom links in the megapod, so make sure you have the right one for your group. 
-  * timeslots 1,3,5:   last hour of project time, -1:00 to 0:00 relative to start of your normal tutorial time (check the shared calendars in jupyterbook).
-  * timeslots 2,4: after the course feedback session (check the shared calendars in jupyterbook).
-  There is a hard cutoff at the one hour mark, so the TAs must ensure everyone gets a turn to present.  
+* The lead TA for your megapod will make multiple subgroups of 4-5 research teams from across the entire megapod. Each subgroup gets a separate breakout room for their session. If there are too many large pods in the megapod, there may be multiple zoom links in the megapod, so make sure you have the right one for your group.
 
 * Use this presentation style ([google slides](https://docs.google.com/presentation/d/1A1uaYarVot9YyCdbAAB4VDvsQfK6emqq-TwIZ9xVNwo/edit?usp=sharing) or [powerpoint](https://osf.io/ky6fj/download)) or create your own style!
 
