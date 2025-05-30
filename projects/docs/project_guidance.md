@@ -88,7 +88,7 @@ Be on the lookout for interesting hypotheses. You might notice something unexpec
 Week 2 is when projects really start to ramp up.  
 
 ### W2D1: Project Half Day
-We have designed a project tutorial to help launch your projects. You will also complete a literature review today and work on your project proposal. We have also designed an LLM-based [app](https://nma-project-planner.vercel.app/) to provide feedback to the different categories of a project proposal (question, hypothesis, dataset etc). 
+Today's project tutorial will introduce a set of general strategies to help you focus and refine your projects. You will also complete a literature review today and work on your project proposal. We have also designed an [LLM-based app](https://nma-project-planner.vercel.app/) to provide feedback to the different categories of a project proposal (question, hypothesis, dataset etc). 
 
 (1h) Complete the intro/tutorial/outro for W2D1:
 * This intro/tutorial/intro will introduce the first four steps for modelling applied to a hypothetical project based on the train illusion. 
