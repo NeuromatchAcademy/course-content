@@ -1,6 +1,6 @@
 # Guide to choosing an FMRI dataset
 
-*July 5-23, 2021*
+Scroll down for project templates associated to these datasets. 
 
 ## HCP task datasets
 
@@ -84,3 +84,23 @@ Credit for data curation: Kshitij Dwivedi
 - Cichy, R. M., Pantazis, D., and Oliva, A. (2014). Resolving human object recognition in space and time. Nature neuroscience, 17(3): 455-462. doi: [10.1038/nn.3635](https://doi.org/10.1038/nn.3635)
 
 - url: [algonauts.csail.mit.edu/challenge.html](http://algonauts.csail.mit.edu/challenge.html)
+
+# Project Templates
+
+Click on each image below to see a full browser version!
+
+## Mapping brain activation and representation with fMRI
+
+<img src="template_images/MappingBrainRepresentationwithfMRI.svg" width="100%">
+
+## Retinotopic mapping with fMRI
+
+<img src="template_images/RetinotopicMappingFMRI.svg" width="100%">
+
+## Modelling of navigational affordances and scene-selective responses
+
+<img src="template_images/NavigationalAffordancesFMRI.svg" width="100%">
+
+## Visual information in different brain regions
+
+<img src="template_images/VisualInformationAcrossRegions.svg" width="100%">

@@ -91,26 +91,26 @@ Here is a list of cool databases you might want to use to look for existing mode
 
 Click on each image below to see a full browser version!
 
-# The structure of mouse social behavior
+## The structure of mouse social behavior
 
 <img src="template_images/MouseSocialBehavior.svg" width="100%">
 
-# State-dependent decision-making in mice performing a 2AFC task
+## State-dependent decision-making in mice performing a 2AFC task
 
 <img src="template_images/MouseBehavior2AFC.svg" width="100%">
 
-# Probing the dynamics of human estimation errors in a Bayesian framework
+## Probing the dynamics of human estimation errors in a Bayesian framework
 
 <img src="template_images/HumanEstimationErrorDynamicsInBayesianFramework.svg" width="100%">
 
-# The working memory capacity of recurrent neural network models
+## The working memory capacity of recurrent neural network models
 
 <img src="template_images/WorkingMemoryRNNs.svg" width="100%">
 
-# Attractor models of working memory
+## Attractor models of working memory
 
 <img src="template_images/WorkingMemoryAttractorModels.svg" width="100%">
 
-# Linking structure, dynamics and function in recurrent neural networks (RNNs) during motor learning
+## Linking structure, dynamics and function in recurrent neural networks (RNNs) during motor learning
 
 <img src="template_images/StructureDynamicFunctionInMotorRNN.svg" width="100%">

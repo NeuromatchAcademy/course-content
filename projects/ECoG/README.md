@@ -73,10 +73,10 @@ Credit for data curation: Marius Pachitariu and the project TAs
 
 Click on each image below to see a full browser version!
 
-# Exploring AJILE12 dataset
+## Exploring AJILE12 dataset
 
 <img src="template_images/NeuromatchProject_AJILE12.svg" width="100%">
 
-# Does neural activity reflect face perception?
+## Does neural activity reflect face perception?
 
 <img src="template_images/NeuralBasisOfFacePerception.svg" width="100%">
