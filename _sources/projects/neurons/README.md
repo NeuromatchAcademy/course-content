@@ -55,15 +55,15 @@ Credit for data curation: Marina Garret, Iryna Yavorska, Doug Ollerenshaw
 
 Click on each image below to see a full browser version!
 
-# Flow of information through the brain during a sensorimotor task
+## Flow of information through the brain during a sensorimotor task
 
 <img src="template_images/InformationFlowSensoryMotorTask.svg" width="100%">
 
-# Effect of stimulus context and behavior state on visual representations
+## Effect of stimulus context and behavior state on visual representations
 
 <img src="template_images/StimulusContextBehaviorState.svg" width="100%">
 
-# Behavior representations in mouse visual cortex
+## Behavior representations in mouse visual cortex
 
 <img src="template_images/MouseOrofacialBehaviors.svg" width="100%">
 
