@@ -1,8 +1,23 @@
 # Guide to choosing an EEG/ECoG/LFP dataset
 
-*July 5-23, 2021*
+We have two types of ECoG datasets, each with their project template: one set from the AJILE12 dataset, and one set from Kai Miller's lab. Scroll down to see the project templates.
 
-New in 2021, we have ECoG datasets ([youtube](https://youtube.com/watch?v=rAqtrBhwS80)) from Kai Miller! This is a rare dataset from intracranial electrocorticographic recordings in clinical settings. Please watch Kai Miller's TED talk to familiarize yourself with this type of recording.
+## Exploring AJILE12 dataset:
+
+See these papers for detailed information about the dataset: 
+
+- Peterson, S. M., Singh, S. H., Wang, N. X., Rao, R. P., & Brunton, B. W. (2021). Behavioral and neural variability of naturalistic arm movements. Eneuro, 8(3). doi: [10.1523/ENEURO.0007-21.2021](https://doi.org/10.1523/ENEURO.0007-21.2021)
+- Singh, S. H., Peterson, S. M., Rao, R. P., & Brunton, B. W. (2021). Mining naturalistic human behaviors in long-term video and neural recordings. Journal of Neuroscience Methods, 358, 109199. doi: [10.1016/j.jneumeth.2021.109199](https://doi.org/10.1016/j.jneumeth.2021.109199)
+
+Credit for data curation: Nima Dehghani 
+
+|   | Run | View |
+| - | --- | ---- |
+| AJILE12 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/ECoG/exploreAJILE12.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/ECoG/exploreAJILE12.ipynb?flush_cache=true) |
+
+## Kai Miller datasets:
+
+This a series of smaller datasets ([youtube](https://youtube.com/watch?v=rAqtrBhwS80)) from intracranial electrocorticographic recordings in clinical settings. Please watch Kai Miller's TED talk to familiarize yourself with this type of recording.
 
 * The datasets are more or less at the same difficulty level. All datasets are from the same research group, using the same recording methods and standardized protocols.
 
@@ -53,7 +68,15 @@ Credit for data curation: Marius Pachitariu and the project TAs
 
 - Miller, K. J., Schalk, G., Fetz, E. E., Den Nijs, M., Ojemann, J. G., and Rao, R. P. (2010). Cortical activity during motor execution, motor imagery, and imagery-based online feedback. Proceedings of the National Academy of Sciences 107(9):4430-4435. doi: [10.1073/pnas.0913697107](https://doi.org/10.1073/pnas.0913697107)
 
-### Exploring AJILE12 dataset:
 
-- Peterson, S. M., Singh, S. H., Wang, N. X., Rao, R. P., & Brunton, B. W. (2021). Behavioral and neural variability of naturalistic arm movements. Eneuro, 8(3). doi: [10.1523/ENEURO.0007-21.2021](https://doi.org/10.1523/ENEURO.0007-21.2021)
-- Singh, S. H., Peterson, S. M., Rao, R. P., & Brunton, B. W. (2021). Mining naturalistic human behaviors in long-term video and neural recordings. Journal of Neuroscience Methods, 358, 109199. doi: [10.1016/j.jneumeth.2021.109199](https://doi.org/10.1016/j.jneumeth.2021.109199)
+# Project Templates
+
+Click on each image below to see a full browser version!
+
+# Exploring AJILE12 dataset
+
+<img src="template_images/NeuromatchProject_AJILE12.svg" width="100%">
+
+# Does neural activity reflect face perception?
+
+<img src="template_images/NeuralBasisOfFacePerception.svg" width="100%">

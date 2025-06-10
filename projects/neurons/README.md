@@ -1,6 +1,6 @@
 # Guide to choosing a Neurons dataset
 
-*July 5-23, 2021*
+Scroll down for project templates associated to these datasets. 
 
 ## Steinmetz
 
@@ -50,3 +50,20 @@ Credit for data curation: Marina Garret, Iryna Yavorska, Doug Ollerenshaw
 ### You can read more about scientific discoveries related to this dataset in our preprint:
 
 - Garrett, M. et. al. (2023) Stimulus novelty uncovers coding diversity in visual cortical circuits. bioRxiv doi: [https://www.biorxiv.org/content/10.1101/2023.02.14.528085v2]
+
+# Project Templates
+
+Click on each image below to see a full browser version!
+
+# Flow of information through the brain during a sensorimotor task
+
+<img src="template_images/InformationFlowSensoryMotorTask.svg" width="100%">
+
+# Effect of stimulus context and behavior state on visual representations
+
+<img src="template_images/StimulusContextBehaviorState.svg" width="100%">
+
+# Behavior representations in mouse visual cortex
+
+<img src="template_images/MouseOrofacialBehaviors.svg" width="100%">
+
