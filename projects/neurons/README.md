@@ -51,6 +51,24 @@ Credit for data curation: Marina Garret, Iryna Yavorska, Doug Ollerenshaw
 
 - Garrett, M. et. al. (2023) Stimulus novelty uncovers coding diversity in visual cortical circuits. bioRxiv doi: [https://www.biorxiv.org/content/10.1101/2023.02.14.528085v2]
 
+
+## International Brain Laboratory
+
+The International Brain Laboratory (IBL) brain-wide map dataset ([YouTube tutorial – TODO link]) includes data from 699 Neuropixels probe insertions across 281 brain regions, recorded during a standardized visual decision-making task. To help users get started, a dedicated project and step-by-step tutorial are available. For more advanced users, the IBL ONE tutorial demonstrates how to access the full range of IBL data using the Open Neurophysiology Environment (ONE) API, enabling deeper exploration and custom analyses across the entire dataset.
+
+Credit for data curation: Mayo Faulkner
+
+|                       | Run | View |
+|-----------------------| --- | ---- |
+| Analyze prepared data | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1WEhmZF4hnxkuGCcqJn1tl5oGFgO85Qai) | 
+| IBL ONE tutorial      | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1y3sRI1wC7qbWqN6skvulzPOp6xw8tLm7) | 
+
+### References
+
+- International Brain Laboratory et al. (2023) A Brain-Wide Map of Neural Activity during Complex Behaviour doi: [10.1101/2023.07.04.547681]([https://doi.org/10.1101/2023.07.04.547681])
+- Findling et al. (2023) Brain-wide representations of prior information in mouse decision-making doi: [10.1101/2023.07.04.547684](https://doi.org/10.1101/2023.07.04.547684)
+
+
 # Project Templates
 
 Click on each image below to see a full browser version!
@@ -67,3 +85,6 @@ Click on each image below to see a full browser version!
 
 <img src="template_images/MouseOrofacialBehaviors.svg" width="100%">
 
+## Brain-wide map of neural activity during complex behaviour
+
+<img src="template_images/BrainwideMapIBL.svg" width="100%">
