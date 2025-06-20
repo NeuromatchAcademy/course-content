@@ -23,9 +23,9 @@ The IBL dataset ([youtube](https://youtube.com/watch?v=NofrFH8FRZU)) contains be
 
 Credit for data curation: Eric DeWitt and the IBL team
 
-|   | Run | View |
-| - | --- | ---- |
-| Psychometric notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14OtLUEiyhrPTPsXetg8VQrTk1CLhBCW5) | |
+|                 | Run                                                                                                                                                                                                        | View                                                                                                                                                                                                                       |
+|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Loader notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/behavior/IBL_behavior_data.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/behavior/IBL_behavior_data.ipynb?flush_cache=true) |
 
 
 ## Laquitaine & Gardner, Neuron, 2017

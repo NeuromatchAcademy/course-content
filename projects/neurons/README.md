@@ -41,10 +41,10 @@ The International Brain Laboratory (IBL) brain-wide map dataset ([YouTube tutori
 
 Credit for data curation: Mayo Faulkner
 
-|                       | Run | View |
-|-----------------------| --- | ---- |
-| Analyze prepared data | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1WEhmZF4hnxkuGCcqJn1tl5oGFgO85Qai) | 
-| IBL ONE tutorial      | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1y3sRI1wC7qbWqN6skvulzPOp6xw8tLm7) | 
+|                       | Run                                                                                                                                                                                                                    | View                                                                                                                                                                                                               |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Analyze prepared data | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/IBL_BWM_Neuromatch_tutorial.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/IBL_BWM_Neuromatch_tutorial.ipynb?flush_cache=true) |
+| IBL ONE tutorial      | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/IBL_ONE_tutorial.ipynb)              | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/IBL_ONE_tutorial.ipynb?flush_cache=true)            | 
 
 ### References
 
