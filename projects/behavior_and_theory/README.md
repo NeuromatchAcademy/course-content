@@ -18,23 +18,15 @@ Credit for data curation: Ann Kennedy
 
 ## IBL
 
-The IBL dataset ([youtube](https://youtube.com/watch?v=NofrFH8FRZU)) is a visual decision-making task, that is very similar to the one used in the Steinmetz dataset.
+The IBL dataset ([youtube](https://youtube.com/watch?v=NofrFH8FRZU)) contains behavioral data collected from 140 mice performing a visual decision-making task.  It includes reaction times and various task-related variables covering the full learning trajectory of each mouse, from naive to expert performance.
+
 
 Credit for data curation: Eric DeWitt and the IBL team
-
-This notebook is currently available:
 
 |   | Run | View |
 | - | --- | ---- |
 | Psychometric notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14OtLUEiyhrPTPsXetg8VQrTk1CLhBCW5) | |
 
-These will be available next week:
-
-|   | Run | View |
-| - | --- | ---- |
-| Exploration notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/int-brain-lab/nma-ibl/blob/master/01-Explore%20IBL%20behavior%20data%20pipeline.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/int-brain-lab/nma-ibl/blob/master/01-Explore%20IBL%20behavior%20data%20pipeline.ipynb?flush_cache=true) |
-| Psychometric notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/int-brain-lab/nma-ibl/blob/master/02-Plot%20Psychometric%20curve.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/int-brain-lab/nma-ibl/blob/master/02-Plot%20Psychometric%20curve.ipynb?flush_cache=true) |
-| Additional analyses | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/int-brain-lab/nma-ibl/blob/master/03-Replication%20of%20paper%20figures.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/int-brain-lab/nma-ibl/blob/master/03-Replication%20of%20paper%20figures.ipynb?flush_cache=true) |
 
 ## Laquitaine & Gardner, Neuron, 2017
 
