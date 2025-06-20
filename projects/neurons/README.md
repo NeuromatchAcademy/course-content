@@ -37,7 +37,7 @@ Credit for data curation: Marina Garret, Iryna Yavorska, Doug Ollerenshaw
 
 ## International Brain Laboratory
 
-The International Brain Laboratory (IBL) brain-wide map dataset ([YouTube tutorial – TODO link]) includes data from 699 Neuropixels probe insertions across 281 brain regions, recorded during a standardized visual decision-making task. To help users get started, a dedicated project and step-by-step tutorial are available. For more advanced users, the IBL ONE tutorial demonstrates how to access the full range of IBL data using the Open Neurophysiology Environment (ONE) API, enabling deeper exploration and custom analyses across the entire dataset.
+The International Brain Laboratory (IBL) brain-wide map dataset ([youtube](https://www.youtube.com/watch?v=N69nvrnmq9g)) includes data from 699 Neuropixels probe insertions across 281 brain regions, recorded during a standardized visual decision-making task. To help users get started, a dedicated project and step-by-step tutorial are available. For more advanced users, the IBL ONE tutorial demonstrates how to access the full range of IBL data using the Open Neurophysiology Environment (ONE) API, enabling deeper exploration and custom analyses across the entire dataset.
 
 Credit for data curation: Mayo Faulkner
 
