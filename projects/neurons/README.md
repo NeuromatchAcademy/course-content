@@ -2,23 +2,6 @@
 
 Scroll down for project templates associated to these datasets. 
 
-## Steinmetz
-
-The Steinmetz dataset ([youtube](https://www.youtube.com/watch?v=WXn4-FpVaOo)) contains 39 Neuropixels recordings of 400-700 neurons each from across the mouse brain during a visual behavior task. This dataset was used by the most groups last year, as it is great for exploratory analyses and is relatively well supported with code and many included experimental and behavioral variables. You should still try to ask specific questions, i.e.: "does the superior colliculus offer a parallel or complementary visual processing pathway to visual cortex?"
-
-Credit for data curation: Marius Pachitariu, Scott Linderman
-
-|   | Run | View |
-| - | --- | ---- |
-| Main notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_steinmetz_decisions.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_steinmetz_decisions.ipynb?flush_cache=true) |
-| LFP and waveform notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_steinmetz_extra.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/load_steinmetz_extra.ipynb?flush_cache=true) |
-
-### References:
-
-- Steinmetz, N. A., Zatka-Haas, P., Carandini, M., and Harris, K. D. (2019). Distributed coding of choice, action and engagement across the mouse brain. Nature, 576(7786): 266-273. doi: [10.1038/s41586-019-1787-x](https://doi.org/10.1038/s41586-019-1787-x)
-
-- url: [neurostars.org/t/steinmetz-et-al-2019-dataset-questions/14539/72](https://neurostars.org/t/steinmetz-et-al-2019-dataset-questions/14539/72)
-
 ## Stringer
 
 The Stringer datasets ([youtube](https://www.youtube.com/watch?v=78GSgf6Dkkk)) contain simultaneous recordings of 10,000 or 20,000 neurons from mouse visual cortex either during the presentation of gratings or during spontaneous behaviors like running, whisking and sniffing. These datasets are a little more advanced because you have to work with many neurons simultaneously. They are exciting, because they give a taste of what's to come in neuroscience.
@@ -51,13 +34,27 @@ Credit for data curation: Marina Garret, Iryna Yavorska, Doug Ollerenshaw
 
 - Garrett, M. et. al. (2023) Stimulus novelty uncovers coding diversity in visual cortical circuits. bioRxiv doi: [https://www.biorxiv.org/content/10.1101/2023.02.14.528085v2]
 
+
+## International Brain Laboratory
+
+The International Brain Laboratory (IBL) brain-wide map dataset ([youtube](https://www.youtube.com/watch?v=N69nvrnmq9g)) includes data from 699 Neuropixels probe insertions across 281 brain regions, recorded during a standardized visual decision-making task. To help users get started, a dedicated project and step-by-step tutorial are available. For more advanced users, the IBL ONE tutorial demonstrates how to access the full range of IBL data using the Open Neurophysiology Environment (ONE) API, enabling deeper exploration and custom analyses across the entire dataset.
+
+Credit for data curation: Mayo Faulkner
+
+|                       | Run                                                                                                                                                                                                                    | View                                                                                                                                                                                                               |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Analyze prepared data | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/IBL_BWM_Neuromatch_tutorial.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/IBL_BWM_Neuromatch_tutorial.ipynb?flush_cache=true) |
+| IBL ONE tutorial      | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/IBL_ONE_tutorial.ipynb)              | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/neurons/IBL_ONE_tutorial.ipynb?flush_cache=true)            | 
+
+### References
+
+- International Brain Laboratory et al. (2023) A Brain-Wide Map of Neural Activity during Complex Behaviour doi: [10.1101/2023.07.04.547681]([https://doi.org/10.1101/2023.07.04.547681])
+- Findling et al. (2023) Brain-wide representations of prior information in mouse decision-making doi: [10.1101/2023.07.04.547684](https://doi.org/10.1101/2023.07.04.547684)
+
+
 # Project Templates
 
 Click on each image below to see a full browser version!
-
-## Flow of information through the brain during a sensorimotor task
-
-<img src="template_images/InformationFlowSensoryMotorTask.svg" width="100%">
 
 ## Effect of stimulus context and behavior state on visual representations
 
@@ -67,3 +64,6 @@ Click on each image below to see a full browser version!
 
 <img src="template_images/MouseOrofacialBehaviors.svg" width="100%">
 
+## Brain-wide map of neural activity during complex behaviour
+
+<img src="template_images/BrainwideMapIBL.svg" width="100%">
