@@ -21,7 +21,7 @@ Credit for data curation: Mayo Faulkner
 
 ## Supervised and unsupervised learning 
 
-The [Zhong et al,2025](https://doi.org/10.1038/s41586-025-09180-y) dataset ([youtube](https://www.youtube.com/watch?v=78GSgf6Dkkk)) contains simultaneous recordings of up to 80,000 neurons from mouse visual cortex at different stages of visual learning in a virtual reality task with naturalistic images. It also contains recordings made during unsupervised exploration of the same virtual reality environments for comparisons, and recordings made after the introduction of novel stimuli that require behavioral classification.
+The [Zhong et al, 2025](https://doi.org/10.1038/s41586-025-09180-y) dataset ([youtube](https://www.youtube.com/watch?v=o0PFk-lnpuI)) contains simultaneous recordings of up to 80,000 neurons from mouse visual cortex at different stages of visual learning in a virtual reality task with naturalistic images. It also contains recordings made during unsupervised exploration of the same virtual reality environments for comparisons, and recordings made after the introduction of novel stimuli that require behavioral classification.
 
 Credit for data curation: Lin Zhong and Marius Pachitariu
 
