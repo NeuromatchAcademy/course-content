@@ -14,7 +14,7 @@ Credit for data curation: Ann Kennedy
 
 |   | Run | View |
 | - | --- | ---- |
-| Loader notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/behavior/Loading_CalMS21_data.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/behavior/Loading_CalMS21_data.ipynb?flush_cache=true) |
+| Loader notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/behavior_and_theory/Loading_CalMS21_data.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/behavior_and_theory/Loading_CalMS21_data.ipynb?flush_cache=true) |
 
 ## IBL
 
@@ -25,7 +25,7 @@ Credit for data curation: Eric DeWitt and the IBL team
 
 |                 | Run                                                                                                                                                                                                        | View                                                                                                                                                                                                                       |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Loader notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/behavior/IBL_behavior_data.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/behavior/IBL_behavior_data.ipynb?flush_cache=true) |
+| Loader notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/behavior_and_theory/IBL_behavior_data.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/behavior_and_theory/IBL_behavior_data.ipynb?flush_cache=true) |
 
 
 ## Laquitaine & Gardner, Neuron, 2017
@@ -34,15 +34,15 @@ The Laquitaine & Gardner dataset contains behavioral data collected in a motion 
 
 |   | Run | View |
 | - | --- | ---- |
-| Loader & Exploration notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/behavior/laquitaine_human_errors.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/behavior/laquitaine_human_errors.ipynb) |
-| Additional analyses | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/behavior/laquitaine_motion_prior_learning.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/behavior/laquitaine_motion_prior_learning.ipynb) |
+| Loader & Exploration notebook | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/behavior_and_theory/laquitaine_human_errors.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/behavior_and_theory/laquitaine_human_errors.ipynb) |
+| Additional analyses | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/behavior_and_theory/laquitaine_motion_prior_learning.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/behavior_and_theory/laquitaine_motion_prior_learning.ipynb) |
 
 
 ## Working memory
 
 |   | Run | View |
 | - | --- | ---- |
-| Working memory | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/theory/RNN_working_memory.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/theory/RNN_working_memory.ipynb?flush_cache=true) |
+| Working memory | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/behavior_and_theory/RNN_working_memory.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/behavior_and_theory/RNN_working_memory.ipynb?flush_cache=true) |
 
 ## Motor RNN
 
@@ -50,7 +50,7 @@ We built on [Feulner & Clopath, Plos Computational Biology, 2021](https://journa
 
 |   | Run | View |
 | - | --- | ---- |
-| Motor RNN | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/theory/motor_RNNs.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/theory/motor_RNNs.ipynb) |
+| Motor RNN | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/behavior_and_theory/motor_RNNs.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/behavior_and_theory/motor_RNNs.ipynb) |
 
 
 ## Databases of models
