@@ -19,7 +19,7 @@ Finally, in W3D5 you will meet with other groups in your pod and megapod (organi
 
 ## Project templates
 
-[Project templates](https://compneuro.neuromatch.io/projects/docs/project_templates.html) are research ideas developed by the NMA team that can be used in conjunction with the datasets we provided. Project templates can be used in a variety of ways.
+[Project templates](https://compneuro.neuromatch.io/projects/docs/datasets_overview.html) are research ideas developed by the NMA team that can be used in conjunction with the datasets we provided. Project templates can be used in a variety of ways.
 * For starters, you can use the project templates just to get familiarized with some of our datasets or one of the provided models. They can provide keywords for you to use in a literature search, or python libraries you can reuse to answer your own questions.
 * You should use the project templates extensively if you are new to neuroscience and/or you don’t have a lot of research experience. They have been designed to give you enough structure to get started, and enough options to keep you going if you stick with the template. Or you may start with a template, use it the first week and then in the second week diverge from it as your group develops their own new idea or question to test.
 * Templates have a natural flow of questions from easy to hard, but don’t hesitate to skip or completely change some of these. They are meant to be used very flexibly!
