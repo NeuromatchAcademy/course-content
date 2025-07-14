@@ -30,9 +30,7 @@ In order to build the book locally, you will need to do the following:
 
 `pip install -r requirements.txt`
 
-`pip install jupyter-book==0.10.2`
-
-**Important:** Do not install jupyter-book 0.11 or later at this point, as there are breaking changes in how it handles the table of contents file we generate.
+`pip install jupyter-book`
 
 5. Copy files from precourse to `tutorials/`
 
@@ -58,11 +56,15 @@ In order to build the book locally, you will need to do the following:
 
 where `arg` can take either `student` or `instructor` as a value.
 
-This will use the modified tutorials/materials.yml to create the `_toc.yml` file in the book directory. It will also be responsible for creating any additional markdown files or modifying any tutorial notebooks specifically for book generation. 
+This will use the modified tutorials/materials.yml to create the `_toc.yml` file in the book directory. It will also be responsible for creating any additional markdown files or modifying any tutorial notebooks specifically for book generation.
+
+8. Migrate Table of Contents to the new jupyter-book format:
+
+`jupyter-book toc migrate book/_toc.yml -o book/_toc.yml`
 
 **No changes created by this script should be committed to the repo.**
 
-8. Build the book
+9. Build the book
 
 `jupyter-book build book`
 
