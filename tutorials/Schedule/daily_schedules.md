@@ -51,8 +51,6 @@ All days except W2D1, W2D5, and W3D5 will follow this schedule for course time:
 ### Project time
 In addition to course time, each day will have 3 hours of project time. 
 
-#### **Schedule Change for 2025:** For all time slots, projects will come *after* course work. 
-
 ----
 
 ### Schedule of specific days
