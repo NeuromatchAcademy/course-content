@@ -1,36 +1,26 @@
 name: notebook-pr
-on: 
+on:
   pull_request:
     branches: main
     paths: '**/*.ipynb'
 
 env:
   NB_KERNEL: python
+  ORG: NeuromatchAcademy
   NMA_REPO: course-content
   NMA_MAIN_BRANCH: main
 
 jobs:
 
-  process-notebooks:
-
+  setup:
     runs-on: ubuntu-latest
+    outputs:
+      notebooks: ${{ steps.set-matrix.outputs.notebooks }}
+      has_notebooks: ${{ steps.set-matrix.outputs.has_notebooks }}
+      commit_message: ${{ steps.get-commit.outputs.message }}
+      materials_changed: ${{ steps.materials-check.outputs.materials_changed }}
+      skip_ci: ${{ steps.check-skip.outputs.skip }}
     steps:
-      - name: Free up disk space
-        uses: jlumbroso/free-disk-space@main
-        with:
-          # this might remove tools that are actually needed,
-          # if set to "true" but frees about 6 GB
-          tool-cache: false
-          
-          # all of these default to true, but feel free to set to
-          # "false" if necessary for your workflow
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: true
-          docker-images: true
-          swap-storage: true
-          
       - name: Checkout
         uses: actions/checkout@v3
         with:
@@ -39,105 +29,382 @@ jobs:
           ref: ${{ github.head_ref }}
 
       - name: Get commit message
+        id: get-commit
         run: |
-          readonly local msg=$(git log -1 --pretty=format:"%s")
-          echo "COMMIT_MESSAGE=$msg" >> $GITHUB_ENV
+          msg=$(git log -1 --pretty=format:"%s")
+          echo "message=$msg" >> $GITHUB_OUTPUT
 
-      - name: Set up Python
-        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
-        uses: actions/setup-python@v4
+      - name: Check skip ci
+        id: check-skip
+        env:
+          COMMIT_MESSAGE: ${{ steps.get-commit.outputs.message }}
+        run: |
+          if [[ "$COMMIT_MESSAGE" == *"skip ci"* ]]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Setup Python environment
+        if: steps.check-skip.outputs.skip != 'true'
+        uses: ./.github/actions/setup-python-env
+
+      - name: Setup CI tools
+        if: steps.check-skip.outputs.skip != 'true'
+        uses: ./.github/actions/setup-ci-tools
         with:
-          python-version: 3.9
+          commit-message: ${{ steps.get-commit.outputs.message }}
 
-      - name: Install CI tools
-        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
-        run: |
-          BRANCH=`python -c 'import os, re; m = re.search(r"nmaci:([\w-]+)", os.environ["COMMIT_MESSAGE"]); print("main" if m is None else m.group(1))'`
-          wget https://github.com/NeuromatchAcademy/nmaci/archive/refs/heads/$BRANCH.tar.gz
-          tar -xzf $BRANCH.tar.gz
-          pip install --upgrade pip
-          pip install -r nmaci-$BRANCH/requirements.txt
-          mv nmaci-$BRANCH/scripts/ ci/
-          rm -r nmaci-$BRANCH
-          echo ci/ >> .gitignore
-
-      - name: Install dependencies
-        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
-        run: |
-          sudo apt-get update
-          sudo apt-get install python3-opencv -y
-          python -m pip install --upgrade pip wheel
-          pip install -r requirements.txt
-          pip install jupyter_client==7.3.5  # downgrade jupyter-client to fix hangs
-
-      - name: Install XKCD fonts
-        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
-        run: |
-          sudo apt-get update -yq
-          wget http://archive.ubuntu.com/ubuntu/pool/universe/f/fonts-humor-sans/fonts-humor-sans_1.0-4_all.deb
-          sudo dpkg -i --force-all fonts-humor-sans_1.0-4_all.deb <<< 'yes'
-          sudo apt install -fy
-          rm -f $HOME/.matplotlib/fontList.cache
+      - name: Setup rendering dependencies
+        if: steps.check-skip.outputs.skip != 'true'
+        uses: ./.github/actions/setup-rendering-deps
 
       - name: Get changed files
-        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
+        if: steps.check-skip.outputs.skip != 'true'
         id: changed-files
         uses: tj-actions/changed-files@v46
-        
-      - name: List all changed files
+
+      - name: Check if materials.yml changed
+        id: materials-check
+        if: steps.check-skip.outputs.skip != 'true'
         run: |
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            echo "$file was changed."
+          if [[ "${{ steps.changed-files.outputs.all_changed_files }}" =~ materials\.yml ]]; then
+            echo "materials_changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "materials_changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Set notebook matrix
+        id: set-matrix
+        if: steps.check-skip.outputs.skip != 'true'
+        run: |
+          nbs=$(python ci/select_notebooks.py ${{ steps.changed-files.outputs.all_changed_files }})
+
+          if [ -z "$nbs" ]; then
+            echo "No notebooks to process"
+            echo "has_notebooks=false" >> $GITHUB_OUTPUT
+            echo "notebooks=[]" >> $GITHUB_OUTPUT
+          else
+            echo "Notebooks to process: $nbs"
+            echo "has_notebooks=true" >> $GITHUB_OUTPUT
+            json_array=$(echo "$nbs" | tr ' ' '\n' | jq -R . | jq -s -c .)
+            echo "notebooks=$json_array" >> $GITHUB_OUTPUT
+          fi
+
+  process:
+    needs: setup
+    if: needs.setup.outputs.skip_ci != 'true' && needs.setup.outputs.has_notebooks == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        notebook: ${{ fromJson(needs.setup.outputs.notebooks) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+
+      - name: Setup Python environment
+        uses: ./.github/actions/setup-python-env
+
+      - name: Setup CI tools
+        uses: ./.github/actions/setup-ci-tools
+        with:
+          commit-message: ${{ needs.setup.outputs.commit_message }}
+
+      - name: Setup rendering dependencies
+        uses: ./.github/actions/setup-rendering-deps
+
+      - name: Process notebook
+        env:
+          COMMIT_MESSAGE: ${{ needs.setup.outputs.commit_message }}
+          PYTHONUNBUFFERED: "1"
+        run: |
+          echo "::group::Processing ${{ matrix.notebook }}"
+          echo "Started at: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+
+          if [[ "$COMMIT_MESSAGE" == *"ci:check"* ]]; then
+            execflag="--check-execution"
+            echo "Mode: Check execution (no changes)"
+          else
+            execflag="--execute"
+            echo "Mode: Execute and process"
+          fi
+          echo "::endgroup::"
+
+          echo "::group::Notebook execution output"
+          python ci/process_notebooks.py "${{ matrix.notebook }}" $execflag
+          exit_code=$?
+          echo "::endgroup::"
+
+          echo "Completed at: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+          exit $exit_code
+
+      - name: Get tutorial directory
+        id: get-dir
+        run: |
+          nb="${{ matrix.notebook }}"
+          dir=$(dirname "$nb")
+          nb_name=$(basename "$nb" .ipynb)
+          echo "dir=$dir" >> $GITHUB_OUTPUT
+          echo "nb_name=$nb_name" >> $GITHUB_OUTPUT
+          safe_dir=$(echo "$dir" | sed 's|/|___|g')
+          echo "artifact_name=${safe_dir}___${nb_name}" >> $GITHUB_OUTPUT
+
+      - name: Upload processed tutorial directory
+        uses: actions/upload-artifact@v4
+        with:
+          name: tutorial-${{ steps.get-dir.outputs.artifact_name }}
+          path: |
+            ${{ matrix.notebook }}
+            ${{ steps.get-dir.outputs.dir }}/static/${{ steps.get-dir.outputs.nb_name }}*
+            ${{ steps.get-dir.outputs.dir }}/solutions/${{ steps.get-dir.outputs.nb_name }}*
+            ${{ steps.get-dir.outputs.dir }}/student/${{ steps.get-dir.outputs.nb_name }}*
+            ${{ steps.get-dir.outputs.dir }}/instructor/${{ steps.get-dir.outputs.nb_name }}*
+          if-no-files-found: ignore
+          retention-days: 1
+
+  finalize:
+    needs: [setup, process]
+    if: always() && needs.setup.outputs.skip_ci != 'true' && needs.setup.outputs.has_notebooks == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+
+      - name: Setup Python environment
+        uses: ./.github/actions/setup-python-env
+
+      - name: Setup CI tools
+        uses: ./.github/actions/setup-ci-tools
+        with:
+          commit-message: ${{ needs.setup.outputs.commit_message }}
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts/
+
+      - name: Detect failed notebooks
+        id: detect-failures
+        run: |
+          expected='${{ needs.setup.outputs.notebooks }}'
+          failed_nbs=""
+          success_nbs=""
+
+          echo "Checking which notebooks were successfully processed..."
+          for nb in $(echo "$expected" | jq -r '.[]'); do
+            nb_name=$(basename "$nb" .ipynb)
+            if ls artifacts/tutorial-*"___${nb_name}" 1>/dev/null 2>&1; then
+              echo "  ✓ $nb - SUCCESS"
+              success_nbs="$success_nbs $nb"
+            else
+              echo "  ✗ $nb - FAILED (no artifact)"
+              failed_nbs="$failed_nbs $nb"
+            fi
           done
 
-      - name: Process notebooks
-        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
-        id: process_notebooks
-        run: |
-          branch=${{ github.event.pull_request.head.ref }}
-          # nbs="projects/ECoG/*.ipynb projects/neurons/*.ipynb";
-          # nbs="tutorials/Bonus_Autoencoders/*Tutorial*.ipynb";
-          nbs=`python ci/select_notebooks.py ${{ steps.changed-files.outputs.all_changed_files }}`
-          if ${{ contains(env.COMMIT_MESSAGE, 'ci:check') }}; then
-            execflag="--check-execution";
-          else
-            execflag="--execute";
-          fi
-          python ci/process_notebooks.py $nbs $execflag
-          python ci/verify_exercises.py $nbs --c "$COMMIT_MESSAGE"
-          python ci/make_pr_comment.py $nbs --branch $branch --o comment.txt
+          success_nbs="${success_nbs# }"
+          failed_nbs="${failed_nbs# }"
 
-      # - name: Add PR comment
-      #   if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
-      #   uses: machine-learning-apps/pr-comment@1.0.0
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     path: comment.txt
+          echo "success_notebooks=$success_nbs" >> $GITHUB_OUTPUT
+          echo "failed_notebooks=$failed_nbs" >> $GITHUB_OUTPUT
+
+          if [ -n "$failed_nbs" ]; then
+            echo "has_failures=true" >> $GITHUB_OUTPUT
+            echo "⚠️  Some notebooks failed to process: $failed_nbs"
+          else
+            echo "has_failures=false" >> $GITHUB_OUTPUT
+            echo "✅ All notebooks processed successfully"
+          fi
+
+      - name: Collect failure context
+        if: steps.detect-failures.outputs.has_failures == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          run_id=${{ github.run_id }}
+          echo "## Notebook Processing Failure Context" > failure_context.md
+          echo "" >> failure_context.md
+          jobs_json=$(gh api repos/${{ github.repository }}/actions/runs/${run_id}/jobs)
+          for nb in ${{ steps.detect-failures.outputs.failed_notebooks }}; do
+            nb_name=$(basename "$nb" .ipynb)
+            echo "### $nb" >> failure_context.md
+            echo '```' >> failure_context.md
+            job_id=$(echo "$jobs_json" | jq -r --arg nb "$nb" '.jobs[] | select(.name | contains($nb)) | .id')
+            if [ -n "$job_id" ] && [ "$job_id" != "null" ]; then
+              gh api repos/${{ github.repository }}/actions/jobs/${job_id}/logs 2>/dev/null | \
+                awk '
+                  /##\[group\]Notebook execution output/{capturing=1; next}
+                  capturing && /##\[endgroup\]/{exit}
+                  capturing && /##\[error\]/{print; exit}
+                  capturing && /##\[group\]/{exit}
+                  capturing && /Post job cleanup/{exit}
+                  capturing{print}
+                ' | \
+                tail -100 >> failure_context.md || echo "Could not retrieve logs" >> failure_context.md
+            else
+              echo "Job not found for $nb" >> failure_context.md
+            fi
+            echo '```' >> failure_context.md
+            echo "" >> failure_context.md
+          done
+
+      - name: Post failure context comment
+        if: steps.detect-failures.outputs.has_failures == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -f failure_context.md ]; then
+            gh pr comment ${{ github.event.pull_request.number }} --body-file failure_context.md
+          fi
+
+      - name: Restore processed files
+        run: |
+          echo "Restoring processed files from artifacts..."
+          for dir in artifacts/tutorial-*; do
+            if [ -d "$dir" ]; then
+              artifact_name=$(basename "$dir" | sed 's/^tutorial-//')
+              full_path=$(echo "$artifact_name" | sed 's|___|/|g')
+              tutorial_dir=$(dirname "$full_path")
+              echo "Restoring from artifact $(basename "$dir") to: $tutorial_dir"
+              mkdir -p "$tutorial_dir"
+              cp -rv "$dir"/* "$tutorial_dir/" 2>/dev/null || true
+            fi
+          done
+          echo "Restore complete."
+
+      - name: Verify exercises
+        env:
+          COMMIT_MESSAGE: ${{ needs.setup.outputs.commit_message }}
+        run: |
+          nbs='${{ needs.setup.outputs.notebooks }}'
+          nb_list=$(echo "$nbs" | jq -r '.[]' | tr '\n' ' ')
+          python ci/verify_exercises.py $nb_list --c "$COMMIT_MESSAGE"
+
+      - name: Make PR comment
+        run: |
+          nbs='${{ needs.setup.outputs.notebooks }}'
+          nb_list=$(echo "$nbs" | jq -r '.[]' | tr '\n' ' ')
+          branch=${{ github.event.pull_request.head.ref }}
+          python ci/make_pr_comment.py $nb_list --branch $branch --o comment.txt
 
       - name: Update READMEs
-        if: "!contains(env.COMMIT_MESSAGE, 'skip ci')"
+        if: needs.setup.outputs.materials_changed == 'true'
         run: python ci/generate_tutorial_readmes.py
 
       - name: Remove unreferenced derivatives
-        if: "!contains(env.COMMIT_MESSAGE, 'skip ci') && success()"
         run: |
           python ci/find_unreferenced_content.py > to_remove.txt
           if [ -s to_remove.txt ]; then git rm --pathspec-from-file=to_remove.txt; fi
 
+      - name: Clean up artifacts directory
+        run: rm -rf artifacts/
+
+      - name: Revert failed notebooks to main
+        if: steps.detect-failures.outputs.has_failures == 'true' && steps.detect-failures.outputs.success_notebooks != ''
+        run: |
+          failed_nbs="${{ steps.detect-failures.outputs.failed_notebooks }}"
+          echo "Reverting failed notebooks to main branch version: $failed_nbs"
+          for nb in $failed_nbs; do
+            if git show origin/main:"$nb" > /dev/null 2>&1; then
+              git checkout origin/main -- "$nb"
+              echo "  Reverted: $nb"
+            else
+              git rm -f "$nb" 2>/dev/null || rm -f "$nb"
+              echo "  Removed (new file): $nb"
+            fi
+          done
+
+      - name: Create follow-up PR for failed notebooks
+        if: steps.detect-failures.outputs.has_failures == 'true' && steps.detect-failures.outputs.success_notebooks != ''
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          failed_nbs="${{ steps.detect-failures.outputs.failed_notebooks }}"
+          pr_number=${{ github.event.pull_request.number }}
+          original_branch=${{ github.head_ref }}
+          new_branch="reprocess-pr${pr_number}-$(date +%Y%m%d%H%M%S)"
+
+          git stash --include-untracked
+          git fetch origin main
+          git checkout -b "$new_branch" origin/main
+
+          for nb in $failed_nbs; do
+            git checkout "origin/$original_branch" -- "$nb" 2>/dev/null || echo "Note: $nb may be new in this PR"
+          done
+
+          git add $failed_nbs
+          git commit -m "Reprocess notebooks from PR #${pr_number}
+
+          These notebooks failed to process in the original PR and need reprocessing:
+          $(echo "$failed_nbs" | tr ' ' '\n' | sed 's/^/- /')"
+
+          gh auth setup-git
+          git push origin "$new_branch"
+
+          new_pr_url=$(gh pr create \
+            --title "Reprocess: Failed notebooks from PR #${pr_number}" \
+            --body "## Auto-generated PR
+
+          The following notebooks failed to process in PR #${pr_number} and need reprocessing:
+
+          $(echo "$failed_nbs" | tr ' ' '\n' | sed 's/^/- /')
+
+          This PR was automatically created to allow these notebooks to be processed independently.
+
+          Original PR: #${pr_number}" \
+            --base "$original_branch" \
+            --head "$new_branch")
+
+          echo "Created follow-up PR: $new_pr_url"
+
+          gh pr comment "$pr_number" --body "## Follow-up PR Created
+
+          A follow-up PR has been created for the notebooks that failed to process:
+
+          **Follow-up PR:** $new_pr_url
+          **Branch:** \`$new_branch\`
+
+          The failed notebooks have been reverted to their \`main\` branch versions in this PR.
+          Once this PR is merged, the follow-up PR can be used to reprocess the failed notebooks independently."
+
+          git checkout "$original_branch"
+          git stash pop || true
+
       - name: Commit post-processed files
-        if: "!contains(env.COMMIT_MESSAGE, 'skip ci') && success()"
+        if: steps.detect-failures.outputs.success_notebooks != ''
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add '**/*.ipynb'
           git add '**/static/*.png'
           git add '**/solutions/*.py'
+          git add '**/student/*.ipynb'
+          git add '**/instructor/*.ipynb'
           git add '**/README.md'
-          git diff-index --quiet HEAD || git commit -m "Process tutorial notebooks"
+
+          if [ "${{ steps.detect-failures.outputs.has_failures }}" == "true" ]; then
+            msg="Process tutorial notebooks (some notebooks moved to follow-up PR)"
+          else
+            msg="Process tutorial notebooks"
+          fi
+
+          git diff-index --quiet HEAD || git commit -m "$msg"
 
       - name: Push post-processed files
-        if: "!contains(env.COMMIT_MESSAGE, 'skip ci') && success()"
+        if: steps.detect-failures.outputs.success_notebooks != ''
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

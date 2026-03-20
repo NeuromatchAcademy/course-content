@@ -12,15 +12,15 @@
      
 * Week 2
     * Monday: Modeling Practice & Half Project Day (Projects Proposal)
-    * Tuesday: Linear Systems
-    * Wednesday: Biological Neuron Models
-    * Thursday: Dynamic Networks
-    * Friday: Project day (Abstract Writing)
+    * Tuesday: [New 2026 Content — TBD]
+    * Wednesday: Linear Systems
+    * Thursday: Biological Neuron Models
+    * Friday: Dynamical Systems
     
 * Week 3
-    * Monday: Bayesian Decisions
-    * Tuesday: Hidden Dynamics
-    * Wednesday: Optimal Control
+    * Monday: Project day (Abstract Writing)
+    * Tuesday: Bayesian Decisions
+    * Wednesday: Hidden Dynamics
     * Thursday: Reinforcement Learning
     * Friday: Network Causality & Graduation
 ----

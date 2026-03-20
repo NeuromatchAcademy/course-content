@@ -131,7 +131,7 @@ The goal of this literature review is to situate your question in context and he
 * When you are ready, please submit your proposal [here](https://airtable.com/shrcYuFYMPh4jGIng). This is not mandatory and can be submitted at any time. We won't evaluate this, but we will use it to keep track of the overall progress of the groups. 
 * Use the project planner to get feedback on any of the sections you want to include in the proposal. 
 
-###  W2D2
+###  W2D3
 
 You should now have a sense of the data, and you have probably refined your hypothesis a little. You might have a vague idea of what it would take for your project to work, what tools you might use, and what the answer could look like. Use the [project planner](https://nma-project-planner.vercel.app/) to identify other steps you need to do for a complete project. 
 
