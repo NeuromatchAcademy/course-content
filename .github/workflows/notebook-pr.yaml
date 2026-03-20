@@ -89,3 +89,80 @@ jobs:
             json_array=$(echo "$nbs" | tr ' ' '\n' | jq -R . | jq -s -c .)
             echo "notebooks=$json_array" >> $GITHUB_OUTPUT
           fi
+
+  process:
+    needs: setup
+    if: needs.setup.outputs.skip_ci != 'true' && needs.setup.outputs.has_notebooks == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        notebook: ${{ fromJson(needs.setup.outputs.notebooks) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+
+      - name: Setup Python environment
+        uses: ./.github/actions/setup-python-env
+
+      - name: Setup CI tools
+        uses: ./.github/actions/setup-ci-tools
+        with:
+          commit-message: ${{ needs.setup.outputs.commit_message }}
+
+      - name: Setup rendering dependencies
+        uses: ./.github/actions/setup-rendering-deps
+
+      - name: Process notebook
+        env:
+          COMMIT_MESSAGE: ${{ needs.setup.outputs.commit_message }}
+          PYTHONUNBUFFERED: "1"
+        run: |
+          echo "::group::Processing ${{ matrix.notebook }}"
+          echo "Started at: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+
+          if [[ "$COMMIT_MESSAGE" == *"ci:check"* ]]; then
+            execflag="--check-execution"
+            echo "Mode: Check execution (no changes)"
+          else
+            execflag="--execute"
+            echo "Mode: Execute and process"
+          fi
+          echo "::endgroup::"
+
+          echo "::group::Notebook execution output"
+          python ci/process_notebooks.py "${{ matrix.notebook }}" $execflag
+          exit_code=$?
+          echo "::endgroup::"
+
+          echo "Completed at: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+          exit $exit_code
+
+      - name: Get tutorial directory
+        id: get-dir
+        run: |
+          nb="${{ matrix.notebook }}"
+          dir=$(dirname "$nb")
+          nb_name=$(basename "$nb" .ipynb)
+          echo "dir=$dir" >> $GITHUB_OUTPUT
+          echo "nb_name=$nb_name" >> $GITHUB_OUTPUT
+          safe_dir=$(echo "$dir" | sed 's|/|___|g')
+          echo "artifact_name=${safe_dir}___${nb_name}" >> $GITHUB_OUTPUT
+
+      - name: Upload processed tutorial directory
+        uses: actions/upload-artifact@v4
+        with:
+          name: tutorial-${{ steps.get-dir.outputs.artifact_name }}
+          path: |
+            ${{ matrix.notebook }}
+            ${{ steps.get-dir.outputs.dir }}/static/${{ steps.get-dir.outputs.nb_name }}*
+            ${{ steps.get-dir.outputs.dir }}/solutions/${{ steps.get-dir.outputs.nb_name }}*
+            ${{ steps.get-dir.outputs.dir }}/student/${{ steps.get-dir.outputs.nb_name }}*
+            ${{ steps.get-dir.outputs.dir }}/instructor/${{ steps.get-dir.outputs.nb_name }}*
+          if-no-files-found: ignore
+          retention-days: 1
