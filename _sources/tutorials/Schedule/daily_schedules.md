@@ -12,15 +12,15 @@
      
 * Week 2
     * Monday: Modeling Practice & Half Project Day (Projects Proposal)
-    * Tuesday: Linear Systems
-    * Wednesday: Biological Neuron Models
-    * Thursday: Dynamic Networks
-    * Friday: Project day (Abstract Writing)
+    * Tuesday: [New 2026 Content — TBD]
+    * Wednesday: Linear Systems
+    * Thursday: Biological Neuron Models
+    * Friday: Dynamical Systems
     
 * Week 3
-    * Monday: Bayesian Decisions
-    * Tuesday: Hidden Dynamics
-    * Wednesday: Optimal Control
+    * Monday: Project day (Abstract Writing)
+    * Tuesday: Bayesian Decisions
+    * Wednesday: Hidden Dynamics
     * Thursday: Reinforcement Learning
     * Friday: Network Causality & Graduation
 ----
@@ -50,8 +50,6 @@ All days except W2D1, W2D5, and W3D5 will follow this schedule for course time:
 
 ### Project time
 In addition to course time, each day will have 3 hours of project time. 
-
-#### **Schedule Change for 2025:** For all time slots, projects will come *after* course work. 
 
 ----
 
