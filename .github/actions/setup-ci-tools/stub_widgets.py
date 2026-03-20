@@ -28,6 +28,13 @@ class _NoOpWidget:
     def __setattr__(self, name, value):
         object.__setattr__(self, name, value)
 
+    def __setitem__(self, key, value):
+        # No-op for item assignment (e.g. GridspecLayout[0,0] = widget)
+        pass
+
+    def __getitem__(self, key):
+        return self
+
     def __getattr__(self, name):
         # Return a no-op callable for any unknown method/attribute
         return lambda *args, **kwargs: None
