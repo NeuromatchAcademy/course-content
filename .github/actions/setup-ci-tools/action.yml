@@ -1,0 +1,99 @@
+name: 'Setup nmaci CI Tools'
+description: 'Download and install Neuromatch CI tools'
+
+inputs:
+  branch:
+    description: 'nmaci branch to use'
+    required: false
+    default: 'main'
+  commit-message:
+    description: 'Commit message to parse for branch override'
+    required: false
+    default: ''
+  stub-widgets:
+    description: 'Install ipywidgets stub for headless execution (disable for book builds)'
+    required: false
+    default: 'true'
+
+outputs:
+  nmaci-branch:
+    description: 'nmaci branch used'
+    value: ${{ steps.detect-branch.outputs.branch }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Detect nmaci branch
+      id: detect-branch
+      shell: bash
+      env:
+        COMMIT_MESSAGE: ${{ inputs.commit-message }}
+      run: |
+        BRANCH="${{ inputs.branch }}"
+        if [ -n "$COMMIT_MESSAGE" ]; then
+          OVERRIDE=$(python3 -c "import os, re; m = re.search(r'nmaci:([\w-]+)', os.environ.get('COMMIT_MESSAGE', '')); print(m.group(1) if m else '')")
+          if [ -n "$OVERRIDE" ]; then
+            BRANCH="$OVERRIDE"
+          fi
+        fi
+        echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+        echo "Using nmaci branch: $BRANCH"
+
+    - name: Get nmaci latest commit
+      id: nmaci-sha
+      shell: bash
+      run: |
+        BRANCH=${{ steps.detect-branch.outputs.branch }}
+        SHA=$(git ls-remote https://github.com/neuromatch/nmaci.git refs/heads/$BRANCH | cut -c1-8)
+        echo "sha=$SHA" >> $GITHUB_OUTPUT
+        echo "nmaci $BRANCH is at commit $SHA"
+
+    - name: Cache nmaci tools
+      id: cache-nmaci
+      uses: actions/cache@v4
+      with:
+        path: ci/
+        key: nmaci-v2-${{ runner.os }}-${{ steps.detect-branch.outputs.branch }}-${{ steps.nmaci-sha.outputs.sha }}
+        restore-keys: nmaci-v2-${{ runner.os }}-${{ steps.detect-branch.outputs.branch }}-
+
+    - name: Download nmaci tools
+      if: steps.cache-nmaci.outputs.cache-hit != 'true'
+      shell: bash
+      run: |
+        BRANCH=${{ steps.detect-branch.outputs.branch }}
+        wget -q https://github.com/neuromatch/nmaci/archive/refs/heads/$BRANCH.tar.gz
+        tar -xzf $BRANCH.tar.gz
+        rm -rf ci/scripts
+        mv nmaci-$BRANCH/scripts/ ci/
+        mv nmaci-$BRANCH/requirements.txt ci/requirements.txt
+        rm -r nmaci-$BRANCH $BRANCH.tar.gz
+
+    - name: Install nmaci dependencies
+      shell: bash
+      run: |
+        set -e
+        pip install --upgrade pip
+
+        if [ ! -f ci/requirements.txt ]; then
+          echo "ci/requirements.txt not found, downloading..."
+          BRANCH=${{ steps.detect-branch.outputs.branch }}
+          wget -O ci/requirements.txt https://raw.githubusercontent.com/neuromatch/nmaci/$BRANCH/requirements.txt
+        fi
+
+        echo "Installing from ci/requirements.txt:"
+        cat ci/requirements.txt
+        pip install -r ci/requirements.txt
+
+        python -c "import nbformat; print(f'nbformat version: {nbformat.__version__}')"
+
+    - name: Ignore ci directory
+      shell: bash
+      run: echo "ci/" >> .gitignore
+
+    - name: Stub ipywidgets for headless kernel execution
+      if: inputs.stub-widgets == 'true'
+      shell: bash
+      run: |
+        mkdir -p ~/.ipython/profile_default/startup
+        cp ${{ github.action_path }}/stub_widgets.py ~/.ipython/profile_default/startup/00-stub-widgets.py
+        echo "Installed ipywidgets stub to IPython startup"
