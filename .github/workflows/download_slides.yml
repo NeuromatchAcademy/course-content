@@ -16,13 +16,13 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 1
           ref: ${{ github.head_ref }}
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: 3.9
 
@@ -93,13 +93,13 @@ jobs:
           echo "last_update=$last_update" >> $GITHUB_OUTPUT
 
       - name: Upload full set of slides
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: NMA-compneuro-slides-${{steps.last_update.outputs.last_update}}
           path: slides
 
       - name: Upload slides for each day
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: NMA-compneuro-slides-by-day-${{steps.last_update.outputs.last_update}}
           path: slides_by_day
