@@ -166,3 +166,245 @@ jobs:
             ${{ steps.get-dir.outputs.dir }}/instructor/${{ steps.get-dir.outputs.nb_name }}*
           if-no-files-found: ignore
           retention-days: 1
+
+  finalize:
+    needs: [setup, process]
+    if: always() && needs.setup.outputs.skip_ci != 'true' && needs.setup.outputs.has_notebooks == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+
+      - name: Setup Python environment
+        uses: ./.github/actions/setup-python-env
+
+      - name: Setup CI tools
+        uses: ./.github/actions/setup-ci-tools
+        with:
+          commit-message: ${{ needs.setup.outputs.commit_message }}
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts/
+
+      - name: Detect failed notebooks
+        id: detect-failures
+        run: |
+          expected='${{ needs.setup.outputs.notebooks }}'
+          failed_nbs=""
+          success_nbs=""
+
+          echo "Checking which notebooks were successfully processed..."
+          for nb in $(echo "$expected" | jq -r '.[]'); do
+            nb_name=$(basename "$nb" .ipynb)
+            if ls artifacts/tutorial-*"___${nb_name}" 1>/dev/null 2>&1; then
+              echo "  ✓ $nb - SUCCESS"
+              success_nbs="$success_nbs $nb"
+            else
+              echo "  ✗ $nb - FAILED (no artifact)"
+              failed_nbs="$failed_nbs $nb"
+            fi
+          done
+
+          success_nbs="${success_nbs# }"
+          failed_nbs="${failed_nbs# }"
+
+          echo "success_notebooks=$success_nbs" >> $GITHUB_OUTPUT
+          echo "failed_notebooks=$failed_nbs" >> $GITHUB_OUTPUT
+
+          if [ -n "$failed_nbs" ]; then
+            echo "has_failures=true" >> $GITHUB_OUTPUT
+            echo "⚠️  Some notebooks failed to process: $failed_nbs"
+          else
+            echo "has_failures=false" >> $GITHUB_OUTPUT
+            echo "✅ All notebooks processed successfully"
+          fi
+
+      - name: Collect failure context
+        if: steps.detect-failures.outputs.has_failures == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          run_id=${{ github.run_id }}
+          echo "## Notebook Processing Failure Context" > failure_context.md
+          echo "" >> failure_context.md
+          jobs_json=$(gh api repos/${{ github.repository }}/actions/runs/${run_id}/jobs)
+          for nb in ${{ steps.detect-failures.outputs.failed_notebooks }}; do
+            nb_name=$(basename "$nb" .ipynb)
+            echo "### $nb" >> failure_context.md
+            echo '```' >> failure_context.md
+            job_id=$(echo "$jobs_json" | jq -r --arg nb "$nb" '.jobs[] | select(.name | contains($nb)) | .id')
+            if [ -n "$job_id" ] && [ "$job_id" != "null" ]; then
+              gh api repos/${{ github.repository }}/actions/jobs/${job_id}/logs 2>/dev/null | \
+                awk '
+                  /##\[group\]Notebook execution output/{capturing=1; next}
+                  capturing && /##\[endgroup\]/{exit}
+                  capturing && /##\[error\]/{print; exit}
+                  capturing && /##\[group\]/{exit}
+                  capturing && /Post job cleanup/{exit}
+                  capturing{print}
+                ' | \
+                tail -100 >> failure_context.md || echo "Could not retrieve logs" >> failure_context.md
+            else
+              echo "Job not found for $nb" >> failure_context.md
+            fi
+            echo '```' >> failure_context.md
+            echo "" >> failure_context.md
+          done
+
+      - name: Post failure context comment
+        if: steps.detect-failures.outputs.has_failures == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -f failure_context.md ]; then
+            gh pr comment ${{ github.event.pull_request.number }} --body-file failure_context.md
+          fi
+
+      - name: Restore processed files
+        run: |
+          echo "Restoring processed files from artifacts..."
+          for dir in artifacts/tutorial-*; do
+            if [ -d "$dir" ]; then
+              artifact_name=$(basename "$dir" | sed 's/^tutorial-//')
+              full_path=$(echo "$artifact_name" | sed 's|___|/|g')
+              tutorial_dir=$(dirname "$full_path")
+              echo "Restoring from artifact $(basename "$dir") to: $tutorial_dir"
+              mkdir -p "$tutorial_dir"
+              cp -rv "$dir"/* "$tutorial_dir/" 2>/dev/null || true
+            fi
+          done
+          echo "Restore complete."
+
+      - name: Verify exercises
+        env:
+          COMMIT_MESSAGE: ${{ needs.setup.outputs.commit_message }}
+        run: |
+          nbs='${{ needs.setup.outputs.notebooks }}'
+          nb_list=$(echo "$nbs" | jq -r '.[]' | tr '\n' ' ')
+          python ci/verify_exercises.py $nb_list --c "$COMMIT_MESSAGE"
+
+      - name: Make PR comment
+        run: |
+          nbs='${{ needs.setup.outputs.notebooks }}'
+          nb_list=$(echo "$nbs" | jq -r '.[]' | tr '\n' ' ')
+          branch=${{ github.event.pull_request.head.ref }}
+          python ci/make_pr_comment.py $nb_list --branch $branch --o comment.txt
+
+      - name: Update READMEs
+        if: needs.setup.outputs.materials_changed == 'true'
+        run: python ci/generate_tutorial_readmes.py
+
+      - name: Remove unreferenced derivatives
+        run: |
+          python ci/find_unreferenced_content.py > to_remove.txt
+          if [ -s to_remove.txt ]; then git rm --pathspec-from-file=to_remove.txt; fi
+
+      - name: Clean up artifacts directory
+        run: rm -rf artifacts/
+
+      - name: Revert failed notebooks to main
+        if: steps.detect-failures.outputs.has_failures == 'true' && steps.detect-failures.outputs.success_notebooks != ''
+        run: |
+          failed_nbs="${{ steps.detect-failures.outputs.failed_notebooks }}"
+          echo "Reverting failed notebooks to main branch version: $failed_nbs"
+          for nb in $failed_nbs; do
+            if git show origin/main:"$nb" > /dev/null 2>&1; then
+              git checkout origin/main -- "$nb"
+              echo "  Reverted: $nb"
+            else
+              git rm -f "$nb" 2>/dev/null || rm -f "$nb"
+              echo "  Removed (new file): $nb"
+            fi
+          done
+
+      - name: Create follow-up PR for failed notebooks
+        if: steps.detect-failures.outputs.has_failures == 'true' && steps.detect-failures.outputs.success_notebooks != ''
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          failed_nbs="${{ steps.detect-failures.outputs.failed_notebooks }}"
+          pr_number=${{ github.event.pull_request.number }}
+          original_branch=${{ github.head_ref }}
+          new_branch="reprocess-pr${pr_number}-$(date +%Y%m%d%H%M%S)"
+
+          git stash --include-untracked
+          git fetch origin main
+          git checkout -b "$new_branch" origin/main
+
+          for nb in $failed_nbs; do
+            git checkout "origin/$original_branch" -- "$nb" 2>/dev/null || echo "Note: $nb may be new in this PR"
+          done
+
+          git add $failed_nbs
+          git commit -m "Reprocess notebooks from PR #${pr_number}
+
+          These notebooks failed to process in the original PR and need reprocessing:
+          $(echo "$failed_nbs" | tr ' ' '\n' | sed 's/^/- /')"
+
+          gh auth setup-git
+          git push origin "$new_branch"
+
+          new_pr_url=$(gh pr create \
+            --title "Reprocess: Failed notebooks from PR #${pr_number}" \
+            --body "## Auto-generated PR
+
+          The following notebooks failed to process in PR #${pr_number} and need reprocessing:
+
+          $(echo "$failed_nbs" | tr ' ' '\n' | sed 's/^/- /')
+
+          This PR was automatically created to allow these notebooks to be processed independently.
+
+          Original PR: #${pr_number}" \
+            --base "$original_branch" \
+            --head "$new_branch")
+
+          echo "Created follow-up PR: $new_pr_url"
+
+          gh pr comment "$pr_number" --body "## Follow-up PR Created
+
+          A follow-up PR has been created for the notebooks that failed to process:
+
+          **Follow-up PR:** $new_pr_url
+          **Branch:** \`$new_branch\`
+
+          The failed notebooks have been reverted to their \`main\` branch versions in this PR.
+          Once this PR is merged, the follow-up PR can be used to reprocess the failed notebooks independently."
+
+          git checkout "$original_branch"
+          git stash pop || true
+
+      - name: Commit post-processed files
+        if: steps.detect-failures.outputs.success_notebooks != ''
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add '**/*.ipynb'
+          git add '**/static/*.png'
+          git add '**/solutions/*.py'
+          git add '**/student/*.ipynb'
+          git add '**/instructor/*.ipynb'
+          git add '**/README.md'
+
+          if [ "${{ steps.detect-failures.outputs.has_failures }}" == "true" ]; then
+            msg="Process tutorial notebooks (some notebooks moved to follow-up PR)"
+          else
+            msg="Process tutorial notebooks"
+          fi
+
+          git diff-index --quiet HEAD || git commit -m "$msg"
+
+      - name: Push post-processed files
+        if: steps.detect-failures.outputs.success_notebooks != ''
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.head_ref }}
