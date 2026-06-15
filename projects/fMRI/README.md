@@ -2,6 +2,16 @@
 
 Scroll down for project templates associated to these datasets. 
 
+## Algonauts 2026
+
+Algonauts 2026 ([youtube](https://youtube.com/watch?v=MNyF3zccaPA)) contains fMRI recordings while participants watched several seasons of the TV show Friends. This dataset is ideal for studying multimodal integration of stimulus modalities (movies, audio, language) or for general exploratory analyses.  
+
+Credit for data curation: Alessandro Gifford and Domenic Bersch    
+
+|   | Run | View |
+| - | --- | ---- |
+| Algonauts 2026 | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/fMRI/HowDoesTheHumanBrainMakeSenseOfMultimodalMovies.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/fMRI/HowDoesTheHumanBrainMakeSenseOfMultimodalMovies.ipynb?flush_cache=true) |
+
 ## HCP task datasets
 
 The HCP task datasets ([youtube-2021](https://www.youtube.com/watch?v=i30qePz_OGY), [youtube-2020](https://youtube.com/watch?v=iOCcY0QFMS4)) are a great overall choice, because many of the behaviors are interesting (gambling, emotion, language, social, working memory etc), and the data is already preprocessed and averaged across voxels to make brain regions. This dataset is appropriate for all levels.  
@@ -63,9 +73,9 @@ The Kay dataset ([youtube](https://youtube.com/watch?v=LdJkLyw4yzg)) of visual r
 - Naselaris, T., Prenger, R. J., Kay, K. N., Oliver, M., and Gallant, J. L. (2009). Bayesian reconstruction of natural images from human brain activity. Neuron, 63(6): 902-915. doi: [10.1016/j.neuron.2009.09.006](https://doi.org/10.1016/j.neuron.2009.09.006)
 
 
-## Bonner/Algonauts/Cichy
+## Bonner/Cichy
 
-Bonner ([youtube](https://youtube.com/watch?v=7NggvUlobQQ)) / Cichy ([youtube](https://youtube.com/watch?v=I3_nA_6mq1g)) / Algonauts ([youtube](https://youtube.com/watch?v=TID48cMcneo)) are the most advanced datasets which can be used to do representational (di)similarity analyses on visual response data (static images, videos, or navigation-related images). Specifically designed to go with the two project templates comparing FMRI responses to deep neural networks.
+Bonner ([youtube](https://youtube.com/watch?v=7NggvUlobQQ)) / Cichy ([youtube](https://youtube.com/watch?v=I3_nA_6mq1g))  are datasets which can be used to do representational (di)similarity analyses on visual response data (static images, videos, or navigation-related images). Specifically designed to go with the two project templates comparing FMRI responses to deep neural networks. 
 
 Credit for data curation: Kshitij Dwivedi
 
@@ -73,7 +83,6 @@ Credit for data curation: Kshitij Dwivedi
 | - | --- | ---- |
 | Bonner navigation | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/fMRI/load_bonner_navigational_affordances.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/fMRI/load_bonner_navigational_affordances.ipynb?flush_cache=true) |
 | Cichy objects/animals | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/fMRI/load_cichy_fMRI_MEG.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/fMRI/load_cichy_fMRI_MEG.ipynb?flush_cache=true) |
-| Algonauts video clips | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NeuromatchAcademy/course-content/blob/main/projects/fMRI/load_algonauts_videos.ipynb) | [![View the notebook](https://img.shields.io/badge/render-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/NeuromatchAcademy/course-content/blob/main/projects/fMRI/load_algonauts_videos.ipynb?flush_cache=true) |
 
 ### References:
 
@@ -83,11 +92,13 @@ Credit for data curation: Kshitij Dwivedi
 
 - Cichy, R. M., Pantazis, D., and Oliva, A. (2014). Resolving human object recognition in space and time. Nature neuroscience, 17(3): 455-462. doi: [10.1038/nn.3635](https://doi.org/10.1038/nn.3635)
 
-- url: [algonauts.csail.mit.edu/challenge.html](http://algonauts.csail.mit.edu/challenge.html)
-
 # Project Templates
 
 Click on each image below to see a full browser version!
+
+## Mapping brain activation and representation with fMRI
+
+<img src="template_images/HowDoesTheHumanBrainMakeSenseOfMultimodalMovies.svg" width="100%">
 
 ## Mapping brain activation and representation with fMRI
 

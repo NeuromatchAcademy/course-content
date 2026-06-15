@@ -78,7 +78,7 @@ jobs:
         id: set-matrix
         if: steps.check-skip.outputs.skip != 'true'
         run: |
-          nbs=$(python ci/select_notebooks.py ${{ steps.changed-files.outputs.all_changed_files }})
+          nbs=$(nmaci select-notebooks ${{ steps.changed-files.outputs.all_changed_files }})
 
           if [ -z "$nbs" ]; then
             echo "No notebooks to process"
@@ -137,7 +137,7 @@ jobs:
           echo "::endgroup::"
 
           echo "::group::Notebook execution output"
-          python ci/process_notebooks.py "${{ matrix.notebook }}" $execflag
+          nmaci process-notebooks "${{ matrix.notebook }}" $execflag
           exit_code=$?
           echo "::endgroup::"
 
@@ -288,22 +288,22 @@ jobs:
         run: |
           nbs='${{ needs.setup.outputs.notebooks }}'
           nb_list=$(echo "$nbs" | jq -r '.[]' | tr '\n' ' ')
-          python ci/verify_exercises.py $nb_list --c "$COMMIT_MESSAGE"
+          nmaci verify-exercises $nb_list --c "$COMMIT_MESSAGE"
 
       - name: Make PR comment
         run: |
           nbs='${{ needs.setup.outputs.notebooks }}'
           nb_list=$(echo "$nbs" | jq -r '.[]' | tr '\n' ' ')
           branch=${{ github.event.pull_request.head.ref }}
-          python ci/make_pr_comment.py $nb_list --branch $branch --o comment.txt
+          nmaci make-pr-comment $nb_list --branch $branch --o comment.txt
 
       - name: Update READMEs
         if: needs.setup.outputs.materials_changed == 'true'
-        run: python ci/generate_tutorial_readmes.py
+        run: nmaci generate-readmes
 
       - name: Remove unreferenced derivatives
         run: |
-          python ci/find_unreferenced_content.py > to_remove.txt
+          nmaci find-unreferenced > to_remove.txt
           if [ -s to_remove.txt ]; then git rm --pathspec-from-file=to_remove.txt; fi
 
       - name: Clean up artifacts directory

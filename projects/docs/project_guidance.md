@@ -88,7 +88,7 @@ Be on the lookout for interesting hypotheses. You might notice something unexpec
 Week 2 is when projects really start to ramp up.  
 
 ### 🗓️ W2D1: Project Half Day
-Today's project tutorial will introduce a set of general strategies to help you focus and refine your projects. You will also complete a literature review today and work on your project proposal. We have also designed an [LLM-based app](https://nma-project-planner.vercel.app/) to provide feedback to the different categories of a project proposal (question, hypothesis, dataset etc). 
+Today's project tutorial will introduce a set of general strategies to help you focus and refine your projects. You will also complete a literature review today and work on your project proposal. We have also designed an [NMA system prompt](https://osf.io/bhs4q/download) to provide feedback for your project proposal by helping the LLM (whichever one is your favorite) have more context about NMA and the course goals. 
 
 #### TUTORIAL BLOCK TASKS
 **(⏱️ 1 hour)** Complete the intro/tutorial/outro for W2D1:
@@ -98,18 +98,18 @@ Today's project tutorial will introduce a set of general strategies to help you 
   * Step 3: Determining the basic ingredients
   * Step 4: Formulating specific, mathematically defined hypotheses
  
-* This tutorial is an exercise to illustrate two hypothetical projects. Do not spend too much time on this. After this step, you will use your own project to get feedback using the [project planner app](https://nma-project-planner.vercel.app). 
+* This tutorial is an exercise to illustrate two hypothetical projects. Do not spend too much time on this. After this step, you will use your own project to get feedback using the [NMA system prompt](https://osf.io/bhs4q/download) which you can download and drop into your favorite LLM. 
 * The first hypothetical project is illustrated in the videos, where a group of students identifies a research question and forms a basic plan for how to approach the question. The second project will be discussed between members of your group, and is a data analysis version of the train illusion project. 
-* The original 10 step modeling paper is available [here](https://www.eneuro.org/content/eneuro/7/1/ENEURO.0352-19.2019.full.pdf). Note we stop after 4 steps. Beyond that, we will be using the project planner app [here](https://nma-project-planner.vercel.app/). 
+* The original 10 step modeling paper is available [here](https://www.eneuro.org/content/eneuro/7/1/ENEURO.0352-19.2019.full.pdf). Note we stop after 4 steps. Beyond that, you can use the NMA system prompt to get feedback [here](https://osf.io/bhs4q/download). 
 
-**(⏱️ 1 hour)** [The app](https://nma-project-planner.vercel.app/): getting familiar with Konrad's project planner. 
+**(⏱️ 1 hour)** [The system prompt](https://osf.io/bhs4q/download): getting familiar with using the NMA system prompt to get feedback on your project from your favorite LLM. 
 
-At the end of the tutorial we introduced a project planner app that can provide feedback for the different steps and sections of a project. You will use this app to develop your own project plan. There are multiple sections in the app (question, audience, related etc.). Feel free to go through these in any order. Research is rarely "prescriptive", and different steps may be followed in different order by different types of projects. What is important is that at the end, all projects have all these sections completed out. So familiarize yourself with the sections, and start making progress wherever you can! You are encouraged to explore the app freely for the rest of the summer school. 
+At the end of the tutorial we introduced a system prompt that can be dropped into your favorite LLM (chatGPT, Gemini, Claude etc) to provide the NMA context and help it give you better feedback  for the different steps and sections of a project. Just use the LLM the way you normally would. The system prompt ensures that the LLM has access to the latest NMA context and materials, and instructs the LLM on how to be a good NMA project mentor.  
 
 **(⏱️ 2.5 hours)** Literature review: identify interesting papers
 The goal of this literature review is to situate your question in context and help you acquire some keywords that you will use in your proposal today. (The suggested timeline for the literature review is below).
 * **(⏱️ 30 min)** 🔍 On your own, start doing a literature review using [google scholar searches](https://scholar.google.com/) and only look at abstracts to select 2-3 promising ones.  
-* **(⏱️ 10 min)** 🗣️ Report to the whole group what papers you found and pool them together. Use the "Related" section of the online planner app [here](https://nma-project-planner.vercel.app/) to get feedback on the papers you found and determine if you need to find other types of papers (contradictory papers for example). 
+* **(⏱️ 10 min)** 🗣️ Report to the whole group what papers you found and pool them together. 
 * **(⏱️ 10 min)** from the pooled papers, assign one to each member of the group to read more carefully. 
 * **(⏱️ 60 min)** ✍️ on your own, read the paper that was assigned to you. Make notes in a common google doc shared with your group, and especially write down important keywords or concepts which you might use in your proposal later today. If you are not connected to an .edu domain or a VPN, try to find full versions of papers on preprint servers like arXiv / bioRxiv. You could also ask your TA to get it for you (and they might in turn ask someone who has access to a university VPN). There might be other options too.  You may or may not have extensive experience reading journal articles.  Below are a series of questions that you could try to answer after reading a paper. These are meant as a guide. If you can answer them, then you probably have a pretty good understanding of the paper.
     1. What is the research question(s) posed in the paper? Do the authors have hypotheses about what they expect to find? What are the hypotheses?
@@ -126,14 +126,14 @@ The goal of this literature review is to situate your question in context and he
 
 #### PROJECT BLOCK TASKS
 **(⏱️ 3 hours)** Project proposal
-* Try to write a proposal for this project based on the way you understand it now. This should reuse some of the text you have written into the project planner, and should include keywords and concepts that you identified in your literature review. Don’t worry too much about the structure of this paragraph! The goal is to get as many words (200-300) on paper as possible. Note that this is not an abstract. You have the entire day 10 to write a structured scientific abstract for your project.
+* Try to write a proposal for this project based on the way you understand it now. This should include keywords and concepts that you identified in your literature review. Don’t worry too much about the structure of this paragraph! The goal is to get as many words (200-300) on paper as possible. Note that this is not an abstract. You have the entire day 10 to write a structured scientific abstract for your project.
 * It is important to include the concepts which you identified as relevant, and the keywords that go with them.
 * When you are ready, please submit your proposal [here](https://airtable.com/shrcYuFYMPh4jGIng). This is not mandatory and can be submitted at any time. We won't evaluate this, but we will use it to keep track of the overall progress of the groups. 
-* Use the project planner to get feedback on any of the sections you want to include in the proposal. 
+* Use the NMA system prompt to get feedback on any of the sections you want to include in the proposal. 
 
 ###  W2D3
 
-You should now have a sense of the data, and you have probably refined your hypothesis a little. You might have a vague idea of what it would take for your project to work, what tools you might use, and what the answer could look like. Use the [project planner](https://nma-project-planner.vercel.app/) to identify other steps you need to do for a complete project. 
+You should now have a sense of the data, and you have probably refined your hypothesis a little. You might have a vague idea of what it would take for your project to work, what tools you might use, and what the answer could look like. Use the [NMA system prompt](https://osf.io/bhs4q/download) to identify other steps you need to do for a complete project. 
 
 Keep working on analyses, making sure to relate what you do back to the project plan you created. 
 
@@ -143,7 +143,7 @@ One of the best ways to understand your own research is to try to write about it
 
 If you think your abstract is lacking the computational "oomph" to make it sound good, check out the "W2D5 (bonus)" section below. Take the time to find interesting modeling or computational facets to your project, because this will make the abstract writing easier and more enjoyable since you can talk about big, interesting ideas and then gradually focus on the very specific work that you've done.  
 
-The starting point for workshopping your abstract should be the [NMA project planner](https://nma-project-planner.vercel.app/).
+The starting point for workshopping your abstract should be getting feedback from an LLM using the [NMA system prompt](https://osf.io/bhs4q/download).
 
 Note: the timings for this day are just suggestions. You can spend more or less time on different parts depending on how much work you think your abstract needs. 
 
