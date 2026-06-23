@@ -30,7 +30,7 @@ We highly recommend going through our refreshers on linear algebra, calculus, an
 
 ### Neuroscience
 
-If you're coming from outside neuroscience, it'll be great to familiarize yourself with fundamental concepts. We highly recommend watching our NMA neuro video series before the course (W0D0 [here](https://compneuro.neuromatch.io/)). Here is a [short read on the subject](https://www.bna.org.uk/static/uploads/resources/BNA_English.pdf). Here is another resource from [the Brain Facts book by Society For Neuroscience](https://www.brainfacts.org/the-brain-facts-book).
+If you're coming from outside neuroscience, it'll be great to familiarize yourself with fundamental concepts. We highly recommend watching our NMA neuro video series before the course (W0D0 [here](https://compneuro.neuromatch.io/)). Here is a [short read on the subject](https://www.uni-heidelberg.de/md/izn/teaching/neuroscience/img/neuroscience-of-the-brain-english.pdf). Here is another resource from [the Brain Facts book by Society For Neuroscience](https://www.brainfacts.org/the-brain-facts-book).
 
 We're so excited to have you here! Looking forward to meeting you soon,
 
