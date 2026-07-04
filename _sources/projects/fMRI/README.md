@@ -96,7 +96,7 @@ Credit for data curation: Kshitij Dwivedi
 
 Click on each image below to see a full browser version!
 
-## Mapping brain activation and representation with fMRI
+## How does the human brain make sense of multimodal movies?
 
 <img src="template_images/HowDoesTheHumanBrainMakeSenseOfMultimodalMovies.svg" width="100%">
 
