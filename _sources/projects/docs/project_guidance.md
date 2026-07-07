@@ -30,11 +30,6 @@ Project TAs are your friendly dataset experts to consult with on all issues rela
 
 For the assigned meetings, project TAs will generally come only during project times, but sometimes they might need to schedule meetings slightly earlier or later. We encourage you to reach out to them for extra meetings whenever you need them, and to post questions on discord in the #dataset-X channels. 
 
-## Project Mentors
-
-You will have a couple of scheduled meetings with a project mentor throughout the three weeks of the course.  Project Mentors are active researchers in the field of neuroscience. They may not be an expert in your dataset but they have experience guiding student research projects and can help you think about the scientific questions that you're asking and look for potential next steps or connections to interesting literature.  
-
-
 ##  Week 1: Getting started
 
 ### 🗓️ W1D1
