@@ -12,7 +12,7 @@
      
 * Week 2
     * Monday: Modeling Practice & Half Project Day (Projects Proposal)
-    * Tuesday: [New 2026 Content — TBD]
+    * Tuesday: Signal Processing & Time Series Analysis 
     * Wednesday: Linear Systems
     * Thursday: Biological Neuron Models
     * Friday: Dynamical Systems
@@ -30,7 +30,7 @@
 #### See the [Time Slot Widget](https://neuromatchacademy.github.io/widgets/tz.html) for your full course schedule converted to your local time zone. 
 
 ### General schedule
-All days except W2D1, W2D5, and W3D5 will follow this schedule for course time:
+All days except W2D1, W3D1, and W3D5 will follow this schedule for course time:
  
 |    Time (Hour)   |    Component                          |
 |------------------|---------------------------------------|
@@ -76,7 +76,7 @@ During project time:
 |    6:15-8:30     |    Project proposal                   |
 
 
-#### W2D5: Project Day (Abstract Writing Day)
+#### W3D1: Project Day (Abstract Writing Day)
 *For more info on the components of this day, please see the daily guide for projects [here](https://compneuro.neuromatch.io/projects/docs/project_guidance.html#day-10-8h-friday-for-everyone)*
 
 During coursework time:
