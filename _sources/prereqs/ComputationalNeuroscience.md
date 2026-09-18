@@ -16,7 +16,7 @@ Besides these NMA materials, we recommend the [Software carpentry 1-day Python t
 
 If you're coming from a Matlab background, you can quickly get up to speed with [this cheatsheet](https://cheatsheets.quantecon.org/). You may also enjoy [this paperback](https://www.worldcat.org/title/neural-data-science-a-primer-with-matlab-and-python/oclc/973932708) on Neural Data Science with both Matlab and Python versions.
 
-Some additional resources we think are good include: 
+Some additional resources we think are good: 
 * [Code Academy](https://www.codecademy.com/catalog/language/python)
 * [Code in Place](https://codeinplace.stanford.edu/)
 * [Community for Rigor: Writing Correct and Readable Code](https://www.c4r.io/units/writing-correct-and-readable-code)
@@ -25,6 +25,14 @@ Some additional resources we think are good include:
 * [FreeCodeCamp](https://www.freecodecamp.org/learn/python-v9/)
 * [Geeks for Geeks](https://www.geeksforgeeks.org/python/python-programming-language-tutorial/)
 * [Python for Everybody](https://www.py4e.com/lessons) 
+
+AI tools can be useful while learning Python, but how you use them matters. Here are a few guidelines to help you get the most out of AI without shortcutting your own learning:
+
+* Use AI as a tool to explain errors, concepts, or alternatives.
+* Write the code yourself first; don't let AI do it for you.
+* Avoid copying code you don't fully understand.
+* Debugging and struggling a bit is part of learning, don't skip it.
+* AI explanations can be wrong or outdated, so stay critical and double-check.
 
 ### Math skills
 
@@ -41,6 +49,11 @@ We highly recommend going through our refreshers on linear algebra, calculus, an
 ### Neuroscience
 
 If you're coming from outside neuroscience, it'll be great to familiarize yourself with fundamental concepts. We highly recommend watching our NMA neuro video series before the course (W0D0 [here](https://compneuro.neuromatch.io/)). Here is a [short read on the subject](https://www.uni-heidelberg.de/md/izn/teaching/neuroscience/img/neuroscience-of-the-brain-english.pdf). Here is another resource from [the Brain Facts book by Society For Neuroscience](https://www.brainfacts.org/the-brain-facts-book).
+
+### Open Science (a bonus!)
+Although not a prerequisite for the course, good open science practices are foundational to Neuromatch! 
+
+You can find resources on FAIR Research Workflows [here](prereqs/FAIRResearchWorkflows.md) and our full Open Science course based on NASA's materials [here](https://openscience.neuromatch.io/tutorials/intro.html). 
 
 We're so excited to have you here! Looking forward to meeting you soon,
 
