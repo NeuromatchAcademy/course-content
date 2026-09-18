@@ -16,6 +16,16 @@ Besides these NMA materials, we recommend the [Software carpentry 1-day Python t
 
 If you're coming from a Matlab background, you can quickly get up to speed with [this cheatsheet](https://cheatsheets.quantecon.org/). You may also enjoy [this paperback](https://www.worldcat.org/title/neural-data-science-a-primer-with-matlab-and-python/oclc/973932708) on Neural Data Science with both Matlab and Python versions.
 
+Some additional resources we think are good include: 
+* [Code Academy](https://www.codecademy.com/catalog/language/python)
+* [Code in Place](https://codeinplace.stanford.edu/)
+* [Community for Rigor: Writing Correct and Readable Code](https://www.c4r.io/units/writing-correct-and-readable-code)
+* [DataCamp](https://www.datacamp.com/)
+* [Exercism](https://exercism.org/)
+* [FreeCodeCamp](https://www.freecodecamp.org/learn/python-v9/)
+* [Geeks for Geeks](https://www.geeksforgeeks.org/python/python-programming-language-tutorial/)
+* [Python for Everybody](https://www.py4e.com/lessons) 
+
 ### Math skills
 
 Computational neuroscience and neural data analysis relies on linear algebra, probability, basic statistics, and calculus (derivates and ODEs).

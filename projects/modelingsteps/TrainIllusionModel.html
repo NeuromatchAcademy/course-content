@@ -1914,8 +1914,8 @@ title="Print to PDF"
 <p><em>Part of step 5</em></p>
 <p>We chose to use a <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2474742/">Drift-Diffusion Model (DDM)</a> because it is a well-established framework that allows us to model decision making in the case of 2 alternative choices (here: self-motion vs. other train motion).</p>
 <p>For our purposes simplest equation looks something like this:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ef25d6ba-2e9f-48e0-8552-cace80c6d82b">
-<span class="eqno">(469)<a class="headerlink" href="#equation-ef25d6ba-2e9f-48e0-8552-cace80c6d82b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5cf5cd30-712d-4dd3-ab80-417e0fe3feb2">
+<span class="eqno">(469)<a class="headerlink" href="#equation-5cf5cd30-712d-4dd3-ab80-417e0fe3feb2" title="Permalink to this equation">#</a></span>\[\begin{align}
 \dot e = \frac{de}{dt}= -c \cdot e + v
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(e\)</span> is the accumulated evidence and <span class="math notranslate nohighlight">\(v\)</span> is our vestibular input already containing the noise (so we don’t need to add more noise?). <span class="math notranslate nohighlight">\(c\)</span> is the leakage constant, i.e. <span class="math notranslate nohighlight">\(c=0\)</span> means perfect integration; <span class="math notranslate nohighlight">\(c=1\)</span> means no integration (perfect leakage).</p>
@@ -1945,7 +1945,7 @@ title="Print to PDF"
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pandas<span class="w"> </span>--quiet
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">'dark_background'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1955,14 +1955,14 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">vestibular_signal</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">mov</span><span class="p">):</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">  </span><span class="sd">"""</span>
 <span class="sd">  Computes a vestibular signal that corresponds to the acceleration of the</span>
 <span class="sd">  train with different amplitudes of noise</span>
 <span class="sd">  Args:</span>
 <span class="sd">    sig: scalar SD of noise</span>
 <span class="sd">    mov: 0 means no self-motion; 1 means self-motion (or scaling or motion signal)</span>
 <span class="sd">  Returns: vector array of vestibular signal v</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="c1"># create white noise series for 10s with 1ms resolution</span>
   <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">1001</span><span class="p">)</span>
   <span class="n">z</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
@@ -1982,16 +1982,16 @@ title="Print to PDF"
 <span class="c1"># plot signal</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time (s)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;vestibular signal (a.u.)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"time (s)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"vestibular signal (a.u.)"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;vestibular signal (a.u.)&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, 'vestibular signal (a.u.)')
 </pre></div>
 </div>
-<img alt="../../_images/c53f780cc9d8f4a92193cd8bd75f6fc2bc6c4295bf2eaec6c99c61437f5df087.png" src="../../_images/c53f780cc9d8f4a92193cd8bd75f6fc2bc6c4295bf2eaec6c99c61437f5df087.png" />
+<img alt="../../_images/e4829c58941ae290e08fd089452c6344817f8ddf505fc209534aac380aed994f.png" src="../../_images/e4829c58941ae290e08fd089452c6344817f8ddf505fc209534aac380aed994f.png" />
 </div>
 </div>
 </section>
@@ -2000,14 +2000,14 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ddm</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">  </span><span class="sd">"""</span>
 <span class="sd">  Leaky integration of vestibular signal</span>
 <span class="sd">  Args:</span>
 <span class="sd">    v: array of vestibular signal</span>
 <span class="sd">    c: leakage constant</span>
 <span class="sd">  Outputs: time series of integrated vestibular signal (with leakage)</span>
 <span class="sd">    = evidence e</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
   <span class="n">E</span> <span class="o">=</span> <span class="p">[]</span>
   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)):</span>
@@ -2025,16 +2025,16 @@ title="Print to PDF"
 
 <span class="c1"># plot result</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">e</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time (s)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;integrated evidence&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"time (s)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"integrated evidence"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;integrated evidence&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, 'integrated evidence')
 </pre></div>
 </div>
-<img alt="../../_images/9f1a5c500cfd6ceecf5a1b624eb1eb472c685b70816782328e8486bd1ea28b87.png" src="../../_images/9f1a5c500cfd6ceecf5a1b624eb1eb472c685b70816782328e8486bd1ea28b87.png" />
+<img alt="../../_images/e7ce51c2f7588ead535fe75d20d0bab9c95215848dc9bf20b000d1c5a9aca074.png" src="../../_images/e7ce51c2f7588ead535fe75d20d0bab9c95215848dc9bf20b000d1c5a9aca074.png" />
 </div>
 </div>
 </section>
@@ -2043,13 +2043,13 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">threshold</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">thr</span><span class="p">):</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">  </span><span class="sd">"""</span>
 <span class="sd">  Thresholding of motion evidence</span>
 <span class="sd">  Args:</span>
 <span class="sd">    motion evidence: e (array)</span>
 <span class="sd">    threshold: thr</span>
 <span class="sd">  Output: decision d if threshold was reached</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="n">d</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">thr</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span>
   <span class="k">return</span> <span class="n">d</span>
 </pre></div>
@@ -2076,7 +2076,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">run_model</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">thr</span><span class="p">,</span><span class="n">mov</span><span class="p">):</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">  </span><span class="sd">"""</span>
 <span class="sd">  runs the full model to simulate self-motion decision, e.g. for train illusion</span>
 <span class="sd">  Args:</span>
 <span class="sd">    sig: SD of vestibular noise</span>
@@ -2084,7 +2084,7 @@ title="Print to PDF"
 <span class="sd">    thr: decision threshold</span>
 <span class="sd">    mov: self-motion? ) no selfmotion; 1 self-motion</span>
 <span class="sd">  Output: decision d (0: no self-motion; 1: self-motion)</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="n">v</span> <span class="o">=</span> <span class="n">vestibular_signal</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">mov</span><span class="p">)</span>
   <span class="n">e</span> <span class="o">=</span> <span class="n">ddm</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
   <span class="n">d</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">thr</span><span class="p">)</span>
@@ -2132,10 +2132,10 @@ title="Print to PDF"
 
 <span class="c1"># define parameter list</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;sig&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span>
-    <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)),</span>
-    <span class="s1">&#39;thr&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span>
-    <span class="s1">&#39;mov&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+    <span class="s1">'sig'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span>
+    <span class="s1">'c'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)),</span>
+    <span class="s1">'thr'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span>
+    <span class="s1">'mov'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
 <span class="p">}</span>
 
 <span class="c1"># run combination of parameters</span>
@@ -2156,41 +2156,41 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># want data frames:</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Sig&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;Thr&#39;</span><span class="p">,</span><span class="s1">&#39;Mov&#39;</span><span class="p">,</span><span class="s1">&#39;Decisions&#39;</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Sig'</span><span class="p">,</span><span class="s1">'c'</span><span class="p">,</span><span class="s1">'Thr'</span><span class="p">,</span><span class="s1">'Mov'</span><span class="p">,</span><span class="s1">'Decisions'</span><span class="p">])</span>
 <span class="c1"># multi panel layout:</span>
 <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="c1"># plot for movement absent/present</span>
-<span class="n">Mov_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mov&#39;</span><span class="p">])</span>
+<span class="n">Mov_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'Mov'</span><span class="p">])</span>
 <span class="c1"># plot for leakage parameter &amp; threshold values:</span>
-<span class="n">c_s</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">])</span>
-<span class="n">Thr_s</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Thr&#39;</span><span class="p">])</span>
+<span class="n">c_s</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'c'</span><span class="p">])</span>
+<span class="n">Thr_s</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'Thr'</span><span class="p">])</span>
 <span class="c1"># plot for data for both movement condition for each leakage/threshold combination</span>
-<span class="n">Sig_s</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sig&#39;</span><span class="p">])</span>
+<span class="n">Sig_s</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'Sig'</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">Thr_n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Thr_s</span><span class="p">)):</span>
   <span class="k">for</span> <span class="n">c_n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c_s</span><span class="p">)):</span>
-    <span class="n">subdf0</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">Mov</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">c</span> <span class="o">==</span> <span class="n">c_s</span><span class="p">[</span><span class="n">c_n</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Thr</span> <span class="o">==</span> <span class="n">Thr_s</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">])]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Sig&#39;</span><span class="p">])[</span><span class="s1">&#39;Decisions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-    <span class="n">subdf1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">Mov</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">c</span> <span class="o">==</span> <span class="n">c_s</span><span class="p">[</span><span class="n">c_n</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Thr</span> <span class="o">==</span> <span class="n">Thr_s</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">])]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Sig&#39;</span><span class="p">])[</span><span class="s1">&#39;Decisions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-    <span class="n">im0</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">,</span> <span class="n">c_n</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Sig_s</span><span class="p">,</span> <span class="n">subdf0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;no motion&quot;</span><span class="p">)</span>
-    <span class="n">im1</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">,</span> <span class="n">c_n</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Sig_s</span><span class="p">,</span> <span class="n">subdf1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;motion&quot;</span><span class="p">)</span>
-    <span class="n">axs</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">,</span> <span class="n">c_n</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Thr = </span><span class="si">{}</span><span class="s2">; c = </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Thr_s</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">],</span> <span class="n">c_s</span><span class="p">[</span><span class="n">c_n</span><span class="p">]))</span>
+    <span class="n">subdf0</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">Mov</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">c</span> <span class="o">==</span> <span class="n">c_s</span><span class="p">[</span><span class="n">c_n</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Thr</span> <span class="o">==</span> <span class="n">Thr_s</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">])]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Sig'</span><span class="p">])[</span><span class="s1">'Decisions'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">subdf1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">Mov</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">c</span> <span class="o">==</span> <span class="n">c_s</span><span class="p">[</span><span class="n">c_n</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Thr</span> <span class="o">==</span> <span class="n">Thr_s</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">])]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Sig'</span><span class="p">])[</span><span class="s1">'Decisions'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">im0</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">,</span> <span class="n">c_n</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Sig_s</span><span class="p">,</span> <span class="n">subdf0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"no motion"</span><span class="p">)</span>
+    <span class="n">im1</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">,</span> <span class="n">c_n</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Sig_s</span><span class="p">,</span> <span class="n">subdf1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"motion"</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">,</span> <span class="n">c_n</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Thr = </span><span class="si">{}</span><span class="s2">; c = </span><span class="si">{:.4f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Thr_s</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">],</span> <span class="n">c_s</span><span class="p">[</span><span class="n">c_n</span><span class="p">]))</span>
     <span class="n">axs</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">,</span> <span class="n">c_n</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
     <span class="n">axs</span><span class="p">[</span><span class="n">Thr_n</span><span class="p">,</span> <span class="n">c_n</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">450</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Noise level $\sigma$&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Proportion motion judgment&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Noise level $\sigma$"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Proportion motion judgment"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">'grey'</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/303fd543868bd714036b13655bc120348e05e5f159d309060172748ba156062a.png" src="../../_images/303fd543868bd714036b13655bc120348e05e5f159d309060172748ba156062a.png" />
+<img alt="../../_images/dda60e055825c76c3734eb309e56ab5d6394abb9318819e17dfaf33038b1f489.png" src="../../_images/dda60e055825c76c3734eb309e56ab5d6394abb9318819e17dfaf33038b1f489.png" />
 </div>
 </div>
 <p>There seems to be some parameter redundancy. I.e. we could chose different parameter combinations to make the model do something sensible…</p>
 <p>But it looks like <span class="math notranslate nohighlight">\(c=0.0004\)</span> works well for <span class="math notranslate nohighlight">\(\theta = 1.5\)</span> and <span class="math notranslate nohighlight">\(\sigma=50\)</span> (highlighted plot). Lets run a few trials on that to analyze those results more specifically…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run &quot;best&quot; parameter combination</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run "best" parameter combination</span>
 <span class="n">sig</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">c</span> <span class="o">=</span> <span class="mf">0.0004</span>
 <span class="n">thr</span> <span class="o">=</span> <span class="mf">1.5</span>
@@ -2199,12 +2199,12 @@ title="Print to PDF"
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">):</span>
     <span class="n">d0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">run_model</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">thr</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
     <span class="n">d1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">run_model</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">thr</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> Motion detected for no-motion =&#39;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">d0</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;%; and motion =&#39;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;%&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1"> Motion detected for no-motion ='</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">d0</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="s1">'%; and motion ='</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="s1">'%'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Motion detected for no-motion = 31.4 %; and motion = 61.5 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Motion detected for no-motion = 30.1 %; and motion = 59.5 %
 </pre></div>
 </div>
 </div>
@@ -2232,16 +2232,16 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="n">D0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;no motion&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="n">D1</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span><span class="s2">&quot;motion&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Noise level&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;% motion decisions&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="n">D0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"no motion"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="n">D1</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span><span class="s2">"motion"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Noise level"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"% motion decisions"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2682dade825582f493fa11cbc7ab820c1856969d81fd3590d26bff6652652000.png" src="../../_images/2682dade825582f493fa11cbc7ab820c1856969d81fd3590d26bff6652652000.png" />
+<img alt="../../_images/e125d9ec6d1c0a496702556e553c642e76e0147c2921dae8536f1fdf836f82d4.png" src="../../_images/e125d9ec6d1c0a496702556e553c642e76e0147c2921dae8536f1fdf836f82d4.png" />
 </div>
 </div>
 <p>Our <strong>hypothesis</strong> of linear increase of illusion strength with noise only holds true in a limited range of noise… It’s monotonic but saturating of course…</p>
